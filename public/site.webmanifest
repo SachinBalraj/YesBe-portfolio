@@ -1,0 +1,23 @@
+{
+  "name": "Sachin Balraj — AI Engineer & Solution Architect",
+  "short_name": "Sachin Balraj",
+  "description": "Portfolio of Sachin Balraj — AI Engineer, Full Stack Developer, and Solution Architect building intelligent business solutions in Salem, Tamil Nadu, India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563EB",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["business", "technology", "portfolio"],
+  "lang": "en",
+  "dir": "ltr",
+  "id": "/",
+  "icons": [
+    {
+      "src": "/sblogo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
