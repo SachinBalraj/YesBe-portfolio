@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 
 const stats = [
-  { value: "10+", label: "Years Experience" },
+  { value: "3+", label: "Years Experience" },
   { value: "50+", label: "Projects Delivered" },
   { value: "30+", label: "Happy Clients" },
   { value: "15+", label: "Technologies Mastered" },
@@ -50,16 +50,13 @@ export function AboutSection() {
 
             <motion.div variants={fadeInUp} className="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
               <p>
-                YesBe is a technology solutions company helping startups, SMEs, and enterprises build AI-powered software, ERP systems, Power BI dashboards, modern web applications, and business automation tools. Based in Salem, Tamil Nadu, India, we serve clients worldwide.
+                YesBe builds AI tools, ERP systems, Power BI dashboards, web apps, and automation — for startups, SMEs, and enterprises. Based in Salem, Tamil Nadu, serving clients worldwide.
               </p>
               <p>
-                With over 10 years of combined experience in enterprise software development, YesBe has delivered 50+ projects across education, healthcare, retail, restaurants, manufacturing, and finance. Our technical expertise spans React, Node.js, Python, MongoDB, PostgreSQL, AWS, Docker, OpenAI, LangChain, Power BI, and modern cloud infrastructure.
+                Over 10 years of combined experience. 50+ projects delivered across education, healthcare, retail, restaurants, manufacturing, and finance. Our stack: React, Node.js, Python, MongoDB, PostgreSQL, AWS, Docker, OpenAI, LangChain, and Power BI.
               </p>
               <p>
-                Our mission is to help businesses automate operations, reduce manual work, improve reporting, and scale using AI and modern technology. We work directly with business owners, CTOs, and startup founders — providing end-to-end solutions from requirements gathering and architecture design to development, deployment, and ongoing support.
-              </p>
-              <p>
-                Every solution we build is designed to solve a specific business problem. Whether it&apos;s a school that needs an ERP system, a restaurant that needs AI-powered ordering, or a corporate company that needs real-time analytics dashboards — the focus is always on delivering measurable business results, not just writing code.
+                We work directly with business owners, CTOs, and founders — from requirements to deployment and ongoing support. The focus is always on solving real problems, not just writing code.
               </p>
             </motion.div>
 

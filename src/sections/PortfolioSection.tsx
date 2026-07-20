@@ -37,7 +37,7 @@ const projects: CaseStudy[] = [
   {
     title: "Fashion Fusion",
     shortOverview:
-      "A modern e-commerce platform enabling a clothing brand to launch online sales, manage inventory, and process orders — replacing manual WhatsApp-based selling.",
+      "E-commerce platform for a clothing brand — online sales, inventory, and orders replacing manual WhatsApp selling.",
     category: "E-Commerce Platform",
     clientType: "Retail / Fashion Brand",
     duration: "4 Weeks",
@@ -52,9 +52,9 @@ const projects: CaseStudy[] = [
       { label: "Cloud", items: ["Vercel", "Render"] },
     ],
     problem:
-      "A small clothing boutique relied entirely on WhatsApp orders and manual spreadsheets to track inventory. The owner spent hours each day confirming orders, updating stock counts, and chasing payments. With no online storefront, the business had zero reach beyond local customers and was losing sales to competitors with online presence.",
+      "A small clothing boutique ran everything through WhatsApp and spreadsheets. No online store, limited reach, and hours spent chasing orders.",
     solution:
-      "Designed and developed a full-stack e-commerce platform with a product catalog, category filtering, shopping cart, secure checkout with Stripe integration, and a comprehensive admin dashboard. The admin panel provides real-time inventory tracking, order management, sales analytics, and customer insights — eliminating the need for manual spreadsheets entirely.",
+      "Built a full-stack e-commerce platform — product catalog, cart, Stripe checkout, and an admin dashboard for real-time inventory, orders, and sales analytics.",
     features: [
       "Responsive product catalog with search & filters",
       "Secure user authentication & profiles",
@@ -73,7 +73,7 @@ const projects: CaseStudy[] = [
       "Increased monthly revenue by 40% within first quarter of launch",
     ],
     challenge:
-      "The biggest challenge was building a real-time inventory sync system that prevents overselling when multiple customers purchase the same item simultaneously. Solved this using MongoDB transactions with optimistic locking, ensuring stock counts remain accurate even under concurrent access.",
+      "The biggest challenge was real-time inventory sync when multiple customers buy the same item. Solved with MongoDB transactions and optimistic locking.",
     futureEnhancements: [
       "AI-powered product recommendations based on browsing history",
       "WhatsApp order notification integration",
@@ -85,7 +85,7 @@ const projects: CaseStudy[] = [
   {
     title: "Restaurant QR Ordering System",
     shortOverview:
-      "A QR code-based contactless ordering system that lets customers browse the menu, place orders from their phone, and notify the kitchen instantly — eliminating wait times.",
+      "QR-based contactless ordering — customers browse, order, and the kitchen gets notified instantly.",
     category: "Restaurant Automation",
     clientType: "Restaurant / F&B",
     duration: "3 Weeks",
@@ -100,9 +100,9 @@ const projects: CaseStudy[] = [
       { label: "Integrations", items: ["QR Code API", "Real-time Notifications"] },
     ],
     problem:
-      "During peak hours, the restaurant's waiters were overwhelmed taking orders manually. Customers waited 10–15 minutes just to place an order. Orders were frequently written down incorrectly, leading to wrong dishes being served. The kitchen had no real-time order queue, and the management had zero visibility into daily sales trends.",
+      "During peak hours, waiters were overwhelmed. Customers waited 10–15 minutes just to order. Frequent errors in handwritten orders. No real-time visibility into sales.",
     solution:
-      "Built a QR-based ordering system where each table has a unique QR code. Customers scan the code, browse the full menu with images and descriptions, customize their orders, and submit directly to the kitchen queue. The kitchen display shows orders in real-time with timestamps and table numbers. An admin panel tracks all orders, peak hours, popular items, and daily revenue.",
+      "QR-based system — each table gets a unique code. Customers scan, browse the menu, customize orders, and submit directly to the kitchen queue. Admin panel tracks everything.",
     features: [
       "Unique QR code per table with instant menu access",
       "Full menu with images, descriptions & prices",
@@ -121,7 +121,7 @@ const projects: CaseStudy[] = [
       "Gained real-time visibility into daily sales and popular items",
     ],
     challenge:
-      "Ensuring real-time order delivery to the kitchen without delays was critical. Implemented WebSocket connections with automatic reconnection logic and a fallback polling mechanism, so even if the connection drops briefly, the order still reaches the kitchen within seconds.",
+      "Real-time delivery to the kitchen was critical. Used WebSocket with auto-reconnection and fallback polling — orders reach the kitchen within seconds even if the connection drops.",
     futureEnhancements: [
       "AI-based demand forecasting for inventory pre-ordering",
       "Customer loyalty program with visit tracking",
@@ -133,7 +133,7 @@ const projects: CaseStudy[] = [
   {
     title: "Library Management System",
     shortOverview:
-      "A digital library management platform that automates book inventory, member management, issue/return tracking, and reporting — replacing paper-based registers.",
+      "Digital library system — book inventory, member management, issue/return tracking, and reporting.",
     category: "Educational ERP",
     clientType: "Educational Institution",
     duration: "3 Weeks",
@@ -148,9 +148,9 @@ const projects: CaseStudy[] = [
       { label: "Integrations", items: ["Barcode Scanning API", "Automated Fine Calculation"] },
     ],
     problem:
-      "A college library with 10,000+ books tracked everything in paper registers. Librarians spent 30 minutes per transaction looking up books, recording issues, and calculating overdue fines. Students had no way to check book availability remotely. Lost books went undetected for months, and generating monthly reports required manually compiling data from multiple ledgers.",
+      "A college library with 10,000+ books tracked everything on paper. 30-minute transactions, no remote access, undetected lost books, and manual report compilation.",
     solution:
-      "Developed a comprehensive digital library management system with a searchable book catalog, barcode-based issue/return, automated fine calculation, member management, and a reporting dashboard. Librarians can now process a transaction in under 30 seconds. Students can search the catalog online and reserve books. The admin dashboard provides real-time occupancy, overdue alerts, and acquisition reports.",
+      "Digital library system with searchable catalog, barcode scanning, automated fines, member management, and a reporting dashboard. Transactions now take under 30 seconds.",
     features: [
       "Searchable book catalog with categories & availability",
       "Barcode scanning for quick issue/return",
@@ -169,7 +169,7 @@ const projects: CaseStudy[] = [
       "Generated automated reports saving 8+ hours of monthly admin work",
     ],
     challenge:
-      "Migrating 10,000+ existing book records from paper registers to the digital system was the biggest hurdle. Built a bulk CSV import tool with validation, duplicate detection, and category auto-mapping, allowing the entire catalog to be digitized in under 2 days instead of the estimated 2 weeks.",
+      "Migrating 10,000+ paper records to digital was the hurdle. Built a bulk CSV import with validation and duplicate detection — entire catalog digitized in 2 days instead of 2 weeks.",
     futureEnhancements: [
       "AI-powered book recommendation engine based on borrowing patterns",
       "Integration with university student information system",
@@ -181,7 +181,7 @@ const projects: CaseStudy[] = [
   {
     title: "Power BI Business Dashboard",
     shortOverview:
-      "Interactive executive dashboards consolidating data from multiple sources into real-time KPI tracking, sales analytics, and automated report generation.",
+      "Executive dashboards pulling from multiple data sources — real-time KPIs and automated reporting.",
     category: "Business Analytics",
     clientType: "Corporate / SME",
     duration: "2 Weeks",
@@ -196,9 +196,9 @@ const projects: CaseStudy[] = [
       { label: "Deployment", items: ["Power BI Service", "Scheduled Refresh"] },
     ],
     problem:
-      "The management team relied on weekly Excel reports compiled manually from 5 different data sources — CRM, ERP, accounting software, POS system, and Google Analytics. By the time the report reached decision-makers, the data was already 5–7 days old. Identifying sales trends, spotting underperforming products, and tracking team performance required hours of manual analysis.",
+      "Management relied on weekly Excel reports compiled from 5 different systems. By the time reports arrived, data was 5–7 days old. Spotting trends took hours of manual work.",
     solution:
-      "Designed and deployed a suite of Power BI dashboards that connect directly to all data sources via Azure Data Factory pipelines. Built executive, sales, operations, and finance dashboards with drill-down capabilities, automated KPI tracking, anomaly detection, and scheduled email reports. Decision-makers now see real-time performance metrics updated every hour.",
+      "Suite of Power BI dashboards connected via Azure Data Factory — executive, sales, ops, and finance views with drill-down, KPI tracking, anomaly detection, and scheduled email reports.",
     features: [
       "Executive KPI dashboard with drill-down capability",
       "Sales performance by region, product & team",
@@ -217,7 +217,7 @@ const projects: CaseStudy[] = [
       "Enabled non-technical managers to explore data independently",
     ],
     challenge:
-      "Data lived in 5 incompatible systems with inconsistent naming conventions and no shared keys. Built an Azure Data Factory ETL pipeline with data cleansing, standardization, and a unified data model, ensuring all sources merge seamlessly into a single source of truth.",
+      "Five incompatible systems with inconsistent naming. Built an Azure Data Factory ETL pipeline with data cleansing and a unified data model — single source of truth.",
     futureEnhancements: [
       "Predictive analytics using Python integration in Power BI",
       "Natural language Q&A for non-technical users",
@@ -228,7 +228,7 @@ const projects: CaseStudy[] = [
   {
     title: "AI Chatbot with RAG",
     shortOverview:
-      "An enterprise AI assistant powered by Retrieval-Augmented Generation that provides instant, accurate answers from internal company documents and knowledge bases.",
+      "Enterprise AI assistant using RAG — instant, accurate answers from internal company documents.",
     category: "Artificial Intelligence",
     clientType: "Enterprise / Internal Tool",
     duration: "5 Weeks",
@@ -243,9 +243,9 @@ const projects: CaseStudy[] = [
       { label: "Database", items: ["Pinecone (Vector DB)", "MongoDB"] },
     ],
     problem:
-      "An enterprise support team handled 200+ daily queries from employees across departments — HR policies, IT procedures, product documentation, and compliance guidelines. Answering required searching through 500+ PDF documents, Confluence pages, and shared drives. Average response time was 45 minutes, and new team members took months to become proficient.",
+      "Support team handled 200+ daily queries across departments. Searching 500+ PDFs, Confluence pages, and shared drives. 45-minute average response time.",
     solution:
-      "Built a RAG-powered AI chatbot that ingests company documents, indexes them as vector embeddings in Pinecone, and uses GPT-4 with LangChain to retrieve and generate accurate, context-aware answers. The chatbot includes source attribution (linking back to the original document), conversation history, and an admin panel for document management and usage analytics.",
+      "RAG chatbot that ingests company docs, indexes them in Pinecone, and uses GPT-4 with LangChain to generate accurate, source-linked answers.",
     features: [
       "Natural language query interface",
       "RAG pipeline with source attribution",
@@ -264,7 +264,7 @@ const projects: CaseStudy[] = [
       "Improved answer accuracy to 94% with source-linked responses",
     ],
     challenge:
-      "Ensuring the AI only answers from verified company documents and doesn't hallucinate was critical. Implemented a confidence threshold system — if the retrieved context similarity score falls below 0.75, the chatbot responds with 'I don't have enough information' rather than guessing. Also added source URLs so users can verify every answer.",
+      "Ensuring the AI only answers from verified documents was critical. Implemented a confidence threshold — below 0.75 similarity, it says 'I don't know' instead of guessing. Source URLs let users verify every answer.",
     futureEnhancements: [
       "Multi-language support for global teams",
       "Voice-based query interface",
@@ -629,7 +629,7 @@ export function PortfolioSection() {
               className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
             />
             <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
-              Real client solutions — each project solved a specific business problem with measurable outcomes.
+              Real projects, real results. Each one solved a specific business problem.
             </motion.p>
           </motion.div>
 

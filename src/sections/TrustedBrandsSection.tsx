@@ -104,7 +104,7 @@ export function TrustedBrandsSection() {
             className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
-            Businesses and projects we&apos;ve successfully designed and developed.
+            Businesses we&apos;ve built for — retail, automotive, fashion, consulting, and tech.
           </motion.p>
         </motion.div>
 
@@ -167,7 +167,7 @@ export function TrustedBrandsSection() {
           className="mt-14 text-center"
         >
           <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-            We&apos;ve built digital solutions for businesses across retail, automotive, fashion, consulting, and technology industries.
+            We&apos;ve delivered digital solutions across retail, automotive, fashion, consulting, and tech.
           </p>
           <a
             href="#contact"

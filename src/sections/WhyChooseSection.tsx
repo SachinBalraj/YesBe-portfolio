@@ -13,33 +13,33 @@ interface Reason {
 const reasons: Reason[] = [
   {
     icon: IndianRupee,
-    title: "Affordable Pricing",
-    description: "Premium quality solutions at competitive rates. Transparent pricing with no hidden costs — designed to fit startup and enterprise budgets alike.",
+    title: "Transparent Pricing",
+    description: "No hidden costs. Competitive rates for startups and enterprises alike.",
   },
   {
     icon: Layers,
     title: "Scalable Architecture",
-    description: "Every solution is built to grow with your business. Modular code, clean architecture, and cloud-ready infrastructure ensure long-term scalability.",
+    description: "Modular code and cloud-ready infrastructure that grows with your business.",
   },
   {
     icon: Brain,
-    title: "AI-First Solutions",
-    description: "From chatbots to RAG systems, AI is integrated into every project where it adds real business value — not as a buzzword, but as a practical tool.",
+    title: "AI Where It Matters",
+    description: "AI integrated where it adds real value — chatbots, RAG systems, automation — not just buzzwords.",
   },
   {
     icon: Paintbrush,
     title: "Modern UI/UX",
-    description: "Clean, responsive, and accessible interfaces built with React, Tailwind CSS, and Framer Motion. Designed to build trust and drive conversions.",
+    description: "Clean, responsive interfaces built with React and Tailwind. Designed to convert.",
   },
   {
     icon: Lightbulb,
-    title: "Business Understanding",
-    description: "Technology decisions are driven by business goals. Every feature is mapped to a real problem — ensuring your investment delivers measurable ROI.",
+    title: "Business-First Thinking",
+    description: "Every feature maps to a real problem. Your investment delivers measurable returns.",
   },
   {
     icon: Headphones,
     title: "Post-Launch Support",
-    description: "Ongoing maintenance, performance monitoring, feature updates, and technical support after deployment. Your project stays healthy long after launch.",
+    description: "Maintenance, monitoring, and updates after deployment. Your project stays healthy.",
   },
 ];
 

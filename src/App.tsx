@@ -7,120 +7,37 @@ import { LoadingScreen } from "@/components/common/LoadingScreen";
 import { Analytics } from "@/components/common/Analytics";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { PremiumHero } from "@/components/sections/PremiumHero";
-import { MarqueeSection } from "@/sections/MarqueeSection";
 
-const AboutSection = lazy(() =>
-  import("@/sections/AboutSection").then((m) => ({ default: m.AboutSection }))
+const HomePage = lazy(() =>
+  import("@/pages/HomePage").then((m) => ({ default: m.HomePage }))
 );
-const SolutionsSection = lazy(() =>
-  import("@/sections/SolutionsSection").then((m) => ({ default: m.SolutionsSection }))
+const AboutPage = lazy(() =>
+  import("@/pages/AboutPage").then((m) => ({ default: m.AboutPage }))
 );
-const IndustriesSection = lazy(() =>
-  import("@/sections/IndustriesSection").then((m) => ({ default: m.IndustriesSection }))
+const ServicesPage = lazy(() =>
+  import("@/pages/ServicesPage").then((m) => ({ default: m.ServicesPage }))
 );
-const PortfolioSection = lazy(() =>
-  import("@/sections/PortfolioSection").then((m) => ({ default: m.PortfolioSection }))
+const IndustriesPage = lazy(() =>
+  import("@/pages/IndustriesPage").then((m) => ({ default: m.IndustriesPage }))
 );
-const TrustedBrandsSection = lazy(() =>
-  import("@/sections/TrustedBrandsSection").then((m) => ({ default: m.TrustedBrandsSection }))
+const CaseStudiesPage = lazy(() =>
+  import("@/pages/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage }))
 );
-const TechStackSection = lazy(() =>
-  import("@/sections/TechStackSection").then((m) => ({ default: m.TechStackSection }))
+const KnowledgeCenterPage = lazy(() =>
+  import("@/pages/KnowledgeCenterPage").then((m) => ({ default: m.KnowledgeCenterPage }))
 );
-const SkillsSection = lazy(() =>
-  import("@/sections/SkillsSection").then((m) => ({ default: m.SkillsSection }))
+const PricingPage = lazy(() =>
+  import("@/pages/PricingPage").then((m) => ({ default: m.PricingPage }))
 );
-const WhyChooseSection = lazy(() =>
-  import("@/sections/WhyChooseSection").then((m) => ({ default: m.WhyChooseSection }))
-);
-const DevelopmentProcessSection = lazy(() =>
-  import("@/sections/DevelopmentProcessSection").then((m) => ({ default: m.DevelopmentProcessSection }))
-);
-const WhoIHelpSection = lazy(() =>
-  import("@/sections/WhoIHelpSection").then((m) => ({ default: m.WhoIHelpSection }))
-);
-const BusinessResultsSection = lazy(() =>
-  import("@/sections/BusinessResultsSection").then((m) => ({ default: m.BusinessResultsSection }))
-);
-const PricingSection = lazy(() =>
-  import("@/sections/PricingSection").then((m) => ({ default: m.PricingSection }))
-);
-const MiniGuidesSection = lazy(() =>
-  import("@/sections/MiniGuidesSection").then((m) => ({ default: m.MiniGuidesSection }))
-);
-const KnowledgeCenterSection = lazy(() =>
-  import("@/sections/KnowledgeCenterSection").then((m) => ({ default: m.KnowledgeCenterSection }))
-);
-const FAQSection = lazy(() =>
-  import("@/sections/FAQSection").then((m) => ({ default: m.FAQSection }))
-);
-const ContactSection = lazy(() =>
-  import("@/sections/ContactSection").then((m) => ({ default: m.ContactSection }))
+const ContactPage = lazy(() =>
+  import("@/pages/ContactPage").then((m) => ({ default: m.ContactPage }))
 );
 const NotFound = lazy(() =>
   import("@/pages/NotFound").then((m) => ({ default: m.NotFound }))
 );
 
-function SectionFallback() {
+function PageFallback() {
   return <div className="h-96" aria-hidden="true" />;
-}
-
-function HomePage() {
-  return (
-    <>
-      <PremiumHero />
-      <MarqueeSection />
-      <Suspense fallback={<SectionFallback />}>
-        <AboutSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <SolutionsSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <IndustriesSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <PortfolioSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <TrustedBrandsSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <TechStackSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <SkillsSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <WhyChooseSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <DevelopmentProcessSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <WhoIHelpSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <BusinessResultsSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <PricingSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <MiniGuidesSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <KnowledgeCenterSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <FAQSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <ContactSection />
-      </Suspense>
-    </>
-  );
 }
 
 function App() {
@@ -136,9 +53,16 @@ function App() {
         <ScrollToTopButton />
         <Navbar />
         <main id="main-content">
-          <Suspense fallback={<SectionFallback />}>
+          <Suspense fallback={<PageFallback />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/industries" element={<IndustriesPage />} />
+              <Route path="/case-studies" element={<CaseStudiesPage />} />
+              <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

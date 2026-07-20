@@ -11,28 +11,28 @@ interface Guide {
 const guides: Guide[] = [
   {
     title: "What is ERP and Why Does Your Business Need It?",
-    summary: "ERP (Enterprise Resource Planning) is software that manages your core business processes — inventory, billing, HR, accounting — in one unified system.",
-    content: "ERP software connects departments like sales, finance, inventory, and HR into a single platform. Instead of using separate spreadsheets or tools, everything is centralized. For schools, ERP manages student records and fees. For hospitals, it handles patient data and pharmacy. For retail, it tracks inventory and sales. The result is less manual work, fewer errors, and better reporting. Custom ERP solutions are built specifically for your business workflows, unlike generic off-the-shelf software that may not fit your needs.",
+    summary: "ERP connects your core business processes — inventory, billing, HR, accounting — in one system.",
+    content: "ERP software connects departments like sales, finance, inventory, and HR into a single platform. Instead of using separate spreadsheets or tools, everything is centralized. For schools, ERP manages student records and fees. For hospitals, it handles patient data and pharmacy. For retail, it tracks inventory and sales. Custom ERP solutions are built specifically for your business workflows, unlike generic off-the-shelf software.",
   },
   {
     title: "What is RAG Implementation?",
-    summary: "RAG (Retrieval-Augmented Generation) combines AI language models with your own business data to create accurate, context-aware AI assistants.",
-    content: "Traditional AI chatbots give generic answers. RAG systems connect AI models like GPT to your company's documents, policies, and knowledge base. When a user asks a question, the system retrieves relevant information from your data first, then generates an accurate answer. Use cases include customer support bots that know your products, internal knowledge assistants that answer HR or IT questions, and research tools that analyze documents. RAG ensures AI answers are grounded in your actual business data, not generic internet content.",
+    summary: "RAG combines AI language models with your own data to create accurate, context-aware assistants.",
+    content: "Traditional AI chatbots give generic answers. RAG systems connect AI models like GPT to your company's documents, policies, and knowledge base. When a user asks a question, the system retrieves relevant information from your data first, then generates an accurate answer. Use cases include customer support bots, internal knowledge assistants, and research tools. RAG ensures AI answers are grounded in your actual business data.",
   },
   {
     title: "Why Power BI for Business Analytics?",
-    summary: "Power BI is Microsoft's business intelligence platform that turns raw data into interactive dashboards, reports, and visual insights.",
-    content: "Most businesses have data spread across Excel sheets, databases, and third-party tools. Power BI connects all these sources into a single dashboard. You can see real-time sales, track KPIs, monitor inventory, and generate automated reports. Unlike spreadsheets, Power BI updates automatically and lets you drill down into details. It's especially powerful for CFOs, operations managers, and business owners who need instant visibility into performance. Dashboards can be shared across teams, scheduled for email delivery, and accessed on mobile devices.",
+    summary: "Power BI turns raw data into interactive dashboards and visual insights.",
+    content: "Most businesses have data spread across Excel sheets, databases, and third-party tools. Power BI connects all these sources into a single dashboard. You can see real-time sales, track KPIs, monitor inventory, and generate automated reports. Unlike spreadsheets, Power BI updates automatically and lets you drill down into details. Dashboards can be shared across teams and accessed on mobile devices.",
   },
   {
     title: "Benefits of AI Automation for Businesses",
-    summary: "AI automation replaces repetitive manual tasks with intelligent systems that work 24/7 — reducing costs and improving accuracy.",
-    content: "AI automation handles tasks like data entry, email responses, invoice processing, inventory reordering, and customer support. Unlike manual work, AI runs continuously without errors or fatigue. For example, an AI chatbot handles hundreds of customer queries simultaneously. An AI-powered invoice system processes and categorizes bills automatically. An AI inventory tool predicts demand and reorders stock before it runs out. The business benefits are clear: lower operational costs, faster processing, fewer human errors, and the ability to scale without hiring more staff.",
+    summary: "AI automation replaces repetitive tasks with systems that work 24/7 — reducing costs and errors.",
+    content: "AI automation handles tasks like data entry, email responses, invoice processing, inventory reordering, and customer support. Unlike manual work, AI runs continuously without errors or fatigue. An AI chatbot handles hundreds of queries simultaneously. An AI inventory tool predicts demand and reorders stock before it runs out. The benefits: lower costs, faster processing, fewer errors, and the ability to scale without hiring more staff.",
   },
   {
     title: "SEO vs GEO vs AEO — What's the Difference?",
-    summary: "SEO optimizes for Google search, GEO optimizes for AI search engines like ChatGPT, and AEO optimizes for direct answers and voice search.",
-    content: "SEO (Search Engine Optimization) is about ranking higher on Google through keywords, backlinks, and technical optimization. GEO (Generative Engine Optimization) is newer — it optimizes your content so AI chatbots like ChatGPT, Gemini, and Perplexity recommend your business when users ask questions. AEO (Answer Engine Optimization) structures your content to provide direct, concise answers that appear in featured snippets, voice assistants, and AI summaries. All three work together: SEO drives organic traffic, GEO gets you recommended by AI, and AEO captures voice search and featured snippet positions.",
+    summary: "SEO optimizes for Google, GEO for AI search engines, and AEO for direct answers and voice search.",
+    content: "SEO is about ranking higher on Google through keywords, backlinks, and technical optimization. GEO optimizes your content so AI chatbots like ChatGPT and Perplexity recommend your business. AEO structures your content to appear in featured snippets and voice assistants. All three work together: SEO drives organic traffic, GEO gets you recommended by AI, and AEO captures voice search positions.",
   },
 ];
 
@@ -128,7 +128,7 @@ export function MiniGuidesSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            Simple explanations of the technologies that power modern businesses.
+            Plain-language explainers on the tech that powers modern businesses.
           </motion.p>
         </div>
 

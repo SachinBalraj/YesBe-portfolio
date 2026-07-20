@@ -92,7 +92,7 @@ export function PremiumHero() {
       {/* Noise texture */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-0">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-[120px] pb-24 lg:pt-[140px] lg:pb-0">
         <div className="grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:gap-8 items-center">
           {/* ── Left Content ── */}
           <motion.div
@@ -112,15 +112,15 @@ export function PremiumHero() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-tight leading-[1.06]"
             >
-              Transform Your Business{" "}
-              <span className="text-gradient">with YesBe</span>
+              Build Smarter{" "}
+              <span className="text-gradient">Digital Solutions</span>
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-lg"
             >
-              YesBe helps startups, SMEs, and enterprises build AI-powered software, ERP systems, Power BI dashboards, and modern web applications. From strategy to deployment — we help businesses automate operations, reduce costs, and scale with technology.
+              AI tools, ERP systems, Power BI dashboards, and modern web apps — built for startups, SMEs, and enterprises. Strategy to deployment, one team.
             </motion.p>
 
             {/* Trust indicators */}

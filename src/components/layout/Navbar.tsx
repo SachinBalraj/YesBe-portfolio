@@ -1,40 +1,310 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
-import { NAV_LINKS } from "@/constants";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  Menu, X, ArrowRight, ChevronDown, Sparkles,
+  Bot, Brain, Building2, Globe, Code2, Workflow,
+  BarChart3, Cloud, Database, LayoutDashboard,
+  Rocket, Users, TrendingUp, Heart, GraduationCap,
+  ShoppingBag, Factory, Truck, Utensils, Home,
+  Briefcase, Megaphone, Search, Link2,
+  MessageCircle, Phone,
+  HelpCircle, Star,
+} from "lucide-react";
 import { cn } from "@/utils/cn";
 import logoImg from "@/assets/images/YBlogo.png";
 
-const SCROLL_OFFSET = 80;
+/* ─── Navigation Data ─── */
+
+interface NavDropdownItem {
+  label: string;
+  href: string;
+  icon: typeof Brain;
+  description?: string;
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  dropdown?: NavDropdownItem[];
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { label: "Home", href: "/" },
+  {
+    label: "About Us",
+    href: "/about",
+    dropdown: [
+      { label: "Company Overview", href: "/about", icon: Building2, description: "Who we are and what we do" },
+      { label: "Founder", href: "/about", icon: Users, description: "Meet the founder" },
+      { label: "Why YesBe", href: "/about", icon: TrendingUp, description: "What sets us apart" },
+      { label: "Our Process", href: "/about", icon: Workflow, description: "How we deliver results" },
+    ],
+  },
+  {
+    label: "Solutions",
+    href: "/services",
+    dropdown: [
+      { label: "AI Solutions", href: "/services", icon: Brain, description: "AI tools that automate decisions" },
+      { label: "AI Chatbots", href: "/services", icon: Bot, description: "Chatbots for support and leads" },
+      { label: "ERP Systems", href: "/services", icon: LayoutDashboard, description: "Enterprise resource planning" },
+      { label: "Website Development", href: "/services", icon: Globe, description: "Fast, responsive web apps" },
+      { label: "Custom Software", href: "/services", icon: Code2, description: "Software built for your business" },
+      { label: "Business Automation", href: "/services", icon: Workflow, description: "Cut repetitive manual tasks" },
+      { label: "Data Analytics", href: "/services", icon: BarChart3, description: "Data into actionable insights" },
+      { label: "Power BI Dashboards", href: "/services", icon: BarChart3, description: "Interactive BI reporting" },
+      { label: "Cloud & DevOps", href: "/services", icon: Cloud, description: "Cloud infrastructure and CI/CD" },
+      { label: "Database Management", href: "/services", icon: Database, description: "Optimized data storage" },
+    ],
+  },
+  {
+    label: "Industries",
+    href: "/industries",
+    dropdown: [
+      { label: "Startups", href: "/industries", icon: Rocket, description: "MVPs and scaling" },
+      { label: "SMEs", href: "/industries", icon: Briefcase, description: "Affordable enterprise tools" },
+      { label: "Large Enterprises", href: "/industries", icon: Building2, description: "Complex system integration" },
+      { label: "Healthcare", href: "/industries", icon: Heart, description: "Hospital and clinic systems" },
+      { label: "Education", href: "/industries", icon: GraduationCap, description: "School and college ERP" },
+      { label: "Retail", href: "/industries", icon: ShoppingBag, description: "POS, inventory, e-commerce" },
+      { label: "Manufacturing", href: "/industries", icon: Factory, description: "Production and supply chain" },
+      { label: "Logistics", href: "/industries", icon: Truck, description: "Fleet and warehouse ops" },
+      { label: "Restaurants", href: "/industries", icon: Utensils, description: "Order and menu management" },
+      { label: "Real Estate", href: "/industries", icon: Home, description: "Property and CRM tools" },
+    ],
+  },
+  {
+    label: "Case Studies",
+    href: "/case-studies",
+    dropdown: [
+      { label: "AI Projects", href: "/case-studies", icon: Brain, description: "Intelligent solutions we built" },
+      { label: "ERP Projects", href: "/case-studies", icon: LayoutDashboard, description: "Enterprise resource planning" },
+      { label: "Web Applications", href: "/case-studies", icon: Globe, description: "Full-stack web platforms" },
+      { label: "E-Commerce", href: "/case-studies", icon: ShoppingBag, description: "Online store implementations" },
+      { label: "Data Analytics", href: "/case-studies", icon: BarChart3, description: "Dashboard and reporting projects" },
+      { label: "Automation Solutions", href: "/case-studies", icon: Workflow, description: "Workflow automation case studies" },
+    ],
+  },
+  {
+    label: "Knowledge Center",
+    href: "/knowledge-center",
+    dropdown: [
+      { label: "AI", href: "/knowledge-center", icon: Brain, description: "AI guides and insights" },
+      { label: "ERP", href: "/knowledge-center", icon: LayoutDashboard, description: "ERP explained" },
+      { label: "Web Development", href: "/knowledge-center", icon: Globe, description: "Frontend and backend guides" },
+      { label: "Power BI", href: "/knowledge-center", icon: BarChart3, description: "BI and analytics guides" },
+      { label: "SEO", href: "/knowledge-center", icon: Search, description: "Search optimization" },
+      { label: "GEO", href: "/knowledge-center", icon: Megaphone, description: "AI search optimization" },
+      { label: "AEO", href: "/knowledge-center", icon: MessageCircle, description: "Answer engine optimization" },
+      { label: "LangChain", href: "/knowledge-center", icon: Link2, description: "AI framework guides" },
+      { label: "RAG", href: "/knowledge-center", icon: Database, description: "Retrieval-augmented generation" },
+      { label: "Business Automation", href: "/knowledge-center", icon: Workflow, description: "Workflow automation guides" },
+    ],
+  },
+  {
+    label: "Pricing",
+    href: "/pricing",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    dropdown: [
+      { label: "Contact Us", href: "/contact", icon: Phone, description: "Get in touch" },
+      { label: "FAQs", href: "/pricing", icon: HelpCircle, description: "Common questions" },
+      { label: "Testimonials", href: "/case-studies", icon: Star, description: "Client feedback" },
+      { label: "Careers", href: "/contact", icon: Briefcase, description: "Coming Soon" },
+    ],
+  },
+];
+
+/* ─── Desktop Dropdown ─── */
+
+function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActive: boolean; onNavigate: (href: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
+
+  const handleEnter = () => {
+    clearTimeout(timeoutRef.current ?? undefined);
+    setOpen(true);
+  };
+
+  const handleLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  useEffect(() => {
+    return () => clearTimeout(timeoutRef.current ?? undefined);
+  }, []);
+
+  if (!item.dropdown) {
+    return (
+      <button
+        onClick={() => onNavigate(item.href)}
+        className={cn(
+          "relative shrink-0 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 whitespace-nowrap",
+          isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
+        )}
+      >
+        {item.label}
+        {isActive && (
+          <motion.div
+            layoutId="nav-active"
+            className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
+            transition={{ type: "spring", stiffness: 500, damping: 35 }}
+          />
+        )}
+      </button>
+    );
+  }
+
+  return (
+    <div
+      className="relative shrink-0"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+    >
+      <button
+        className={cn(
+          "relative flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 whitespace-nowrap",
+          isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
+        )}
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => onNavigate(item.href)}
+      >
+        {item.label}
+        <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", open && "rotate-180")} />
+        {isActive && (
+          <motion.div
+            layoutId="nav-active"
+            className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
+            transition={{ type: "spring", stiffness: 500, damping: 35 }}
+          />
+        )}
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+            className="absolute left-1/2 top-full z-50 mt-2 w-[420px] -translate-x-1/2 rounded-2xl border border-white/40 bg-white/95 p-3 shadow-[0_8px_40px_rgba(37,99,235,0.1)] backdrop-blur-xl"
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+          >
+            <div className="grid grid-cols-2 gap-1">
+              {item.dropdown.map((sub) => (
+                <button
+                  key={sub.label}
+                  onClick={() => { onNavigate(sub.href); setOpen(false); }}
+                  className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-primary/[0.04] text-left"
+                >
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/[0.06] text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
+                    <sub.icon className="h-4 w-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-semibold text-foreground group-hover:text-primary transition-colors">{sub.label}</p>
+                    {sub.description && (
+                      <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground">{sub.description}</p>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ─── Mobile Accordion ─── */
+
+function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActive: boolean; onNavigate: (href: string) => void }) {
+  const [open, setOpen] = useState(false);
+
+  if (!item.dropdown) {
+    return (
+      <button
+        onClick={() => onNavigate(item.href)}
+        className={cn(
+          "flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 text-left",
+          isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+        )}
+      >
+        {item.label}
+        {isActive && <div className="ml-auto h-1.5 w-1.5 rounded-full bg-primary" />}
+      </button>
+    );
+  }
+
+  return (
+    <div>
+      <button
+        onClick={() => setOpen(!open)}
+        className={cn(
+          "flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
+          isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+        )}
+        aria-expanded={open}
+      >
+        {item.label}
+        <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", open && "rotate-180")} />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <div className="ml-3 mt-1 space-y-0.5 border-l-2 border-primary/10 pl-3">
+              {item.dropdown.map((sub) => (
+                <button
+                  key={sub.label}
+                  onClick={() => onNavigate(sub.href)}
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground text-left"
+                >
+                  <sub.icon className="h-3.5 w-3.5 shrink-0 text-primary/60" />
+                  <span>{sub.label}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ─── Main Navbar ─── */
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("#hero");
+  const lastScrollY = useRef(0);
+  const [hidden, setHidden] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 10);
+
+      if (currentY > 200) {
+        setHidden(currentY > lastScrollY.current && currentY - lastScrollY.current > 5);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY.current = currentY;
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const sections = NAV_LINKS.map((l) => l.href.slice(1));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
-          }
-        }
-      },
-      { rootMargin: `-${SCROLL_OFFSET}px 0px -60% 0px`, threshold: 0 },
-    );
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -42,21 +312,23 @@ export function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isMobileOpen]);
 
-  const scrollTo = useCallback((href: string) => {
-    const el = document.getElementById(href.slice(1));
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+  useEffect(() => {
     setIsMobileOpen(false);
-  }, []);
+  }, [location.pathname]);
+
+  const handleNavigate = (href: string) => {
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsMobileOpen(false);
+  };
 
   return (
     <>
       <motion.header
         role="banner"
         initial={false}
-        animate={{ y: 0 }}
+        animate={{ y: hidden ? -100 : 0 }}
+        transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
           isScrolled
@@ -66,14 +338,12 @@ export function Navbar() {
       >
         <nav
           className="mx-auto flex h-[76px] max-w-7xl items-center px-4 sm:px-6 lg:px-8"
-          style={{ gap: "0" }}
           aria-label="Main navigation"
           role="navigation"
         >
           {/* ── Logo ── */}
-          <a
-            href="#hero"
-            onClick={(e) => { e.preventDefault(); scrollTo("#hero"); }}
+          <button
+            onClick={() => handleNavigate("/")}
             className="relative z-10 flex shrink-0 items-center group"
           >
             <div className="relative">
@@ -88,66 +358,46 @@ export function Navbar() {
               />
               <div className="absolute -inset-1 rounded-xl bg-primary/[0.06] blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
-          </a>
+          </button>
 
           {/* ── Service Badge ── */}
           <div
-            className="ml-6 hidden min-w-0 max-w-[280px] shrink items-center xl:flex"
+            className="ml-6 hidden min-w-0 max-w-[280px] shrink items-center 2xl:flex"
             aria-label="Services offered"
           >
             <div className="inline-flex min-w-0 items-center gap-2 truncate rounded-full border border-primary/15 bg-primary/[0.04] px-4 py-1.5 text-[13px] font-medium text-primary backdrop-blur-sm">
               <Sparkles className="h-3.5 w-3.5 shrink-0" />
-              <span className="truncate">
-                AI &bull; ERP &bull; Web Dev &bull; Business Solutions
-              </span>
+              <span className="truncate">AI &bull; ERP &bull; Web Dev</span>
             </div>
           </div>
 
           {/* ── Spacer ── */}
           <div className="flex-1 min-w-0" aria-hidden="true" />
 
-          {/* ── Navigation Links ── */}
-          <div className="hidden shrink items-center gap-1 xl:flex">
-            {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.href;
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                  className={cn(
-                    "relative shrink-0 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 whitespace-nowrap",
-                    isActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-active"
-                      className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
-                      transition={{ type: "spring", stiffness: 500, damping: 35 }}
-                    />
-                  )}
-                </a>
-              );
-            })}
+          {/* ── Desktop Navigation ── */}
+          <div className="hidden shrink items-center gap-0.5 lg:flex">
+            {NAV_ITEMS.map((item) => (
+              <DesktopDropdown
+                key={item.label}
+                item={item}
+                isActive={location.pathname === item.href}
+                onNavigate={handleNavigate}
+              />
+            ))}
           </div>
 
-          {/* ── Spacer between nav and CTA (visible only on xl) ── */}
-          <div className="hidden w-8 shrink-0 xl:block" aria-hidden="true" />
+          {/* ── Spacer between nav and CTA ── */}
+          <div className="hidden w-6 shrink-0 lg:block" aria-hidden="true" />
 
           {/* ── CTA + Mobile Toggle ── */}
           <div className="flex shrink-0 items-center gap-2">
-            <a
-              href="#enquiry"
-              onClick={(e) => { e.preventDefault(); scrollTo("#enquiry"); }}
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl btn-premium text-white"
+            <button
+              onClick={() => handleNavigate("/contact")}
+              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full btn-premium text-white transition-all duration-300 hover:shadow-[0_4px_20px_rgba(37,99,235,0.35)] hover:-translate-y-0.5"
             >
-              Book Consultation
+              Book Free Consultation
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </button>
             <button
               className="lg:hidden rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -175,7 +425,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed right-0 top-0 z-50 h-full w-72 border-l border-white/20 bg-white/95 backdrop-blur-2xl shadow-2xl lg:hidden"
+              className="fixed right-0 top-0 z-50 h-full w-80 border-l border-white/20 bg-white/95 backdrop-blur-2xl shadow-2xl lg:hidden"
               role="dialog"
               aria-label="Mobile navigation"
             >
@@ -197,44 +447,35 @@ export function Navbar() {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <div className="flex flex-col gap-1 px-4 pb-6">
-                {NAV_LINKS.map((link, i) => {
-                  const isActive = activeSection === link.href;
+
+              <div className="flex flex-col gap-1 px-4 pb-6 overflow-y-auto max-h-[calc(100vh-76px)]">
+                {NAV_ITEMS.map((item, i) => {
+                  const isActive = location.pathname === item.href;
                   return (
                     <motion.div
-                      key={link.href}
+                      key={item.label}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.04, duration: 0.2 }}
                     >
-                      <a
-                        href={link.href}
-                        onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                        className={cn(
-                          "flex items-center rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
-                          isActive
-                            ? "bg-primary/10 text-primary"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                        )}
-                      >
-                        {link.label}
-                        {isActive && (
-                          <div className="ml-auto h-1.5 w-1.5 rounded-full bg-primary" />
-                        )}
-                      </a>
+                      <MobileAccordion
+                        item={item}
+                        isActive={isActive}
+                        onNavigate={handleNavigate}
+                      />
                     </motion.div>
                   );
                 })}
               </div>
+
               <div className="border-t border-white/20 px-4 py-5">
-                <a
-                  href="#enquiry"
-                  onClick={(e) => { e.preventDefault(); scrollTo("#enquiry"); }}
-                  className="flex items-center justify-center gap-2 w-full rounded-xl btn-premium px-5 py-3 text-sm font-semibold text-white"
+                <button
+                  onClick={() => handleNavigate("/contact")}
+                  className="flex w-full items-center justify-center gap-2 rounded-full btn-premium px-5 py-3 text-sm font-semibold text-white"
                 >
-                  Book Consultation
+                  Book Free Consultation
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </button>
               </div>
             </motion.div>
           </>

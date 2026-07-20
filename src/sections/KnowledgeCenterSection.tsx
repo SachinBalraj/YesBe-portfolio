@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, X, Clock, ArrowRight, Share2, BookOpen, Tag,
-  Cpu, Globe, BarChart3, Workflow, Brain, Building2,
+  Cpu, Globe, BarChart3, Workflow, Brain, Building2, MessageCircle, ExternalLink,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/animations";
@@ -20,7 +20,10 @@ interface Article {
   description: string;
   featured?: boolean;
   lastUpdated: string;
+  publishedDate: string;
+  author: string;
   keywords: string[];
+  faq: { question: string; answer: string }[];
   content: {
     intro: string;
     problem: string;
@@ -46,12 +49,20 @@ const articles: Article[] = [
     featured: true,
     description: "Discover how AI, automation, and intelligent assistants can reduce costs and improve business efficiency.",
     lastUpdated: "July 2026",
+    publishedDate: "July 10, 2026",
+    author: "Sachin Balraj",
     keywords: ["AI for business", "artificial intelligence", "business automation", "AI chatbots", "machine learning"],
-    toc: ["Introduction", "The Business Problem", "What AI Can Do for Businesses", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "Conclusion"],
+    faq: [
+      { question: "How much does it cost to implement AI in a small business?", answer: "Costs vary widely depending on the use case. Simple AI chatbots can cost as little as $50–200/month, while custom ML solutions may require $5,000–20,000 upfront. The key is starting with a high-impact, low-cost use case like a customer support chatbot." },
+      { question: "Can AI replace employees in my business?", answer: "AI is best used to augment human work, not replace it. It handles repetitive, time-consuming tasks so your team can focus on strategy, creativity, and relationship-building. Most businesses find AI frees up employee time rather than eliminating roles." },
+      { question: "How long does it take to see ROI from AI?", answer: "Many businesses see measurable ROI within 3–6 months for simple automations like chatbots and data processing. More complex AI implementations may take 6–12 months to show full returns, but quick wins are common from day one." },
+      { question: "Do I need technical expertise to use AI?", answer: "Not necessarily. Many AI tools are no-code or low-code, meaning anyone can set them up. For more advanced use cases, working with an AI development partner can bridge the technical gap." },
+    ],
+    toc: ["Introduction", "The Business Problem", "What AI Can Do for Businesses", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
     content: {
-      intro: "Artificial Intelligence is no longer a futuristic concept reserved for tech giants. Today, AI tools are accessible to businesses of every size — from solo startups to multinational enterprises. The question is no longer whether AI can help your business, but how quickly you can adopt it to stay competitive.",
-      problem: "Most businesses struggle with repetitive manual tasks, slow decision-making processes, and an overwhelming volume of data that goes unanalyzed. Customer support teams handle the same questions hundreds of times. Marketing teams spend hours drafting emails that could be generated in seconds. Finance teams manually reconcile data that an AI system could process in minutes. The cost of not using AI is measured not just in money, but in lost opportunities and competitive disadvantage.",
-      explanation: "AI for business encompasses a range of technologies — natural language processing, machine learning, computer vision, and robotic process automation — that can be applied to specific business functions. An AI chatbot handles customer queries 24/7 without human intervention. An AI-powered analytics tool identifies sales trends before a human analyst would notice them. An AI automation system processes invoices, categorizes expenses, and flags anomalies automatically. The key is applying AI to problems where speed, accuracy, or scale matters more than human judgment.",
+      intro: "AI tools are no longer just for tech giants. Businesses of every size can use them to cut costs and work smarter.",
+      problem: "Most businesses spend hours on repetitive tasks — manual data entry, slow reporting, support teams answering the same questions. The cost of not using AI shows up in lost time and missed opportunities.",
+      explanation: "AI for business covers natural language processing, machine learning, and automation — applied to specific functions. An AI chatbot handles queries 24/7. Analytics tools spot trends before humans do. Invoice processing happens automatically. The key: apply AI where speed, accuracy, or scale matters more than manual judgment.",
       examples: [
         "A retail store uses AI to predict demand and automatically reorder stock before items run out, reducing lost sales by 30%.",
         "A healthcare clinic deploys an AI chatbot to triage patient symptoms before appointments, reducing no-shows and improving doctor efficiency.",
@@ -79,8 +90,8 @@ const articles: Article[] = [
         "Ignoring data privacy and compliance requirements when deploying AI on customer data.",
         "Skipping the pilot phase and going straight to full-scale deployment.",
       ],
-      conclusion: "AI is the most transformative business tool of this decade. Businesses that adopt AI strategically — focusing on specific problems with measurable outcomes — will outperform those that treat it as a buzzword. The starting point is simple: identify your most repetitive, time-consuming, or error-prone process, and explore how AI can improve it.",
-      cta: "Ready to explore AI for your business? Let's discuss your use case and find the right solution.",
+      conclusion: "AI is the most practical business tool of this decade. Start with one repetitive, time-consuming process, and explore how AI can improve it.",
+      cta: "Ready to explore AI for your business? Let's discuss your use case.",
     },
   },
   {
@@ -92,16 +103,24 @@ const articles: Article[] = [
     icon: Building2,
     description: "Learn how ERP systems streamline operations, automate workflows, and improve productivity for businesses of all sizes.",
     lastUpdated: "July 2026",
+    publishedDate: "July 12, 2026",
+    author: "YesBe Team",
     keywords: ["ERP", "enterprise resource planning", "business management software", "ERP system", "school ERP", "hospital ERP"],
-    toc: ["Introduction", "The Business Problem", "What ERP Actually Does", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "Conclusion"],
+    faq: [
+      { question: "How long does an ERP implementation take?", answer: "A typical ERP implementation takes 3–6 months for small-to-medium businesses, and 6–18 months for larger enterprises. The timeline depends on the complexity of your processes, the amount of data to migrate, and how much customization is required." },
+      { question: "Is ERP only for large companies?", answer: "No. Cloud-based ERP solutions are designed for businesses of all sizes. Many ERP vendors offer affordable plans for small businesses and startups, with modular pricing so you only pay for what you need." },
+      { question: "What is the difference between ERP and CRM?", answer: "ERP (Enterprise Resource Planning) manages core business operations — inventory, accounting, HR, and procurement. CRM (Customer Relationship Management) focuses specifically on managing customer interactions, sales pipelines, and marketing. Many modern ERP systems include built-in CRM modules." },
+      { question: "Can ERP be customized for my specific industry?", answer: "Yes. Most modern ERP systems offer industry-specific modules or can be customized through configuration and extensions. For example, school ERPs handle student records and fees, while hospital ERPs manage patient records and pharmacy inventory." },
+    ],
+    toc: ["Introduction", "The Business Problem", "What ERP Actually Does", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
     content: {
-      intro: "Enterprise Resource Planning (ERP) is software that connects your core business processes — inventory, billing, HR, accounting, sales, and reporting — into a single unified system. Instead of juggling multiple spreadsheets, tools, and databases, an ERP gives you one source of truth for your entire business.",
-      problem: "Without ERP, businesses rely on disconnected systems. The sales team uses one tool, accounting uses another, and inventory is tracked in a spreadsheet. Data gets duplicated, information falls through the cracks, and reporting requires hours of manual consolidation. A school might track student fees in one system and attendance in another. A hospital might manage patient records separately from pharmacy inventory. This fragmentation leads to errors, delays, and poor decision-making.",
-      explanation: "An ERP system centralizes all business data into a single platform. When a sale is made, inventory updates automatically. When inventory reaches a threshold, purchase orders are generated. When a payment is received, accounting records are updated in real-time. Modules can be customized for specific industries — school ERP handles student records, fees, and timetable management. Hospital ERP manages patient records, appointments, pharmacy, and billing. Retail ERP tracks point-of-sale, inventory, and supplier management.",
+      intro: "ERP connects your core business processes — inventory, billing, HR, accounting — into one system. No more juggling spreadsheets and disconnected tools.",
+      problem: "Without ERP, data lives in silos. Sales uses one tool, accounting another, inventory lives in a spreadsheet. Information falls through the cracks and reporting takes hours of manual work.",
+      explanation: "An ERP centralizes all business data. Make a sale, inventory updates. Hit a threshold, purchase orders generate. Receive payment, accounting updates in real-time. Modules can be customized for schools, hospitals, retail, and more.",
       examples: [
-        "A school with 2,000 students replaced five separate spreadsheets with a single ERP, reducing fee collection time from 3 days to 2 hours per month.",
-        "A hospital reduced medication errors by 40% after implementing an ERP-connected pharmacy management module.",
-        "A retail chain with 12 stores unified inventory management through ERP, eliminating stockouts that cost ₹5 lakhs annually.",
+        "A school with 2,000 students replaced five spreadsheets with one ERP — fee collection went from 3 days to 2 hours per month.",
+        "A hospital cut medication errors by 40% with an ERP-connected pharmacy module.",
+        "A retail chain with 12 stores unified inventory through ERP, eliminating stockouts that cost ₹5 lakhs annually.",
       ],
       benefits: [
         "Eliminate data silos and create a single source of truth",
@@ -122,8 +141,8 @@ const articles: Article[] = [
         "Attempting to migrate all data and processes simultaneously instead of phasing the rollout.",
         "Ignoring employee resistance and failing to provide adequate training.",
       ],
-      conclusion: "ERP is not just software — it's a business transformation tool. The right ERP system eliminates inefficiency, reduces costs, and gives you the visibility to make smarter decisions. Whether you run a school, hospital, retail business, or enterprise, ERP is the foundation for scalable growth.",
-      cta: "Need an ERP system tailored to your business? Let's design one that fits your exact workflows.",
+      conclusion: "ERP is more than software — it's how you eliminate inefficiency and make smarter decisions. Whether you run a school, hospital, or enterprise, it's the foundation for scaling.",
+      cta: "Need an ERP built for your workflows? Let's design one.",
     },
   },
   {
@@ -135,11 +154,19 @@ const articles: Article[] = [
     icon: Globe,
     description: "Understand the differences between Search Engine Optimization, Generative Engine Optimization, and Answer Engine Optimization.",
     lastUpdated: "July 2026",
+    publishedDate: "July 8, 2026",
+    author: "Sachin Balraj",
     keywords: ["SEO", "GEO", "AEO", "search engine optimization", "generative engine optimization", "answer engine optimization"],
-    toc: ["Introduction", "The Business Problem", "Understanding SEO, GEO, and AEO", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "Conclusion"],
+    faq: [
+      { question: "Is traditional SEO still important in 2026?", answer: "Absolutely. While AI search is growing, Google still handles billions of searches daily. Traditional SEO drives the majority of organic traffic and remains the foundation of any comprehensive digital visibility strategy." },
+      { question: "How do I optimize for ChatGPT and Perplexity?", answer: "Focus on creating structured, factual content with clear entity signals. Use schema markup, FAQ sections, and authoritative statements. Ensure your business information is consistent across the web. AI models pull from sources they trust, so building domain authority matters." },
+      { question: "What is the biggest difference between SEO and GEO?", answer: "SEO optimizes for ranking in search engine results pages (SERPs). GEO optimizes for being recommended by AI language models when users ask questions. SEO is about links and rankings; GEO is about being cited as an authoritative source by AI." },
+      { question: "Can one strategy cover all three (SEO, GEO, AEO)?", answer: "While a unified content strategy helps, each discipline requires specific techniques. The best approach is creating high-quality, structured content that serves all three, then layering on discipline-specific optimizations like schema markup for AEO and entity signals for GEO." },
+    ],
+    toc: ["Introduction", "The Business Problem", "Understanding SEO, GEO, and AEO", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
     content: {
-      intro: "The way people find businesses online is evolving rapidly. Traditional SEO — optimizing for Google search rankings — is no longer the only game in town. Two new disciplines have emerged: GEO (Generative Engine Optimization) for AI search engines like ChatGPT and Perplexity, and AEO (Answer Engine Optimization) for featured snippets and voice assistants. Understanding all three is essential for maximum online visibility.",
-      problem: "Most businesses invest solely in traditional SEO — keyword research, backlink building, and on-page optimization. But search behavior is shifting. Users now ask ChatGPT for recommendations instead of Googling. They ask Siri for nearby services instead of browsing search results. They rely on Google's AI Overviews instead of clicking through to websites. Businesses that only optimize for traditional search are losing visibility to competitors who optimize for AI and answer engines.",
+      intro: "The way people find businesses online is changing. SEO alone isn't enough anymore. GEO targets AI search engines, AEO targets voice and featured snippets. You need all three.",
+      problem: "Most businesses only invest in traditional SEO. But users now ask ChatGPT for recommendations, Siri for nearby services, and Google AI Overviews for answers. Businesses optimizing only for Google are losing ground.",
       explanation: "SEO focuses on ranking higher in Google's organic results through technical optimization, content quality, backlinks, and keyword strategy. GEO optimizes your content so AI language models — ChatGPT, Gemini, Perplexity, Microsoft Copilot — recommend your business when users ask relevant questions. GEO requires structured, factual content with clear entity signals, FAQ schemas, and authoritative statements. AEO structures your content to provide direct, concise answers that appear in Google Featured Snippets, voice assistant responses, and AI summaries. AEO uses question-based headings, FAQ schemas, and concise factual paragraphs.",
       examples: [
         "A restaurant that optimized for GEO now appears when users ask ChatGPT 'best restaurants in Salem for dinner'.",
@@ -167,8 +194,8 @@ const articles: Article[] = [
         "Neglecting technical SEO fundamentals while focusing only on new trends.",
         "Creating thin content that doesn't provide real value — search engines and AI models both penalize this.",
       ],
-      conclusion: "The future of online visibility is not SEO versus GEO versus AEO — it's all three working together. SEO drives traditional organic traffic. GEO gets you recommended by AI. AEO captures voice search and featured snippets. Businesses that master all three will dominate their market.",
-      cta: "Want to optimize your visibility across Google, AI, and voice search? Let's build a comprehensive strategy.",
+      conclusion: "The future is all three working together. SEO drives organic traffic. GEO gets you recommended by AI. AEO captures voice and snippets. Master all three and you dominate.",
+      cta: "Want to optimize for Google, AI, and voice search? Let's build a strategy.",
     },
   },
   {
@@ -180,12 +207,20 @@ const articles: Article[] = [
     icon: BarChart3,
     description: "Learn how Power BI dashboards transform raw business data into actionable insights and executive reports.",
     lastUpdated: "July 2026",
+    publishedDate: "July 14, 2026",
+    author: "YesBe Team",
     keywords: ["Power BI", "business intelligence", "data analytics", "dashboards", "data visualization", "KPI tracking"],
-    toc: ["Introduction", "The Business Problem", "What Power BI Does", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "Conclusion"],
+    faq: [
+      { question: "How much does Power BI cost?", answer: "Power BI Desktop is free for individual use. Power BI Pro costs $10/user/month and enables sharing and collaboration. Power BI Premium starts at $20/user/month for advanced features like larger model sizes, AI capabilities, and dedicated capacity." },
+      { question: "Can Power BI connect to my existing data sources?", answer: "Yes. Power BI connects to 100+ data sources including Excel, SQL Server, MySQL, PostgreSQL, Google Analytics, Salesforce, SAP, and many cloud services. If you have data, Power BI can likely connect to it." },
+      { question: "Do I need coding skills to use Power BI?", answer: "No coding skills are required for basic dashboard creation. Power BI uses a drag-and-drop interface for visualizations. For advanced calculations, you can use DAX (Data Analysis Expressions), which has a learnable formula syntax." },
+      { question: "How is Power BI different from Excel?", answer: "Excel is great for ad-hoc analysis and small datasets. Power BI is designed for ongoing business intelligence — it connects live to data sources, creates interactive dashboards, enables drill-down exploration, and automatically refreshes data. Think of Power BI as Excel on steroids for reporting." },
+    ],
+    toc: ["Introduction", "The Business Problem", "What Power BI Does", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
     content: {
-      intro: "Power BI is Microsoft's business intelligence platform that transforms raw data from multiple sources into interactive dashboards, reports, and visual insights. It connects to Excel spreadsheets, SQL databases, cloud services, and APIs — consolidating everything into a single, real-time view of your business performance.",
-      problem: "Most businesses have data scattered across multiple systems — Excel sheets for sales, a CRM for customer data, accounting software for finances, and Google Analytics for website performance. Generating a comprehensive report requires exporting data from each system, manually combining it in Excel, and creating charts that are outdated the moment they're shared. Decision-makers wait days or weeks for reports that should be available in real-time.",
-      explanation: "Power BI connects to all your data sources and creates live dashboards that update automatically. A CEO can see real-time revenue, customer acquisition costs, and profit margins on a single screen. An operations manager can track inventory levels across all warehouses. A marketing team can monitor campaign performance by channel, region, and time period. The DAX formula language allows custom calculations specific to your business metrics. Power BI Service enables scheduled report delivery via email and mobile access.",
+      intro: "Power BI turns raw data from multiple sources into interactive dashboards and real-time reports — one view of your business performance.",
+      problem: "Data scattered across spreadsheets, CRMs, accounting tools, and analytics platforms. Generating a report means exporting from each, manually combining, and creating charts that are outdated before sharing.",
+      explanation: "Power BI connects to all your data sources and creates live dashboards that update automatically. A CEO sees real-time revenue on one screen. An operations manager tracks inventory across warehouses. A marketing team monitors campaign performance by channel and time period. The DAX formula language allows custom calculations, and Power BI Service enables scheduled email delivery and mobile access.",
       examples: [
         "A manufacturing company consolidated 8 data sources into a single Power BI dashboard, reducing monthly reporting from 3 days to 15 minutes.",
         "A retail chain uses Power BI to track real-time sales across 20 stores, enabling same-day restocking decisions that reduced stockouts by 35%.",
@@ -212,8 +247,8 @@ const articles: Article[] = [
         "Focusing on fancy visuals instead of actionable insights that drive decisions.",
         "Not training users on how to interact with and interpret the dashboards.",
       ],
-      conclusion: "Power BI is the fastest path from raw data to actionable business insights. Whether you're a CFO tracking financial performance, an operations manager monitoring supply chain efficiency, or a marketing director measuring campaign ROI, Power BI provides the real-time visibility you need to make smarter decisions faster.",
-      cta: "Ready to turn your data into actionable insights? Let's design Power BI dashboards for your business.",
+      conclusion: "Power BI is the fastest path from raw data to actionable insights. Whether you're tracking financial performance, supply chain efficiency, or campaign ROI, it gives you the real-time visibility to make better decisions.",
+      cta: "Ready to turn your data into insights? Let's build your Power BI dashboards.",
     },
   },
   {
@@ -225,12 +260,20 @@ const articles: Article[] = [
     icon: Cpu,
     description: "Explore how Retrieval-Augmented Generation improves chatbot accuracy using your organization's own knowledge base.",
     lastUpdated: "July 2026",
+    publishedDate: "July 16, 2026",
+    author: "Sachin Balraj",
     keywords: ["RAG", "retrieval augmented generation", "AI chatbot", "knowledge base", "LangChain", "vector database"],
-    toc: ["Introduction", "The Business Problem", "How RAG Works", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "Conclusion"],
+    faq: [
+      { question: "What types of documents can RAG work with?", answer: "RAG systems can ingest PDFs, Word documents, Excel files, HTML pages, markdown files, database records, and more. The key requirement is that the content is text-based. Images and videos need to be transcribed or described before RAG can use them." },
+      { question: "How accurate are RAG chatbots?", answer: "RAG chatbots are significantly more accurate than standard AI because they retrieve specific source documents before answering. With a well-maintained knowledge base and proper similarity thresholds, RAG systems can achieve 85–95% accuracy on domain-specific questions." },
+      { question: "Is RAG better than fine-tuning an AI model?", answer: "RAG is generally better for knowledge-heavy use cases where information changes frequently. Fine-tuning is better for changing the AI's behavior or tone. Many organizations use both — fine-tuning for style and RAG for knowledge. RAG is also more cost-effective because it doesn't require retraining models." },
+      { question: "How much does it cost to build a RAG system?", answer: "A basic RAG system using open-source tools can be built for $200–500/month in infrastructure costs. Enterprise-grade solutions with advanced features like multi-tenant access and compliance typically cost $1,000–5,000/month. The main variable is the volume of queries and documents." },
+    ],
+    toc: ["Introduction", "The Business Problem", "How RAG Works", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
     content: {
-      intro: "Retrieval-Augmented Generation (RAG) is an AI architecture that connects large language models to your organization's own documents, policies, and knowledge base. Instead of giving generic AI answers, RAG systems retrieve relevant information from your data first, then generate accurate, context-aware responses grounded in your actual business content.",
-      problem: "Standard AI chatbots give generic answers because they only know what they learned during training. When a customer asks about your specific product features, return policy, or technical specifications, a generic chatbot either guesses or says 'I don't know.' Internal teams waste hours searching through documents, Confluence pages, and shared drives to find answers that should be instantly accessible. New employees take months to become productive because institutional knowledge is scattered and hard to find.",
-      explanation: "A RAG system works in three steps. First, your documents — PDFs, Word files, web pages, databases — are processed into vector embeddings and stored in a vector database like Pinecone or ChromaDB. Second, when a user asks a question, the system searches the vector database for the most relevant document chunks using semantic similarity. Third, those relevant chunks are passed to a language model like GPT-4 as context, which generates an accurate answer based specifically on your data. The result is an AI assistant that knows your business as well as your most experienced employee.",
+      intro: "RAG connects AI models to your own documents and knowledge base, giving accurate, context-aware answers instead of generic responses.",
+      problem: "Standard AI chatbots give generic answers — they only know what they learned during training. When someone asks about your specific product or policy, they either guess or say 'I don't know.' Teams waste hours searching for answers that should be instantly available.",
+      explanation: "RAG works in three steps: documents are processed into vector embeddings and stored; when a question comes in, the system finds the most relevant chunks using semantic similarity; those chunks are passed to a language model as context to generate an accurate answer. The result: an AI assistant that knows your business.",
       examples: [
         "An enterprise deployed a RAG chatbot that answers HR policy questions, reducing internal support tickets by 70% and saving 200 hours per month.",
         "A legal firm built a RAG system over 10,000 case documents, enabling lawyers to find relevant precedents in seconds instead of hours.",
@@ -258,25 +301,33 @@ const articles: Article[] = [
         "Expecting RAG to work perfectly on day one — it needs iteration and fine-tuning.",
         "Ignoring document access controls — sensitive information should only be retrievable by authorized users.",
       ],
-      conclusion: "RAG is the bridge between generic AI and a truly intelligent business assistant. By grounding AI responses in your actual business data, RAG systems provide accurate, trustworthy, and actionable answers that improve customer experience, employee productivity, and organizational knowledge management.",
-      cta: "Want to build a RAG-powered AI assistant for your business? Let's design a solution that knows your organization inside out.",
+      conclusion: "RAG is the bridge between generic AI and a truly intelligent business assistant. Grounded in your actual data, it provides accurate, trustworthy answers that improve customer experience and productivity.",
+      cta: "Want a RAG-powered assistant for your business? Let's design one.",
     },
   },
   {
     id: "business-automation",
     title: "Business Automation",
     category: "Business Solutions",
-    filter: "Automation",
+    filter: "Business Automation",
     readTime: "5 min",
     icon: Workflow,
     description: "See how automation reduces manual work, increases productivity, and improves customer experience.",
     lastUpdated: "July 2026",
+    publishedDate: "July 11, 2026",
+    author: "YesBe Team",
     keywords: ["business automation", "workflow automation", "process automation", "productivity", "efficiency"],
-    toc: ["Introduction", "The Business Problem", "What Business Automation Includes", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "Conclusion"],
+    faq: [
+      { question: "What processes should I automate first?", answer: "Start with high-volume, repetitive tasks that consume significant time but require minimal judgment. Common first targets include data entry, email follow-ups, appointment scheduling, invoice processing, and report generation. These typically deliver the fastest ROI." },
+      { question: "Will automation eliminate jobs?", answer: "Automation typically transforms jobs rather than eliminating them. Employees who previously spent hours on manual data entry are freed up for higher-value work like analysis, strategy, and customer relationships. Most businesses find they need the same or more people — just doing different, more valuable work." },
+      { question: "How much does business automation cost?", answer: "Costs range from $0 for simple no-code automations using tools like Zapier or Make ($20–100/month) to $10,000+ for custom enterprise workflow systems. The key metric is ROI — most automation projects pay for themselves within 3–6 months through time savings and error reduction." },
+      { question: "Can automation work with my existing software?", answer: "Most modern automation tools integrate with popular software through APIs and pre-built connectors. Platforms like Zapier, Make (formerly Integromat), and n8n connect to thousands of apps. Custom integrations can bridge gaps for specialized software." },
+    ],
+    toc: ["Introduction", "The Business Problem", "What Business Automation Includes", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
     content: {
-      intro: "Business automation replaces repetitive manual tasks with intelligent systems that work 24/7 without errors or fatigue. From automated email responses and invoice processing to intelligent workflow routing and AI-powered decision-making, automation lets your team focus on high-value work while machines handle the routine.",
-      problem: "Every business has processes that consume time but require little judgment — data entry, email follow-ups, invoice processing, appointment scheduling, report generation, inventory reordering. These tasks are essential but draining. They eat into productive hours, introduce human error, and create bottlenecks when key people are unavailable. A business with 10 employees spending 2 hours daily on manual data entry is losing 5,000 hours of productive work annually.",
-      explanation: "Business automation encompasses several layers. Task automation handles individual repetitive actions — sending confirmation emails, updating spreadsheets, generating invoices. Workflow automation connects multiple tasks into a sequence — when a customer places an order, the system updates inventory, sends a confirmation, creates a shipping label, and notifies the warehouse. Intelligent automation uses AI to make decisions within workflows — routing customer queries to the right department, prioritizing urgent requests, or flagging anomalous transactions.",
+      intro: "Business automation replaces repetitive manual tasks with systems that work 24/7 without errors — freeing your team for high-value work.",
+      problem: "Every business has time-consuming tasks that need little judgment — data entry, email follow-ups, invoicing, scheduling, report generation. They eat into productive hours, introduce errors, and create bottlenecks when key people are away.",
+      explanation: "Business automation covers three layers: task automation handles individual actions like sending emails or updating spreadsheets. Workflow automation chains tasks together — order received → inventory updates → confirmation sent → warehouse notified. Intelligent automation uses AI to make decisions within workflows — routing queries to the right department or flagging anomalies.",
       examples: [
         "An accounting firm automated invoice processing, reducing processing time from 45 minutes per invoice to 3 minutes with 99.5% accuracy.",
         "A clinic automated appointment scheduling and reminders, reducing no-shows by 45% and freeing up 10 hours of receptionist time weekly.",
@@ -304,14 +355,237 @@ const articles: Article[] = [
         "Not testing edge cases — automation fails when it encounters unexpected scenarios.",
         "Ignoring change management — employees need training and context to trust automated systems.",
       ],
-      conclusion: "Business automation is not about replacing humans — it's about amplifying human potential. By eliminating routine, repetitive tasks, automation frees your team to focus on strategy, creativity, and relationship-building. The businesses that automate strategically will operate faster, cheaper, and more accurately than those that don't.",
-      cta: "Ready to automate your business processes? Let's identify the highest-impact opportunities and build intelligent workflows.",
+      conclusion: "Business automation amplifies human potential. By eliminating routine work, your team focuses on strategy, creativity, and relationships — operating faster and more accurately.",
+      cta: "Ready to automate your processes? Let's find the highest-impact opportunities.",
+    },
+  },
+  {
+    id: "web-dev-tech-stack",
+    title: "Website Development: Choosing the Right Tech Stack",
+    category: "Web Development",
+    filter: "Web Dev",
+    readTime: "6 min",
+    icon: Globe,
+    featured: false,
+    description: "A practical guide to choosing the best technology stack for your website — from React and Next.js to WordPress.",
+    lastUpdated: "July 2026",
+    publishedDate: "July 18, 2026",
+    author: "Sachin Balraj",
+    keywords: ["web development", "technology stack", "React", "Node.js", "frontend", "backend", "Next.js", "WordPress"],
+    faq: [
+      { question: "Should I use WordPress or a custom-built website?", answer: "WordPress is ideal for content-heavy sites like blogs, portfolios, and small business websites where you want easy content management. Custom-built solutions using React, Next.js, or similar frameworks are better for web applications, complex functionality, performance-critical sites, or when you need full control over the user experience." },
+      { question: "What is the best tech stack for a startup MVP?", answer: "For most startups, React or Next.js on the frontend with Node.js or Python on the backend offers the fastest development speed, largest talent pool, and best scalability. If you need a simple CMS, WordPress with a headless setup or Webflow can get you to market in weeks rather than months." },
+      { question: "How do I choose between React and Next.js?", answer: "React is a library for building UI components. Next.js is a full framework built on React that adds server-side rendering, static generation, API routes, and built-in optimizations. For new projects, Next.js is usually the better choice because it provides more features out of the box and better performance." },
+      { question: "What tech stack should I use for an e-commerce store?", answer: "For small stores, Shopify or WooCommerce provide ready-made solutions. For custom e-commerce, Next.js with a headless CMS (like Contentful or Sanity) paired with Stripe for payments and a database like PostgreSQL gives you full control over the shopping experience while leveraging proven infrastructure." },
+    ],
+    toc: ["Introduction", "The Problem", "Understanding Tech Stacks", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
+    content: {
+      intro: "Your tech stack determines development speed, performance, scalability, and maintenance costs. Choosing the right one doesn't have to be overwhelming.",
+      problem: "Many businesses choose tech based on trends rather than requirements. A restaurant spends $20K on React when WordPress would cost $3K and serve them better. A SaaS startup hits a wall on WordPress when they need real-time features. Wrong stacks create technical debt that compounds over time.",
+      explanation: "A tech stack combines the technologies that build and run a web application. Frontend (what users see): React, Vue, Angular. Backend (server logic): Node.js, Python, PHP. Database: MySQL, PostgreSQL, MongoDB. Additional layers: hosting (Vercel, AWS), CMS (Contentful, Strapi), payments (Stripe, Razorpay). Each layer trades off speed, cost, flexibility, and maintainability.",
+      examples: [
+        "A local bakery needed an online ordering system. WordPress with WooCommerce launched in 2 weeks for under $5,000, handling 200+ orders monthly with zero technical issues.",
+        "A SaaS startup built their MVP with Next.js and PostgreSQL, deploying to Vercel. They reached 10,000 users in 6 months and scaled seamlessly without architecture changes.",
+        "An e-commerce brand with 50,000 products migrated from a custom PHP backend to Next.js with a headless CMS, reducing page load time from 4.2s to 0.8s and increasing conversions by 23%.",
+        "A healthcare platform chose React + Node.js + MongoDB for their patient portal, enabling real-time appointment scheduling and secure document sharing across 15 clinics.",
+      ],
+      benefits: [
+        "Faster development and time-to-market with the right framework",
+        "Better performance and user experience for your customers",
+        "Lower maintenance and hosting costs with proven technologies",
+        "Easier to hire developers and find community support",
+        "Scalable architecture that grows with your business",
+        "Reduced technical debt and refactoring costs down the line",
+      ],
+      bestPractices: [
+        "Define your requirements before choosing a stack — features, scale, budget, and team expertise should drive the decision.",
+        "Choose technologies with large communities and active maintenance — you'll need support and updates over time.",
+        "Don't over-engineer for your current needs — build for the next 12–18 months, not forever.",
+        "Prioritize developer experience and ecosystem — frameworks with good tooling accelerate development.",
+        "Consider your team's existing skills — choosing a stack your team knows reduces risk and accelerates delivery.",
+      ],
+      commonMistakes: [
+        "Choosing a tech stack based on hype rather than project requirements — not every app needs microservices.",
+        "Over-engineering an MVP with complex architecture that should only come at scale.",
+        "Ignoring performance implications — some frameworks are great for development speed but poor for runtime performance.",
+        "Not planning for content management — even dynamic sites need a way for non-technical people to update content.",
+        "Selecting a stack with a small talent pool — you'll struggle to hire and maintain the application long-term.",
+      ],
+      conclusion: "There's no single best tech stack — only the best one for your project, team, and goals. Focus on what users need, what your team can build and maintain, and what fits your budget.",
+      cta: "Not sure which tech stack fits? Let's discuss and recommend the right one.",
+    },
+  },
+  {
+    id: "cloud-computing",
+    title: "Cloud Computing for Growing Businesses",
+    category: "Cloud Computing",
+    filter: "Cloud",
+    readTime: "5 min",
+    icon: Cpu,
+    description: "Understand how cloud computing — AWS, Azure, and GCP — helps businesses scale infrastructure on demand.",
+    lastUpdated: "July 2026",
+    publishedDate: "July 19, 2026",
+    author: "YesBe Team",
+    keywords: ["cloud computing", "AWS", "Azure", "cloud migration", "SaaS", "infrastructure", "GCP"],
+    faq: [
+      { question: "What is the difference between IaaS, PaaS, and SaaS?", answer: "IaaS (Infrastructure as a Service) gives you virtual servers and networking — you manage everything else (e.g., AWS EC2). PaaS (Platform as a Service) gives you a platform to deploy apps without managing infrastructure (e.g., Heroku, Vercel). SaaS (Software as a Service) is ready-to-use software like Google Workspace or Salesforce — no management required." },
+      { question: "Is cloud computing cheaper than owning servers?", answer: "For most small-to-medium businesses, yes. Cloud computing eliminates upfront hardware costs, reduces IT staff needs, and you only pay for what you use. However, at very large scale (millions in monthly spend), some companies find that dedicated servers or hybrid solutions become more cost-effective." },
+      { question: "How do I migrate my existing application to the cloud?", answer: "Cloud migration typically follows these steps: assess your current infrastructure, choose a cloud provider, plan the migration strategy (lift-and-shift, re-platform, or re-architect), migrate data and applications, test thoroughly, and optimize. Many cloud providers offer free migration tools and partner programs to help." },
+      { question: "Which cloud provider is best for a startup?", answer: "AWS offers the broadest service range and is ideal if you need specific services. Google Cloud Platform (GCP) excels in data analytics and machine learning. Microsoft Azure is best if you're already using Microsoft tools like Office 365. For startups, AWS and GCP both offer free tiers and startup credits worth $100,000+." },
+    ],
+    toc: ["Introduction", "The Problem", "Understanding Cloud Computing", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
+    content: {
+      intro: "Cloud computing lets businesses access servers, storage, and software over the internet — paying only for what they use and scaling instantly.",
+      problem: "On-premise infrastructure needs significant upfront investment, ongoing maintenance, and months of planning for capacity changes. During traffic spikes, servers crash. During quiet periods, expensive hardware sits idle.",
+      explanation: "Cloud computing has three service models: IaaS gives virtual servers and networking — you manage everything else (AWS EC2). PaaS gives a platform to deploy apps without managing infrastructure (Vercel, Heroku). SaaS delivers ready-to-use software (Google Workspace, Slack). Most businesses use a combination of all three.",
+      examples: [
+        "A growing SaaS startup deployed on AWS and scaled from 100 to 100,000 users over 18 months without any infrastructure downtime or manual server management.",
+        "A retail company migrated from on-premise servers to Azure, reducing infrastructure costs by 45% and gaining 99.99% uptime with auto-scaling capabilities.",
+        "A healthcare startup used GCP's BigQuery for data analytics, processing 50 million patient records in seconds that previously took hours on local servers.",
+        "An e-commerce business deployed on Vercel (PaaS) and went from zero to handling Black Friday traffic without any infrastructure planning.",
+      ],
+      benefits: [
+        "Pay only for what you use — no wasted capacity or idle hardware",
+        "Scale instantly from 10 to 10,000,000 users without infrastructure changes",
+        "99.99%+ uptime with managed redundancy and failover",
+        "Global deployment — serve customers worldwide from edge locations",
+        "Automatic updates and security patches from the cloud provider",
+        "Reduced need for in-house IT staff and infrastructure management",
+      ],
+      bestPractices: [
+        "Start with a cloud provider's free tier to test services before committing.",
+        "Use managed services (databases, queues, caching) to reduce operational overhead.",
+        "Implement proper access controls and IAM policies from day one — cloud security is shared responsibility.",
+        "Monitor costs with cloud provider tools — set up alerts to prevent bill surprises.",
+        "Design for failure — use multiple availability zones and implement retry logic.",
+      ],
+      commonMistakes: [
+        "Lift-and-shift without optimization — moving servers to the cloud without adapting to cloud-native patterns.",
+        "Ignoring cloud security best practices — misconfigured S3 buckets and open databases are the most common breaches.",
+        "Not monitoring costs — cloud bills can spiral quickly without proper tagging, budgets, and alerts.",
+        "Choosing the wrong instance types — over-provisioning wastes money, under-provisioning causes performance issues.",
+      ],
+      conclusion: "Cloud computing eliminates hardware costs, provides enterprise-grade reliability, and scales in real-time. It's not just a cost-saver — it's a competitive advantage that enables agility and global reach.",
+      cta: "Ready to move to the cloud or optimize what you have? Let's build a strategy.",
+    },
+  },
+  {
+    id: "langchain-intro",
+    title: "Introduction to LangChain for AI Applications",
+    category: "Artificial Intelligence",
+    filter: "LangChain",
+    readTime: "7 min",
+    icon: Brain,
+    description: "Learn how LangChain simplifies building AI applications with LLMs, chains, agents, and tool integrations.",
+    lastUpdated: "July 2026",
+    publishedDate: "July 20, 2026",
+    author: "Sachin Balraj",
+    keywords: ["LangChain", "AI framework", "LLM", "chains", "agents", "prompt engineering", "OpenAI", "GPT"],
+    faq: [
+      { question: "Do I need to use LangChain to build AI applications?", answer: "No. LangChain is a framework that simplifies complex AI workflows, but you can build simple AI applications with direct API calls to OpenAI or other providers. LangChain becomes valuable when you need to chain multiple steps together, use tools and agents, manage prompts systematically, or integrate with external data sources." },
+      { question: "What programming language does LangChain support?", answer: "LangChain is available in Python and JavaScript/TypeScript. The Python version is the most mature and widely used, but the JavaScript version (langchain.js) is excellent for web-based AI applications and Node.js backends." },
+      { question: "How is LangChain different from just using the OpenAI API?", answer: "The OpenAI API lets you send prompts and get responses. LangChain adds layers on top: prompt templates for consistency, chains for multi-step workflows, agents that decide which tools to use, memory for conversation history, document loaders for RAG systems, and integrations with vector databases and APIs. It's the difference between raw ingredients and a complete kitchen." },
+      { question: "Is LangChain production-ready?", answer: "LangChain is widely used in production by many companies. The library has matured significantly with stable APIs, good documentation, and active community support. However, like any rapidly evolving framework, staying updated with best practices and version changes is important." },
+    ],
+    toc: ["Introduction", "The Problem", "What LangChain Does", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
+    content: {
+      intro: "LangChain is an open-source framework that simplifies building AI applications with large language models — chaining prompts, connecting to data, using tools, and maintaining memory.",
+      problem: "Building AI apps with raw LLM APIs gets complex fast: managing prompt templates, handling conversation history, retrieving documents, calling external APIs, managing errors, and maintaining context across turns. Developers spend more time on plumbing than features.",
+      explanation: "LangChain provides modular components: prompt templates for consistency, chains for multi-step workflows, agents that decide which tools to use, memory for conversation history, and document loaders plus vector store integrations for RAG systems.",
+      examples: [
+        "A customer support system uses LangChain agents to route queries — checking the knowledge base first, then falling back to CRM lookup, and finally escalating to a human if confidence is low.",
+        "A content team built a LangChain pipeline that researches topics by querying multiple APIs, summarizes findings, and drafts blog posts — reducing content production time by 70%.",
+        "An internal tool uses LangChain chains to analyze sales calls — transcribing audio, extracting key points, updating the CRM, and generating follow-up emails in a single automated workflow.",
+        "A legal tech startup built a LangChain RAG system that reads contract PDFs, answers natural language questions about terms, and flags risky clauses — saving lawyers 5 hours per contract review.",
+      ],
+      benefits: [
+        "Modular architecture — reuse prompt templates, chains, and tools across multiple applications",
+        "Built-in RAG support — document loaders, vector stores, and retrieval chains out of the box",
+        "Agent framework — let AI decide which tools and data sources to use for each query",
+        "Memory management — maintain conversation context across sessions and interactions",
+        "Extensive integrations — connect to OpenAI, Anthropic, Google, Pinecone, ChromaDB, and hundreds more",
+        "Active open-source community — rapid development, frequent updates, and extensive documentation",
+      ],
+      bestPractices: [
+        "Start simple with basic chains before building complex agent systems — master the fundamentals first.",
+        "Use prompt templates consistently across your application for predictable, maintainable outputs.",
+        "Implement error handling and fallback logic — LLM calls can fail or return unexpected results.",
+        "Cache frequent LLM calls to reduce costs and improve response times.",
+        "Use LangSmith (or similar tools) for observability — track prompt performance, latency, and costs in production.",
+      ],
+      commonMistakes: [
+        "Over-engineering with agents when a simple chain would suffice — agents add complexity and latency.",
+        "Not testing prompts thoroughly — small changes in wording can dramatically affect output quality.",
+        "Ignoring token costs — LangChain makes it easy to chain multiple LLM calls, which multiplies costs.",
+        "Hardcoding model parameters instead of making them configurable for different environments and use cases.",
+      ],
+      conclusion: "LangChain removes the infrastructure complexity of building AI applications so you can focus on features. Whether you're building a RAG system, an intelligent agent, or conversational AI with memory, LangChain gets you to production faster.",
+      cta: "Ready to build AI applications with LangChain? Let's design a solution for your needs.",
+    },
+  },
+  {
+    id: "professional-website",
+    title: "Why Every Business Needs a Professional Website",
+    category: "Digital Marketing",
+    filter: "Digital Marketing",
+    readTime: "4 min",
+    icon: Globe,
+    description: "Discover how a professional website builds credibility, generates leads, and drives business growth.",
+    lastUpdated: "July 2026",
+    publishedDate: "July 17, 2026",
+    author: "YesBe Team",
+    keywords: ["professional website", "business website", "web presence", "online credibility", "lead generation", "web design"],
+    faq: [
+      { question: "How much does a professional business website cost?", answer: "A professional business website typically costs between $2,000 and $15,000 depending on complexity. A simple brochure site with 5–10 pages costs $2,000–5,000. An e-commerce site with custom features costs $5,000–15,000. Monthly maintenance and hosting add $50–200/month. The investment typically pays for itself through increased leads and credibility." },
+      { question: "Can't I just use social media instead of a website?", answer: "Social media is important for marketing, but you don't own your social media pages — algorithms change, accounts get restricted, and platforms shut down. A website is your digital home base that you fully control. It's also where most customers expect to find detailed information, pricing, and contact details before making a purchase decision." },
+      { question: "How long does it take to build a website?", answer: "A simple business website takes 2–4 weeks from design to launch. An e-commerce site with custom features takes 4–8 weeks. Complex web applications can take 8–16 weeks. The timeline depends on the number of pages, custom functionality, content readiness, and how quickly feedback is provided during the design process." },
+      { question: "Do I really need a website if I'm a small local business?", answer: "Yes. 97% of consumers search online for local businesses. If you don't have a website, you're invisible to the majority of potential customers who search before visiting. A professional website with Google Business integration ensures you appear in local search results and gives customers the information they need to choose you over competitors." },
+    ],
+    toc: ["Introduction", "The Problem", "What a Professional Website Delivers", "Real-World Examples", "Key Benefits", "Best Practices", "Common Mistakes to Avoid", "FAQ", "Conclusion"],
+    content: {
+      intro: "A professional website is your digital storefront — and with 97% of consumers searching online before buying, it's not optional.",
+      problem: "Many businesses rely on social media, Google listings, or word-of-mouth. But algorithms limit your reach, listings provide minimal info, and word-of-mouth doesn't scale. Without a website, you lose credibility and miss organic search traffic.",
+      explanation: "A professional website serves multiple functions: it establishes credibility, generates leads through forms and CTAs 24/7, improves SEO visibility, provides a centralized platform for all your content, and gives you full control over your brand narrative.",
+      examples: [
+        "A local plumbing company invested $3,500 in a professional website with lead capture forms. Within 3 months, they were generating 15 new leads per week from organic search, increasing revenue by 40%.",
+        "A freelance designer who added a portfolio website with case studies doubled their average project value because clients could see the quality of work before contacting them.",
+        "A restaurant that launched a website with online ordering saw 25% of total orders come through the website within the first month, reducing dependence on third-party delivery apps and their commission fees.",
+        "A B2B consulting firm's new website with service pages and case studies increased inbound inquiries by 200% within 6 months, becoming their primary lead generation channel.",
+      ],
+      benefits: [
+        "Establish instant credibility and trust with potential customers",
+        "Generate leads and inquiries automatically, 24/7",
+        "Rank higher in Google searches and attract organic traffic",
+        "Control your brand narrative and customer experience",
+        "Showcase your work, testimonials, and social proof",
+        "Reduce dependence on social media algorithms and third-party platforms",
+      ],
+      bestPractices: [
+        "Ensure your website is mobile-responsive — over 60% of web traffic comes from mobile devices.",
+        "Include clear calls-to-action on every page — phone number, contact form, or 'Get a Quote' button.",
+        "Optimize for local SEO — include your business name, address, and phone number consistently.",
+        "Keep loading speed under 3 seconds — each additional second loses 7% of conversions.",
+        "Update content regularly — fresh blog posts and case studies improve SEO and demonstrate expertise.",
+      ],
+      commonMistakes: [
+        "Building a website with no clear call-to-action — visitors need to know what to do next.",
+        "Ignoring mobile experience — a site that looks good on desktop but breaks on mobile loses most visitors.",
+        "Using stock photos instead of real images — authentic imagery builds more trust than generic placeholders.",
+        "Launching and never updating — an outdated website can be worse than no website at all.",
+        "Prioritizing aesthetics over usability — beautiful design means nothing if visitors can't find what they need.",
+      ],
+      conclusion: "A professional website is the minimum requirement for doing business in 2026. It's your 24/7 salesperson, credibility badge, and lead generation engine in one.",
+      cta: "Ready to build a website that converts? Let's design one that grows your business.",
     },
   },
 ];
 
-const allFilters = ["All", "AI", "ERP", "Analytics", "SEO", "Automation", "Power BI", "RAG"];
-const popularTags = ["AI", "React", "Node.js", "ERP", "Power BI", "MongoDB", "Cloud", "Automation", "SEO", "GEO", "AEO", "RAG", "LangChain", "OpenAI"];
+const allFilters = [
+  "All", "AI", "ERP", "Web Dev", "Analytics", "Power BI",
+  "Business Automation", "Cloud", "Digital Marketing", "SEO",
+  "GEO", "AEO", "RAG", "LangChain", "Case Studies",
+];
+const popularTags = ["AI", "React", "Node.js", "ERP", "Power BI", "MongoDB", "Cloud", "Automation", "SEO", "GEO", "AEO", "RAG", "LangChain", "OpenAI", "Web Development", "Data Analytics", "Business Intelligence", "Digital Marketing"];
 
 /* ─── Article Modal ─── */
 
@@ -344,9 +618,17 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
       >
         {/* Close + Share */}
         <div className="absolute top-5 right-5 z-10 flex gap-2">
-          <button onClick={handleShare} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-primary" aria-label="Share article">
-            <Share2 className="h-4 w-4" />
-          </button>
+          <div className="flex gap-2">
+            <a href={`https://wa.me/?text=${encodeURIComponent(article.title + ' - ' + window.location.href)}`} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-green-50 text-green-600 transition-colors hover:bg-green-100" aria-label="Share on WhatsApp">
+              <MessageCircle className="h-4 w-4" />
+            </a>
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-50 text-blue-500 transition-colors hover:bg-blue-100" aria-label="Share on Twitter">
+              <ExternalLink className="h-4 w-4" />
+            </a>
+            <button onClick={handleShare} className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-[#f1f5f9] hover:text-primary" aria-label="Copy link">
+              <Share2 className="h-4 w-4" />
+            </button>
+          </div>
           <button onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-foreground" aria-label="Close article">
             <X className="h-4 w-4" />
           </button>
@@ -369,8 +651,9 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
         <div className="p-6 sm:p-8 space-y-8">
           {/* Meta */}
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-            <span>By <strong className="text-foreground">YesBe Team</strong></span>
+            <span>By <strong className="text-foreground">{article.author}</strong></span>
             <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{article.readTime} read</span>
+            <span>{article.publishedDate}</span>
             <span>Updated {article.lastUpdated}</span>
           </div>
 
@@ -426,6 +709,21 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
             </ul>
           </div>
 
+          {/* FAQ */}
+          {article.faq && article.faq.length > 0 && (
+            <div>
+              <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Frequently Asked Questions</h4>
+              <div className="space-y-3">
+                {article.faq.map((item, i) => (
+                  <div key={i} className="rounded-xl border border-white/40 bg-muted p-4">
+                    <p className="text-[14px] font-semibold text-foreground mb-1">{item.question}</p>
+                    <p className="text-[13px] leading-relaxed text-muted-foreground">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <ContentBlock heading="Conclusion">{article.content.conclusion}</ContentBlock>
 
           {/* CTA */}
@@ -453,6 +751,25 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
             </div>
           </div>
         </div>
+
+        {/* SEO Schema */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: article.title,
+          description: article.description,
+          author: { "@type": "Person", name: article.author },
+          publisher: { "@type": "Organization", name: "YesBe", url: "https://yesbe.com" },
+          datePublished: article.publishedDate,
+          dateModified: article.lastUpdated,
+          mainEntityOfPage: { "@type": "WebPage", "@id": `https://yesbe.com/articles/${article.id}` },
+          keywords: article.keywords.join(", "),
+          faq: article.faq?.map(item => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer }
+          }))
+        }) }} />
       </motion.div>
     </motion.div>
   );
@@ -494,6 +811,10 @@ function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void
         </div>
         <h3 className="mb-2 text-lg font-bold text-foreground group-hover:text-primary transition-colors">{article.title}</h3>
         <p className="text-[13px] leading-relaxed text-muted-foreground flex-1">{article.description}</p>
+        <div className="mt-3 flex items-center justify-between text-[11px] text-muted-foreground">
+          <span>By {article.author}</span>
+          <span>{article.publishedDate}</span>
+        </div>
       </div>
       <div className="px-6 pb-6">
         <button onClick={onOpen} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-muted px-4 py-2.5 text-[13px] font-semibold text-primary transition-all duration-200 group-hover:border-[#2563eb]/30 group-hover:bg-[#2563eb] group-hover:text-white">
@@ -514,7 +835,11 @@ export function KnowledgeCenterSection() {
 
   const filtered = useMemo(() => {
     return articles.filter((a) => {
-      const matchesSearch = !search || a.title.toLowerCase().includes(search.toLowerCase()) || a.description.toLowerCase().includes(search.toLowerCase()) || a.category.toLowerCase().includes(search.toLowerCase());
+      const matchesSearch = !search ||
+        a.title.toLowerCase().includes(search.toLowerCase()) ||
+        a.description.toLowerCase().includes(search.toLowerCase()) ||
+        a.category.toLowerCase().includes(search.toLowerCase()) ||
+        a.keywords.some(k => k.toLowerCase().includes(search.toLowerCase()));
       const matchesFilter = activeFilter === "All" || a.filter === activeFilter || a.category.toLowerCase().includes(activeFilter.toLowerCase());
       return matchesSearch && matchesFilter;
     });
@@ -553,7 +878,7 @@ export function KnowledgeCenterSection() {
             </motion.h2>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <motion.p variants={fadeInUp} className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
-              Explore practical insights, AI innovations, business strategies, and technology guides to help businesses grow.
+              Practical guides on AI, ERP, analytics, and business strategy.
             </motion.p>
           </motion.div>
 

@@ -21,7 +21,7 @@
       ]
     },
     {
-      "source": "/(favicon-16x16|favicon-32x32|favicon.ico|apple-touch-icon|android-chrome-192x192|android-chrome-512x512|YBlogo)\\.(png|ico)",
+      "source": "/(yesbelogo|YBlogo)\\.png",
       "headers": [
         {
           "key": "Cache-Control",

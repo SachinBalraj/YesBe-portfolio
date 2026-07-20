@@ -11,12 +11,12 @@ interface Benefit {
 }
 
 const benefits: Benefit[] = [
-  { icon: TrendingUp, title: "Increase Sales", description: "Professional websites and e-commerce platforms that convert visitors into paying customers." },
-  { icon: Clock, title: "Reduce Manual Work", description: "Automate repetitive tasks like data entry, report generation, and inventory updates." },
-  { icon: Cpu, title: "Automate Processes", description: "Streamline workflows with AI-powered automation that runs 24/7 without human intervention." },
-  { icon: BarChart3, title: "Improve Reporting", description: "Real-time dashboards and Power BI reports that give you instant visibility into business performance." },
-  { icon: IndianRupee, title: "Save Operational Cost", description: "Reduce staffing costs and operational overhead through smart automation and digital tools." },
-  { icon: Users, title: "Increase Engagement", description: "AI chatbots, CRM systems, and customer portals that keep your customers connected and engaged." },
+  { icon: TrendingUp, title: "Increase Sales", description: "Websites and stores that turn visitors into paying customers." },
+  { icon: Clock, title: "Cut Manual Work", description: "Automate data entry, reports, and inventory updates." },
+  { icon: Cpu, title: "Automate Processes", description: "Workflows that run 24/7 without human intervention." },
+  { icon: BarChart3, title: "Better Reporting", description: "Real-time dashboards that show what's happening now." },
+  { icon: IndianRupee, title: "Lower Costs", description: "Reduce staffing and overhead through smart automation." },
+  { icon: Users, title: "Boost Engagement", description: "Chatbots, CRMs, and portals that keep customers connected." },
 ];
 
 interface Result {
@@ -75,7 +75,7 @@ export function BusinessResultsSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
             >
-              Technology should solve business problems. Here's what each solution delivers.
+              Technology should solve real problems. Here's what each solution delivers.
             </motion.p>
           </div>
 

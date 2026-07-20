@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   name: "YesBe",
   title: "AI, ERP, Web Development & Business Solutions",
   description:
-    "YesBe helps startups, SMEs, and enterprises with AI solutions, ERP systems, website development, data analytics, automation, cloud services, SEO, GEO, and AEO.",
+    "YesBe helps startups, SMEs, and enterprises with AI tools, ERP systems, web development, data analytics, cloud services, and search optimization.",
   email: "sachinbalraj01@gmail.com",
   phone: "9087795970",
   location: "Salem, Tamil Nadu, India",

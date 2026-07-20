@@ -85,7 +85,7 @@ export function NotFound() {
           transition={{ duration: 0.5, delay: 0.35 }}
           className="mt-3 max-w-sm text-[15px] leading-relaxed text-muted-foreground"
         >
-          Oops! The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </motion.p>
 
         {/* Search bar */}

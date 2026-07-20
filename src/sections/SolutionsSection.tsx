@@ -117,8 +117,8 @@ interface Solution {
 
 const solutions: Solution[] = [
   {
-    title: "AI & Intelligent Solutions",
-    description: "Custom AI-powered tools that automate decisions and unlock insights from your data.",
+    title: "AI Solutions",
+    description: "Custom AI tools that automate decisions and surface insights from your data.",
     icon: Brain,
     accent: "violet",
     features: ["AI Chatbots", "RAG Systems", "LLM Integration", "AI Automation"],
@@ -126,7 +126,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Website Development",
-    description: "Modern, responsive websites engineered for peak performance and conversion.",
+    description: "Fast, responsive websites built to convert visitors into customers.",
     icon: Globe,
     accent: "blue",
     features: ["Business Websites", "Corporate Portals", "E-commerce", "Landing Pages"],
@@ -134,7 +134,7 @@ const solutions: Solution[] = [
   },
   {
     title: "ERP Solutions",
-    description: "End-to-end enterprise resource planning tailored to your unique operations.",
+    description: "Enterprise resource planning tailored to how your business actually works.",
     icon: Boxes,
     accent: "amber",
     features: ["School ERP", "Hospital ERP", "Inventory Mgmt", "Billing System"],
@@ -142,7 +142,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Data Analytics & BI",
-    description: "Transform raw data into actionable business intelligence and KPIs.",
+    description: "Turn raw data into dashboards and KPIs your team can act on.",
     icon: BarChart3,
     accent: "yellow",
     features: ["Power BI", "Dashboards", "KPI Reports", "Data Visualization"],
@@ -150,15 +150,15 @@ const solutions: Solution[] = [
   },
   {
     title: "Database Management",
-    description: "Robust database architecture, optimization, and maintenance at scale.",
+    description: "Database design, optimization, and maintenance that scales with you.",
     icon: Database,
     accent: "emerald",
     features: ["MongoDB", "MySQL", "PostgreSQL", "Query Optimization"],
     layout: "compact",
   },
   {
-    title: "Digital Growth & SEO",
-    description: "Data-driven strategies to grow your organic presence and search rankings.",
+    title: "SEO & Search",
+    description: "Grow organic traffic through technical SEO, GEO, and AEO strategies.",
     icon: TrendingUp,
     accent: "cyan",
     features: ["Technical SEO", "GEO", "AEO", "Google Business Profile"],
@@ -166,7 +166,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Digital Marketing",
-    description: "Full-funnel marketing campaigns that generate qualified leads and revenue.",
+    description: "Marketing campaigns that generate qualified leads and real revenue.",
     icon: Megaphone,
     accent: "rose",
     features: ["Social Media", "Lead Generation", "Email Campaigns", "Performance Ads"],
@@ -174,7 +174,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Cloud & DevOps",
-    description: "Scalable cloud infrastructure and streamlined deployment pipelines.",
+    description: "Cloud infrastructure and deployment pipelines that just work.",
     icon: Cloud,
     accent: "sky",
     features: ["AWS", "Azure", "Docker", "CI/CD Pipelines"],
@@ -182,7 +182,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Business Automation",
-    description: "Eliminate manual workflows with intelligent automation and integrations.",
+    description: "Cut manual work with automated workflows and integrations.",
     icon: Workflow,
     accent: "orange",
     features: ["Workflow Automation", "API Integration", "CRM Setup", "Notifications"],
@@ -190,7 +190,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Custom Software",
-    description: "Tailored applications built to solve your specific business challenges.",
+    description: "Applications built around your specific business processes.",
     icon: Smartphone,
     accent: "indigo",
     features: ["Admin Panels", "Internal Tools", "SaaS Apps", "Business Portals"],
@@ -198,7 +198,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Cybersecurity",
-    description: "Protect your digital assets with enterprise-grade security solutions.",
+    description: "Protect your data and systems with proper security practices.",
     icon: Shield,
     accent: "red",
     features: ["SSL & Encryption", "Security Audit", "Backup Systems", "Auth Controls"],
@@ -206,7 +206,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Business Consulting",
-    description: "Strategic technology advisory to align IT investments with business goals.",
+    description: "Technology advisory that ties IT decisions to business outcomes.",
     icon: Briefcase,
     accent: "teal",
     features: ["Solution Architecture", "Tech Planning", "Digital Transform", "IT Advisory"],

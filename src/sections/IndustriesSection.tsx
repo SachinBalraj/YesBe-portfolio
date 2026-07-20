@@ -12,19 +12,19 @@ interface Industry {
 }
 
 const industries: Industry[] = [
-  { icon: GraduationCap, name: "Education", description: "School and college ERP systems, student management, result automation, and digital learning platforms." },
-  { icon: HeartPulse, name: "Healthcare", description: "Hospital management, patient records, appointment scheduling, and pharmacy inventory systems." },
-  { icon: ShoppingBag, name: "Retail", description: "E-commerce platforms, inventory management, POS systems, and customer loyalty programs." },
-  { icon: UtensilsCrossed, name: "Restaurants", description: "QR code ordering, AI-powered billing, kitchen display systems, and inventory forecasting." },
-  { icon: Factory, name: "Manufacturing", description: "Production tracking, supply chain management, quality control dashboards, and ERP integration." },
-  { icon: Landmark, name: "Finance", description: "Financial dashboards, automated reporting, compliance tools, and business analytics." },
-  { icon: Building, name: "Construction", description: "Project management tools, material tracking, workforce management, and cost estimation software." },
-  { icon: Truck, name: "Logistics", description: "Fleet management, delivery tracking, warehouse management, and route optimization." },
-  { icon: Home, name: "Real Estate", description: "Property listing platforms, CRM systems, lead management, and virtual tour integrations." },
-  { icon: Rocket, name: "Startups", description: "MVP development, rapid prototyping, scalable architecture, and go-to-market technology strategy." },
-  { icon: Building2, name: "SMEs", description: "Affordable business websites, automation tools, data dashboards, and digital transformation consulting." },
-  { icon: Globe, name: "Enterprises", description: "Large-scale ERP, custom software, cloud infrastructure, AI integration, and enterprise architecture." },
-  { icon: Landmark, name: "Government", description: "Government portals, citizen services, e-governance solutions, compliance systems, and public sector digital transformation." },
+  { icon: GraduationCap, name: "Education", description: "School and college ERP, student management, result automation, and e-learning." },
+  { icon: HeartPulse, name: "Healthcare", description: "Hospital management, patient records, scheduling, and pharmacy tracking." },
+  { icon: ShoppingBag, name: "Retail", description: "E-commerce, inventory management, POS systems, and loyalty programs." },
+  { icon: UtensilsCrossed, name: "Restaurants", description: "QR ordering, AI billing, kitchen displays, and inventory forecasting." },
+  { icon: Factory, name: "Manufacturing", description: "Production tracking, supply chain management, and quality dashboards." },
+  { icon: Landmark, name: "Finance", description: "Financial dashboards, automated reporting, and compliance tools." },
+  { icon: Building, name: "Construction", description: "Project management, material tracking, and cost estimation tools." },
+  { icon: Truck, name: "Logistics", description: "Fleet management, delivery tracking, and route optimization." },
+  { icon: Home, name: "Real Estate", description: "Property platforms, CRM, lead management, and virtual tours." },
+  { icon: Rocket, name: "Startups", description: "MVP development, rapid prototyping, and go-to-market strategy." },
+  { icon: Building2, name: "SMEs", description: "Affordable websites, automation, dashboards, and tech consulting." },
+  { icon: Globe, name: "Enterprises", description: "Large-scale ERP, custom software, cloud, and AI integration." },
+  { icon: Landmark, name: "Government", description: "Portals, citizen services, e-governance, and compliance systems." },
 ];
 
 export function IndustriesSection() {

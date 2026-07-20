@@ -58,7 +58,7 @@ export function TechStackSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            Modern tools and frameworks chosen for performance, scalability, and long-term maintainability.
+            Modern tools chosen for performance, scalability, and maintainability.
           </motion.p>
         </div>
 

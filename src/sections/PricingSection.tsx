@@ -12,7 +12,7 @@ const pricingRows = [
   { service: "Corporate Website", price: "₹15,999" },
   { service: "E-Commerce Website", price: "₹19,999" },
   { service: "Custom Web Application", price: "₹29,999" },
-  { service: "ERP System", price: "₹39,999" },
+  { service: "ERP System", price: "₹19,999" },
   { service: "Power BI Dashboard", price: "₹7,999" },
   { service: "Business Analytics Dashboard", price: "₹9,999" },
   { service: "AI Chatbot Integration", price: "₹9,999" },
@@ -135,7 +135,7 @@ export function PricingSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground"
           >
-            Flexible Pricing for Businesses of Every Size
+            Fair pricing for businesses of every size.
           </motion.p>
 
           <motion.p
@@ -145,7 +145,7 @@ export function PricingSection() {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="mx-auto mt-3 max-w-3xl text-[15px] leading-relaxed text-muted-foreground/70"
           >
-            Every project is unique. Below are our starting prices. Final pricing depends on project scope, required features, integrations, timeline, and business requirements.
+            These are starting prices. Final pricing depends on scope, features, integrations, and timeline.
           </motion.p>
         </div>
 
@@ -292,7 +292,7 @@ export function PricingSection() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mx-auto mb-10 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            Every business is unique. Let's discuss your requirements and provide a personalized solution tailored to your goals and budget.
+            Every project is different. Let&apos;s discuss your needs and build a quote that fits.
           </motion.p>
 
           <motion.div

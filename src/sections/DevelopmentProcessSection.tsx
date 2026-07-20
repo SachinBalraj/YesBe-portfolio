@@ -15,43 +15,43 @@ const steps: Step[] = [
   {
     icon: Search,
     title: "Discovery",
-    description: "Understanding your business goals, target audience, existing systems, and technical requirements through detailed discussions.",
+    description: "Understanding your goals, users, and technical requirements.",
     duration: "1–2 days",
   },
   {
     icon: FileText,
     title: "Planning",
-    description: "Creating a detailed project roadmap with milestones, technology selection, architecture design, and transparent pricing.",
+    description: "Roadmap, milestones, tech selection, and architecture design.",
     duration: "1–3 days",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Designing wireframes and visual mockups focused on user experience, brand consistency, and conversion optimization.",
+    description: "Wireframes and mockups focused on experience and conversion.",
     duration: "3–7 days",
   },
   {
     icon: Code,
     title: "Development",
-    description: "Building the solution with clean, scalable code. Regular demos and progress updates at every milestone.",
+    description: "Clean, scalable code with demos at every milestone.",
     duration: "1–8 weeks",
   },
   {
     icon: TestTube,
     title: "Testing",
-    description: "Thorough quality assurance including functional testing, performance optimization, accessibility checks, and cross-browser testing.",
+    description: "Functional testing, performance optimization, and cross-browser checks.",
     duration: "2–5 days",
   },
   {
     icon: Rocket,
     title: "Deployment",
-    description: "Production deployment with domain setup, SSL configuration, performance monitoring, and search engine indexing.",
+    description: "Domain, SSL, monitoring, and search engine indexing.",
     duration: "1–2 days",
   },
   {
     icon: LifeBuoy,
     title: "Support",
-    description: "Ongoing maintenance, bug fixes, performance monitoring, feature updates, and technical support after launch.",
+    description: "Maintenance, bug fixes, and feature updates after launch.",
     duration: "Ongoing",
   },
 ];
@@ -98,7 +98,7 @@ export function DevelopmentProcessSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            A structured, transparent process — from first conversation to post-launch support.
+            A clear, structured process — from first call to post-launch support.
           </motion.p>
         </div>
 

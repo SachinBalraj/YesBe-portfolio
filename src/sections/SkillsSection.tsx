@@ -95,7 +95,7 @@ const skills: SkillCard[] = [
   {
     title: "Full Stack Development",
     icon: Globe,
-    description: "Building end-to-end web applications using modern frontend and backend technologies.",
+    description: "End-to-end web apps with modern frontend and backend tech.",
     percent: 95,
     chips: ["React", "Next.js", "Node.js", "Express.js", "TypeScript"],
     span: "sm:col-span-2 lg:col-span-1",
@@ -103,35 +103,35 @@ const skills: SkillCard[] = [
   {
     title: "AI Engineering",
     icon: Bot,
-    description: "Building AI-powered software, chatbots, RAG systems and intelligent automation.",
+    description: "AI-powered tools, chatbots, RAG systems, and intelligent automation.",
     percent: 90,
     chips: ["Python", "OpenAI", "LangChain", "RAG", "AI Agents"],
   },
   {
     title: "Database Management",
     icon: Database,
-    description: "Designing secure and scalable databases for high-performance applications.",
+    description: "Scalable database design for high-performance applications.",
     percent: 92,
     chips: ["MongoDB", "MySQL", "PostgreSQL", "Redis"],
   },
   {
     title: "Cloud & DevOps",
     icon: Cloud,
-    description: "Deploying and managing scalable cloud infrastructure with CI/CD pipelines.",
+    description: "Cloud deployment and CI/CD pipelines that scale.",
     percent: 88,
     chips: ["AWS", "Docker", "GitHub", "CI/CD", "Vercel"],
   },
   {
     title: "Data Analytics & Power BI",
     icon: BarChart3,
-    description: "Transforming business data into powerful dashboards and actionable insights.",
+    description: "Dashboards and reports that turn data into decisions.",
     percent: 87,
     chips: ["Power BI", "Excel", "SQL", "Data Modeling", "ETL"],
   },
   {
-    title: "SEO \u00B7 GEO \u00B7 AEO & Digital Growth",
+    title: "SEO \u00B7 GEO \u00B7 AEO & Growth",
     icon: TrendingUp,
-    description: "Helping businesses improve online visibility using search optimization strategies.",
+    description: "Search optimization strategies that drive organic visibility.",
     percent: 85,
     chips: ["SEO", "GEO", "AEO", "Analytics", "Marketing"],
   },
@@ -315,7 +315,7 @@ export function SkillsSection() {
           </h2>
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
           <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
-            We build scalable digital solutions using modern technologies, AI, cloud platforms, and business automation.
+            Modern technologies, AI, cloud platforms, and automation — all under one roof.
           </p>
         </motion.div>
 

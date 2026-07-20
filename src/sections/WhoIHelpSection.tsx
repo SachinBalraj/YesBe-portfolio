@@ -12,14 +12,14 @@ interface Client {
 }
 
 const clients: Client[] = [
-  { icon: Store, title: "Small Businesses", description: "Affordable websites, Google Business profiles, and automation tools to compete with larger brands." },
-  { icon: Rocket, title: "Startups", description: "MVP development, scalable architecture, and rapid prototyping to validate ideas and launch fast." },
-  { icon: UtensilsCrossed, title: "Restaurants", description: "QR ordering systems, AI billing, kitchen displays, and inventory forecasting to reduce waste." },
-  { icon: GraduationCap, title: "Schools & Colleges", description: "Complete ERP systems for student management, attendance, exams, fees, and parent communication." },
-  { icon: HeartPulse, title: "Hospitals", description: "Patient management, appointment scheduling, pharmacy tracking, and medical record systems." },
-  { icon: Store, title: "Retail Stores", description: "E-commerce platforms, POS systems, inventory management, and customer loyalty programs." },
-  { icon: Building2, title: "Corporate Companies", description: "Enterprise dashboards, business automation, ERP integration, and custom internal tools." },
-  { icon: Factory, title: "Manufacturing", description: "Production tracking, supply chain management, quality control dashboards, and ERP systems." },
+  { icon: Store, title: "Small Businesses", description: "Websites, Google profiles, and automation to compete with bigger brands." },
+  { icon: Rocket, title: "Startups", description: "MVPs, scalable architecture, and fast prototyping to validate ideas." },
+  { icon: UtensilsCrossed, title: "Restaurants", description: "QR ordering, AI billing, kitchen displays, and inventory forecasting." },
+  { icon: GraduationCap, title: "Schools & Colleges", description: "ERP for student management, attendance, exams, and fees." },
+  { icon: HeartPulse, title: "Hospitals", description: "Patient management, scheduling, pharmacy tracking, and records." },
+  { icon: Store, title: "Retail Stores", description: "E-commerce, POS, inventory management, and loyalty programs." },
+  { icon: Building2, title: "Corporate Companies", description: "Dashboards, automation, ERP, and custom internal tools." },
+  { icon: Factory, title: "Manufacturing", description: "Production tracking, supply chain, quality dashboards, and ERP." },
 ];
 
 export function WhoIHelpSection() {

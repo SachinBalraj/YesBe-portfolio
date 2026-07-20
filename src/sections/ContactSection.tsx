@@ -6,7 +6,6 @@ import {
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/animations";
-import { sendEnquiryEmail } from "@/services/email";
 
 interface FormData {
   name: string;
@@ -42,19 +41,87 @@ const contactCards = [
 export function ContactSection() {
   const [formData, setFormData] = useState<FormData>(initialData);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = async (e: FormEvent) => {
+  const formatLabel = (value: string, options?: Record<string, string>) => {
+    if (!value) return "Not specified";
+    return options?.[value] ?? value;
+  };
+
+  const serviceLabels: Record<string, string> = {
+    ai: "AI Solutions", web: "Website Development", erp: "ERP Solutions",
+    powerbi: "Power BI Dashboard", analytics: "Data Analytics",
+    cloud: "Cloud & DevOps", seo: "SEO / Digital Marketing",
+    software: "Custom Software", consulting: "Business Consulting", other: "Other",
+  };
+
+  const budgetLabels: Record<string, string> = {
+    "under-25k": "Under ₹25,000", "25k-50k": "₹25,000 – ₹50,000",
+    "50k-1l": "₹50,000 – ₹1 Lakh", "1l-5l": "₹1 Lakh – ₹5 Lakhs",
+    "5l+": "₹5 Lakhs+", flexible: "Flexible / To be discussed",
+  };
+
+  const timelineLabels: Record<string, string> = {
+    urgent: "Urgent (1–2 weeks)", "1month": "Within 1 month",
+    "3months": "Within 3 months", "6months": "Within 6 months", flexible: "Flexible",
+  };
+
+  const buildMessage = (data: FormData): string => {
+    const lines = [
+      "🚀 *New Consultation Request — YESBE*",
+      "",
+      `👤 *Full Name:* ${data.name}`,
+      `🏢 *Company:* ${formatLabel(data.company)}`,
+      `💼 *Designation:* ${formatLabel(data.designation)}`,
+      `📧 *Email:* ${data.email}`,
+      `📞 *Phone:* ${formatLabel(data.phone)}`,
+      `🛠 *Service Required:* ${formatLabel(data.service, serviceLabels)}`,
+      `💰 *Budget:* ${formatLabel(data.budget, budgetLabels)}`,
+      `📅 *Timeline:* ${formatLabel(data.timeline, timelineLabels)}`,
+      "",
+      `📝 *Project Description:* ${data.projectDescription || "Not specified"}`,
+      "",
+      `⚠️ *Business Challenges:* ${data.businessChallenges || "Not specified"}`,
+      "",
+      `🎯 *Goals & Expected Outcomes:* ${data.goals || "Not specified"}`,
+      "",
+      "---",
+      "Submitted via *YESBE Official Website*",
+    ];
+    return lines.join("\n");
+  };
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.service || !formData.projectDescription.trim()) {
+      setErrorMsg("Please fill in all required fields.");
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+      return;
+    }
+
     setStatus("sending");
-    try {
-      await sendEnquiryEmail(formData);
+
+    setTimeout(() => {
+      const message = buildMessage(formData);
+      const encoded = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/919087795970?text=${encoded}`;
+
+      try {
+        const opened = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+        if (!opened) throw new Error("Popup blocked");
+      } catch {
+        setErrorMsg("Unable to open WhatsApp. Please contact us directly at +91 90877 95970.");
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+        return;
+      }
+
       setStatus("sent");
       setFormData(initialData);
       setTimeout(() => setStatus("idle"), 4000);
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
+    }, 800);
   };
 
   const update = (field: keyof FormData, value: string) =>
@@ -77,9 +144,9 @@ export function ContactSection() {
             Let&apos;s Build Your Next{" "}
             <span className="text-primary">Digital Solution</span>
           </motion.h2>
-          <motion.p variants={fadeInUp} className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            Tell us about your project and we&apos;ll get back to you within 24 hours with a detailed proposal.
-          </motion.p>
+            <motion.p variants={fadeInUp} className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              Tell us about your project. We&apos;ll get back within 24 hours with a proposal.
+            </motion.p>
         </motion.div>
 
         <div className="grid gap-10 lg:grid-cols-5">
@@ -209,9 +276,9 @@ export function ContactSection() {
                 disabled={status === "sending" || status === "sent"}
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {status === "sending" && <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>}
-                {status === "sent" && <><CheckCircle className="h-4 w-4" /> Request Sent!</>}
-                {status === "error" && "Something went wrong. Try again."}
+                {status === "sending" && <><Loader2 className="h-4 w-4 animate-spin" /> Preparing Message...</>}
+                {status === "sent" && <><CheckCircle className="h-4 w-4" /> Redirecting to WhatsApp...</>}
+                {status === "error" && errorMsg}
                 {status === "idle" && <><Send className="h-4 w-4" /> Request Consultation</>}
               </button>
             </form>
