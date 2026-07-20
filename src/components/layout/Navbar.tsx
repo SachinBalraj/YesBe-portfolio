@@ -8,8 +8,7 @@ import {
   Rocket, Users, TrendingUp, Heart, GraduationCap,
   ShoppingBag, Factory, Truck, Utensils, Home,
   Briefcase, Megaphone, Search, Link2,
-  MessageCircle, Phone,
-  HelpCircle, Star,
+  MessageCircle,
 } from "lucide-react";
 import { cn } from "@/utils/cn";
 import logoImg from "@/assets/images/YBlogo.png";
@@ -104,16 +103,6 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Pricing",
     href: "/pricing",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-    dropdown: [
-      { label: "Contact Us", href: "/contact", icon: Phone, description: "Get in touch" },
-      { label: "FAQs", href: "/pricing", icon: HelpCircle, description: "Common questions" },
-      { label: "Testimonials", href: "/case-studies", icon: Star, description: "Client feedback" },
-      { label: "Careers", href: "/contact", icon: Briefcase, description: "Coming Soon" },
-    ],
   },
 ];
 
@@ -390,11 +379,10 @@ export function Navbar() {
           <div className="flex shrink-0 items-center gap-3">
             <button
               onClick={() => handleNavigate("/contact")}
-              className="hidden xl:inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-7 py-[14px] text-[14px] font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
-              style={{ letterSpacing: "0.2px" }}
+              className="hidden xl:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-7 py-[14px] text-[15px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
             >
               Book Free Consultation
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-[18px] w-[18px] shrink-0" />
             </button>
             <button
               className="xl:hidden rounded-lg p-2 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"
@@ -469,10 +457,10 @@ export function Navbar() {
               <div className="border-t border-[#e2e8f0] px-5 py-6">
                 <button
                   onClick={() => handleNavigate("/contact")}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[15px] font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25)]"
+                  className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[15px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_2px_8px_rgba(37,99,235,0.25)]"
                 >
                   Book Free Consultation
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-[18px] w-[18px] shrink-0" />
                 </button>
               </div>
             </motion.div>

@@ -138,10 +138,10 @@ export function PremiumHero() {
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3.5 text-sm font-semibold text-white"
+                className="relative z-10 inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3.5 text-sm font-semibold text-white"
               >
                 Contact YesBe
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 shrink-0" />
               </a>
               <a
                 href={SITE_CONFIG.social.whatsapp}

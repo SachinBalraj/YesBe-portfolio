@@ -118,9 +118,9 @@ export function NotFound() {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3 text-sm font-semibold text-white"
+            className="relative z-10 inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3 text-sm font-semibold text-white"
           >
-            <Home className="h-4 w-4" />
+            <Home className="h-4 w-4 shrink-0" />
             Go Home
           </Link>
           <a

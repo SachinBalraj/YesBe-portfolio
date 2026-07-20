@@ -636,7 +636,7 @@ function PricingCardComponent({ card, index }: { card: PricingCard; index: numbe
         {/* CTA */}
         <a
           href="#contact"
-          className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-[13px] font-semibold transition-all duration-300 ${
+          className={`relative z-10 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-[13px] font-semibold transition-all duration-300 ${
             card.popular
               ? "btn-premium text-white"
               : "border border-white/40 bg-white text-foreground shadow-sm hover:border-primary/30 hover:text-primary hover:shadow-md"
@@ -738,10 +738,11 @@ export function PricingSection() {
             >
               <a
                 href="#contact"
-                className="group inline-flex min-w-[240px] items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-4 text-[16px] font-semibold text-white cursor-pointer"
+                className="group relative z-10 inline-flex min-w-[260px] shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
+                style={{ fontFeatureSettings: '"liga" 1, "calt" 1' }}
               >
                 Book Free Consultation
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                <ArrowRight className="h-[18px] w-[18px] shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
               </a>
               <a
                 href="#contact"
@@ -1074,10 +1075,11 @@ export function PricingSection() {
             >
               <a
                 href="#contact"
-                className="group inline-flex min-w-[240px] items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-4 text-[16px] font-semibold text-white cursor-pointer"
+                className="group relative z-10 inline-flex min-w-[260px] shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
+                style={{ fontFeatureSettings: '"liga" 1, "calt" 1' }}
               >
                 Book Free Consultation
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                <ArrowRight className="h-[18px] w-[18px] shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
               </a>
               <a
                 href="#contact"
