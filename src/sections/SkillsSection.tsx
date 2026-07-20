@@ -268,7 +268,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-white py-24 lg:py-28"
+      className="relative overflow-hidden bg-white py-12 lg:py-16"
       aria-label="Skills and Technologies — Full stack, AI, databases, cloud, analytics, and digital growth expertise"
     >
       {/* ── Background ── */}
@@ -301,7 +301,7 @@ export function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="text-center max-w-2xl mx-auto mb-8"
         >
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
@@ -320,14 +320,14 @@ export function SkillsSection() {
         </motion.div>
 
         {/* ── Stats Row ── */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
           {stats.map((s, i) => (
             <StatCard key={s.label} stat={s} index={i} />
           ))}
         </div>
 
         {/* ── Bento Grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {skills.map((s, i) => (
             <SkillBentoCard key={s.title} skill={s} index={i} />
           ))}
@@ -339,7 +339,7 @@ export function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-6"
         >
           <h3 className="text-xl font-bold text-foreground">Technologies We Work With</h3>
         </motion.div>
@@ -349,7 +349,7 @@ export function SkillsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-wrap justify-center gap-2.5 max-w-3xl mx-auto mb-16"
+          className="flex flex-wrap justify-center gap-2.5 max-w-3xl mx-auto mb-8"
         >
           {allChips.map((c, i) => (
             <motion.span

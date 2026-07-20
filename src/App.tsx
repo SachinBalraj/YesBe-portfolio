@@ -23,6 +23,9 @@ const IndustriesPage = lazy(() =>
 const CaseStudiesPage = lazy(() =>
   import("@/pages/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage }))
 );
+const CaseStudyDetailPage = lazy(() =>
+  import("@/pages/CaseStudyDetailPage").then((m) => ({ default: m.CaseStudyDetailPage }))
+);
 const KnowledgeCenterPage = lazy(() =>
   import("@/pages/KnowledgeCenterPage").then((m) => ({ default: m.KnowledgeCenterPage }))
 );
@@ -59,6 +62,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/industries" element={<IndustriesPage />} />
+              <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
               <Route path="/pricing" element={<PricingPage />} />

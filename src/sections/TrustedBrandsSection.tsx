@@ -53,7 +53,7 @@ export function TrustedBrandsSection() {
   return (
     <section
       id="brands"
-      className="relative overflow-hidden bg-white py-24 lg:py-28"
+      className="relative overflow-hidden bg-white py-12 lg:py-16"
       aria-label="Trusted Projects and Brands — Businesses we've designed and developed for"
     >
       {/* Background */}
@@ -85,7 +85,7 @@ export function TrustedBrandsSection() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="text-center max-w-2xl mx-auto mb-8"
         >
           <motion.div variants={fadeInUp}>
             <span className="inline-block rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
@@ -164,7 +164,7 @@ export function TrustedBrandsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-14 text-center"
+          className="mt-10 text-center"
         >
           <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-muted-foreground">
             We&apos;ve delivered digital solutions across retail, automotive, fashion, consulting, and tech.

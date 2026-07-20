@@ -47,11 +47,11 @@ export function WhyChooseSection() {
   return (
     <section
       id="why-choose"
-      className="relative overflow-hidden bg-white py-24 lg:py-28"
+      className="relative overflow-hidden bg-white py-12 lg:py-16"
       aria-label="Why choose YesBe — Affordable pricing, scalable architecture, AI-first solutions"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 text-center">
+        <div className="mb-8 text-center">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}

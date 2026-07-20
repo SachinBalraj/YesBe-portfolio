@@ -10,14 +10,6 @@ import logoImg from "@/assets/images/YBlogo.png";
 
 /* ─── SVG Icons ─── */
 
-function LinkedinIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
-
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -93,7 +85,6 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: SITE_CONFIG.social.linkedin, icon: LinkedinIcon },
   { label: "GitHub", href: SITE_CONFIG.social.github, icon: GithubIcon },
   { label: "Instagram", href: "#", icon: InstagramIcon },
   { label: "Facebook", href: "#", icon: FacebookIcon },
@@ -102,8 +93,6 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { label: "Portfolio", href: "/case-studies" },
-  { label: "LinkedIn", href: SITE_CONFIG.social.linkedin, external: true },
   { label: "GitHub", href: SITE_CONFIG.social.github, external: true },
   { label: "Email", href: `mailto:${SITE_CONFIG.email}` },
 ];
@@ -166,14 +155,14 @@ export function Footer() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(37,99,235,0.08)_0%,transparent_70%)]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB]/30 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         {/* ── Top Section: Logo + Newsletter ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16 grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]"
+          className="mb-10 grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]"
         >
           {/* ── Column 1: Brand + Newsletter + Social ── */}
           <div className="lg:col-span-1">

@@ -851,7 +851,7 @@ export function KnowledgeCenterSection() {
     <>
       <section
         id="knowledge"
-        className="relative overflow-hidden bg-white py-24 lg:py-28"
+        className="relative overflow-hidden bg-white py-12 lg:py-16"
         aria-label="Knowledge Center — Technology articles, AI guides, ERP explanations, and business strategy insights"
       >
         {/* Background */}
@@ -867,7 +867,7 @@ export function KnowledgeCenterSection() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true, margin: "-80px" }} className="text-center max-w-2xl mx-auto mb-12">
+          <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true, margin: "-80px" }} className="text-center max-w-2xl mx-auto mb-8">
             <motion.div variants={fadeInUp}>
               <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
                 <BookOpen className="h-3.5 w-3.5" /> Knowledge Center
@@ -883,7 +883,7 @@ export function KnowledgeCenterSection() {
           </motion.div>
 
           {/* Search + Filters */}
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="mb-10 max-w-2xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="mb-6 max-w-2xl mx-auto">
             <div className="relative mb-4">
               <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input type="text" placeholder="Search articles..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full rounded-xl border border-white/40 bg-white py-3 pl-11 pr-4 text-sm text-foreground outline-none transition-all duration-200 focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/10" aria-label="Search articles" />
@@ -918,7 +918,7 @@ export function KnowledgeCenterSection() {
           )}
 
           {/* Article Grid */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true, margin: "-60px" }} className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-16">
+          <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true, margin: "-60px" }} className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
             {filtered.map((article) => (
               <ArticleCard key={article.id} article={article} onOpen={() => setSelectedArticle(article)} />
             ))}
@@ -931,7 +931,7 @@ export function KnowledgeCenterSection() {
           )}
 
           {/* Popular Tags */}
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-center mb-10">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-center mb-6">
             <h3 className="mb-4 text-sm font-bold text-foreground flex items-center justify-center gap-2">
               <Tag className="h-4 w-4 text-primary" /> Popular Topics
             </h3>

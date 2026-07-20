@@ -15,44 +15,44 @@ const steps: Step[] = [
   {
     icon: Search,
     title: "Discovery",
-    description: "Understanding your goals, users, and technical requirements.",
+    description: "Understand business goals, requirements, target audience, and project scope.",
     duration: "1–2 days",
   },
   {
     icon: FileText,
     title: "Planning",
-    description: "Roadmap, milestones, tech selection, and architecture design.",
-    duration: "1–3 days",
+    description: "Prepare project roadmap, architecture, technology stack, milestones, and delivery plan.",
+    duration: "2–3 days",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Wireframes and mockups focused on experience and conversion.",
-    duration: "3–7 days",
+    description: "Design modern interfaces, user experience flows, prototypes, and obtain client approval.",
+    duration: "3–5 days",
   },
   {
     icon: Code,
     title: "Development",
-    description: "Clean, scalable code with demos at every milestone.",
-    duration: "1–8 weeks",
+    description: "Develop the complete solution including frontend, backend, APIs, database, and core features.",
+    duration: "10–14 days",
   },
   {
     icon: TestTube,
-    title: "Testing",
-    description: "Functional testing, performance optimization, and cross-browser checks.",
-    duration: "2–5 days",
+    title: "Testing & QA",
+    description: "Functional testing, responsive testing, security checks, bug fixes, and performance optimization.",
+    duration: "2–3 days",
   },
   {
     icon: Rocket,
     title: "Deployment",
-    description: "Domain, SSL, monitoring, and search engine indexing.",
+    description: "Deploy the application, configure domain, SSL, hosting, SEO settings, analytics, and production.",
     duration: "1–2 days",
   },
   {
     icon: LifeBuoy,
     title: "Support",
-    description: "Maintenance, bug fixes, and feature updates after launch.",
-    duration: "Ongoing",
+    description: "Post-launch support, performance monitoring, bug resolution, and minor improvements.",
+    duration: "30 days free",
   },
 ];
 
@@ -60,11 +60,11 @@ export function DevelopmentProcessSection() {
   return (
     <section
       id="process"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-24 lg:py-28"
+      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16"
       aria-label="Development process — Discovery, Planning, Design, Development, Testing, Deployment, Support"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 text-center">
+        <div className="mb-8 text-center">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -126,6 +126,24 @@ export function DevelopmentProcessSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 text-center"
+        >
+          <div className="mx-auto max-w-2xl rounded-2xl border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-8">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa] px-5 py-2 text-sm font-bold text-white shadow-sm">
+              ⚡ Typical Project Delivery Time
+            </span>
+            <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+              Most YesBe projects are successfully designed, developed, tested, and deployed within{" "}
+              <span className="font-semibold text-foreground">30 days</span>, depending on project scope and client feedback timelines.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

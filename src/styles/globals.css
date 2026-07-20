@@ -275,6 +275,41 @@
     height: 1px;
     background: linear-gradient(90deg, transparent 0%, #e2e8f0 20%, #dbeafe 50%, #e2e8f0 80%, transparent 100%);
   }
+
+  /* ─── Section Spacing (Enterprise-grade) ─── */
+  .section-py {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-py {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  .section-py-lg {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-py-lg {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  .section-mb {
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-mb {
+      margin-bottom: 2.5rem;
+    }
+  }
 }
 
 .dark .glass,

@@ -26,11 +26,11 @@ export function WhoIHelpSection() {
   return (
     <section
       id="who-i-help"
-      className="relative overflow-hidden bg-white py-24 lg:py-28"
+      className="relative overflow-hidden bg-white py-12 lg:py-16"
       aria-label="Who I help — Small businesses, startups, restaurants, schools, hospitals, retail, corporate, manufacturing"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 text-center">
+        <div className="mb-8 text-center">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}

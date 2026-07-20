@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
   Send, CheckCircle, Loader2, Phone, MessageCircle,
-  Mail, MapPin, ExternalLink, Paperclip,
+  Mail, MapPin, Paperclip,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/animations";
@@ -34,7 +34,6 @@ const contactCards = [
   { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: `tel:${SITE_CONFIG.phone}`, color: "bg-blue-50 text-blue-600" },
   { icon: MessageCircle, label: "WhatsApp", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.social.whatsapp, color: "bg-green-50 text-green-600" },
   { icon: Mail, label: "Email", value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}`, color: "bg-orange-50 text-orange-600" },
-  { icon: ExternalLink, label: "LinkedIn", value: "YesBe", href: SITE_CONFIG.social.linkedin, color: "bg-blue-50 text-blue-700" },
   { icon: MapPin, label: "Location", value: SITE_CONFIG.location, href: "#", color: "bg-rose-50 text-rose-600" },
 ];
 
@@ -128,7 +127,7 @@ export function ContactSection() {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
   return (
-    <section id="contact" className="relative py-20 lg:py-28 bg-white overflow-hidden"     aria-label="Contact YesBe — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
+    <section id="contact" className="relative py-12 lg:py-16 bg-white overflow-hidden"     aria-label="Contact YesBe — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -138,7 +137,7 @@ export function ContactSection() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10"
         >
           <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
             Let&apos;s Build Your Next{" "}
@@ -149,7 +148,7 @@ export function ContactSection() {
             </motion.p>
         </motion.div>
 
-        <div className="grid gap-10 lg:grid-cols-5">
+        <div className="grid gap-8 lg:grid-cols-5">
           {/* Form */}
           <motion.div
             variants={fadeInLeft}

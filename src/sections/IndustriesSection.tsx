@@ -31,7 +31,7 @@ export function IndustriesSection() {
   return (
     <section
       id="industries"
-      className="relative overflow-hidden bg-white py-24 lg:py-28"
+      className="relative overflow-hidden bg-white py-12 lg:py-16"
       aria-label="Industries served — Education, Healthcare, Retail, Manufacturing, Finance, and more"
     >
       <div className="absolute inset-0 pointer-events-none">
@@ -39,7 +39,7 @@ export function IndustriesSection() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 text-center lg:mb-18">
+        <div className="mb-8 text-center lg:mb-10">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}

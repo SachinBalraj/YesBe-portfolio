@@ -354,7 +354,7 @@ function SolutionCard({
 
 export function SolutionsSection() {
   return (
-    <section id="solutions" className="relative overflow-hidden bg-white py-24 lg:py-32" aria-label="Business Solutions — AI, ERP, Web Development, Power BI, Cloud, and Digital Transformation services">
+    <section id="solutions" className="relative overflow-hidden bg-white py-12 lg:py-16" aria-label="Business Solutions — AI, ERP, Web Development, Power BI, Cloud, and Digital Transformation services">
       {/* Background decorations */}
       <div className="pointer-events-none absolute inset-0">
         {/* Radial gradient base */}
@@ -375,7 +375,7 @@ export function SolutionsSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="mb-16 text-center lg:mb-20">
+        <div className="mb-10 text-center lg:mb-12">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}

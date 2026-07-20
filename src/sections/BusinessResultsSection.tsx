@@ -35,13 +35,13 @@ export function BusinessResultsSection() {
   return (
     <section
       id="business-results"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-24 lg:py-28"
+      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-12 lg:py-16"
       aria-label="Business benefits and results — Increase sales, reduce manual work, automate processes, save costs"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Benefits */}
-        <div className="mb-20">
-          <div className="mb-14 text-center">
+        <div className="mb-12">
+          <div className="mb-8 text-center">
             <motion.span
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
-  Menu, X, ArrowRight, ChevronDown, Sparkles,
+  Menu, X, ArrowRight, ChevronDown,
   Bot, Brain, Building2, Globe, Code2, Workflow,
   BarChart3, Cloud, Database, LayoutDashboard,
   Rocket, Users, TrendingUp, Heart, GraduationCap,
@@ -141,15 +141,18 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
       <button
         onClick={() => onNavigate(item.href)}
         className={cn(
-          "relative shrink-0 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 whitespace-nowrap",
-          isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
+          "relative shrink-0 px-4 py-2 text-[15px] font-medium rounded-lg transition-all duration-200",
+          isActive
+            ? "text-[#2563EB]"
+            : "text-[#1E293B] hover:text-[#2563EB]",
         )}
+        style={{ letterSpacing: "0.2px" }}
       >
         {item.label}
         {isActive && (
           <motion.div
             layoutId="nav-active"
-            className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
+            className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-[#2563EB]"
             transition={{ type: "spring", stiffness: 500, damping: 35 }}
           />
         )}
@@ -165,19 +168,27 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
     >
       <button
         className={cn(
-          "relative flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 whitespace-nowrap",
-          isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
+          "relative flex items-center gap-1.5 px-4 py-2 text-[15px] font-medium rounded-lg transition-all duration-200",
+          isActive
+            ? "text-[#2563EB]"
+            : "text-[#1E293B] hover:text-[#2563EB]",
         )}
+        style={{ letterSpacing: "0.2px" }}
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => onNavigate(item.href)}
       >
         {item.label}
-        <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", open && "rotate-180")} />
+        <ChevronDown
+          className={cn(
+            "h-3.5 w-3.5 transition-transform duration-200 opacity-50",
+            open && "rotate-180",
+          )}
+        />
         {isActive && (
           <motion.div
             layoutId="nav-active"
-            className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
+            className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-[#2563EB]"
             transition={{ type: "spring", stiffness: 500, damping: 35 }}
           />
         )}
@@ -190,7 +201,7 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
-            className="absolute left-1/2 top-full z-50 mt-2 w-[420px] -translate-x-1/2 rounded-2xl border border-white/40 bg-white/95 p-3 shadow-[0_8px_40px_rgba(37,99,235,0.1)] backdrop-blur-xl"
+            className="absolute left-1/2 top-full z-50 mt-3 w-[420px] -translate-x-1/2 rounded-2xl border border-[#e2e8f0] bg-white/95 p-3 shadow-[0_8px_40px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl"
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
           >
@@ -199,15 +210,15 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
                 <button
                   key={sub.label}
                   onClick={() => { onNavigate(sub.href); setOpen(false); }}
-                  className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-primary/[0.04] text-left"
+                  className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-[#f1f5f9] text-left"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/[0.06] text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#eff6ff] text-[#2563EB] transition-colors duration-200 group-hover:bg-[#2563EB] group-hover:text-white">
                     <sub.icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[13px] font-semibold text-foreground group-hover:text-primary transition-colors">{sub.label}</p>
+                    <p className="text-[13px] font-semibold text-[#1E293B] group-hover:text-[#2563EB] transition-colors">{sub.label}</p>
                     {sub.description && (
-                      <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground">{sub.description}</p>
+                      <p className="mt-0.5 text-[11px] leading-snug text-[#64748B]">{sub.description}</p>
                     )}
                   </div>
                 </button>
@@ -230,12 +241,13 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
       <button
         onClick={() => onNavigate(item.href)}
         className={cn(
-          "flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 text-left",
-          isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          "flex w-full items-center rounded-xl px-4 py-3.5 text-[15px] font-medium transition-all duration-200 text-left",
+          isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]",
         )}
+        style={{ letterSpacing: "0.2px" }}
       >
         {item.label}
-        {isActive && <div className="ml-auto h-1.5 w-1.5 rounded-full bg-primary" />}
+        {isActive && <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[#2563EB]" />}
       </button>
     );
   }
@@ -245,13 +257,14 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
       <button
         onClick={() => setOpen(!open)}
         className={cn(
-          "flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
-          isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          "flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-[15px] font-medium transition-all duration-200",
+          isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]",
         )}
+        style={{ letterSpacing: "0.2px" }}
         aria-expanded={open}
       >
         {item.label}
-        <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", open && "rotate-180")} />
+        <ChevronDown className={cn("h-4 w-4 transition-transform duration-200 opacity-50", open && "rotate-180")} />
       </button>
       <AnimatePresence>
         {open && (
@@ -262,14 +275,14 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="ml-3 mt-1 space-y-0.5 border-l-2 border-primary/10 pl-3">
+            <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-[#e2e8f0] pl-3">
               {item.dropdown.map((sub) => (
                 <button
                   key={sub.label}
                   onClick={() => onNavigate(sub.href)}
-                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground text-left"
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[14px] text-[#64748B] transition-colors hover:bg-[#f8fafc] hover:text-[#1E293B] text-left"
                 >
-                  <sub.icon className="h-3.5 w-3.5 shrink-0 text-primary/60" />
+                  <sub.icon className="h-3.5 w-3.5 shrink-0 text-[#2563EB]/60" />
                   <span>{sub.label}</span>
                 </button>
               ))}
@@ -330,52 +343,36 @@ export function Navbar() {
         animate={{ y: hidden ? -100 : 0 }}
         transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
           isScrolled
-            ? "glass-strong border-b border-white/20 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_4px_24px_rgba(37,99,235,0.04)]"
-            : "bg-transparent",
+            ? "bg-white/80 backdrop-blur-xl border-b border-[#e2e8f0]/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_24px_rgba(0,0,0,0.03)]"
+            : "bg-white",
         )}
       >
         <nav
-          className="mx-auto flex h-[76px] max-w-7xl items-center px-4 sm:px-6 lg:px-8"
+          className="mx-auto flex h-[80px] items-center px-10"
+          style={{ maxWidth: "1280px" }}
           aria-label="Main navigation"
           role="navigation"
         >
           {/* ── Logo ── */}
           <button
             onClick={() => handleNavigate("/")}
-            className="relative z-10 flex shrink-0 items-center group"
+            className="relative z-10 flex shrink-0 items-center group mr-8"
           >
-            <div className="relative">
-              <img
-                src={logoImg}
-                alt="YesBe Logo"
-                width={52}
-                height={52}
-                loading="eager"
-                decoding="async"
-                className="h-10 w-10 sm:h-[46px] sm:w-[46px] lg:h-[52px] lg:w-[52px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
-              />
-              <div className="absolute -inset-1 rounded-xl bg-primary/[0.06] blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </div>
+            <img
+              src={logoImg}
+              alt="YesBe Logo"
+              width={60}
+              height={60}
+              loading="eager"
+              decoding="async"
+              className="h-[56px] w-[56px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
+            />
           </button>
 
-          {/* ── Service Badge ── */}
-          <div
-            className="ml-6 hidden min-w-0 max-w-[280px] shrink items-center 2xl:flex"
-            aria-label="Services offered"
-          >
-            <div className="inline-flex min-w-0 items-center gap-2 truncate rounded-full border border-primary/15 bg-primary/[0.04] px-4 py-1.5 text-[13px] font-medium text-primary backdrop-blur-sm">
-              <Sparkles className="h-3.5 w-3.5 shrink-0" />
-              <span className="truncate">AI &bull; ERP &bull; Web Dev</span>
-            </div>
-          </div>
-
-          {/* ── Spacer ── */}
-          <div className="flex-1 min-w-0" aria-hidden="true" />
-
           {/* ── Desktop Navigation ── */}
-          <div className="hidden shrink items-center gap-0.5 lg:flex">
+          <div className="hidden shrink items-center gap-1 xl:flex">
             {NAV_ITEMS.map((item) => (
               <DesktopDropdown
                 key={item.label}
@@ -386,24 +383,25 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* ── Spacer between nav and CTA ── */}
-          <div className="hidden w-6 shrink-0 lg:block" aria-hidden="true" />
+          {/* ── Spacer ── */}
+          <div className="flex-1" aria-hidden="true" />
 
           {/* ── CTA + Mobile Toggle ── */}
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-3">
             <button
               onClick={() => handleNavigate("/contact")}
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full btn-premium text-white transition-all duration-300 hover:shadow-[0_4px_20px_rgba(37,99,235,0.35)] hover:-translate-y-0.5"
+              className="hidden xl:inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-7 py-[14px] text-[14px] font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
+              style={{ letterSpacing: "0.2px" }}
             >
               Book Free Consultation
               <ArrowRight className="h-4 w-4" />
             </button>
             <button
-              className="lg:hidden rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="xl:hidden rounded-lg p-2 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-label="Toggle menu"
             >
-              {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </nav>
@@ -417,7 +415,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm xl:hidden"
               onClick={() => setIsMobileOpen(false)}
             />
             <motion.div
@@ -425,30 +423,30 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed right-0 top-0 z-50 h-full w-80 border-l border-white/20 bg-white/95 backdrop-blur-2xl shadow-2xl lg:hidden"
+              className="fixed right-0 top-0 z-50 h-full w-80 border-l border-[#e2e8f0] bg-white backdrop-blur-2xl shadow-2xl xl:hidden"
               role="dialog"
               aria-label="Mobile navigation"
             >
-              <div className="flex h-[76px] items-center justify-between px-5">
+              <div className="flex h-[80px] items-center justify-between px-6">
                 <img
                   src={logoImg}
                   alt="YesBe Logo"
-                  width={40}
-                  height={40}
+                  width={44}
+                  height={44}
                   loading="eager"
                   decoding="async"
-                  className="h-10 w-10 object-contain rounded-xl"
+                  className="h-11 w-11 object-contain rounded-xl"
                 />
                 <button
-                  className="rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  className="rounded-lg p-2 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"
                   onClick={() => setIsMobileOpen(false)}
                   aria-label="Close menu"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-6 w-6" />
                 </button>
               </div>
 
-              <div className="flex flex-col gap-1 px-4 pb-6 overflow-y-auto max-h-[calc(100vh-76px)]">
+              <div className="flex flex-col gap-1 px-4 pb-6 overflow-y-auto max-h-[calc(100vh-80px)]">
                 {NAV_ITEMS.map((item, i) => {
                   const isActive = location.pathname === item.href;
                   return (
@@ -468,10 +466,10 @@ export function Navbar() {
                 })}
               </div>
 
-              <div className="border-t border-white/20 px-4 py-5">
+              <div className="border-t border-[#e2e8f0] px-5 py-6">
                 <button
                   onClick={() => handleNavigate("/contact")}
-                  className="flex w-full items-center justify-center gap-2 rounded-full btn-premium px-5 py-3 text-sm font-semibold text-white"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[15px] font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25)]"
                 >
                   Book Free Consultation
                   <ArrowRight className="h-4 w-4" />
