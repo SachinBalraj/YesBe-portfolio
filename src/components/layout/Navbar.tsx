@@ -361,7 +361,7 @@ export function Navbar() {
           </button>
 
           {/* ── Desktop Navigation ── */}
-          <div className="hidden shrink items-center gap-1 xl:flex">
+          <div className="hidden shrink-0 items-center gap-2 xl:flex">
             {NAV_ITEMS.map((item) => (
               <DesktopDropdown
                 key={item.label}
