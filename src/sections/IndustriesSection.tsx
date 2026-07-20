@@ -24,6 +24,7 @@ const industries: Industry[] = [
   { icon: Rocket, name: "Startups", description: "MVP development, rapid prototyping, scalable architecture, and go-to-market technology strategy." },
   { icon: Building2, name: "SMEs", description: "Affordable business websites, automation tools, data dashboards, and digital transformation consulting." },
   { icon: Globe, name: "Enterprises", description: "Large-scale ERP, custom software, cloud infrastructure, AI integration, and enterprise architecture." },
+  { icon: Landmark, name: "Government", description: "Government portals, citizen services, e-governance solutions, compliance systems, and public sector digital transformation." },
 ];
 
 export function IndustriesSection() {
@@ -44,7 +45,7 @@ export function IndustriesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#2563eb]"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
             Industries
           </motion.span>
@@ -53,7 +54,7 @@ export function IndustriesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl"
+            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
           >
             Industries We{" "}
             <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Serve</span>
@@ -70,7 +71,7 @@ export function IndustriesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-[#64748B]"
+            className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-muted-foreground"
           >
             Custom technology solutions for every industry — from startups to enterprises.
           </motion.p>
@@ -84,14 +85,13 @@ export function IndustriesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group rounded-[20px] border border-[#E5F0FF] bg-white p-5 transition-all duration-300 hover:-translate-y-1"
-              style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.02), 0 4px 12px rgba(37,99,235,0.03)" }}
+              className="group card-glass rounded-[20px] p-5"
             >
-              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-[#eff6ff] transition-all duration-300 group-hover:bg-[#dbeafe]">
-                <industry.icon className="h-5 w-5 text-[#2563eb]" strokeWidth={1.8} />
+              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110">
+                <industry.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
               </div>
-              <h3 className="mb-1.5 text-[15px] font-bold text-[#0F172A]">{industry.name}</h3>
-              <p className="text-[13px] leading-relaxed text-[#64748B]">{industry.description}</p>
+              <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{industry.name}</h3>
+              <p className="text-[13px] leading-relaxed text-muted-foreground">{industry.description}</p>
             </motion.article>
           ))}
         </div>

@@ -36,7 +36,7 @@ export function WhoIHelpSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#2563eb]"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
             Who I Help
           </motion.span>
@@ -45,7 +45,7 @@ export function WhoIHelpSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl"
+            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
           >
             Businesses I{" "}
             <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Work With</span>
@@ -67,14 +67,14 @@ export function WhoIHelpSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-[20px] border border-[#E5F0FF] bg-white p-5 transition-all duration-300 hover:-translate-y-1"
+              className="rounded-[20px] border border-white/40 bg-white p-5 transition-all duration-300 hover:-translate-y-1"
               style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.03)" }}
             >
-              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-[#eff6ff]">
-                <client.icon className="h-5 w-5 text-[#2563eb]" strokeWidth={1.8} />
+              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06]">
+                <client.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
               </div>
-              <h3 className="mb-1.5 text-[15px] font-bold text-[#0F172A]">{client.title}</h3>
-              <p className="text-[13px] leading-relaxed text-[#64748B]">{client.description}</p>
+              <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{client.title}</h3>
+              <p className="text-[13px] leading-relaxed text-muted-foreground">{client.description}</p>
             </motion.article>
           ))}
         </div>

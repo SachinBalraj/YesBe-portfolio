@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { NAV_LINKS } from "@/constants";
 import { cn } from "@/utils/cn";
-import logoImg from "@/assets/images/sblogo.png";
+import logoImg from "@/assets/images/YBlogo.png";
 
 const SCROLL_OFFSET = 80;
 
@@ -56,32 +56,58 @@ export function Navbar() {
       <motion.header
         role="banner"
         initial={false}
-        animate={{ y: isScrolled ? 0 : 0 }}
+        animate={{ y: 0 }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
           isScrolled
-            ? "glass-strong border-b border-border/40 shadow-sm"
+            ? "glass-strong border-b border-white/20 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_4px_24px_rgba(37,99,235,0.04)]"
             : "bg-transparent",
         )}
       >
-        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Main navigation" role="navigation">
+        <nav
+          className="mx-auto flex h-[76px] max-w-7xl items-center px-4 sm:px-6 lg:px-8"
+          style={{ gap: "0" }}
+          aria-label="Main navigation"
+          role="navigation"
+        >
+          {/* ── Logo ── */}
           <a
             href="#hero"
             onClick={(e) => { e.preventDefault(); scrollTo("#hero"); }}
-            className="relative z-10 flex items-center"
+            className="relative z-10 flex shrink-0 items-center group"
           >
-            <img
-              src={logoImg}
-              alt="Sachin Balraj Logo"
-              width={52}
-              height={52}
-              loading="eager"
-              decoding="async"
-              className="h-10 w-10 sm:h-[46px] sm:w-[46px] lg:h-[52px] lg:w-[52px] object-contain rounded-lg transition-transform duration-300 ease-out hover:scale-105"
-            />
+            <div className="relative">
+              <img
+                src={logoImg}
+                alt="YesBe Logo"
+                width={52}
+                height={52}
+                loading="eager"
+                decoding="async"
+                className="h-10 w-10 sm:h-[46px] sm:w-[46px] lg:h-[52px] lg:w-[52px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
+              />
+              <div className="absolute -inset-1 rounded-xl bg-primary/[0.06] blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
           </a>
 
-          <div className="hidden lg:flex lg:items-center lg:gap-1">
+          {/* ── Service Badge ── */}
+          <div
+            className="ml-6 hidden min-w-0 max-w-[280px] shrink items-center xl:flex"
+            aria-label="Services offered"
+          >
+            <div className="inline-flex min-w-0 items-center gap-2 truncate rounded-full border border-primary/15 bg-primary/[0.04] px-4 py-1.5 text-[13px] font-medium text-primary backdrop-blur-sm">
+              <Sparkles className="h-3.5 w-3.5 shrink-0" />
+              <span className="truncate">
+                AI &bull; ERP &bull; Web Dev &bull; Business Solutions
+              </span>
+            </div>
+          </div>
+
+          {/* ── Spacer ── */}
+          <div className="flex-1 min-w-0" aria-hidden="true" />
+
+          {/* ── Navigation Links ── */}
+          <div className="hidden shrink items-center gap-1 xl:flex">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href;
               return (
@@ -90,7 +116,7 @@ export function Navbar() {
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
                   className={cn(
-                    "relative px-3.5 py-2 text-[13px] font-medium rounded-lg transition-colors duration-200",
+                    "relative shrink-0 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 whitespace-nowrap",
                     isActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground",
@@ -100,7 +126,7 @@ export function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="nav-active"
-                      className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-primary"
+                      className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
                       transition={{ type: "spring", stiffness: 500, damping: 35 }}
                     />
                   )}
@@ -109,11 +135,15 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="flex items-center gap-2 relative z-10">
+          {/* ── Spacer between nav and CTA (visible only on xl) ── */}
+          <div className="hidden w-8 shrink-0 xl:block" aria-hidden="true" />
+
+          {/* ── CTA + Mobile Toggle ── */}
+          <div className="flex shrink-0 items-center gap-2">
             <a
               href="#enquiry"
               onClick={(e) => { e.preventDefault(); scrollTo("#enquiry"); }}
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-sm hover:shadow-md"
+              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl btn-premium text-white"
             >
               Book Consultation
               <ArrowRight className="h-4 w-4" />
@@ -129,6 +159,7 @@ export function Navbar() {
         </nav>
       </motion.header>
 
+      {/* ── Mobile Slide-Over ── */}
       <AnimatePresence>
         {isMobileOpen && (
           <>
@@ -136,7 +167,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             />
             <motion.div
@@ -144,19 +175,19 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed right-0 top-0 z-50 h-full w-72 border-l border-border/40 bg-white/95 backdrop-blur-xl shadow-2xl lg:hidden"
+              className="fixed right-0 top-0 z-50 h-full w-72 border-l border-white/20 bg-white/95 backdrop-blur-2xl shadow-2xl lg:hidden"
               role="dialog"
               aria-label="Mobile navigation"
             >
-              <div className="flex h-16 items-center justify-between px-5">
+              <div className="flex h-[76px] items-center justify-between px-5">
                 <img
                   src={logoImg}
-                  alt="Sachin Balraj Logo"
+                  alt="YesBe Logo"
                   width={40}
                   height={40}
                   loading="eager"
                   decoding="async"
-                  className="h-10 w-10 object-contain rounded-lg"
+                  className="h-10 w-10 object-contain rounded-xl"
                 />
                 <button
                   className="rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
@@ -195,11 +226,11 @@ export function Navbar() {
                   );
                 })}
               </div>
-              <div className="border-t border-border/40 px-4 py-5">
+              <div className="border-t border-white/20 px-4 py-5">
                 <a
                   href="#enquiry"
                   onClick={(e) => { e.preventDefault(); scrollTo("#enquiry"); }}
-                  className="flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all shadow-sm"
+                  className="flex items-center justify-center gap-2 w-full rounded-xl btn-premium px-5 py-3 text-sm font-semibold text-white"
                 >
                   Book Consultation
                   <ArrowRight className="h-4 w-4" />

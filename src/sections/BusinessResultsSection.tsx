@@ -47,7 +47,7 @@ export function BusinessResultsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#2563eb]"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
             >
               Business Benefits
             </motion.span>
@@ -56,7 +56,7 @@ export function BusinessResultsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl"
+              className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
             >
               Real Business{" "}
               <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Outcomes</span>
@@ -73,7 +73,7 @@ export function BusinessResultsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-[#64748B]"
+              className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
             >
               Technology should solve business problems. Here's what each solution delivers.
             </motion.p>
@@ -87,14 +87,13 @@ export function BusinessResultsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="rounded-[20px] border border-[#E5F0FF] bg-white p-6 transition-all duration-300 hover:-translate-y-1"
-                style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.03)" }}
+                className="group card-glass rounded-[20px] p-6"
               >
-                <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-[#eff6ff]">
-                  <b.icon className="h-5 w-5 text-[#2563eb]" strokeWidth={1.8} />
+                <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110">
+                  <b.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
                 </div>
-                <h3 className="mb-1.5 text-[16px] font-bold text-[#0F172A]">{b.title}</h3>
-                <p className="text-[14px] leading-relaxed text-[#64748B]">{b.description}</p>
+                <h3 className="mb-1.5 text-[16px] font-bold text-foreground">{b.title}</h3>
+                <p className="text-[14px] leading-relaxed text-muted-foreground">{b.description}</p>
               </motion.div>
             ))}
           </div>
@@ -108,7 +107,7 @@ export function BusinessResultsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-2xl font-extrabold tracking-tight text-[#0F172A] sm:text-3xl"
+              className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl"
             >
               Business Results by{" "}
               <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Service</span>
@@ -123,13 +122,12 @@ export function BusinessResultsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="rounded-[20px] border border-[#E5F0FF] bg-white p-5"
-                style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.03)" }}
+                className="card-glass rounded-[20px] p-5"
               >
-                <h4 className="mb-3 text-[15px] font-bold text-[#2563eb]">{r.service}</h4>
+                <h4 className="mb-3 text-[15px] font-bold text-primary">{r.service}</h4>
                 <ul className="space-y-2">
                   {r.outcomes.map((o) => (
-                    <li key={o} className="flex items-start gap-2 text-[13px] text-[#64748B]">
+                    <li key={o} className="flex items-start gap-2 text-[13px] text-muted-foreground">
                       <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2563eb]/40" />
                       {o}
                     </li>

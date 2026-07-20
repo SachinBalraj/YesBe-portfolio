@@ -7,10 +7,10 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SITE_CONFIG = {
-  name: "Sachin Balraj",
-  title: "AI Engineer • Solution Architect • Business Consultant",
+  name: "YesBe",
+  title: "AI, ERP, Web Development & Business Solutions",
   description:
-    "Helping businesses automate, optimize, and scale using modern technology — AI, ERP, Analytics, and Digital Transformation. Based in Salem, Tamil Nadu, India.",
+    "YesBe helps startups, SMEs, and enterprises with AI solutions, ERP systems, website development, data analytics, automation, cloud services, SEO, GEO, and AEO.",
   email: "sachinbalraj01@gmail.com",
   phone: "9087795970",
   location: "Salem, Tamil Nadu, India",

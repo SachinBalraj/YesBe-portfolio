@@ -30,7 +30,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#2563eb]"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
             Technology Stack
           </motion.span>
@@ -39,7 +39,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl"
+            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
           >
             Technologies I{" "}
             <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Work With</span>
@@ -56,7 +56,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-[#64748B]"
+            className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
             Modern tools and frameworks chosen for performance, scalability, and long-term maintainability.
           </motion.p>
@@ -70,15 +70,15 @@ export function TechStackSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-[20px] border border-[#E5F0FF] bg-white p-5"
+              className="rounded-[20px] border border-white/40 bg-white p-5"
               style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.03)" }}
             >
-              <h3 className="mb-3 text-sm font-bold text-[#2563eb]">{group.category}</h3>
+              <h3 className="mb-3 text-sm font-bold text-primary">{group.category}</h3>
               <div className="flex flex-wrap gap-1.5">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-[#eff6ff] px-3 py-1 text-[12px] font-medium text-[#0F172A] border border-[#E5F0FF]"
+                    className="rounded-full bg-primary/[0.06] px-3 py-1 text-[12px] font-medium text-foreground border border-white/40"
                   >
                     {item}
                   </span>

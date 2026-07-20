@@ -1,5 +1,5 @@
-# robots.txt — Sachin Balraj Portfolio
-# https://sachinbalraj.com
+# robots.txt — YesBe
+# https://yesbe.com
 
 User-agent: *
 Allow: /
@@ -75,4 +75,4 @@ Disallow: /admin/
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://sachinbalraj.com/sitemap.xml
+Sitemap: https://yesbe.com/sitemap.xml

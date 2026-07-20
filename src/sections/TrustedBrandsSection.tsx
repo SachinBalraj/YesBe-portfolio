@@ -45,7 +45,7 @@ const brands: Brand[] = [
     name: "Balraj",
     category: "Business Technology Consultancy",
     status: "✔ Portfolio Project",
-    statusColor: "text-[#2563eb] bg-[#eff6ff]",
+    statusColor: "text-primary bg-primary/[0.06]",
   },
 ];
 
@@ -54,7 +54,7 @@ export function TrustedBrandsSection() {
     <section
       id="brands"
       className="relative overflow-hidden bg-white py-24 lg:py-28"
-      aria-label="Trusted Projects and Brands — Businesses I've designed and developed for"
+      aria-label="Trusted Projects and Brands — Businesses we've designed and developed for"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
@@ -88,13 +88,13 @@ export function TrustedBrandsSection() {
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <motion.div variants={fadeInUp}>
-            <span className="inline-block rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#2563eb] mb-4">
+            <span className="inline-block rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
               Trusted Partners
             </span>
           </motion.div>
-          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A]">
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
             Trusted Projects &amp;{" "}
-            <span className="text-[#2563eb]">Brands</span>
+            <span className="text-primary">Brands</span>
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -103,8 +103,8 @@ export function TrustedBrandsSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
-          <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-[#64748B] leading-relaxed">
-            Businesses and projects I&apos;ve successfully designed and developed.
+          <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
+            Businesses and projects we&apos;ve successfully designed and developed.
           </motion.p>
         </motion.div>
 
@@ -122,7 +122,7 @@ export function TrustedBrandsSection() {
               variants={fadeInUp}
               whileHover={{ y: -10, scale: 1.03 }}
               transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-              className="group relative flex flex-col items-center rounded-[20px] border border-[#E5F0FF] bg-white p-6 transition-all duration-350 hover:border-[#2563eb]/40"
+              className="group relative flex flex-col items-center rounded-[20px] border border-white/40 bg-white p-6 transition-all duration-350 hover:border-[#2563eb]/40"
               style={{
                 boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)",
               }}
@@ -148,8 +148,8 @@ export function TrustedBrandsSection() {
 
               {/* Info */}
               <div className="mt-4 text-center">
-                <h3 className="text-sm font-bold text-[#0F172A]">{brand.name}</h3>
-                <p className="mt-1 text-[12px] text-[#64748B]">{brand.category}</p>
+                <h3 className="text-sm font-bold text-foreground">{brand.name}</h3>
+                <p className="mt-1 text-[12px] text-muted-foreground">{brand.category}</p>
                 <span className={`mt-2.5 inline-block rounded-full px-3 py-1 text-[11px] font-semibold ${brand.statusColor}`}>
                   {brand.status}
                 </span>
@@ -166,14 +166,14 @@ export function TrustedBrandsSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-14 text-center"
         >
-          <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-[#64748B]">
-            I&apos;ve built digital solutions for businesses across retail, automotive, fashion, consulting, and technology industries.
+          <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+            We&apos;ve built digital solutions for businesses across retail, automotive, fashion, consulting, and technology industries.
           </p>
           <a
             href="#contact"
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
           >
-            Let&apos;s Build Your Business
+            Contact YesBe
           </a>
         </motion.div>
       </div>

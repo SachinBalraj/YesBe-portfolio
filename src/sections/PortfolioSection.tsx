@@ -297,13 +297,13 @@ function CaseStudyModal({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.97 }}
         transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-        className="relative w-full max-w-3xl rounded-3xl border border-[#E5F0FF] bg-white shadow-2xl"
+        className="relative w-full max-w-3xl rounded-3xl border border-white/40 bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#64748B] shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-[#0F172A]"
+          className="absolute top-5 right-5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-foreground"
           aria-label="Close case study"
         >
           <X className="h-4 w-4" />
@@ -322,7 +322,7 @@ function CaseStudyModal({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="absolute bottom-5 left-6 right-16">
-            <span className="mb-2 inline-block rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#2563eb] backdrop-blur">
+            <span className="mb-2 inline-block rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary backdrop-blur">
               {project.category}
             </span>
             <h3 className="text-2xl font-bold text-white">{project.title}</h3>
@@ -331,7 +331,7 @@ function CaseStudyModal({
 
         <div className="p-6 sm:p-8 space-y-8">
           {/* Meta row */}
-          <div className="flex flex-wrap gap-4 text-sm text-[#64748B]">
+          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <span className="inline-block h-2 w-2 rounded-full bg-[#2563eb]" />
               {project.clientType}
@@ -349,13 +349,13 @@ function CaseStudyModal({
           {/* Business Problem */}
           <div>
             <SectionHeading>Business Problem</SectionHeading>
-            <p className="text-[15px] leading-relaxed text-[#64748B]">{project.problem}</p>
+            <p className="text-[15px] leading-relaxed text-muted-foreground">{project.problem}</p>
           </div>
 
-          {/* My Solution */}
+          {/* Our Solution */}
           <div>
-            <SectionHeading>My Solution</SectionHeading>
-            <p className="text-[15px] leading-relaxed text-[#64748B]">{project.solution}</p>
+            <SectionHeading>Our Solution</SectionHeading>
+            <p className="text-[15px] leading-relaxed text-muted-foreground">{project.solution}</p>
           </div>
 
           {/* Technology Stack */}
@@ -364,12 +364,12 @@ function CaseStudyModal({
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {project.techGroups.map((group) => (
                 <div key={group.label}>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#0F172A] mb-2">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-foreground mb-2">
                     {group.label}
                   </p>
                   <ul className="space-y-1">
                     {group.items.map((item) => (
-                      <li key={item} className="text-[13px] text-[#64748B]">
+                      <li key={item} className="text-[13px] text-muted-foreground">
                         {item}
                       </li>
                     ))}
@@ -385,21 +385,21 @@ function CaseStudyModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {project.features.map((f) => (
                 <div key={f} className="flex items-start gap-2">
-                  <span className="mt-0.5 text-[#2563eb]">✓</span>
-                  <span className="text-[14px] text-[#64748B]">{f}</span>
+                  <span className="mt-0.5 text-primary">✓</span>
+                  <span className="text-[14px] text-muted-foreground">{f}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Business Result */}
-          <div className="rounded-2xl border border-[#E5F0FF] bg-[#f8fbff] p-5">
+          <div className="rounded-2xl border border-white/40 bg-muted p-5">
             <SectionHeading>Business Result</SectionHeading>
             <ul className="space-y-2">
               {project.businessResult.map((r) => (
                 <li key={r} className="flex items-start gap-2">
                   <span className="mt-0.5 text-emerald-500">▸</span>
-                  <span className="text-[14px] text-[#64748B]">{r}</span>
+                  <span className="text-[14px] text-muted-foreground">{r}</span>
                 </li>
               ))}
             </ul>
@@ -408,7 +408,7 @@ function CaseStudyModal({
           {/* Challenges */}
           <div>
             <SectionHeading>Challenges &amp; Solutions</SectionHeading>
-            <p className="text-[15px] leading-relaxed text-[#64748B]">{project.challenge}</p>
+            <p className="text-[15px] leading-relaxed text-muted-foreground">{project.challenge}</p>
           </div>
 
           {/* Future Enhancements */}
@@ -418,7 +418,7 @@ function CaseStudyModal({
               {project.futureEnhancements.map((e) => (
                 <span
                   key={e}
-                  className="rounded-full border border-[#E5F0FF] bg-white px-3.5 py-1.5 text-[13px] font-medium text-[#2563eb]"
+                  className="rounded-full border border-white/40 bg-white px-3.5 py-1.5 text-[13px] font-medium text-primary"
                 >
                   {e}
                 </span>
@@ -433,7 +433,7 @@ function CaseStudyModal({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#E5F0FF] bg-white px-5 py-2.5 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:border-[#bfdbfe] hover:shadow-md"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
               >
                 <GithubIcon className="h-4 w-4" />
                 View Source
@@ -459,7 +459,7 @@ function CaseStudyModal({
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[#0F172A]">
+    <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">
       {children}
     </h4>
   );
@@ -477,7 +477,7 @@ function ProjectCard({
   return (
     <motion.article
       variants={fadeInUp}
-      className="group h-full flex flex-col overflow-hidden rounded-2xl border border-[#E5F0FF] bg-white transition-all duration-300 hover:border-[#bfdbfe]"
+      className="group h-full flex flex-col overflow-hidden rounded-2xl border border-white/40 bg-white transition-all duration-300 hover:border-primary/30"
       style={{
         boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)",
       }}
@@ -491,7 +491,7 @@ function ProjectCard({
       <div className="relative h-48 overflow-hidden">
         <img
           src={project.image}
-          alt={`${project.title} — ${project.category} case study by Sachin Balraj`}
+          alt={`${project.title} — ${project.category} case study by YesBe`}
           loading="lazy"
           decoding="async"
           width={700}
@@ -501,7 +501,7 @@ function ProjectCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
         {/* Category badge */}
-        <span className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold text-[#2563eb] backdrop-blur-sm">
+        <span className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur-sm">
           {project.category}
         </span>
 
@@ -514,11 +514,11 @@ function ProjectCard({
 
       {/* Content */}
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-bold text-[#0F172A] group-hover:text-[#2563eb] transition-colors">
+        <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
           {project.title}
         </h3>
 
-        <p className="mt-2 text-[13px] leading-relaxed text-[#64748B] flex-1">
+        <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground flex-1">
           {project.shortOverview}
         </p>
 
@@ -527,13 +527,13 @@ function ProjectCard({
           {project.technologies.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="rounded-md border border-[#E5F0FF] bg-[#f8fbff] px-2 py-0.5 text-[11px] font-medium text-[#2563eb]"
+              className="rounded-md border border-white/40 bg-muted px-2 py-0.5 text-[11px] font-medium text-primary"
             >
               {tech}
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="rounded-md border border-[#E5F0FF] bg-[#f8fbff] px-2 py-0.5 text-[11px] font-medium text-[#94a3b8]">
+            <span className="rounded-md border border-white/40 bg-muted px-2 py-0.5 text-[11px] font-medium text-[#94a3b8]">
               +{project.technologies.length - 4}
             </span>
           )}
@@ -544,7 +544,7 @@ function ProjectCard({
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">
             Impact
           </span>
-          <p className="mt-0.5 text-[12px] text-[#64748B] leading-snug">
+          <p className="mt-0.5 text-[12px] text-muted-foreground leading-snug">
             {project.businessResult[0]}
           </p>
         </div>
@@ -564,7 +564,7 @@ function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${project.title} GitHub`}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#E5F0FF] bg-white text-[#64748B] shadow-sm transition-all hover:border-[#bfdbfe] hover:text-[#0F172A] hover:shadow-md"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/40 bg-white text-muted-foreground shadow-sm transition-all hover:border-primary/30 hover:text-foreground hover:shadow-md"
             >
               <GithubIcon className="h-4 w-4" />
             </a>
@@ -575,7 +575,7 @@ function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${project.title} Live Demo`}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#E5F0FF] bg-white text-[#64748B] shadow-sm transition-all hover:border-[#bfdbfe] hover:text-[#0F172A] hover:shadow-md"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/40 bg-white text-muted-foreground shadow-sm transition-all hover:border-primary/30 hover:text-foreground hover:shadow-md"
             >
               <ExternalLink className="h-4 w-4" />
             </a>
@@ -614,12 +614,12 @@ export function PortfolioSection() {
             className="text-center max-w-2xl mx-auto mb-14"
           >
             <motion.div variants={fadeInUp}>
-              <span className="inline-block rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#2563eb] mb-4">
+              <span className="inline-block rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
                 Case Studies
               </span>
             </motion.div>
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A]">
-              Featured <span className="text-[#2563eb]">Projects</span>
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+              Featured <span className="text-primary">Projects</span>
             </motion.h2>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -628,7 +628,7 @@ export function PortfolioSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
             />
-            <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-[#64748B] leading-relaxed">
+            <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
               Real client solutions — each project solved a specific business problem with measurable outcomes.
             </motion.p>
           </motion.div>

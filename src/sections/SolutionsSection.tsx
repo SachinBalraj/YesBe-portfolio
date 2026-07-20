@@ -264,19 +264,19 @@ function SolutionCard({
       <motion.div
         whileHover={{ y: -12 }}
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
-        className="relative h-full overflow-hidden rounded-[28px] border border-[#E5F0FF] bg-white p-8 transition-all duration-[350ms] ease-out"
+        className="relative h-full overflow-hidden rounded-[28px] border border-white/40 bg-white/60 p-8 backdrop-blur-sm transition-all duration-[400ms] ease-out"
         style={{
-          boxShadow: "0 1px 2px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.02), 0 12px 40px rgba(37,99,235,0.04)",
+          boxShadow: "0 1px 2px rgba(0,0,0,0.02), 0 4px 16px rgba(37,99,235,0.04), inset 0 1px 0 rgba(255,255,255,0.6)",
         }}
         onMouseEnter={(e) => {
           const el = e.currentTarget;
-          el.style.boxShadow = `0 8px 24px rgba(37,99,235,0.10), 0 24px 64px rgba(37,99,235,0.06), 0 0 0 1px rgba(37,99,235,0.12)`;
-          el.style.borderColor = "#bfdbfe";
+          el.style.boxShadow = "0 12px 40px rgba(37,99,235,0.12), 0 24px 64px rgba(37,99,235,0.06), inset 0 1px 0 rgba(255,255,255,0.8)";
+          el.style.borderColor = "rgba(37,99,235,0.2)";
         }}
         onMouseLeave={(e) => {
           const el = e.currentTarget;
-          el.style.boxShadow = "0 1px 2px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.02), 0 12px 40px rgba(37,99,235,0.04)";
-          el.style.borderColor = "#E5F0FF";
+          el.style.boxShadow = "0 1px 2px rgba(0,0,0,0.02), 0 4px 16px rgba(37,99,235,0.04), inset 0 1px 0 rgba(255,255,255,0.6)";
+          el.style.borderColor = "rgba(255,255,255,0.4)";
         }}
       >
         {/* Corner decoration */}
@@ -304,12 +304,12 @@ function SolutionCard({
         </div>
 
         {/* Title */}
-        <h3 className="mb-2 text-[22px] font-bold leading-tight text-[#0F172A] tracking-tight">
+        <h3 className="mb-2 text-[22px] font-bold leading-tight text-foreground tracking-tight">
           {solution.title}
         </h3>
 
         {/* Description */}
-        <p className="mb-6 text-[15px] leading-relaxed text-[#64748B]">
+        <p className="mb-6 text-[15px] leading-relaxed text-muted-foreground">
           {solution.description}
         </p>
 
@@ -381,10 +381,10 @@ export function SolutionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#2563eb]"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
-            What I Offer
+            What We Offer
           </motion.span>
 
           <motion.h2
@@ -413,7 +413,7 @@ export function SolutionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#64748B]"
+            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground"
           >
             Helping businesses automate, optimize, and scale using modern technology.
           </motion.p>

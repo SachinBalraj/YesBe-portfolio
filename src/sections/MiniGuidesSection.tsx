@@ -45,14 +45,14 @@ function GuideAccordion({ guide, index }: { guide: Guide; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="border-b border-[#E5F0FF] last:border-b-0"
+      className="border-b border-white/40 last:border-b-0"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between gap-4 py-5 text-left"
         aria-expanded={isOpen}
       >
-        <span className="text-[15px] font-semibold text-[#0F172A] transition-colors hover:text-[#2563eb]">
+        <span className="text-[15px] font-semibold text-foreground transition-colors hover:text-primary">
           {guide.title}
         </span>
         <motion.span
@@ -60,7 +60,7 @@ function GuideAccordion({ guide, index }: { guide: Guide; index: number }) {
           transition={{ duration: 0.25 }}
           className="shrink-0"
         >
-          <ChevronDown className="h-4 w-4 text-[#64748B]" />
+          <ChevronDown className="h-4 w-4 text-muted-foreground" />
         </motion.span>
       </button>
       <AnimatePresence initial={false}>
@@ -72,10 +72,10 @@ function GuideAccordion({ guide, index }: { guide: Guide; index: number }) {
             transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-2 text-[14px] font-medium text-[#2563eb] leading-relaxed">
+            <p className="pb-2 text-[14px] font-medium text-primary leading-relaxed">
               {guide.summary}
             </p>
-            <p className="pb-5 text-[14px] leading-relaxed text-[#64748B]">
+            <p className="pb-5 text-[14px] leading-relaxed text-muted-foreground">
               {guide.content}
             </p>
           </motion.div>
@@ -99,7 +99,7 @@ export function MiniGuidesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#2563eb]"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
             <BookOpen className="h-3.5 w-3.5" />
             Guides
@@ -109,7 +109,7 @@ export function MiniGuidesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl"
+            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
           >
             Technology{" "}
             <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Explained</span>
@@ -126,7 +126,7 @@ export function MiniGuidesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-[#64748B]"
+            className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
             Simple explanations of the technologies that power modern businesses.
           </motion.p>
@@ -137,7 +137,7 @@ export function MiniGuidesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="overflow-hidden rounded-[24px] border border-[#E5F0FF] bg-white"
+          className="overflow-hidden rounded-[24px] border border-white/40 bg-white"
           style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 8px 32px rgba(37,99,235,0.03)" }}
           role="list"
         >

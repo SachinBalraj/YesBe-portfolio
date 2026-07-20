@@ -38,8 +38,8 @@ export async function sendEnquiryEmail(data: EnquiryFormData): Promise<{ success
       },
       PUBLIC_KEY
     );
-    return { success: true, message: "Thank you! Your enquiry has been submitted. I'll get back to you within 24 hours." };
+    return { success: true, message: "Thank you! Your enquiry has been submitted. We'll get back to you within 24 hours." };
   } catch {
-    return { success: false, message: "Failed to submit enquiry. Please try again or contact me directly via WhatsApp." };
+    return { success: false, message: "Failed to submit enquiry. Please try again or contact us directly via WhatsApp." };
   }
 }

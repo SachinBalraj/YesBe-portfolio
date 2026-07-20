@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoImg from "@/assets/images/sblogo.png";
+import logoImg from "@/assets/images/YBlogo.png";
 
 export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0);
@@ -48,9 +48,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         >
           {/* Background */}
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,#eaf6ff_0%,transparent_70%)]" />
-            <div className="absolute top-[20%] left-[15%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.12] blur-[100px]" />
-            <div className="absolute bottom-[25%] right-[15%] h-[250px] w-[250px] rounded-full bg-[#ede9fe] opacity-[0.10] blur-[80px]" />
+            <div className="absolute inset-0 bg-aurora" />
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
@@ -64,25 +62,36 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 
           {/* Content */}
           <div className="relative flex flex-col items-center">
-            {/* Logo */}
+            {/* Logo with ring animation */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] }}
-              className="mb-8"
+              className="relative mb-8"
             >
+              {/* Spinning ring */}
+              <motion.div
+                className="absolute -inset-3 rounded-full border border-primary/10"
+                style={{ borderTopColor: "rgba(37,99,235,0.4)" }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              />
               <motion.img
                 src={logoImg}
-                alt="Sachin Balraj Logo"
+                alt="YesBe Logo"
                 width={110}
                 height={110}
-                className="h-[110px] w-[110px] object-contain"
+                className="h-[110px] w-[110px] object-contain relative z-10"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
               {/* Glow behind logo */}
               <div className="absolute inset-0 -z-10 flex items-center justify-center">
-                <div className="h-32 w-32 rounded-full bg-[#2563eb]/[0.08] blur-[40px] animate-glow-pulse" />
+                <motion.div
+                  animate={{ scale: [1, 1.15, 1], opacity: [0.06, 0.12, 0.06] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="h-40 w-40 rounded-full bg-primary/[0.08] blur-[40px]"
+                />
               </div>
             </motion.div>
 
@@ -91,9 +100,9 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-2xl font-bold tracking-tight text-[#0F172A]"
+              className="text-3xl font-bold tracking-tight text-foreground"
             >
-              Sachin Balraj
+              YesBe
             </motion.h1>
 
             {/* Titles */}
@@ -101,13 +110,13 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-2 flex flex-wrap justify-center gap-x-2 gap-y-1 text-[13px] text-[#64748B]"
+              className="mt-2 flex flex-wrap justify-center gap-x-2 gap-y-1 text-[13px] text-muted-foreground"
             >
-              <span>AI Engineer</span>
-              <span className="text-[#2563eb]">·</span>
-              <span>Solution Architect</span>
-              <span className="text-[#2563eb]">·</span>
-              <span>Business Technology Consultant</span>
+              <span>AI Solutions</span>
+              <span className="text-primary">&middot;</span>
+              <span>ERP Systems</span>
+              <span className="text-primary">&middot;</span>
+              <span>Business Solutions</span>
             </motion.div>
 
             {/* Loading dots */}
@@ -115,7 +124,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="mt-8 text-sm font-medium text-[#64748B]"
+              className="mt-8 text-sm font-medium text-muted-foreground"
             >
               Loading{".".repeat(dotCount)}
             </motion.p>
@@ -125,10 +134,10 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0, scaleX: 0.8 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ delay: 0.9, duration: 0.4 }}
-              className="mt-4 h-[3px] w-48 overflow-hidden rounded-full bg-[#E5F0FF]"
+              className="mt-4 h-[3px] w-48 overflow-hidden rounded-full bg-primary/10"
             >
               <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+                className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
                 style={{ width: `${progress}%` }}
                 transition={{ duration: 0.1 }}
               />
@@ -139,7 +148,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
               transition={{ delay: 1.2, duration: 0.6 }}
-              className="mt-6 text-[11px] tracking-wide text-[#64748B]"
+              className="mt-6 text-[11px] tracking-wide text-muted-foreground"
             >
               Building Intelligent Business Solutions
             </motion.p>

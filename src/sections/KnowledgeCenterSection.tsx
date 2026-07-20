@@ -339,15 +339,15 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.97 }}
         transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-        className="relative w-full max-w-3xl rounded-3xl border border-[#E5F0FF] bg-white shadow-2xl"
+        className="relative w-full max-w-3xl rounded-3xl border border-white/40 bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close + Share */}
         <div className="absolute top-5 right-5 z-10 flex gap-2">
-          <button onClick={handleShare} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#64748B] shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-[#2563eb]" aria-label="Share article">
+          <button onClick={handleShare} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-primary" aria-label="Share article">
             <Share2 className="h-4 w-4" />
           </button>
-          <button onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#64748B] shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-[#0F172A]" aria-label="Close article">
+          <button onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-[#f1f5f9] hover:text-foreground" aria-label="Close article">
             <X className="h-4 w-4" />
           </button>
         </div>
@@ -368,18 +368,18 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
 
         <div className="p-6 sm:p-8 space-y-8">
           {/* Meta */}
-          <div className="flex flex-wrap gap-4 text-sm text-[#64748B]">
-            <span>By <strong className="text-[#0F172A]">Sachin Balraj</strong></span>
+          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+            <span>By <strong className="text-foreground">YesBe Team</strong></span>
             <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{article.readTime} read</span>
             <span>Updated {article.lastUpdated}</span>
           </div>
 
           {/* TOC */}
-          <div className="rounded-2xl border border-[#E5F0FF] bg-[#f8fbff] p-5">
-            <h4 className="mb-3 text-sm font-bold text-[#0F172A]">Table of Contents</h4>
+          <div className="rounded-2xl border border-white/40 bg-muted p-5">
+            <h4 className="mb-3 text-sm font-bold text-foreground">Table of Contents</h4>
             <ul className="space-y-1.5">
               {article.toc.map((item, i) => (
-                <li key={item} className="text-[13px] text-[#2563eb] cursor-pointer hover:underline">
+                <li key={item} className="text-[13px] text-primary cursor-pointer hover:underline">
                   {i + 1}. {item}
                 </li>
               ))}
@@ -392,21 +392,21 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
           <ContentBlock heading="How It Works">{article.content.explanation}</ContentBlock>
 
           <div>
-            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[#0F172A]">Real-World Examples</h4>
+            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Real-World Examples</h4>
             <ul className="space-y-2">
               {article.content.examples.map((ex) => (
-                <li key={ex} className="flex items-start gap-2 text-[14px] text-[#64748B] leading-relaxed">
-                  <span className="mt-1 text-[#2563eb]">▸</span>{ex}
+                <li key={ex} className="flex items-start gap-2 text-[14px] text-muted-foreground leading-relaxed">
+                  <span className="mt-1 text-primary">▸</span>{ex}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-[#E5F0FF] bg-[#f8fbff] p-5">
-            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[#0F172A]">Key Benefits</h4>
+          <div className="rounded-2xl border border-white/40 bg-muted p-5">
+            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Key Benefits</h4>
             <ul className="space-y-2">
               {article.content.benefits.map((b) => (
-                <li key={b} className="flex items-start gap-2 text-[14px] text-[#64748B]">
+                <li key={b} className="flex items-start gap-2 text-[14px] text-muted-foreground">
                   <span className="mt-0.5 text-emerald-500">✓</span>{b}
                 </li>
               ))}
@@ -416,10 +416,10 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
           <ContentBlock heading="Best Practices">{article.content.bestPractices.map((p, i) => `${i + 1}. ${p}`).join("\n\n")}</ContentBlock>
 
           <div>
-            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[#0F172A]">Common Mistakes to Avoid</h4>
+            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Common Mistakes to Avoid</h4>
             <ul className="space-y-2">
               {article.content.commonMistakes.map((m) => (
-                <li key={m} className="flex items-start gap-2 text-[14px] text-[#64748B] leading-relaxed">
+                <li key={m} className="flex items-start gap-2 text-[14px] text-muted-foreground leading-relaxed">
                   <span className="mt-1 text-red-400">✕</span>{m}
                 </li>
               ))}
@@ -430,12 +430,12 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
 
           {/* CTA */}
           <div className="rounded-2xl border border-[#2563eb]/20 bg-gradient-to-br from-[#eff6ff] to-white p-6 text-center">
-            <p className="text-[15px] font-medium text-[#0F172A] mb-4">{article.content.cta}</p>
+            <p className="text-[15px] font-medium text-foreground mb-4">{article.content.cta}</p>
             <div className="flex flex-wrap justify-center gap-3">
               <a href="#contact" onClick={onClose} className="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#2563eb]/90 hover:shadow-md">
                 Book Consultation <ArrowRight className="h-4 w-4" />
               </a>
-              <a href={SITE_CONFIG.social.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-[#E5F0FF] bg-white px-5 py-2.5 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:border-[#bfdbfe] hover:shadow-md">
+              <a href={SITE_CONFIG.social.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:border-primary/30 hover:shadow-md">
                 Chat on WhatsApp
               </a>
             </div>
@@ -443,10 +443,10 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
 
           {/* Related */}
           <div>
-            <h4 className="mb-3 text-sm font-bold text-[#0F172A]">Related Articles</h4>
+            <h4 className="mb-3 text-sm font-bold text-foreground">Related Articles</h4>
             <div className="flex flex-wrap gap-2">
               {articles.filter((a) => a.id !== article.id).slice(0, 3).map((a) => (
-                <span key={a.id} className="rounded-full border border-[#E5F0FF] bg-white px-3.5 py-1.5 text-[12px] font-medium text-[#2563eb]">
+                <span key={a.id} className="rounded-full border border-white/40 bg-white px-3.5 py-1.5 text-[12px] font-medium text-primary">
                   {a.title}
                 </span>
               ))}
@@ -461,8 +461,8 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
 function ContentBlock({ heading, children }: { heading: string; children: string }) {
   return (
     <div>
-      <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[#0F172A]">{heading}</h4>
-      <p className="text-[15px] leading-relaxed text-[#64748B] whitespace-pre-line">{children}</p>
+      <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">{heading}</h4>
+      <p className="text-[15px] leading-relaxed text-muted-foreground whitespace-pre-line">{children}</p>
     </div>
   );
 }
@@ -477,26 +477,26 @@ function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void
       variants={fadeInUp}
       whileHover={{ y: -10, scale: 1.03 }}
       transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-      className="group flex flex-col overflow-hidden rounded-[22px] border border-[#E5F0FF] bg-white/80 backdrop-blur-sm transition-all duration-350 hover:border-[#2563eb]/40"
+      className="group flex flex-col overflow-hidden rounded-[22px] border border-white/40 bg-white/80 backdrop-blur-sm transition-all duration-350 hover:border-[#2563eb]/40"
       style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
       onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 32px rgba(37,99,235,0.12), 0 16px 48px rgba(37,99,235,0.06)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)"; }}
     >
       <div className="flex-1 p-6">
         <div className="mb-4 flex items-center justify-between">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eff6ff] px-3 py-1 text-[11px] font-semibold text-[#2563eb]">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
             <Icon className="h-3 w-3" />
             {article.category}
           </span>
-          <span className="flex items-center gap-1 text-[11px] text-[#64748B]">
+          <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
             <Clock className="h-3 w-3" />{article.readTime}
           </span>
         </div>
-        <h3 className="mb-2 text-lg font-bold text-[#0F172A] group-hover:text-[#2563eb] transition-colors">{article.title}</h3>
-        <p className="text-[13px] leading-relaxed text-[#64748B] flex-1">{article.description}</p>
+        <h3 className="mb-2 text-lg font-bold text-foreground group-hover:text-primary transition-colors">{article.title}</h3>
+        <p className="text-[13px] leading-relaxed text-muted-foreground flex-1">{article.description}</p>
       </div>
       <div className="px-6 pb-6">
-        <button onClick={onOpen} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#E5F0FF] bg-[#f8fbff] px-4 py-2.5 text-[13px] font-semibold text-[#2563eb] transition-all duration-200 group-hover:border-[#2563eb]/30 group-hover:bg-[#2563eb] group-hover:text-white">
+        <button onClick={onOpen} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-muted px-4 py-2.5 text-[13px] font-semibold text-primary transition-all duration-200 group-hover:border-[#2563eb]/30 group-hover:bg-[#2563eb] group-hover:text-white">
           Read Article
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
         </button>
@@ -544,15 +544,15 @@ export function KnowledgeCenterSection() {
           {/* Header */}
           <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true, margin: "-80px" }} className="text-center max-w-2xl mx-auto mb-12">
             <motion.div variants={fadeInUp}>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E5F0FF] bg-[#eff6ff] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#2563eb]">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
                 <BookOpen className="h-3.5 w-3.5" /> Knowledge Center
               </span>
             </motion.div>
-            <motion.h2 variants={fadeInUp} className="text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-4xl">
+            <motion.h2 variants={fadeInUp} className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
               Knowledge <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Center</span>
             </motion.h2>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
-            <motion.p variants={fadeInUp} className="mt-5 text-[15px] leading-relaxed text-[#64748B]">
+            <motion.p variants={fadeInUp} className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
               Explore practical insights, AI innovations, business strategies, and technology guides to help businesses grow.
             </motion.p>
           </motion.div>
@@ -560,12 +560,12 @@ export function KnowledgeCenterSection() {
           {/* Search + Filters */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="mb-10 max-w-2xl mx-auto">
             <div className="relative mb-4">
-              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#64748B]" />
-              <input type="text" placeholder="Search articles..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full rounded-xl border border-[#E5F0FF] bg-white py-3 pl-11 pr-4 text-sm text-[#0F172A] outline-none transition-all duration-200 focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/10" aria-label="Search articles" />
+              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <input type="text" placeholder="Search articles..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full rounded-xl border border-white/40 bg-white py-3 pl-11 pr-4 text-sm text-foreground outline-none transition-all duration-200 focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/10" aria-label="Search articles" />
             </div>
             <div className="flex flex-wrap justify-center gap-2">
               {allFilters.map((f) => (
-                <button key={f} onClick={() => setActiveFilter(f)} className={`rounded-full px-4 py-1.5 text-[12px] font-semibold transition-all duration-200 ${activeFilter === f ? "bg-[#2563eb] text-white shadow-sm" : "border border-[#E5F0FF] bg-white text-[#64748B] hover:border-[#2563eb]/30 hover:text-[#2563eb]"}`}>
+                <button key={f} onClick={() => setActiveFilter(f)} className={`rounded-full px-4 py-1.5 text-[12px] font-semibold transition-all duration-200 ${activeFilter === f ? "bg-[#2563eb] text-white shadow-sm" : "border border-white/40 bg-white text-muted-foreground hover:border-[#2563eb]/30 hover:text-primary"}`}>
                   {f}
                 </button>
               ))}
@@ -581,13 +581,13 @@ export function KnowledgeCenterSection() {
                 </div>
                 <div className="flex-1">
                   <div className="mb-2 flex items-center gap-2">
-                    <span className="rounded-full bg-[#2563eb]/10 px-3 py-0.5 text-[11px] font-bold text-[#2563eb]">Featured</span>
-                    <span className="rounded-full bg-[#eff6ff] px-3 py-0.5 text-[11px] font-semibold text-[#64748B]">{featured.category}</span>
+                    <span className="rounded-full bg-[#2563eb]/10 px-3 py-0.5 text-[11px] font-bold text-primary">Featured</span>
+                    <span className="rounded-full bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-muted-foreground">{featured.category}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-[#0F172A] group-hover:text-[#2563eb] transition-colors">{featured.title}</h3>
-                  <p className="mt-1 text-[14px] text-[#64748B]">{featured.description}</p>
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{featured.title}</h3>
+                  <p className="mt-1 text-[14px] text-muted-foreground">{featured.description}</p>
                 </div>
-                <ArrowRight className="hidden sm:block h-5 w-5 shrink-0 text-[#2563eb] transition-transform duration-200 group-hover:translate-x-1" />
+                <ArrowRight className="hidden sm:block h-5 w-5 shrink-0 text-primary transition-transform duration-200 group-hover:translate-x-1" />
               </div>
             </motion.div>
           )}
@@ -601,18 +601,18 @@ export function KnowledgeCenterSection() {
 
           {filtered.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-[#64748B] text-[15px]">No articles found matching your search.</p>
+              <p className="text-muted-foreground text-[15px]">No articles found matching your search.</p>
             </div>
           )}
 
           {/* Popular Tags */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-center mb-10">
-            <h3 className="mb-4 text-sm font-bold text-[#0F172A] flex items-center justify-center gap-2">
-              <Tag className="h-4 w-4 text-[#2563eb]" /> Popular Topics
+            <h3 className="mb-4 text-sm font-bold text-foreground flex items-center justify-center gap-2">
+              <Tag className="h-4 w-4 text-primary" /> Popular Topics
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
               {popularTags.map((t, i) => (
-                <motion.span key={t} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.025 }} whileHover={{ y: -3, scale: 1.06 }} className="rounded-full border border-[#E5F0FF] bg-white px-3.5 py-1.5 text-[12px] font-semibold text-[#0F172A] cursor-default transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white">
+                <motion.span key={t} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.025 }} whileHover={{ y: -3, scale: 1.06 }} className="rounded-full border border-white/40 bg-white px-3.5 py-1.5 text-[12px] font-semibold text-foreground cursor-default transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white">
                   {t}
                 </motion.span>
               ))}
@@ -620,14 +620,14 @@ export function KnowledgeCenterSection() {
           </motion.div>
 
           {/* Bottom CTA */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center rounded-[22px] border border-[#E5F0FF] bg-[#f8fbff] p-10">
-            <h3 className="text-xl font-bold text-[#0F172A]">Still have questions?</h3>
-            <p className="mt-2 text-[15px] text-[#64748B]">Let&apos;s discuss your project and build the right solution together.</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center rounded-[22px] border border-white/40 bg-muted p-10">
+            <h3 className="text-xl font-bold text-foreground">Still have questions?</h3>
+            <p className="mt-2 text-[15px] text-muted-foreground">Let&apos;s discuss your project and build the right solution together.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md">
                 Book Consultation <ArrowRight className="h-4 w-4" />
               </a>
-              <a href={SITE_CONFIG.social.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-[#E5F0FF] bg-white px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all duration-200 hover:border-[#bfdbfe] hover:shadow-md">
+              <a href={SITE_CONFIG.social.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-200 hover:border-primary/30 hover:shadow-md">
                 Chat on WhatsApp
               </a>
             </div>

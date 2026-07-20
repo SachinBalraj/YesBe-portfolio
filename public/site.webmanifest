@@ -1,7 +1,7 @@
 {
-  "name": "Sachin Balraj — AI Engineer & Solution Architect",
-  "short_name": "Sachin Balraj",
-  "description": "Portfolio of Sachin Balraj — AI Engineer, Full Stack Developer, and Solution Architect building intelligent business solutions in Salem, Tamil Nadu, India.",
+  "name": "YesBe — AI, ERP & Business Solutions",
+  "short_name": "YesBe",
+  "description": "YesBe helps startups, SMEs, and enterprises with AI solutions, ERP systems, website development, data analytics, automation, cloud services, SEO, GEO, and AEO.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -14,7 +14,7 @@
   "id": "/",
   "icons": [
     {
-      "src": "/sblogo.png",
+      "src": "/YBlogo.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any maskable"

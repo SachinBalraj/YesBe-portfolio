@@ -35,7 +35,7 @@ const contactCards = [
   { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: `tel:${SITE_CONFIG.phone}`, color: "bg-blue-50 text-blue-600" },
   { icon: MessageCircle, label: "WhatsApp", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.social.whatsapp, color: "bg-green-50 text-green-600" },
   { icon: Mail, label: "Email", value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}`, color: "bg-orange-50 text-orange-600" },
-  { icon: ExternalLink, label: "LinkedIn", value: "Sachin Balraj", href: SITE_CONFIG.social.linkedin, color: "bg-blue-50 text-blue-700" },
+  { icon: ExternalLink, label: "LinkedIn", value: "YesBe", href: SITE_CONFIG.social.linkedin, color: "bg-blue-50 text-blue-700" },
   { icon: MapPin, label: "Location", value: SITE_CONFIG.location, href: "#", color: "bg-rose-50 text-rose-600" },
 ];
 
@@ -61,7 +61,7 @@ export function ContactSection() {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
   return (
-    <section id="contact" className="relative py-20 lg:py-28 bg-white overflow-hidden" aria-label="Contact — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
+    <section id="contact" className="relative py-20 lg:py-28 bg-white overflow-hidden"     aria-label="Contact YesBe — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -78,7 +78,7 @@ export function ContactSection() {
             <span className="text-primary">Digital Solution</span>
           </motion.h2>
           <motion.p variants={fadeInUp} className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            Tell me about your project and I&apos;ll get back to you within 24 hours with a detailed proposal.
+            Tell us about your project and we&apos;ll get back to you within 24 hours with a detailed proposal.
           </motion.p>
         </motion.div>
 
