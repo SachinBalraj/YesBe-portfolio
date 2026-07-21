@@ -35,6 +35,21 @@ const PricingPage = lazy(() =>
 const ContactPage = lazy(() =>
   import("@/pages/ContactPage").then((m) => ({ default: m.ContactPage }))
 );
+const PrivacyPolicyPage = lazy(() =>
+  import("@/pages/PrivacyPolicyPage").then((m) => ({ default: m.PrivacyPolicyPage }))
+);
+const TermsAndConditionsPage = lazy(() =>
+  import("@/pages/TermsAndConditionsPage").then((m) => ({ default: m.TermsAndConditionsPage }))
+);
+const RefundPolicyPage = lazy(() =>
+  import("@/pages/RefundPolicyPage").then((m) => ({ default: m.RefundPolicyPage }))
+);
+const CookiePolicyPage = lazy(() =>
+  import("@/pages/CookiePolicyPage").then((m) => ({ default: m.CookiePolicyPage }))
+);
+const DisclaimerPage = lazy(() =>
+  import("@/pages/DisclaimerPage").then((m) => ({ default: m.DisclaimerPage }))
+);
 const NotFound = lazy(() =>
   import("@/pages/NotFound").then((m) => ({ default: m.NotFound }))
 );
@@ -67,6 +82,11 @@ function App() {
               <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+              <Route path="/refund-policy" element={<RefundPolicyPage />} />
+              <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+              <Route path="/disclaimer" element={<DisclaimerPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

@@ -78,10 +78,11 @@ const supportLinks = [
   { label: "Contact Us", href: "/contact" },
   { label: "Book Consultation", href: "/contact" },
   { label: "FAQs", href: "/pricing" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms & Conditions", href: "#" },
-  { label: "Refund Policy", href: "#" },
-  { label: "Sitemap", href: "#" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Refund Policy", href: "/refund-policy" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Disclaimer", href: "/disclaimer" },
 ];
 
 const socialLinks = [
@@ -95,6 +96,8 @@ const socialLinks = [
 const quickLinks = [
   { label: "GitHub", href: SITE_CONFIG.social.github, external: true },
   { label: "Email", href: `mailto:${SITE_CONFIG.email}` },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms", href: "/terms-and-conditions" },
 ];
 
 /* ─── Footer Column Link ─── */
