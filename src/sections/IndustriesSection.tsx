@@ -90,7 +90,6 @@ export function IndustriesSection() {
             >
               <Link
                 to={`/industries/${industry.slug}`}
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="group card-glass block rounded-[16px] p-5 transition-all duration-300"
               >
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.05] transition-all duration-300 group-hover:bg-primary/[0.1] group-hover:scale-105">

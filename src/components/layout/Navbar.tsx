@@ -320,7 +320,6 @@ export function Navbar() {
 
   const handleNavigate = (href: string) => {
     navigate(href);
-    window.scrollTo({ top: 0, behavior: "smooth" });
     setIsMobileOpen(false);
   };
 

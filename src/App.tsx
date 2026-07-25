@@ -2,6 +2,7 @@ import { lazy, Suspense, useState, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ScrollToTopButton } from "@/components/common/ScrollToTopButton";
+import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { CursorGlow } from "@/components/common/CursorGlow";
 import { LoadingScreen } from "@/components/common/LoadingScreen";
 import { Analytics } from "@/components/common/Analytics";
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Analytics />
       {loading && <LoadingScreen onComplete={handleLoaded} />}
       <ThemeProvider>

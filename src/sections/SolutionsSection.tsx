@@ -344,8 +344,7 @@ function SolutionCard({
         {/* Learn More button */}
         <div className="mt-auto">
           <Link
-            to={`/solutions/${solution.slug}`}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                to={`/solutions/${solution.slug}`}
             className="inline-flex items-center gap-2 text-[14px] font-semibold transition-all duration-300 group/link"
             style={{ color: a.pillText }}
           >
