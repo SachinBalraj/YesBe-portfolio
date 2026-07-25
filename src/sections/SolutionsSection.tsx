@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Brain, Globe, Boxes, BarChart3, Database, TrendingUp,
   Megaphone, Cloud, Workflow, Smartphone, Shield, Briefcase,
@@ -113,6 +114,7 @@ interface Solution {
   accent: string;
   features: string[];
   layout: LayoutStyle;
+  slug: string;
 }
 
 const solutions: Solution[] = [
@@ -123,6 +125,7 @@ const solutions: Solution[] = [
     accent: "violet",
     features: ["AI Chatbots", "RAG Systems", "LLM Integration", "AI Automation"],
     layout: "standard",
+    slug: "ai-solutions",
   },
   {
     title: "Website Development",
@@ -131,6 +134,7 @@ const solutions: Solution[] = [
     accent: "blue",
     features: ["Business Websites", "Corporate Portals", "E-commerce", "Landing Pages"],
     layout: "wide",
+    slug: "website-development",
   },
   {
     title: "ERP Solutions",
@@ -139,6 +143,7 @@ const solutions: Solution[] = [
     accent: "amber",
     features: ["School ERP", "Hospital ERP", "Inventory Mgmt", "Billing System"],
     layout: "standard",
+    slug: "erp-systems",
   },
   {
     title: "Data Analytics & BI",
@@ -147,6 +152,7 @@ const solutions: Solution[] = [
     accent: "yellow",
     features: ["Power BI", "Dashboards", "KPI Reports", "Data Visualization"],
     layout: "tall",
+    slug: "data-analytics",
   },
   {
     title: "Database Management",
@@ -155,6 +161,7 @@ const solutions: Solution[] = [
     accent: "emerald",
     features: ["MongoDB", "MySQL", "PostgreSQL", "Query Optimization"],
     layout: "compact",
+    slug: "database-management",
   },
   {
     title: "SEO & Search",
@@ -163,6 +170,7 @@ const solutions: Solution[] = [
     accent: "cyan",
     features: ["Technical SEO", "GEO", "AEO", "Google Business Profile"],
     layout: "standard",
+    slug: "seo",
   },
   {
     title: "Digital Marketing",
@@ -171,6 +179,7 @@ const solutions: Solution[] = [
     accent: "rose",
     features: ["Social Media", "Lead Generation", "Email Campaigns", "Performance Ads"],
     layout: "wide",
+    slug: "digital-marketing",
   },
   {
     title: "Cloud & DevOps",
@@ -179,6 +188,7 @@ const solutions: Solution[] = [
     accent: "sky",
     features: ["AWS", "Azure", "Docker", "CI/CD Pipelines"],
     layout: "standard",
+    slug: "cloud-devops",
   },
   {
     title: "Business Automation",
@@ -187,6 +197,7 @@ const solutions: Solution[] = [
     accent: "orange",
     features: ["Workflow Automation", "API Integration", "CRM Setup", "Notifications"],
     layout: "tall",
+    slug: "business-automation",
   },
   {
     title: "Custom Software",
@@ -195,6 +206,7 @@ const solutions: Solution[] = [
     accent: "indigo",
     features: ["Admin Panels", "Internal Tools", "SaaS Apps", "Business Portals"],
     layout: "compact",
+    slug: "custom-software",
   },
   {
     title: "Cybersecurity",
@@ -203,6 +215,7 @@ const solutions: Solution[] = [
     accent: "red",
     features: ["SSL & Encryption", "Security Audit", "Backup Systems", "Auth Controls"],
     layout: "standard",
+    slug: "cloud-devops",
   },
   {
     title: "Business Consulting",
@@ -211,6 +224,7 @@ const solutions: Solution[] = [
     accent: "teal",
     features: ["Solution Architecture", "Tech Planning", "Digital Transform", "IT Advisory"],
     layout: "standard",
+    slug: "business-automation",
   },
 ];
 
@@ -225,10 +239,6 @@ function SolutionCard({
 }) {
   const a = ACCENTS[solution.accent];
   const Icon = solution.icon;
-
-  // Subtle masonry offsets: each row gets slightly different top padding
-  const masonryOffsets = [0, 8, 4, 12, 6, 2, 10, 0, 8, 4, 12, 6];
-  const mTop = masonryOffsets[index] ?? 0;
 
   // Unique corner decoration per card — position cycles through 4 corners
   const cornerPositions = [
@@ -258,25 +268,24 @@ function SolutionCard({
         delay: index * 0.07,
         ease: [0.25, 0.4, 0.25, 1],
       }}
-      style={{ marginTop: mTop }}
       className="group"
     >
       <motion.div
-        whileHover={{ y: -12 }}
+        whileHover={{ y: -8 }}
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
-        className="relative h-full overflow-hidden rounded-[28px] border border-white/40 bg-white/60 p-8 backdrop-blur-sm transition-all duration-[400ms] ease-out"
+        className="relative h-full overflow-hidden rounded-[20px] border border-white/50 bg-white/70 p-8 backdrop-blur-sm transition-all duration-300 ease-out"
         style={{
-          boxShadow: "0 1px 2px rgba(0,0,0,0.02), 0 4px 16px rgba(37,99,235,0.04), inset 0 1px 0 rgba(255,255,255,0.6)",
+          boxShadow: "0 1px 2px rgba(0,0,0,0.02), 0 2px 8px rgba(37,99,235,0.025), inset 0 1px 0 rgba(255,255,255,0.5)",
         }}
         onMouseEnter={(e) => {
           const el = e.currentTarget;
-          el.style.boxShadow = "0 12px 40px rgba(37,99,235,0.12), 0 24px 64px rgba(37,99,235,0.06), inset 0 1px 0 rgba(255,255,255,0.8)";
-          el.style.borderColor = "rgba(37,99,235,0.2)";
+          el.style.boxShadow = "0 4px 16px rgba(37,99,235,0.08), 0 16px 48px rgba(37,99,235,0.04), inset 0 1px 0 rgba(255,255,255,0.7)";
+          el.style.borderColor = "rgba(37,99,235,0.15)";
         }}
         onMouseLeave={(e) => {
           const el = e.currentTarget;
-          el.style.boxShadow = "0 1px 2px rgba(0,0,0,0.02), 0 4px 16px rgba(37,99,235,0.04), inset 0 1px 0 rgba(255,255,255,0.6)";
-          el.style.borderColor = "rgba(255,255,255,0.4)";
+          el.style.boxShadow = "0 1px 2px rgba(0,0,0,0.02), 0 2px 8px rgba(37,99,235,0.025), inset 0 1px 0 rgba(255,255,255,0.5)";
+          el.style.borderColor = "rgba(255,255,255,0.5)";
         }}
       >
         {/* Corner decoration */}
@@ -292,29 +301,29 @@ function SolutionCard({
         />
 
         {/* Icon */}
-        <div className="relative mb-6">
+        <div className="relative mb-5">
           <motion.div
-            className="relative flex h-16 w-16 items-center justify-center rounded-2xl"
+            className="relative flex h-14 w-14 items-center justify-center rounded-xl"
             style={{ background: a.gradient }}
-            whileHover={{ scale: 1.1, rotate: 8 }}
+            whileHover={{ scale: 1.08, rotate: 5 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <Icon className="h-7 w-7" style={{ color: a.pillText }} strokeWidth={1.8} />
+            <Icon className="h-6 w-6" style={{ color: a.pillText }} strokeWidth={1.8} />
           </motion.div>
         </div>
 
         {/* Title */}
-        <h3 className="mb-2 text-[22px] font-bold leading-tight text-foreground tracking-tight">
+        <h3 className="mb-2 text-[18px] font-bold leading-tight text-foreground tracking-[-0.01em]">
           {solution.title}
         </h3>
 
         {/* Description */}
-        <p className="mb-6 text-[15px] leading-relaxed text-muted-foreground">
+        <p className="mb-5 text-[14px] leading-[1.65] text-muted-foreground">
           {solution.description}
         </p>
 
         {/* Feature pills */}
-        <div className="mb-8 flex flex-wrap gap-2">
+        <div className="mb-7 flex flex-wrap gap-1.5">
           {solution.features.map((f) => (
             <span
               key={f}
@@ -334,8 +343,9 @@ function SolutionCard({
 
         {/* Learn More button */}
         <div className="mt-auto">
-          <a
-            href="#contact"
+          <Link
+            to={`/solutions/${solution.slug}`}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="inline-flex items-center gap-2 text-[14px] font-semibold transition-all duration-300 group/link"
             style={{ color: a.pillText }}
           >
@@ -343,7 +353,7 @@ function SolutionCard({
             <ArrowRight
               className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1"
             />
-          </a>
+          </Link>
         </div>
       </motion.div>
     </motion.div>
@@ -358,11 +368,11 @@ export function SolutionsSection() {
       {/* Background decorations */}
       <div className="pointer-events-none absolute inset-0">
         {/* Radial gradient base */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#f0f7ff_0%,transparent_60%)]" />
         {/* Floating blur circles */}
-        <div className="absolute top-[10%] left-[15%] h-[400px] w-[400px] rounded-full bg-[#dbeafe] opacity-[0.15] blur-[120px]" />
-        <div className="absolute top-[40%] right-[10%] h-[350px] w-[350px] rounded-full bg-[#ede9fe] opacity-[0.12] blur-[100px]" />
-        <div className="absolute bottom-[10%] left-[40%] h-[300px] w-[300px] rounded-full bg-[#cffafe] opacity-[0.10] blur-[100px]" />
+        <div className="absolute top-[10%] left-[15%] h-[400px] w-[400px] rounded-full bg-[#dbeafe] opacity-[0.1] blur-[120px]" />
+        <div className="absolute top-[40%] right-[10%] h-[350px] w-[350px] rounded-full bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[40%] h-[300px] w-[300px] rounded-full bg-[#cffafe] opacity-[0.07] blur-[100px]" />
         {/* Subtle grid overlay */}
         <div
           className="absolute inset-0 opacity-[0.015]"
@@ -381,7 +391,7 @@ export function SolutionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
             What We Offer
@@ -392,7 +402,7 @@ export function SolutionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[56px]"
+            className="text-4xl font-extrabold tracking-[-0.02em] sm:text-5xl lg:text-[52px]"
           >
             <span className="bg-gradient-to-r from-[#0f172a] via-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
               Business Solutions
@@ -405,7 +415,7 @@ export function SolutionsSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
 
           <motion.p
@@ -413,14 +423,14 @@ export function SolutionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground"
+            className="mx-auto mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground"
           >
             Helping businesses automate, optimize, and scale using modern technology.
           </motion.p>
         </div>
 
         {/* Cards grid — 4 columns */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {solutions.map((solution, i) => (
             <SolutionCard key={solution.title} solution={solution} index={i} />
           ))}

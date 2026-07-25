@@ -50,6 +50,12 @@ const CookiePolicyPage = lazy(() =>
 const DisclaimerPage = lazy(() =>
   import("@/pages/DisclaimerPage").then((m) => ({ default: m.DisclaimerPage }))
 );
+const SolutionDetailPage = lazy(() =>
+  import("@/pages/SolutionDetailPage").then((m) => ({ default: m.SolutionDetailPage }))
+);
+const IndustryDetailPage = lazy(() =>
+  import("@/pages/IndustryDetailPage").then((m) => ({ default: m.IndustryDetailPage }))
+);
 const NotFound = lazy(() =>
   import("@/pages/NotFound").then((m) => ({ default: m.NotFound }))
 );
@@ -76,7 +82,9 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/industries/:slug" element={<IndustryDetailPage />} />
               <Route path="/industries" element={<IndustriesPage />} />
+              <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
               <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />

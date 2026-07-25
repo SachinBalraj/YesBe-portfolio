@@ -6,6 +6,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import {
+  SiReact, SiNodedotjs, SiMongodb, SiPython, SiDocker,
+  SiTypescript, SiExpress, SiTailwindcss, SiGithub, SiVite,
+} from "react-icons/si";
+import { TbBrandAws, TbBrandOpenai } from "react-icons/tb";
 
 /* ─────────────── Animated Counter ─────────────── */
 
@@ -144,9 +149,18 @@ const allChips = [
 ];
 
 const marqueeItems = [
-  "React", "Node.js", "MongoDB", "Python", "Power BI", "AWS", "Docker",
-  "OpenAI", "LangChain", "SEO", "GEO", "AEO", "Express.js", "GitHub",
-  "Tailwind", "Vite",
+  { name: "React", Icon: SiReact, color: "#61DAFB" },
+  { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+  { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
+  { name: "Python", Icon: SiPython, color: "#3776AB" },
+  { name: "AWS", Icon: TbBrandAws, color: "#FF9900" },
+  { name: "Docker", Icon: SiDocker, color: "#2496ED" },
+  { name: "OpenAI", Icon: TbBrandOpenai, color: "#412991" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+  { name: "Express.js", Icon: SiExpress, color: "#000000" },
+  { name: "Tailwind", Icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "GitHub", Icon: SiGithub, color: "#181717" },
+  { name: "Vite", Icon: SiVite, color: "#646CFF" },
 ];
 
 /* ─────────────── Sub-components ─────────────── */
@@ -370,13 +384,27 @@ export function SkillsSection() {
         <div className="relative">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
-          <div className="overflow-hidden rounded-2xl border border-white/40 bg-muted py-5">
-            <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
-              {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((t, i) => (
-                <span key={`${t}-${i}`} className="mx-6 whitespace-nowrap text-[14px] font-semibold text-foreground/60 transition-colors duration-200 hover:text-primary">
-                  {t}
-                  <span className="ml-6 inline-block h-1 w-1 rounded-full bg-[#2563eb]/20 align-middle" />
-                </span>
+          <div className="overflow-hidden rounded-2xl border border-white/40 bg-muted py-4">
+            <div className="flex w-max animate-marquee hover:[animation-play-state:paused]" style={{ gap: "24px" }}>
+              {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((tech, i) => (
+                <div
+                  key={`${tech.name}-${i}`}
+                  className="group flex shrink-0 items-center gap-2 rounded-full border border-white/50 bg-white/80 px-3.5 py-1.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-white hover:shadow-[0_2px_12px_rgba(37,99,235,0.10)] hover:scale-[1.05]"
+                >
+                  <tech.Icon
+                    size={18}
+                    className="shrink-0 transition-colors duration-300 sm:hidden"
+                    style={{ color: tech.color }}
+                  />
+                  <tech.Icon
+                    size={20}
+                    className="hidden shrink-0 transition-colors duration-300 sm:block"
+                    style={{ color: tech.color }}
+                  />
+                  <span className="whitespace-nowrap text-[12px] font-semibold tracking-wide text-foreground/70 transition-colors duration-300 group-hover:text-foreground sm:text-[13px]">
+                    {tech.name}
+                  </span>
+                </div>
               ))}
             </div>
           </div>

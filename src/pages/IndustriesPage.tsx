@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
 import { PageHeader } from "@/components/common/PageHeader";
 import { fadeInUp, staggerContainer } from "@/animations";
@@ -21,20 +22,21 @@ interface Industry {
   icon: LucideIcon;
   name: string;
   description: string;
+  slug: string;
 }
 
 const industries: Industry[] = [
-  { icon: Rocket, name: "Startups", description: "MVPs, scalable architecture, and fast prototyping to launch quickly." },
-  { icon: Briefcase, name: "SMEs", description: "ERP, automation, and tools that compete with enterprise software." },
-  { icon: Building2, name: "Large Enterprises", description: "System integration, legacy modernization, and custom AI tools." },
-  { icon: Heart, name: "Healthcare", description: "Hospital systems, patient records, telemedicine, and compliance." },
-  { icon: GraduationCap, name: "Education", description: "School ERP, student management, e-learning, and exam systems." },
-  { icon: ShoppingBag, name: "Retail", description: "POS, inventory, e-commerce, and customer loyalty programs." },
-  { icon: Factory, name: "Manufacturing", description: "Production planning, supply chain, and IoT automation." },
-  { icon: Truck, name: "Logistics", description: "Fleet management, warehouse optimization, and live tracking." },
-  { icon: Utensils, name: "Hospitality", description: "Restaurant, hotel, and guest experience platforms." },
-  { icon: DollarSign, name: "Finance", description: "Dashboards, compliance automation, and transaction processing." },
-  { icon: Home, name: "Real Estate", description: "Property management, CRM, and virtual tour platforms." },
+  { icon: Rocket, name: "Startups", description: "MVPs, scalable architecture, and fast prototyping to launch quickly.", slug: "startups" },
+  { icon: Briefcase, name: "SMEs", description: "ERP, automation, and tools that compete with enterprise software.", slug: "smes" },
+  { icon: Building2, name: "Large Enterprises", description: "System integration, legacy modernization, and custom AI tools.", slug: "large-enterprises" },
+  { icon: Heart, name: "Healthcare", description: "Hospital systems, patient records, telemedicine, and compliance.", slug: "healthcare" },
+  { icon: GraduationCap, name: "Education", description: "School ERP, student management, e-learning, and exam systems.", slug: "education" },
+  { icon: ShoppingBag, name: "Retail", description: "POS, inventory, e-commerce, and customer loyalty programs.", slug: "retail" },
+  { icon: Factory, name: "Manufacturing", description: "Production planning, supply chain, and IoT automation.", slug: "manufacturing" },
+  { icon: Truck, name: "Logistics", description: "Fleet management, warehouse optimization, and live tracking.", slug: "logistics" },
+  { icon: Utensils, name: "Hospitality", description: "Restaurant, hotel, and guest experience platforms.", slug: "hospitality" },
+  { icon: DollarSign, name: "Finance", description: "Dashboards, compliance automation, and transaction processing.", slug: "finance" },
+  { icon: Home, name: "Real Estate", description: "Property management, CRM, and virtual tour platforms.", slug: "real-estate" },
 ];
 
 export function IndustriesPage() {
@@ -79,13 +81,14 @@ export function IndustriesPage() {
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-foreground">{industry.name}</h3>
                 <p className="mb-5 flex-1 text-sm leading-relaxed text-muted-foreground">{industry.description}</p>
-                <a
-                  href="#"
+                <Link
+                  to={`/industries/${industry.slug}`}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-[#1d4ed8]"
                 >
                   Explore Solutions
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </motion.div>
             ))}
           </motion.div>

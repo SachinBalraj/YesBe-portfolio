@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
 import { PageHeader } from "@/components/common/PageHeader";
 import { fadeInUp, staggerContainer } from "@/animations";
@@ -21,26 +22,27 @@ interface Service {
   icon: LucideIcon;
   name: string;
   description: string;
+  slug: string;
 }
 
 const services: Service[] = [
-  { icon: Brain, name: "AI Solutions", description: "AI tools that automate decisions and surface insights from your data." },
-  { icon: Bot, name: "AI Chatbots", description: "Chatbots for 24/7 support and lead generation." },
-  { icon: LayoutDashboard, name: "ERP Systems", description: "Enterprise resource planning built around your workflows." },
-  { icon: Globe, name: "Website Development", description: "Fast, responsive websites that convert." },
-  { icon: Code2, name: "Web Applications", description: "Full-stack apps tailored to your operations." },
-  { icon: ShoppingBag, name: "E-Commerce", description: "Online stores with payment and inventory management." },
-  { icon: Workflow, name: "Business Automation", description: "Automate repetitive tasks and manual workflows." },
-  { icon: BarChart3, name: "Data Analytics", description: "Turn raw data into business insights." },
-  { icon: BarChart3, name: "Power BI Dashboards", description: "Interactive dashboards and real-time reporting." },
-  { icon: Cloud, name: "Cloud & DevOps", description: "Cloud infrastructure and CI/CD pipelines." },
-  { icon: Database, name: "Database Management", description: "Database design, migration, and optimization." },
-  { icon: Link2, name: "API Development", description: "RESTful and GraphQL APIs for your integrations." },
-  { icon: Search, name: "SEO", description: "Search optimization for organic visibility." },
-  { icon: Megaphone, name: "GEO", description: "Optimize for AI-powered search engines." },
-  { icon: MessageCircle, name: "AEO", description: "Optimize for featured snippets and voice search." },
-  { icon: Globe, name: "Digital Marketing", description: "Strategies that drive traffic and leads." },
-  { icon: Code2, name: "Custom Software", description: "Software built from scratch for your business." },
+  { icon: Brain, name: "AI Solutions", description: "AI tools that automate decisions and surface insights from your data.", slug: "ai-solutions" },
+  { icon: Bot, name: "AI Chatbots", description: "Chatbots for 24/7 support and lead generation.", slug: "ai-chatbots" },
+  { icon: LayoutDashboard, name: "ERP Systems", description: "Enterprise resource planning built around your workflows.", slug: "erp-systems" },
+  { icon: Globe, name: "Website Development", description: "Fast, responsive websites that convert.", slug: "website-development" },
+  { icon: Code2, name: "Web Applications", description: "Full-stack apps tailored to your operations.", slug: "web-applications" },
+  { icon: ShoppingBag, name: "E-Commerce", description: "Online stores with payment and inventory management.", slug: "ecommerce" },
+  { icon: Workflow, name: "Business Automation", description: "Automate repetitive tasks and manual workflows.", slug: "business-automation" },
+  { icon: BarChart3, name: "Data Analytics", description: "Turn raw data into business insights.", slug: "data-analytics" },
+  { icon: BarChart3, name: "Power BI Dashboards", description: "Interactive dashboards and real-time reporting.", slug: "power-bi-dashboards" },
+  { icon: Cloud, name: "Cloud & DevOps", description: "Cloud infrastructure and CI/CD pipelines.", slug: "cloud-devops" },
+  { icon: Database, name: "Database Management", description: "Database design, migration, and optimization.", slug: "database-management" },
+  { icon: Link2, name: "API Development", description: "RESTful and GraphQL APIs for your integrations.", slug: "api-development" },
+  { icon: Search, name: "SEO", description: "Search optimization for organic visibility.", slug: "seo" },
+  { icon: Megaphone, name: "GEO", description: "Optimize for AI-powered search engines.", slug: "geo" },
+  { icon: MessageCircle, name: "AEO", description: "Optimize for featured snippets and voice search.", slug: "aeo" },
+  { icon: Globe, name: "Digital Marketing", description: "Strategies that drive traffic and leads.", slug: "digital-marketing" },
+  { icon: Code2, name: "Custom Software", description: "Software built from scratch for your business.", slug: "custom-software" },
 ];
 
 export function ServicesPage() {
@@ -85,13 +87,14 @@ export function ServicesPage() {
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-foreground">{service.name}</h3>
                 <p className="mb-5 flex-1 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
-                <a
-                  href="#"
+                <Link
+                  to={`/solutions/${service.slug}`}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-[#1d4ed8]"
                 >
                   Learn More
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </motion.div>
             ))}
           </motion.div>

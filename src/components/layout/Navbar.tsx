@@ -44,32 +44,32 @@ const NAV_ITEMS: NavItem[] = [
     label: "Solutions",
     href: "/services",
     dropdown: [
-      { label: "AI Solutions", href: "/services", icon: Brain, description: "AI tools that automate decisions" },
-      { label: "AI Chatbots", href: "/services", icon: Bot, description: "Chatbots for support and leads" },
-      { label: "ERP Systems", href: "/services", icon: LayoutDashboard, description: "Enterprise resource planning" },
-      { label: "Website Development", href: "/services", icon: Globe, description: "Fast, responsive web apps" },
-      { label: "Custom Software", href: "/services", icon: Code2, description: "Software built for your business" },
-      { label: "Business Automation", href: "/services", icon: Workflow, description: "Cut repetitive manual tasks" },
-      { label: "Data Analytics", href: "/services", icon: BarChart3, description: "Data into actionable insights" },
-      { label: "Power BI Dashboards", href: "/services", icon: BarChart3, description: "Interactive BI reporting" },
-      { label: "Cloud & DevOps", href: "/services", icon: Cloud, description: "Cloud infrastructure and CI/CD" },
-      { label: "Database Management", href: "/services", icon: Database, description: "Optimized data storage" },
+      { label: "AI Solutions", href: "/solutions/ai-solutions", icon: Brain, description: "AI tools that automate decisions" },
+      { label: "AI Chatbots", href: "/solutions/ai-chatbots", icon: Bot, description: "Chatbots for support and leads" },
+      { label: "ERP Systems", href: "/solutions/erp-systems", icon: LayoutDashboard, description: "Enterprise resource planning" },
+      { label: "Website Development", href: "/solutions/website-development", icon: Globe, description: "Fast, responsive web apps" },
+      { label: "Custom Software", href: "/solutions/custom-software", icon: Code2, description: "Software built for your business" },
+      { label: "Business Automation", href: "/solutions/business-automation", icon: Workflow, description: "Cut repetitive manual tasks" },
+      { label: "Data Analytics", href: "/solutions/data-analytics", icon: BarChart3, description: "Data into actionable insights" },
+      { label: "Power BI Dashboards", href: "/solutions/power-bi-dashboards", icon: BarChart3, description: "Interactive BI reporting" },
+      { label: "Cloud & DevOps", href: "/solutions/cloud-devops", icon: Cloud, description: "Cloud infrastructure and CI/CD" },
+      { label: "Database Management", href: "/solutions/database-management", icon: Database, description: "Optimized data storage" },
     ],
   },
   {
     label: "Industries",
     href: "/industries",
     dropdown: [
-      { label: "Startups", href: "/industries", icon: Rocket, description: "MVPs and scaling" },
-      { label: "SMEs", href: "/industries", icon: Briefcase, description: "Affordable enterprise tools" },
-      { label: "Large Enterprises", href: "/industries", icon: Building2, description: "Complex system integration" },
-      { label: "Healthcare", href: "/industries", icon: Heart, description: "Hospital and clinic systems" },
-      { label: "Education", href: "/industries", icon: GraduationCap, description: "School and college ERP" },
-      { label: "Retail", href: "/industries", icon: ShoppingBag, description: "POS, inventory, e-commerce" },
-      { label: "Manufacturing", href: "/industries", icon: Factory, description: "Production and supply chain" },
-      { label: "Logistics", href: "/industries", icon: Truck, description: "Fleet and warehouse ops" },
-      { label: "Restaurants", href: "/industries", icon: Utensils, description: "Order and menu management" },
-      { label: "Real Estate", href: "/industries", icon: Home, description: "Property and CRM tools" },
+      { label: "Startups", href: "/industries/startups", icon: Rocket, description: "MVPs and scaling" },
+      { label: "SMEs", href: "/industries/smes", icon: Briefcase, description: "Affordable enterprise tools" },
+      { label: "Large Enterprises", href: "/industries/large-enterprises", icon: Building2, description: "Complex system integration" },
+      { label: "Healthcare", href: "/industries/healthcare", icon: Heart, description: "Hospital and clinic systems" },
+      { label: "Education", href: "/industries/education", icon: GraduationCap, description: "School and college ERP" },
+      { label: "Retail", href: "/industries/retail", icon: ShoppingBag, description: "POS, inventory, e-commerce" },
+      { label: "Manufacturing", href: "/industries/manufacturing", icon: Factory, description: "Production and supply chain" },
+      { label: "Logistics", href: "/industries/logistics", icon: Truck, description: "Fleet and warehouse ops" },
+      { label: "Hospitality", href: "/industries/hospitality", icon: Utensils, description: "Order and menu management" },
+      { label: "Real Estate", href: "/industries/real-estate", icon: Home, description: "Property and CRM tools" },
     ],
   },
   {
@@ -190,7 +190,7 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
-            className="absolute left-1/2 top-full z-50 mt-3 w-[420px] -translate-x-1/2 rounded-2xl border border-[#e2e8f0] bg-white/95 p-3 shadow-[0_8px_40px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl"
+            className="absolute left-1/2 top-full z-50 mt-3 w-[min(420px,90vw)] -translate-x-1/2 rounded-2xl border border-[#e2e8f0]/60 bg-white/95 p-3 shadow-[0_4px_24px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.03)] backdrop-blur-2xl"
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
           >
@@ -199,9 +199,9 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
                 <button
                   key={sub.label}
                   onClick={() => { onNavigate(sub.href); setOpen(false); }}
-                  className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-[#f1f5f9] text-left"
+                  className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-[#f1f5f9]/80 text-left"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#eff6ff] text-[#2563EB] transition-colors duration-200 group-hover:bg-[#2563EB] group-hover:text-white">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#eff6ff] text-[#2563EB] transition-all duration-200 group-hover:bg-[#2563EB] group-hover:text-white group-hover:shadow-[0_2px_8px_rgba(37,99,235,0.2)]">
                     <sub.icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0">
@@ -227,11 +227,11 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
 
   if (!item.dropdown) {
     return (
-      <button
+        <button
         onClick={() => onNavigate(item.href)}
         className={cn(
-          "flex w-full items-center rounded-xl px-4 py-3.5 text-[15px] font-medium transition-all duration-200 text-left",
-          isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]",
+          "flex w-full items-center rounded-xl px-4 py-3 text-[14px] font-medium transition-all duration-200 text-left",
+          isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]/80",
         )}
         style={{ letterSpacing: "0.2px" }}
       >
@@ -246,8 +246,8 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
       <button
         onClick={() => setOpen(!open)}
         className={cn(
-          "flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-[15px] font-medium transition-all duration-200",
-          isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]",
+          "flex w-full items-center justify-between rounded-xl px-4 py-3 text-[14px] font-medium transition-all duration-200",
+          isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]/80",
         )}
         style={{ letterSpacing: "0.2px" }}
         aria-expanded={open}
@@ -269,7 +269,7 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
                 <button
                   key={sub.label}
                   onClick={() => onNavigate(sub.href)}
-                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[14px] text-[#64748B] transition-colors hover:bg-[#f8fafc] hover:text-[#1E293B] text-left"
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-[13px] text-[#64748B] transition-colors hover:bg-[#f8fafc]/80 hover:text-[#1E293B] text-left"
                 >
                   <sub.icon className="h-3.5 w-3.5 shrink-0 text-[#2563EB]/60" />
                   <span>{sub.label}</span>
@@ -334,12 +334,12 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
           isScrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-[#e2e8f0]/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_24px_rgba(0,0,0,0.03)]"
+            ? "bg-white/75 backdrop-blur-2xl border-b border-[#e2e8f0]/40 shadow-[0_1px_2px_rgba(0,0,0,0.02),0_2px_16px_rgba(0,0,0,0.02)]"
             : "bg-white",
         )}
       >
         <nav
-          className="mx-auto flex h-[80px] items-center px-10"
+          className="mx-auto flex h-[56px] items-center px-5 sm:px-6 lg:px-10"
           style={{ maxWidth: "1280px" }}
           aria-label="Main navigation"
           role="navigation"
@@ -352,11 +352,11 @@ export function Navbar() {
             <img
               src={logoImg}
               alt="YesBe Logo"
-              width={60}
-              height={60}
+              width={48}
+              height={48}
               loading="eager"
               decoding="async"
-              className="h-[56px] w-[56px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
+              className="h-[46px] w-[46px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
             />
           </button>
 
@@ -379,7 +379,7 @@ export function Navbar() {
           <div className="flex shrink-0 items-center gap-3">
             <button
               onClick={() => handleNavigate("/contact")}
-              className="hidden xl:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-7 py-[14px] text-[15px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
+              className="hidden xl:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-[11px] text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5"
             >
               Book Free Consultation
               <ArrowRight className="h-[18px] w-[18px] shrink-0" />
@@ -411,11 +411,11 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed right-0 top-0 z-50 h-full w-80 border-l border-[#e2e8f0] bg-white backdrop-blur-2xl shadow-2xl xl:hidden"
+              className="fixed right-0 top-0 z-50 h-full w-80 border-l border-[#e2e8f0]/50 bg-white/95 backdrop-blur-2xl shadow-[−8px_0_24px_rgba(0,0,0,0.06)] xl:hidden"
               role="dialog"
               aria-label="Mobile navigation"
             >
-              <div className="flex h-[80px] items-center justify-between px-6">
+              <div className="flex h-[56px] items-center justify-between px-6">
                 <img
                   src={logoImg}
                   alt="YesBe Logo"
@@ -434,7 +434,7 @@ export function Navbar() {
                 </button>
               </div>
 
-              <div className="flex flex-col gap-1 px-4 pb-6 overflow-y-auto max-h-[calc(100vh-80px)]">
+              <div className="flex flex-col gap-1 px-4 pb-6 overflow-y-auto max-h-[calc(100vh-56px)]">
                 {NAV_ITEMS.map((item, i) => {
                   const isActive = location.pathname === item.href;
                   return (
@@ -454,10 +454,10 @@ export function Navbar() {
                 })}
               </div>
 
-              <div className="border-t border-[#e2e8f0] px-5 py-6">
+              <div className="border-t border-[#e2e8f0]/50 px-5 py-5">
                 <button
                   onClick={() => handleNavigate("/contact")}
-                  className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[15px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_2px_8px_rgba(37,99,235,0.25)]"
+                  className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)]"
                 >
                   Book Free Consultation
                   <ArrowRight className="h-[18px] w-[18px] shrink-0" />

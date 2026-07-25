@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Search, X, Clock, ArrowRight, Share2, BookOpen, Tag,
+  Search, X, Clock, ArrowRight, Share2, Tag,
   Cpu, Globe, BarChart3, Workflow, Brain, Building2, MessageCircle, ExternalLink,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -17,6 +17,7 @@ interface Article {
   filter: string;
   readTime: string;
   icon: LucideIcon;
+  image: string;
   description: string;
   featured?: boolean;
   lastUpdated: string;
@@ -46,6 +47,7 @@ const articles: Article[] = [
     filter: "AI",
     readTime: "6 min",
     icon: Brain,
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=450&fit=crop&q=80",
     featured: true,
     description: "Discover how AI, automation, and intelligent assistants can reduce costs and improve business efficiency.",
     lastUpdated: "July 2026",
@@ -101,6 +103,7 @@ const articles: Article[] = [
     filter: "ERP",
     readTime: "5 min",
     icon: Building2,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop&q=80",
     description: "Learn how ERP systems streamline operations, automate workflows, and improve productivity for businesses of all sizes.",
     lastUpdated: "July 2026",
     publishedDate: "July 12, 2026",
@@ -152,6 +155,7 @@ const articles: Article[] = [
     filter: "SEO",
     readTime: "7 min",
     icon: Globe,
+    image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&h=450&fit=crop&q=80",
     description: "Understand the differences between Search Engine Optimization, Generative Engine Optimization, and Answer Engine Optimization.",
     lastUpdated: "July 2026",
     publishedDate: "July 8, 2026",
@@ -205,6 +209,7 @@ const articles: Article[] = [
     filter: "Power BI",
     readTime: "6 min",
     icon: BarChart3,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&q=80",
     description: "Learn how Power BI dashboards transform raw business data into actionable insights and executive reports.",
     lastUpdated: "July 2026",
     publishedDate: "July 14, 2026",
@@ -258,6 +263,7 @@ const articles: Article[] = [
     filter: "RAG",
     readTime: "8 min",
     icon: Cpu,
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=450&fit=crop&q=80",
     description: "Explore how Retrieval-Augmented Generation improves chatbot accuracy using your organization's own knowledge base.",
     lastUpdated: "July 2026",
     publishedDate: "July 16, 2026",
@@ -312,6 +318,7 @@ const articles: Article[] = [
     filter: "Business Automation",
     readTime: "5 min",
     icon: Workflow,
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=450&fit=crop&q=80",
     description: "See how automation reduces manual work, increases productivity, and improves customer experience.",
     lastUpdated: "July 2026",
     publishedDate: "July 11, 2026",
@@ -366,6 +373,7 @@ const articles: Article[] = [
     filter: "Web Dev",
     readTime: "6 min",
     icon: Globe,
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&q=80",
     featured: false,
     description: "A practical guide to choosing the best technology stack for your website — from React and Next.js to WordPress.",
     lastUpdated: "July 2026",
@@ -422,6 +430,7 @@ const articles: Article[] = [
     filter: "Cloud",
     readTime: "5 min",
     icon: Cpu,
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=450&fit=crop&q=80",
     description: "Understand how cloud computing — AWS, Azure, and GCP — helps businesses scale infrastructure on demand.",
     lastUpdated: "July 2026",
     publishedDate: "July 19, 2026",
@@ -476,6 +485,7 @@ const articles: Article[] = [
     filter: "LangChain",
     readTime: "7 min",
     icon: Brain,
+    image: "https://images.unsplash.com/photo-1684163761398-8f5a459f3e40?w=800&h=450&fit=crop&q=80",
     description: "Learn how LangChain simplifies building AI applications with LLMs, chains, agents, and tool integrations.",
     lastUpdated: "July 2026",
     publishedDate: "July 20, 2026",
@@ -530,6 +540,7 @@ const articles: Article[] = [
     filter: "Digital Marketing",
     readTime: "4 min",
     icon: Globe,
+    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=450&fit=crop&q=80",
     description: "Discover how a professional website builds credibility, generates leads, and drives business growth.",
     lastUpdated: "July 2026",
     publishedDate: "July 17, 2026",
@@ -799,6 +810,18 @@ function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void
       onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 32px rgba(37,99,235,0.12), 0 16px 48px rgba(37,99,235,0.06)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)"; }}
     >
+      {/* Featured Image */}
+      <div className="relative aspect-[16/9] w-full overflow-hidden">
+        <img
+          src={article.image}
+          alt={article.title}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      </div>
+
       <div className="flex-1 p-6">
         <div className="mb-4 flex items-center justify-between">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
@@ -866,22 +889,6 @@ export function KnowledgeCenterSection() {
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true, margin: "-80px" }} className="text-center max-w-2xl mx-auto mb-8">
-            <motion.div variants={fadeInUp}>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                <BookOpen className="h-3.5 w-3.5" /> Knowledge Center
-              </span>
-            </motion.div>
-            <motion.h2 variants={fadeInUp} className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-              Knowledge <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Center</span>
-            </motion.h2>
-            <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
-            <motion.p variants={fadeInUp} className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
-              Practical guides on AI, ERP, analytics, and business strategy.
-            </motion.p>
-          </motion.div>
-
           {/* Search + Filters */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="mb-6 max-w-2xl mx-auto">
             <div className="relative mb-4">

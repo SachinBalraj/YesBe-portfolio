@@ -102,21 +102,48 @@ export function DevelopmentProcessSection() {
           </motion.p>
         </div>
 
-        <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-7">
-          {steps.map((step, i) => (
+        {/* Row 1: Steps 1–4 */}
+        <div className="relative grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.slice(0, 4).map((step, i) => (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="relative text-center"
+              className="relative w-full max-w-[260px] text-center"
             >
               <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/[0.06] border border-white/40">
                 <step.icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
               </div>
               <div className="mb-1 text-[11px] font-bold uppercase tracking-wider text-primary/60">
                 Step {i + 1}
+              </div>
+              <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{step.title}</h3>
+              <p className="mb-2 text-[13px] leading-relaxed text-muted-foreground">{step.description}</p>
+              <span className="inline-block rounded-full bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-primary">
+                {step.duration}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Row 2: Steps 5–7 */}
+        <div className="relative mt-8 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:justify-items-center">
+          {steps.slice(4).map((step, i) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: (i + 4) * 0.08 }}
+              className="relative w-full max-w-[260px] text-center"
+            >
+              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/[0.06] border border-white/40">
+                <step.icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
+              </div>
+              <div className="mb-1 text-[11px] font-bold uppercase tracking-wider text-primary/60">
+                Step {i + 5}
               </div>
               <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{step.title}</h3>
               <p className="mb-2 text-[13px] leading-relaxed text-muted-foreground">{step.description}</p>

@@ -134,7 +134,7 @@ export function TrustedBrandsSection() {
               }}
             >
               {/* Logo */}
-              <div className="flex h-[170px] w-full items-center justify-center">
+              <div className="flex min-h-[120px] w-full items-center justify-center py-4">
                 <img
                   src={brand.logo}
                   alt={brand.alt}

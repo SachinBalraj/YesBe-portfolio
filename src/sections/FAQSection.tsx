@@ -128,7 +128,7 @@ export function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
             FAQ
@@ -139,7 +139,7 @@ export function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+            className="text-3xl font-extrabold tracking-[-0.02em] text-foreground sm:text-4xl"
           >
             Frequently Asked{" "}
             <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
@@ -152,7 +152,7 @@ export function FAQSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
 
           <motion.p
@@ -171,9 +171,9 @@ export function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="overflow-hidden rounded-[24px] border border-white/40 bg-white"
+          className="overflow-hidden rounded-[20px] border border-white/50 bg-white/80"
           style={{
-            boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 8px 32px rgba(37,99,235,0.03)",
+            boxShadow: "0 1px 2px rgba(37,99,235,0.02), 0 4px 16px rgba(37,99,235,0.02)",
           }}
           role="list"
         >
@@ -197,14 +197,14 @@ function FAQAccordion({ item, index }: { item: FAQItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: Math.min(index * 0.03, 0.4) }}
-      className="border-b border-white/40 last:border-b-0"
+      className="border-b border-[#f1f5f9] last:border-b-0"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between gap-4 py-5 text-left"
         aria-expanded={isOpen}
       >
-        <span className="text-[15px] font-semibold text-foreground transition-colors hover:text-primary">
+        <span className="text-[14px] font-semibold text-foreground transition-colors hover:text-primary">
           {item.question}
         </span>
         <motion.span

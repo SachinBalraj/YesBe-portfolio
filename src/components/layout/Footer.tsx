@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Send, MapPin, Phone, Mail, Globe,
-  Clock, ChevronUp,
+  Clock,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import logoImg from "@/assets/images/YBlogo.png";
@@ -143,10 +143,6 @@ export function Footer() {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer
       className="relative overflow-hidden"
@@ -165,7 +161,7 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-10 grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]"
+          className="mb-10 grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]"
         >
           {/* ── Column 1: Brand + Newsletter + Social ── */}
           <div className="lg:col-span-1">
@@ -309,15 +305,6 @@ export function Footer() {
           </nav>
         </div>
       </div>
-
-      {/* ── Back to Top ── */}
-      <button
-        onClick={scrollToTop}
-        aria-label="Back to top"
-        className="fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#0F172A]/90 text-gray-400 shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/20 hover:text-white hover:shadow-[0_0_20px_rgba(37,99,235,0.25)] hover:-translate-y-0.5"
-      >
-        <ChevronUp className="h-5 w-5" />
-      </button>
     </footer>
   );
 }

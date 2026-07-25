@@ -688,7 +688,7 @@ export function PricingSection() {
   return (
     <>
       {/* ═══════════ HERO ═══════════ */}
-      <section className="relative overflow-hidden bg-white pt-[140px] pb-12 lg:pt-[160px] lg:pb-16">
+      <section className="relative overflow-hidden bg-white pt-[100px] pb-12 sm:pt-[140px] lg:pt-[160px] lg:pb-16">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
           <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
@@ -738,7 +738,7 @@ export function PricingSection() {
             >
               <a
                 href="#contact"
-                className="group relative z-10 inline-flex min-w-[260px] shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
+                className="group relative z-10 inline-flex w-full sm:w-auto items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
                 style={{ fontFeatureSettings: '"liga" 1, "calt" 1' }}
               >
                 Book Free Consultation
@@ -1075,7 +1075,7 @@ export function PricingSection() {
             >
               <a
                 href="#contact"
-                className="group relative z-10 inline-flex min-w-[260px] shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
+                className="group relative z-10 inline-flex w-full sm:w-auto items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
                 style={{ fontFeatureSettings: '"liga" 1, "calt" 1' }}
               >
                 Book Free Consultation

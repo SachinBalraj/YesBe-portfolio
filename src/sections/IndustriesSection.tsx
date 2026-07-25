@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   GraduationCap, HeartPulse, ShoppingBag, UtensilsCrossed,
   Factory, Landmark, Building, Truck, Home, Rocket, Building2, Globe,
@@ -9,22 +10,23 @@ interface Industry {
   icon: LucideIcon;
   name: string;
   description: string;
+  slug: string;
 }
 
 const industries: Industry[] = [
-  { icon: GraduationCap, name: "Education", description: "School and college ERP, student management, result automation, and e-learning." },
-  { icon: HeartPulse, name: "Healthcare", description: "Hospital management, patient records, scheduling, and pharmacy tracking." },
-  { icon: ShoppingBag, name: "Retail", description: "E-commerce, inventory management, POS systems, and loyalty programs." },
-  { icon: UtensilsCrossed, name: "Restaurants", description: "QR ordering, AI billing, kitchen displays, and inventory forecasting." },
-  { icon: Factory, name: "Manufacturing", description: "Production tracking, supply chain management, and quality dashboards." },
-  { icon: Landmark, name: "Finance", description: "Financial dashboards, automated reporting, and compliance tools." },
-  { icon: Building, name: "Construction", description: "Project management, material tracking, and cost estimation tools." },
-  { icon: Truck, name: "Logistics", description: "Fleet management, delivery tracking, and route optimization." },
-  { icon: Home, name: "Real Estate", description: "Property platforms, CRM, lead management, and virtual tours." },
-  { icon: Rocket, name: "Startups", description: "MVP development, rapid prototyping, and go-to-market strategy." },
-  { icon: Building2, name: "SMEs", description: "Affordable websites, automation, dashboards, and tech consulting." },
-  { icon: Globe, name: "Enterprises", description: "Large-scale ERP, custom software, cloud, and AI integration." },
-  { icon: Landmark, name: "Government", description: "Portals, citizen services, e-governance, and compliance systems." },
+  { icon: GraduationCap, name: "Education", description: "School and college ERP, student management, result automation, and e-learning.", slug: "education" },
+  { icon: HeartPulse, name: "Healthcare", description: "Hospital management, patient records, scheduling, and pharmacy tracking.", slug: "healthcare" },
+  { icon: ShoppingBag, name: "Retail", description: "E-commerce, inventory management, POS systems, and loyalty programs.", slug: "retail" },
+  { icon: UtensilsCrossed, name: "Restaurants", description: "QR ordering, AI billing, kitchen displays, and inventory forecasting.", slug: "hospitality" },
+  { icon: Factory, name: "Manufacturing", description: "Production tracking, supply chain management, and quality dashboards.", slug: "manufacturing" },
+  { icon: Landmark, name: "Finance", description: "Financial dashboards, automated reporting, and compliance tools.", slug: "finance" },
+  { icon: Building, name: "Construction", description: "Project management, material tracking, and cost estimation tools.", slug: "manufacturing" },
+  { icon: Truck, name: "Logistics", description: "Fleet management, delivery tracking, and route optimization.", slug: "logistics" },
+  { icon: Home, name: "Real Estate", description: "Property platforms, CRM, lead management, and virtual tours.", slug: "real-estate" },
+  { icon: Rocket, name: "Startups", description: "MVP development, rapid prototyping, and go-to-market strategy.", slug: "startups" },
+  { icon: Building2, name: "SMEs", description: "Affordable websites, automation, dashboards, and tech consulting.", slug: "smes" },
+  { icon: Globe, name: "Enterprises", description: "Large-scale ERP, custom software, cloud, and AI integration.", slug: "large-enterprises" },
+  { icon: Landmark, name: "Government", description: "Portals, citizen services, e-governance, and compliance systems.", slug: "smes" },
 ];
 
 export function IndustriesSection() {
@@ -35,7 +37,7 @@ export function IndustriesSection() {
       aria-label="Industries served — Education, Healthcare, Retail, Manufacturing, Finance, and more"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,#f0f7ff_0%,transparent_60%)]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -45,7 +47,7 @@ export function IndustriesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
           >
             Industries
           </motion.span>
@@ -54,7 +56,7 @@ export function IndustriesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+            className="text-3xl font-extrabold tracking-[-0.02em] text-foreground sm:text-4xl"
           >
             Industries We{" "}
             <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Serve</span>
@@ -64,20 +66,20 @@ export function IndustriesSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-muted-foreground"
+            className="mx-auto mt-5 max-w-2xl text-[14px] leading-[1.7] text-muted-foreground"
           >
             Custom technology solutions for every industry — from startups to enterprises.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {industries.map((industry, i) => (
             <motion.article
               key={industry.name}
@@ -85,13 +87,18 @@ export function IndustriesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group card-glass rounded-[20px] p-5"
             >
-              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110">
-                <industry.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
-              </div>
-              <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{industry.name}</h3>
-              <p className="text-[13px] leading-relaxed text-muted-foreground">{industry.description}</p>
+              <Link
+                to={`/industries/${industry.slug}`}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="group card-glass block rounded-[16px] p-5 transition-all duration-300"
+              >
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.05] transition-all duration-300 group-hover:bg-primary/[0.1] group-hover:scale-105">
+                  <industry.icon className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
+                </div>
+                <h3 className="mb-1 text-[14px] font-bold text-foreground">{industry.name}</h3>
+                <p className="text-[12px] leading-[1.6] text-muted-foreground">{industry.description}</p>
+              </Link>
             </motion.article>
           ))}
         </div>
