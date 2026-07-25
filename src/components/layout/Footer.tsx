@@ -276,8 +276,7 @@ export function Footer() {
               <a
                 key={l.label}
                 href={l.href}
-                {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                onClick={(e) => { if (!l.external) { e.preventDefault(); handleNav(l.href); } }}
+                onClick={(e) => { e.preventDefault(); handleNav(l.href); }}
                 className="text-xs text-gray-500 transition-colors hover:text-white"
               >
                 {l.label}
