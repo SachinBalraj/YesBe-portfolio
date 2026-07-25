@@ -17,7 +17,6 @@ export interface CaseStudy {
   businessResult: string[];
   challenge: string;
   futureEnhancements: string[];
-  github?: string;
   live?: string;
   developmentProcess: string[];
   clientBenefits: string[];
@@ -108,7 +107,7 @@ export const caseStudies: CaseStudy[] = [
         answer: "Absolutely. The entire experience is designed mobile-first, ensuring a seamless shopping experience on any device.",
       },
     ],
-    github: "#",
+
   },
   {
     slug: "restaurant-qr-ordering",
@@ -192,7 +191,7 @@ export const caseStudies: CaseStudy[] = [
         answer: "The system includes offline fallback with auto-reconnection. Orders are queued and delivered as soon as connectivity is restored.",
       },
     ],
-    github: "#",
+
   },
   {
     slug: "library-management",
@@ -276,7 +275,7 @@ export const caseStudies: CaseStudy[] = [
         answer: "Fines are automatically calculated based on configurable rules — number of days overdue, book type, and institutional policies.",
       },
     ],
-    github: "#",
+
   },
   {
     slug: "business-portfolio",
@@ -443,7 +442,7 @@ export const caseStudies: CaseStudy[] = [
         answer: "A typical RAG-based AI assistant takes 4-6 weeks, depending on the volume of documents and complexity of the knowledge base.",
       },
     ],
-    github: "#",
+
   },
   {
     slug: "erp-management",

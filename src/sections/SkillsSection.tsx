@@ -8,7 +8,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import {
   SiReact, SiNodedotjs, SiMongodb, SiPython, SiDocker,
-  SiTypescript, SiExpress, SiTailwindcss, SiGithub, SiVite,
+  SiTypescript, SiExpress, SiTailwindcss, SiVite,
 } from "react-icons/si";
 import { TbBrandAws, TbBrandOpenai } from "react-icons/tb";
 
@@ -124,7 +124,7 @@ const skills: SkillCard[] = [
     icon: Cloud,
     description: "Cloud deployment and CI/CD pipelines that scale.",
     percent: 88,
-    chips: ["AWS", "Docker", "GitHub", "CI/CD", "Vercel"],
+    chips: ["AWS", "Docker", "CI/CD", "Vercel"],
   },
   {
     title: "Data Analytics & Power BI",
@@ -144,7 +144,7 @@ const skills: SkillCard[] = [
 
 const allChips = [
   "React", "TypeScript", "Node.js", "Express.js", "MongoDB", "MySQL", "PostgreSQL",
-  "Python", "Power BI", "OpenAI", "LangChain", "RAG", "Docker", "AWS", "GitHub",
+  "Python", "Power BI", "OpenAI", "LangChain", "RAG", "Docker", "AWS",
   "Tailwind CSS", "Vite", "REST API", "JWT", "Firebase", "Redis",
 ];
 
@@ -159,7 +159,6 @@ const marqueeItems = [
   { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
   { name: "Express.js", Icon: SiExpress, color: "#000000" },
   { name: "Tailwind", Icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "GitHub", Icon: SiGithub, color: "#181717" },
   { name: "Vite", Icon: SiVite, color: "#646CFF" },
 ];
 

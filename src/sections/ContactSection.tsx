@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Send, CheckCircle, Loader2, Phone, MessageCircle,
@@ -83,14 +83,6 @@ export function ContactSection() {
   const [errorMsg, setErrorMsg] = useState("");
   const [currentStep, setCurrentStep] = useState(0);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const firstInputRef = useRef<HTMLInputElement | HTMLSelectElement>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      firstInputRef.current?.focus();
-    }, 100);
-    return () => clearTimeout(timer);
-  }, [currentStep]);
 
   const serviceOptions = Object.entries(serviceLabels);
   const budgetOptions = Object.entries(budgetLabels);
@@ -309,7 +301,6 @@ export function ContactSection() {
                             Full Name <span className="text-destructive">*</span>
                           </label>
                           <input
-                            ref={firstInputRef as React.RefObject<HTMLInputElement>}
                             id="c-name" type="text" value={formData.name}
                             onChange={(e) => update("name", e.target.value)}
                             placeholder="John Doe" className={`${inputClass} ${inputErrorClass("name")}`}
@@ -368,7 +359,6 @@ export function ContactSection() {
                             Required Service <span className="text-destructive">*</span>
                           </label>
                           <select
-                            ref={firstInputRef as React.RefObject<HTMLSelectElement>}
                             id="c-service" value={formData.service}
                             onChange={(e) => update("service", e.target.value)}
                             className={`${inputClass} ${inputErrorClass("service")}`}
@@ -421,7 +411,6 @@ export function ContactSection() {
                             Project Description <span className="text-destructive">*</span>
                           </label>
                           <textarea
-                            ref={firstInputRef as unknown as React.RefObject<HTMLTextAreaElement>}
                             id="c-desc" rows={3} value={formData.projectDescription}
                             onChange={(e) => update("projectDescription", e.target.value)}
                             placeholder="Describe your project, its goals, and key requirements..."

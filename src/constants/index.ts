@@ -17,7 +17,6 @@ export const SITE_CONFIG = {
   social: {
     linkedin: "https://www.linkedin.com/in/sachin-balraj-2b7650406",
     whatsapp: "https://wa.me/919087795970",
-    github: "https://github.com/sachinbalraj",
   },
 } as const;
 
