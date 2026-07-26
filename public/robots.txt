@@ -1,5 +1,5 @@
 # robots.txt — YesBe
-# https://yesbe.com
+# https://yebe.tech
 
 User-agent: *
 Allow: /
@@ -9,7 +9,7 @@ Disallow: /assets/
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://yesbe.com/sitemap.xml
+Sitemap: https://yebe.tech/sitemap.xml
 
 # Googlebot
 User-agent: Googlebot

@@ -8,7 +8,7 @@ export function KnowledgeCenterPage() {
   useSEO({
     title: "Knowledge Center — AI, ERP, SEO & Technology Guides",
     description: "Free guides and articles on AI, ERP, Power BI, SEO, GEO, AEO, RAG, LangChain, cloud computing, and business automation.",
-    canonical: "https://yesbe.com/knowledge-center",
+    canonical: "https://yebe.tech/knowledge-center",
   });
 
   return (

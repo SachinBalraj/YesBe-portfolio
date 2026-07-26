@@ -97,7 +97,7 @@ export function CaseStudyDetailPage() {
     description: study
       ? `${study.shortOverview} See how YesBe delivered ${study.category} solutions for ${study.clientType}.`
       : "Real-world case studies of AI, ERP, web development, and automation projects by YesBe.",
-    canonical: study ? `https://yesbe.com/case-studies/${study.slug}` : "https://yesbe.com/case-studies",
+    canonical: study ? `https://yebe.tech/case-studies/${study.slug}` : "https://yebe.tech/case-studies",
   });
 
   if (!study) {

@@ -49,7 +49,7 @@ export function ServicesPage() {
   useSEO({
     title: "Our Solutions — AI, ERP, Web Development & More",
     description: "Explore YesBe's comprehensive technology solutions: AI, ERP systems, website development, data analytics, Power BI, cloud computing, and business automation.",
-    canonical: "https://yesbe.com/services",
+    canonical: "https://yebe.tech/services",
   });
 
   return (

@@ -8,7 +8,7 @@ export function PricingPage() {
   useSEO({
     title: "Transparent Pricing — AI Solutions, ERP, Web Development, SEO & Consulting",
     description: "View transparent pricing for AI chatbots, business automation, ERP implementation, website development, Power BI dashboards, SEO, and consulting services at YesBe.",
-    canonical: "https://yesbe.com/pricing",
+    canonical: "https://yebe.tech/pricing",
   });
 
   return (

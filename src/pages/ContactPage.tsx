@@ -9,7 +9,7 @@ export function ContactPage() {
   useSEO({
     title: "Contact Us — Get a Free Consultation",
     description: "Contact YesBe for AI solutions, ERP systems, web development, and business consulting. Book a free consultation today.",
-    canonical: "https://yesbe.com/contact",
+    canonical: "https://yebe.tech/contact",
   });
 
   return (

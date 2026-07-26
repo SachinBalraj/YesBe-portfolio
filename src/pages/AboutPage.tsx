@@ -13,7 +13,7 @@ export function AboutPage() {
   useSEO({
     title: "About YesBe — Company, Founder & Mission",
     description: "Learn about YesBe — a technology consulting company led by Sachin Balraj, specializing in AI, ERP, web development, and business automation.",
-    canonical: "https://yesbe.com/about",
+    canonical: "https://yebe.tech/about",
   });
 
   return (

@@ -10,7 +10,7 @@ export function CaseStudiesPage() {
   useSEO({
     title: "Case Studies — AI, ERP & Web Development Projects",
     description: "See real-world case studies of AI, ERP, web development, and automation projects delivered by YesBe for startups, SMEs, and enterprises.",
-    canonical: "https://yesbe.com/case-studies",
+    canonical: "https://yebe.tech/case-studies",
   });
 
   return (

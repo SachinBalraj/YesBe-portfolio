@@ -70,7 +70,7 @@ export function IndustryDetailPage() {
     description: industry
       ? `${industry.description} Explore technology solutions, features, and case studies for ${industry.title} by YesBe.`
       : "Custom technology solutions for healthcare, education, retail, manufacturing, and more industries by YesBe.",
-    canonical: industry ? `https://yesbe.com/industries/${industry.slug}` : "https://yesbe.com/industries",
+    canonical: industry ? `https://yebe.tech/industries/${industry.slug}` : "https://yebe.tech/industries",
   });
 
   if (!industry) {

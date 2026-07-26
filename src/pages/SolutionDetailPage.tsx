@@ -69,7 +69,7 @@ export function SolutionDetailPage() {
     description: solution
       ? `${solution.description} Explore features, benefits, and our process for ${solution.title} by YesBe.`
       : "Enterprise-grade solutions for AI, ERP, web development, and automation by YesBe.",
-    canonical: solution ? `https://yesbe.com/solutions/${solution.slug}` : "https://yesbe.com/solutions",
+    canonical: solution ? `https://yebe.tech/solutions/${solution.slug}` : "https://yebe.tech/solutions",
   });
 
   if (!solution) {

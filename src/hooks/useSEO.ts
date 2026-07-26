@@ -8,7 +8,7 @@ interface SEOData {
 }
 
 const SITE_NAME = "YesBe";
-const DEFAULT_URL = "https://yesbe.com";
+const DEFAULT_URL = "https://yebe.tech";
 
 export function useSEO({ title, description, canonical, ogImage }: SEOData) {
   useEffect(() => {

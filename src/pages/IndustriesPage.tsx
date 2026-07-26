@@ -43,7 +43,7 @@ export function IndustriesPage() {
   useSEO({
     title: "Industries We Serve — Healthcare, Education, Retail & More",
     description: "YesBe provides technology solutions for healthcare, education, retail, manufacturing, logistics, hospitality, finance, and real estate industries.",
-    canonical: "https://yesbe.com/industries",
+    canonical: "https://yebe.tech/industries",
   });
 
   return (

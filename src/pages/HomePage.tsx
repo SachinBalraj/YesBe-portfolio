@@ -15,7 +15,7 @@ export function HomePage() {
   useSEO({
     title: "AI, ERP, Web Development & Business Solutions | YesBe",
     description: "YesBe helps startups, SMEs, and enterprises build AI-powered software, ERP systems, Power BI dashboards, and modern web applications. From strategy to deployment.",
-    canonical: "https://yesbe.com",
+    canonical: "https://yebe.tech",
   });
 
   return (
