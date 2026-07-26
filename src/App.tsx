@@ -6,6 +6,7 @@ import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { CursorGlow } from "@/components/common/CursorGlow";
 import { LoadingScreen } from "@/components/common/LoadingScreen";
 import { Analytics } from "@/components/common/Analytics";
+import { CookieConsent } from "@/components/common/CookieConsent";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -76,6 +77,7 @@ function App() {
       {loading && <LoadingScreen onComplete={handleLoaded} />}
       <ThemeProvider>
         <CursorGlow />
+        <CookieConsent />
         <ScrollToTopButton />
         <Navbar />
         <main id="main-content">

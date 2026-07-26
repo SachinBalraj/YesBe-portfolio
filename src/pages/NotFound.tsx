@@ -6,11 +6,13 @@ import logoImg from "@/assets/images/YBlogo.png";
 
 const suggestions = [
   { label: "Home", href: "/" },
-  { label: "Solutions", href: "/#solutions" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "Knowledge Center", href: "/#knowledge" },
-  { label: "Contact", href: "/#contact" },
+  { label: "About", href: "/about" },
+  { label: "Solutions", href: "/services" },
+  { label: "Industries", href: "/industries" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Knowledge Center", href: "/knowledge-center" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function NotFound() {

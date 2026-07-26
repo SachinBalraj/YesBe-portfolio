@@ -10,6 +10,14 @@ import logoImg from "@/assets/images/YBlogo.png";
 
 /* ─── SVG Icons ─── */
 
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -70,9 +78,10 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "#", icon: InstagramIcon },
-  { label: "Facebook", href: "#", icon: FacebookIcon },
-  { label: "X", href: "#", icon: XIcon },
+  { label: "LinkedIn", href: SITE_CONFIG.social.linkedin, icon: LinkedInIcon },
+  { label: "Instagram", href: "https://www.instagram.com/yesbe.co", icon: InstagramIcon },
+  { label: "Facebook", href: "https://www.facebook.com/yesbe.co", icon: FacebookIcon },
+  { label: "X", href: "https://x.com/yesbe_co", icon: XIcon },
 ];
 
 const quickLinks = [
@@ -108,6 +117,7 @@ export function Footer() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const handleNav = (href: string) => {
     if (href === "#") return;
@@ -117,11 +127,20 @@ export function Footer() {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 3000);
+    setEmailError("");
+
+    if (!email.trim()) {
+      setEmailError("Please enter your email address");
+      return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+
+    setSubscribed(true);
+    setEmail("");
+    setTimeout(() => setSubscribed(false), 3000);
   };
 
   return (
@@ -157,21 +176,28 @@ export function Footer() {
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="mb-6">
               <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Subscribe to our newsletter</p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 min-w-0 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-gray-500 outline-none transition-all duration-200 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
-                />
-                <button
-                  type="submit"
-                  className="flex shrink-0 items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
-                >
-                  {subscribed ? "Subscribed!" : <><Send className="h-3.5 w-3.5" /> Subscribe</>}
-                </button>
+              <div className="flex flex-col gap-2">
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
+                    placeholder="Enter your email"
+                    required
+                    aria-label="Email address for newsletter"
+                    aria-invalid={!!emailError}
+                    className="flex-1 min-w-0 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-gray-500 outline-none transition-all duration-200 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
+                  />
+                  <button
+                    type="submit"
+                    className="flex shrink-0 items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                  >
+                    {subscribed ? "Subscribed!" : <><Send className="h-3.5 w-3.5" /> Subscribe</>}
+                  </button>
+                </div>
+                {emailError && (
+                  <p className="text-xs text-red-400">{emailError}</p>
+                )}
               </div>
             </form>
 

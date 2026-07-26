@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { getStoredConsent, getStoredPreferences } from "./CookieConsent";
 
 const GA_ID = import.meta.env.VITE_GA_ID;
 
@@ -14,23 +15,50 @@ function gtag(...args: unknown[]) {
   window.dataLayer.push(args);
 }
 
+function loadGA() {
+  if (!GA_ID || GA_ID === "G-XXXXXXXXXX") return;
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  script.id = "ga-script";
+  document.head.appendChild(script);
+
+  window.gtag = gtag;
+  gtag("js", new Date());
+  gtag("config", GA_ID, {
+    send_page_view: false,
+    cookie_flags: "SameSite=None;Secure",
+  });
+}
+
+function removeGA() {
+  const script = document.getElementById("ga-script");
+  if (script) script.remove();
+  if (window.dataLayer) window.dataLayer.length = 0;
+}
+
 export function Analytics() {
   useEffect(() => {
-    if (!GA_ID || GA_ID === "G-XXXXXXXXXX") return;
+    const consent = getStoredConsent();
+    const prefs = getStoredPreferences();
 
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-    document.head.appendChild(script);
+    if (consent === "all" || (consent && prefs.analytics)) {
+      loadGA();
+    }
 
-    window.gtag = gtag;
-    gtag("js", new Date());
-    gtag("config", GA_ID, {
-      send_page_view: false,
-    });
+    const handleConsent = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail.level === "all" || detail.preferences?.analytics) {
+        loadGA();
+      } else {
+        removeGA();
+      }
+    };
 
+    window.addEventListener("cookie-consent-updated", handleConsent);
     return () => {
-      document.head.removeChild(script);
+      window.removeEventListener("cookie-consent-updated", handleConsent);
     };
   }, []);
 

@@ -5,8 +5,11 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /*.json$
 Disallow: /assets/
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://yesbe.com/sitemap.xml
 
 # Googlebot
 User-agent: Googlebot
@@ -20,7 +23,7 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-# AI Search Engines — ChatGPT, Perplexity, Claude, Gemini
+# AI Search Engines
 User-agent: GPTBot
 Allow: /
 Disallow: /api/
@@ -70,9 +73,3 @@ User-agent: Applebot-Extended
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-
-# Crawl-delay for polite bots
-Crawl-delay: 1
-
-# Sitemap
-Sitemap: https://yesbe.com/sitemap.xml
