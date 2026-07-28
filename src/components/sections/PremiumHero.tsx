@@ -7,8 +7,9 @@ import {
   Shield,
   Globe,
 } from "lucide-react";
-import portraitImg from "@/assets/images/sachin.jpg";
 import { SITE_CONFIG } from "@/constants";
+
+const portraitImg = "/sachin.jpg";
 import {
   fadeInUp,
   staggerContainer,

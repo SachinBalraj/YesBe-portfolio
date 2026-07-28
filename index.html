@@ -44,24 +44,48 @@
     <meta name="msapplication-TileColor" content="#2563EB" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
 
-    <!-- Google Fonts — Inter -->
+    <!-- Preconnect critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
-    <!-- Unsplash images (case studies, industries, knowledge center) -->
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+
+    <!-- Google Fonts — Inter (async, non-render-blocking) -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    </noscript>
+
+    <!-- Preload above-the-fold images -->
+    <link rel="preload" href="/sachin.jpg" as="image" fetchpriority="high" />
+
+    <!-- DNS prefetch for remaining origins -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
-    <!-- Preload critical above-the-fold logo -->
-    <link rel="preload" href="/YBlogo.png" as="image" fetchpriority="high" />
+    <!-- Inline critical CSS for fast initial paint -->
+    <style>
+      *,*::before,*::after{box-sizing:border-box;border:0 solid}
+      html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+      body{min-height:100vh;margin:0;background:#fff;color:#0f172a;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-feature-settings:"rlig" 1,"calt" 1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+      #root{min-height:100vh}
+      .fixed.inset-0{z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    </style>
   </head>
   <body class="min-h-screen bg-background antialiased">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fast initial loading indicator while JS loads -->
+      <div style="position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff">
+        <div style="width:48px;height:48px;border:3px solid #e2e8f0;border-top-color:#2563eb;border-radius:50%;animation:spin .8s linear infinite"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- Schema.org JSON-LD — Organization (primary) -->
