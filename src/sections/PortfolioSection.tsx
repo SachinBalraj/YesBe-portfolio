@@ -1,8 +1,12 @@
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ExternalLink, CheckCircle2, Clock, ArrowUpRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { caseStudies, type CaseStudy } from "@/data/caseStudies";
+
+const PLACEHOLDER_IMG =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='450' viewBox='0 0 700 450'%3E%3Crect width='700' height='450' fill='%23f8fafc'/%3E%3Cpath d='M280 200h140v60a10 10 0 01-10 10H290a10 10 0 01-10-10v-60z' fill='%23e2e8f0'/%3E%3Cpath d='M260 190a12 12 0 0112-12h156a12 12 0 0112 12v10H260v-10z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 
 /* ─── Project Card ─── */
 
@@ -12,6 +16,9 @@ function ProjectCard({
   project: CaseStudy;
 }) {
   const navigate = useNavigate();
+  const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = PLACEHOLDER_IMG;
+  }, []);
 
   const goToDetail = () => {
     navigate(`/case-studies/${project.slug}`);
@@ -40,6 +47,7 @@ function ProjectCard({
           decoding="async"
           width={700}
           height={450}
+          onError={handleImgError}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

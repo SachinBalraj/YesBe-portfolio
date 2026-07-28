@@ -1,9 +1,13 @@
+import { useCallback } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import apolloLogo from "@/assets/images/apollologo.png";
 import fashionLogo from "@/assets/images/fflogo.jpg";
 import rosisLogo from "@/assets/images/rosis46.jpg";
 import balrajLogo from "@/assets/images/balraj.png";
+
+const PLACEHOLDER_LOGO =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='90' viewBox='0 0 170 90'%3E%3Crect width='170' height='90' fill='%23f8fafc' rx='8'/%3E%3Cpath d='M65 35h40v20a4 4 0 01-4 4H69a4 4 0 01-4-4V35z' fill='%23e2e8f0'/%3E%3Cpath d='M55 33a4 4 0 014-4h52a4 4 0 014 4v2H55v-2z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 
 interface Brand {
   logo: string;
@@ -50,6 +54,10 @@ const brands: Brand[] = [
 ];
 
 export function TrustedBrandsSection() {
+  const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = PLACEHOLDER_LOGO;
+  }, []);
+
   return (
     <section
       id="brands"
@@ -142,6 +150,7 @@ export function TrustedBrandsSection() {
                   height={90}
                   loading="lazy"
                   decoding="async"
+                  onError={handleImgError}
                   className="max-h-[90px] max-w-[170px] object-contain transition-transform duration-350 group-hover:scale-105"
                 />
               </div>

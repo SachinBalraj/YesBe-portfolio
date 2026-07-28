@@ -832,10 +832,16 @@ function ContentBlock({ heading, children }: { heading: string; children: string
   );
 }
 
+const KC_FALLBACK =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23f8fafc'/%3E%3Cpath d='M340 200h120v40a8 8 0 01-8 8H348a8 8 0 01-8-8v-40z' fill='%23e2e8f0'/%3E%3Cpath d='M320 192a10 10 0 0110-10h140a10 10 0 0110 10v8H320v-8z' fill='%23cbd5e1'/%3E%3C/svg%3E";
+
 /* ─── Article Card ─── */
 
 function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void }) {
   const Icon = article.icon;
+  const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = KC_FALLBACK;
+  }, []);
 
   return (
     <motion.article
@@ -854,6 +860,9 @@ function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void
           alt={`${article.title} — ${article.category} guide by YesBe Technologies`}
           loading="lazy"
           decoding="async"
+          width={800}
+          height={450}
+          onError={handleImgError}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

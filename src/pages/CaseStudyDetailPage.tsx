@@ -5,7 +5,7 @@ import {
   ExternalLink, ChevronDown, Layers, Lightbulb, Target,
   TrendingUp, MessageCircle, Phone,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useSEO } from "@/hooks/useSEO";
 import { getCaseStudySeoDescription, getCaseStudySeoTitle, SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { PageHeader } from "@/components/common/PageHeader";
@@ -13,6 +13,9 @@ import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { JsonLd } from "@/components/common/JsonLd";
 import { getCaseStudyBySlug, caseStudies, type CaseStudy } from "@/data/caseStudies";
 import { fadeInUp, staggerContainer } from "@/animations";
+
+const HERO_FALLBACK =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23f8fafc'/%3E%3Cpath d='M500 270h200v50a10 10 0 01-10 10H510a10 10 0 01-10-10v-50z' fill='%23e2e8f0'/%3E%3Cpath d='M480 258a14 14 0 0114-14h212a14 14 0 0114 14v12H480v-12z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 import { ContactSection } from "@/sections/ContactSection";
 
 /* ─── FAQ Accordion ─── */
@@ -126,6 +129,9 @@ export function CaseStudyDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const study = slug ? getCaseStudyBySlug(slug) : undefined;
+  const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = HERO_FALLBACK;
+  }, []);
 
   useSEO({
     title: study ? getCaseStudySeoTitle(study.slug, study.title) : SEO_TITLES.caseStudyNotFound,
@@ -246,6 +252,7 @@ export function CaseStudyDetailPage() {
               height={600}
               loading="eager"
               decoding="async"
+              onError={handleImgError}
               className="h-64 w-full object-cover sm:h-80 lg:h-[450px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
