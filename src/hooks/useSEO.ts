@@ -7,54 +7,69 @@ interface SEOData {
   ogImage?: string;
 }
 
-const SITE_NAME = "YesBe";
-const DEFAULT_URL = "https://yebe.tech";
+const SITE_URL = "https://yebe.tech";
+const DEFAULT_OG_IMAGE = `${SITE_URL}/YBlogo.png`;
+const SITE_NAME = "YesBe Technologies";
+const OG_LOCALE = "en_US";
 
-export function useSEO({ title, description, canonical, ogImage }: SEOData) {
+function setOrUpdateMeta(
+  attr: "name" | "property",
+  value: string,
+  content: string,
+) {
+  const selector =
+    attr === "name"
+      ? `meta[name="${value}"]`
+      : `meta[property="${value}"]`;
+  let el = document.querySelector(selector) as HTMLMetaElement;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, value);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+function setOrUpdateLink(rel: string, href: string) {
+  let el = document.querySelector(
+    `link[rel="${rel}"]`,
+  ) as HTMLLinkElement;
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", rel);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", href);
+}
+
+export function useSEO({
+  title,
+  description,
+  canonical,
+  ogImage,
+}: SEOData) {
   useEffect(() => {
-    const fullTitle = `${title} | ${SITE_NAME}`;
-    document.title = fullTitle;
+    const url = canonical || SITE_URL;
+    const image = ogImage || DEFAULT_OG_IMAGE;
 
-    const setMeta = (name: string, content: string, attr?: string) => {
-      let el = attr
-        ? (document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement)
-        : (document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement);
-      if (!el) {
-        el = document.createElement("meta");
-        if (attr) el.setAttribute(attr, name);
-        else el.setAttribute("name", name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
+    document.title = title;
 
-    setMeta("description", description);
-    setMeta("og:title", "property");
-    document.querySelector('meta[property="og:title"]')?.setAttribute("content", fullTitle);
-    setMeta("og:description", "property");
-    document.querySelector('meta[property="og:description"]')?.setAttribute("content", description);
-    setMeta("og:type", "property");
-    document.querySelector('meta[property="og:type"]')?.setAttribute("content", "website");
-    setMeta("og:url", "property");
-    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonical || DEFAULT_URL);
-    if (ogImage) {
-      setMeta("og:image", "property");
-      document.querySelector('meta[property="og:image"]')?.setAttribute("content", ogImage);
-    }
+    setOrUpdateMeta("name", "description", description);
 
-    setMeta("twitter:card", "name");
-    document.querySelector('meta[name="twitter:card"]')?.setAttribute("content", "summary_large_image");
-    setMeta("twitter:title", "name");
-    document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", fullTitle);
-    setMeta("twitter:description", "name");
-    document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", description);
+    setOrUpdateMeta("property", "og:title", title);
+    setOrUpdateMeta("property", "og:description", description);
+    setOrUpdateMeta("property", "og:url", url);
+    setOrUpdateMeta("property", "og:image", image);
+    setOrUpdateMeta("property", "og:site_name", SITE_NAME);
+    setOrUpdateMeta("property", "og:locale", OG_LOCALE);
+    setOrUpdateMeta("property", "og:type", "website");
 
-    let canonicalEl = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonicalEl) {
-      canonicalEl = document.createElement("link");
-      canonicalEl.setAttribute("rel", "canonical");
-      document.head.appendChild(canonicalEl);
-    }
-    canonicalEl.setAttribute("href", canonical || DEFAULT_URL);
+    setOrUpdateMeta("name", "twitter:card", "summary_large_image");
+    setOrUpdateMeta("name", "twitter:url", url);
+    setOrUpdateMeta("name", "twitter:title", title);
+    setOrUpdateMeta("name", "twitter:description", description);
+    setOrUpdateMeta("name", "twitter:image", image);
+
+    setOrUpdateLink("canonical", url);
   }, [title, description, canonical, ogImage]);
 }

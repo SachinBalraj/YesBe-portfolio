@@ -273,7 +273,7 @@ function SolutionCard({
       <motion.div
         whileHover={{ y: -8 }}
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
-        className="relative h-full overflow-hidden rounded-[20px] border border-white/50 bg-white/70 p-8 backdrop-blur-sm transition-all duration-300 ease-out"
+        className="relative h-full overflow-hidden rounded-[20px] border border-white/50 bg-white/70 p-6 sm:p-8 backdrop-blur-sm transition-all duration-300 ease-out"
         style={{
           boxShadow: "0 1px 2px rgba(0,0,0,0.02), 0 2px 8px rgba(37,99,235,0.025), inset 0 1px 0 rgba(255,255,255,0.5)",
         }}
@@ -348,7 +348,7 @@ function SolutionCard({
             className="inline-flex items-center gap-2 text-[14px] font-semibold transition-all duration-300 group/link"
             style={{ color: a.pillText }}
           >
-            <span className="group-hover/link:mr-1 transition-all duration-300">Learn More</span>
+            <span className="group-hover/link:mr-1 transition-all duration-300">Explore {solution.title}</span>
             <ArrowRight
               className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1"
             />

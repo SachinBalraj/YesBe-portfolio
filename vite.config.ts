@@ -24,6 +24,7 @@ export default defineConfig({
     sourcemap: false,
     minify: "esbuild",
     cssMinify: "esbuild",
+    cssCodeSplit: true,
     modulePreload: {
       polyfill: true,
     },
@@ -34,6 +35,8 @@ export default defineConfig({
             if (id.includes("react-dom") || id.includes("react-router")) return "vendor";
             if (id.includes("framer-motion")) return "motion";
             if (id.includes("@radix-ui")) return "radix";
+            if (id.includes("react-hook-form") || id.includes("zod")) return "forms";
+            if (id.includes("@emailjs")) return "emailjs";
             if (
               id.includes("lucide-react") ||
               id.includes("class-variance-authority") ||

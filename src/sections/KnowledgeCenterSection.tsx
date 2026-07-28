@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, X, Clock, ArrowRight, Share2, Tag,
@@ -598,6 +599,22 @@ const allFilters = [
 ];
 const popularTags = ["AI", "React", "Node.js", "ERP", "Power BI", "MongoDB", "Cloud", "Automation", "SEO", "GEO", "AEO", "RAG", "LangChain", "OpenAI", "Web Development", "Data Analytics", "Business Intelligence", "Digital Marketing"];
 
+const filterToServiceSlug: Record<string, { slug: string; label: string }> = {
+  AI: { slug: "ai-solutions", label: "AI Solutions" },
+  ERP: { slug: "erp-systems", label: "ERP Systems" },
+  "Web Dev": { slug: "website-development", label: "Website Development" },
+  Analytics: { slug: "data-analytics", label: "Data Analytics" },
+  "Power BI": { slug: "power-bi-dashboards", label: "Power BI Dashboards" },
+  "Business Automation": { slug: "business-automation", label: "Business Automation" },
+  Cloud: { slug: "cloud-devops", label: "Cloud & DevOps" },
+  "Digital Marketing": { slug: "digital-marketing", label: "Digital Marketing" },
+  SEO: { slug: "geo", label: "SEO & GEO Services" },
+  GEO: { slug: "geo", label: "GEO Services" },
+  AEO: { slug: "aeo", label: "AEO Services" },
+  RAG: { slug: "ai-solutions", label: "AI Solutions" },
+  LangChain: { slug: "ai-solutions", label: "AI Solutions" },
+};
+
 /* ─── Article Modal ─── */
 
 function ArticleModal({ article, onClose }: { article: Article; onClose: () => void }) {
@@ -737,6 +754,26 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
 
           <ContentBlock heading="Conclusion">{article.content.conclusion}</ContentBlock>
 
+          {/* Related Service Link */}
+          {filterToServiceSlug[article.filter] && (() => {
+            const svc = filterToServiceSlug[article.filter];
+            return (
+              <div className="rounded-2xl border border-primary/10 bg-primary/[0.03] p-5">
+                <h4 className="text-sm font-bold text-foreground mb-1">Explore Related Service</h4>
+                <p className="text-[13px] text-muted-foreground mb-3">
+                  Learn how YesBe can help you implement the concepts discussed in this article.
+                </p>
+                <Link
+                  to={`/solutions/${svc.slug}`}
+                  onClick={onClose}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Explore {svc.label} <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            );
+          })()}
+
           {/* CTA */}
           <div className="rounded-2xl border border-[#2563eb]/20 bg-gradient-to-br from-[#eff6ff] to-white p-6 text-center">
             <p className="text-[15px] font-medium text-foreground mb-4">{article.content.cta}</p>
@@ -814,7 +851,7 @@ function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void
       <div className="relative aspect-[16/9] w-full overflow-hidden">
         <img
           src={article.image}
-          alt={article.title}
+          alt={`${article.title} — ${article.category} guide by YesBe Technologies`}
           loading="lazy"
           decoding="async"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -840,7 +877,7 @@ function ArticleCard({ article, onOpen }: { article: Article; onOpen: () => void
         </div>
       </div>
       <div className="px-6 pb-6">
-        <button onClick={onOpen} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-muted px-4 py-2.5 text-[13px] font-semibold text-primary transition-all duration-200 group-hover:border-[#2563eb]/30 group-hover:bg-[#2563eb] group-hover:text-white">
+        <button onClick={onOpen} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-muted px-4 py-3 text-[13px] font-semibold text-primary transition-all duration-200 group-hover:border-[#2563eb]/30 group-hover:bg-[#2563eb] group-hover:text-white">
           Read Article
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
         </button>
@@ -897,7 +934,7 @@ export function KnowledgeCenterSection() {
             </div>
             <div className="flex flex-wrap justify-center gap-2">
               {allFilters.map((f) => (
-                <button key={f} onClick={() => setActiveFilter(f)} className={`rounded-full px-4 py-1.5 text-[12px] font-semibold transition-all duration-200 ${activeFilter === f ? "bg-[#2563eb] text-white shadow-sm" : "border border-white/40 bg-white text-muted-foreground hover:border-[#2563eb]/30 hover:text-primary"}`}>
+                <button key={f} onClick={() => setActiveFilter(f)} className={`rounded-full px-4 py-2 text-[12px] font-semibold transition-all duration-200 ${activeFilter === f ? "bg-[#2563eb] text-white shadow-sm" : "border border-white/40 bg-white text-muted-foreground hover:border-[#2563eb]/30 hover:text-primary"}`}>
                   {f}
                 </button>
               ))}
@@ -944,7 +981,7 @@ export function KnowledgeCenterSection() {
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
               {popularTags.map((t, i) => (
-                <motion.span key={t} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.025 }} whileHover={{ y: -3, scale: 1.06 }} className="rounded-full border border-white/40 bg-white px-3.5 py-1.5 text-[12px] font-semibold text-foreground cursor-default transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white">
+                <motion.span key={t} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.025 }} whileHover={{ y: -3, scale: 1.06 }} className="rounded-full border border-white/40 bg-white px-3.5 py-2 text-[12px] font-semibold text-foreground cursor-default transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white">
                   {t}
                 </motion.span>
               ))}
@@ -952,14 +989,14 @@ export function KnowledgeCenterSection() {
           </motion.div>
 
           {/* Bottom CTA */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center rounded-[22px] border border-white/40 bg-muted p-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center rounded-[22px] border border-white/40 bg-muted p-6 sm:p-10">
             <h3 className="text-xl font-bold text-foreground">Still have questions?</h3>
             <p className="mt-2 text-[15px] text-muted-foreground">Let&apos;s discuss your project and build the right solution together.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md">
+              <a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md">
                 Book Consultation <ArrowRight className="h-4 w-4" />
               </a>
-              <a href={SITE_CONFIG.social.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-200 hover:border-primary/30 hover:shadow-md">
+              <a href={SITE_CONFIG.social.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3.5 text-sm font-semibold text-foreground shadow-sm transition-all duration-200 hover:border-primary/30 hover:shadow-md">
                 Chat on WhatsApp
               </a>
             </div>

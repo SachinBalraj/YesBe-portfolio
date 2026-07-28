@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { JsonLd } from "@/components/common/JsonLd";
 
 interface FAQItem {
   question: string;
@@ -112,7 +113,17 @@ const faqData: FAQItem[] = [
 
 export function FAQSection() {
   return (
-    <section
+    <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqData.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }} />
+      <section
       id="faq"
       className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16"
       aria-label="Frequently Asked Questions — Services, pricing, technologies, and development process"
@@ -185,6 +196,7 @@ export function FAQSection() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }
 

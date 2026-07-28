@@ -51,13 +51,13 @@ export function AboutSection() {
               className="group relative inline-block cursor-pointer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              aria-label="YesBe Company Logo — Go to homepage"
+              aria-label="YesBe Technologies Company Logo — Go to homepage"
             >
               <div className="relative rounded-2xl bg-white p-6 shadow-[0_4px_24px_rgba(37,99,235,0.08),0_1px_4px_rgba(0,0,0,0.04)] transition-shadow duration-300 group-hover:shadow-[0_8px_40px_rgba(37,99,235,0.14),0_2px_8px_rgba(0,0,0,0.06)]">
                 <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[#2563eb]/[0.06] to-[#60a5fa]/[0.04] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
                 <img
                   src={logoImg}
-                  alt="YesBe Company Logo"
+                  alt="YesBe Technologies Company Logo"
                   width={400}
                   height={400}
                   loading="lazy"

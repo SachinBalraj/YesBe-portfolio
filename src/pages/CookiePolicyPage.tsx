@@ -1,6 +1,7 @@
 import { useSEO } from "@/hooks/useSEO";
 import { LegalPageLayout } from "@/components/common/LegalPageLayout";
 import { SITE_CONFIG } from "@/constants";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -32,8 +33,8 @@ const schema = {
 
 export function CookiePolicyPage() {
   useSEO({
-    title: "Cookie Policy — How We Use Cookies",
-    description: "YesBe Cookie Policy. Understand the types of cookies we use, their purpose, analytics tools, and how to manage your cookie preferences.",
+    title: SEO_TITLES.cookiePolicy,
+    description: SEO_DESCRIPTIONS.cookiePolicy,
     canonical: "https://yebe.tech/cookie-policy",
   });
 

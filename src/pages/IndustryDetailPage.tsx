@@ -2,19 +2,20 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useSEO } from "@/hooks/useSEO";
+import { getIndustrySeoDescription, getIndustrySeoTitle, SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { getIndustryBySlug } from "@/data/industries";
 import { getSolutionBySlug, type SolutionDetail } from "@/data/solutions";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { ContactSection } from "@/sections/ContactSection";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import { JsonLd } from "@/components/common/JsonLd";
 import {
   ChevronDown,
   ArrowRight,
   ArrowLeft,
   Check,
-  ChevronRight,
   Phone,
   MessageCircle,
-  Home,
   Layers,
   Target,
   Lightbulb,
@@ -53,7 +54,7 @@ function SectionHeading({ children, icon: Icon }: { children: React.ReactNode; i
   return (
     <div className="flex items-center gap-2 mb-4">
       {Icon && <Icon className="h-4 w-4 text-primary" />}
-      <h3 className="text-lg font-bold text-foreground">{children}</h3>
+      <h2 className="text-lg font-bold text-foreground">{children}</h2>
     </div>
   );
 }
@@ -66,10 +67,8 @@ export function IndustryDetailPage() {
   const industry = slug ? getIndustryBySlug(slug) : undefined;
 
   useSEO({
-    title: industry ? `${industry.title} — YesBe Industry Solutions` : "Industry — YesBe",
-    description: industry
-      ? `${industry.description} Explore technology solutions, features, and case studies for ${industry.title} by YesBe.`
-      : "Custom technology solutions for healthcare, education, retail, manufacturing, and more industries by YesBe.",
+    title: industry ? getIndustrySeoTitle(industry.slug, industry.title) : SEO_TITLES.industryNotFound,
+    description: industry ? getIndustrySeoDescription(industry.slug, industry.title) : SEO_DESCRIPTIONS.industryNotFound,
     canonical: industry ? `https://yebe.tech/industries/${industry.slug}` : "https://yebe.tech/industries",
   });
 
@@ -98,6 +97,23 @@ export function IndustryDetailPage() {
 
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: `${industry.title} — YesBe Technologies`,
+        description: industry.description,
+        url: `https://yebe.tech/industries/${industry.slug}`,
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: industry.faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-white pt-[140px] pb-16 lg:pt-[160px] lg:pb-20">
         <div className="pointer-events-none absolute inset-0">
@@ -112,15 +128,8 @@ export function IndustryDetailPage() {
             className="max-w-4xl"
           >
             {/* Breadcrumb */}
-            <motion.div variants={fadeInUp} className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
-              <Link to="/" className="inline-flex items-center gap-1 hover:text-primary transition-colors">
-                <Home className="h-3.5 w-3.5" />
-                Home
-              </Link>
-              <ChevronRight className="h-3 w-3" />
-              <Link to="/industries" className="hover:text-primary transition-colors">Industries</Link>
-              <ChevronRight className="h-3 w-3" />
-              <span className="text-foreground font-medium">{industry.title}</span>
+            <motion.div variants={fadeInUp}>
+              <Breadcrumbs items={[{ label: "Industries", href: "/industries" }, { label: industry.title }]} />
             </motion.div>
 
             {/* Icon + Category */}
@@ -191,7 +200,7 @@ export function IndustryDetailPage() {
           >
             <img
               src={industry.heroImage}
-              alt={`${industry.title} — ${industry.category} industry solutions by YesBe`}
+              alt={`${industry.title} — ${industry.category} industry solutions by YesBe Technologies`}
               width={1200}
               height={600}
               loading="eager"

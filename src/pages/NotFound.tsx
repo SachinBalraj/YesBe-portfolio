@@ -2,6 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowRight, Home, MessageCircle, ArrowLeft, Compass } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import { JsonLd } from "@/components/common/JsonLd";
 import logoImg from "@/assets/images/YBlogo.png";
 
 const suggestions = [
@@ -18,6 +21,12 @@ const suggestions = [
 export function NotFound() {
   const [query, setQuery] = useState("");
 
+  useSEO({
+    title: SEO_TITLES.notFound,
+    description: SEO_DESCRIPTIONS.notFound,
+    canonical: "https://yebe.tech/404",
+  });
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
@@ -26,7 +35,16 @@ export function NotFound() {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4">
+    <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: SEO_TITLES.notFound,
+        description: SEO_DESCRIPTIONS.notFound,
+        url: "https://yebe.tech/404",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
+      <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4">
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-aurora" />
@@ -61,24 +79,24 @@ export function NotFound() {
         </motion.div>
 
         {/* 404 */}
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="text-7xl font-extrabold tracking-tight text-foreground sm:text-8xl"
         >
           <span className="text-gradient">404</span>
-        </motion.h1>
+        </motion.div>
 
         {/* Title */}
-        <motion.h2
+        <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
           className="mt-3 text-xl font-bold text-foreground"
         >
           Page Not Found
-        </motion.h2>
+        </motion.h1>
 
         {/* Description */}
         <motion.p
@@ -170,10 +188,11 @@ export function NotFound() {
           transition={{ delay: 0.8, duration: 0.5 }}
           className="mt-12 flex flex-col items-center"
         >
-          <img src={logoImg} alt="YesBe Logo" width={40} height={40} className="h-10 w-10 object-contain rounded-xl opacity-60" />
+          <img src={logoImg} loading="lazy" alt="YesBe Technologies Logo" width={40} height={40} className="h-10 w-10 object-contain rounded-xl opacity-60" />
           <p className="mt-2 text-[11px] text-muted-foreground">&copy; 2026 YesBe</p>
         </motion.div>
       </div>
     </div>
+    </>
   );
 }

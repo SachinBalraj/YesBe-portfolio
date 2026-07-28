@@ -1,5 +1,6 @@
 import { useSEO } from "@/hooks/useSEO";
 import { LegalPageLayout } from "@/components/common/LegalPageLayout";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -33,8 +34,8 @@ const schema = {
 
 export function TermsAndConditionsPage() {
   useSEO({
-    title: "Terms & Conditions — Service Agreement",
-    description: "YesBe Terms & Conditions. Read about our service terms, payment policies, intellectual property rights, project timelines, and legal obligations.",
+    title: SEO_TITLES.termsAndConditions,
+    description: SEO_DESCRIPTIONS.termsAndConditions,
     canonical: "https://yebe.tech/terms-and-conditions",
   });
 

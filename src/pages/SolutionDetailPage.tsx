@@ -2,18 +2,19 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useSEO } from "@/hooks/useSEO";
+import { getSolutionSeoDescription, getSolutionSeoTitle, SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { getSolutionBySlug, type SolutionDetail } from "@/data/solutions";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { ContactSection } from "@/sections/ContactSection";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import { JsonLd } from "@/components/common/JsonLd";
 import {
   ChevronDown,
   ArrowRight,
   ArrowLeft,
   Check,
-  ChevronRight,
   Phone,
   MessageCircle,
-  Home,
   Layers,
   Target,
   Lightbulb,
@@ -52,7 +53,7 @@ function SectionHeading({ children, icon: Icon }: { children: React.ReactNode; i
   return (
     <div className="flex items-center gap-2 mb-4">
       {Icon && <Icon className="h-4 w-4 text-primary" />}
-      <h3 className="text-lg font-bold text-foreground">{children}</h3>
+      <h2 className="text-lg font-bold text-foreground">{children}</h2>
     </div>
   );
 }
@@ -65,11 +66,9 @@ export function SolutionDetailPage() {
   const solution = slug ? getSolutionBySlug(slug) : undefined;
 
   useSEO({
-    title: solution ? `${solution.title} — YesBe Solution` : "Solution — YesBe",
-    description: solution
-      ? `${solution.description} Explore features, benefits, and our process for ${solution.title} by YesBe.`
-      : "Enterprise-grade solutions for AI, ERP, web development, and automation by YesBe.",
-    canonical: solution ? `https://yebe.tech/solutions/${solution.slug}` : "https://yebe.tech/solutions",
+    title: solution ? getSolutionSeoTitle(solution.slug, solution.title) : SEO_TITLES.solutionNotFound,
+    description: solution ? getSolutionSeoDescription(solution.slug, solution.title) : SEO_DESCRIPTIONS.solutionNotFound,
+    canonical: solution ? `https://yebe.tech/solutions/${solution.slug}` : "https://yebe.tech/services",
   });
 
   if (!solution) {
@@ -79,7 +78,7 @@ export function SolutionDetailPage() {
           <h1 className="text-2xl font-bold text-foreground">Solution Not Found</h1>
           <p className="mt-2 text-muted-foreground">The solution you're looking for doesn't exist.</p>
           <button
-            onClick={() => navigate("/solutions")}
+            onClick={() => navigate("/services")}
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -97,6 +96,32 @@ export function SolutionDetailPage() {
 
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: `${solution.title} — YesBe Technologies`,
+        description: solution.description,
+        url: `https://yebe.tech/solutions/${solution.slug}`,
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: `${solution.title} — YesBe Technologies`,
+        description: solution.description,
+        provider: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: `https://yebe.tech/solutions/${solution.slug}`,
+        areaServed: "IN",
+      }} />
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: solution.faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-white pt-[140px] pb-16 lg:pt-[160px] lg:pb-20">
         <div className="pointer-events-none absolute inset-0">
@@ -111,15 +136,8 @@ export function SolutionDetailPage() {
             className="max-w-4xl"
           >
             {/* Breadcrumb */}
-            <motion.div variants={fadeInUp} className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
-              <Link to="/" className="inline-flex items-center gap-1 hover:text-primary transition-colors">
-                <Home className="h-3.5 w-3.5" />
-                Home
-              </Link>
-              <ChevronRight className="h-3 w-3" />
-              <Link to="/solutions" className="hover:text-primary transition-colors">Solutions</Link>
-              <ChevronRight className="h-3 w-3" />
-              <span className="text-foreground font-medium">{solution.title}</span>
+            <motion.div variants={fadeInUp}>
+              <Breadcrumbs items={[{ label: "Services", href: "/services" }, { label: solution.title }]} />
             </motion.div>
 
             {/* Icon + Category */}
@@ -190,7 +208,7 @@ export function SolutionDetailPage() {
           >
             <img
               src={solution.heroImage}
-              alt={`${solution.title} — ${solution.category} solution by YesBe`}
+              alt={`${solution.title} — ${solution.category} solution by YesBe Technologies`}
               width={1200}
               height={600}
               loading="eager"
@@ -541,7 +559,7 @@ export function SolutionDetailPage() {
                         {rel.description}
                       </p>
                       <span className="mt-3 inline-flex items-center gap-1 text-[12px] font-medium text-primary">
-                        Learn More <ArrowRight className="h-3 w-3" />
+                        Explore {rel.title} <ArrowRight className="h-3 w-3" />
                       </span>
                     </Link>
                   </motion.div>

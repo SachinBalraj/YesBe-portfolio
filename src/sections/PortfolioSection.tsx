@@ -35,7 +35,7 @@ function ProjectCard({
       <div className="relative h-48 overflow-hidden cursor-pointer" onClick={goToDetail}>
         <img
           src={project.image}
-          alt={`${project.title} — ${project.category} case study by YesBe`}
+          alt={`${project.title} — ${project.category} case study by YesBe Technologies`}
           loading="lazy"
           decoding="async"
           width={700}
@@ -97,7 +97,7 @@ function ProjectCard({
         <div className="mt-4 flex items-center gap-2">
           <button
             onClick={goToDetail}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-4 py-2.5 text-[13px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-4 py-3 text-[13px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
           >
             View Case Study
             <ArrowUpRight className="h-3.5 w-3.5" />

@@ -1,6 +1,7 @@
 import { useSEO } from "@/hooks/useSEO";
 import { LegalPageLayout } from "@/components/common/LegalPageLayout";
 import { SITE_CONFIG } from "@/constants";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -31,8 +32,8 @@ const schema = {
 
 export function RefundPolicyPage() {
   useSEO({
-    title: "Refund Policy — Payment & Cancellation Terms",
-    description: "YesBe Refund Policy. Understand our advance payment requirements, refund eligibility criteria, cancellation terms, and third-party cost policies.",
+    title: SEO_TITLES.refundPolicy,
+    description: SEO_DESCRIPTIONS.refundPolicy,
     canonical: "https://yebe.tech/refund-policy",
   });
 

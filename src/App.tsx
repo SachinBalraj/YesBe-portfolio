@@ -7,6 +7,7 @@ import { CursorGlow } from "@/components/common/CursorGlow";
 import { LoadingScreen } from "@/components/common/LoadingScreen";
 import { Analytics } from "@/components/common/Analytics";
 import { CookieConsent } from "@/components/common/CookieConsent";
+import { BusinessSchema } from "@/components/common/BusinessSchema";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -72,12 +73,19 @@ function App() {
 
   return (
     <BrowserRouter>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:rounded-xl focus:bg-primary focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:outline-none"
+      >
+        Skip to main content
+      </a>
       <ScrollToTop />
       <Analytics />
       {loading && <LoadingScreen onComplete={handleLoaded} />}
       <ThemeProvider>
         <CursorGlow />
         <CookieConsent />
+        <BusinessSchema />
         <ScrollToTopButton />
         <Navbar />
         <main id="main-content">

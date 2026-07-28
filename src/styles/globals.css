@@ -426,3 +426,45 @@
   0% { opacity: 0.6; transform: translate(var(--rx, 0), var(--ry, 0)) scale(0.6); }
   100% { opacity: 0; transform: translate(var(--rx, 0), var(--ry, 0)) scale(1); }
 }
+
+/* ─── Core Web Vitals: below-fold containment ─── */
+.contain-content {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}
+
+.contain-content-sm {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 300px;
+}
+
+/* Reserve space for images to prevent CLS */
+img {
+  aspect-ratio: auto;
+}
+
+/* Contain animated elements to reduce repaint area */
+.contain-paint {
+  contain: paint style;
+}
+
+/* Will-change for animated elements */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

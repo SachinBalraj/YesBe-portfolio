@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   CheckCircle2, Clock, ArrowRight, ArrowLeft,
@@ -7,7 +7,10 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useSEO } from "@/hooks/useSEO";
+import { getCaseStudySeoDescription, getCaseStudySeoTitle, SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { PageHeader } from "@/components/common/PageHeader";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import { JsonLd } from "@/components/common/JsonLd";
 import { getCaseStudyBySlug, caseStudies, type CaseStudy } from "@/data/caseStudies";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { ContactSection } from "@/sections/ContactSection";
@@ -42,7 +45,7 @@ function SectionHeading({ children, icon: Icon }: { children: React.ReactNode; i
   return (
     <div className="flex items-center gap-2 mb-4">
       {Icon && <Icon className="h-4 w-4 text-primary" />}
-      <h3 className="text-lg font-bold text-foreground">{children}</h3>
+      <h2 className="text-lg font-bold text-foreground">{children}</h2>
     </div>
   );
 }
@@ -85,6 +88,38 @@ function RelatedProjects({ currentSlug }: { currentSlug: string }) {
   );
 }
 
+const serviceNameToSlug: Record<string, string> = {
+  "AI Solutions": "ai-solutions",
+  "AI Chatbots": "ai-chatbots",
+  "ERP Solutions": "erp-systems",
+  "Education ERP": "erp-systems",
+  "Website Development": "website-development",
+  "Corporate Websites": "website-development",
+  "Business Automation": "business-automation",
+  "Workflow Automation": "business-automation",
+  "Restaurant Automation": "business-automation",
+  "QR Ordering Systems": "business-automation",
+  "Data Analytics": "data-analytics",
+  "Data Visualization": "data-analytics",
+  "Business Intelligence": "power-bi-dashboards",
+  "Power BI Dashboards": "power-bi-dashboards",
+  "Database Management": "database-management",
+  "Custom Software Development": "custom-software",
+  "API Integration": "api-development",
+  "SEO Optimization": "seo",
+  "GEO Optimization": "geo",
+  "AEO Optimization": "aeo",
+  "Digital Marketing": "digital-marketing",
+  "Lead Generation": "digital-marketing",
+  "E-Commerce Development": "ecommerce",
+  "Payment Integration": "ecommerce",
+  "Library Management Systems": "custom-software",
+  "RAG Implementation": "ai-solutions",
+  "LangChain Development": "ai-solutions",
+  "Real-time Applications": "web-applications",
+  "React Development": "web-applications",
+};
+
 /* ─── Main Page ─── */
 
 export function CaseStudyDetailPage() {
@@ -93,10 +128,8 @@ export function CaseStudyDetailPage() {
   const study = slug ? getCaseStudyBySlug(slug) : undefined;
 
   useSEO({
-    title: study ? `${study.title} — YesBe Case Study` : "Case Study — YesBe",
-    description: study
-      ? `${study.shortOverview} See how YesBe delivered ${study.category} solutions for ${study.clientType}.`
-      : "Real-world case studies of AI, ERP, web development, and automation projects by YesBe.",
+    title: study ? getCaseStudySeoTitle(study.slug, study.title) : SEO_TITLES.caseStudyNotFound,
+    description: study ? getCaseStudySeoDescription(study.slug, study.title) : SEO_DESCRIPTIONS.caseStudyNotFound,
     canonical: study ? `https://yebe.tech/case-studies/${study.slug}` : "https://yebe.tech/case-studies",
   });
 
@@ -120,6 +153,23 @@ export function CaseStudyDetailPage() {
 
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: `${study.title} — YesBe Technologies`,
+        description: study.shortOverview,
+        url: `https://yebe.tech/case-studies/${study.slug}`,
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: study.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-white pt-[140px] pb-16 lg:pt-[160px] lg:pb-20">
         <div className="pointer-events-none absolute inset-0">
@@ -133,14 +183,9 @@ export function CaseStudyDetailPage() {
             animate="animate"
             className="max-w-4xl"
           >
-            <motion.button
-              variants={fadeInUp}
-              onClick={() => navigate("/case-studies")}
-              className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              All Case Studies
-            </motion.button>
+            <motion.div variants={fadeInUp}>
+              <Breadcrumbs items={[{ label: "Case Studies", href: "/case-studies" }, { label: study.title }]} />
+            </motion.div>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-3 mb-4">
               <span className="rounded-full bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
@@ -196,7 +241,7 @@ export function CaseStudyDetailPage() {
           >
             <img
               src={study.image}
-              alt={`${study.title} — ${study.category} case study by YesBe`}
+              alt={`${study.title} — ${study.category} case study by YesBe Technologies`}
               width={1200}
               height={600}
               loading="eager"
@@ -289,7 +334,7 @@ export function CaseStudyDetailPage() {
                 className="rounded-[20px] border border-white/40 bg-white p-6"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
               >
-                <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-foreground">Technologies Used</h4>
+                <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-foreground">Technologies Used</h3>
                 <div className="space-y-4">
                   {study.techGroups.map((group) => (
                     <div key={group.label}>
@@ -333,7 +378,7 @@ export function CaseStudyDetailPage() {
                 className="rounded-[20px] border border-white/40 bg-white p-6"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
               >
-                <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Client Benefits</h4>
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Client Benefits</h3>
                 <ul className="space-y-2">
                   {study.clientBenefits.map((b) => (
                     <li key={b} className="flex items-start gap-2">
@@ -398,14 +443,26 @@ export function CaseStudyDetailPage() {
           >
             <SectionHeading icon={Layers}>Related Services</SectionHeading>
             <div className="flex flex-wrap gap-2">
-              {study.relatedServices.map((s) => (
-                <span
-                  key={s}
-                  className="rounded-full bg-primary/[0.06] px-4 py-2 text-[13px] font-medium text-primary"
-                >
-                  {s}
-                </span>
-              ))}
+              {study.relatedServices.map((s) => {
+                const slug = serviceNameToSlug[s];
+                return slug ? (
+                  <Link
+                    key={s}
+                    to={`/solutions/${slug}`}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="rounded-full bg-primary/[0.06] px-4 py-2 text-[13px] font-medium text-primary hover:bg-primary/[0.12] transition-colors"
+                  >
+                    {s}
+                  </Link>
+                ) : (
+                  <span
+                    key={s}
+                    className="rounded-full bg-primary/[0.06] px-4 py-2 text-[13px] font-medium text-primary"
+                  >
+                    {s}
+                  </span>
+                );
+              })}
             </div>
           </motion.div>
 

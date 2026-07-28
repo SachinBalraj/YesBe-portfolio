@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -45,15 +45,23 @@ function XIcon({ className }: { className?: string }) {
 /* ─── Data ─── */
 
 const solutionsLinks = [
-  { label: "AI Solutions", href: "/services" },
-  { label: "ERP Systems", href: "/services" },
-  { label: "Website Development", href: "/services" },
-  { label: "Business Automation", href: "/services" },
-  { label: "Cloud Solutions", href: "/services" },
-  { label: "Power BI", href: "/services" },
-  { label: "SEO", href: "/services" },
-  { label: "GEO", href: "/services" },
-  { label: "AEO", href: "/services" },
+  { label: "AI Solutions", href: "/solutions/ai-solutions" },
+  { label: "AI Chatbots", href: "/solutions/ai-chatbots" },
+  { label: "ERP Systems", href: "/solutions/erp-systems" },
+  { label: "Website Development", href: "/solutions/website-development" },
+  { label: "Web Applications", href: "/solutions/web-applications" },
+  { label: "E-Commerce", href: "/solutions/ecommerce" },
+  { label: "Business Automation", href: "/solutions/business-automation" },
+  { label: "Data Analytics", href: "/solutions/data-analytics" },
+  { label: "Power BI", href: "/solutions/power-bi-dashboards" },
+  { label: "Cloud & DevOps", href: "/solutions/cloud-devops" },
+  { label: "Database Management", href: "/solutions/database-management" },
+  { label: "API Development", href: "/solutions/api-development" },
+  { label: "SEO", href: "/solutions/seo" },
+  { label: "GEO", href: "/solutions/geo" },
+  { label: "AEO", href: "/solutions/aeo" },
+  { label: "Digital Marketing", href: "/solutions/digital-marketing" },
+  { label: "Custom Software", href: "/solutions/custom-software" },
 ];
 
 const companyLinks = [
@@ -113,7 +121,7 @@ function FooterLink({ href, label, badge, onNavigate }: { href: string; label: s
 
 /* ─── Main Footer ─── */
 
-export function Footer() {
+function FooterComponent() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -166,7 +174,7 @@ export function Footer() {
           {/* ── Column 1: Brand + Newsletter + Social ── */}
           <div className="lg:col-span-1">
             <button onClick={() => handleNav("/")} className="group flex items-center gap-3 mb-5">
-              <img src={logoImg} alt="YesBe" width={44} height={44} className="h-11 w-11 rounded-xl" />
+              <img src={logoImg} loading="lazy" alt="YesBe Technologies Official Logo" width={44} height={44} className="h-11 w-11 rounded-xl" />
               <span className="text-xl font-bold text-white tracking-tight">YESBE</span>
             </button>
             <p className="text-[13px] leading-relaxed text-gray-400 mb-6 max-w-xs">
@@ -175,7 +183,7 @@ export function Footer() {
 
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="mb-6">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Subscribe to our newsletter</p>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Subscribe to our newsletter</h4>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
                   <input
@@ -186,11 +194,11 @@ export function Footer() {
                     required
                     aria-label="Email address for newsletter"
                     aria-invalid={!!emailError}
-                    className="flex-1 min-w-0 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-gray-500 outline-none transition-all duration-200 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
+                    className="flex-1 min-w-0 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition-all duration-200 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                   />
                   <button
                     type="submit"
-                    className="flex shrink-0 items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                    className="flex shrink-0 items-center gap-1.5 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
                   >
                     {subscribed ? "Subscribed!" : <><Send className="h-3.5 w-3.5" /> Subscribe</>}
                   </button>
@@ -277,7 +285,7 @@ export function Footer() {
             <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="h-3.5 w-3.5 text-primary" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Business Hours</span>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Business Hours</h4>
               </div>
               <p className="text-[13px] text-gray-400">Mon – Sat</p>
               <p className="text-[13px] font-medium text-white">9:00 AM – 7:00 PM</p>
@@ -314,3 +322,5 @@ export function Footer() {
     </footer>
   );
 }
+
+export const Footer = memo(FooterComponent);

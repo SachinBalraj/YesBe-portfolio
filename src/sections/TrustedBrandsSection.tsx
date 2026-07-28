@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import apolloLogo from "@/assets/images/apollologo.png";
-import fashionLogo from "@/assets/images/fflogo.png";
-import rosisLogo from "@/assets/images/rosis46.png";
+import fashionLogo from "@/assets/images/fflogo.jpg";
+import rosisLogo from "@/assets/images/rosis46.jpg";
 import balrajLogo from "@/assets/images/balraj.png";
 
 interface Brand {

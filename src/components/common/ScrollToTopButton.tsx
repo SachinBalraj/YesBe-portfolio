@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ScrollToTopButtonProps } from "@/types";
 import { cn } from "@/utils/cn";
 
-export function ScrollToTopButton({
+function ScrollToTopButtonComponent({
   className,
   showThreshold = 300,
 }: ScrollToTopButtonProps) {
@@ -51,3 +51,5 @@ export function ScrollToTopButton({
     </AnimatePresence>
   );
 }
+
+export const ScrollToTopButton = memo(ScrollToTopButtonComponent);

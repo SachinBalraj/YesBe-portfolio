@@ -1,75 +1,13 @@
-# robots.txt — YesBe
+# robots.txt — YesBe Technologies
 # https://yebe.tech
+#
+# YesBe provides GEO (Generative Engine Optimization) and AEO (Answer Engine
+# Optimization) services. AI crawlers are explicitly welcomed to ensure
+# our content appears in AI search results and training data.
 
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /assets/
-Crawl-delay: 1
 
-# Sitemap
 Sitemap: https://yebe.tech/sitemap.xml
-
-# Googlebot
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-# Bingbot
-User-agent: Bingbot
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-# AI Search Engines
-User-agent: GPTBot
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: ChatGPT-User
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: PerplexityBot
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: ClaudeBot
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: Claude-Web
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: Google-Extended
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: Bytespider
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: Amazonbot
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: FacebookBot
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-User-agent: Applebot-Extended
-Allow: /
-Disallow: /api/
-Disallow: /admin/

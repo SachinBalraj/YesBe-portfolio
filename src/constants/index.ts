@@ -20,6 +20,70 @@ export const SITE_CONFIG = {
   },
 } as const;
 
+export const BUSINESS_INFO = {
+  organization: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://yebe.tech/#organization",
+    name: "YesBe Technologies",
+    legalName: "YesBe Technologies",
+    alternateName: "YesBe",
+    url: "https://yebe.tech",
+    logo: "https://yebe.tech/YBlogo.png",
+    description:
+      "YesBe Technologies provides AI Solutions, ERP Development, Website Development, Custom Software Development, Power BI Dashboards, Business Automation, Cloud Solutions, SEO, GEO, AEO, Digital Marketing, and Digital Transformation services.",
+    foundingDate: "2024",
+    founder: {
+      "@type": "Person",
+      name: "Sachin Balraj",
+      jobTitle: "Founder & Chief Solution Architect",
+      url: "https://www.linkedin.com/in/sachin-balraj-2b7650406",
+    },
+    email: "hello@yesbe.tech",
+    telephone: "+919087795970",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Salem",
+      addressRegion: "Tamil Nadu",
+      addressCountry: "IN",
+    },
+    sameAs: [
+      "https://www.linkedin.com/in/sachin-balraj-2b7650406",
+      "https://github.com/sachinbalraj",
+    ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        telephone: "+919087795970",
+        email: "hello@yesbe.tech",
+        availableLanguage: ["English", "Tamil"],
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        telephone: "+919087795970",
+        email: "hello@yesbe.tech",
+        availableLanguage: ["English", "Tamil"],
+      },
+    ],
+  },
+  website: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://yebe.tech/#website",
+    name: "YesBe Technologies",
+    alternateName: "YesBe",
+    url: "https://yebe.tech",
+    description:
+      "YesBe Technologies provides AI Solutions, ERP Development, Website Development, Custom Software Development, Power BI Dashboards, Business Automation, Cloud Solutions, SEO, GEO, AEO, Digital Marketing, and Digital Transformation services.",
+    publisher: { "@type": "Organization", "@id": "https://yebe.tech/#organization" },
+    copyrightHolder: { "@type": "Organization", "@id": "https://yebe.tech/#organization" },
+    inLanguage: "en",
+    copyrightYear: "2026",
+  },
+};
+
 export const TECH_STACK = [
   "React", "Node.js", "MongoDB", "Python", "Power BI",
   "OpenAI", "LangChain", "Docker", "AWS", "ERP",

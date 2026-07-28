@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import { fadeInUp, staggerContainer } from "@/animations";
+import { JsonLd } from "@/components/common/JsonLd";
 import type { LucideIcon } from "lucide-react";
 
 /* ─── Types ─── */
@@ -636,7 +637,7 @@ function PricingCardComponent({ card, index }: { card: PricingCard; index: numbe
         {/* CTA */}
         <a
           href="#contact"
-          className={`relative z-10 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-[13px] font-semibold transition-all duration-300 ${
+          className={`relative z-10 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[13px] font-semibold transition-all duration-300 ${
             card.popular
               ? "btn-premium text-white"
               : "border border-white/40 bg-white text-foreground shadow-sm hover:border-primary/30 hover:text-primary hover:shadow-md"
@@ -687,6 +688,15 @@ function PricingFAQItem({ question, answer }: { question: string; answer: string
 export function PricingSection() {
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: pricingFAQs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }} />
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative overflow-hidden bg-white pt-[100px] pb-12 sm:pt-[140px] lg:pt-[160px] lg:pb-16">
         <div className="pointer-events-none absolute inset-0">

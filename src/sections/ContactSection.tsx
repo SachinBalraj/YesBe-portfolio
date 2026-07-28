@@ -29,7 +29,7 @@ const initialData: FormData = {
 };
 
 const inputClass =
-  "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
+  "w-full rounded-xl border border-border bg-card px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
 
 const contactCards = [
   { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: `tel:${SITE_CONFIG.phone}`, color: "bg-blue-50 text-blue-600" },
@@ -246,7 +246,7 @@ export function ContactSection() {
                       className="flex items-center gap-2 group"
                     >
                       <div
-                        className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
+                        className={`flex h-10 w-10 items-center justify-center rounded-full text-base font-bold transition-all duration-300 ${
                           i < currentStep
                             ? "bg-primary text-primary-foreground"
                             : i === currentStep
@@ -257,7 +257,7 @@ export function ContactSection() {
                         {i < currentStep ? <Check className="h-4 w-4" /> : i + 1}
                       </div>
                       <span
-                        className={`hidden sm:block text-xs font-semibold transition-colors ${
+                        className={`block text-xs font-semibold transition-colors ${
                           i <= currentStep ? "text-foreground" : "text-muted-foreground"
                         }`}
                       >
@@ -480,7 +480,7 @@ export function ContactSection() {
                     type="button"
                     onClick={handleBack}
                     disabled={currentStep === 0}
-                    className="flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-medium text-foreground hover:bg-muted transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <ArrowLeft className="h-4 w-4" />
                     Back
@@ -490,7 +490,7 @@ export function ContactSection() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200"
+                      className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200"
                     >
                       Continue
                       <ArrowRight className="h-4 w-4" />
@@ -499,7 +499,7 @@ export function ContactSection() {
                     <button
                       type="submit"
                       disabled={status === "sending" || status === "sent"}
-                      className="flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {status === "sending" && <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>}
                       {status === "sent" && <><CheckCircle className="h-4 w-4" /> Sent!</>}

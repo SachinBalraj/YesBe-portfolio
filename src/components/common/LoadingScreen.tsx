@@ -78,7 +78,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               />
               <motion.img
                 src={logoImg}
-                alt="YesBe Logo"
+                alt="YesBe Technologies Logo"
                 width={110}
                 height={110}
                 className="h-20 w-20 object-contain relative z-10 sm:h-[110px] sm:w-[110px]"

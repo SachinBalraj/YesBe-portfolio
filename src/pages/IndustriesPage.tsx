@@ -2,6 +2,8 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import { JsonLd } from "@/components/common/JsonLd";
 import { PageHeader } from "@/components/common/PageHeader";
 import { fadeInUp, staggerContainer } from "@/animations";
 import {
@@ -41,18 +43,27 @@ const industries: Industry[] = [
 
 export function IndustriesPage() {
   useSEO({
-    title: "Industries We Serve — Healthcare, Education, Retail & More",
-    description: "YesBe provides technology solutions for healthcare, education, retail, manufacturing, logistics, hospitality, finance, and real estate industries.",
+    title: SEO_TITLES.industries,
+    description: SEO_DESCRIPTIONS.industries,
     canonical: "https://yebe.tech/industries",
   });
 
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: SEO_TITLES.industries,
+        description: SEO_DESCRIPTIONS.industries,
+        url: "https://yebe.tech/industries",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
       <PageHeader
         badge="Industries"
         title="Industries We"
         highlight="Serve"
         description="Custom tech solutions for healthcare, education, retail, manufacturing, and more."
+        breadcrumbs={[{ label: "Industries" }]}
       />
 
       <section className="relative bg-white py-12 lg:py-16">

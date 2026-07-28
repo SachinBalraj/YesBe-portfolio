@@ -7,7 +7,7 @@ import {
   Shield,
   Globe,
 } from "lucide-react";
-import portraitImg from "@/assets/images/sachin.png";
+import portraitImg from "@/assets/images/sachin.jpg";
 import { SITE_CONFIG } from "@/constants";
 import {
   fadeInUp,
@@ -39,7 +39,7 @@ export function PremiumHero() {
           scale: [1, 1.1, 0.95, 1],
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] right-[15%] h-[500px] w-[500px] rounded-full bg-primary/[0.05] blur-[120px]"
+        className="absolute top-[10%] right-[15%] h-[500px] w-[500px] rounded-full bg-primary/[0.05] blur-[120px] contain-paint"
       />
       <motion.div
         animate={{
@@ -48,7 +48,7 @@ export function PremiumHero() {
           scale: [1, 0.95, 1.1, 1],
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[15%] left-[10%] h-[400px] w-[400px] rounded-full bg-secondary/[0.06] blur-[100px]"
+        className="absolute bottom-[15%] left-[10%] h-[400px] w-[400px] rounded-full bg-secondary/[0.06] blur-[100px] contain-paint"
       />
 
       {/* Floating particles */}
@@ -139,7 +139,7 @@ export function PremiumHero() {
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#contact"
-                className="relative z-10 inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3 text-[14px] font-semibold text-white"
+                className="relative z-10 inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3.5 text-[14px] font-semibold text-white"
               >
                 Contact YesBe
                 <ArrowRight className="h-4 w-4 shrink-0" />
@@ -148,7 +148,7 @@ export function PremiumHero() {
                 href={SITE_CONFIG.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3 text-[14px] font-semibold text-foreground"
+                className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3.5 text-[14px] font-semibold text-foreground"
               >
                 <MessageCircle className="h-4 w-4 text-green-500" />
                 Get a Free Advice
@@ -189,7 +189,7 @@ export function PremiumHero() {
                 {/* Image */}
                 <img
                   src={portraitImg}
-                  alt="Sachin Balraj — Founder & Chief Solution Architect of YesBe"
+                  alt="Sachin Balraj — Founder and Chief Solution Architect of YesBe Technologies"
                   width={500}
                   height={500}
                   fetchPriority="high"

@@ -1,6 +1,7 @@
 import { useSEO } from "@/hooks/useSEO";
 import { LegalPageLayout } from "@/components/common/LegalPageLayout";
 import { SITE_CONFIG } from "@/constants";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -33,8 +34,8 @@ const schema = {
 
 export function PrivacyPolicyPage() {
   useSEO({
-    title: "Privacy Policy — How We Protect Your Data",
-    description: "YesBe Privacy Policy. Learn how we collect, use, store, and protect your personal information. Understand your rights and our data practices.",
+    title: SEO_TITLES.privacyPolicy,
+    description: SEO_DESCRIPTIONS.privacyPolicy,
     canonical: "https://yebe.tech/privacy-policy",
   });
 

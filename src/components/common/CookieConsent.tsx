@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, Settings, X, Check, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -52,7 +52,7 @@ function Toggle({ checked, onToggle, label }: { checked: boolean; onToggle: () =
   );
 }
 
-export function CookieConsent() {
+function CookieConsentComponent() {
   const [consent, setConsent] = useState<ConsentLevel>(getStoredConsent);
   const [showBanner, setShowBanner] = useState(false);
   const [showCustomize, setShowCustomize] = useState(false);
@@ -221,14 +221,14 @@ export function CookieConsent() {
                 <div className="flex gap-2">
                   <button
                     onClick={handleEssentialOnly}
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-4 py-2 text-[13px] font-semibold text-foreground shadow-sm transition-all duration-200 hover:bg-muted"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-4 py-3 text-[13px] font-semibold text-foreground shadow-sm transition-all duration-200 hover:bg-muted"
                   >
                     Essential Only
                   </button>
                   {showCustomize && (
                     <button
                       onClick={handleSavePreferences}
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-primary/20 bg-primary/[0.06] px-4 py-2 text-[13px] font-semibold text-primary shadow-sm transition-all duration-200 hover:bg-primary/10"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-primary/20 bg-primary/[0.06] px-4 py-3 text-[13px] font-semibold text-primary shadow-sm transition-all duration-200 hover:bg-primary/10"
                     >
                       <Check className="h-3.5 w-3.5" />
                       Save
@@ -236,7 +236,7 @@ export function CookieConsent() {
                   )}
                   <button
                     onClick={handleAcceptAll}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-5 py-2 text-[13px] font-semibold text-white shadow-[0_1px_4px_rgba(37,99,235,0.2)] transition-all duration-200 hover:shadow-[0_2px_8px_rgba(37,99,235,0.3)]"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-5 py-3 text-[13px] font-semibold text-white shadow-[0_1px_4px_rgba(37,99,235,0.2)] transition-all duration-200 hover:shadow-[0_2px_8px_rgba(37,99,235,0.3)]"
                   >
                     Accept All
                   </button>
@@ -266,6 +266,8 @@ export function CookieConsent() {
     </AnimatePresence>
   );
 }
+
+export const CookieConsent = memo(CookieConsentComponent);
 
 export { getStoredConsent, getStoredPreferences };
 export type { CookiePreferences };

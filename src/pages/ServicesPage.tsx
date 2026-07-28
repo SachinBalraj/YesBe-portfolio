@@ -2,6 +2,8 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import { JsonLd } from "@/components/common/JsonLd";
 import { PageHeader } from "@/components/common/PageHeader";
 import { fadeInUp, staggerContainer } from "@/animations";
 import {
@@ -47,18 +49,27 @@ const services: Service[] = [
 
 export function ServicesPage() {
   useSEO({
-    title: "Our Solutions — AI, ERP, Web Development & More",
-    description: "Explore YesBe's comprehensive technology solutions: AI, ERP systems, website development, data analytics, Power BI, cloud computing, and business automation.",
+    title: SEO_TITLES.services,
+    description: SEO_DESCRIPTIONS.services,
     canonical: "https://yebe.tech/services",
   });
 
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: SEO_TITLES.services,
+        description: SEO_DESCRIPTIONS.services,
+        url: "https://yebe.tech/services",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
       <PageHeader
         badge="Our Solutions"
         title="Technology"
         highlight="Solutions"
         description="AI tools, ERP systems, web development, and analytics — built for startups, SMEs, and enterprises."
+        breadcrumbs={[{ label: "Services" }]}
       />
 
       <section className="relative bg-white py-12 lg:py-16">
@@ -92,7 +103,7 @@ export function ServicesPage() {
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-[#1d4ed8]"
                 >
-                  Learn More
+                  Explore {service.name}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </motion.div>

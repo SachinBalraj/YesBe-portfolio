@@ -1,5 +1,7 @@
 import { lazy, Suspense } from "react";
 import { useSEO } from "@/hooks/useSEO";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import { JsonLd } from "@/components/common/JsonLd";
 import { PageHeader } from "@/components/common/PageHeader";
 
 const AboutSection = lazy(() => import("@/sections/AboutSection").then(m => ({ default: m.AboutSection })));
@@ -11,13 +13,21 @@ const ContactSection = lazy(() => import("@/sections/ContactSection").then(m => 
 
 export function AboutPage() {
   useSEO({
-    title: "About YesBe — Company, Founder & Mission",
-    description: "Learn about YesBe — a technology consulting company led by Sachin Balraj, specializing in AI, ERP, web development, and business automation.",
+    title: SEO_TITLES.about,
+    description: SEO_DESCRIPTIONS.about,
     canonical: "https://yebe.tech/about",
   });
 
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: SEO_TITLES.about,
+        description: SEO_DESCRIPTIONS.about,
+        url: "https://yebe.tech/about",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
       <PageHeader
         badge="About YesBe"
         title="About"

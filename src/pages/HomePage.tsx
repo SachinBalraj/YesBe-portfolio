@@ -1,5 +1,7 @@
 import { lazy, Suspense } from "react";
 import { useSEO } from "@/hooks/useSEO";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import { JsonLd } from "@/components/common/JsonLd";
 import { PremiumHero } from "@/components/sections/PremiumHero";
 import { MarqueeSection } from "@/sections/MarqueeSection";
 
@@ -13,35 +15,57 @@ const ContactSection = lazy(() => import("@/sections/ContactSection").then(m => 
 
 export function HomePage() {
   useSEO({
-    title: "AI, ERP, Web Development & Business Solutions | YesBe",
-    description: "YesBe helps startups, SMEs, and enterprises build AI-powered software, ERP systems, Power BI dashboards, and modern web applications. From strategy to deployment.",
+    title: SEO_TITLES.home,
+    description: SEO_DESCRIPTIONS.home,
     canonical: "https://yebe.tech",
   });
 
   return (
     <>
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: SEO_TITLES.home,
+        description: SEO_DESCRIPTIONS.home,
+        url: "https://yebe.tech",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+      }} />
       <PremiumHero />
       <MarqueeSection />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <WhyChooseSection />
+        <div className="contain-content">
+          <WhyChooseSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <SolutionsSection />
+        <div className="contain-content">
+          <SolutionsSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <IndustriesSection />
+        <div className="contain-content">
+          <IndustriesSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <PortfolioSection />
+        <div className="contain-content">
+          <PortfolioSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <TrustedBrandsSection />
+        <div className="contain-content">
+          <TrustedBrandsSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <BusinessResultsSection />
+        <div className="contain-content">
+          <BusinessResultsSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <ContactSection />
+        <div className="contain-content">
+          <ContactSection />
+        </div>
       </Suspense>
     </>
   );

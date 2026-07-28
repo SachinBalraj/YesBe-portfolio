@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
@@ -130,7 +130,7 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
       <button
         onClick={() => onNavigate(item.href)}
         className={cn(
-          "relative shrink-0 px-4 py-2 text-[15px] font-medium rounded-lg transition-all duration-200",
+          "relative shrink-0 px-4 py-2 text-[15px] font-medium rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
           isActive
             ? "text-[#2563EB]"
             : "text-[#1E293B] hover:text-[#2563EB]",
@@ -157,7 +157,7 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
     >
       <button
         className={cn(
-          "relative flex items-center gap-1.5 px-4 py-2 text-[15px] font-medium rounded-lg transition-all duration-200",
+          "relative flex items-center gap-1.5 px-4 py-2 text-[15px] font-medium rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
           isActive
             ? "text-[#2563EB]"
             : "text-[#1E293B] hover:text-[#2563EB]",
@@ -199,7 +199,7 @@ function DesktopDropdown({ item, isActive, onNavigate }: { item: NavItem; isActi
                 <button
                   key={sub.label}
                   onClick={() => { onNavigate(sub.href); setOpen(false); }}
-                  className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-[#f1f5f9]/80 text-left"
+                  className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-[#f1f5f9]/80 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#eff6ff] text-[#2563EB] transition-all duration-200 group-hover:bg-[#2563EB] group-hover:text-white group-hover:shadow-[0_2px_8px_rgba(37,99,235,0.2)]">
                     <sub.icon className="h-4 w-4" />
@@ -230,7 +230,7 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
         <button
         onClick={() => onNavigate(item.href)}
         className={cn(
-          "flex w-full items-center rounded-xl px-4 py-3 text-[14px] font-medium transition-all duration-200 text-left",
+          "flex w-full items-center rounded-xl px-4 py-3.5 text-[14px] font-medium transition-all duration-200 text-left",
           isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]/80",
         )}
         style={{ letterSpacing: "0.2px" }}
@@ -246,7 +246,7 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
       <button
         onClick={() => setOpen(!open)}
         className={cn(
-          "flex w-full items-center justify-between rounded-xl px-4 py-3 text-[14px] font-medium transition-all duration-200",
+          "flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-[14px] font-medium transition-all duration-200",
           isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]/80",
         )}
         style={{ letterSpacing: "0.2px" }}
@@ -269,7 +269,7 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
                 <button
                   key={sub.label}
                   onClick={() => onNavigate(sub.href)}
-                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-[13px] text-[#64748B] transition-colors hover:bg-[#f8fafc]/80 hover:text-[#1E293B] text-left"
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] text-[#64748B] transition-colors hover:bg-[#f8fafc]/80 hover:text-[#1E293B] text-left"
                 >
                   <sub.icon className="h-3.5 w-3.5 shrink-0 text-[#2563EB]/60" />
                   <span>{sub.label}</span>
@@ -285,7 +285,7 @@ function MobileAccordion({ item, isActive, onNavigate }: { item: NavItem; isActi
 
 /* ─── Main Navbar ─── */
 
-export function Navbar() {
+function NavbarComponent() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const lastScrollY = useRef(0);
@@ -309,6 +309,8 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.body.style.overflow = isMobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -318,10 +320,41 @@ export function Navbar() {
     setIsMobileOpen(false);
   }, [location.pathname]);
 
-  const handleNavigate = (href: string) => {
+  useEffect(() => {
+    if (!isMobileOpen) return;
+    const menu = mobileMenuRef.current;
+    if (!menu) return;
+
+    const focusable = menu.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+
+    menu.addEventListener("keydown", handleKeyDown);
+    first?.focus();
+    return () => menu.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileOpen]);
+
+  const handleNavigate = useCallback((href: string) => {
     navigate(href);
     setIsMobileOpen(false);
-  };
+  }, [navigate]);
 
   return (
     <>
@@ -346,11 +379,11 @@ export function Navbar() {
           {/* ── Logo ── */}
           <button
             onClick={() => handleNavigate("/")}
-            className="relative z-10 flex shrink-0 items-center group mr-8"
+            className="relative z-10 flex shrink-0 items-center group mr-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:rounded-xl"
           >
             <img
               src={logoImg}
-              alt="YesBe Logo"
+              alt="YesBe Technologies Logo"
               width={48}
               height={48}
               loading="eager"
@@ -360,7 +393,7 @@ export function Navbar() {
           </button>
 
           {/* ── Desktop Navigation ── */}
-          <div className="hidden shrink-0 items-center gap-2 xl:flex">
+          <div className="hidden shrink-0 items-center gap-2 lg:flex">
             {NAV_ITEMS.map((item) => (
               <DesktopDropdown
                 key={item.label}
@@ -378,13 +411,13 @@ export function Navbar() {
           <div className="flex shrink-0 items-center gap-3">
             <button
               onClick={() => handleNavigate("/contact")}
-              className="hidden xl:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-[11px] text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5"
+              className="hidden lg:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
             >
               Book Free Consultation
               <ArrowRight className="h-[18px] w-[18px] shrink-0" />
             </button>
             <button
-              className="xl:hidden rounded-lg p-2 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"
+              className="lg:hidden rounded-lg p-2.5 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-label="Toggle menu"
             >
@@ -402,30 +435,32 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm xl:hidden"
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             />
             <motion.div
+              ref={mobileMenuRef}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed right-0 top-0 z-50 h-full w-80 border-l border-[#e2e8f0]/50 bg-white/95 backdrop-blur-2xl shadow-[−8px_0_24px_rgba(0,0,0,0.06)] xl:hidden"
+              className="fixed right-0 top-0 z-50 h-full w-80 max-w-[calc(100vw-1rem)] border-l border-[#e2e8f0]/50 bg-white/95 backdrop-blur-2xl shadow-[−8px_0_24px_rgba(0,0,0,0.06)] lg:hidden"
               role="dialog"
+              aria-modal="true"
               aria-label="Mobile navigation"
             >
               <div className="flex h-[56px] items-center justify-between px-6">
                 <img
                   src={logoImg}
-                  alt="YesBe Logo"
-                  width={44}
-                  height={44}
-                  loading="eager"
-                  decoding="async"
-                  className="h-11 w-11 object-contain rounded-xl"
+                alt="YesBe Technologies Logo"
+                width={44}
+                height={44}
+                loading="eager"
+                decoding="async"
+                className="h-11 w-11 object-contain rounded-xl"
                 />
                 <button
-                  className="rounded-lg p-2 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"
+                  className="rounded-lg p-2.5 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"
                   onClick={() => setIsMobileOpen(false)}
                   aria-label="Close menu"
                 >
@@ -456,7 +491,7 @@ export function Navbar() {
               <div className="border-t border-[#e2e8f0]/50 px-5 py-5">
                 <button
                   onClick={() => handleNavigate("/contact")}
-                  className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)]"
+                  className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)]"
                 >
                   Book Free Consultation
                   <ArrowRight className="h-[18px] w-[18px] shrink-0" />
@@ -469,3 +504,5 @@ export function Navbar() {
     </>
   );
 }
+
+export const Navbar = memo(NavbarComponent);

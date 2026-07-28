@@ -1,6 +1,7 @@
 import { useSEO } from "@/hooks/useSEO";
 import { LegalPageLayout } from "@/components/common/LegalPageLayout";
 import { SITE_CONFIG } from "@/constants";
+import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -31,8 +32,8 @@ const schema = {
 
 export function DisclaimerPage() {
   useSEO({
-    title: "Disclaimer — Important Legal Information",
-    description: "YesBe Disclaimer. Read about general information disclaimers, pricing policies, technology recommendations, third-party services, and liability limitations.",
+    title: SEO_TITLES.disclaimer,
+    description: SEO_DESCRIPTIONS.disclaimer,
     canonical: "https://yebe.tech/disclaimer",
   });
 
