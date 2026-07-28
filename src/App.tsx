@@ -8,6 +8,7 @@ import { LoadingScreen } from "@/components/common/LoadingScreen";
 import { Analytics } from "@/components/common/Analytics";
 import { CookieConsent } from "@/components/common/CookieConsent";
 import { BusinessSchema } from "@/components/common/BusinessSchema";
+import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -82,37 +83,39 @@ function App() {
       <ScrollToTop />
       <Analytics />
       {loading && <LoadingScreen onComplete={handleLoaded} />}
-      <ThemeProvider>
-        <CursorGlow />
-        <CookieConsent />
-        <BusinessSchema />
-        <ScrollToTopButton />
-        <Navbar />
-        <main id="main-content">
-          <Suspense fallback={<PageFallback />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/industries/:slug" element={<IndustryDetailPage />} />
-              <Route path="/industries" element={<IndustriesPage />} />
-              <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
-              <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
-              <Route path="/case-studies" element={<CaseStudiesPage />} />
-              <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
-              <Route path="/pricing" element={<PricingPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-              <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
-              <Route path="/refund-policy" element={<RefundPolicyPage />} />
-              <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-              <Route path="/disclaimer" element={<DisclaimerPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </main>
-        <Footer />
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <CursorGlow />
+          <CookieConsent />
+          <BusinessSchema />
+          <ScrollToTopButton />
+          <Navbar />
+          <main id="main-content">
+            <Suspense fallback={<PageFallback />}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/services" element={<ServicesPage />} />
+                <Route path="/industries/:slug" element={<IndustryDetailPage />} />
+                <Route path="/industries" element={<IndustriesPage />} />
+                <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
+                <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+                <Route path="/case-studies" element={<CaseStudiesPage />} />
+                <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
+                <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+                <Route path="/refund-policy" element={<RefundPolicyPage />} />
+                <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+                <Route path="/disclaimer" element={<DisclaimerPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </main>
+          <Footer />
+        </ThemeProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

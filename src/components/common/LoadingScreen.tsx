@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logoImg from "@/assets/images/YBlogo.png";
 
@@ -27,13 +27,28 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   }, []);
 
   /* Dismiss */
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+
   useEffect(() => {
     const t = setTimeout(() => {
       setVisible(false);
-      setTimeout(onComplete, 500);
+      setTimeout(() => {
+        try { onCompleteRef.current(); } catch {}
+      }, 500);
     }, 2000);
-    return () => clearTimeout(t);
-  }, [onComplete]);
+
+    /* Safety net: force dismiss even if the main timer somehow fails */
+    const safety = setTimeout(() => {
+      setVisible(false);
+      try { onCompleteRef.current(); } catch {}
+    }, 5000);
+
+    return () => {
+      clearTimeout(t);
+      clearTimeout(safety);
+    };
+  }, []);
 
   return (
     <AnimatePresence>

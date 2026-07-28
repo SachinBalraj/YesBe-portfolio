@@ -8,12 +8,12 @@ import {
   Globe,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
-
-const portraitImg = "/sachin.jpg";
 import {
   fadeInUp,
   staggerContainer,
 } from "@/animations";
+
+const portraitImg = "/sachin.jpg";
 
 const trustIndicators = [
   { icon: Zap, label: "AI-Powered" },
