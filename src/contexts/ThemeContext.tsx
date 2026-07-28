@@ -13,7 +13,11 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("theme") as Theme) || "system";
+      try {
+        return (localStorage.getItem("theme") as Theme) || "system";
+      } catch {
+        return "system";
+      }
     }
     return "system";
   });
@@ -36,7 +40,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     root.classList.add(resolved);
     setResolvedTheme(resolved);
-    localStorage.setItem("theme", theme);
+    try { localStorage.setItem("theme", theme); } catch {}
   }, [theme]);
 
   useEffect(() => {

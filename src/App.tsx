@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useCallback } from "react";
+import { lazy, Suspense, useState, useCallback, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ScrollToTopButton } from "@/components/common/ScrollToTopButton";
@@ -71,6 +71,11 @@ function PageFallback() {
 function App() {
   const [loading, setLoading] = useState(true);
   const handleLoaded = useCallback(() => setLoading(false), []);
+
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 6000);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <BrowserRouter>

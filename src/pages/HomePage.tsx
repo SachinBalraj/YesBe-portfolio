@@ -3,7 +3,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import { PremiumHero } from "@/components/sections/PremiumHero";
-import { MarqueeSection } from "@/sections/MarqueeSection";
+import { TechnologyMarquee } from "@/components/TechnologyMarquee";
 
 const WhyChooseSection = lazy(() => import("@/sections/WhyChooseSection").then(m => ({ default: m.WhyChooseSection })));
 const SolutionsSection = lazy(() => import("@/sections/SolutionsSection").then(m => ({ default: m.SolutionsSection })));
@@ -31,7 +31,7 @@ export function HomePage() {
         publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
       }} />
       <PremiumHero />
-      <MarqueeSection />
+      <TechnologyMarquee />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
         <div className="contain-content">
           <WhyChooseSection />
