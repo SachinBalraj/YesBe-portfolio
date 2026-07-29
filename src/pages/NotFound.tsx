@@ -24,7 +24,8 @@ export function NotFound() {
   useSEO({
     title: SEO_TITLES.notFound,
     description: SEO_DESCRIPTIONS.notFound,
-    canonical: "https://yebe.tech/404",
+    canonical: "https://yebe.tech",
+    noindex: true,
   });
 
   const handleSearch = (e: React.FormEvent) => {

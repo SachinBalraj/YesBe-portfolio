@@ -5,6 +5,8 @@ interface SEOData {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
 }
 
 const SITE_URL = "https://yebe.tech";
@@ -47,6 +49,8 @@ export function useSEO({
   description,
   canonical,
   ogImage,
+  ogType,
+  noindex,
 }: SEOData) {
   useEffect(() => {
     const url = canonical || SITE_URL;
@@ -56,20 +60,27 @@ export function useSEO({
 
     setOrUpdateMeta("name", "description", description);
 
+    setOrUpdateMeta("name", "robots", noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+
     setOrUpdateMeta("property", "og:title", title);
     setOrUpdateMeta("property", "og:description", description);
     setOrUpdateMeta("property", "og:url", url);
     setOrUpdateMeta("property", "og:image", image);
+    setOrUpdateMeta("property", "og:image:width", "1200");
+    setOrUpdateMeta("property", "og:image:height", "630");
+    setOrUpdateMeta("property", "og:image:alt", title);
     setOrUpdateMeta("property", "og:site_name", SITE_NAME);
     setOrUpdateMeta("property", "og:locale", OG_LOCALE);
-    setOrUpdateMeta("property", "og:type", "website");
+    setOrUpdateMeta("property", "og:type", ogType || "website");
 
     setOrUpdateMeta("name", "twitter:card", "summary_large_image");
     setOrUpdateMeta("name", "twitter:url", url);
     setOrUpdateMeta("name", "twitter:title", title);
     setOrUpdateMeta("name", "twitter:description", description);
     setOrUpdateMeta("name", "twitter:image", image);
+    setOrUpdateMeta("name", "twitter:image:alt", title);
+    setOrUpdateMeta("name", "twitter:creator", "@yesbe");
 
     setOrUpdateLink("canonical", url);
-  }, [title, description, canonical, ogImage]);
+  }, [title, description, canonical, ogImage, ogType, noindex]);
 }

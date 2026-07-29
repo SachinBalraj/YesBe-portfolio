@@ -319,6 +319,22 @@ function FooterComponent() {
           </nav>
         </div>
       </div>
+
+      {/* ── Premium Footer Signature ── */}
+      <div className="w-full border-t border-white/[0.08] bg-[#0B1220] px-4">
+        <p className="py-5 text-center text-sm font-[400] tracking-[0.2px] text-white/65 sm:text-base">
+          Designed &amp; Developed with{" "}
+          <span className="text-red-500">❤️</span> by{" "}
+          <a
+            href="https://yesbe.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer text-[#2563EB] transition-all duration-300 ease-in-out hover:text-[#60A5FA]"
+          >
+            YesBe Technologies
+          </a>
+        </p>
+      </div>
     </footer>
   );
 }

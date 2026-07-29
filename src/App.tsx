@@ -6,6 +6,7 @@ import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { CursorGlow } from "@/components/common/CursorGlow";
 import { LoadingScreen } from "@/components/common/LoadingScreen";
 import { Analytics } from "@/components/common/Analytics";
+import { GTM } from "@/components/common/GTM";
 import { CookieConsent } from "@/components/common/CookieConsent";
 import { BusinessSchema } from "@/components/common/BusinessSchema";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
@@ -87,6 +88,7 @@ function App() {
       </a>
       <ScrollToTop />
       <Analytics />
+      <GTM />
       {loading && <LoadingScreen onComplete={handleLoaded} />}
       <ErrorBoundary>
         <ThemeProvider>

@@ -1,13 +1,14 @@
-# robots.txt — YesBe Technologies
-# https://yebe.tech
-#
-# YesBe provides GEO (Generative Engine Optimization) and AEO (Answer Engine
-# Optimization) services. AI crawlers are explicitly welcomed to ensure
-# our content appears in AI search results and training data.
+# robots.txt — YesBe Technologies (https://yebe.tech)
+# All crawlers welcome. AI/GEO/AEO crawlers explicitly allowed.
 
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /_vercel/
 
+# Sitemap
 Sitemap: https://yebe.tech/sitemap.xml
+
+# Security contact
+# https://yebe.tech/security.txt
