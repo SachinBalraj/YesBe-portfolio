@@ -1,15 +1,5 @@
 {
-  "redirects": [
-    {
-      "source": "www.yebe.tech/(.*)",
-      "destination": "https://yebe.tech/$1",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "overrides": {
-    "*.html": { "headers": { "Cache-Control": "no-cache" } }
-  }
+  ]
 }
