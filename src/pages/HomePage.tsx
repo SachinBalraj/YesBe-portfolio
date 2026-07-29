@@ -17,7 +17,7 @@ export function HomePage() {
   useSEO({
     title: SEO_TITLES.home,
     description: SEO_DESCRIPTIONS.home,
-    canonical: "https://yebe.tech",
+    canonical: "https://www.yesbe.tech",
   });
 
   return (
@@ -27,8 +27,8 @@ export function HomePage() {
         "@type": "WebPage",
         name: SEO_TITLES.home,
         description: SEO_DESCRIPTIONS.home,
-        url: "https://yebe.tech",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PremiumHero />
       <TechnologyMarquee />

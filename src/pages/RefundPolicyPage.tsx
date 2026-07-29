@@ -21,11 +21,11 @@ const schema = {
   "@type": "WebPage",
   name: "Refund Policy",
   description: "YesBe Refund Policy — Learn about our advance payment terms, refund eligibility, cancellation terms, and project termination policies.",
-  url: "https://yebe.tech/refund-policy",
+  url: "https://www.yesbe.tech/refund-policy",
   publisher: {
     "@type": "Organization",
     name: "YesBe",
-    url: "https://yebe.tech",
+    url: "https://www.yesbe.tech",
   },
   dateModified: "2026-07-21",
 };
@@ -34,7 +34,7 @@ export function RefundPolicyPage() {
   useSEO({
     title: SEO_TITLES.refundPolicy,
     description: SEO_DESCRIPTIONS.refundPolicy,
-    canonical: "https://yebe.tech/refund-policy",
+    canonical: "https://www.yesbe.tech/refund-policy",
   });
 
   return (

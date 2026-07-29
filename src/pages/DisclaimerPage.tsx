@@ -21,11 +21,11 @@ const schema = {
   "@type": "WebPage",
   name: "Disclaimer",
   description: "YesBe Disclaimer — Important information about general disclaimers, pricing, technology recommendations, and limitation of liability.",
-  url: "https://yebe.tech/disclaimer",
+  url: "https://www.yesbe.tech/disclaimer",
   publisher: {
     "@type": "Organization",
     name: "YesBe",
-    url: "https://yebe.tech",
+    url: "https://www.yesbe.tech",
   },
   dateModified: "2026-07-21",
 };
@@ -34,7 +34,7 @@ export function DisclaimerPage() {
   useSEO({
     title: SEO_TITLES.disclaimer,
     description: SEO_DESCRIPTIONS.disclaimer,
-    canonical: "https://yebe.tech/disclaimer",
+    canonical: "https://www.yesbe.tech/disclaimer",
   });
 
   return (
@@ -54,7 +54,7 @@ export function DisclaimerPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Introduction</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              The information provided on <strong>yebe.tech</strong> and through our services is intended for general informational purposes only. <strong>YesBe</strong> makes every effort to ensure that the information on this website is accurate and up to date; however, we make no warranties or representations of any kind regarding the completeness, accuracy, reliability, or availability of the information, services, or related graphics contained on this website.
+              The information provided on <strong>www.yesbe.tech</strong> and through our services is intended for general informational purposes only. <strong>YesBe</strong> makes every effort to ensure that the information on this website is accurate and up to date; however, we make no warranties or representations of any kind regarding the completeness, accuracy, reliability, or availability of the information, services, or related graphics contained on this website.
             </p>
           </div>
         </section>

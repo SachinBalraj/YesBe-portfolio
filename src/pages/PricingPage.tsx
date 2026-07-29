@@ -11,7 +11,7 @@ export function PricingPage() {
   useSEO({
     title: SEO_TITLES.pricing,
     description: SEO_DESCRIPTIONS.pricing,
-    canonical: "https://yebe.tech/pricing",
+    canonical: "https://www.yesbe.tech/pricing",
   });
 
   return (
@@ -21,8 +21,8 @@ export function PricingPage() {
         "@type": "WebPage",
         name: SEO_TITLES.pricing,
         description: SEO_DESCRIPTIONS.pricing,
-        url: "https://yebe.tech/pricing",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/pricing",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <div className="pt-[140px] lg:pt-[160px] bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

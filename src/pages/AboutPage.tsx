@@ -15,7 +15,7 @@ export function AboutPage() {
   useSEO({
     title: SEO_TITLES.about,
     description: SEO_DESCRIPTIONS.about,
-    canonical: "https://yebe.tech/about",
+    canonical: "https://www.yesbe.tech/about",
   });
 
   return (
@@ -25,8 +25,8 @@ export function AboutPage() {
         "@type": "WebPage",
         name: SEO_TITLES.about,
         description: SEO_DESCRIPTIONS.about,
-        url: "https://yebe.tech/about",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/about",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PageHeader
         badge="About YesBe"

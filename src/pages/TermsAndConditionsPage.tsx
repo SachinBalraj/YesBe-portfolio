@@ -23,11 +23,11 @@ const schema = {
   "@type": "WebPage",
   name: "Terms & Conditions",
   description: "YesBe Terms & Conditions governing the use of our services, payments, intellectual property, and client responsibilities.",
-  url: "https://yebe.tech/terms-and-conditions",
+  url: "https://www.yesbe.tech/terms-and-conditions",
   publisher: {
     "@type": "Organization",
     name: "YesBe",
-    url: "https://yebe.tech",
+    url: "https://www.yesbe.tech",
   },
   dateModified: "2026-07-21",
 };
@@ -36,7 +36,7 @@ export function TermsAndConditionsPage() {
   useSEO({
     title: SEO_TITLES.termsAndConditions,
     description: SEO_DESCRIPTIONS.termsAndConditions,
-    canonical: "https://yebe.tech/terms-and-conditions",
+    canonical: "https://www.yesbe.tech/terms-and-conditions",
   });
 
   return (
@@ -56,7 +56,7 @@ export function TermsAndConditionsPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Introduction</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              These Terms and Conditions (&quot;Terms&quot;) govern your use of the services provided by <strong>YesBe</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) and the website <strong>yebe.tech</strong>. By engaging our services or using our website, you agree to be bound by these Terms.
+              These Terms and Conditions (&quot;Terms&quot;) govern your use of the services provided by <strong>YesBe</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) and the website <strong>www.yesbe.tech</strong>. By engaging our services or using our website, you agree to be bound by these Terms.
             </p>
             <p>
               Please read these Terms carefully before using our services. If you do not agree with any part of these Terms, you should not proceed with our services.

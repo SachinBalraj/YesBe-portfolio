@@ -24,7 +24,7 @@ export function NotFound() {
   useSEO({
     title: SEO_TITLES.notFound,
     description: SEO_DESCRIPTIONS.notFound,
-    canonical: "https://yebe.tech",
+    canonical: "https://www.yesbe.tech",
     noindex: true,
   });
 
@@ -42,8 +42,8 @@ export function NotFound() {
         "@type": "WebPage",
         name: SEO_TITLES.notFound,
         description: SEO_DESCRIPTIONS.notFound,
-        url: "https://yebe.tech/404",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/404",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4">
       {/* Background */}

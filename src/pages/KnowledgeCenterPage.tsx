@@ -10,7 +10,7 @@ export function KnowledgeCenterPage() {
   useSEO({
     title: SEO_TITLES.knowledgeCenter,
     description: SEO_DESCRIPTIONS.knowledgeCenter,
-    canonical: "https://yebe.tech/knowledge-center",
+    canonical: "https://www.yesbe.tech/knowledge-center",
   });
 
   return (
@@ -20,8 +20,8 @@ export function KnowledgeCenterPage() {
         "@type": "WebPage",
         name: SEO_TITLES.knowledgeCenter,
         description: SEO_DESCRIPTIONS.knowledgeCenter,
-        url: "https://yebe.tech/knowledge-center",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/knowledge-center",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PageHeader
         badge="Knowledge Center"

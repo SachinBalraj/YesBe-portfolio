@@ -807,10 +807,10 @@ function ArticleModal({ article, onClose }: { article: Article; onClose: () => v
           headline: article.title,
           description: article.description,
           author: { "@type": "Person", name: article.author },
-          publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+          publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
           datePublished: article.publishedDate,
           dateModified: article.lastUpdated,
-          mainEntityOfPage: { "@type": "WebPage", "@id": `https://yebe.tech/articles/${article.id}` },
+          mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.yesbe.tech/articles/${article.id}` },
           keywords: article.keywords.join(", "),
           faq: article.faq?.map(item => ({
             "@type": "Question",

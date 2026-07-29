@@ -4,49 +4,49 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- ─── Core Pages ─── -->
   <url>
-    <loc>https://yebe.tech/</loc>
+    <loc>https://www.yesbe.tech/</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/about</loc>
+    <loc>https://www.yesbe.tech/about</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/services</loc>
+    <loc>https://www.yesbe.tech/services</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries</loc>
+    <loc>https://www.yesbe.tech/industries</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies</loc>
+    <loc>https://www.yesbe.tech/case-studies</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/knowledge-center</loc>
+    <loc>https://www.yesbe.tech/knowledge-center</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/pricing</loc>
+    <loc>https://www.yesbe.tech/pricing</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/contact</loc>
+    <loc>https://www.yesbe.tech/contact</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -54,31 +54,31 @@
 
   <!-- ─── Legal Pages ─── -->
   <url>
-    <loc>https://yebe.tech/privacy-policy</loc>
+    <loc>https://www.yesbe.tech/privacy-policy</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/terms-and-conditions</loc>
+    <loc>https://www.yesbe.tech/terms-and-conditions</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/refund-policy</loc>
+    <loc>https://www.yesbe.tech/refund-policy</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/cookie-policy</loc>
+    <loc>https://www.yesbe.tech/cookie-policy</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/disclaimer</loc>
+    <loc>https://www.yesbe.tech/disclaimer</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
@@ -86,103 +86,103 @@
 
   <!-- ─── Solution Detail Pages ─── -->
   <url>
-    <loc>https://yebe.tech/solutions/ai-solutions</loc>
+    <loc>https://www.yesbe.tech/solutions/ai-solutions</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/ai-chatbots</loc>
+    <loc>https://www.yesbe.tech/solutions/ai-chatbots</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/erp-systems</loc>
+    <loc>https://www.yesbe.tech/solutions/erp-systems</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/website-development</loc>
+    <loc>https://www.yesbe.tech/solutions/website-development</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/web-applications</loc>
+    <loc>https://www.yesbe.tech/solutions/web-applications</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/ecommerce</loc>
+    <loc>https://www.yesbe.tech/solutions/ecommerce</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/business-automation</loc>
+    <loc>https://www.yesbe.tech/solutions/business-automation</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/data-analytics</loc>
+    <loc>https://www.yesbe.tech/solutions/data-analytics</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/power-bi-dashboards</loc>
+    <loc>https://www.yesbe.tech/solutions/power-bi-dashboards</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/cloud-devops</loc>
+    <loc>https://www.yesbe.tech/solutions/cloud-devops</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/database-management</loc>
+    <loc>https://www.yesbe.tech/solutions/database-management</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/api-development</loc>
+    <loc>https://www.yesbe.tech/solutions/api-development</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/seo</loc>
+    <loc>https://www.yesbe.tech/solutions/seo</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/geo</loc>
+    <loc>https://www.yesbe.tech/solutions/geo</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/aeo</loc>
+    <loc>https://www.yesbe.tech/solutions/aeo</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/digital-marketing</loc>
+    <loc>https://www.yesbe.tech/solutions/digital-marketing</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/solutions/custom-software</loc>
+    <loc>https://www.yesbe.tech/solutions/custom-software</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -190,67 +190,67 @@
 
   <!-- ─── Industry Detail Pages ─── -->
   <url>
-    <loc>https://yebe.tech/industries/startups</loc>
+    <loc>https://www.yesbe.tech/industries/startups</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/smes</loc>
+    <loc>https://www.yesbe.tech/industries/smes</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/large-enterprises</loc>
+    <loc>https://www.yesbe.tech/industries/large-enterprises</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/healthcare</loc>
+    <loc>https://www.yesbe.tech/industries/healthcare</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/education</loc>
+    <loc>https://www.yesbe.tech/industries/education</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/retail</loc>
+    <loc>https://www.yesbe.tech/industries/retail</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/manufacturing</loc>
+    <loc>https://www.yesbe.tech/industries/manufacturing</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/logistics</loc>
+    <loc>https://www.yesbe.tech/industries/logistics</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/hospitality</loc>
+    <loc>https://www.yesbe.tech/industries/hospitality</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/finance</loc>
+    <loc>https://www.yesbe.tech/industries/finance</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/industries/real-estate</loc>
+    <loc>https://www.yesbe.tech/industries/real-estate</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -258,55 +258,55 @@
 
   <!-- ─── Case Study Detail Pages ─── -->
   <url>
-    <loc>https://yebe.tech/case-studies/fashion-fusion</loc>
+    <loc>https://www.yesbe.tech/case-studies/fashion-fusion</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/restaurant-qr-ordering</loc>
+    <loc>https://www.yesbe.tech/case-studies/restaurant-qr-ordering</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/library-management</loc>
+    <loc>https://www.yesbe.tech/case-studies/library-management</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/business-portfolio</loc>
+    <loc>https://www.yesbe.tech/case-studies/business-portfolio</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/ai-business-assistant</loc>
+    <loc>https://www.yesbe.tech/case-studies/ai-business-assistant</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/erp-management</loc>
+    <loc>https://www.yesbe.tech/case-studies/erp-management</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/powerbi-dashboard</loc>
+    <loc>https://www.yesbe.tech/case-studies/powerbi-dashboard</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/seo-digital-growth</loc>
+    <loc>https://www.yesbe.tech/case-studies/seo-digital-growth</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yebe.tech/case-studies/business-automation</loc>
+    <loc>https://www.yesbe.tech/case-studies/business-automation</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

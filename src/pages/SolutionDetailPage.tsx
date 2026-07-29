@@ -74,7 +74,7 @@ export function SolutionDetailPage() {
   useSEO({
     title: solution ? getSolutionSeoTitle(solution.slug, solution.title) : SEO_TITLES.solutionNotFound,
     description: solution ? getSolutionSeoDescription(solution.slug, solution.title) : SEO_DESCRIPTIONS.solutionNotFound,
-    canonical: solution ? `https://yebe.tech/solutions/${solution.slug}` : "https://yebe.tech/services",
+    canonical: solution ? `https://www.yesbe.tech/solutions/${solution.slug}` : "https://www.yesbe.tech/services",
   });
 
   if (!solution) {
@@ -107,16 +107,16 @@ export function SolutionDetailPage() {
         "@type": "WebPage",
         name: `${solution.title} — YesBe Technologies`,
         description: solution.description,
-        url: `https://yebe.tech/solutions/${solution.slug}`,
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: `https://www.yesbe.tech/solutions/${solution.slug}`,
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "Service",
         name: `${solution.title} — YesBe Technologies`,
         description: solution.description,
-        provider: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
-        url: `https://yebe.tech/solutions/${solution.slug}`,
+        provider: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        url: `https://www.yesbe.tech/solutions/${solution.slug}`,
         areaServed: "IN",
       }} />
       <JsonLd schema={{

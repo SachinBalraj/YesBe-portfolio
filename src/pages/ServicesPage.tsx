@@ -51,7 +51,7 @@ export function ServicesPage() {
   useSEO({
     title: SEO_TITLES.services,
     description: SEO_DESCRIPTIONS.services,
-    canonical: "https://yebe.tech/services",
+    canonical: "https://www.yesbe.tech/services",
   });
 
   return (
@@ -61,8 +61,8 @@ export function ServicesPage() {
         "@type": "WebPage",
         name: SEO_TITLES.services,
         description: SEO_DESCRIPTIONS.services,
-        url: "https://yebe.tech/services",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/services",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PageHeader
         badge="Our Solutions"

@@ -326,7 +326,7 @@ function FooterComponent() {
           Designed &amp; Developed with{" "}
           <span className="text-red-500">❤️</span> by{" "}
           <a
-            href="https://yesbe.tech"
+            href="https://www.yesbe.tech"
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer text-[#2563EB] transition-all duration-300 ease-in-out hover:text-[#60A5FA]"

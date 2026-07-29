@@ -45,7 +45,7 @@ export function IndustriesPage() {
   useSEO({
     title: SEO_TITLES.industries,
     description: SEO_DESCRIPTIONS.industries,
-    canonical: "https://yebe.tech/industries",
+    canonical: "https://www.yesbe.tech/industries",
   });
 
   return (
@@ -55,8 +55,8 @@ export function IndustriesPage() {
         "@type": "WebPage",
         name: SEO_TITLES.industries,
         description: SEO_DESCRIPTIONS.industries,
-        url: "https://yebe.tech/industries",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/industries",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PageHeader
         badge="Industries"

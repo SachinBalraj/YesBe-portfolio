@@ -16,12 +16,12 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://yebe.tech/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yesbe.tech/" },
       ...items.map((crumb, i) => ({
         "@type": "ListItem",
         position: i + 2,
         name: crumb.label,
-        ...(crumb.href ? { item: `https://yebe.tech${crumb.href}` } : {}),
+        ...(crumb.href ? { item: `https://www.yesbe.tech${crumb.href}` } : {}),
       })),
     ],
   };

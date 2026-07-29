@@ -75,7 +75,7 @@ export function IndustryDetailPage() {
   useSEO({
     title: industry ? getIndustrySeoTitle(industry.slug, industry.title) : SEO_TITLES.industryNotFound,
     description: industry ? getIndustrySeoDescription(industry.slug, industry.title) : SEO_DESCRIPTIONS.industryNotFound,
-    canonical: industry ? `https://yebe.tech/industries/${industry.slug}` : "https://yebe.tech/industries",
+    canonical: industry ? `https://www.yesbe.tech/industries/${industry.slug}` : "https://www.yesbe.tech/industries",
   });
 
   if (!industry) {
@@ -108,8 +108,8 @@ export function IndustryDetailPage() {
         "@type": "WebPage",
         name: `${industry.title} — YesBe Technologies`,
         description: industry.description,
-        url: `https://yebe.tech/industries/${industry.slug}`,
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: `https://www.yesbe.tech/industries/${industry.slug}`,
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",

@@ -9,7 +9,7 @@ interface SEOData {
   noindex?: boolean;
 }
 
-const SITE_URL = "https://yebe.tech";
+const SITE_URL = "https://www.yesbe.tech";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/YBlogo.png`;
 const SITE_NAME = "YesBe Technologies";
 const OG_LOCALE = "en_US";

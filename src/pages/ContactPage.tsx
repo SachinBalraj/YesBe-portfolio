@@ -11,7 +11,7 @@ export function ContactPage() {
   useSEO({
     title: SEO_TITLES.contact,
     description: SEO_DESCRIPTIONS.contact,
-    canonical: "https://yebe.tech/contact",
+    canonical: "https://www.yesbe.tech/contact",
   });
 
   return (
@@ -21,8 +21,8 @@ export function ContactPage() {
         "@type": "WebPage",
         name: SEO_TITLES.contact,
         description: SEO_DESCRIPTIONS.contact,
-        url: "https://yebe.tech/contact",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/contact",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PageHeader
         badge="Contact Us"

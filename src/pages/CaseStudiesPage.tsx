@@ -12,7 +12,7 @@ export function CaseStudiesPage() {
   useSEO({
     title: SEO_TITLES.caseStudies,
     description: SEO_DESCRIPTIONS.caseStudies,
-    canonical: "https://yebe.tech/case-studies",
+    canonical: "https://www.yesbe.tech/case-studies",
   });
 
   return (
@@ -22,8 +22,8 @@ export function CaseStudiesPage() {
         "@type": "WebPage",
         name: SEO_TITLES.caseStudies,
         description: SEO_DESCRIPTIONS.caseStudies,
-        url: "https://yebe.tech/case-studies",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: "https://www.yesbe.tech/case-studies",
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PageHeader
         badge="Case Studies"

@@ -1,4 +1,4 @@
-# robots.txt — YesBe Technologies (https://yebe.tech)
+# robots.txt — YesBe Technologies (https://www.yesbe.tech)
 # All crawlers welcome. AI/GEO/AEO crawlers explicitly allowed.
 
 User-agent: *
@@ -8,7 +8,7 @@ Disallow: /admin/
 Disallow: /_vercel/
 
 # Sitemap
-Sitemap: https://yebe.tech/sitemap.xml
+Sitemap: https://www.yesbe.tech/sitemap.xml
 
 # Security contact
-# https://yebe.tech/security.txt
+# https://www.yesbe.tech/security.txt

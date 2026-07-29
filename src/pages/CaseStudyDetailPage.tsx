@@ -136,7 +136,7 @@ export function CaseStudyDetailPage() {
   useSEO({
     title: study ? getCaseStudySeoTitle(study.slug, study.title) : SEO_TITLES.caseStudyNotFound,
     description: study ? getCaseStudySeoDescription(study.slug, study.title) : SEO_DESCRIPTIONS.caseStudyNotFound,
-    canonical: study ? `https://yebe.tech/case-studies/${study.slug}` : "https://yebe.tech/case-studies",
+    canonical: study ? `https://www.yesbe.tech/case-studies/${study.slug}` : "https://www.yesbe.tech/case-studies",
   });
 
   if (!study) {
@@ -164,8 +164,8 @@ export function CaseStudyDetailPage() {
         "@type": "WebPage",
         name: `${study.title} — YesBe Technologies`,
         description: study.shortOverview,
-        url: `https://yebe.tech/case-studies/${study.slug}`,
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://yebe.tech" },
+        url: `https://www.yesbe.tech/case-studies/${study.slug}`,
+        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",

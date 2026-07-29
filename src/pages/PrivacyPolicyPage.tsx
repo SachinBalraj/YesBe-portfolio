@@ -23,11 +23,11 @@ const schema = {
   "@type": "WebPage",
   name: "Privacy Policy",
   description: "YesBe Privacy Policy — Learn how we collect, use, and protect your personal information when you use our services.",
-  url: "https://yebe.tech/privacy-policy",
+  url: "https://www.yesbe.tech/privacy-policy",
   publisher: {
     "@type": "Organization",
     name: "YesBe",
-    url: "https://yebe.tech",
+    url: "https://www.yesbe.tech",
   },
   dateModified: "2026-07-21",
 };
@@ -36,7 +36,7 @@ export function PrivacyPolicyPage() {
   useSEO({
     title: SEO_TITLES.privacyPolicy,
     description: SEO_DESCRIPTIONS.privacyPolicy,
-    canonical: "https://yebe.tech/privacy-policy",
+    canonical: "https://www.yesbe.tech/privacy-policy",
   });
 
   return (
@@ -56,7 +56,7 @@ export function PrivacyPolicyPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Introduction</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              Welcome to <strong>YesBe</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website <strong>yebe.tech</strong> and use our services.
+              Welcome to <strong>YesBe</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website <strong>www.yesbe.tech</strong> and use our services.
             </p>
             <p>
               By accessing or using our website and services, you agree to the collection and use of information in accordance with this policy. If you do not agree with our practices, please do not use our services.
