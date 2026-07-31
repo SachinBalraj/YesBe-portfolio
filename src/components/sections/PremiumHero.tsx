@@ -112,17 +112,19 @@ export function PremiumHero() {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl sm:text-5xl lg:text-[64px] font-extrabold tracking-[-0.02em] leading-[1.05]"
+              className="text-4xl sm:text-[44px] lg:text-[48px] font-extrabold tracking-[-0.02em] leading-[1.05] max-w-2xl"
             >
-              Build Smarter{" "}
-              <span className="text-gradient">Digital Solutions</span>
+              <span className="block text-[#111827]">Transform Your Business</span>
+              <span className="block text-[#111827]">
+                With <span className="text-[#2563EB]">AI-Powered Solutions</span>
+              </span>
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="mt-6 text-[15px] sm:text-[16px] leading-[1.7] text-muted-foreground max-w-lg"
+              className="mt-6 max-w-xl text-[15px] sm:text-[16px] leading-[1.7] text-muted-foreground"
             >
-              AI tools, ERP systems, Power BI dashboards, and modern web apps — built for startups, SMEs, and enterprises. Strategy to deployment, one team.
+              Websites, ERP systems, automation, and analytics — all under one technology partner.
             </motion.p>
 
             {/* Trust indicators */}

@@ -288,7 +288,7 @@ function FooterComponent() {
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Business Hours</h4>
               </div>
               <p className="text-[13px] text-gray-400">Mon – Sat</p>
-              <p className="text-[13px] font-medium text-white">9:00 AM – 8:00 PM</p>
+              <p className="text-[13px] font-medium text-white">9:00 AM – 9:00 PM</p>
             </div>
           </div>
         </motion.div>

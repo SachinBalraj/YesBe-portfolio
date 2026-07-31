@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ScrollToTopButton } from "@/components/common/ScrollToTopButton";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
-import { CursorGlow } from "@/components/common/CursorGlow";
 import { LoadingScreen } from "@/components/common/LoadingScreen";
 import { Analytics } from "@/components/common/Analytics";
 import { GTM } from "@/components/common/GTM";
@@ -32,7 +31,19 @@ const CaseStudyDetailPage = lazy(() =>
   import("@/pages/CaseStudyDetailPage").then((m) => ({ default: m.CaseStudyDetailPage }))
 );
 const KnowledgeCenterPage = lazy(() =>
-  import("@/pages/KnowledgeCenterPage").then((m) => ({ default: m.KnowledgeCenterPage }))
+  import("@/pages/knowledge/KnowledgeCenterHome").then((m) => ({ default: m.KnowledgeCenterHome }))
+);
+const KnowledgeCategoryPage = lazy(() =>
+  import("@/pages/knowledge/CategoryPage").then((m) => ({ default: m.CategoryPage }))
+);
+const KnowledgeArticlePage = lazy(() =>
+  import("@/pages/knowledge/ArticleDetailPage").then((m) => ({ default: m.ArticleDetailPage }))
+);
+const KnowledgeSearchPage = lazy(() =>
+  import("@/pages/knowledge/SearchPage").then((m) => ({ default: m.SearchPage }))
+);
+const VideoPage = lazy(() =>
+  import("@/pages/VideoPage").then((m) => ({ default: m.VideoPage }))
 );
 const PricingPage = lazy(() =>
   import("@/pages/PricingPage").then((m) => ({ default: m.PricingPage }))
@@ -92,7 +103,7 @@ function App() {
       {loading && <LoadingScreen onComplete={handleLoaded} />}
       <ErrorBoundary>
         <ThemeProvider>
-          <CursorGlow />
+
           <CookieConsent />
           <BusinessSchema />
           <ScrollToTopButton />
@@ -103,12 +114,19 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/services" element={<ServicesPage />} />
+                <Route path="/solutions" element={<ServicesPage />} />
                 <Route path="/industries/:slug" element={<IndustryDetailPage />} />
                 <Route path="/industries" element={<IndustriesPage />} />
                 <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
                 <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
                 <Route path="/case-studies" element={<CaseStudiesPage />} />
                 <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
+                <Route path="/knowledge-center/category/:slug" element={<KnowledgeCategoryPage />} />
+                <Route path="/knowledge-center/article/:slug" element={<KnowledgeArticlePage />} />
+                <Route path="/knowledge-center/search" element={<KnowledgeSearchPage />} />
+                <Route path="/knowledge-center/:slug" element={<KnowledgeCategoryPage />} />
+                <Route path="/search" element={<KnowledgeSearchPage />} />
+                <Route path="/videos" element={<VideoPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

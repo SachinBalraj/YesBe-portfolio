@@ -9,7 +9,6 @@ const WhyChooseSection = lazy(() => import("@/sections/WhyChooseSection").then(m
 const SolutionsSection = lazy(() => import("@/sections/SolutionsSection").then(m => ({ default: m.SolutionsSection })));
 const IndustriesSection = lazy(() => import("@/sections/IndustriesSection").then(m => ({ default: m.IndustriesSection })));
 const PortfolioSection = lazy(() => import("@/sections/PortfolioSection").then(m => ({ default: m.PortfolioSection })));
-const TrustedBrandsSection = lazy(() => import("@/sections/TrustedBrandsSection").then(m => ({ default: m.TrustedBrandsSection })));
 const BusinessResultsSection = lazy(() => import("@/sections/BusinessResultsSection").then(m => ({ default: m.BusinessResultsSection })));
 const ContactSection = lazy(() => import("@/sections/ContactSection").then(m => ({ default: m.ContactSection })));
 
@@ -50,11 +49,6 @@ export function HomePage() {
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
         <div className="contain-content">
           <PortfolioSection />
-        </div>
-      </Suspense>
-      <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <TrustedBrandsSection />
         </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
