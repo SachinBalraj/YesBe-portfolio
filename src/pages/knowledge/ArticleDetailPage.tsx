@@ -10,7 +10,6 @@ import { generateFAQs } from "@/utils/generateFAQ";
 import {
   articleUrl,
   buildArticleSchema,
-  buildBreadcrumbSchema,
   buildFaqSchema,
   getArticleSeoDescription,
   getArticleSeoTitle,
@@ -74,11 +73,6 @@ export function ArticleDetailPage() {
 
   const schemas: Record<string, unknown>[] = [
     buildArticleSchema(article),
-    buildBreadcrumbSchema([
-      { name: "Knowledge Center", url: `${SITE_URL}/knowledge-center` },
-      { name: article.category, url: `${SITE_URL}/knowledge-center/category/${article.categorySlug}` },
-      { name: article.title },
-    ]),
   ];
   if (faqs.length) {
     schemas.push(buildFaqSchema(faqs));
@@ -136,7 +130,7 @@ export function ArticleDetailPage() {
             <img
               src={article.featuredImage}
               alt={`${article.title} — YesBe Knowledge Center guide`}
-              fetchPriority="high"
+              loading="lazy"
               decoding="async"
               width={1200}
               height={630}

@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/animations";
+import { trackGenerateLead, trackContactClick, trackPhoneClick, trackWhatsAppClick } from "@/utils/analytics";
 
 interface FormData {
   name: string;
@@ -32,9 +33,9 @@ const inputClass =
   "w-full rounded-xl border border-border bg-card px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
 
 const contactCards = [
-  { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: `tel:${SITE_CONFIG.phone}`, color: "bg-blue-50 text-blue-600" },
-  { icon: MessageCircle, label: "WhatsApp", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.social.whatsapp, color: "bg-green-50 text-green-600" },
-  { icon: Mail, label: "Email", value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}`, color: "bg-orange-50 text-orange-600" },
+  { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: `tel:${SITE_CONFIG.phone}`, color: "bg-blue-50 text-blue-600", onClick: () => trackPhoneClick("contact_section") },
+  { icon: MessageCircle, label: "WhatsApp", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.social.whatsapp, color: "bg-green-50 text-green-600", onClick: () => trackWhatsAppClick("contact_section") },
+  { icon: Mail, label: "Email", value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}`, color: "bg-orange-50 text-orange-600", onClick: () => trackContactClick("contact_section") },
   { icon: MapPin, label: "Location", value: SITE_CONFIG.location, href: "#", color: "bg-rose-50 text-rose-600" },
 ];
 
@@ -167,6 +168,7 @@ export function ContactSection() {
       }
 
       setStatus("sent");
+      trackGenerateLead("contact_form");
       setFormData(initialData);
       setCurrentStep(0);
       setTimeout(() => setStatus("idle"), 4000);
@@ -526,6 +528,7 @@ export function ContactSection() {
                 href={card.href}
                 target={card.href.startsWith("http") ? "_blank" : undefined}
                 rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                onClick={card.onClick}
                 className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-card p-5 shadow-card hover:shadow-card-hover hover:border-primary/20 transition-all duration-200"
               >
                 <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${card.color} group-hover:scale-110 transition-transform duration-200`}>

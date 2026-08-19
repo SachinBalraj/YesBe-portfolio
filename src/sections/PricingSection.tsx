@@ -11,6 +11,7 @@ import {
 import { SITE_CONFIG } from "@/constants";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { JsonLd } from "@/components/common/JsonLd";
+import { trackPricingClick, trackConsultationClick, trackWhatsAppClick } from "@/utils/analytics";
 import type { LucideIcon } from "lucide-react";
 
 /* ─── Types ─── */
@@ -372,7 +373,7 @@ const sections: PricingSection[] = [
       {
         name: "Social Media Marketing",
         description: "Strategic social media management, content creation, and audience growth.",
-        price: "₹7,999/mo",
+        price: "₹6,999/month",
         priceLabel: "Starting From",
         timeline: "Ongoing",
         features: [
@@ -411,7 +412,7 @@ const sections: PricingSection[] = [
       {
         name: "Business Consultation",
         description: "Digital transformation strategy, process optimization, and growth planning.",
-        price: "₹1,499/hr",
+        price: "₹999/hr",
         priceLabel: "",
         timeline: "On Demand",
         popular: true,
@@ -637,6 +638,7 @@ function PricingCardComponent({ card, index }: { card: PricingCard; index: numbe
         {/* CTA */}
         <a
           href="#contact"
+          onClick={() => trackPricingClick(card.name)}
           className={`relative z-10 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[13px] font-semibold transition-all duration-300 ${
             card.popular
               ? "btn-premium text-white"
@@ -748,6 +750,7 @@ export function PricingSection() {
             >
               <a
                 href="#contact"
+                onClick={() => trackConsultationClick("pricing_hero")}
                 className="group relative z-10 inline-flex w-full sm:w-auto items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
                 style={{ fontFeatureSettings: '"liga" 1, "calt" 1' }}
               >
@@ -756,6 +759,7 @@ export function PricingSection() {
               </a>
               <a
                 href="#contact"
+                onClick={() => trackPricingClick("request_proposal_hero")}
                 className="group inline-flex items-center gap-2.5 rounded-full btn-glass px-7 py-3.5 text-[15px] font-semibold text-foreground"
               >
                 Request Proposal
@@ -861,6 +865,7 @@ export function PricingSection() {
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#contact"
+                  onClick={() => trackPricingClick("enterprise_proposal")}
                   className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_4px_24px_rgba(37,99,235,0.3)] transition-all duration-300 hover:shadow-[0_8px_32px_rgba(37,99,235,0.4)] hover:-translate-y-0.5"
                 >
                   Request Proposal
@@ -868,6 +873,7 @@ export function PricingSection() {
                 </a>
                 <a
                   href="#contact"
+                  onClick={() => trackConsultationClick("enterprise_meeting")}
                   className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/[0.06] px-7 py-3.5 text-[14px] font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white/[0.1] hover:border-white/20"
                 >
                   Book Enterprise Meeting
@@ -1085,6 +1091,7 @@ export function PricingSection() {
             >
               <a
                 href="#contact"
+                onClick={() => trackConsultationClick("pricing_final")}
                 className="group relative z-10 inline-flex w-full sm:w-auto items-center justify-center gap-3 whitespace-nowrap rounded-full btn-premium px-8 py-[14px] text-[16px] font-semibold leading-[1.2] tracking-[0.2px] text-white"
                 style={{ fontFeatureSettings: '"liga" 1, "calt" 1' }}
               >
@@ -1093,6 +1100,7 @@ export function PricingSection() {
               </a>
               <a
                 href="#contact"
+                onClick={() => trackPricingClick("request_proposal_final")}
                 className="group inline-flex items-center gap-2.5 rounded-full btn-glass px-7 py-3.5 text-[15px] font-semibold text-foreground"
               >
                 Request Proposal
@@ -1102,6 +1110,7 @@ export function PricingSection() {
                 href={SITE_CONFIG.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick("pricing_final")}
                 className="group inline-flex items-center gap-2.5 rounded-full btn-glass px-7 py-3.5 text-[15px] font-semibold text-foreground"
               >
                 <MessageCircle className="h-4 w-4 text-[#25c06c]" />

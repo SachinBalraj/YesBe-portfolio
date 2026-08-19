@@ -30,6 +30,10 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
           <img
             src={authorImage}
             alt={authorName}
+            width={32}
+            height={32}
+            loading="lazy"
+            decoding="async"
             className="h-8 w-8 rounded-full object-cover ring-2 ring-primary/20"
           />
         ) : (
@@ -54,6 +58,10 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
             <img
               src={authorImage}
               alt={authorName}
+              width={64}
+              height={64}
+              loading="lazy"
+              decoding="async"
               className="h-16 w-16 rounded-2xl object-cover ring-4 ring-primary/10 shadow-sm"
             />
           ) : (

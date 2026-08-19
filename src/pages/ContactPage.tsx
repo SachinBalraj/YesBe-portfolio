@@ -18,11 +18,17 @@ export function ContactPage() {
     <>
       <JsonLd schema={{
         "@context": "https://schema.org",
-        "@type": "WebPage",
+        "@type": "ContactPage",
         name: SEO_TITLES.contact,
         description: SEO_DESCRIPTIONS.contact,
         url: "https://www.yesbe.tech/contact",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        mainEntity: {
+          "@type": "Organization",
+          "@id": "https://www.yesbe.tech/#organization",
+          name: "YesBe Technologies",
+          email: "hello@yesbe.tech",
+          telephone: "+919087795970",
+        },
       }} />
       <PageHeader
         badge="Contact Us"

@@ -102,7 +102,7 @@ const faqData: FAQItem[] = [
   {
     question: "How can I contact you?",
     answer:
-      "Email sachinbalraj01@gmail.com, call +91 9087795970, WhatsApp, LinkedIn, or use the form on this website. A proposal is typically shared within 24 hours.",
+      "Email hello@yesbe.tech, call +91 9087795970, WhatsApp, LinkedIn, or use the form on this website. A proposal is typically shared within 24 hours.",
   },
   {
     question: "How long does development take?",

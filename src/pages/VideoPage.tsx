@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/common/PageHeader";
 import { VideoCard } from "@/components/VideoCard";
 import { videos, VIDEO_CATEGORIES } from "@/data/videos";
 import { VideoSchema } from "@/components/VideoSchema";
+import { trackConsultationClick } from "@/utils/analytics";
 
 export function VideoPage() {
   const [search, setSearch] = useState("");
@@ -66,7 +67,7 @@ export function VideoPage() {
                   </p>
                 </div>
                 <div className="rounded-[28px] overflow-hidden bg-slate-900">
-                  <img src={featured.thumbnail} alt={featured.title} className="h-full w-full object-cover" />
+                   <img src={featured.thumbnail} alt={featured.title} width={640} height={360} loading="eager" decoding="async" fetchPriority="high" className="h-full w-full object-cover" />
                 </div>
               </div>
 
@@ -87,6 +88,7 @@ export function VideoPage() {
                 </a>
                 <Link
                   to="/contact"
+                  onClick={() => trackConsultationClick("videos")}
                   className="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:border-primary hover:text-primary"
                 >
                   Book Free Consultation

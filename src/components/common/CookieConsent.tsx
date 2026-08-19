@@ -2,33 +2,13 @@ import { useState, useEffect, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, Settings, X, Check, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getStoredConsent, getStoredPreferences, type ConsentLevel, type CookiePreferences } from "./consentStore";
 
-type ConsentLevel = "all" | "essential" | null;
-
-interface CookiePreferences {
-  essential: boolean;
-  analytics: boolean;
-  marketing: boolean;
-}
+export { getStoredConsent, getStoredPreferences };
+export type { ConsentLevel, CookiePreferences };
 
 const STORAGE_KEY = "yesbe-cookie-consent";
 const PREFS_KEY = "yesbe-cookie-preferences";
-
-function getStoredConsent(): ConsentLevel {
-  try {
-    return localStorage.getItem(STORAGE_KEY) as ConsentLevel;
-  } catch {
-    return null;
-  }
-}
-
-function getStoredPreferences(): CookiePreferences {
-  try {
-    const raw = localStorage.getItem(PREFS_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch { /* ignore */ }
-  return { essential: true, analytics: false, marketing: false };
-}
 
 function Toggle({ checked, onToggle, label }: { checked: boolean; onToggle: () => void; label: string }) {
   return (
@@ -268,6 +248,3 @@ function CookieConsentComponent() {
 }
 
 export const CookieConsent = memo(CookieConsentComponent);
-
-export { getStoredConsent, getStoredPreferences };
-export type { CookiePreferences };

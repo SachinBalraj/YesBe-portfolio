@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import logoImg from "@/assets/images/YBlogo.png";
+import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
 
 /* ─── SVG Icons ─── */
 
@@ -265,11 +266,11 @@ function FooterComponent() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`mailto:${SITE_CONFIG.email}`} className="text-[13px] text-gray-400 hover:text-white transition-colors">{SITE_CONFIG.email}</a>
+                <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("footer")} className="text-[13px] text-gray-400 hover:text-white transition-colors">{SITE_CONFIG.email}</a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`tel:${SITE_CONFIG.phone}`} className="text-[13px] text-gray-400 hover:text-white transition-colors">+91 {SITE_CONFIG.phone}</a>
+                <a href={`tel:${SITE_CONFIG.phone}`} onClick={() => trackPhoneClick("footer")} className="text-[13px] text-gray-400 hover:text-white transition-colors">+91 {SITE_CONFIG.phone}</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />

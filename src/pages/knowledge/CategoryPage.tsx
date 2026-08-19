@@ -40,7 +40,6 @@ import {
   calculateArticleScore,
 } from "@/knowledge/articles";
 import {
-  buildBreadcrumbSchema,
   buildFaqSchema,
   getCategorySeoDescription,
   getCategorySeoTitle,
@@ -50,6 +49,7 @@ import {
 import { CategoryNav } from "@/components/knowledge/CategoryNav";
 import { ArticleGrid } from "@/components/knowledge/ArticleGrid";
 import { Pagination } from "@/components/knowledge/Pagination";
+import { trackConsultationClick } from "@/utils/analytics";
 import { NewsletterSignup } from "@/components/knowledge/NewsletterSignup";
 import { FeaturedArticle } from "@/components/knowledge/FeaturedArticle";
 import { FAQSection } from "@/components/knowledge/FAQSection";
@@ -181,15 +181,8 @@ export function CategoryPage() {
 
   return (
     <div className="bg-ice-gradient min-h-screen pb-24">
-      {/* Schemas: Breadcrumb + FAQ if present */}
-      <JsonLd
-        schema={{
-          ...buildBreadcrumbSchema([
-            { name: "Knowledge Center", url: `${SITE_URL}/knowledge-center` },
-            { name: category.name, url: categoryUrl(category.slug) },
-          ]),
-        }}
-      />
+      {/* Schema: FAQ if present */}
+
       {category.faq && category.faq.length > 0 && (
         <JsonLd schema={buildFaqSchema(category.faq)} />
       )}
@@ -477,6 +470,7 @@ export function CategoryPage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 to="/contact"
+                onClick={() => trackConsultationClick("knowledge_category")}
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-xs font-bold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5"
               >
                 Book Free Consultation

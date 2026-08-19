@@ -29,7 +29,7 @@ export function FeaturedArticle({ article }: { article: Article }) {
             <img
               src={article.featuredImage}
               alt={`${article.title} — featured article by YesBe Technologies`}
-              loading="eager"
+              loading="lazy"
               decoding="async"
               width={800}
               height={500}

@@ -14,7 +14,7 @@ export function FounderVideo({ video, founderName, role, message }: FounderVideo
     <section className="rounded-[32px] border border-slate-200/80 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.07)] transition-all duration-300">
       <div className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-center">
         <div className="relative overflow-hidden rounded-[28px] bg-slate-900">
-          <img src={video.thumbnail} alt={video.title} className="h-full w-full object-cover" />
+          <img src={video.thumbnail} alt={video.title} width={280} height={158} loading="lazy" decoding="async" className="h-full w-full object-cover" />
           <button className="absolute inset-x-0 bottom-6 mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-primary shadow-lg transition-all duration-200 hover:scale-105">
             <Play className="h-5 w-5" />
           </button>

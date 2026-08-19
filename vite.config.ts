@@ -37,6 +37,7 @@ export default defineConfig({
             if (id.includes("@radix-ui")) return "radix";
             if (id.includes("react-hook-form") || id.includes("zod")) return "forms";
             if (id.includes("@emailjs")) return "emailjs";
+            if (id.includes("react-icons")) return "icons";
             if (
               id.includes("lucide-react") ||
               id.includes("class-variance-authority") ||
@@ -44,6 +45,7 @@ export default defineConfig({
               id.includes("tailwind-merge")
             )
               return "ui";
+            if (id.includes("marked") || id.includes("dompurify")) return "markdown";
           }
         },
         entryFileNames: "assets/[name]-[hash].js",

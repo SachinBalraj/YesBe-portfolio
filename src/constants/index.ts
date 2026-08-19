@@ -11,7 +11,7 @@ export const SITE_CONFIG = {
   title: "AI, ERP, Web Development & Business Solutions",
   description:
     "YesBe helps startups, SMEs, and enterprises with AI tools, ERP systems, web development, data analytics, cloud services, and search optimization.",
-  email: "sachinbalraj01@gmail.com",
+  email: "hello@yesbe.tech",
   phone: "9087795970",
   location: "Salem, Tamil Nadu, India",
   social: {
@@ -50,6 +50,9 @@ export const BUSINESS_INFO = {
     sameAs: [
       "https://www.linkedin.com/in/sachin-balraj-2b7650406",
       "https://github.com/sachinbalraj",
+      "https://www.instagram.com/yesbe.co",
+      "https://www.facebook.com/yesbe.co",
+      "https://x.com/yesbe_co",
     ],
     contactPoint: [
       {

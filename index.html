@@ -43,25 +43,41 @@
     <meta name="msapplication-TileColor" content="#2563EB" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
 
+    <!-- Google Tag Manager (deferred to after page load) -->
+    <script>
+    if(window.addEventListener){
+      window.addEventListener('load',function(){
+        var s=document.createElement('script');
+        s.async=true;
+        s.src='https://www.googletagmanager.com/gtm.js?id=GTM-PZ9KWVFH';
+        document.head.appendChild(s);
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      });
+    }else{
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PZ9KWVFH');
+    }
+    </script>
+
     <!-- Preconnect critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
 
-    <!-- Google Fonts — Inter (async, non-render-blocking) -->
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
+    <!-- Google Fonts — Inter (preloaded, non-render-blocking) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
     </noscript>
 
-    <!-- Preload above-the-fold images -->
-    <link rel="preload" href="/sachin.jpg" as="image" fetchpriority="high" />
+    <!-- Preload above-the-fold logo image -->
+    <link rel="preload" href="/YBlogo.png" as="image" fetchpriority="high" />
 
     <!-- DNS prefetch for remaining origins -->
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -79,6 +95,10 @@
     </style>
   </head>
   <body class="min-h-screen bg-background antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ9KWVFH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="root">
       <!-- Fast initial loading indicator while JS loads -->
       <div id="app-loader" style="position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff">
@@ -89,241 +109,6 @@
 
     <!-- Schema.org JSON-LD — Organization & WebSite (injected via BusinessSchema component) -->
 
-    <!-- Schema.org JSON-LD — FAQPage (GEO/AEO — 20 questions) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is YesBe?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "YesBe is a technology solutions company specializing in AI-powered software, ERP systems, Power BI dashboards, websites, and business automation tools for startups, SMEs, and enterprises worldwide."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What services does YesBe provide?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Services include AI & Intelligent Solutions, Full Stack Website Development, ERP Solutions, Power BI & Data Analytics Dashboards, Cloud Deployment & DevOps, SEO/GEO/AEO Optimization, Database Management, Business Automation, Digital Marketing, and Business Technology Consulting."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What industries do you work with?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We work across education, healthcare, retail, restaurants, manufacturing, finance, construction, logistics, real estate, startups, SMEs, and large enterprises. Each industry gets a tailored solution built for its specific workflows."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you build ERP software?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Custom ERP solutions include School Management ERP, Hospital ERP, Inventory Management, Billing Systems, and enterprise resource planning tools. Each ERP is built specifically for the client's business processes."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does a business website cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Website development starts from ₹4,999 for landing pages up to ₹2,50,000+ for custom web applications. Pricing depends on features, integrations, timeline, and complexity. A detailed proposal with transparent milestones is shared after understanding the project."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is RAG implementation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "RAG (Retrieval-Augmented Generation) connects AI language models to your business data so the AI provides accurate, context-aware answers. It's used for customer support bots, internal knowledge assistants, and document analysis tools."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you develop AI chatbots?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. AI chatbots are built using OpenAI, LangChain, and custom RAG pipelines. They handle customer support, lead qualification, internal queries, and product recommendations — trained on your specific business data."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you provide Power BI dashboards?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Power BI dashboards consolidate data from multiple sources into real-time, interactive reports. Services include executive dashboards, KPI tracking, automated report generation, anomaly detection, and predictive analytics."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you build custom software?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Custom software includes admin panels, internal tools, SaaS applications, business portals, and industry-specific solutions built with React, Node.js, and Python for performance and scalability."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you automate business workflows?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Business automation covers workflow automation, API integration, CRM setup, automated notifications, data synchronization, and AI-powered process optimization to eliminate repetitive manual tasks."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you provide cloud deployment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Cloud services include AWS and Azure deployment, Docker containerization, CI/CD pipeline setup, server configuration, SSL setup, and performance optimization with security and monitoring."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you optimize websites for SEO?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. SEO services include technical SEO audits, on-page optimization, keyword research, content strategy, Google Business Profile optimization, and performance improvements — combined with GEO and AEO."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is GEO optimization?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "GEO (Generative Engine Optimization) optimizes your website so AI search engines like ChatGPT, Gemini, and Perplexity recommend your business when users ask relevant questions."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is AEO optimization?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AEO (Answer Engine Optimization) structures content to provide direct, concise answers for Google Featured Snippets, voice assistants, and AI summaries using question-based headings and FAQ schemas."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you integrate AI into existing software?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. AI can be added to existing applications — chatbots, recommendation engines, AI-powered search, automated data processing — via APIs without rewriting the entire system."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you work with startups?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Startup services include MVP development, rapid prototyping, scalable architecture, and go-to-market technology strategy — focused on building lean, validated products quickly."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you work with enterprises?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Enterprise services include large-scale ERP, custom software, cloud infrastructure, AI integration, business intelligence dashboards, and ongoing technical consulting with proper documentation."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What technologies do you use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Frontend: React, TypeScript, Tailwind CSS. Backend: Node.js, Python, FastAPI. Database: MongoDB, PostgreSQL. Cloud: AWS, Docker. AI: OpenAI, LangChain. Analytics: Power BI. Marketing: SEO, GEO, AEO."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I contact YesBe?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Contact us via email at hello@yesbe.tech, phone at +91 9087795970, WhatsApp, LinkedIn, or the enquiry form. A detailed proposal is typically shared within 24 hours."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does development take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Timeline depends on scope. Landing page: 3–5 days. Business website: 1–3 weeks. Custom web app: 2–8 weeks. ERP: 4–12 weeks. AI solutions: 2–6 weeks. A detailed timeline is provided after the discovery phase."
-          }
-        }
-      ]
-    }
-    </script>
 
-    <!-- Schema.org JSON-LD — BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.yesbe.tech/" },
-        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.yesbe.tech/#about" },
-        { "@type": "ListItem", "position": 3, "name": "Solutions", "item": "https://www.yesbe.tech/#solutions" },
-        { "@type": "ListItem", "position": 4, "name": "Projects", "item": "https://www.yesbe.tech/#projects" },
-        { "@type": "ListItem", "position": 5, "name": "Pricing", "item": "https://www.yesbe.tech/#pricing" },
-        { "@type": "ListItem", "position": 6, "name": "Knowledge Center", "item": "https://www.yesbe.tech/#knowledge" },
-        { "@type": "ListItem", "position": 7, "name": "FAQ", "item": "https://www.yesbe.tech/#faq" },
-        { "@type": "ListItem", "position": 8, "name": "Contact", "item": "https://www.yesbe.tech/#contact" }
-      ]
-    }
-    </script>
-
-    <!-- Schema.org JSON-LD — Article (Knowledge Center) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Knowledge Center — AI, ERP, Power BI & Business Tech Guides",
-      "description": "Expert guides on AI, ERP, Power BI, SEO/GEO/AEO, RAG systems, and automation by YesBe Technologies.",
-      "author": {
-        "@type": "Organization",
-        "@id": "https://www.yesbe.tech/#organization",
-        "name": "YesBe Technologies"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "@id": "https://www.yesbe.tech/#organization",
-        "name": "YesBe Technologies",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.yesbe.tech/YBlogo.png"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.yesbe.tech/#knowledge"
-      },
-      "datePublished": "2026-07-14",
-      "dateModified": "2026-07-14"
-    }
-    </script>
-
-    <!-- Schema.org JSON-LD — ContactPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "@id": "https://www.yesbe.tech/#contact",
-      "url": "https://www.yesbe.tech/#contact",
-      "name": "Contact YesBe",
-      "description": "Contact YesBe for AI, web development, ERP, Power BI dashboards, and business consulting.",
-      "mainEntity": {
-        "@type": "Organization",
-        "@id": "https://www.yesbe.tech/#organization",
-        "name": "YesBe Technologies",
-        "email": "hello@yesbe.tech",
-        "telephone": "+919087795970"
-      }
-    }
-    </script>
   </body>
 </html>

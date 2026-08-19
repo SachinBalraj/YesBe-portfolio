@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { getStoredConsent, getStoredPreferences } from "./CookieConsent";
+import { getStoredConsent, getStoredPreferences } from "./consentStore";
 
 /**
  * Google Analytics 4 Measurement ID

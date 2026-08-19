@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, Calendar, ArrowRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { SITE_CONFIG } from "@/constants";
+import { trackContactClick } from "@/utils/analytics";
 
 interface TOCItem {
   id: string;
@@ -241,6 +242,7 @@ export function LegalPageLayout({
               </button>
               <a
                 href={`mailto:${SITE_CONFIG.email}`}
+                onClick={() => trackContactClick("legal_page")}
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground shadow-card transition-all duration-200 hover:shadow-card-hover hover:border-primary/20"
               >
                 {SITE_CONFIG.email}

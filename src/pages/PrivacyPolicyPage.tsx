@@ -2,6 +2,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { LegalPageLayout } from "@/components/common/LegalPageLayout";
 import { SITE_CONFIG } from "@/constants";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -186,7 +187,7 @@ export function PrivacyPolicyPage() {
               <li><strong>Right to Withdraw Consent</strong> — Withdraw previously given consent at any time</li>
             </ul>
             <p>
-              To exercise any of these rights, please contact us at <a href={`mailto:${SITE_CONFIG.email}`} className="text-primary font-medium hover:underline">{SITE_CONFIG.email}</a>.
+               To exercise any of these rights, please contact us at <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("privacy_policy")} className="text-primary font-medium hover:underline">{SITE_CONFIG.email}</a>.
             </p>
           </div>
         </section>
@@ -231,8 +232,8 @@ export function PrivacyPolicyPage() {
             <div className="rounded-2xl border border-border/60 bg-[#f8fafc] p-6 mt-4">
               <ul className="space-y-2">
                 <li><strong>Company:</strong> {SITE_CONFIG.name}</li>
-                <li><strong>Email:</strong> <a href={`mailto:${SITE_CONFIG.email}`} className="text-primary hover:underline">{SITE_CONFIG.email}</a></li>
-                <li><strong>Phone:</strong> <a href={`tel:${SITE_CONFIG.phone}`} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
+                <li><strong>Email:</strong> <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("privacy_policy")} className="text-primary hover:underline">{SITE_CONFIG.email}</a></li>
+                <li><strong>Phone:</strong> <a href={`tel:${SITE_CONFIG.phone}`} onClick={() => trackPhoneClick("privacy_policy")} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
                 <li><strong>Location:</strong> {SITE_CONFIG.location}</li>
               </ul>
             </div>

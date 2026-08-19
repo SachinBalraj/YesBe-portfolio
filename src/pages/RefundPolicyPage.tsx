@@ -2,6 +2,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { LegalPageLayout } from "@/components/common/LegalPageLayout";
 import { SITE_CONFIG } from "@/constants";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -136,7 +137,7 @@ export function RefundPolicyPage() {
               <li><strong>Before work begins:</strong> Full refund of advance payment (minus administrative fee)</li>
               <li><strong>Within the first 25% of project timeline:</strong> Up to 50% refund of advance payment</li>
               <li><strong>After 25% of project timeline:</strong> No refund; client is responsible for full project cost</li>
-              <li>Cancellation requests must be submitted in writing via email to <a href={`mailto:${SITE_CONFIG.email}`} className="text-primary font-medium hover:underline">{SITE_CONFIG.email}</a></li>
+              <li>Cancellation requests must be submitted in writing via email to <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("refund_policy")} className="text-primary font-medium hover:underline">{SITE_CONFIG.email}</a></li>
               <li>The effective date of cancellation is the date we receive and acknowledge the written request</li>
             </ul>
           </div>
@@ -182,8 +183,8 @@ export function RefundPolicyPage() {
             <div className="rounded-2xl border border-border/60 bg-[#f8fafc] p-6 mt-4">
               <ul className="space-y-2">
                 <li><strong>Company:</strong> {SITE_CONFIG.name}</li>
-                <li><strong>Email:</strong> <a href={`mailto:${SITE_CONFIG.email}`} className="text-primary hover:underline">{SITE_CONFIG.email}</a></li>
-                <li><strong>Phone:</strong> <a href={`tel:${SITE_CONFIG.phone}`} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
+                <li><strong>Email:</strong> <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("refund_policy")} className="text-primary hover:underline">{SITE_CONFIG.email}</a></li>
+                <li><strong>Phone:</strong> <a href={`tel:${SITE_CONFIG.phone}`} onClick={() => trackPhoneClick("refund_policy")} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
                 <li><strong>Response Time:</strong> We aim to respond to all refund requests within 2 business days</li>
               </ul>
             </div>

@@ -13,6 +13,10 @@ export function VideoCard({ video }: VideoCardProps) {
         <img
           src={video.thumbnail}
           alt={video.title}
+          width={320}
+          height={224}
+          loading="lazy"
+          decoding="async"
           className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

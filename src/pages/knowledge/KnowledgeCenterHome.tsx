@@ -3,7 +3,6 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Sparkles, TrendingUp } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { JsonLd } from "@/components/common/JsonLd";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { SEO_TITLES, SEO_DESCRIPTIONS } from "@/constants/seoTitles";
 import {
@@ -13,7 +12,7 @@ import {
   getCategoryArticleCount,
 } from "@/knowledge/articles";
 import { KNOWLEDGE_CATEGORIES } from "@/knowledge/categories";
-import { buildBreadcrumbSchema, SITE_URL } from "@/knowledge/seo";
+import { SITE_URL } from "@/knowledge/seo";
 import { SearchBar } from "@/components/knowledge/SearchBar";
 import { CategoryNav } from "@/components/knowledge/CategoryNav";
 import { FeaturedArticle } from "@/components/knowledge/FeaturedArticle";
@@ -69,12 +68,6 @@ export function KnowledgeCenterHome() {
 
   return (
     <div className="bg-ice-gradient">
-      <JsonLd
-        schema={{
-          ...buildBreadcrumbSchema([{ name: "Knowledge Center", url: `${SITE_URL}/knowledge-center` }]),
-        }}
-      />
-
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
         <Breadcrumbs items={[{ label: "Knowledge Center" }]} />
       </div>

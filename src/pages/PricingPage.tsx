@@ -24,7 +24,7 @@ export function PricingPage() {
         url: "https://www.yesbe.tech/pricing",
         publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
-      <div className="pt-[140px] lg:pt-[160px] bg-white">
+      <div className="pt-20 lg:pt-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={[{ label: "Pricing" }]} />
         </div>

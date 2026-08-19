@@ -3,8 +3,10 @@ import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import { PremiumHero } from "@/components/sections/PremiumHero";
-import { TechnologyMarquee } from "@/components/TechnologyMarquee";
 
+const TechnologyMarquee = lazy(() =>
+  import("@/components/TechnologyMarquee").then((m) => ({ default: m.TechnologyMarquee }))
+);
 const WhyChooseSection = lazy(() => import("@/sections/WhyChooseSection").then(m => ({ default: m.WhyChooseSection })));
 const SolutionsSection = lazy(() => import("@/sections/SolutionsSection").then(m => ({ default: m.SolutionsSection })));
 const IndustriesSection = lazy(() => import("@/sections/IndustriesSection").then(m => ({ default: m.IndustriesSection })));
@@ -30,7 +32,9 @@ export function HomePage() {
         publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
       }} />
       <PremiumHero />
-      <TechnologyMarquee />
+      <Suspense fallback={<div className="h-12" aria-hidden="true" />}>
+        <TechnologyMarquee />
+      </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
         <div className="contain-content">
           <WhyChooseSection />

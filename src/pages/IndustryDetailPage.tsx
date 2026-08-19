@@ -9,6 +9,7 @@ import { fadeInUp, staggerContainer } from "@/animations";
 import { ContactSection } from "@/sections/ContactSection";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { JsonLd } from "@/components/common/JsonLd";
+import { trackConsultationClick } from "@/utils/analytics";
 
 const HERO_FALLBACK =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23f8fafc'/%3E%3Cpath d='M500 270h200v50a10 10 0 01-10 10H510a10 10 0 01-10-10v-50z' fill='%23e2e8f0'/%3E%3Cpath d='M480 258a14 14 0 0114-14h212a14 14 0 0114 14v12H480v-12z' fill='%23cbd5e1'/%3E%3C/svg%3E";
@@ -175,7 +176,7 @@ export function IndustryDetailPage() {
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                onClick={() => { trackConsultationClick("industry_hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="btn-premium inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white"
               >
                 Book Free Consultation
@@ -183,7 +184,7 @@ export function IndustryDetailPage() {
               </Link>
               <Link
                 to="/contact"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                onClick={() => { trackConsultationClick("industry_hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="btn-glass inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-foreground"
               >
                 Get Free Advice
@@ -583,7 +584,7 @@ export function IndustryDetailPage() {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/contact"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                onClick={() => { trackConsultationClick("industry_final"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#2563eb] transition-all hover:bg-white/90 hover:shadow-md"
               >
                 Book Free Consultation
@@ -591,7 +592,7 @@ export function IndustryDetailPage() {
               </Link>
               <Link
                 to="/contact"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                onClick={() => { trackConsultationClick("industry_final"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/20"
               >
                 <Phone className="h-4 w-4" />

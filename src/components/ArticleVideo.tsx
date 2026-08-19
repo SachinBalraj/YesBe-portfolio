@@ -16,6 +16,10 @@ export function ArticleVideo({ video }: ArticleVideoProps) {
           <img
             src={video.thumbnail}
             alt={video.title}
+            width={420}
+            height={236}
+            loading="lazy"
+            decoding="async"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <button

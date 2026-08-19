@@ -7,6 +7,7 @@ import {
 import { cn } from "@/utils/cn";
 import logoImg from "@/assets/images/YBlogo.png";
 import { SearchModal } from "@/components/knowledge/SearchModal";
+import { trackConsultationClick } from "@/utils/analytics";
 
 /* ─── Navigation Data ─── */
 
@@ -149,6 +150,7 @@ function NavbarComponent() {
               width={48}
               height={48}
               loading="eager"
+              fetchPriority="high"
               decoding="async"
               className="h-[46px] w-[46px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
             />
@@ -187,7 +189,7 @@ function NavbarComponent() {
             </button>
 
             <button
-              onClick={() => handleNavigate("/contact")}
+              onClick={() => { trackConsultationClick("navbar"); handleNavigate("/contact"); }}
               className="hidden lg:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
             >
               Book Free Consultation
@@ -267,7 +269,7 @@ function NavbarComponent() {
 
               <div className="border-t border-[#e2e8f0]/50 px-5 py-5">
                 <button
-                  onClick={() => handleNavigate("/contact")}
+                  onClick={() => { trackConsultationClick("navbar_mobile"); handleNavigate("/contact"); }}
                   className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)]"
                 >
                   Book Free Consultation

@@ -17,7 +17,6 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { JsonLd } from "@/components/common/JsonLd";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import {
   searchArticlesAdvanced,
@@ -25,7 +24,7 @@ import {
   getCategoryArticleCount,
 } from "@/knowledge/articles";
 import { KNOWLEDGE_CATEGORIES, categoryBySlug } from "@/knowledge/categories";
-import { buildBreadcrumbSchema, searchUrl, SITE_URL } from "@/knowledge/seo";
+import { SITE_URL } from "@/knowledge/seo";
 import { SearchBar } from "@/components/knowledge/SearchBar";
 import { ArticleGrid } from "@/components/knowledge/ArticleGrid";
 import { Pagination } from "@/components/knowledge/Pagination";
@@ -145,15 +144,6 @@ export function SearchPage() {
 
   return (
     <div className="bg-ice-gradient min-h-screen pb-24">
-      <JsonLd
-        schema={{
-          ...buildBreadcrumbSchema([
-            { name: "Knowledge Center", url: `${SITE_URL}/knowledge-center` },
-            { name: "Search" },
-          ]),
-        }}
-      />
-
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
         <Breadcrumbs
           items={[

@@ -62,7 +62,26 @@ export function ServicesPage() {
         name: SEO_TITLES.services,
         description: SEO_DESCRIPTIONS.services,
         url: "https://www.yesbe.tech/services",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
+      }} />
+      <JsonLd schema={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "YesBe Technology Solutions",
+        description: SEO_DESCRIPTIONS.services,
+        url: "https://www.yesbe.tech/services",
+        numberOfItems: services.length,
+        itemListElement: services.map((service, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "Service",
+            name: service.name,
+            description: service.description,
+            url: `https://www.yesbe.tech/solutions/${service.slug}`,
+            provider: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
+          },
+        })),
       }} />
       <PageHeader
         badge="Our Solutions"

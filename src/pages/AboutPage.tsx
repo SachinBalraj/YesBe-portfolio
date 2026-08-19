@@ -21,11 +21,12 @@ export function AboutPage() {
     <>
       <JsonLd schema={{
         "@context": "https://schema.org",
-        "@type": "WebPage",
+        "@type": "AboutPage",
         name: SEO_TITLES.about,
         description: SEO_DESCRIPTIONS.about,
         url: "https://www.yesbe.tech/about",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        about: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PageHeader
         badge="About YesBe"

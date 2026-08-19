@@ -32,6 +32,8 @@ export function RelatedArticles({ articles }: { articles: Article[] }) {
               <img
                 src={article.featuredImage}
                 alt={article.title}
+                width={400}
+                height={225}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

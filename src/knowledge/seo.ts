@@ -64,22 +64,6 @@ export function buildArticleSchema(article: Article) {
   };
 }
 
-export function buildBreadcrumbSchema(items: { name: string; url?: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      ...items.map((item, i) => ({
-        "@type": "ListItem",
-        position: i + 2,
-        name: item.name,
-        ...(item.url ? { item: item.url } : {}),
-      })),
-    ],
-  };
-}
-
 export function buildFaqSchema(faq: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",

@@ -7,6 +7,7 @@ import {
   Globe,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
+import { trackWhatsAppClick, trackConsultationClick } from "@/utils/analytics";
 
 const logoImg = "/YBlogo.png";
 
@@ -58,6 +59,7 @@ export function PremiumHero() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#contact"
+                onClick={() => trackConsultationClick("hero")}
                 className="relative z-10 inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3.5 text-[14px] font-semibold text-white"
               >
                 Contact YesBe
@@ -67,6 +69,7 @@ export function PremiumHero() {
                 href={SITE_CONFIG.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick("hero")}
                 className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3.5 text-[14px] font-semibold text-foreground"
               >
                 <MessageCircle className="h-4 w-4 text-green-500" />
