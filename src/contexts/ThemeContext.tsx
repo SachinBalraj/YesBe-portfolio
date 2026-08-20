@@ -48,15 +48,27 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
-      const root = window.document.documentElement;
-      root.classList.remove("light", "dark");
-      const resolved = mediaQuery.matches ? "dark" : "light";
-      root.classList.add(resolved);
-      setResolvedTheme(resolved);
+      try {
+        const root = window.document.documentElement;
+        root.classList.remove("light", "dark");
+        const resolved = mediaQuery.matches ? "dark" : "light";
+        root.classList.add(resolved);
+        setResolvedTheme(resolved);
+      } catch { /* theme failures must never crash the app */ }
     };
 
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    try {
+      if (typeof mediaQuery.addEventListener === "function") {
+        mediaQuery.addEventListener("change", handleChange);
+        return () => mediaQuery.removeEventListener("change", handleChange);
+      }
+
+      // Safari < 14 fallback
+      (mediaQuery as MediaQueryList).addListener(handleChange);
+      return () => (mediaQuery as MediaQueryList).removeListener(handleChange);
+    } catch {
+      return undefined;
+    }
   }, [theme]);
 
   return (

@@ -84,10 +84,32 @@ function App() {
   const [, startTransition] = useTransition();
 
   useEffect(() => {
-    const id = requestIdleCallback(() => {
-      startTransition(() => setReady(true));
-    }, { timeout: 2000 });
-    return () => cancelIdleCallback(id);
+    let cancelled = false;
+    const cb = () => {
+      if (!cancelled) startTransition(() => setReady(true));
+    };
+
+    const win = window as unknown as Record<string, unknown>;
+    const rIC = win["requestIdleCallback"] as
+      | ((cb: () => void, opts?: { timeout?: number }) => number)
+      | undefined;
+    const cIC = win["cancelIdleCallback"] as
+      | ((id: number) => void)
+      | undefined;
+
+    if (typeof rIC === "function") {
+      const id = rIC(cb, { timeout: 2000 });
+      return () => {
+        cancelled = true;
+        cIC?.(id);
+      };
+    }
+
+    const id = setTimeout(cb, 0);
+    return () => {
+      cancelled = true;
+      clearTimeout(id);
+    };
   }, []);
 
   return (

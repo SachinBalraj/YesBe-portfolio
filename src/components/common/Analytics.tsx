@@ -66,44 +66,50 @@ export function Analytics() {
   const lastPath = useRef("");
 
   useEffect(() => {
-    const consent = getStoredConsent();
-    const prefs = getStoredPreferences();
+    try {
+      const consent = getStoredConsent();
+      const prefs = getStoredPreferences();
 
-    const shouldTrack = import.meta.env.PROD && isGAReady();
+      const shouldTrack = import.meta.env.PROD && isGAReady();
 
-    if (shouldTrack && (consent === "all" || (consent && prefs.analytics))) {
-      initGA();
-    }
-
-    const handleConsent = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (!import.meta.env.PROD || !isGAReady()) return;
-      if (detail.level === "all" || detail.preferences?.analytics) {
+      if (shouldTrack && (consent === "all" || (consent && prefs.analytics))) {
         initGA();
-        trackPageView(location.pathname + location.search);
-      } else {
-        removeGA();
       }
-    };
 
-    window.addEventListener("cookie-consent-updated", handleConsent);
-    return () => {
-      window.removeEventListener("cookie-consent-updated", handleConsent);
-    };
+      const handleConsent = (e: Event) => {
+        try {
+          const detail = (e as CustomEvent).detail;
+          if (!import.meta.env.PROD || !isGAReady()) return;
+          if (detail.level === "all" || detail.preferences?.analytics) {
+            initGA();
+            trackPageView(location.pathname + location.search);
+          } else {
+            removeGA();
+          }
+        } catch { /* analytics failures must never crash the app */ }
+      };
+
+      window.addEventListener("cookie-consent-updated", handleConsent);
+      return () => {
+        window.removeEventListener("cookie-consent-updated", handleConsent);
+      };
+    } catch { /* analytics failures must never crash the app */ return undefined; }
   }, []);
 
   useEffect(() => {
-    const path = location.pathname + location.search;
-    if (path === lastPath.current) return;
-    lastPath.current = path;
+    try {
+      const path = location.pathname + location.search;
+      if (path === lastPath.current) return;
+      lastPath.current = path;
 
-    if (!import.meta.env.PROD || !isGAReady() || !initialized) return;
+      if (!import.meta.env.PROD || !isGAReady() || !initialized) return;
 
-    const consent = getStoredConsent();
-    const prefs = getStoredPreferences();
-    if (consent !== "all" && (!consent || !prefs.analytics)) return;
+      const consent = getStoredConsent();
+      const prefs = getStoredPreferences();
+      if (consent !== "all" && (!consent || !prefs.analytics)) return;
 
-    trackPageView(path);
+      trackPageView(path);
+    } catch { /* analytics failures must never crash the app */ }
   }, [location]);
 
   return null;
@@ -112,25 +118,31 @@ export function Analytics() {
 /* ─── Helper functions ─── */
 
 export function trackButtonClick(buttonName: string, label?: string) {
-  if (!import.meta.env.PROD || !isGAReady() || !window.gtag) return;
-  window.gtag("event", "button_click", {
-    button_name: buttonName,
-    button_label: label || buttonName,
-  });
+  try {
+    if (!import.meta.env.PROD || !isGAReady() || !window.gtag) return;
+    window.gtag("event", "button_click", {
+      button_name: buttonName,
+      button_label: label || buttonName,
+    });
+  } catch { /* tracking failures must never crash the app */ }
 }
 
 export function trackContactFormSubmit(formData?: Record<string, string>) {
-  if (!import.meta.env.PROD || !isGAReady() || !window.gtag) return;
-  window.gtag("event", "contact_form_submit", {
-    form_type: formData?.type || "enquiry",
-    ...formData,
-  });
+  try {
+    if (!import.meta.env.PROD || !isGAReady() || !window.gtag) return;
+    window.gtag("event", "contact_form_submit", {
+      form_type: formData?.type || "enquiry",
+      ...formData,
+    });
+  } catch { /* tracking failures must never crash the app */ }
 }
 
 export function trackConsultationBooking(consultationData?: Record<string, string>) {
-  if (!import.meta.env.PROD || !isGAReady() || !window.gtag) return;
-  window.gtag("event", "consultation_booking", {
-    consultation_type: consultationData?.type || "free",
-    ...consultationData,
-  });
+  try {
+    if (!import.meta.env.PROD || !isGAReady() || !window.gtag) return;
+    window.gtag("event", "consultation_booking", {
+      consultation_type: consultationData?.type || "free",
+      ...consultationData,
+    });
+  } catch { /* tracking failures must never crash the app */ }
 }

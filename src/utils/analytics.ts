@@ -7,10 +7,12 @@ declare global {
 const fired = new Set<string>();
 
 function push(event: string, params?: Record<string, string>) {
-  if (fired.has(event)) return;
-  fired.add(event);
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event, ...params });
+  try {
+    if (fired.has(event)) return;
+    fired.add(event);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event, ...params });
+  } catch { /* tracking failures must never crash the app */ }
 }
 
 export function trackGenerateLead(location = "contact_form") {

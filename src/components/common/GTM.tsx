@@ -76,55 +76,61 @@ export function GTM() {
   const lastPath = useRef("");
 
   useEffect(() => {
-    const consent = getStoredConsent();
-    const prefs = getStoredPreferences();
+    try {
+      const consent = getStoredConsent();
+      const prefs = getStoredPreferences();
 
-    const shouldTrack = import.meta.env.PROD && isGTMReady();
+      const shouldTrack = import.meta.env.PROD && isGTMReady();
 
-    if (
-      shouldTrack &&
-      (consent === "all" || (consent && prefs.analytics))
-    ) {
-      initGTM();
-    }
-
-    const handleConsent = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (!import.meta.env.PROD || !isGTMReady()) return;
       if (
-        detail.level === "all" ||
-        detail.preferences?.analytics
+        shouldTrack &&
+        (consent === "all" || (consent && prefs.analytics))
       ) {
         initGTM();
-        pushPageView();
-      } else {
-        removeGTM();
       }
-    };
 
-    window.addEventListener("cookie-consent-updated", handleConsent);
-    return () => {
-      window.removeEventListener(
-        "cookie-consent-updated",
-        handleConsent
-      );
-    };
+      const handleConsent = (e: Event) => {
+        try {
+          const detail = (e as CustomEvent).detail;
+          if (!import.meta.env.PROD || !isGTMReady()) return;
+          if (
+            detail.level === "all" ||
+            detail.preferences?.analytics
+          ) {
+            initGTM();
+            pushPageView();
+          } else {
+            removeGTM();
+          }
+        } catch { /* tracking failures must never crash the app */ }
+      };
+
+      window.addEventListener("cookie-consent-updated", handleConsent);
+      return () => {
+        window.removeEventListener(
+          "cookie-consent-updated",
+          handleConsent
+        );
+      };
+    } catch { /* tracking failures must never crash the app */ return undefined; }
   }, []);
 
   useEffect(() => {
-    const path = location.pathname + location.search;
-    if (path === lastPath.current) return;
-    lastPath.current = path;
+    try {
+      const path = location.pathname + location.search;
+      if (path === lastPath.current) return;
+      lastPath.current = path;
 
-    if (!import.meta.env.PROD || !isGTMReady() || !initialized)
-      return;
+      if (!import.meta.env.PROD || !isGTMReady() || !initialized)
+        return;
 
-    const consent = getStoredConsent();
-    const prefs = getStoredPreferences();
-    if (consent !== "all" && (!consent || !prefs.analytics))
-      return;
+      const consent = getStoredConsent();
+      const prefs = getStoredPreferences();
+      if (consent !== "all" && (!consent || !prefs.analytics))
+        return;
 
-    pushPageView();
+      pushPageView();
+    } catch { /* tracking failures must never crash the app */ }
   }, [location]);
 
   return null;
