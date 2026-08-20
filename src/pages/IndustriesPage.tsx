@@ -56,7 +56,7 @@ export function IndustriesPage() {
         name: SEO_TITLES.industries,
         description: SEO_DESCRIPTIONS.industries,
         url: "https://www.yesbe.tech/industries",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PageHeader
         badge="Industries"

@@ -23,11 +23,26 @@ export function ContactPage() {
         description: SEO_DESCRIPTIONS.contact,
         url: "https://www.yesbe.tech/contact",
         mainEntity: {
-          "@type": "Organization",
+          "@type": "ProfessionalService",
           "@id": "https://www.yesbe.tech/#organization",
           name: "YesBe Technologies",
+          url: "https://www.yesbe.tech",
           email: "hello@yesbe.tech",
           telephone: "+919087795970",
+          logo: "https://www.yesbe.tech/YBlogo.png",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Salem",
+            addressRegion: "Tamil Nadu",
+            addressCountry: "IN",
+          },
+          sameAs: [
+            "https://www.linkedin.com/in/sachin-balraj-2b7650406",
+            "https://github.com/sachinbalraj",
+            "https://www.instagram.com/yesbe.co",
+            "https://www.facebook.com/yesbe.co",
+            "https://x.com/yesbe_co",
+          ],
         },
       }} />
       <PageHeader
@@ -38,10 +53,14 @@ export function ContactPage() {
         breadcrumbs={[{ label: "Contact" }]}
       />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <ContactSection />
+        <div className="contain-content">
+          <ContactSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <FAQSection />
+        <div className="contain-content">
+          <FAQSection />
+        </div>
       </Suspense>
     </>
   );

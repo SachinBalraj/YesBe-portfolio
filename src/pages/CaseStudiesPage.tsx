@@ -23,7 +23,7 @@ export function CaseStudiesPage() {
         name: SEO_TITLES.caseStudies,
         description: SEO_DESCRIPTIONS.caseStudies,
         url: "https://www.yesbe.tech/case-studies",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PageHeader
         badge="Case Studies"

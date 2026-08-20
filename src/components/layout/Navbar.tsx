@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback, memo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import {
   Menu, X, ArrowRight, Search,
@@ -19,7 +19,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Solutions", href: "/solutions" },
+  { label: "Solutions", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Knowledge Center", href: "/knowledge-center" },
@@ -121,16 +121,14 @@ function NavbarComponent() {
 
   return (
     <>
-      <motion.header
+      <header
         role="banner"
-        initial={false}
-        animate={{ y: hidden ? -100 : 0 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
           isScrolled
             ? "bg-white/75 backdrop-blur-2xl border-b border-[#e2e8f0]/40 shadow-[0_1px_2px_rgba(0,0,0,0.02),0_2px_16px_rgba(0,0,0,0.02)]"
             : "bg-white",
+          hidden ? "-translate-y-full" : "translate-y-0"
         )}
       >
         <nav
@@ -204,7 +202,7 @@ function NavbarComponent() {
             </button>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
       {/* ── Mobile Slide-Over ── */}
       <AnimatePresence>

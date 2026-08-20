@@ -296,15 +296,18 @@ export function SkillsSection() {
             backgroundSize: "32px 32px",
           }}
         />
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-[#2563eb]/[0.03]"
-            style={{ width: 6 + i * 3, height: 6 + i * 3, left: `${12 + i * 16}%`, top: `${18 + (i % 3) * 22}%` }}
-            animate={{ y: [0, -18, 0], opacity: [0.12, 0.3, 0.12] }}
-            transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.6, ease: "easeInOut" }}
-          />
-        ))}
+        {/* Particles — hidden on mobile for performance */}
+        <div className="hidden sm:block">
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-[#2563eb]/[0.03]"
+              style={{ width: 6 + i * 3, height: 6 + i * 3, left: `${12 + i * 16}%`, top: `${18 + (i % 3) * 22}%` }}
+              animate={{ y: [0, -18, 0], opacity: [0.12, 0.3, 0.12] }}
+              transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.6, ease: "easeInOut" }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

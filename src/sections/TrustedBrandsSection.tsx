@@ -2,15 +2,20 @@ import { useCallback } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import apolloLogo from "@/assets/images/apollologo.png";
+import apolloLogoWebp from "@/assets/images/apollologo.webp";
 import fashionLogo from "@/assets/images/fflogo.jpg";
+import fashionLogoWebp from "@/assets/images/fflogo.webp";
 import rosisLogo from "@/assets/images/rosis46.jpg";
+import rosisLogoWebp from "@/assets/images/rosis46.webp";
 import balrajLogo from "@/assets/images/balraj.png";
+import balrajLogoWebp from "@/assets/images/balraj.webp";
 
 const PLACEHOLDER_LOGO =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='90' viewBox='0 0 170 90'%3E%3Crect width='170' height='90' fill='%23f8fafc' rx='8'/%3E%3Cpath d='M65 35h40v20a4 4 0 01-4 4H69a4 4 0 01-4-4V35z' fill='%23e2e8f0'/%3E%3Cpath d='M55 33a4 4 0 014-4h52a4 4 0 014 4v2H55v-2z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 
 interface Brand {
   logo: string;
+  logoWebp: string;
   alt: string;
   name: string;
   category: string;
@@ -21,6 +26,7 @@ interface Brand {
 const brands: Brand[] = [
   {
     logo: apolloLogo,
+    logoWebp: apolloLogoWebp,
     alt: "Apollo Tyres Logo",
     name: "Apollo Tyres",
     category: "Corporate Business Website",
@@ -29,6 +35,7 @@ const brands: Brand[] = [
   },
   {
     logo: fashionLogo,
+    logoWebp: fashionLogoWebp,
     alt: "Fashion Fusion Logo",
     name: "Fashion Fusion",
     category: "E-Commerce Platform",
@@ -37,6 +44,7 @@ const brands: Brand[] = [
   },
   {
     logo: rosisLogo,
+    logoWebp: rosisLogoWebp,
     alt: "Rosis Logo",
     name: "Rosis",
     category: "Business Website",
@@ -45,6 +53,7 @@ const brands: Brand[] = [
   },
   {
     logo: balrajLogo,
+    logoWebp: balrajLogoWebp,
     alt: "Balraj Logo",
     name: "Balraj",
     category: "Business Technology Consultancy",
@@ -69,21 +78,23 @@ export function TrustedBrandsSection() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,#eaf6ff_0%,transparent_70%)]" />
         <div className="absolute top-[20%] left-[10%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
         <div className="absolute bottom-[20%] right-[10%] h-[250px] w-[250px] rounded-full bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
-        {/* Particles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-[#2563eb]/[0.04]"
-            style={{
-              width: 4 + i * 2,
-              height: 4 + i * 2,
-              left: `${15 + i * 14}%`,
-              top: `${20 + (i % 3) * 25}%`,
-            }}
-            animate={{ y: [0, -20, 0], opacity: [0.15, 0.35, 0.15] }}
-            transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
-          />
-        ))}
+        {/* Particles — hidden on mobile for performance */}
+        <div className="hidden sm:block">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-[#2563eb]/[0.04]"
+              style={{
+                width: 4 + i * 2,
+                height: 4 + i * 2,
+                left: `${15 + i * 14}%`,
+                top: `${20 + (i % 3) * 25}%`,
+              }}
+              animate={{ y: [0, -20, 0], opacity: [0.15, 0.35, 0.15] }}
+              transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -143,16 +154,19 @@ export function TrustedBrandsSection() {
             >
               {/* Logo */}
               <div className="flex min-h-[120px] w-full items-center justify-center py-4">
-                <img
-                  src={brand.logo}
-                  alt={brand.alt}
-                  width={170}
-                  height={90}
-                  loading="lazy"
-                  decoding="async"
-                  onError={handleImgError}
-                  className="max-h-[90px] max-w-[170px] object-contain transition-transform duration-350 group-hover:scale-105"
-                />
+                <picture>
+                  <source srcSet={brand.logoWebp} type="image/webp" />
+                  <img
+                    src={brand.logo}
+                    alt={brand.alt}
+                    width={170}
+                    height={90}
+                    loading="lazy"
+                    decoding="async"
+                    onError={handleImgError}
+                    className="max-h-[90px] max-w-[170px] object-contain transition-transform duration-350 group-hover:scale-105"
+                  />
+                </picture>
               </div>
 
               {/* Info */}

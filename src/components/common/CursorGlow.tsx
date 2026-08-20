@@ -126,6 +126,9 @@ export function CursorGlow() {
     // Touch device check
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return;
 
+    // Mobile viewport check
+    if (window.innerWidth < 768) return;
+
     // Reduced motion check
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mq.matches) return;
@@ -169,9 +172,12 @@ export function CursorGlow() {
     };
   }, [tick]);
 
-  // Don't render on touch devices or reduced motion
-  if (typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0)) return null;
-  if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+  // Don't render on touch devices, mobile viewports, or reduced motion
+  if (typeof window !== "undefined") {
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return null;
+    if (window.innerWidth < 768) return null;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+  }
 
   const cfg = VARIANT_CONFIG[variant];
 

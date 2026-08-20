@@ -50,6 +50,7 @@ export function buildArticleSchema(article: Article) {
     },
     publisher: {
       "@type": "Organization",
+      "@id": "https://www.yesbe.tech/#organization",
       name: "YesBe Technologies",
       url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/YBlogo.png` },

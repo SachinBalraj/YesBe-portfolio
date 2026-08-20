@@ -29,11 +29,13 @@ export function HomePage() {
         name: SEO_TITLES.home,
         description: SEO_DESCRIPTIONS.home,
         url: "https://www.yesbe.tech",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PremiumHero />
       <Suspense fallback={<div className="h-12" aria-hidden="true" />}>
-        <TechnologyMarquee />
+        <div className="contain-content-sm">
+          <TechnologyMarquee />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
         <div className="contain-content">

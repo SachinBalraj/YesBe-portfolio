@@ -3,6 +3,7 @@ import { fadeInUp, staggerContainer } from "@/animations";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 import logoImg from "@/assets/images/YBlogo.png";
+import logoImgWebp from "@/assets/images/YBlogo.webp";
 
 const stats = [
   { value: "3+", label: "Years Experience" },

@@ -109,16 +109,15 @@ export function SolutionDetailPage() {
         name: `${solution.title} — YesBe Technologies`,
         description: solution.description,
         url: `https://www.yesbe.tech/solutions/${solution.slug}`,
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "Service",
-        name: `${solution.title} — YesBe Technologies`,
+        name: solution.title,
         description: solution.description,
-        provider: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        provider: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
         url: `https://www.yesbe.tech/solutions/${solution.slug}`,
-        areaServed: "IN",
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",

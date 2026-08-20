@@ -26,8 +26,7 @@ const schema = {
   url: "https://www.yesbe.tech/terms-and-conditions",
   publisher: {
     "@type": "Organization",
-    name: "YesBe",
-    url: "https://www.yesbe.tech",
+    "@id": "https://www.yesbe.tech/#organization",
   },
   dateModified: "2026-07-21",
 };

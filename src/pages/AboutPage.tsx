@@ -35,19 +35,29 @@ export function AboutPage() {
         description="Our company, founder, mission, and technology expertise."
       />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <AboutSection />
+        <div className="contain-content">
+          <AboutSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <WhyChooseSection />
+        <div className="contain-content">
+          <WhyChooseSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <DevelopmentProcessSection />
+        <div className="contain-content">
+          <DevelopmentProcessSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <SkillsSection />
+        <div className="contain-content">
+          <SkillsSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <ContactSection />
+        <div className="contain-content">
+          <ContactSection />
+        </div>
       </Suspense>
     </>
   );

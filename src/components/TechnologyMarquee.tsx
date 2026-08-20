@@ -184,6 +184,13 @@ export function TechnologyMarquee() {
           }
         }
 
+        @media (max-width: 768px) {
+          .marquee-track {
+            animation: none !important;
+            will-change: auto !important;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .marquee-track {
             animation: none;

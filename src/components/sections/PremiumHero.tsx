@@ -10,6 +10,7 @@ import { SITE_CONFIG } from "@/constants";
 import { trackWhatsAppClick, trackConsultationClick } from "@/utils/analytics";
 
 const logoImg = "/YBlogo.png";
+const logoImgWebp = "/YBlogo.webp";
 
 const trustIndicators = [
   { icon: Zap, label: "AI-Powered" },
@@ -80,15 +81,19 @@ export function PremiumHero() {
 
           {/* ── Right — Logo ── */}
           <div className="flex justify-center lg:justify-end">
-            <img
-              src={logoImg}
-              alt="YesBe Technologies logo"
-              width={400}
-              height={400}
-              fetchPriority="high"
-              decoding="async"
-              className="h-60 w-60 sm:h-[320px] sm:w-[320px] lg:h-[400px] lg:w-[400px] object-contain"
-            />
+            <picture>
+              <source srcSet={logoImgWebp} type="image/webp" />
+              <img
+                src={logoImg}
+                alt="YesBe Technologies logo"
+                width={400}
+                height={400}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="h-60 w-60 sm:h-[320px] sm:w-[320px] lg:h-[400px] lg:w-[400px] object-contain"
+              />
+            </picture>
           </div>
         </div>
       </div>

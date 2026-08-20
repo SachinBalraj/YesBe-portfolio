@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
-import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import { PageHeader } from "@/components/common/PageHeader";
 
 const PricingSection = lazy(() => import("@/sections/PricingSection").then(m => ({ default: m.PricingSection })));
 const ContactSection = lazy(() => import("@/sections/ContactSection").then(m => ({ default: m.ContactSection })));
@@ -22,18 +22,24 @@ export function PricingPage() {
         name: SEO_TITLES.pricing,
         description: SEO_DESCRIPTIONS.pricing,
         url: "https://www.yesbe.tech/pricing",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
-      <div className="pt-20 lg:pt-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Pricing" }]} />
-        </div>
-      </div>
+      <PageHeader
+        badge="Pricing"
+        title="Transparent"
+        highlight="Pricing"
+        description="Affordable technology services for AI, ERP, web development, Power BI, SEO and automation — choose the plan that fits your business."
+        breadcrumbs={[{ label: "Pricing" }]}
+      />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <PricingSection />
+        <div className="contain-content">
+          <PricingSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <ContactSection />
+        <div className="contain-content">
+          <ContactSection />
+        </div>
       </Suspense>
     </>
   );

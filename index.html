@@ -35,49 +35,31 @@
     <meta name="twitter:creator" content="@yesbe" />
 
     <!-- Favicons — YBlogo -->
+    <link rel="icon" type="image/webp" sizes="32x32" href="/YBlogo.webp?v=3" />
+    <link rel="icon" type="image/webp" sizes="16x16" href="/YBlogo.webp?v=3" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/YBlogo.webp?v=3" />
+    <link rel="icon" type="image/webp" href="/YBlogo.webp?v=3" />
     <link rel="icon" type="image/png" sizes="32x32" href="/YBlogo.png?v=3" />
     <link rel="icon" type="image/png" sizes="16x16" href="/YBlogo.png?v=3" />
     <link rel="apple-touch-icon" sizes="180x180" href="/YBlogo.png?v=3" />
-    <link rel="icon" type="image/png" href="/YBlogo.png?v=3" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="msapplication-TileColor" content="#2563EB" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
 
-    <!-- Google Tag Manager (deferred to after page load) -->
-    <script>
-    if(window.addEventListener){
-      window.addEventListener('load',function(){
-        var s=document.createElement('script');
-        s.async=true;
-        s.src='https://www.googletagmanager.com/gtm.js?id=GTM-PZ9KWVFH';
-        document.head.appendChild(s);
-        window.dataLayer=window.dataLayer||[];
-        window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-      });
-    }else{
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-PZ9KWVFH');
-    }
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PZ9KWVFH');</script>
+    <!-- End Google Tag Manager -->
 
     <!-- Preconnect critical origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
 
-    <!-- Google Fonts — Inter (preloaded, non-render-blocking) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-    </noscript>
-
     <!-- Preload above-the-fold logo image -->
-    <link rel="preload" href="/YBlogo.png" as="image" fetchpriority="high" />
+    <link rel="preload" href="/YBlogo.webp" as="image" type="image/webp" fetchpriority="high" />
 
     <!-- DNS prefetch for remaining origins -->
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

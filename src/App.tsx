@@ -2,7 +2,6 @@ import { lazy, Suspense, useState, useEffect, useTransition } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
-import { Analytics } from "@/components/common/Analytics";
 import { BusinessSchema } from "@/components/common/BusinessSchema";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { Navbar } from "@/components/layout/Navbar";
@@ -121,7 +120,6 @@ function App() {
         Skip to main content
       </a>
       <ScrollToTop />
-      <Analytics />
       <ErrorBoundary>
         <ThemeProvider>
 

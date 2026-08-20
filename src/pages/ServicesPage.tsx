@@ -132,10 +132,14 @@ export function ServicesPage() {
       </section>
 
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <TechStackSection />
+        <div className="contain-content">
+          <TechStackSection />
+        </div>
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <ContactSection />
+        <div className="contain-content">
+          <ContactSection />
+        </div>
       </Suspense>
     </>
   );

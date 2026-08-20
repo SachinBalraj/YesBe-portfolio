@@ -1,6 +1,5 @@
 import { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import {
   Send, MapPin, Phone, Mail, Globe,
   Clock,
@@ -165,11 +164,7 @@ function FooterComponent() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         {/* ── Top Section: Logo + Newsletter ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div
           className="mb-10 grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]"
         >
           {/* ── Column 1: Brand + Newsletter + Social ── */}
@@ -289,10 +284,10 @@ function FooterComponent() {
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Business Hours</h4>
               </div>
               <p className="text-[13px] text-gray-400">Mon – Sat</p>
-              <p className="text-[13px] font-medium text-white">9:00 AM – 9:00 PM</p>
+              <p className="text-[13px] font-medium text-white">9:00 AM – 8:00 PM</p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* ── Divider ── */}
         <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

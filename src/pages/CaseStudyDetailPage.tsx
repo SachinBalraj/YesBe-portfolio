@@ -165,7 +165,7 @@ export function CaseStudyDetailPage() {
         name: `${study.title} — YesBe Technologies`,
         description: study.shortOverview,
         url: `https://www.yesbe.tech/case-studies/${study.slug}`,
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",

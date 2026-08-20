@@ -43,7 +43,7 @@ export function NotFound() {
         name: SEO_TITLES.notFound,
         description: SEO_DESCRIPTIONS.notFound,
         url: "https://www.yesbe.tech/404",
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4">
       {/* Background */}

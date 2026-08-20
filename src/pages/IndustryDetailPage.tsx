@@ -110,7 +110,7 @@ export function IndustryDetailPage() {
         name: `${industry.title} — YesBe Technologies`,
         description: industry.description,
         url: `https://www.yesbe.tech/industries/${industry.slug}`,
-        publisher: { "@type": "Organization", name: "YesBe", url: "https://www.yesbe.tech" },
+        publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",
