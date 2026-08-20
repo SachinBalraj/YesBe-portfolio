@@ -83,6 +83,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://www.yesbe.tech/videos</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- ─── Solution Detail Pages ─── -->
   <url>
@@ -432,126 +438,254 @@
     <loc>https://www.yesbe.tech/knowledge-center/article/ai-for-business</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/rag-implementation</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/langchain-intro</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/what-is-erp</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/erp-vs-crm</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/power-bi-guide</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/business-intelligence-guide</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/data-analytics-strategy</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/web-dev-tech-stack</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/seo-guide-2026</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/geo-optimization</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/aeo-answer-engines</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/digital-marketing-strategy</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/business-automation</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/cloud-computing</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/cybersecurity-essentials</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/startup-mvp-guide</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/business-tips-scale</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/ecommerce-case-study</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/industry-insights-sme-digital</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yesbe.tech/knowledge-center/article/technology-trends-2026</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/ai-chatbots-explained</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/erp-benefits-small-business</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/power-bi-for-business-analytics</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/seo-checklist</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/crm-benefits</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/how-to-build-business-website</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/what-is-crm</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/how-to-rank-on-google</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/ai-for-small-business</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/website-development-guide</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/power-bi-vs-excel</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/power-bi-dashboard-guide</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/ai-automation-guide</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ─── New Knowledge Center Articles (August 2026) ─── -->
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/ai-automation-small-businesses</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/business-website-lead-generation</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/erp-software-growing-businesses</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/website-development-cost-india</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/automating-repetitive-office-work</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/ai-chatbot-customer-support-use-cases</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/local-business-digital-transformation-checklist</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yesbe.tech/knowledge-center/article/case-studies-measurable-outcomes</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

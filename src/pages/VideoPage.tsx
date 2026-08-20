@@ -13,6 +13,12 @@ export function VideoPage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All Videos");
 
+  useSEO({
+    title: "Technology Explained Simply — AI, ERP & Automation Videos | YesBe",
+    description: "Explore AI, ERP, automation, analytics, and digital transformation video guides from YesBe Technologies for business leaders and teams.",
+    canonical: "https://www.yesbe.tech/videos",
+  });
+
   const filteredVideos = useMemo(() => {
     return videos.filter((video) => {
       const matchesCategory = category === "All Videos" || video.category === category;

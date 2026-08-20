@@ -12,7 +12,7 @@ interface SEOData {
 const SITE_URL = "https://www.yesbe.tech";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/YBlogo.png`;
 const SITE_NAME = "YesBe Technologies";
-const OG_LOCALE = "en_US";
+const OG_LOCALE = "en_IN";
 
 function setOrUpdateMeta(
   attr: "name" | "property",
