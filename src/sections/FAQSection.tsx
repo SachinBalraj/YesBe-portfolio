@@ -32,7 +32,7 @@ const faqData: FAQItem[] = [
   {
     question: "How much does a business website cost?",
     answer:
-      "Starting from ₹4,999 for landing pages up to ₹2,50,000+ for custom web apps. Pricing depends on features, integrations, and complexity. A detailed proposal is shared after understanding your project.",
+      "It depends on features, integrations, and complexity rather than a fixed price list. Once we understand your pages, functionality, and integrations, we prepare a detailed proposal with a clear quote — no obligation.",
   },
   {
     question: "What is RAG implementation?",
@@ -126,7 +126,7 @@ export function FAQSection() {
       <section
       id="faq"
       className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16"
-      aria-label="Frequently Asked Questions — Services, pricing, technologies, and development process"
+      aria-label="Frequently Asked Questions — Services, quotations, technologies, and development process"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-[20%] left-[10%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.10] blur-[100px]" />
@@ -173,7 +173,7 @@ export function FAQSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            Common questions about services, pricing, and the development process.
+            Common questions about services, quotations, and the development process.
           </motion.p>
         </div>
 

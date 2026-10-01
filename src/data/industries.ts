@@ -331,7 +331,7 @@ export const industries: IndustryDetail[] = [
       "Improve customer satisfaction and retention through faster response times and personalized service",
       "Scale operations smoothly without hiring additional administrative and management staff",
       "Make data-driven decisions with accurate, up-to-date financial and operational insights",
-      "Compete effectively against larger rivals with enterprise-grade tools at SME-friendly pricing",
+      "Compete effectively against larger rivals with enterprise-grade tools scoped to SME budgets",
     ],
     process: [
       {

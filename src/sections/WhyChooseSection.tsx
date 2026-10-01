@@ -13,8 +13,8 @@ interface Reason {
 const reasons: Reason[] = [
   {
     icon: IndianRupee,
-    title: "Transparent Pricing",
-    description: "No hidden costs. Competitive rates for startups and enterprises alike.",
+    title: "Transparent Quotes",
+    description: "Scope-first proposals with no hidden costs. You approve the quotation before work begins.",
   },
   {
     icon: Layers,
@@ -48,7 +48,7 @@ export function WhyChooseSection() {
     <section
       id="why-choose"
       className="relative overflow-hidden bg-white py-12 lg:py-16"
-      aria-label="Why choose YesBe — Affordable pricing, scalable architecture, AI-first solutions"
+      aria-label="Why choose YesBe — Clear quotations, scalable architecture, AI-first solutions"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">

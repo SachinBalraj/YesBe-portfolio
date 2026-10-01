@@ -16,6 +16,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.yesbe.tech/sachin-balraj</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.yesbe.tech/services</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -37,12 +43,6 @@
     <loc>https://www.yesbe.tech/knowledge-center</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.yesbe.tech/pricing</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

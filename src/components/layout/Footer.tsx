@@ -1,4 +1,5 @@
 import { useState, memo } from "react";
+import { subscribeNewsletter } from "@/services/newsletter";
 import { useNavigate } from "react-router-dom";
 import {
   Send, MapPin, Phone, Mail, Globe,
@@ -66,11 +67,10 @@ const solutionsLinks = [
 
 const companyLinks = [
   { label: "About YesBe", href: "/about" },
-  { label: "Founder", href: "/about" },
+  { label: "Founder", href: "/sachin-balraj" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Knowledge Center", href: "/knowledge-center" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Careers", href: "/contact", badge: "Coming Soon" },
 ];
 
@@ -124,8 +124,9 @@ function FooterLink({ href, label, badge, onNavigate }: { href: string; label: s
 function FooterComponent() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
+  const [subscribeStatus, setSubscribeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [emailError, setEmailError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const handleNav = (href: string) => {
     if (href === "#") return;
@@ -133,22 +134,40 @@ function FooterComponent() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     setEmailError("");
 
-    if (!email.trim()) {
+    const trimmed = email.trim();
+    if (!trimmed) {
       setEmailError("Please enter your email address");
+      setSubscribeStatus("error");
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
       setEmailError("Please enter a valid email address");
+      setSubscribeStatus("error");
       return;
     }
 
-    setSubscribed(true);
+    setSubscribeStatus("loading");
+    const result = await subscribeNewsletter({
+      email: trimmed,
+      source: window.location.pathname,
+      companyWebsite: honeypot,
+    });
+
+    if (!result.success) {
+      // Report the real server outcome instead of a fake success.
+      setEmailError(result.message);
+      setSubscribeStatus("error");
+      return;
+    }
+
+    setSubscribeStatus("success");
     setEmail("");
-    setTimeout(() => setSubscribed(false), 3000);
+    setHoneypot("");
+    setTimeout(() => setSubscribeStatus("idle"), 5000);
   };
 
   return (
@@ -177,11 +196,35 @@ function FooterComponent() {
               AI, ERP, web development, analytics, and automation — built for businesses that want to move faster.
             </p>
 
+            {/* Attribution line — kept to one line so the footer height is unchanged */}
+            <p className="-mt-3 mb-6 text-[12px] leading-relaxed text-gray-500">
+              Founded by{" "}
+              <a
+                href="/sachin-balraj"
+                onClick={(e) => { e.preventDefault(); handleNav("/sachin-balraj"); }}
+                className="font-medium text-gray-400 transition-colors hover:text-white"
+              >
+                Sachin Balraj
+              </a>
+            </p>
+
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="mb-6">
               <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Subscribe to our newsletter</h4>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
+                  {/* Honeypot: hidden from users, catches naive bots */}
+                  <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+                    <label htmlFor="footer-website">Website</label>
+                    <input
+                      id="footer-website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
                   <input
                     type="email"
                     value={email}
@@ -194,9 +237,14 @@ function FooterComponent() {
                   />
                   <button
                     type="submit"
-                    className="flex shrink-0 items-center gap-1.5 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                    disabled={subscribeStatus === "loading" || subscribeStatus === "success"}
+                    className="flex shrink-0 items-center gap-1.5 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    {subscribed ? "Subscribed!" : <><Send className="h-3.5 w-3.5" /> Subscribe</>}
+                    {subscribeStatus === "loading" && "Subscribing..."}
+                    {subscribeStatus === "success" && "Subscribed!"}
+                    {(subscribeStatus === "idle" || subscribeStatus === "error") && (
+                      <><Send className="h-3.5 w-3.5" /> Subscribe</>
+                    )}
                   </button>
                 </div>
                 {emailError && (

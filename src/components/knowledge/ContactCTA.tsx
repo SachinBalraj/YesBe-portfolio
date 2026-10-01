@@ -29,7 +29,7 @@ export function ContactCTA() {
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#1d4ed8] shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] sm:w-auto"
           >
             <CalendarCheck className="h-4 w-4" />
-            Book Free Consultation
+            Book a Free Consultation
           </Link>
           <Link
             to="/contact"

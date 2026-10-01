@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:api": "node --test scripts/api.test.ts",
+    "test:pricing-removal": "node --test scripts/pricing-removal.test.ts",
+    "serve": "node --env-file-if-exists=.env --experimental-strip-types scripts/serve.ts",
+    "test:browser": "node --test scripts/browser.test.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -24,6 +28,7 @@
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.24.0",
     "marked": "^18.0.7",
+    "mongodb": "^7.7.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-hook-form": "^7.81.0",
@@ -38,8 +43,11 @@
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "@vercel/node": "^17.0.0",
     "@vitejs/plugin-react": "^6.0.3",
+    "mongodb-memory-server": "^11.3.0",
     "oxlint": "^1.71.0",
+    "playwright": "^1.63.0",
     "tailwindcss": "^4.3.2",
     "typescript": "~6.0.2",
     "vite": "^8.1.1"

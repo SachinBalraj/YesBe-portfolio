@@ -2,7 +2,6 @@ export const NAV_LINKS = [
   { label: "Home", href: "#hero" },
   { label: "Solutions", href: "#solutions" },
   { label: "Projects", href: "#projects" },
-  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
@@ -20,6 +19,49 @@ export const SITE_CONFIG = {
   },
 } as const;
 
+/* ────────────────────────────────────────────────────────────
+   Founder entity — stable IDs shared by every schema that
+   references Sachin Balraj, so search engines resolve the
+   Person → Founder → YesBe Technologies relationship to a
+   single node instead of several near-duplicates.
+──────────────────────────────────────────────────────────── */
+
+export const FOUNDER_PROFILE_URL = "https://www.yesbe.tech/sachin-balraj";
+export const ORGANIZATION_ID = "https://www.yesbe.tech/#organization";
+export const FOUNDER_PERSON_ID = `${FOUNDER_PROFILE_URL}#person`;
+
+/**
+ * Personal (not company) profiles already published in this project.
+ * Only add a URL here when it verifiably belongs to the individual.
+ */
+export const FOUNDER_SAME_AS = [
+  "https://www.linkedin.com/in/sachin-balraj-2b7650406",
+  "https://github.com/sachinbalraj",
+] as const;
+
+/**
+ * Founder role: YESBE Technologies. Employer role: Springreen, which has no
+ * verified public URL in this project, so no url is asserted for it.
+ */
+
+export const FOUNDER_DESCRIPTION =
+  "Sachin Balraj is the Founder of YESBE Technologies and a Solution Architect at Springreen. His work focuses on software architecture, artificial intelligence, web technologies and digital solutions designed to solve practical business challenges.";
+
+/** The single canonical Person node. Reused — never duplicated inline. */
+export const FOUNDER_PERSON = {
+  "@type": "Person",
+  "@id": FOUNDER_PERSON_ID,
+  name: "Sachin Balraj",
+  url: FOUNDER_PROFILE_URL,
+  jobTitle: "Founder",
+  description: FOUNDER_DESCRIPTION,
+  worksFor: [
+    { "@id": ORGANIZATION_ID },
+    { "@type": "Organization", name: "Springreen" },
+  ],
+  sameAs: [...FOUNDER_SAME_AS],
+} as const;
+
 export const BUSINESS_INFO = {
   organization: {
     "@context": "https://schema.org",
@@ -33,12 +75,9 @@ export const BUSINESS_INFO = {
     description:
       "YesBe Technologies provides AI Solutions, ERP Development, Website Development, Custom Software Development, Power BI Dashboards, Business Automation, Cloud Solutions, SEO, GEO, AEO, Digital Marketing, and Digital Transformation services.",
     foundingDate: "2024",
-    founder: {
-      "@type": "Person",
-      name: "Sachin Balraj",
-      jobTitle: "Founder & Chief Solution Architect",
-      url: "https://www.linkedin.com/in/sachin-balraj-2b7650406",
-    },
+    // References the shared FOUNDER_PERSON node so the founder is one entity,
+    // not a second near-duplicate of the Person on /sachin-balraj.
+    founder: { "@id": FOUNDER_PERSON_ID },
     email: "hello@yesbe.tech",
     telephone: "+919087795970",
     address: {
@@ -47,9 +86,9 @@ export const BUSINESS_INFO = {
       addressRegion: "Tamil Nadu",
       addressCountry: "IN",
     },
+    // Company-owned accounts only. The founder's personal profiles live on
+    // FOUNDER_PERSON.sameAs so the two entities are not conflated.
     sameAs: [
-      "https://www.linkedin.com/in/sachin-balraj-2b7650406",
-      "https://github.com/sachinbalraj",
       "https://www.instagram.com/yesbe.co",
       "https://www.facebook.com/yesbe.co",
       "https://x.com/yesbe_co",

@@ -34,7 +34,3 @@ export function trackWhatsAppClick(location = "link") {
 export function trackConsultationClick(location = "cta") {
   push(`consultation_click:${location}`, { event: "consultation_click", location });
 }
-
-export function trackPricingClick(plan?: string) {
-  push(`pricing_click:${plan || "cta"}`, { event: "pricing_click", plan: plan || "" });
-}

@@ -186,7 +186,7 @@ export function SolutionDetailPage() {
                 onClick={() => { trackConsultationClick("solution_hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="btn-premium inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white"
               >
-                Book Free Consultation
+                Book a Free Consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
@@ -597,7 +597,7 @@ export function SolutionDetailPage() {
                 onClick={() => { trackConsultationClick("solution_final"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#2563eb] transition-all hover:bg-white/90 hover:shadow-md"
               >
-                Book Free Consultation
+                Book a Free Consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link

@@ -97,7 +97,7 @@ export function VideoPage() {
                   onClick={() => trackConsultationClick("videos")}
                   className="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:border-primary hover:text-primary"
                 >
-                  Book Free Consultation
+                  Book a Free Consultation
                 </Link>
               </div>
             </motion.section>

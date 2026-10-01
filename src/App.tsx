@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState, useEffect, useTransition } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { BusinessSchema } from "@/components/common/BusinessSchema";
@@ -19,6 +19,9 @@ const HomePage = lazy(() =>
 );
 const AboutPage = lazy(() =>
   import("@/pages/AboutPage").then((m) => ({ default: m.AboutPage }))
+);
+const FounderPage = lazy(() =>
+  import("@/pages/FounderPage").then((m) => ({ default: m.FounderPage }))
 );
 const ServicesPage = lazy(() =>
   import("@/pages/ServicesPage").then((m) => ({ default: m.ServicesPage }))
@@ -47,9 +50,6 @@ const KnowledgeSearchPage = lazy(() =>
 const VideoPage = lazy(() =>
   import("@/pages/VideoPage").then((m) => ({ default: m.VideoPage }))
 );
-const PricingPage = lazy(() =>
-  import("@/pages/PricingPage").then((m) => ({ default: m.PricingPage }))
-);
 const ContactPage = lazy(() =>
   import("@/pages/ContactPage").then((m) => ({ default: m.ContactPage }))
 );
@@ -77,6 +77,33 @@ const IndustryDetailPage = lazy(() =>
 const NotFound = lazy(() =>
   import("@/pages/NotFound").then((m) => ({ default: m.NotFound }))
 );
+
+/* Admin area — kept out of the public Navbar/Footer shell */
+const AdminLayout = lazy(() =>
+  import("@/components/admin/AdminLayout").then((m) => ({ default: m.AdminLayout }))
+);
+const AdminDashboardPage = lazy(() =>
+  import("@/pages/admin/AdminDashboardPage").then((m) => ({ default: m.AdminDashboardPage }))
+);
+const AdminEnquiryPage = lazy(() =>
+  import("@/pages/admin/AdminEnquiryPage").then((m) => ({ default: m.AdminEnquiryPage }))
+);
+
+function PublicLayout() {
+  return (
+    <>
+      <ScrollToTop />
+      <BusinessSchema />
+      <Navbar />
+      <main id="main-content">
+        <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+          <Outlet />
+        </Suspense>
+      </main>
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   const [ready, setReady] = useState(false);
@@ -119,17 +146,15 @@ function App() {
       >
         Skip to main content
       </a>
-      <ScrollToTop />
       <ErrorBoundary>
         <ThemeProvider>
 
-          <BusinessSchema />
-          <Navbar />
-          <main id="main-content">
-            <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-              <Routes>
+          <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+            <Routes>
+              <Route element={<PublicLayout />}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/sachin-balraj" element={<FounderPage />} />
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/solutions" element={<ServicesPage />} />
                 <Route path="/industries/:slug" element={<IndustryDetailPage />} />
@@ -144,7 +169,10 @@ function App() {
                 <Route path="/knowledge-center/:slug" element={<KnowledgeCategoryPage />} />
                 <Route path="/search" element={<KnowledgeSearchPage />} />
                 <Route path="/videos" element={<VideoPage />} />
-                <Route path="/pricing" element={<PricingPage />} />
+                {/* Public pricing was retired in favour of a consultation-based
+                    model. The permanent 308 is served by vercel.json; this client
+                    route is the SPA/dev fallback so old links never 404. */}
+                <Route path="/pricing" element={<Navigate to="/services" replace />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
@@ -152,10 +180,13 @@ function App() {
                 <Route path="/cookie-policy" element={<CookiePolicyPage />} />
                 <Route path="/disclaimer" element={<DisclaimerPage />} />
                 <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </main>
-          <Footer />
+              </Route>
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboardPage />} />
+                <Route path="enquiries/:id" element={<AdminEnquiryPage />} />
+              </Route>
+            </Routes>
+          </Suspense>
           {ready && (
             <Suspense fallback={null}>
               <CookieConsent />

@@ -29,7 +29,7 @@ faq:
   - question: "Do I need to replace all my existing tools?"
     answer: "Not necessarily. Many digital transformation projects start by connecting existing tools rather than replacing them. If your current tools serve you well, integration and automation can bridge the gaps. Replacement is only necessary when existing tools genuinely cannot meet your needs."
   - question: "How much should a local business budget for digital transformation?"
-    answer: "Budgets vary widely based on scope. A basic digital foundation (website, analytics, basic CRM, email marketing) can be implemented for Rs.50,000-2,00,000. More comprehensive transformation with automation, ERP, and custom development typically ranges from Rs.2,00,000-10,00,000 depending on requirements."
+    answer: "Budgets vary widely based on scope. A basic digital foundation covers a website, analytics, a simple CRM and email marketing, while a broader transformation adds automation, ERP and custom development. Because every business starts from different systems and requirements, we do not publish fixed price ranges — request a free consultation and we will prepare a quotation for your actual scope."
 ---
 
 # Local Business Digital Transformation Checklist: A Step-by-Step Guide
@@ -195,4 +195,4 @@ Not necessarily. Many digital transformation projects start by connecting existi
 
 ### How much should a local business budget for digital transformation?
 
-Budgets vary widely based on scope. A basic digital foundation (website, analytics, basic CRM, email marketing) can be implemented for Rs.50,000-2,00,000. More comprehensive transformation with automation, ERP, and custom development typically ranges from Rs.2,00,000-10,00,000 depending on requirements.
+Budgets vary widely based on scope. A basic digital foundation covers a website, analytics, a simple CRM and email marketing, while a broader transformation adds automation, ERP and custom development. Because every business starts from different systems and requirements, we do not publish fixed price ranges — request a free consultation and we will prepare a quotation for your actual scope.

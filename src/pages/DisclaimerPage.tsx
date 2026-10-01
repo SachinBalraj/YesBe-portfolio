@@ -9,7 +9,7 @@ const LAST_UPDATED = "July 21, 2026";
 const toc = [
   { id: "introduction", label: "Introduction" },
   { id: "general-information", label: "General Information" },
-  { id: "pricing-disclaimer", label: "Pricing Disclaimer" },
+  { id: "quotation-disclaimer", label: "Quotation Disclaimer" },
   { id: "technology-recommendations", label: "Technology Recommendations" },
   { id: "third-party-services", label: "Third-Party Services" },
   { id: "limitation-of-liability", label: "Limitation of Liability" },
@@ -21,7 +21,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Disclaimer",
-  description: "YesBe Disclaimer — Important information about general disclaimers, pricing, technology recommendations, and limitation of liability.",
+  description: "YesBe Disclaimer — Important information about general disclaimers, quotations, technology recommendations, and limitation of liability.",
   url: "https://www.yesbe.tech/disclaimer",
   publisher: {
     "@type": "Organization",
@@ -77,17 +77,16 @@ export function DisclaimerPage() {
 
         <div className="section-divider" />
 
-        {/* Pricing Disclaimer */}
-        <section id="pricing-disclaimer">
-          <h2 className="text-2xl font-bold tracking-tight mb-4">Pricing Disclaimer</h2>
+        {/* Quotation Disclaimer */}
+        <section id="quotation-disclaimer">
+          <h2 className="text-2xl font-bold tracking-tight mb-4">Quotation Disclaimer</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <ul className="list-disc pl-6 space-y-2">
-              <li>All pricing information displayed on this website is indicative and subject to change without prior notice.</li>
-              <li>Actual project costs may vary based on specific requirements, scope, complexity, and timeline.</li>
-              <li>Quoted prices are valid for <strong>15 business days</strong> from the date of issue unless otherwise specified.</li>
+              <li>All quotations and indicative figures shared on this website are for informational purposes only.</li>
+              <li>Project costs may vary based on specific requirements, scope, complexity, and timeline.</li>
+              <li>Quotations are valid for <strong>15 business days</strong> from the date of issue unless otherwise specified.</li>
               <li>Additional costs may apply for scope changes, expedited timelines, or additional features requested during the project.</li>
-              <li>All prices are quoted in <strong>Indian Rupees (INR)</strong> unless explicitly stated otherwise.</li>
-              <li>Final pricing will be confirmed in a written proposal or contract before any work begins.</li>
+              <li>Final costs will be confirmed in a written proposal or contract before any work begins.</li>
             </ul>
             <p>
               For detailed payment and refund terms, please refer to our <a href="/terms-and-conditions" className="text-primary font-medium hover:underline">Terms &amp; Conditions</a> and <a href="/refund-policy" className="text-primary font-medium hover:underline">Refund Policy</a>.

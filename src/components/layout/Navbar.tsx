@@ -23,7 +23,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Knowledge Center", href: "/knowledge-center" },
-  { label: "Pricing", href: "/pricing" },
 ];
 
 /* ─── Navigation Helpers ─── */
@@ -190,7 +189,7 @@ function NavbarComponent() {
               onClick={() => { trackConsultationClick("navbar"); handleNavigate("/contact"); }}
               className="hidden lg:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
             >
-              Book Free Consultation
+              Book a Free Consultation
               <ArrowRight className="h-[18px] w-[18px] shrink-0" />
             </button>
             <button
@@ -270,7 +269,7 @@ function NavbarComponent() {
                   onClick={() => { trackConsultationClick("navbar_mobile"); handleNavigate("/contact"); }}
                   className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)]"
                 >
-                  Book Free Consultation
+                  Book a Free Consultation
                   <ArrowRight className="h-[18px] w-[18px] shrink-0" />
                 </button>
               </div>

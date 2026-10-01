@@ -70,7 +70,7 @@ export function RefundPolicyPage() {
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <ul className="list-disc pl-6 space-y-2">
               <li>A minimum advance payment of <strong>50%</strong> of the total quoted amount is required before any project work begins.</li>
-              <li>For projects exceeding ₹2,00,000, a milestone-based payment schedule will be agreed upon in the project contract.</li>
+              <li>For larger projects, a milestone-based payment schedule will be agreed upon in the project contract.</li>
               <li>The advance payment secures your project slot and allocates dedicated resources to your project.</li>
               <li>Work will not commence until the advance payment has been received and confirmed.</li>
               <li>Payment receipts will be provided for all transactions.</li>

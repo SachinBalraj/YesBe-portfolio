@@ -14,7 +14,6 @@ const suggestions = [
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Knowledge Center", href: "/knowledge-center" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
 ];
 

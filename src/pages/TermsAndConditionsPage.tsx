@@ -96,7 +96,7 @@ export function TermsAndConditionsPage() {
             <ul className="list-disc pl-6 space-y-2">
               <li>All quotations and proposals are valid for <strong>15 business days</strong> from the date of issue unless otherwise specified.</li>
               <li>Quotations are estimates and may be subject to change based on final project requirements and scope.</li>
-              <li>Any changes to the project scope after acceptance may result in revised pricing, which will be communicated and agreed upon before proceeding.</li>
+              <li>Any changes to the project scope after acceptance may result in a revised quotation, which will be communicated and agreed upon before proceeding.</li>
               <li>Verbal agreements are subject to written confirmation via a signed proposal or contract.</li>
             </ul>
           </div>
@@ -114,7 +114,7 @@ export function TermsAndConditionsPage() {
               <li><strong>Final Payment:</strong> The remaining balance is due upon project completion and before delivery of final assets or source code.</li>
               <li><strong>Payment Methods:</strong> Payments can be made via bank transfer, UPI, or other methods agreed upon.</li>
               <li><strong>Late Payments:</strong> Invoices not paid within <strong>15 days</strong> of the due date may incur a late fee of <strong>1.5% per month</strong>.</li>
-              <li>All prices are quoted in <strong>Indian Rupees (INR)</strong> unless otherwise specified.</li>
+              <li>All quotations and invoices are issued in <strong>Indian Rupees (INR)</strong> unless otherwise specified.</li>
             </ul>
             <p>
               For complete payment and refund details, please refer to our <a href="/refund-policy" className="text-primary font-medium hover:underline">Refund Policy</a>.
