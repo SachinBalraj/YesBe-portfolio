@@ -3,6 +3,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import { PageHeader } from "@/components/common/PageHeader";
+import { ORGANIZATION_ID, FOUNDER_PERSON_ID } from "@/constants";
 
 const ContactSection = lazy(() => import("@/sections/ContactSection").then(m => ({ default: m.ContactSection })));
 const FAQSection = lazy(() => import("@/sections/FAQSection").then(m => ({ default: m.FAQSection })));
@@ -23,22 +24,25 @@ export function ContactPage() {
         description: SEO_DESCRIPTIONS.contact,
         url: "https://www.yesbe.tech/contact",
         mainEntity: {
-          "@type": "ProfessionalService",
-          "@id": "https://www.yesbe.tech/#organization",
+          // Same @id and @type as the global Organization node so the entity is
+          // described once, consistently. Contact details are added here.
+          "@type": "Organization",
+          "@id": ORGANIZATION_ID,
           name: "YesBe Technologies",
           url: "https://www.yesbe.tech",
+          logo: "https://www.yesbe.tech/YBlogo.png",
           email: "hello@yesbe.tech",
           telephone: "+919087795970",
-          logo: "https://www.yesbe.tech/YBlogo.png",
+          founder: { "@id": FOUNDER_PERSON_ID },
           address: {
             "@type": "PostalAddress",
             addressLocality: "Salem",
             addressRegion: "Tamil Nadu",
             addressCountry: "IN",
           },
+          // Company-owned accounts only — the founder's personal profiles are
+          // declared on his own Person node, not on the organisation.
           sameAs: [
-            "https://www.linkedin.com/in/sachin-balraj-2b7650406",
-            "https://github.com/sachinbalraj",
             "https://www.instagram.com/yesbe.co",
             "https://www.facebook.com/yesbe.co",
             "https://x.com/yesbe_co",

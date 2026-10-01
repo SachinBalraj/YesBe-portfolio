@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
-import { useNavigate } from "react-router-dom";
-import { CheckCircle } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import logoImg from "@/assets/images/YBlogo.png";
-import logoImgWebp from "@/assets/images/YBlogo.webp";
 
 const stats = [
   { value: "3+", label: "Years Experience" },
@@ -105,19 +104,46 @@ export function AboutSection() {
             </motion.div>
 
             {/* Founder Card */}
-            <motion.div variants={fadeInUp} className="mt-8 rounded-[20px] border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Founder</p>
-              <p className="text-lg font-bold text-foreground">Sachin Balraj</p>
-              <p className="text-[13px] text-muted-foreground">Founder &amp; Chief Solution Architect</p>
-            </motion.div>
+            <motion.section
+              variants={fadeInUp}
+              aria-labelledby="about-founder-heading"
+              className="mt-8 rounded-[20px] border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
+            >
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+                Founder
+              </p>
+              <h3 id="about-founder-heading" className="text-lg font-bold text-foreground">
+                <Link
+                  to="/sachin-balraj"
+                  className="rounded-sm transition-colors hover:text-primary"
+                >
+                  Sachin Balraj
+                </Link>
+              </h3>
+              <p className="text-[13px] text-muted-foreground">
+                Founder, YESBE Technologies
+              </p>
+              <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
+                Sachin Balraj is the Founder of YESBE Technologies, leading the
+                company&apos;s technology and digital solution initiatives. He
+                also works as a Solution Architect at Springreen.
+              </p>
+              <Link
+                to="/sachin-balraj"
+                className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary transition-all duration-200 hover:gap-2.5"
+              >
+                Read the founder profile
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </motion.section>
 
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
               >
                 Discuss Your Project
-              </a>
+              </Link>
               <button
                 onClick={() => {
                   navigate("/services");
