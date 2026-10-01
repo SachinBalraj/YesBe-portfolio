@@ -1,6 +1,10 @@
+import { ApiError, subscribeNewsletter as post } from "./enquiries";
+
 export interface NewsletterSubscribePayload {
   email: string;
   source?: string;
+  /** Honeypot. Must stay empty. */
+  companyWebsite?: string;
 }
 
 export interface NewsletterSubscribeResult {
@@ -9,45 +13,36 @@ export interface NewsletterSubscribeResult {
   code?: string;
 }
 
-const API_ENDPOINT = import.meta.env.VITE_NEWSLETTER_API_URL || "/api/newsletter/subscribe";
-
+/**
+ * Thin adapter that preserves the `{ success, message }` shape the existing
+ * components expect, while the actual request, error typing and parsing are
+ * shared with the enquiry form via @/services/enquiries.
+ */
 export async function subscribeNewsletter(
   payload: NewsletterSubscribePayload,
 ): Promise<NewsletterSubscribeResult> {
   try {
-    const response = await fetch(API_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-      const json = await response.json().catch(() => null);
-      if (response.status === 409) {
-        return {
-          success: false,
-          message: json?.message || "You are already subscribed.",
-          code: "already_subscribed",
-        };
-      }
+    const result = await post(
+      payload.email.trim(),
+      payload.source ?? currentPath(),
+      payload.companyWebsite ?? "",
+    );
+    return { success: true, message: result.message };
+  } catch (error) {
+    if (error instanceof ApiError) {
       return {
         success: false,
-        message: json?.message || "Something went wrong. Please try again.",
+        message: error.message,
+        ...(error.status === 429 ? { code: "rate_limited" } : {}),
       };
     }
-
-    const data = await response.json().catch(() => null);
-    return {
-      success: true,
-      message: data?.message || "Thank you for subscribing!",
-    };
-  } catch (error) {
     return {
       success: false,
-      message:
-        "Unable to connect to the subscription service. Please try again later.",
+      message: "Unable to connect to the subscription service. Please try again later.",
     };
   }
+}
+
+function currentPath(): string {
+  return typeof window === "undefined" ? "/" : window.location.pathname;
 }

@@ -1,13 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Send, CheckCircle, Loader2, Phone, MessageCircle,
+  Send, CheckCircle, AlertCircle, Loader2, Phone, MessageCircle,
   Mail, MapPin, ArrowRight, ArrowLeft, Check,
   User, Building2, Briefcase, FileText,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/animations";
 import { trackGenerateLead, trackContactClick, trackPhoneClick, trackWhatsAppClick } from "@/utils/analytics";
+import { ApiError, submitEnquiry } from "@/services/enquiries";
 
 interface FormData {
   name: string;
@@ -82,6 +83,7 @@ export function ContactSection() {
   const [formData, setFormData] = useState<FormData>(initialData);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
   const [currentStep, setCurrentStep] = useState(0);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
@@ -89,30 +91,6 @@ export function ContactSection() {
   const budgetOptions = Object.entries(budgetLabels);
   const timelineOptions = Object.entries(timelineLabels);
 
-  const buildMessage = (data: FormData): string => {
-    const lines = [
-      "🚀 *New Consultation Request — YESBE*",
-      "",
-      `👤 *Full Name:* ${data.name}`,
-      `🏢 *Company:* ${formatLabel(data.company)}`,
-      `💼 *Designation:* ${formatLabel(data.designation)}`,
-      `📧 *Email:* ${data.email}`,
-      `📞 *Phone:* ${formatLabel(data.phone)}`,
-      `🛠 *Service Required:* ${formatLabel(data.service, serviceLabels)}`,
-      `💰 *Budget:* ${formatLabel(data.budget, budgetLabels)}`,
-      `📅 *Timeline:* ${formatLabel(data.timeline, timelineLabels)}`,
-      "",
-      `📝 *Project Description:* ${data.projectDescription || "Not specified"}`,
-      "",
-      `⚠️ *Business Challenges:* ${data.businessChallenges || "Not specified"}`,
-      "",
-      `🎯 *Goals & Expected Outcomes:* ${data.goals || "Not specified"}`,
-      "",
-      "---",
-      "Submitted via *YESBE Official Website*",
-    ];
-    return lines.join("\n");
-  };
 
   const validateStep = (step: number): boolean => {
     const errors: Record<string, string> = {};
@@ -142,7 +120,11 @@ export function ContactSection() {
     setCurrentStep((prev) => Math.max(prev - 1, 0));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  // Honeypot: a hidden field bots fill in and humans never see. The server
+  // discards the submission if it has any value.
+  const [honeypot, setHoneypot] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!validateStep(0) || !validateStep(1) || !validateStep(2)) {
@@ -151,28 +133,39 @@ export function ContactSection() {
     }
 
     setStatus("sending");
+    setErrorMsg("");
+    setSuccessMsg("");
 
-    setTimeout(() => {
-      const message = buildMessage(formData);
-      const encoded = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/919087795970?text=${encoded}`;
-
-      try {
-        const opened = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-        if (!opened) throw new Error("Popup blocked");
-      } catch {
-        setErrorMsg("Unable to open WhatsApp. Please contact us directly at +91 90877 95970.");
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 5000);
-        return;
+    try {
+      const result = await submitEnquiry({
+        ...formData,
+        formType: "consultation",
+        pageSource: window.location.pathname,
+        company_website: honeypot,
+      });
+      // Show the server's own confirmation rather than a hardcoded string.
+      setSuccessMsg(result.message);
+    } catch (err) {
+      if (err instanceof ApiError) {
+        if (err.fields.length > 0) setFieldErrors(err.fieldMap);
+        setErrorMsg(err.message);
+      } else {
+        setErrorMsg("Something went wrong. Please try again.");
       }
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 6000);
+      return;
+    }
 
-      setStatus("sent");
-      trackGenerateLead("contact_form");
-      setFormData(initialData);
-      setCurrentStep(0);
-      setTimeout(() => setStatus("idle"), 4000);
-    }, 800);
+    setStatus("sent");
+    trackGenerateLead("contact_form");
+    setFormData(initialData);
+    setHoneypot("");
+    setCurrentStep(0);
+    setTimeout(() => {
+      setStatus("idle");
+      setSuccessMsg("");
+    }, 6000);
   };
 
   const update = (field: keyof FormData, value: string) => {
@@ -284,6 +277,20 @@ export function ContactSection() {
 
               {/* Form Body */}
               <form onSubmit={handleSubmit} className="relative overflow-hidden">
+              {/* Honeypot: hidden from users, catches naive bots */}
+              <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
+                <label htmlFor="company-website">Company website</label>
+                <input
+                  id="company-website"
+                  name="company-website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={currentStep}
@@ -490,6 +497,12 @@ export function ContactSection() {
 
                   {currentStep < STEPS.length - 1 ? (
                     <button
+                      /* Distinct key: without it React reuses this DOM node
+                         when the last step swaps in the submit button, which
+                         flips type to "submit" before the browser runs the
+                         click's default action — so "Continue" would submit
+                         the form instead of advancing. */
+                      key="advance"
                       type="button"
                       onClick={handleNext}
                       className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200"
@@ -499,17 +512,38 @@ export function ContactSection() {
                     </button>
                   ) : (
                     <button
+                      key="submit"
                       type="submit"
                       disabled={status === "sending" || status === "sent"}
                       className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {status === "sending" && <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>}
                       {status === "sent" && <><CheckCircle className="h-4 w-4" /> Sent!</>}
-                      {status === "error" && errorMsg}
+                      {status === "error" && <><AlertCircle className="h-4 w-4" /> Try Again</>}
                       {status === "idle" && <><Send className="h-4 w-4" /> Submit Request</>}
                     </button>
                   )}
                 </div>
+
+                {status === "error" && errorMsg && (
+                  <div
+                    role="alert"
+                    className="flex items-start gap-2 border-t border-destructive/20 bg-destructive/5 px-6 py-4 text-sm font-medium text-destructive sm:px-8"
+                  >
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span>{errorMsg}</span>
+                  </div>
+                )}
+
+                {successMsg && (
+                  <div
+                    role="status"
+                    className="flex items-start gap-2 border-t border-border bg-emerald-50 px-6 py-4 text-sm font-medium text-emerald-800 sm:px-8"
+                  >
+                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span>{successMsg}</span>
+                  </div>
+                )}
               </form>
             </div>
           </motion.div>

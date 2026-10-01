@@ -7,6 +7,7 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /_vercel/
 Disallow: /knowledge-center/search
+Disallow: /search
 
 # Sitemap
 Sitemap: https://www.yesbe.tech/sitemap.xml
