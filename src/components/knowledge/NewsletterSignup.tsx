@@ -14,6 +14,7 @@ export function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const validateEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -35,7 +36,11 @@ export function NewsletterSignup() {
     }
 
     setStatus("loading");
-    const response = await subscribeNewsletter({ email: trimmedEmail, source: "YesBe Knowledge Center" });
+    const response = await subscribeNewsletter({
+      email: trimmedEmail,
+      source: window.location.pathname,
+      companyWebsite: honeypot,
+    });
 
     if (!response.success) {
       setMessage(response.message);
@@ -46,6 +51,7 @@ export function NewsletterSignup() {
     setMessage(response.message);
     setStatus("success");
     setEmail("");
+    setHoneypot("");
   };
 
   return (
@@ -123,6 +129,19 @@ export function NewsletterSignup() {
                 aria-invalid={status === "error"}
                 className="w-full rounded-3xl border border-slate-200 bg-white px-5 py-4 text-sm text-foreground outline-none transition-all duration-200 focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
               />
+
+              {/* Honeypot: hidden from users, catches naive bots */}
+              <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+                <label htmlFor="newsletter-website">Website</label>
+                <input
+                  id="newsletter-website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
 
               <button
                 type="submit"

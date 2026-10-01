@@ -6,6 +6,8 @@ interface SEOData {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
+  /** Overrides only the og:/twitter: description. Defaults to `description`. */
+  ogDescription?: string;
   noindex?: boolean;
 }
 
@@ -50,11 +52,13 @@ export function useSEO({
   canonical,
   ogImage,
   ogType,
+  ogDescription,
   noindex,
 }: SEOData) {
   useEffect(() => {
     const url = canonical || SITE_URL;
     const image = ogImage || DEFAULT_OG_IMAGE;
+    const socialDescription = ogDescription || description;
 
     document.title = title;
 
@@ -63,11 +67,13 @@ export function useSEO({
     setOrUpdateMeta("name", "robots", noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
     setOrUpdateMeta("property", "og:title", title);
-    setOrUpdateMeta("property", "og:description", description);
+    setOrUpdateMeta("property", "og:description", socialDescription);
     setOrUpdateMeta("property", "og:url", url);
     setOrUpdateMeta("property", "og:image", image);
-    setOrUpdateMeta("property", "og:image:width", "1200");
-    setOrUpdateMeta("property", "og:image:height", "630");
+    // Matches the real dimensions of the default social image (/YBlogo.png).
+    // Pages that pass a wider image should pass matching values here.
+    setOrUpdateMeta("property", "og:image:width", "300");
+    setOrUpdateMeta("property", "og:image:height", "300");
     setOrUpdateMeta("property", "og:image:alt", title);
     setOrUpdateMeta("property", "og:site_name", SITE_NAME);
     setOrUpdateMeta("property", "og:locale", OG_LOCALE);
@@ -76,11 +82,11 @@ export function useSEO({
     setOrUpdateMeta("name", "twitter:card", "summary_large_image");
     setOrUpdateMeta("name", "twitter:url", url);
     setOrUpdateMeta("name", "twitter:title", title);
-    setOrUpdateMeta("name", "twitter:description", description);
+    setOrUpdateMeta("name", "twitter:description", socialDescription);
     setOrUpdateMeta("name", "twitter:image", image);
     setOrUpdateMeta("name", "twitter:image:alt", title);
     setOrUpdateMeta("name", "twitter:creator", "@yesbe");
 
     setOrUpdateLink("canonical", url);
-  }, [title, description, canonical, ogImage, ogType, noindex]);
+  }, [title, description, canonical, ogImage, ogType, ogDescription, noindex]);
 }
