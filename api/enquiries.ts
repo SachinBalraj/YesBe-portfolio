@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { ConfigError, ensureIndexes, enquiries } from "./_lib/db.ts";
-import { allowMethods, clientIp, readJsonBody, sendError, sendJson } from "./_lib/http.ts";
-import { ENQUIRY_LIMIT, guard } from "./_lib/rateLimit.ts";
-import { validateEnquiry, ValidationError } from "./_lib/validate.ts";
+import { ConfigError, ensureIndexes, enquiries } from "./_lib/db.js";
+import { allowMethods, clientIp, readJsonBody, sendError, sendJson } from "./_lib/http.js";
+import { ENQUIRY_LIMIT, guard } from "./_lib/rateLimit.js";
+import { validateEnquiry, ValidationError } from "./_lib/validate.js";
 
 /**
  * POST /api/enquiries — public.

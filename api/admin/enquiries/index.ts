@@ -7,10 +7,10 @@ import {
   enquiries,
   type EnquiryDoc,
   type EnquiryStatus,
-} from "../../_lib/db.ts";
-import { requireAdmin } from "../../_lib/auth.ts";
-import { allowMethods, sendError, sendJson } from "../../_lib/http.ts";
-import { cleanText } from "../../_lib/validate.ts";
+} from "../../_lib/db.js";
+import { requireAdmin } from "../../_lib/auth.js";
+import { allowMethods, sendError, sendJson } from "../../_lib/http.js";
+import { cleanText } from "../../_lib/validate.js";
 
 const MAX_LIMIT = 100;
 

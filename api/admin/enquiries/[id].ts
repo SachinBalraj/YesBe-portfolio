@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAdmin } from "../../_lib/auth.ts";
+import { requireAdmin } from "../../_lib/auth.js";
 import {
   ConfigError,
   ENQUIRY_STATUSES,
@@ -7,9 +7,9 @@ import {
   enquiries,
   type EnquiryDoc,
   type EnquiryStatus,
-} from "../../_lib/db.ts";
-import { allowMethods, readJsonBody, sendError, sendJson } from "../../_lib/http.ts";
-import { toObjectId } from "../../_lib/objectId.ts";
+} from "../../_lib/db.js";
+import { allowMethods, readJsonBody, sendError, sendJson } from "../../_lib/http.js";
+import { toObjectId } from "../../_lib/objectId.js";
 
 /**
  * /api/admin/enquiries/:id — admin only.

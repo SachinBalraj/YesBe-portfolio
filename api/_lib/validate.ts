@@ -1,4 +1,4 @@
-import { ENQUIRY_FORM_TYPES, type EnquiryFormType } from "./db.ts";
+import { ENQUIRY_FORM_TYPES, type EnquiryFormType } from "./db.js";
 
 /**
  * Every field is read by name from an allowlist. Nothing from the request is

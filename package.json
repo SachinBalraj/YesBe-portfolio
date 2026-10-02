@@ -8,9 +8,9 @@
     "build": "npm run generate:sitemap && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test:api": "node --test scripts/api.test.ts",
+    "test:api": "node --import tsx --test scripts/api.test.ts",
     "test:pricing-removal": "node --test scripts/pricing-removal.test.ts",
-    "serve": "node --env-file-if-exists=.env --experimental-strip-types scripts/serve.ts",
+    "serve": "node --env-file-if-exists=.env --import tsx scripts/serve.ts",
     "test:browser": "node --test scripts/browser.test.ts",
     "generate:sitemap": "node --experimental-strip-types scripts/generate-sitemap.ts"
   },
@@ -50,6 +50,7 @@
     "oxlint": "^1.71.0",
     "playwright": "^1.63.0",
     "tailwindcss": "^4.3.2",
+    "tsx": "4.21.0",
     "typescript": "~6.0.2",
     "vite": "^8.1.1"
   }

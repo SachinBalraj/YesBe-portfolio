@@ -6,7 +6,7 @@ import {
 } from "node:crypto";
 import { promisify } from "node:util";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { sendError } from "./http.ts";
+import { sendError } from "./http.js";
 
 const scrypt = promisify(scryptCb) as (
   password: string,

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAdmin } from "../_lib/auth.ts";
-import { allowMethods, sendJson } from "../_lib/http.ts";
+import { requireAdmin } from "../_lib/auth.js";
+import { allowMethods, sendJson } from "../_lib/http.js";
 
 /** GET /api/admin/session — used by the admin UI to decide what to render. */
 export default function handler(req: VercelRequest, res: VercelResponse): void {

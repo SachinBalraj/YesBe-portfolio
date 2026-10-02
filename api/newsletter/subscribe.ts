@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { ConfigError, ensureIndexes, subscribers } from "../_lib/db.ts";
-import { allowMethods, clientIp, readJsonBody, sendError, sendJson } from "../_lib/http.ts";
-import { SUBSCRIBE_LIMIT, guard } from "../_lib/rateLimit.ts";
-import { validateSubscribe, ValidationError } from "../_lib/validate.ts";
+import { ConfigError, ensureIndexes, subscribers } from "../_lib/db.js";
+import { allowMethods, clientIp, readJsonBody, sendError, sendJson } from "../_lib/http.js";
+import { SUBSCRIBE_LIMIT, guard } from "../_lib/rateLimit.js";
+import { validateSubscribe, ValidationError } from "../_lib/validate.js";
 import { MongoServerError } from "mongodb";
 
 /**
