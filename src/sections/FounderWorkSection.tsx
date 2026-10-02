@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import {
   ArrowRight,
   Bot,
@@ -84,13 +84,6 @@ const connectChannels = [
     href: FOUNDER_SAME_AS[0],
     helper: "Professional profile",
     Icon: FaLinkedin,
-    external: true,
-  },
-  {
-    label: "GitHub",
-    href: FOUNDER_SAME_AS[1],
-    helper: "Code & open work",
-    Icon: FaGithub,
     external: true,
   },
 ];
@@ -307,7 +300,7 @@ export function FounderWorkSection() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-80px" }}
-            className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2"
+            className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-3"
           >
             {connectChannels.map((c) => (
               <motion.li key={c.label} variants={fadeInUp}>

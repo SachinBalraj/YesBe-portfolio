@@ -1,5 +1,5 @@
 import { CalendarDays, RefreshCw, User, Mail, Globe } from "lucide-react";
-import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa6";
+import { FaLinkedin, FaTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import type { Article } from "@/knowledge/types";
 import {
@@ -130,17 +130,6 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
                   className="rounded-lg p-1.5 text-slate-500 hover:bg-primary/10 hover:text-primary transition-colors"
                 >
                   <FaTwitter className="h-4 w-4" />
-                </a>
-              )}
-              {article.authorSocials?.github && (
-                <a
-                  href={article.authorSocials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="rounded-lg p-1.5 text-slate-500 hover:bg-primary/10 hover:text-primary transition-colors"
-                >
-                  <FaGithub className="h-4 w-4" />
                 </a>
               )}
               {article.authorSocials?.email && (

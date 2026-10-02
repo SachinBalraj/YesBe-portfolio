@@ -40,7 +40,6 @@ export const FOUNDER_PERSON_ID = `${FOUNDER_PROFILE_URL}#person`;
  */
 export const FOUNDER_SAME_AS = [
   "https://www.linkedin.com/in/sachin-balraj-2b7650406",
-  "https://github.com/sachinbalraj",
 ] as const;
 
 /**

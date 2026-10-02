@@ -16,7 +16,6 @@ export interface Article {
   authorSocials?: {
     linkedin?: string;
     twitter?: string;
-    github?: string;
     email?: string;
   };
   publishedDate: string;

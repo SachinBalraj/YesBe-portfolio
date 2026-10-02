@@ -28,7 +28,6 @@ interface RawFrontmatter {
   authorSocials?: {
     linkedin?: string;
     twitter?: string;
-    github?: string;
     email?: string;
   };
   publishedDate?: string;
@@ -111,7 +110,6 @@ function parseArticle(raw: string): Article | null {
       (isFounder
         ? {
             linkedin: FOUNDER_SAME_AS[0],
-            github: FOUNDER_SAME_AS[1],
             email: `mailto:${SITE_CONFIG.email}`,
           }
         : undefined),
