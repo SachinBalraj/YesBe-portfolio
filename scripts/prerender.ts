@@ -39,26 +39,43 @@ const CONCURRENCY = 6;
 const FOUNDER_TITLE = "Sachin Balraj | Founder of YESBE Technologies";
 
 /**
- * Chromium is present on a developer machine but not on a fresh CI builder.
+ * Chromium needs a handful of shared libraries that a bare build image lacks
+ * (libnspr4/libnss3 above all) — without them it exits with
+ * "error while loading shared libraries" before rendering anything.
  *
- * Installing the browser alone is not enough: Vercel's build image does not
- * ship the shared libraries Chromium links against (libnspr4/libnss3), and the
- * launch fails with "error while loading shared libraries". They come with
- * `--with-deps`, so that is what CI needs; a plain install is kept as a
- * fallback for images that already have the libraries.
+ * `playwright install --with-deps` is no use here: it shells out to apt-get,
+ * which does not exist on Vercel's Amazon Linux based image. Install the same
+ * package set with whichever package manager the image actually provides.
  */
+function installSystemDeps(): void {
+  const PACKAGES = [
+    "nspr", "nss", "atk", "at-spi2-atk", "cups-libs", "libdrm", "libxkbcommon",
+    "libXcomposite", "libXdamage", "libXfixes", "libXrandr", "libX11-xcb",
+    "mesa-libgbm", "pango", "cairo", "alsa-lib",
+  ];
+
+  for (const manager of ["dnf", "microdnf", "yum", "apt-get"]) {
+    if (spawnSync("sh", ["-c", `command -v ${manager}`], { stdio: "ignore" }).status !== 0) continue;
+    console.log(`prerender: installing Chromium system libraries via ${manager}…`);
+    const res = spawnSync(manager, ["install", "-y", ...PACKAGES], { stdio: "inherit" });
+    if (res.status === 0) return;
+    console.warn(`prerender: \`${manager} install\` failed, trying the next package manager`);
+  }
+  console.warn("prerender: could not install Chromium system libraries");
+}
+
+/** Chromium is present on a developer machine but not on a fresh CI builder. */
 function ensureBrowser(): void {
   if (existsSync(chromium.executablePath())) return;
+  installSystemDeps();
   console.log("prerender: Chromium not found, installing…");
-
-  for (const args of [["playwright", "install", "--with-deps", "chromium"], ["playwright", "install", "chromium"]]) {
-    const res = spawnSync("npx", args, { stdio: "inherit", cwd: ROOT });
-    if (res.status === 0) return;
-    console.warn(`prerender: \`npx ${args.join(" ")}\` failed, trying the next option`);
+  const res = spawnSync("npx", ["playwright", "install", "chromium"], {
+    stdio: "inherit",
+    cwd: ROOT,
+  });
+  if (res.status !== 0) {
+    throw new Error("prerender: could not install Chromium — static HTML cannot be generated.");
   }
-  throw new Error(
-    "prerender: could not install Chromium — static HTML cannot be generated.",
-  );
 }
 
 async function startPreview(): Promise<void> {
@@ -219,13 +236,19 @@ async function main(): Promise<void> {
   let browser: Browser;
   try {
     browser = await chromium.launch();
-  } catch (err) {
-    preview.kill();
-    throw new Error(
-      `prerender: Chromium could not launch. Its system libraries are probably ` +
-        `missing on this image — install with \`npx playwright install --with-deps chromium\`.\n` +
-        `${(err as Error).message.split("\n")[0]}`,
-    );
+  } catch (firstErr) {
+    // The browser binary can be present while its shared libraries are not.
+    console.warn(`prerender: launch failed (${(firstErr as Error).message.split("\n")[0]})`);
+    installSystemDeps();
+    try {
+      browser = await chromium.launch();
+    } catch (err) {
+      preview.kill();
+      throw new Error(
+        `prerender: Chromium could not launch even after installing system libraries.\n` +
+          `${(err as Error).message.split("\n")[0]}`,
+      );
+    }
   }
   const failures: string[] = [];
 
