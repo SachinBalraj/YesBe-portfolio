@@ -22,7 +22,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Solutions", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Knowledge Center", href: "/knowledge-center" },
+  { label: "Insights", href: "/insights" },
 ];
 
 /* ─── Navigation Helpers ─── */
@@ -143,7 +143,7 @@ function NavbarComponent() {
           >
             <img
               src={logoImg}
-              alt="YesBe Technologies Logo"
+              alt="YESBE Technologies Logo"
               width={48}
               height={48}
               loading="eager"
@@ -175,8 +175,9 @@ function NavbarComponent() {
           <div className="flex shrink-0 items-center gap-3">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all duration-200 hover:border-primary/40 hover:text-primary hover:bg-white dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300"
-              title="Search Knowledge Center (⌘ K)"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200/80 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all duration-200 hover:border-primary/40 hover:text-primary hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:min-h-0 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300"
+              title="Search Insights (⌘ K)"
+              aria-label="Search insights"
             >
               <Search className="h-4 w-4 text-primary" />
               <span className="hidden sm:inline">Search</span>
@@ -187,7 +188,7 @@ function NavbarComponent() {
 
             <button
               onClick={() => { trackConsultationClick("navbar"); handleNavigate("/contact"); }}
-              className="hidden lg:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+              className="hidden xl:inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
             >
               Book a Free Consultation
               <ArrowRight className="h-[18px] w-[18px] shrink-0" />
@@ -228,7 +229,7 @@ function NavbarComponent() {
               <div className="flex h-[56px] items-center justify-between px-6">
                 <img
                   src={logoImg}
-                alt="YesBe Technologies Logo"
+                alt="YESBE Technologies Logo"
                 width={44}
                 height={44}
                 loading="eager"

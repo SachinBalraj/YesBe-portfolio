@@ -3,7 +3,7 @@ title: "From Idea to MVP: A Founder's Guide to Building a First Product"
 slug: "startup-mvp-guide"
 category: "Startup Guides"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-15"
 updatedDate: "2026-07-29"
 readingTime: 7

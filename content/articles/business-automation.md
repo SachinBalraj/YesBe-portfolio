@@ -2,8 +2,8 @@
 title: "Business Automation: The Complete Guide to Eliminating Repetitive Work"
 slug: "business-automation"
 category: "Automation"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-11"
 updatedDate: "2026-07-29"
 readingTime: 6

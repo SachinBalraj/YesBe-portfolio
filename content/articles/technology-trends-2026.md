@@ -3,7 +3,7 @@ title: "Technology Trends 2026: What Businesses Should Actually Care About"
 slug: "technology-trends-2026"
 category: "Technology Trends"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-26"
 updatedDate: "2026-07-29"
 readingTime: 7

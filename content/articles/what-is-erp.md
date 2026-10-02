@@ -2,8 +2,8 @@
 title: "What is ERP? A Complete Guide to Enterprise Resource Planning"
 slug: "what-is-erp"
 category: "ERP Systems"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-12"
 updatedDate: "2026-07-29"
 readingTime: 6

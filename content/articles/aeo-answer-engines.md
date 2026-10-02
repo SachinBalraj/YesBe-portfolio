@@ -3,7 +3,7 @@ title: "AEO: Answer Engine Optimization — Win Featured Snippets & Voice Search
 slug: "aeo-answer-engines"
 category: "AEO"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-09"
 updatedDate: "2026-07-29"
 readingTime: 6

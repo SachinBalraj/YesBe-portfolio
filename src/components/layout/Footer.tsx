@@ -46,38 +46,38 @@ function XIcon({ className }: { className?: string }) {
 /* ─── Data ─── */
 
 const solutionsLinks = [
-  { label: "AI Solutions", href: "/solutions/ai-solutions" },
-  { label: "AI Chatbots", href: "/solutions/ai-chatbots" },
-  { label: "ERP Systems", href: "/solutions/erp-systems" },
-  { label: "Website Development", href: "/solutions/website-development" },
-  { label: "Web Applications", href: "/solutions/web-applications" },
-  { label: "E-Commerce", href: "/solutions/ecommerce" },
-  { label: "Business Automation", href: "/solutions/business-automation" },
-  { label: "Data Analytics", href: "/solutions/data-analytics" },
-  { label: "Power BI", href: "/solutions/power-bi-dashboards" },
-  { label: "Cloud & DevOps", href: "/solutions/cloud-devops" },
-  { label: "Database Management", href: "/solutions/database-management" },
-  { label: "API Development", href: "/solutions/api-development" },
-  { label: "SEO", href: "/solutions/seo" },
-  { label: "GEO", href: "/solutions/geo" },
-  { label: "AEO", href: "/solutions/aeo" },
-  { label: "Digital Marketing", href: "/solutions/digital-marketing" },
-  { label: "Custom Software", href: "/solutions/custom-software" },
+  { label: "AI Solutions", href: "/services/ai-solutions" },
+  { label: "AI Chatbots", href: "/services/ai-chatbots" },
+  { label: "ERP Systems", href: "/services/erp-systems" },
+  { label: "Website Development", href: "/services/website-development" },
+  { label: "Web Applications", href: "/services/web-applications" },
+  { label: "E-Commerce", href: "/services/ecommerce" },
+  { label: "Business Automation", href: "/services/business-automation" },
+  { label: "Data Analytics", href: "/services/data-analytics" },
+  { label: "Power BI", href: "/services/power-bi-dashboards" },
+  { label: "Cloud & DevOps", href: "/services/cloud-devops" },
+  { label: "Database Management", href: "/services/database-management" },
+  { label: "API Development", href: "/services/api-development" },
+  { label: "SEO", href: "/services/seo" },
+  { label: "GEO", href: "/services/geo" },
+  { label: "AEO", href: "/services/aeo" },
+  { label: "Digital Marketing", href: "/services/digital-marketing" },
+  { label: "Custom Software", href: "/services/custom-software" },
 ];
 
 const companyLinks = [
-  { label: "About YesBe", href: "/about" },
+  { label: "About YESBE", href: "/about" },
   { label: "Founder", href: "/sachin-balraj" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Knowledge Center", href: "/knowledge-center" },
+  { label: "Insights", href: "/insights" },
   { label: "Careers", href: "/contact", badge: "Coming Soon" },
 ];
 
 const supportLinks = [
   { label: "Contact Us", href: "/contact" },
   { label: "Book Consultation", href: "/contact" },
-  { label: "FAQs", href: "/knowledge-center" },
+  { label: "FAQs", href: "/insights" },
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
   { label: "Refund Policy", href: "/refund-policy" },
@@ -184,12 +184,12 @@ function FooterComponent() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         {/* ── Top Section: Logo + Newsletter ── */}
         <div
-          className="mb-10 grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]"
+          className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]"
         >
           {/* ── Column 1: Brand + Newsletter + Social ── */}
           <div className="lg:col-span-1">
             <button onClick={() => handleNav("/")} className="group flex items-center gap-3 mb-5">
-              <img src={logoImg} loading="lazy" alt="YesBe Technologies Official Logo" width={44} height={44} className="h-11 w-11 rounded-xl" />
+              <img src={logoImg} loading="lazy" alt="YESBE Technologies Official Logo" width={44} height={44} className="h-11 w-11 rounded-xl" />
               <span className="text-xl font-bold text-white tracking-tight">YESBE</span>
             </button>
             <p className="text-[13px] leading-relaxed text-gray-400 mb-6 max-w-xs">
@@ -210,7 +210,7 @@ function FooterComponent() {
 
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="mb-6">
-              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Subscribe to our newsletter</h4>
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Subscribe to our newsletter</h3>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
                   {/* Honeypot: hidden from users, catches naive bots */}
@@ -275,7 +275,7 @@ function FooterComponent() {
 
           {/* ── Column 2: Solutions ── */}
           <div>
-            <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Solutions</h4>
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Solutions</h3>
             <ul className="space-y-3">
               {solutionsLinks.map((l) => (
                 <FooterLink key={l.label} {...l} onNavigate={handleNav} />
@@ -285,7 +285,7 @@ function FooterComponent() {
 
           {/* ── Column 3: Company ── */}
           <div>
-            <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Company</h4>
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Company</h3>
             <ul className="space-y-3">
               {companyLinks.map((l) => (
                 <FooterLink key={l.label} {...l} onNavigate={handleNav} />
@@ -295,7 +295,7 @@ function FooterComponent() {
 
           {/* ── Column 4: Support ── */}
           <div>
-            <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Support</h4>
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Support</h3>
             <ul className="space-y-3">
               {supportLinks.map((l) => (
                 <FooterLink key={l.label} {...l} onNavigate={handleNav} />
@@ -305,7 +305,7 @@ function FooterComponent() {
 
           {/* ── Column 5: Contact ── */}
           <div>
-            <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Contact</h4>
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -329,7 +329,7 @@ function FooterComponent() {
             <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="h-3.5 w-3.5 text-primary" />
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Business Hours</h4>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">Business Hours</h3>
               </div>
               <p className="text-[13px] text-gray-400">Mon – Sat</p>
               <p className="text-[13px] font-medium text-white">9:00 AM – 8:00 PM</p>
@@ -343,11 +343,11 @@ function FooterComponent() {
         {/* ── Bottom Bar ── */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
           <p className="text-xs text-gray-500">
-            &copy; 2026 YesBe. All Rights Reserved.
+            &copy; 2026 YESBE. All Rights Reserved.
           </p>
           <p className="text-xs text-gray-500">
             Designed &amp; Developed with <span className="text-red-400">❤️</span> by{" "}
-            <button onClick={() => handleNav("/")} className="font-semibold text-primary hover:text-white transition-colors">YesBe</button>
+            <button onClick={() => handleNav("/")} className="font-semibold text-primary hover:text-white transition-colors">YESBE</button>
           </p>
           <nav className="flex gap-4" aria-label="Quick links">
             {quickLinks.map((l) => (
@@ -375,7 +375,7 @@ function FooterComponent() {
             rel="noopener noreferrer"
             className="cursor-pointer text-[#2563EB] transition-all duration-300 ease-in-out hover:text-[#60A5FA]"
           >
-            YesBe Technologies
+            YESBE Technologies
           </a>
         </p>
       </div>

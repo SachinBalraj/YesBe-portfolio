@@ -166,7 +166,7 @@ export function DevelopmentProcessSection() {
               ⚡ Typical Project Delivery Time
             </span>
             <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-              Most YesBe projects are successfully designed, developed, tested, and deployed within{" "}
+              Most YESBE projects are successfully designed, developed, tested, and deployed within{" "}
               <span className="font-semibold text-foreground">30 days</span>, depending on project scope and client feedback timelines.
             </p>
           </div>

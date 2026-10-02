@@ -65,7 +65,7 @@ export function SearchSuggestion({
 }) {
   return (
     <Link
-      to={`/knowledge-center/search?q=${encodeURIComponent(query)}`}
+      to={`/insights/search?q=${encodeURIComponent(query)}`}
       onClick={onSelect}
       className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm text-foreground transition-colors hover:bg-primary/[0.06]"
     >

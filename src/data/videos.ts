@@ -54,7 +54,7 @@ export const videos: VideoItem[] = [
     tags: ["ERP", "CRM", "Business", "YouTube"],
   },
   {
-    title: "Founder Insights: Why YesBe Was Built",
+    title: "Founder Insights: Why YESBE Was Built",
     description: "A founder video about our mission, vision, and the future of business technology.",
     thumbnail: "https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=VIDEO_ID_3",

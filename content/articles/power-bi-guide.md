@@ -2,8 +2,8 @@
 title: "Power BI Guide: From Spreadsheets to Real-Time Executive Dashboards"
 slug: "power-bi-guide"
 category: "Power BI"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-14"
 updatedDate: "2026-07-29"
 readingTime: 6

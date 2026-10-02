@@ -3,7 +3,7 @@ title: "Introduction to LangChain for AI Applications"
 slug: "langchain-intro"
 category: "Artificial Intelligence"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-20"
 updatedDate: "2026-07-29"
 readingTime: 7

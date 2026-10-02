@@ -3,7 +3,7 @@ title: "GEO: Generative Engine Optimization — Get Recommended by ChatGPT, Gemi
 slug: "geo-optimization"
 category: "GEO"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-09"
 updatedDate: "2026-07-29"
 readingTime: 7

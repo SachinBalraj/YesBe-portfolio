@@ -2,8 +2,8 @@
 title: "Digital Marketing Strategy: A Funnel That Actually Generates Leads"
 slug: "digital-marketing-strategy"
 category: "Digital Marketing"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-17"
 updatedDate: "2026-07-29"
 readingTime: 5

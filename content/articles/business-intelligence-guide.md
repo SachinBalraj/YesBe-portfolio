@@ -2,8 +2,8 @@
 title: "Business Intelligence Strategy: Turning Data Into Decisions"
 slug: "business-intelligence-guide"
 category: "Business Intelligence"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-22"
 updatedDate: "2026-07-29"
 readingTime: 6

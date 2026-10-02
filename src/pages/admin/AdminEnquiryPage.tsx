@@ -12,7 +12,7 @@ import {
 } from "@/services/admin";
 import { ApiError } from "@/services/enquiries";
 import { useSEO } from "@/hooks/useSEO";
-import { StatusBadge } from "./AdminDashboardPage";
+import { StatusBadge, ConfirmDeleteDialog } from "./AdminDashboardPage";
 
 export function AdminEnquiryPage() {
   const { id } = useParams<{ id: string }>();
@@ -22,6 +22,7 @@ export function AdminEnquiryPage() {
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [confirming, setConfirming] = useState(false);
 
   useSEO({
     title: "Enquiry detail",
@@ -68,13 +69,6 @@ export function AdminEnquiryPage() {
 
   const onDelete = async () => {
     if (!id || !item) return;
-    if (
-      !window.confirm(
-        `Delete the enquiry from ${item.name} (${item.email})?\n\nThis permanently removes it and cannot be undone.`,
-      )
-    ) {
-      return;
-    }
     try {
       await deleteEnquiry(id);
       navigate("/admin");
@@ -174,12 +168,18 @@ export function AdminEnquiryPage() {
       <div className="mt-6 flex justify-end border-t border-border pt-5">
         <button
           type="button"
-          onClick={onDelete}
+          onClick={() => setConfirming(true)}
           className="inline-flex items-center gap-2 rounded-lg border border-destructive/40 px-4 py-2 text-sm font-semibold text-destructive transition-colors hover:bg-destructive/10"
         >
           <Trash2 className="h-4 w-4" aria-hidden="true" /> Delete enquiry
         </button>
       </div>
+
+      <ConfirmDeleteDialog
+        enquiry={confirming && item ? item : null}
+        onCancel={() => setConfirming(false)}
+        onConfirm={onDelete}
+      />
     </div>
   );
 }

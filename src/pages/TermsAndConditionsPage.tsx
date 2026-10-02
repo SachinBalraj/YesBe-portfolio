@@ -22,7 +22,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Terms & Conditions",
-  description: "YesBe Terms & Conditions governing the use of our services, payments, intellectual property, and client responsibilities.",
+  description: "YESBE Terms & Conditions governing the use of our services, payments, intellectual property, and client responsibilities.",
   url: "https://www.yesbe.tech/terms-and-conditions",
   publisher: {
     "@type": "Organization",
@@ -43,7 +43,7 @@ export function TermsAndConditionsPage() {
       title="Terms &"
       highlight="Conditions"
       badge="Legal"
-      description="The terms governing your use of YesBe services and website."
+      description="The terms governing your use of YESBE services and website."
       lastUpdated={LAST_UPDATED}
       toc={toc}
       schema={schema}
@@ -55,7 +55,7 @@ export function TermsAndConditionsPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Introduction</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              These Terms and Conditions (&quot;Terms&quot;) govern your use of the services provided by <strong>YesBe</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) and the website <strong>www.yesbe.tech</strong>. By engaging our services or using our website, you agree to be bound by these Terms.
+              These Terms and Conditions (&quot;Terms&quot;) govern your use of the services provided by <strong>YESBE</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) and the website <strong>www.yesbe.tech</strong>. By engaging our services or using our website, you agree to be bound by these Terms.
             </p>
             <p>
               Please read these Terms carefully before using our services. If you do not agree with any part of these Terms, you should not proceed with our services.
@@ -69,7 +69,7 @@ export function TermsAndConditionsPage() {
         <section id="services">
           <h2 className="text-2xl font-bold tracking-tight mb-4">Our Services</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
-            <p>YesBe provides technology consulting and development services, including but not limited to:</p>
+            <p>YESBE provides technology consulting and development services, including but not limited to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>AI Solutions and Machine Learning implementations</li>
               <li>ERP System development and deployment</li>
@@ -133,7 +133,7 @@ export function TermsAndConditionsPage() {
               <li>Providing accurate and complete project requirements and information in a timely manner</li>
               <li>Designating a primary point of contact for project communications</li>
               <li>Reviewing and providing feedback on deliverables within agreed timeframes</li>
-              <li>Ensuring they have the legal rights to any content, materials, or data provided to YesBe</li>
+              <li>Ensuring they have the legal rights to any content, materials, or data provided to YESBE</li>
               <li>Timely decision-making to avoid project delays</li>
               <li>Ensuring compliance with applicable laws and regulations for their business</li>
             </ul>
@@ -151,9 +151,9 @@ export function TermsAndConditionsPage() {
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Ownership:</strong> Upon full and final payment, the client retains ownership of the final deliverables as specified in the project agreement.</li>
-              <li><strong>Pre-existing IP:</strong> YesBe retains all rights to pre-existing intellectual property, frameworks, tools, and methodologies used in the development process.</li>
+              <li><strong>Pre-existing IP:</strong> YESBE retains all rights to pre-existing intellectual property, frameworks, tools, and methodologies used in the development process.</li>
               <li><strong>Third-party Components:</strong> Deliverables may include third-party libraries, frameworks, or assets that are subject to their own licenses. The client agrees to comply with such licenses.</li>
-              <li><strong>Portfolio Rights:</strong> YesBe reserves the right to display completed projects in its portfolio, case studies, and marketing materials, unless otherwise agreed in writing.</li>
+              <li><strong>Portfolio Rights:</strong> YESBE reserves the right to display completed projects in its portfolio, case studies, and marketing materials, unless otherwise agreed in writing.</li>
               <li><strong>Source Code:</strong> Transfer of source code ownership is subject to full payment and must be explicitly agreed upon in the project contract.</li>
             </ul>
           </div>
@@ -196,7 +196,7 @@ export function TermsAndConditionsPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Limitation of Liability</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <ul className="list-disc pl-6 space-y-2">
-              <li>YesBe shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our services.</li>
+              <li>YESBE shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our services.</li>
               <li>Our total liability shall not exceed the total amount paid by the client for the specific service giving rise to the claim.</li>
               <li>We are not responsible for losses resulting from third-party services, hosting outages, or circumstances beyond our reasonable control.</li>
               <li>Clients are responsible for maintaining appropriate backups of their data and content.</li>

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState, useEffect, useTransition } from "react";
-import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Navigate, useParams } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { BusinessSchema } from "@/components/common/BusinessSchema";
@@ -105,6 +105,30 @@ function PublicLayout() {
   );
 }
 
+/**
+ * Legacy URL forwards.
+ *
+ * Canonical service pages now live at /services/:slug and the insights hub at
+ * /insights. These keep every previously indexed URL reachable inside the SPA
+ * (dev, preview and any host without vercel.json) while the real permanent
+ * redirects are served by vercel.json. They render nothing, forward on mount and
+ * carry no metadata, so no duplicate page can ever be indexed.
+ */
+function LegacySolutionRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={`/services/${slug}`} replace />;
+}
+
+function LegacyArticleRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={`/insights/article/${slug}`} replace />;
+}
+
+function LegacyCategoryRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={`/insights/category/${slug}`} replace />;
+}
+
 function App() {
   const [ready, setReady] = useState(false);
   const [, startTransition] = useTransition();
@@ -156,23 +180,41 @@ function App() {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/sachin-balraj" element={<FounderPage />} />
                 <Route path="/services" element={<ServicesPage />} />
-                <Route path="/solutions" element={<ServicesPage />} />
+                <Route path="/services/:slug" element={<SolutionDetailPage />} />
                 <Route path="/industries/:slug" element={<IndustryDetailPage />} />
                 <Route path="/industries" element={<IndustriesPage />} />
-                <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
                 <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
                 <Route path="/case-studies" element={<CaseStudiesPage />} />
-                <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
-                <Route path="/knowledge-center/category/:slug" element={<KnowledgeCategoryPage />} />
-                <Route path="/knowledge-center/article/:slug" element={<KnowledgeArticlePage />} />
-                <Route path="/knowledge-center/search" element={<KnowledgeSearchPage />} />
-                <Route path="/knowledge-center/:slug" element={<KnowledgeCategoryPage />} />
-                <Route path="/search" element={<KnowledgeSearchPage />} />
+                <Route path="/insights" element={<KnowledgeCenterPage />} />
+                <Route path="/insights/category/:slug" element={<KnowledgeCategoryPage />} />
+                <Route path="/insights/article/:slug" element={<KnowledgeArticlePage />} />
+                <Route path="/insights/search" element={<KnowledgeSearchPage />} />
+                <Route path="/insights/:slug" element={<KnowledgeCategoryPage />} />
+                <Route path="/search" element={<Navigate to="/insights/search" replace />} />
                 <Route path="/videos" element={<VideoPage />} />
                 {/* Public pricing was retired in favour of a consultation-based
                     model. The permanent 308 is served by vercel.json; this client
                     route is the SPA/dev fallback so old links never 404. */}
                 <Route path="/pricing" element={<Navigate to="/services" replace />} />
+                {/* Canonical service URLs live under /services/:slug. /solutions
+                    used to host them, so every old path is forwarded here and
+                    vercel.json answers the equivalent permanent redirect. */}
+                <Route path="/solutions" element={<Navigate to="/services" replace />} />
+                <Route path="/solutions/:slug" element={<LegacySolutionRedirect />} />
+                {/* The insights hub was renamed from /knowledge-center to
+                    /insights. Kept as client-side forwards so no indexed link
+                    can 404; vercel.json serves the permanent redirect. */}
+                <Route path="/knowledge-center" element={<Navigate to="/insights" replace />} />
+                <Route path="/knowledge-center/search" element={<Navigate to="/insights/search" replace />} />
+                <Route
+                  path="/knowledge-center/article/:slug"
+                  element={<LegacyArticleRedirect />}
+                />
+                <Route
+                  path="/knowledge-center/category/:slug"
+                  element={<LegacyCategoryRedirect />}
+                />
+                <Route path="/knowledge-center/:slug" element={<LegacyCategoryRedirect />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />

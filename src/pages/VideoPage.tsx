@@ -14,8 +14,8 @@ export function VideoPage() {
   const [category, setCategory] = useState("All Videos");
 
   useSEO({
-    title: "Technology Explained Simply — AI, ERP & Automation Videos | YesBe",
-    description: "Explore AI, ERP, automation, analytics, and digital transformation video guides from YesBe Technologies for business leaders and teams.",
+    title: "Technology Explained Simply — AI, ERP & Automation Videos | YESBE",
+    description: "Explore AI, ERP, automation, analytics, and digital transformation video guides from YESBE Technologies for business leaders and teams.",
     canonical: "https://www.yesbe.tech/videos",
   });
 
@@ -46,7 +46,7 @@ export function VideoPage() {
         badge="Videos"
         title="Technology Explained"
         highlight="Simply"
-        description="Explore AI, ERP, Automation, Analytics, and digital transformation insights from YesBe."
+        description="Explore AI, ERP, Automation, Analytics, and digital transformation insights from YESBE."
       />
 
       {videoSchema && <VideoSchema video={videoSchema} />}
@@ -183,7 +183,7 @@ export function VideoPage() {
             >
               <h3 className="text-lg font-semibold text-foreground">About Our Videos</h3>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                YesBe videos cover practical technology strategies for businesses, including AI, ERP, automation, analytics, and digital transformation.
+                YESBE videos cover practical technology strategies for businesses, including AI, ERP, automation, analytics, and digital transformation.
               </p>
               <div className="mt-6 space-y-3">
                 <div className="rounded-3xl bg-slate-50 p-4 text-sm text-slate-700">Trusted video insights for business leaders.</div>

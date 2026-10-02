@@ -2,8 +2,8 @@
 title: "ERP vs CRM: What's the Difference and Which Do You Need?"
 slug: "erp-vs-crm"
 category: "CRM Solutions"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-18"
 updatedDate: "2026-07-29"
 readingTime: 5

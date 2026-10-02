@@ -6,10 +6,10 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SITE_CONFIG = {
-  name: "YesBe",
+  name: "YESBE Technologies",
   title: "AI, ERP, Web Development & Business Solutions",
   description:
-    "YesBe helps startups, SMEs, and enterprises with AI tools, ERP systems, web development, data analytics, cloud services, and search optimization.",
+    "YESBE helps startups, SMEs, and enterprises with AI tools, ERP systems, web development, data analytics, cloud services, and search optimization.",
   email: "hello@yesbe.tech",
   phone: "9087795970",
   location: "Salem, Tamil Nadu, India",
@@ -22,12 +22,16 @@ export const SITE_CONFIG = {
 /* ────────────────────────────────────────────────────────────
    Founder entity — stable IDs shared by every schema that
    references Sachin Balraj, so search engines resolve the
-   Person → Founder → YesBe Technologies relationship to a
+   Person → Founder → YESBE Technologies relationship to a
    single node instead of several near-duplicates.
 ──────────────────────────────────────────────────────────── */
 
 export const FOUNDER_PROFILE_URL = "https://www.yesbe.tech/sachin-balraj";
 export const ORGANIZATION_ID = "https://www.yesbe.tech/#organization";
+/** Canonical name for the company entity. Every schema.org node that points at
+ *  ORGANIZATION_ID must reuse this exact string, or one @id ends up carrying
+ *  two different names and the entity graph is rejected. */
+export const ORGANIZATION_NAME = "YESBE Technologies";
 export const FOUNDER_PERSON_ID = `${FOUNDER_PROFILE_URL}#person`;
 
 /**
@@ -46,6 +50,17 @@ export const FOUNDER_SAME_AS = [
 
 export const FOUNDER_DESCRIPTION =
   "Sachin Balraj is the Founder of YESBE Technologies and a Solution Architect at Springreen. His work focuses on software architecture, artificial intelligence, web technologies and digital solutions designed to solve practical business challenges.";
+
+/**
+ * Display strings for article bylines. Defined once so the founder's name and
+ * role can never drift between the article loader, byline components and the
+ * founder page. Deliberately states only the two real roles — no invented
+ * titles such as "CEO" or "Chief Solution Architect".
+ */
+export const FOUNDER_AUTHOR_NAME = "Sachin Balraj";
+export const FOUNDER_AUTHOR_ROLE = "Founder, YESBE Technologies";
+export const FOUNDER_AUTHOR_BIO =
+  "Founder of YESBE Technologies and Solution Architect at Springreen. Writes on software architecture, AI, web technologies and business automation.";
 
 /** The single canonical Person node. Reused — never duplicated inline. */
 export const FOUNDER_PERSON = {
@@ -66,14 +81,14 @@ export const BUSINESS_INFO = {
   organization: {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://www.yesbe.tech/#organization",
-    name: "YesBe Technologies",
-    legalName: "YesBe Technologies",
+    "@id": ORGANIZATION_ID,
+    name: ORGANIZATION_NAME,
+    legalName: ORGANIZATION_NAME,
     alternateName: "YesBe",
     url: "https://www.yesbe.tech",
     logo: "https://www.yesbe.tech/YBlogo.png",
     description:
-      "YesBe Technologies provides AI Solutions, ERP Development, Website Development, Custom Software Development, Power BI Dashboards, Business Automation, Cloud Solutions, SEO, GEO, AEO, Digital Marketing, and Digital Transformation services.",
+      "YESBE Technologies is an IT consulting and software development company providing IT consulting, custom software development, website development, AI solutions, business automation, digital transformation, ERP systems, cloud and search visibility services.",
     foundingDate: "2024",
     // References the shared FOUNDER_PERSON node so the founder is one entity,
     // not a second near-duplicate of the Person on /sachin-balraj.
@@ -114,11 +129,11 @@ export const BUSINESS_INFO = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": "https://www.yesbe.tech/#website",
-    name: "YesBe Technologies",
+    name: "YESBE Technologies",
     alternateName: "YesBe",
     url: "https://www.yesbe.tech",
     description:
-      "YesBe Technologies provides AI Solutions, ERP Development, Website Development, Custom Software Development, Power BI Dashboards, Business Automation, Cloud Solutions, SEO, GEO, AEO, Digital Marketing, and Digital Transformation services.",
+      "YESBE Technologies is an IT consulting and software development company providing IT consulting, custom software development, website development, AI solutions, business automation, digital transformation, ERP systems, cloud and search visibility services.",
     publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
     copyrightHolder: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
     inLanguage: "en",

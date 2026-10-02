@@ -3,7 +3,7 @@ title: "Case Study: Fashion E-Commerce Platform — Sales, Inventory & Growth"
 slug: "ecommerce-case-study"
 category: "Case Studies"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-25"
 updatedDate: "2026-07-29"
 readingTime: 6

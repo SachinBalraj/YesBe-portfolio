@@ -3,8 +3,8 @@ title: "How a Business Website Generates Leads: From Visitors to Paying Customer
 slug: "business-website-lead-generation"
 category: "Digital Marketing"
 contentType: "Guide"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-08-20"
 updatedDate: "2026-08-20"
 readingTime: 8

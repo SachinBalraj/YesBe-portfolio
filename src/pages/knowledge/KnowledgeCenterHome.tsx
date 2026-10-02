@@ -36,9 +36,9 @@ const POPULAR_SEARCH_TOPICS = [
 export function KnowledgeCenterHome() {
   const navigate = useNavigate();
   useSEO({
-    title: SEO_TITLES.knowledgeCenter,
-    description: SEO_DESCRIPTIONS.knowledgeCenter,
-    canonical: `${SITE_URL}/knowledge-center`,
+    title: SEO_TITLES.insights,
+    description: SEO_DESCRIPTIONS.insights,
+    canonical: `${SITE_URL}/insights`,
   });
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -64,7 +64,7 @@ export function KnowledgeCenterHome() {
   };
 
   const handleTopicClick = (query: string) => {
-    navigate(`/knowledge-center/search?q=${encodeURIComponent(query)}`);
+    navigate(`/insights/search?q=${encodeURIComponent(query)}`);
   };
 
   return (
@@ -72,13 +72,13 @@ export function KnowledgeCenterHome() {
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        name: SEO_TITLES.knowledgeCenter,
-        description: SEO_DESCRIPTIONS.knowledgeCenter,
-        url: `${SITE_URL}/knowledge-center`,
+        name: SEO_TITLES.insights,
+        description: SEO_DESCRIPTIONS.insights,
+        url: `${SITE_URL}/insights`,
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
-        <Breadcrumbs items={[{ label: "Knowledge Center" }]} />
+        <Breadcrumbs items={[{ label: "Insights" }]} />
       </div>
 
       <section className="relative overflow-hidden">
@@ -92,7 +92,7 @@ export function KnowledgeCenterHome() {
               className="inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white px-4 py-1.5 text-[12px] font-semibold text-primary shadow-xs"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              YesBe Knowledge Center
+              YESBE Insights
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
@@ -207,7 +207,7 @@ export function KnowledgeCenterHome() {
                   transition={{ duration: 0.4, delay: (i % 4) * 0.05 }}
                 >
                   <Link
-                    to={`/knowledge-center/category/${cat.slug}`}
+                    to={`/insights/category/${cat.slug}`}
                     className="group relative block h-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_12px_40px_rgba(37,99,235,0.10)]"
                   >
                     <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-[#2563eb] to-[#60a5fa] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

@@ -17,8 +17,12 @@ const FounderBackgroundSection = lazy(() =>
 const FounderWorkSection = lazy(() =>
   import("@/sections/FounderWorkSection").then((m) => ({ default: m.FounderWorkSection }))
 );
+const FounderInsightsSection = lazy(() =>
+  import("@/sections/FounderInsightsSection").then((m) => ({ default: m.FounderInsightsSection }))
+);
 
-const OG_DESCRIPTION = "Official profile of Sachin Balraj, Founder of YESBE Technologies.";
+const OG_DESCRIPTION =
+  "Sachin Balraj is the Founder of YESBE Technologies and a Solution Architect at Springreen, working across software architecture, AI, web technologies, automation and practical digital solutions for businesses.";
 
 export function FounderPage() {
   useSEO({
@@ -62,7 +66,8 @@ export function FounderPage() {
         badge="Founder Profile"
         title="Sachin"
         highlight="Balraj"
-        description="Founder of YESBE Technologies and Solution Architect at Springreen."
+        titleAfter=" — Founder of YESBE Technologies"
+        description="Software architecture, AI, web technologies and business automation for growing businesses."
         breadcrumbs={[{ label: "About Us", href: "/about" }, { label: "Sachin Balraj" }]}
       />
 
@@ -80,6 +85,11 @@ export function FounderPage() {
         <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
           <div className="contain-content">
             <FounderWorkSection />
+          </div>
+        </Suspense>
+        <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+          <div className="contain-content">
+            <FounderInsightsSection />
           </div>
         </Suspense>
       </article>

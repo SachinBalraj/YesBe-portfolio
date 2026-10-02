@@ -7,7 +7,7 @@
  *
  * Usage:
  *   npm run build
- *   MONGODB_URI=... ADMIN_EMAIL=... ADMIN_PASSWORD=... SESSION_SECRET=... \
+ *   MONGODB_URI=... ADMIN_EMAIL=... ADMIN_PASSWORD_HASH=... SESSION_SECRET=... \
  *     npm run serve
  *
  * Then open http://localhost:3111 (UI) and http://localhost:3111/admin.

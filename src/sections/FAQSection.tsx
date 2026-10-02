@@ -10,12 +10,12 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is YesBe?",
+    question: "What is YESBE?",
     answer:
-      "YesBe builds AI tools, ERP systems, Power BI dashboards, websites, and automation for startups, SMEs, and enterprises worldwide.",
+      "YESBE builds AI tools, ERP systems, Power BI dashboards, websites, and automation for startups, SMEs, and enterprises worldwide.",
   },
   {
-    question: "What services does YesBe provide?",
+    question: "What services does YESBE provide?",
     answer:
       "AI solutions, website development, ERP, Power BI dashboards, cloud & DevOps, SEO/GEO/AEO, database management, business automation, digital marketing, and tech consulting.",
   },

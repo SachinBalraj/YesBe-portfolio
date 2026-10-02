@@ -1,13 +1,48 @@
 {
   "redirects": [
     {
+      "source": "/pricing",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
       "source": "/solutions",
       "destination": "/services",
       "permanent": true
     },
     {
-      "source": "/pricing",
-      "destination": "/services",
+      "source": "/solutions/:slug",
+      "destination": "/services/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/search",
+      "destination": "/insights/search",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/article/:slug",
+      "destination": "/insights/article/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/category/:slug",
+      "destination": "/insights/category/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/:slug",
+      "destination": "/insights/category/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/search",
+      "destination": "/insights/search",
       "permanent": true
     }
   ],
@@ -112,6 +147,7 @@
       ]
     }
   ],
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/((?!api/).*)",

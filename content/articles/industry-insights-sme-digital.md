@@ -2,8 +2,8 @@
 title: "Industry Insights: How SMEs Across Sectors Are Digitizing in 2026"
 slug: "industry-insights-sme-digital"
 category: "Industry Insights"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-23"
 updatedDate: "2026-07-29"
 readingTime: 6

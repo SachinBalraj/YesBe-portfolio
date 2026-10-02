@@ -2,8 +2,8 @@
 title: "Cybersecurity Essentials for Small & Mid-Size Businesses"
 slug: "cybersecurity-essentials"
 category: "Cybersecurity"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-21"
 updatedDate: "2026-07-29"
 readingTime: 7

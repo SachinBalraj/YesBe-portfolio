@@ -151,7 +151,7 @@ docker run -p 27017:27017 mongo:7
 MONGODB_URI=mongodb://127.0.0.1:27017 \
 MONGODB_DB_NAME=yesbe_dev \
 ADMIN_EMAIL=you@example.com \
-ADMIN_PASSWORD=devpassword \
+ADMIN_PASSWORD_HASH=scrypt$N$r$p$salt$derivedkey \
 SESSION_SECRET=dev-secret-at-least-32-characters-long \
 ENQUIRY_RATE_LIMIT=1000 \
   npm run serve

@@ -137,9 +137,9 @@ export function LegalPageLayout({
             <aside className="hidden lg:block" aria-label="Table of contents">
               <div className="sticky top-24">
                 <nav className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  <p className="mb-4 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                     On This Page
-                  </h4>
+                  </p>
                   <ul className="space-y-1">
                     {toc.map((item) => (
                       <li key={item.id}>
@@ -164,9 +164,9 @@ export function LegalPageLayout({
 
                 {/* Related Legal Pages */}
                 <div className="mt-4 rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                     Legal Pages
-                  </h4>
+                  </p>
                   <ul className="space-y-1.5">
                     <li>
                       <button onClick={() => handleNav("/privacy-policy")} className="flex items-center gap-2 text-[13px] text-muted-foreground transition-colors hover:text-primary">
@@ -237,7 +237,7 @@ export function LegalPageLayout({
                 onClick={() => handleNav("/contact")}
                 className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
               >
-                Contact YesBe
+                Contact YESBE
                 <ArrowRight className="h-4 w-4" />
               </button>
               <a

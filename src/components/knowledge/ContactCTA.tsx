@@ -19,7 +19,7 @@ export function ContactCTA() {
           Need help implementing this for your business?
         </h2>
         <p className="mb-8 text-[15px] leading-relaxed text-blue-100">
-          Book a free consultation with YesBe today. Our experts will assess your
+          Book a free consultation with YESBE today. Our experts will assess your
           needs and map out a clear plan — no strings attached.
         </p>
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -36,7 +36,7 @@ export function ContactCTA() {
             className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 sm:w-auto"
           >
             <MessageSquareText className="h-4 w-4" />
-            Contact YesBe
+            Contact YESBE
           </Link>
         </div>
       </div>

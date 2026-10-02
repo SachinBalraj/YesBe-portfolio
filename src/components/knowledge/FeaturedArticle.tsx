@@ -20,7 +20,7 @@ export function FeaturedArticle({ article }: { article: Article }) {
 
       <div className="relative grid lg:grid-cols-2">
         <Link
-          to={`/knowledge-center/article/${article.slug}`}
+          to={`/insights/article/${article.slug}`}
           className="absolute inset-0 z-10"
           aria-label={`Read featured article: ${article.title}`}
         />
@@ -28,7 +28,7 @@ export function FeaturedArticle({ article }: { article: Article }) {
           <div className="aspect-[16/10] w-full lg:h-full">
             <img
               src={article.featuredImage}
-              alt={`${article.title} — featured article by YesBe Technologies`}
+              alt={`${article.title} — featured article by YESBE Technologies`}
               loading="lazy"
               decoding="async"
               width={800}

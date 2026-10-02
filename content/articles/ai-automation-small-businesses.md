@@ -3,8 +3,8 @@ title: "AI Automation for Small Businesses: Practical Ways to Save Time and Cut 
 slug: "ai-automation-small-businesses"
 category: "Automation"
 contentType: "Guide"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-08-20"
 updatedDate: "2026-08-20"
 readingTime: 8

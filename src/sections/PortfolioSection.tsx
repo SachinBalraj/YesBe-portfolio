@@ -42,7 +42,7 @@ function ProjectCard({
       <div className="relative h-48 overflow-hidden cursor-pointer" onClick={goToDetail}>
         <img
           src={project.image}
-          alt={`${project.title} — ${project.category} case study by YesBe Technologies`}
+          alt={`${project.title} — ${project.category} case study by YESBE Technologies`}
           loading="lazy"
           decoding="async"
           width={700}

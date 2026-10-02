@@ -196,7 +196,7 @@ export function TrustedBrandsSection() {
             href="#contact"
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
           >
-            Contact YesBe
+            Contact YESBE
           </a>
         </motion.div>
       </div>

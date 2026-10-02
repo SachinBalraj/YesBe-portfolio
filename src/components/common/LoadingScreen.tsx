@@ -62,7 +62,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
           <div className="h-20 w-20 sm:h-[110px] sm:w-[110px] relative z-10">
             <img
               src={logoImg}
-              alt="YesBe Technologies Logo"
+              alt="YESBE Technologies Logo"
               width={110}
               height={110}
               loading="eager"
@@ -74,7 +74,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          YesBe
+          YESBE
         </h1>
 
         <div className="mt-2 flex flex-wrap justify-center gap-x-2 gap-y-1 text-[13px] text-muted-foreground">

@@ -9,7 +9,7 @@ import { fadeInUp, staggerContainer } from "@/animations";
 import {
   Brain, Bot, LayoutDashboard, Globe, Code2, ShoppingBag,
   Workflow, BarChart3, Cloud, Database, Link2, Search,
-  Megaphone, MessageCircle, ArrowRight,
+  Megaphone, MessageCircle, ArrowRight, Compass, Waypoints,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -45,6 +45,8 @@ const services: Service[] = [
   { icon: MessageCircle, name: "AEO", description: "Optimize for featured snippets and voice search.", slug: "aeo" },
   { icon: Globe, name: "Digital Marketing", description: "Strategies that drive traffic and leads.", slug: "digital-marketing" },
   { icon: Code2, name: "Custom Software", description: "Software built from scratch for your business.", slug: "custom-software" },
+  { icon: Compass, name: "IT Consulting", description: "Audits and roadmaps before you spend more on the wrong thing.", slug: "it-consulting" },
+  { icon: Waypoints, name: "Digital Transformation", description: "Phased, integration-first change that ships value from day one.", slug: "digital-transformation" },
 ];
 
 export function ServicesPage() {
@@ -67,7 +69,7 @@ export function ServicesPage() {
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "ItemList",
-        name: "YesBe Technology Solutions",
+        name: "YESBE Technology Solutions",
         description: SEO_DESCRIPTIONS.services,
         url: "https://www.yesbe.tech/services",
         numberOfItems: services.length,
@@ -78,7 +80,7 @@ export function ServicesPage() {
             "@type": "Service",
             name: service.name,
             description: service.description,
-            url: `https://www.yesbe.tech/solutions/${service.slug}`,
+            url: `https://www.yesbe.tech/services/${service.slug}`,
             provider: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
           },
         })),
@@ -97,6 +99,7 @@ export function ServicesPage() {
           <div className="absolute bottom-[10%] left-[5%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.05] blur-[100px]" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="sr-only">Our Services</h2>
           <motion.div
             variants={staggerContainer}
             initial="initial"
@@ -118,7 +121,7 @@ export function ServicesPage() {
                 <h3 className="mb-2 text-lg font-bold text-foreground">{service.name}</h3>
                 <p className="mb-5 flex-1 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
                 <Link
-                  to={`/solutions/${service.slug}`}
+                  to={`/services/${service.slug}`}
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-[#1d4ed8]"
                 >

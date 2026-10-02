@@ -290,9 +290,9 @@ export function FounderWorkSection() {
               id="connect-with-sachin-balraj"
               className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
             >
-              Connect with{" "}
+              Contact &amp;{" "}
               <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
-                Sachin Balraj
+                Book a Consultation
               </span>
             </h2>
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
@@ -360,7 +360,7 @@ export function FounderWorkSection() {
               to="/contact"
               className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
             >
-              Start a conversation
+              Book a consultation
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </motion.div>

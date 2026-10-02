@@ -3,7 +3,7 @@ title: "RAG Implementation: How to Ground AI in Your Own Business Data"
 slug: "rag-implementation"
 category: "Artificial Intelligence"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-16"
 updatedDate: "2026-07-29"
 readingTime: 8

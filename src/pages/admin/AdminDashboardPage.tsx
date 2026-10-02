@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   AlertCircle,
@@ -67,6 +67,21 @@ function TabButton({
   );
 }
 
+/**
+ * Summary cards shown above the table.
+ *
+ * `statusKey` is the value stored in MongoDB. "In Progress" is the operator-
+ * facing name for the stored "In Discussion", so existing records are counted
+ * correctly without rewriting any real client data.
+ */
+const SUMMARY_CARDS: { label: string; statusKey: string | null }[] = [
+  { label: "Total Enquiries", statusKey: null },
+  { label: "New", statusKey: "New" },
+  { label: "Contacted", statusKey: "Contacted" },
+  { label: "In Progress", statusKey: "In Discussion" },
+  { label: "Closed", statusKey: "Closed" },
+];
+
 /* ── Enquiries ─────────────────────────────────────────────── */
 
 function EnquiriesPanel() {
@@ -100,13 +115,16 @@ function EnquiriesPanel() {
     setPage(1);
   };
 
-  const onDelete = async (item: EnquiryRecord) => {
-    const confirmed = window.confirm(
-      `Delete the enquiry from ${item.name} (${item.email})?\n\nThis permanently removes it and cannot be undone.`,
-    );
-    if (!confirmed) return;
+  const [pendingDelete, setPendingDelete] = useState<EnquiryRecord | null>(null);
+
+  const requestDelete = (item: EnquiryRecord) => setPendingDelete(item);
+
+  const confirmDelete = async () => {
+    if (!pendingDelete) return;
+    const target = pendingDelete;
+    setPendingDelete(null);
     try {
-      await deleteEnquiry(item._id);
+      await deleteEnquiry(target._id);
       await load();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Unable to delete enquiry.");
@@ -117,18 +135,59 @@ function EnquiriesPanel() {
 
   return (
     <div>
+      {/* Summary cards */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {ENQUIRY_STATUSES.map((s) => (
+        {SUMMARY_CARDS.map((card) => {
+          const active = card.statusKey !== null && status === card.statusKey;
+          const value = card.statusKey === null
+            ? (data?.total ?? "—")
+            : (counts?.[card.statusKey as EnquiryStatus] ?? "—");
+          return (
+            <button
+              key={card.label}
+              type="button"
+              onClick={() => {
+                if (card.statusKey === null) {
+                  setFilter(() => setStatus("all"));
+                } else {
+                  setFilter(() => setStatus(active ? "all" : card.statusKey!));
+                }
+              }}
+              aria-pressed={card.statusKey === null ? status === "all" : active}
+              className={`rounded-xl border p-3 text-left transition-colors ${
+                (card.statusKey === null ? status === "all" : active)
+                  ? "border-primary bg-primary/5"
+                  : "border-border bg-card hover:bg-muted"
+              }`}
+            >
+              <p className="text-xs font-medium text-muted-foreground">{card.label}</p>
+              <p className="mt-1 text-xl font-bold text-foreground">{value}</p>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Status filter chips — the full pipeline stays available */}
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          Status
+        </span>
+        {(["all", ...ENQUIRY_STATUSES] as string[]).map((s) => (
           <button
             key={s}
             type="button"
-            onClick={() => setFilter(() => setStatus(status === s ? "all" : s))}
-            className={`rounded-xl border p-3 text-left transition-colors ${
-              status === s ? "border-primary bg-primary/5" : "border-border bg-card hover:bg-muted"
+            onClick={() => setFilter(() => setStatus(s))}
+            aria-pressed={status === s}
+            className={`rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
+              status === s
+                ? "border-primary bg-primary text-white"
+                : "border-border bg-card text-muted-foreground hover:bg-muted"
             }`}
           >
-            <p className="text-xs font-medium text-muted-foreground">{s}</p>
-            <p className="mt-1 text-xl font-bold text-foreground">{counts?.[s] ?? "—"}</p>
+            {s === "all" ? "All" : s}
+            {s !== "all" && counts?.[s as EnquiryStatus] !== undefined && (
+              <span className="ml-1.5 opacity-70">{counts[s as EnquiryStatus]}</span>
+            )}
           </button>
         ))}
       </div>
@@ -185,38 +244,48 @@ function EnquiriesPanel() {
             <table className="w-full text-left text-sm">
               <thead className="bg-muted text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
-                  <th className="px-4 py-3 font-semibold">Received</th>
-                  <th className="px-4 py-3 font-semibold">Name</th>
-                  <th className="px-4 py-3 font-semibold">Contact</th>
-                  <th className="px-4 py-3 font-semibold">Service</th>
-                  <th className="px-4 py-3 font-semibold">Status</th>
-                  <th className="px-4 py-3 font-semibold">Source</th>
-                  <th className="px-4 py-3 font-semibold"><span className="sr-only">Actions</span></th>
+                  <th className="px-3 py-3 font-semibold">Date</th>
+                  <th className="px-3 py-3 font-semibold">Client Name</th>
+                  <th className="px-3 py-3 font-semibold">Business / Company</th>
+                  <th className="px-3 py-3 font-semibold">Email</th>
+                  <th className="px-3 py-3 font-semibold">Phone</th>
+                  <th className="px-3 py-3 font-semibold">Service</th>
+                  <th className="px-3 py-3 font-semibold">Message</th>
+                  <th className="px-3 py-3 font-semibold">Status</th>
+                  <th className="px-3 py-3 font-semibold"><span className="sr-only">Actions</span></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border bg-card">
                 {data?.items.map((item) => (
                   <tr key={item._id} className="hover:bg-muted/50">
-                    <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">
+                    <td className="whitespace-nowrap px-3 py-3 text-xs text-muted-foreground">
                       {formatDate(item.createdAt)}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-3">
                       <Link to={`/admin/enquiries/${item._id}`} className="font-medium text-primary hover:underline">
-                        {item.name}
+                        {item.name || "—"}
                       </Link>
-                      {item.company && <p className="text-xs text-muted-foreground">{item.company}</p>}
                     </td>
-                    <td className="px-4 py-3">
-                      <p className="break-all">{item.email}</p>
-                      {item.phone && <p className="text-xs text-muted-foreground">{item.phone}</p>}
+                    <td className="px-3 py-3 text-muted-foreground">{item.company || "—"}</td>
+                    <td className="px-3 py-3">
+                      <a href={`mailto:${item.email}`} className="break-all hover:underline">
+                        {item.email || "—"}
+                      </a>
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">{item.service || "—"}</td>
-                    <td className="px-4 py-3"><StatusBadge status={item.status} /></td>
-                    <td className="px-4 py-3 text-muted-foreground">{item.pageSource}</td>
-                    <td className="px-4 py-3 text-right">
+                    <td className="whitespace-nowrap px-3 py-3 text-muted-foreground">
+                      {item.phone || "—"}
+                    </td>
+                    <td className="px-3 py-3 text-muted-foreground">{item.service || "—"}</td>
+                    <td className="max-w-[22rem] px-3 py-3 text-xs text-muted-foreground">
+                      <span className="line-clamp-2" title={item.projectDescription}>
+                        {item.projectDescription || "—"}
+                      </span>
+                    </td>
+                    <td className="px-3 py-3"><StatusBadge status={item.status} /></td>
+                    <td className="px-3 py-3 text-right">
                       <button
                         type="button"
-                        onClick={() => onDelete(item)}
+                        onClick={() => requestDelete(item)}
                         aria-label={`Delete enquiry from ${item.name}`}
                         className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
                       >
@@ -235,20 +304,28 @@ function EnquiriesPanel() {
               <li key={item._id} className="rounded-xl border border-border bg-card p-4">
                 <div className="flex items-start justify-between gap-3">
                   <Link to={`/admin/enquiries/${item._id}`} className="font-semibold text-foreground">
-                    {item.name}
+                    {item.name || "—"}
                   </Link>
                   <StatusBadge status={item.status} />
                 </div>
-                <p className="mt-1 break-all text-sm text-muted-foreground">{item.email}</p>
+                {item.company && (
+                  <p className="mt-1 text-sm font-medium text-foreground">{item.company}</p>
+                )}
+                <p className="mt-1 break-all text-sm text-muted-foreground">{item.email || "—"}</p>
                 {item.phone && <p className="text-sm text-muted-foreground">{item.phone}</p>}
                 <p className="mt-2 text-sm text-foreground">{item.service || "—"}</p>
-                <div className="mt-3 flex items-center justify-between">
+                {item.projectDescription && (
+                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                    {item.projectDescription}
+                  </p>
+                )}
+                <div className="mt-3 flex items-center justify-between gap-3">
                   <span className="text-xs text-muted-foreground">
                     {formatDate(item.createdAt)} · {item.pageSource}
                   </span>
                   <button
                     type="button"
-                    onClick={() => onDelete(item)}
+                    onClick={() => requestDelete(item)}
                     aria-label={`Delete enquiry from ${item.name}`}
                     className="rounded-lg p-2 text-muted-foreground hover:text-destructive"
                   >
@@ -262,6 +339,12 @@ function EnquiriesPanel() {
           <Pager page={data?.page ?? 1} pages={data?.pages ?? 1} total={data?.total ?? 0} onPage={setPage} />
         </>
       )}
+
+      <ConfirmDeleteDialog
+        enquiry={pendingDelete}
+        onCancel={() => setPendingDelete(null)}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 }
@@ -361,6 +444,76 @@ function NewsletterPanel() {
           ))}
         </ul>
       )}
+    </div>
+  );
+}
+
+/* ── Confirmation dialog ───────────────────────────────────── */
+
+/**
+ * Accessible delete confirmation. Replaces window.confirm so the action is
+ * unambiguous and the destructive button is labelled "Delete" rather than the
+ * browser's generic "OK".
+ */
+export function ConfirmDeleteDialog({
+  enquiry,
+  onCancel,
+  onConfirm,
+}: {
+  enquiry: { name: string; email: string } | null;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  const cancelRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!enquiry) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onCancel();
+    };
+    document.addEventListener("keydown", onKey);
+    cancelRef.current?.focus();
+    return () => document.removeEventListener("keydown", onKey);
+  }, [enquiry, onCancel]);
+
+  if (!enquiry) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirm-delete-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onCancel();
+      }}
+    >
+      <div className="w-full max-w-sm rounded-2xl border border-border bg-card p-6 shadow-xl">
+        <h2 id="confirm-delete-title" className="text-base font-bold text-foreground">
+          Delete this enquiry?
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          This permanently removes the enquiry from {enquiry.name} ({enquiry.email}).
+          It cannot be undone.
+        </p>
+        <div className="mt-6 flex justify-end gap-3">
+          <button
+            ref={cancelRef}
+            type="button"
+            onClick={onCancel}
+            className="rounded-lg border border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={onConfirm}
+            className="rounded-lg bg-destructive px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

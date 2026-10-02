@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { itConsulting, digitalTransformation } from "./solutions.new";
 import {
   Brain,
   Bot,
@@ -73,13 +74,17 @@ export interface SolutionDetail {
   benefits: string[];
   process: { step: string; description: string }[];
   technologies: { name: string; description: string }[];
-  whyYesBe: { title: string; description: string }[];
+  whyYESBE: { title: string; description: string }[];
   caseStudy: { title: string; outcome: string; metric: string };
   faq: { question: string; answer: string }[];
   relatedSolutions: string[];
 }
 
 export const solutions: SolutionDetail[] = [
+  // 1. IT Consulting — advisory-led, diagnosis before build
+  itConsulting,
+  // 2. Digital Transformation — phased, integration-first
+  digitalTransformation,
   // 1. AI Solutions
   {
     slug: "ai-solutions",
@@ -206,7 +211,7 @@ export const solutions: SolutionDetail[] = [
           "MLOps platforms for experiment tracking, model management, and end-to-end ML pipeline orchestration",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "End-to-End Expertise",
         description:
@@ -257,7 +262,7 @@ export const solutions: SolutionDetail[] = [
           "We follow enterprise-grade security practices including data encryption, access controls, and compliance with GDPR, HIPAA, and other relevant regulations. We can deploy models on-premise or in your private cloud.",
       },
     ],
-    relatedSolutions: ["data-analytics", "business-automation", "ai-chatbots"],
+    relatedSolutions: ["data-analytics", "business-automation", "it-consulting"],
   },
 
   // 2. AI Chatbots
@@ -386,7 +391,7 @@ export const solutions: SolutionDetail[] = [
           "Real-time communication protocols for instant message delivery and seamless system integrations",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Beyond Templates",
         description:
@@ -437,7 +442,7 @@ export const solutions: SolutionDetail[] = [
           "A focused chatbot for specific use cases can be launched in 4-6 weeks. More complex implementations with multiple integrations and extensive knowledge bases typically take 8-12 weeks.",
       },
     ],
-    relatedSolutions: ["ai-solutions", "business-automation", "digital-marketing"],
+    relatedSolutions: ["ai-solutions", "digital-transformation", "business-automation"],
   },
 
   // 3. ERP Systems
@@ -566,7 +571,7 @@ export const solutions: SolutionDetail[] = [
           "Robust database layer for high-performance transaction processing and real-time data caching",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Process-First Philosophy",
         description:
@@ -750,7 +755,7 @@ export const solutions: SolutionDetail[] = [
           "Flexible content management systems decoupled from the frontend for maximum performance and flexibility",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Conversion-Focused Design",
         description:
@@ -930,7 +935,7 @@ export const solutions: SolutionDetail[] = [
           "Cloud infrastructure and containerization for reliable, scalable, and cost-effective application deployment",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Product Thinking",
         description:
@@ -981,7 +986,7 @@ export const solutions: SolutionDetail[] = [
           "We implement security at every layer: authentication (OAuth, MFA), authorization (RBAC), input validation, encryption at rest and in transit, rate limiting, and regular security audits.",
       },
     ],
-    relatedSolutions: ["website-development", "api-development", "cloud-devops"],
+    relatedSolutions: ["website-development", "it-consulting", "cloud-devops"],
   },
 
   // 6. E-Commerce
@@ -1110,7 +1115,7 @@ export const solutions: SolutionDetail[] = [
           "Secure payment processing with support for cards, digital wallets, buy-now-pay-later, and international payments",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Conversion Optimization Focus",
         description:
@@ -1161,7 +1166,7 @@ export const solutions: SolutionDetail[] = [
           "We focus on the technical build, but we partner with professional photographers and copywriters who specialize in e-commerce content. We can coordinate the entire process for you.",
       },
     ],
-    relatedSolutions: ["website-development", "seo", "digital-marketing"],
+    relatedSolutions: ["website-development", "digital-transformation", "seo"],
   },
 
   // 7. Business Automation
@@ -1290,7 +1295,7 @@ export const solutions: SolutionDetail[] = [
           "Bespoke integration solutions for systems without pre-built connectors or complex data transformation needs",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Process Expertise",
         description:
@@ -1470,7 +1475,7 @@ export const solutions: SolutionDetail[] = [
           "SQL-based transformation layer for cleaning, modeling, and documenting data within your warehouse",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Business-First Analytics",
         description:
@@ -1654,7 +1659,7 @@ export const solutions: SolutionDetail[] = [
           "Cloud ETL service for building complex data pipelines that feed Power BI with enterprise-scale data",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Certified Power BI Experts",
         description:
@@ -1834,7 +1839,7 @@ export const solutions: SolutionDetail[] = [
           "CI/CD platforms for automated testing, building, and deploying applications with GitOps workflows",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Cloud-Native Expertise",
         description:
@@ -1885,7 +1890,7 @@ export const solutions: SolutionDetail[] = [
           "Yes. We provide ongoing infrastructure management including monitoring, patching, scaling, cost optimization, and incident response. Our managed services let you focus on your applications while we keep the infrastructure running perfectly.",
       },
     ],
-    relatedSolutions: ["web-applications", "database-management", "api-development"],
+    relatedSolutions: ["web-applications", "database-management", "digital-transformation"],
   },
 
   // 11. Database Management
@@ -2014,7 +2019,7 @@ export const solutions: SolutionDetail[] = [
           "AWS DMS, pg_dump, and custom ETL scripts for safe, validated data migration between database platforms",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Platform Expertise",
         description:
@@ -2194,7 +2199,7 @@ export const solutions: SolutionDetail[] = [
           "Industry-standard tools for API design, documentation, testing, and collaboration across teams",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Developer Experience Focus",
         description:
@@ -2374,7 +2379,7 @@ export const solutions: SolutionDetail[] = [
           "Google performance tools for measuring and optimizing Core Web Vitals and page load speed",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Revenue-Focused SEO",
         description:
@@ -2425,7 +2430,7 @@ export const solutions: SolutionDetail[] = [
           "Absolutely. In fact, SEO and PPC work synergistically. We coordinate keyword strategies to maximize overall search visibility while SEO builds long-term organic presence that reduces dependence on paid traffic over time.",
       },
     ],
-    relatedSolutions: ["website-development", "digital-marketing", "geo"],
+    relatedSolutions: ["website-development", "it-consulting", "geo"],
   },
 
   // 14. GEO
@@ -2554,7 +2559,7 @@ export const solutions: SolutionDetail[] = [
           "Emerging GEO analytics tools for tracking brand mentions and citation rates across AI-generated responses",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Pioneering GEO Expertise",
         description:
@@ -2734,7 +2739,7 @@ export const solutions: SolutionDetail[] = [
           "NLP tools for analyzing query intent, question patterns, and content optimization for conversational search",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Multi-Platform Answer Strategy",
         description:
@@ -2914,7 +2919,7 @@ export const solutions: SolutionDetail[] = [
           "Behavioral analytics tools for heatmaps, session recordings, and conversion funnel analysis",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Revenue-Focused Campaigns",
         description:
@@ -3094,7 +3099,7 @@ export const solutions: SolutionDetail[] = [
           "Reliable data storage with ACID compliance and high-performance caching for enterprise applications",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Product Mindset",
         description:
@@ -3145,13 +3150,15 @@ export const solutions: SolutionDetail[] = [
           "We offer flexible maintenance packages that include bug fixes, security updates, feature additions, and performance optimization. Most clients transition to a maintenance plan after launch to keep their software evolving with their needs.",
       },
     ],
-    relatedSolutions: ["web-applications", "mobile-apps", "api-development"],
+    relatedSolutions: ["web-applications", "it-consulting", "api-development"],
   },
 ];
 
 export function getSolutionBySlug(slug: string): SolutionDetail | undefined {
   return solutions.find((s) => s.slug === slug);
 }
+
+export { itConsulting, digitalTransformation };
 
 export function getAllSolutionSlugs(): string[] {
   return solutions.map((s) => s.slug);

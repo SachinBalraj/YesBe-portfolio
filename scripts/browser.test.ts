@@ -13,7 +13,21 @@ import test, { before, after } from "node:test";
 import { chromium, type Browser, type BrowserContext, type Page } from "playwright";
 
 const BASE = process.env.TEST_BASE_URL ?? "http://localhost:3111";
-const ADMIN = { email: "owner@yesbe.tech", password: "LocalDevAdmin123!" };
+
+/**
+ * Admin credentials come from the environment — never a literal in this file.
+ * Set TEST_ADMIN_EMAIL / TEST_ADMIN_PASSWORD to the same values as
+ * ADMIN_EMAIL and the password whose scrypt hash is in ADMIN_PASSWORD_HASH.
+ */
+const ADMIN = {
+  email: process.env.TEST_ADMIN_EMAIL ?? process.env.ADMIN_EMAIL ?? "",
+  password: process.env.TEST_ADMIN_PASSWORD ?? "",
+};
+if (!ADMIN.email || !ADMIN.password) {
+  throw new Error(
+    "TEST_ADMIN_EMAIL and TEST_ADMIN_PASSWORD must be set to run the admin browser tests.",
+  );
+}
 
 let browser: Browser;
 let context: BrowserContext;
@@ -121,13 +135,13 @@ test("admin detail shows every submitted field and can change status", async () 
   assert.ok(await page.getByText("Browser Corp").first().isVisible(), "company must be shown");
   assert.ok(await page.getByText("QA Lead").first().isVisible(), "designation must be shown");
 
-  await page.getByRole("button", { name: "Converted", exact: true }).click();
+  await page.getByRole("button", { name: "Proposal Sent", exact: true }).click();
   await page.getByText("Saved", { exact: true }).waitFor({ timeout: 20000 });
 
   await page.getByRole("link", { name: /back to enquiries/i }).click();
   await page.getByRole("link", { name: "Browser Test User" }).first().waitFor({ timeout: 20000 });
   assert.ok(
-    (await page.locator("table").getByText("Converted").count()) > 0,
+    (await page.locator("table").getByText("Proposal Sent").count()) > 0,
     "the new status must be reflected in the list",
   );
 });

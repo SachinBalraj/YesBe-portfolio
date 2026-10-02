@@ -3,7 +3,7 @@ title: "Website Development: Choosing the Right Tech Stack for Your Business"
 slug: "web-dev-tech-stack"
 category: "Web Development"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-18"
 updatedDate: "2026-07-29"
 readingTime: 6

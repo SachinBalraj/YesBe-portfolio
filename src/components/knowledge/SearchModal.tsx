@@ -64,17 +64,17 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
     if (targetQuery) {
       addSearchHistory(targetQuery);
       onClose();
-      navigate(`/knowledge-center/search?q=${encodeURIComponent(targetQuery)}`);
+      navigate(`/insights/search?q=${encodeURIComponent(targetQuery)}`);
     } else {
       onClose();
-      navigate("/knowledge-center/search");
+      navigate("/insights/search");
     }
   };
 
   const handleSelectArticle = (article: Article) => {
     addSearchHistory(article.title);
     onClose();
-    navigate(`/knowledge-center/article/${article.slug}`);
+    navigate(`/insights/article/${article.slug}`);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -197,9 +197,9 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                                 <BookOpen className="h-4 w-4" />
                               </div>
                               <div>
-                                <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                                <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
                                   {highlightMatch(article.title, query)}
-                                </h4>
+                                </h3>
                                 <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">
                                   {highlightMatch(article.excerpt, query)}
                                 </p>
@@ -307,7 +307,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                           type="button"
                           onClick={() => {
                             onClose();
-                            navigate(`/knowledge-center/category/${cat.slug}`);
+                            navigate(`/insights/category/${cat.slug}`);
                           }}
                           className="flex items-center justify-between rounded-xl border border-slate-200/70 p-3 text-left transition-all hover:border-primary/30 hover:bg-primary/5 dark:border-slate-800"
                         >
@@ -345,7 +345,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
               </div>
               <span className="inline-flex items-center gap-1 font-semibold text-primary">
                 <Sparkles className="h-3 w-3" />
-                YesBe Search
+                YESBE Search
               </span>
             </div>
           </motion.div>

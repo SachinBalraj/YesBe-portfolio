@@ -65,7 +65,7 @@ export function SearchBar({
     if (q) params.set("q", q);
     if (categoryFilter) params.set("category", categoryFilter);
     const queryString = params.toString();
-    navigate(queryString ? `/knowledge-center/search?${queryString}` : "/knowledge-center/search");
+    navigate(queryString ? `/insights/search?${queryString}` : "/insights/search");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -81,7 +81,7 @@ export function SearchBar({
       const selected = suggestions[selectedIndex];
       addSearchHistory(selected.title);
       setIsFocused(false);
-      navigate(`/knowledge-center/article/${selected.slug}`);
+      navigate(`/insights/article/${selected.slug}`);
     } else if (e.key === "Escape") {
       setIsFocused(false);
     }
@@ -130,7 +130,7 @@ export function SearchBar({
           }}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          aria-label="Search the Knowledge Center"
+          aria-label="Search the Insights"
           className={cn(
             "w-full rounded-full border border-slate-200/90 bg-white text-foreground shadow-[0_2px_8px_rgba(37,99,235,0.04),0_8px_24px_rgba(37,99,235,0.03)] outline-none transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/15 dark:border-slate-800 dark:bg-slate-900",
             size === "lg" ? "py-4 pl-12 pr-28 text-base" : "py-2.5 pl-10 pr-20 text-sm"
@@ -185,7 +185,7 @@ export function SearchBar({
                       onClick={() => {
                         addSearchHistory(article.title);
                         setIsFocused(false);
-                        navigate(`/knowledge-center/article/${article.slug}`);
+                        navigate(`/insights/article/${article.slug}`);
                       }}
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={cn(
@@ -200,9 +200,9 @@ export function SearchBar({
                           <BookOpen className="h-4 w-4" />
                         </div>
                         <div>
-                          <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                          <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
                             {highlightMatch(article.title, query)}
-                          </h4>
+                          </h3>
                           <div className="mt-0.5 flex items-center gap-2 text-[11px] text-muted-foreground">
                             <span className="font-medium text-primary">{article.category}</span>
                             <span>•</span>

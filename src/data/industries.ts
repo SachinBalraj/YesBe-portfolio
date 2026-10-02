@@ -81,7 +81,7 @@ export interface IndustryDetail {
   benefits: string[];
   process: { step: string; description: string }[];
   technologies: { name: string; description: string }[];
-  whyYesBe: { title: string; description: string }[];
+  whyYESBE: { title: string; description: string }[];
   caseStudy: { title: string; outcome: string; metric: string };
   faq: { question: string; answer: string }[];
   relatedSolutions: string[];
@@ -213,7 +213,7 @@ export const industries: IndustryDetail[] = [
           "Cloud platforms with pay-as-you-go pricing, auto-scaling, and global CDN distribution for maximum performance and cost efficiency",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Startup-Native Expertise",
         description:
@@ -392,7 +392,7 @@ export const industries: IndustryDetail[] = [
           "Cloud-based productivity suites with integrated document management, collaboration, and communication tools",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "SME-First Approach",
         description:
@@ -571,7 +571,7 @@ export const industries: IndustryDetail[] = [
           "Enterprise-grade application frameworks for building robust, scalable, and secure backend services and APIs",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Enterprise Delivery Experience",
         description:
@@ -750,7 +750,7 @@ export const industries: IndustryDetail[] = [
           "HIPAA-compliant databases with encryption at rest, access controls, and audit logging for electronic health records and clinical data",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Healthcare Domain Expertise",
         description:
@@ -929,7 +929,7 @@ export const industries: IndustryDetail[] = [
           "Robust data storage with full-text search capabilities for academic records, course catalogs, and content libraries",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Education Domain Knowledge",
         description:
@@ -1108,7 +1108,7 @@ export const industries: IndustryDetail[] = [
           "High-performance caching and search engines for fast product discovery, real-time inventory checks, and personalized recommendations",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Retail Domain Expertise",
         description:
@@ -1287,7 +1287,7 @@ export const industries: IndustryDetail[] = [
           "Machine learning and computer vision frameworks for automated quality inspection, defect detection, and visual process monitoring",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Manufacturing Domain Knowledge",
         description:
@@ -1466,7 +1466,7 @@ export const industries: IndustryDetail[] = [
           "Relational and time-series databases optimized for storing and querying logistics data, GPS tracks, and operational metrics",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Logistics Industry Expertise",
         description:
@@ -1645,7 +1645,7 @@ export const industries: IndustryDetail[] = [
           "Technology stack for building custom hospitality applications including kitchen display systems and guest-facing mobile apps",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Hospitality Industry Insight",
         description:
@@ -1824,7 +1824,7 @@ export const industries: IndustryDetail[] = [
           "Machine learning frameworks for fraud detection, credit scoring, risk modeling, and financial forecasting applications",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "Financial Services Expertise",
         description:
@@ -2003,7 +2003,7 @@ export const industries: IndustryDetail[] = [
           "CRM platforms with real estate customizations for lead management, pipeline tracking, and automated marketing campaigns",
       },
     ],
-    whyYesBe: [
+    whyYESBE: [
       {
         title: "PropTech Domain Knowledge",
         description:

@@ -3,7 +3,7 @@ title: "AI for Business: A Practical Guide to Cutting Costs and Scaling Smarter"
 slug: "ai-for-business"
 category: "Artificial Intelligence"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-10"
 updatedDate: "2026-07-29"
 readingTime: 6

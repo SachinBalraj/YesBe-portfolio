@@ -2,6 +2,14 @@ import { parse } from "yaml";
 import type { Article } from "./types";
 import { categoryByName } from "./categories";
 import { calculateReadingTime } from "@/utils/readingTime";
+import {
+  FOUNDER_AUTHOR_BIO,
+  FOUNDER_AUTHOR_NAME,
+  FOUNDER_AUTHOR_ROLE,
+  FOUNDER_SAME_AS,
+  ORGANIZATION_NAME,
+  SITE_CONFIG,
+} from "@/constants";
 
 const rawModules = import.meta.glob(
   "../../content/articles/*.md",
@@ -76,8 +84,9 @@ function parseArticle(raw: string): Article | null {
     inferredContentType = 'Case Study';
   }
 
-  const defaultAuthor = meta.author ?? "Sachin Balraj";
-  const defaultRole = meta.authorRole ?? (defaultAuthor.includes("Sachin") ? "Founder & CEO - YesBe" : "YesBe Technologies");
+  const defaultAuthor = meta.author ?? FOUNDER_AUTHOR_NAME;
+  const isFounder = defaultAuthor === FOUNDER_AUTHOR_NAME;
+  const defaultRole = meta.authorRole ?? (isFounder ? FOUNDER_AUTHOR_ROLE : ORGANIZATION_NAME);
 
   return {
     title,
@@ -87,13 +96,25 @@ function parseArticle(raw: string): Article | null {
     contentType: inferredContentType,
     author: defaultAuthor,
     authorRole: defaultRole,
-    authorImage: meta.authorImage ?? (defaultAuthor.includes("Sachin") ? "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&q=80" : undefined),
-    authorBio: meta.authorBio ?? (defaultAuthor.includes("Sachin") ? "Founder & Tech Architect at YesBe Technologies. Specializing in AI, ERP systems, cloud architecture, and enterprise digital transformation." : "Subject matter expert at YesBe Technologies writing on software engineering, AI, and business technology."),
-    authorSocials: meta.authorSocials ?? {
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
-      email: "mailto:contact@yesbe.tech",
-    },
+    // No professional photograph of the founder exists in this project, so no
+    // default image is applied. A stock photo of an unrelated person would
+    // misrepresent him; components fall back to a neutral monogram instead.
+    authorImage: meta.authorImage,
+    authorBio:
+      meta.authorBio ??
+      (isFounder
+        ? FOUNDER_AUTHOR_BIO
+        : "Subject matter expert at YESBE Technologies writing on software engineering, AI and business technology."),
+    // Only profiles that verifiably belong to the author are linked.
+    authorSocials:
+      meta.authorSocials ??
+      (isFounder
+        ? {
+            linkedin: FOUNDER_SAME_AS[0],
+            github: FOUNDER_SAME_AS[1],
+            email: `mailto:${SITE_CONFIG.email}`,
+          }
+        : undefined),
     publishedDate: meta.publishedDate ?? "2026-07-31",
     updatedDate: meta.updatedDate ?? meta.publishedDate ?? "2026-08-05",
     readingTime: readingTimeMinutes,
@@ -105,10 +126,10 @@ function parseArticle(raw: string): Article | null {
     excerpt: meta.excerpt ?? "",
     tags: meta.tags ?? [],
     seoTitle:
-      meta.seoTitle ?? `${title} | Knowledge Center | YesBe Technologies`,
+      meta.seoTitle ?? `${title} | Insights | YESBE Technologies`,
     metaDescription:
       meta.metaDescription ??
-      `${title} — an expert guide from the YesBe Knowledge Center on ${category.toLowerCase()}.`,
+      `${title} — an expert guide from the YESBE Insights on ${category.toLowerCase()}.`,
     keywords: meta.keywords ?? [],
     popular: meta.popular ?? false,
     featured: meta.featured ?? false,

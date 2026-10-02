@@ -3,7 +3,7 @@ title: "SEO Guide 2026: How to Rank on Google in the AI Search Era"
 slug: "seo-guide-2026"
 category: "SEO"
 author: "Sachin Balraj"
-authorRole: "Founder & Chief Solution Architect"
+authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-08"
 updatedDate: "2026-07-29"
 readingTime: 7

@@ -24,7 +24,7 @@ export function AboutSection() {
     <section
       id="about"
       className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-16 lg:py-20"
-      aria-label="About YesBe — AI, ERP, Web Development & Business Solutions in Salem, Tamil Nadu, India"
+      aria-label="About YESBE — AI, ERP, Web Development & Business Solutions in Salem, Tamil Nadu, India"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[10%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
@@ -51,13 +51,13 @@ export function AboutSection() {
               className="group relative inline-block cursor-pointer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              aria-label="YesBe Technologies Company Logo — Go to homepage"
+              aria-label="YESBE Technologies Company Logo — Go to homepage"
             >
               <div className="relative rounded-2xl bg-white p-6 shadow-[0_4px_24px_rgba(37,99,235,0.08),0_1px_4px_rgba(0,0,0,0.04)] transition-shadow duration-300 group-hover:shadow-[0_8px_40px_rgba(37,99,235,0.14),0_2px_8px_rgba(0,0,0,0.06)]">
                 <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[#2563eb]/[0.06] to-[#60a5fa]/[0.04] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
                 <img
                   src={logoImg}
-                  alt="YesBe Technologies Company Logo"
+                  alt="YESBE Technologies Company Logo"
                   width={400}
                   height={400}
                   loading="lazy"
@@ -80,7 +80,7 @@ export function AboutSection() {
           <div>
             <motion.div variants={fadeInUp}>
               <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                About YesBe
+                About YESBE
               </span>
             </motion.div>
 
@@ -88,12 +88,12 @@ export function AboutSection() {
               variants={fadeInUp}
               className="mb-6 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
             >
-              About YesBe
+              About YESBE
             </motion.h2>
 
             <motion.div variants={fadeInUp} className="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
               <p>
-                YesBe builds AI tools, ERP systems, Power BI dashboards, web apps, and automation — for startups, SMEs, and enterprises. Based in Salem, Tamil Nadu, serving clients worldwide.
+                YESBE builds AI tools, ERP systems, Power BI dashboards, web apps, and automation — for startups, SMEs, and enterprises. Based in Salem, Tamil Nadu, serving clients worldwide.
               </p>
               <p>
                 Over 10 years of combined experience. 50+ projects delivered across education, healthcare, retail, restaurants, manufacturing, and finance. Our stack: React, Node.js, Python, MongoDB, PostgreSQL, AWS, Docker, OpenAI, LangChain, and Power BI.
@@ -149,7 +149,7 @@ export function AboutSection() {
                   navigate("/services");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                aria-label="View YesBe Services"
+                aria-label="View YESBE Services"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] cursor-pointer"
               >
                 View Services

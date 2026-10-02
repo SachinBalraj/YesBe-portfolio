@@ -6,6 +6,7 @@ import {
   User, Building2, Briefcase, FileText,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/animations";
 import { trackGenerateLead, trackContactClick, trackPhoneClick, trackWhatsAppClick } from "@/utils/analytics";
 import { ApiError, submitEnquiry } from "@/services/enquiries";
@@ -31,7 +32,7 @@ const initialData: FormData = {
 };
 
 const inputClass =
-  "w-full rounded-xl border border-border bg-card px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
+  "w-full max-w-full box-border rounded-xl border border-border bg-card px-4 py-3.5 text-base sm:text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
 
 const contactCards = [
   { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: `tel:${SITE_CONFIG.phone}`, color: "bg-blue-50 text-blue-600", onClick: () => trackPhoneClick("contact_section") },
@@ -41,10 +42,10 @@ const contactCards = [
 ];
 
 const STEPS = [
-  { label: "Personal", icon: User },
-  { label: "Business", icon: Building2 },
-  { label: "Project", icon: Briefcase },
-  { label: "Review", icon: FileText },
+  { label: "Personal", fullLabel: "Personal Details", icon: User },
+  { label: "Business", fullLabel: "Business Details", icon: Building2 },
+  { label: "Project", fullLabel: "Project Details", icon: Briefcase },
+  { label: "Requirements", fullLabel: "Review Requirements", icon: FileText },
 ];
 
 const serviceLabels: Record<string, string> = {
@@ -80,6 +81,13 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
 }
 
 export function ContactSection() {
+  // Horizontal entrance transforms are replaced by a vertical fade until the
+  // two-column desktop layout kicks in. Below lg these panels are full-width, and
+  // framer-motion applies the X offset inline, so CSS cannot undo it — a 30px
+  // shift is enough to push them past the viewport edge while off-screen.
+  const fadeOnly = useIsMobile("(max-width: 1023px)");
+  const enterForm = fadeOnly ? fadeInUp : fadeInLeft;
+  const enterCards = fadeOnly ? fadeInUp : fadeInRight;
   const [formData, setFormData] = useState<FormData>(initialData);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -199,7 +207,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-12 lg:py-16 bg-white overflow-hidden" aria-label="Contact YesBe — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
+    <section id="contact" className="relative py-12 lg:py-16 bg-white overflow-hidden" aria-label="Contact YESBE — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -220,49 +228,71 @@ export function ContactSection() {
           </motion.p>
         </motion.div>
 
-        <div className="grid gap-8 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           {/* Wizard Form */}
           <motion.div
-            variants={fadeInLeft}
+            variants={enterForm}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-3"
+            className="min-w-0 lg:col-span-3"
           >
-            <div className="rounded-3xl border border-border/60 bg-card shadow-card overflow-hidden">
+            <div className="w-full min-w-0 max-w-full rounded-3xl border border-border/60 bg-card shadow-card overflow-hidden">
               {/* Progress Indicator */}
-              <div className="border-b border-border/50 px-6 pt-6 pb-4 sm:px-8 sm:pt-8">
-                <div className="flex items-center justify-between mb-3">
+              <div className="border-b border-border/50 px-4 pt-5 pb-4 sm:px-8 sm:pt-8">
+                {/*
+                  Mobile (<640px): the four labels cannot fit one row, so only the
+                  numbered circles are shown inline and the active step is named
+                  underneath. Desktop keeps the full inline labels.
+                */}
+                <ol
+                  className="flex items-center gap-1.5 sm:gap-2"
+                  aria-label="Consultation progress"
+                >
                   {STEPS.map((step, i) => (
-                    <button
-                      key={step.label}
-                      type="button"
-                      onClick={() => goToStep(i)}
-                      className="flex items-center gap-2 group"
-                    >
-                      <div
-                        className={`flex h-10 w-10 items-center justify-center rounded-full text-base font-bold transition-all duration-300 ${
-                          i < currentStep
-                            ? "bg-primary text-primary-foreground"
-                            : i === currentStep
-                            ? "bg-primary text-primary-foreground ring-4 ring-primary/15"
-                            : "bg-muted text-muted-foreground"
-                        }`}
+                    <li key={step.label} className="flex min-w-0 flex-1 items-center gap-1.5 last:flex-none sm:gap-2">
+                      <button
+                        type="button"
+                        onClick={() => goToStep(i)}
+                        aria-current={i === currentStep ? "step" : undefined}
+                        aria-label={`${step.label} — step ${i + 1} of ${STEPS.length}`}
+                        className="group flex min-w-0 shrink items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       >
-                        {i < currentStep ? <Check className="h-4 w-4" /> : i + 1}
-                      </div>
-                      <span
-                        className={`block text-xs font-semibold transition-colors ${
-                          i <= currentStep ? "text-foreground" : "text-muted-foreground"
-                        }`}
-                      >
-                        {step.label}
-                      </span>
-                    </button>
+                        <span
+                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 sm:h-10 sm:w-10 sm:text-base ${
+                            i < currentStep
+                              ? "bg-primary text-primary-foreground"
+                              : i === currentStep
+                              ? "bg-primary text-primary-foreground ring-4 ring-primary/15"
+                              : "bg-muted text-muted-foreground"
+                          }`}
+                        >
+                          {i < currentStep ? <Check className="h-4 w-4" aria-hidden="true" /> : i + 1}
+                        </span>
+                        <span
+                          className={`hidden truncate text-xs font-semibold transition-colors sm:block ${
+                            i <= currentStep ? "text-foreground" : "text-muted-foreground"
+                          }`}
+                        >
+                          {step.label}
+                        </span>
+                      </button>
+                      {/* Connector: fills the remaining width, so the row can
+                          never force the circles wider than the viewport. */}
+                      {i < STEPS.length - 1 && (
+                        <span
+                          aria-hidden="true"
+                          className={`h-0.5 min-w-0 flex-1 rounded-full transition-colors ${
+                            i < currentStep ? "bg-primary" : "bg-muted"
+                          }`}
+                        />
+                      )}
+                    </li>
                   ))}
-                </div>
+                </ol>
+
                 {/* Animated Progress Bar */}
-                <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                <div className="mt-4 h-1.5 w-full rounded-full bg-muted overflow-hidden">
                   <motion.div
                     className="h-full rounded-full bg-gradient-to-r from-primary to-blue-400"
                     initial={false}
@@ -270,7 +300,16 @@ export function ContactSection() {
                     transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
                   />
                 </div>
-                <p className="mt-2 text-xs text-muted-foreground">
+
+                {/* Mobile: name the active step explicitly. Desktop: keep the
+                    existing compact "Step N of M" line only. */}
+                <div className="mt-3 sm:hidden">
+                  <p className="text-sm font-semibold text-foreground">{STEPS[currentStep].fullLabel}</p>
+                  <p className="text-xs text-muted-foreground">
+                    Step {currentStep + 1} of {STEPS.length}
+                  </p>
+                </div>
+                <p className="mt-2 hidden text-xs text-muted-foreground sm:block">
                   Step {currentStep + 1} of {STEPS.length}
                 </p>
               </div>
@@ -300,11 +339,11 @@ export function ContactSection() {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-                    className="px-6 py-6 sm:px-8 sm:py-8"
+                    className="px-4 py-5 sm:px-8 sm:py-8"
                   >
                     {/* Step 0: Personal Information */}
                     {currentStep === 0 && (
-                      <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
                         <div className="sm:col-span-2">
                           <label htmlFor="c-name" className="mb-1.5 block text-sm font-medium text-foreground">
                             Full Name <span className="text-destructive">*</span>
@@ -362,7 +401,7 @@ export function ContactSection() {
 
                     {/* Step 1: Business Information */}
                     {currentStep === 1 && (
-                      <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
                         <div className="sm:col-span-2">
                           <label htmlFor="c-service" className="mb-1.5 block text-sm font-medium text-foreground">
                             Required Service <span className="text-destructive">*</span>
@@ -414,7 +453,7 @@ export function ContactSection() {
 
                     {/* Step 2: Project Details */}
                     {currentStep === 2 && (
-                      <div className="space-y-5">
+                      <div className="space-y-4 sm:space-y-5">
                         <div>
                           <label htmlFor="c-desc" className="mb-1.5 block text-sm font-medium text-foreground">
                             Project Description <span className="text-destructive">*</span>
@@ -459,7 +498,7 @@ export function ContactSection() {
                           Please review your information before submitting.
                         </p>
                         <div className="rounded-xl border border-border/60 bg-muted/30 p-4 space-y-0">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Personal Information</h4>
+                          <h3 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Personal Information</h3>
                           <ReviewRow label="Full Name" value={formData.name} />
                           <ReviewRow label="Email" value={formData.email} />
                           <ReviewRow label="Phone" value={formData.phone} />
@@ -467,13 +506,13 @@ export function ContactSection() {
                           <ReviewRow label="Designation" value={formData.designation} />
                         </div>
                         <div className="rounded-xl border border-border/60 bg-muted/30 p-4 space-y-0">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Business Information</h4>
+                          <h3 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Business Information</h3>
                           <ReviewRow label="Service" value={formatLabel(formData.service, serviceLabels)} />
                           <ReviewRow label="Budget" value={formatLabel(formData.budget, budgetLabels)} />
                           <ReviewRow label="Timeline" value={formatLabel(formData.timeline, timelineLabels)} />
                         </div>
                         <div className="rounded-xl border border-border/60 bg-muted/30 p-4 space-y-0">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Project Details</h4>
+                          <h3 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Project Details</h3>
                           <ReviewRow label="Description" value={formData.projectDescription} />
                           <ReviewRow label="Challenges" value={formData.businessChallenges} />
                           <ReviewRow label="Goals" value={formData.goals} />
@@ -484,12 +523,12 @@ export function ContactSection() {
                 </AnimatePresence>
 
                 {/* Sticky Bottom Navigation */}
-                <div className="border-t border-border/50 px-6 py-4 sm:px-8 flex items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border/50 px-4 py-4 sm:flex-nowrap sm:px-8">
                   <button
                     type="button"
                     onClick={handleBack}
                     disabled={currentStep === 0}
-                    className="flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-medium text-foreground hover:bg-muted transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-border px-4 py-3 text-sm font-medium text-foreground hover:bg-muted transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex-none sm:px-5"
                   >
                     <ArrowLeft className="h-4 w-4" />
                     Back
@@ -505,7 +544,7 @@ export function ContactSection() {
                       key="advance"
                       type="button"
                       onClick={handleNext}
-                      className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200"
+                      className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex-none sm:px-6"
                     >
                       Continue
                       <ArrowRight className="h-4 w-4" />
@@ -515,7 +554,7 @@ export function ContactSection() {
                       key="submit"
                       type="submit"
                       disabled={status === "sending" || status === "sent"}
-                      className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex-none sm:px-6"
                     >
                       {status === "sending" && <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>}
                       {status === "sent" && <><CheckCircle className="h-4 w-4" /> Sent!</>}
@@ -550,7 +589,7 @@ export function ContactSection() {
 
           {/* Contact Cards */}
           <motion.div
-            variants={fadeInRight}
+            variants={enterCards}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-100px" }}

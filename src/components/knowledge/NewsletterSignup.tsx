@@ -62,7 +62,7 @@ export function NewsletterSignup() {
       <div className="relative mx-auto flex max-w-5xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
           <div className="inline-flex items-center justify-center rounded-3xl bg-blue-50 px-4 py-2 text-sm font-semibold text-primary shadow-sm ring-1 ring-primary/10">
-            Subscribe to YesBe Insights
+            Subscribe to YESBE Insights
           </div>
           <h2 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Stay Updated
@@ -89,7 +89,7 @@ export function NewsletterSignup() {
               <Mail className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground">Subscribe to the Knowledge Center</p>
+              <p className="text-sm font-semibold text-foreground">Subscribe to the Insights</p>
               <p className="text-sm text-muted-foreground">No spam, only high-value technology insights.</p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export function NewsletterSignup() {
                 <CheckCircle2 className="mt-1 h-5 w-5" />
                 <div>
                   <p>Thank you for subscribing!</p>
-                  <p className="mt-1 text-sm font-normal text-emerald-800">You will receive the latest insights from YesBe.</p>
+                  <p className="mt-1 text-sm font-normal text-emerald-800">You will receive the latest insights from YESBE.</p>
                 </div>
               </div>
             </motion.div>

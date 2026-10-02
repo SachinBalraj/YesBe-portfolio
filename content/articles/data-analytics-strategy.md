@@ -2,8 +2,8 @@
 title: "Data Analytics for Business: A Practical Strategy That Gets Results"
 slug: "data-analytics-strategy"
 category: "Data Analytics"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-24"
 updatedDate: "2026-07-29"
 readingTime: 6

@@ -65,7 +65,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
             className="scrollbar-none flex items-center gap-2 overflow-x-auto py-4"
           >
             <Link
-              to="/knowledge-center"
+              to="/insights"
               className={cn(
                 "shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold transition-all duration-200",
                 !activeSlug
@@ -78,7 +78,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
             {KNOWLEDGE_CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}
-                to={`/knowledge-center/category/${cat.slug}`}
+                to={`/insights/category/${cat.slug}`}
                 className={cn(
                   "shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold transition-all duration-200",
                   activeSlug === cat.slug

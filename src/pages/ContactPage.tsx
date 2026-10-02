@@ -28,7 +28,7 @@ export function ContactPage() {
           // described once, consistently. Contact details are added here.
           "@type": "Organization",
           "@id": ORGANIZATION_ID,
-          name: "YesBe Technologies",
+          name: "YESBE Technologies",
           url: "https://www.yesbe.tech",
           logo: "https://www.yesbe.tech/YBlogo.png",
           email: "hello@yesbe.tech",

@@ -7,7 +7,7 @@ export function PrevNextArticle({ prev, next }: { prev: Article | null; next: Ar
     <nav aria-label="Previous and next article" className="grid gap-4 sm:grid-cols-2">
       {prev ? (
         <Link
-          to={`/knowledge-center/article/${prev.slug}`}
+          to={`/insights/article/${prev.slug}`}
           className="group flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 transition-all duration-200 hover:border-primary/25 hover:shadow-[0_8px_32px_rgba(37,99,235,0.08)]"
         >
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary">
@@ -32,7 +32,7 @@ export function PrevNextArticle({ prev, next }: { prev: Article | null; next: Ar
 
       {next ? (
         <Link
-          to={`/knowledge-center/article/${next.slug}`}
+          to={`/insights/article/${next.slug}`}
           className="group flex items-center justify-end gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 text-right transition-all duration-200 hover:border-primary/25 hover:shadow-[0_8px_32px_rgba(37,99,235,0.08)]"
         >
           <span className="min-w-0">

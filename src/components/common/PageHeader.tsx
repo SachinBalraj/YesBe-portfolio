@@ -18,6 +18,12 @@ interface PageHeaderProps {
   badge: string;
   title: string;
   highlight?: string;
+  /**
+   * Plain-text continuation of the H1, rendered after `title`/`highlight`
+   * without the gradient treatment. Used where the H1 needs to carry the
+   * person's role as well as their name.
+   */
+  titleAfter?: string;
   description: string;
   breadcrumbs?: Crumb[];
   primaryAction?: PageHeaderAction;
@@ -30,6 +36,7 @@ export function PageHeader({
   badge,
   title,
   highlight,
+  titleAfter,
   description,
   breadcrumbs,
   primaryAction,
@@ -68,9 +75,10 @@ export function PageHeader({
               {badge}
             </span>
           </motion.div>
-          <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-center">
+          <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-center text-balance">
             {title}{" "}
             {highlight && <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">{highlight}</span>}
+            {titleAfter && <>{titleAfter}</>}
           </motion.h1>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
           <motion.p variants={fadeInUp} className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground text-center">

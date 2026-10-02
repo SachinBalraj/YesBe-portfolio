@@ -13,7 +13,7 @@ interface SEOData {
 
 const SITE_URL = "https://www.yesbe.tech";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/YBlogo.png`;
-const SITE_NAME = "YesBe Technologies";
+const SITE_NAME = "YESBE Technologies";
 const OG_LOCALE = "en_IN";
 
 function setOrUpdateMeta(
@@ -70,10 +70,12 @@ export function useSEO({
     setOrUpdateMeta("property", "og:description", socialDescription);
     setOrUpdateMeta("property", "og:url", url);
     setOrUpdateMeta("property", "og:image", image);
-    // Matches the real dimensions of the default social image (/YBlogo.png).
-    // Pages that pass a wider image should pass matching values here.
+    // /YBlogo.png is a square 300x300 mark. Declaring any other ratio here
+    // would make social platforms crop or reject the card, so the declared
+    // dimensions always match the image actually referenced.
     setOrUpdateMeta("property", "og:image:width", "300");
     setOrUpdateMeta("property", "og:image:height", "300");
+    setOrUpdateMeta("property", "og:image:type", "image/png");
     setOrUpdateMeta("property", "og:image:alt", title);
     setOrUpdateMeta("property", "og:site_name", SITE_NAME);
     setOrUpdateMeta("property", "og:locale", OG_LOCALE);
@@ -85,7 +87,6 @@ export function useSEO({
     setOrUpdateMeta("name", "twitter:description", socialDescription);
     setOrUpdateMeta("name", "twitter:image", image);
     setOrUpdateMeta("name", "twitter:image:alt", title);
-    setOrUpdateMeta("name", "twitter:creator", "@yesbe");
 
     setOrUpdateLink("canonical", url);
   }, [title, description, canonical, ogImage, ogType, ogDescription, noindex]);

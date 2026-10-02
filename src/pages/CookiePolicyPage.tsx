@@ -22,7 +22,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Cookie Policy",
-  description: "YesBe Cookie Policy — Learn about the types of cookies we use, why we use them, and how you can manage your cookie preferences.",
+  description: "YESBE Cookie Policy — Learn about the types of cookies we use, why we use them, and how you can manage your cookie preferences.",
   url: "https://www.yesbe.tech/cookie-policy",
   publisher: {
     "@type": "Organization",
@@ -55,7 +55,7 @@ export function CookiePolicyPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Introduction</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              This Cookie Policy explains how <strong>YesBe</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) uses cookies and similar tracking technologies when you visit our website <strong>www.yesbe.tech</strong>. We believe in transparency about the technologies we use, and this policy provides you with clear information about our cookie practices.
+              This Cookie Policy explains how <strong>YESBE</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) uses cookies and similar tracking technologies when you visit our website <strong>www.yesbe.tech</strong>. We believe in transparency about the technologies we use, and this policy provides you with clear information about our cookie practices.
             </p>
             <p>
               For information about how we handle your personal data more broadly, please refer to our <a href="/privacy-policy" className="text-primary font-medium hover:underline">Privacy Policy</a>.

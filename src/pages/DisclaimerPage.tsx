@@ -21,7 +21,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Disclaimer",
-  description: "YesBe Disclaimer — Important information about general disclaimers, quotations, technology recommendations, and limitation of liability.",
+  description: "YESBE Disclaimer — Important information about general disclaimers, quotations, technology recommendations, and limitation of liability.",
   url: "https://www.yesbe.tech/disclaimer",
   publisher: {
     "@type": "Organization",
@@ -54,7 +54,7 @@ export function DisclaimerPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Introduction</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              The information provided on <strong>www.yesbe.tech</strong> and through our services is intended for general informational purposes only. <strong>YesBe</strong> makes every effort to ensure that the information on this website is accurate and up to date; however, we make no warranties or representations of any kind regarding the completeness, accuracy, reliability, or availability of the information, services, or related graphics contained on this website.
+              The information provided on <strong>www.yesbe.tech</strong> and through our services is intended for general informational purposes only. <strong>YESBE</strong> makes every effort to ensure that the information on this website is accurate and up to date; however, we make no warranties or representations of any kind regarding the completeness, accuracy, reliability, or availability of the information, services, or related graphics contained on this website.
             </p>
           </div>
         </section>
@@ -101,10 +101,10 @@ export function DisclaimerPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Technology Recommendations</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <ul className="list-disc pl-6 space-y-2">
-              <li>Technology recommendations provided by YesBe are based on our professional expertise and assessment of client requirements at the time of consultation.</li>
+              <li>Technology recommendations provided by YESBE are based on our professional expertise and assessment of client requirements at the time of consultation.</li>
               <li>The technology landscape evolves rapidly. Recommendations that are current at the time of proposal may be subject to changes in the broader technology ecosystem.</li>
               <li>Clients are encouraged to perform their own due diligence and seek independent advice where appropriate before making technology adoption decisions.</li>
-              <li>YesBe is not responsible for any third-party technology changes, deprecations, or service discontinuations that may affect delivered solutions.</li>
+              <li>YESBE is not responsible for any third-party technology changes, deprecations, or service discontinuations that may affect delivered solutions.</li>
               <li>Compatibility with future technologies or systems is not guaranteed unless explicitly stated in the project agreement.</li>
             </ul>
           </div>
@@ -117,10 +117,10 @@ export function DisclaimerPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Third-Party Services</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <ul className="list-disc pl-6 space-y-2">
-              <li>Our website and services may contain links to third-party websites or services that are not owned or controlled by YesBe.</li>
+              <li>Our website and services may contain links to third-party websites or services that are not owned or controlled by YESBE.</li>
               <li>We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</li>
               <li>We strongly advise you to read the terms and conditions and privacy policies of any third-party service you use.</li>
-              <li>YesBe does not endorse or assume any responsibility for any third-party products, services, or content.</li>
+              <li>YESBE does not endorse or assume any responsibility for any third-party products, services, or content.</li>
               <li>Any transactions or interactions between you and a third-party service are solely between you and the third party.</li>
             </ul>
           </div>
@@ -133,7 +133,7 @@ export function DisclaimerPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Limitation of Liability</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              To the maximum extent permitted by applicable law, YesBe and its directors, employees, partners, agents, suppliers, and affiliates shall not be liable for:
+              To the maximum extent permitted by applicable law, YESBE and its directors, employees, partners, agents, suppliers, and affiliates shall not be liable for:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, business opportunities, or goodwill</li>
@@ -156,7 +156,7 @@ export function DisclaimerPage() {
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <ul className="list-disc pl-6 space-y-2">
               <li>The information on this website does not constitute professional, legal, financial, or tax advice.</li>
-              <li>Consultants and experts at YesBe provide technology and business consulting services. Our advice should not be substituted for professional advice in regulated fields.</li>
+              <li>Consultants and experts at YESBE provide technology and business consulting services. Our advice should not be substituted for professional advice in regulated fields.</li>
               <li>Clients should consult with appropriate qualified professionals for advice specific to their situation.</li>
             </ul>
           </div>

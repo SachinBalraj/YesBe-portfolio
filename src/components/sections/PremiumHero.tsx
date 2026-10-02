@@ -22,7 +22,7 @@ export function PremiumHero() {
   return (
     <section
       id="hero"
-      aria-label="Hero — YesBe, AI, ERP & Business Solutions"
+      aria-label="Hero — YESBE, AI, ERP & Business Solutions"
       className="min-h-screen flex items-center bg-white"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-[90px] pb-24 lg:pt-[110px] lg:pb-0">
@@ -63,7 +63,7 @@ export function PremiumHero() {
                 onClick={() => trackConsultationClick("hero")}
                 className="relative z-10 inline-flex items-center gap-2 rounded-xl btn-premium px-6 py-3.5 text-[14px] font-semibold text-white"
               >
-                Contact YesBe
+                Contact YESBE
                 <ArrowRight className="h-4 w-4 shrink-0" />
               </a>
               <a
@@ -85,7 +85,7 @@ export function PremiumHero() {
               <source srcSet={logoImgWebp} type="image/webp" />
               <img
                 src={logoImg}
-                alt="YesBe Technologies logo"
+                alt="YESBE Technologies logo"
                 width={400}
                 height={400}
                 loading="eager"

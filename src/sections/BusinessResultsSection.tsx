@@ -124,7 +124,7 @@ export function BusinessResultsSection() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="card-glass rounded-[20px] p-5"
               >
-                <h4 className="mb-3 text-[15px] font-bold text-primary">{r.service}</h4>
+                <h3 className="mb-3 text-[15px] font-bold text-primary">{r.service}</h3>
                 <ul className="space-y-2">
                   {r.outcomes.map((o) => (
                     <li key={o} className="flex items-start gap-2 text-[13px] text-muted-foreground">

@@ -48,7 +48,7 @@ export function WhyChooseSection() {
     <section
       id="why-choose"
       className="relative overflow-hidden bg-white py-12 lg:py-16"
-      aria-label="Why choose YesBe — Clear quotations, scalable architecture, AI-first solutions"
+      aria-label="Why choose YESBE — Clear quotations, scalable architecture, AI-first solutions"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
@@ -59,7 +59,7 @@ export function WhyChooseSection() {
             transition={{ duration: 0.4 }}
             className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
-            Why Choose YesBe
+            Why Choose YESBE
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -69,7 +69,7 @@ export function WhyChooseSection() {
             className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
           >
             Why Work With{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">YesBe?</span>
+            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">YESBE?</span>
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}

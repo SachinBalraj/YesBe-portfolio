@@ -29,9 +29,9 @@ export function AboutPage() {
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PageHeader
-        badge="About YesBe"
+        badge="About YESBE"
         title="About"
-        highlight="YesBe"
+        highlight="YESBE"
         description="Our company, founder, mission, and technology expertise."
       />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>

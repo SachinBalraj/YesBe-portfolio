@@ -13,7 +13,7 @@ const suggestions = [
   { label: "Solutions", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Knowledge Center", href: "/knowledge-center" },
+  { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -120,11 +120,11 @@ export function NotFound() {
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Search YesBe..."
+              placeholder="Search YESBE..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="w-full rounded-xl border border-white/40 bg-white/60 backdrop-blur-sm py-3 pl-11 pr-4 text-sm text-foreground outline-none shadow-sm transition-all duration-300 focus:border-primary/30 focus:ring-2 focus:ring-primary/10"
-              aria-label="Search YesBe website"
+              aria-label="Search YESBE website"
             />
           </div>
         </motion.form>
@@ -148,7 +148,7 @@ export function NotFound() {
             className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3 text-sm font-semibold text-foreground"
           >
             <MessageCircle className="h-4 w-4 text-primary" />
-            Contact YesBe
+            Contact YESBE
           </a>
           <button
             onClick={() => window.history.back()}
@@ -188,8 +188,8 @@ export function NotFound() {
           transition={{ delay: 0.8, duration: 0.5 }}
           className="mt-12 flex flex-col items-center"
         >
-          <img src={logoImg} loading="lazy" alt="YesBe Technologies Logo" width={40} height={40} className="h-10 w-10 object-contain rounded-xl opacity-60" />
-          <p className="mt-2 text-[11px] text-muted-foreground">&copy; 2026 YesBe</p>
+          <img src={logoImg} loading="lazy" alt="YESBE Technologies Logo" width={40} height={40} className="h-10 w-10 object-contain rounded-xl opacity-60" />
+          <p className="mt-2 text-[11px] text-muted-foreground">&copy; 2026 YESBE</p>
         </motion.div>
       </div>
     </div>

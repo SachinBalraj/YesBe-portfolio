@@ -78,9 +78,9 @@ function RelatedProjects({ currentSlug }: { currentSlug: string }) {
             <span className="mb-2 inline-block rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
               {cs.category}
             </span>
-            <h4 className="text-[14px] font-bold text-foreground group-hover:text-primary transition-colors">
+            <h3 className="text-[14px] font-bold text-foreground group-hover:text-primary transition-colors">
               {cs.title}
-            </h4>
+            </h3>
             <p className="mt-1 text-[12px] text-muted-foreground line-clamp-2">
               {cs.shortOverview}
             </p>
@@ -162,7 +162,7 @@ export function CaseStudyDetailPage() {
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        name: `${study.title} — YesBe Technologies`,
+        name: `${study.title} — YESBE Technologies`,
         description: study.shortOverview,
         url: `https://www.yesbe.tech/case-studies/${study.slug}`,
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
@@ -247,7 +247,7 @@ export function CaseStudyDetailPage() {
           >
             <img
               src={study.image}
-              alt={`${study.title} — ${study.category} case study by YesBe Technologies`}
+              alt={`${study.title} — ${study.category} case study by YESBE Technologies`}
               width={1200}
               height={600}
               loading="eager"
@@ -401,7 +401,7 @@ export function CaseStudyDetailPage() {
                 variants={fadeInUp}
                 className="rounded-[20px] bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] p-6 text-white"
               >
-                <h4 className="text-lg font-bold mb-2">Need a Similar Solution?</h4>
+                <h3 className="text-lg font-bold mb-2">Need a Similar Solution?</h3>
                 <p className="text-[13px] text-white/80 mb-4">
                   Let's discuss your project and build something great together.
                 </p>
@@ -455,7 +455,7 @@ export function CaseStudyDetailPage() {
                 return slug ? (
                   <Link
                     key={s}
-                    to={`/solutions/${slug}`}
+                    to={`/services/${slug}`}
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="rounded-full bg-primary/[0.06] px-4 py-2 text-[13px] font-medium text-primary hover:bg-primary/[0.12] transition-colors"
                   >

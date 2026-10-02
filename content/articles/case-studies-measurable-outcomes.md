@@ -3,8 +3,8 @@ title: "Case Studies Showing Measurable Outcomes: A Framework for Evaluating Tec
 slug: "case-studies-measurable-outcomes"
 category: "Case Studies"
 contentType: "Case Study"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-08-20"
 updatedDate: "2026-08-20"
 readingTime: 7

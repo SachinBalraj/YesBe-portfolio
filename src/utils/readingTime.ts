@@ -1,5 +1,5 @@
 /**
- * Automatic Reading Time & Word Count Utility for YesBe Knowledge Center
+ * Automatic Reading Time & Word Count Utility for YesBe Insights
  * Calculates reading duration based on standard 200 words per minute.
  */
 

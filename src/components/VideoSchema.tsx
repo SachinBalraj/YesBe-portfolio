@@ -23,7 +23,7 @@ export function VideoSchema({ video }: VideoSchemaProps) {
     publisher: {
       "@type": "Organization",
       "@id": "https://www.yesbe.tech/#organization",
-      name: "YesBe Technologies",
+      name: "YESBE Technologies",
       logo: {
         "@type": "ImageObject",
         url: "https://www.yesbe.tech/YBlogo.png",

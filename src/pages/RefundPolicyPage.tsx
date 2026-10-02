@@ -21,7 +21,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Refund Policy",
-  description: "YesBe Refund Policy — Learn about our advance payment terms, refund eligibility, cancellation terms, and project termination policies.",
+  description: "YESBE Refund Policy — Learn about our advance payment terms, refund eligibility, cancellation terms, and project termination policies.",
   url: "https://www.yesbe.tech/refund-policy",
   publisher: {
     "@type": "Organization",
@@ -54,7 +54,7 @@ export function RefundPolicyPage() {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Introduction</h2>
           <div className="space-y-4 text-[15px] leading-relaxed text-foreground/80">
             <p>
-              At <strong>YesBe</strong>, we value transparency in all our business dealings. This Refund Policy outlines the terms and conditions governing refunds, cancellations, and payment disputes for our services. We encourage all clients to review this policy carefully before engaging our services.
+              At <strong>YESBE</strong>, we value transparency in all our business dealings. This Refund Policy outlines the terms and conditions governing refunds, cancellations, and payment disputes for our services. We encourage all clients to review this policy carefully before engaging our services.
             </p>
             <p>
               By making a payment for our services, you acknowledge and agree to the terms outlined in this policy.
@@ -89,7 +89,7 @@ export function RefundPolicyPage() {
             <h3 className="text-lg font-semibold mt-6 mb-3">Full Refund</h3>
             <ul className="list-disc pl-6 space-y-2">
               <li>If work has not yet commenced and a cancellation request is received within <strong>48 hours</strong> of making the advance payment</li>
-              <li>If YesBe is unable to deliver the agreed-upon services due to unforeseen circumstances</li>
+              <li>If YESBE is unable to deliver the agreed-upon services due to unforeseen circumstances</li>
             </ul>
 
             <h3 className="text-lg font-semibold mt-6 mb-3">Partial Refund</h3>
@@ -151,7 +151,7 @@ export function RefundPolicyPage() {
             <ul className="list-disc pl-6 space-y-2">
               <li>Either party may terminate the project agreement with <strong>14 days&apos; written notice</strong>.</li>
               <li>Upon termination, all completed work up to that date will be delivered to the client upon payment of outstanding amounts.</li>
-              <li>YesBe retains the right to withhold deliverables until all outstanding payments are settled.</li>
+              <li>YESBE retains the right to withhold deliverables until all outstanding payments are settled.</li>
               <li>In the event of a dispute, both parties agree to attempt resolution through good-faith negotiation before pursuing further remedies.</li>
             </ul>
           </div>
@@ -167,7 +167,7 @@ export function RefundPolicyPage() {
               <li>Third-party costs (including but not limited to domain registration, hosting, SSL certificates, and software licenses) are <strong>non-refundable</strong> once incurred.</li>
               <li>Any third-party services procured on behalf of the client will be billed at actual cost with no markup.</li>
               <li>Clients will be provided with receipts/invoices for all third-party purchases.</li>
-              <li>YesBe is not liable for refunds from third-party service providers. Any such claims must be directed to the respective provider.</li>
+              <li>YESBE is not liable for refunds from third-party service providers. Any such claims must be directed to the respective provider.</li>
             </ul>
           </div>
         </section>

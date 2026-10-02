@@ -3,8 +3,8 @@ title: "AI Chatbot Use Cases for Customer Support: Practical Applications for Bu
 slug: "ai-chatbot-customer-support-use-cases"
 category: "Artificial Intelligence"
 contentType: "Guide"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-08-20"
 updatedDate: "2026-08-20"
 readingTime: 8

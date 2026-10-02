@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Clock, User, Tag } from "lucide-react";
 import type { Article } from "@/knowledge/types";
+import {
+  FOUNDER_AUTHOR_NAME,
+  FOUNDER_AUTHOR_ROLE,
+} from "@/constants";
 import { CategoryBadge } from "./CategoryBadge";
 import { formatDate } from "./share";
 
@@ -38,7 +42,7 @@ export const ArticleCard = memo(function ArticleCard({ article, highlight }: Art
       className="group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_2px_8px_rgba(37,99,235,0.03),0_8px_24px_rgba(37,99,235,0.03)] transition-all duration-300 hover:border-primary/30 hover:shadow-[0_12px_36px_rgba(37,99,235,0.12),0_20px_60px_rgba(37,99,235,0.06)] dark:border-slate-800 dark:bg-slate-900"
     >
       <Link
-        to={`/knowledge-center/article/${article.slug}`}
+        to={`/insights/article/${article.slug}`}
         className="absolute inset-0 z-10"
         aria-label={`View article: ${article.title}`}
       />
@@ -46,7 +50,7 @@ export const ArticleCard = memo(function ArticleCard({ article, highlight }: Art
         {!imgFailed ? (
           <img
             src={article.featuredImage}
-            alt={`${article.title} — ${article.category} guide by YesBe Technologies`}
+            alt={`${article.title} — ${article.category} guide by YESBE Technologies`}
             loading="lazy"
             decoding="async"
             width={800}
@@ -103,10 +107,26 @@ export const ArticleCard = memo(function ArticleCard({ article, highlight }: Art
         )}
 
         <div className="mt-auto flex flex-col gap-2 border-t border-slate-100 pt-4 text-[11px] text-muted-foreground dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
-          <span className="flex items-center gap-1.5 font-medium">
-            <User className="h-3.5 w-3.5 text-primary" />
-            {article.author}
-          </span>
+          {article.author === FOUNDER_AUTHOR_NAME ? (
+            /* Sibling link (not nested) so the author byline can point at the
+               founder profile while the card overlay handles the article. */
+            <Link
+              to="/sachin-balraj"
+              className="relative z-20 flex items-center gap-1.5 font-medium hover:text-primary hover:underline"
+              aria-label={`${FOUNDER_AUTHOR_NAME}, ${FOUNDER_AUTHOR_ROLE} — view profile`}
+            >
+              <User className="h-3.5 w-3.5 text-primary" />
+              <span>
+                {FOUNDER_AUTHOR_NAME}
+                <span className="text-muted-foreground"> · {FOUNDER_AUTHOR_ROLE}</span>
+              </span>
+            </Link>
+          ) : (
+            <span className="flex items-center gap-1.5 font-medium">
+              <User className="h-3.5 w-3.5 text-primary" />
+              {article.author}
+            </span>
+          )}
           <span className="text-slate-500">{formatDate(article.publishedDate)}</span>
         </div>
       </div>

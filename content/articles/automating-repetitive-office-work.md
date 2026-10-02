@@ -3,8 +3,8 @@ title: "Benefits of Automating Repetitive Office Work: Save Time, Reduce Errors,
 slug: "automating-repetitive-office-work"
 category: "Automation"
 contentType: "Guide"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-08-20"
 updatedDate: "2026-08-20"
 readingTime: 7

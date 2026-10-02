@@ -48,7 +48,7 @@ export function ArticleDetailPage() {
   useSEO({
     title: article ? getArticleSeoTitle(article) : "Article Not Found",
     description: article ? getArticleSeoDescription(article) : "This article could not be found.",
-    canonical: article ? articleUrl(article.slug) : `${SITE_URL}/knowledge-center`,
+    canonical: article ? articleUrl(article.slug) : `${SITE_URL}/insights`,
     ogImage: article?.featuredImage,
     ogType: "article",
   });
@@ -61,11 +61,11 @@ export function ArticleDetailPage() {
           The article you're looking for may have been moved or removed.
         </p>
         <Link
-          to="/knowledge-center"
+          to="/insights"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Knowledge Center
+          Back to Insights
         </Link>
       </div>
     );
@@ -89,8 +89,8 @@ export function ArticleDetailPage() {
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
         <Breadcrumbs
           items={[
-            { label: "Knowledge Center", href: "/knowledge-center" },
-            { label: article.category, href: `/knowledge-center/category/${article.categorySlug}` },
+            { label: "Insights", href: "/insights" },
+            { label: article.category, href: `/insights/category/${article.categorySlug}` },
             { label: article.title },
           ]}
         />
@@ -129,7 +129,7 @@ export function ArticleDetailPage() {
           <div className="relative mt-8 overflow-hidden rounded-3xl">
             <img
               src={article.featuredImage}
-              alt={`${article.title} — YesBe Knowledge Center guide`}
+              alt={`${article.title} — YESBE Insights guide`}
               loading="lazy"
               decoding="async"
               width={1200}

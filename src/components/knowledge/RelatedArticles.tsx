@@ -13,7 +13,7 @@ export function RelatedArticles({ articles }: { articles: Article[] }) {
           Keep Reading
         </h2>
         <Link
-          to="/knowledge-center"
+          to="/insights"
           className="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-secondary"
         >
           View all articles
@@ -25,7 +25,7 @@ export function RelatedArticles({ articles }: { articles: Article[] }) {
         {articles.map((article) => (
           <Link
             key={article.slug}
-            to={`/knowledge-center/article/${article.slug}`}
+            to={`/insights/article/${article.slug}`}
             className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white transition-all duration-200 hover:border-primary/25 hover:shadow-[0_8px_32px_rgba(37,99,235,0.08)]"
           >
             <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">

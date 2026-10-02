@@ -1,6 +1,12 @@
 import { CalendarDays, RefreshCw, User, Mail, Globe } from "lucide-react";
 import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import type { Article } from "@/knowledge/types";
+import {
+  FOUNDER_AUTHOR_BIO,
+  FOUNDER_AUTHOR_NAME,
+  FOUNDER_AUTHOR_ROLE,
+} from "@/constants";
 import { formatDate } from "./share";
 
 interface AuthorCardProps {
@@ -9,11 +15,10 @@ interface AuthorCardProps {
 }
 
 export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
-  const authorName = article.author || "Sachin Balraj";
-  const authorRole = article.authorRole || "Founder & CEO - YesBe";
-  const authorBio =
-    article.authorBio ||
-    "AI Solutions | ERP Systems | Enterprise Digital Transformation Architecture";
+  const authorName = article.author || FOUNDER_AUTHOR_NAME;
+  const isFounder = authorName === FOUNDER_AUTHOR_NAME;
+  const authorRole = article.authorRole || FOUNDER_AUTHOR_ROLE;
+  const authorBio = article.authorBio || FOUNDER_AUTHOR_BIO;
   const authorImage = article.authorImage;
 
   const initials = authorName
@@ -42,7 +47,16 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
           </div>
         )}
         <div>
-          <span className="block text-xs font-bold text-foreground">{authorName}</span>
+          {isFounder ? (
+            <Link
+              to="/sachin-balraj"
+              className="block text-xs font-bold text-foreground transition-colors hover:text-primary"
+            >
+              {authorName}
+            </Link>
+          ) : (
+            <span className="block text-xs font-bold text-foreground">{authorName}</span>
+          )}
           <span className="block text-[10px] text-muted-foreground">{authorRole}</span>
         </div>
       </div>
@@ -78,10 +92,19 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h4 className="text-base font-bold text-foreground flex items-center gap-1.5">
+              <h3 className="text-base font-bold text-foreground flex items-center gap-1.5">
                 <User className="h-4 w-4 text-primary" />
-                {authorName}
-              </h4>
+                {isFounder ? (
+                  <Link
+                    to="/sachin-balraj"
+                    className="underline-offset-4 hover:text-primary hover:underline"
+                  >
+                    {authorName}
+                  </Link>
+                ) : (
+                  authorName
+                )}
+              </h3>
               <p className="text-xs font-semibold text-primary mt-0.5">{authorRole}</p>
             </div>
 
@@ -129,15 +152,25 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
                   <Mail className="h-4 w-4" />
                 </a>
               )}
-              <a
-                href="https://www.yesbe.tech"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Author Website"
-                className="rounded-lg p-1.5 text-slate-500 hover:bg-primary/10 hover:text-primary transition-colors"
-              >
-                <Globe className="h-4 w-4" />
-              </a>
+              {isFounder ? (
+                <Link
+                  to="/sachin-balraj"
+                  aria-label="Author profile"
+                  className="rounded-lg p-1.5 text-slate-500 hover:bg-primary/10 hover:text-primary transition-colors"
+                >
+                  <Globe className="h-4 w-4" />
+                </Link>
+              ) : (
+                <a
+                  href="https://www.yesbe.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Author Website"
+                  className="rounded-lg p-1.5 text-slate-500 hover:bg-primary/10 hover:text-primary transition-colors"
+                >
+                  <Globe className="h-4 w-4" />
+                </a>
+              )}
             </div>
           </div>
 

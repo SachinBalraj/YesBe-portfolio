@@ -75,7 +75,7 @@ export function SolutionDetailPage() {
   useSEO({
     title: solution ? getSolutionSeoTitle(solution.slug, solution.title) : SEO_TITLES.solutionNotFound,
     description: solution ? getSolutionSeoDescription(solution.slug, solution.title) : SEO_DESCRIPTIONS.solutionNotFound,
-    canonical: solution ? `https://www.yesbe.tech/solutions/${solution.slug}` : "https://www.yesbe.tech/services",
+    canonical: solution ? `https://www.yesbe.tech/services/${solution.slug}` : "https://www.yesbe.tech/services",
   });
 
   if (!solution) {
@@ -106,9 +106,9 @@ export function SolutionDetailPage() {
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        name: `${solution.title} — YesBe Technologies`,
+        name: `${solution.title} — YESBE Technologies`,
         description: solution.description,
-        url: `https://www.yesbe.tech/solutions/${solution.slug}`,
+        url: `https://www.yesbe.tech/services/${solution.slug}`,
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <JsonLd schema={{
@@ -117,7 +117,7 @@ export function SolutionDetailPage() {
         name: solution.title,
         description: solution.description,
         provider: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
-        url: `https://www.yesbe.tech/solutions/${solution.slug}`,
+        url: `https://www.yesbe.tech/services/${solution.slug}`,
       }} />
       <JsonLd schema={{
         "@context": "https://schema.org",
@@ -214,7 +214,7 @@ export function SolutionDetailPage() {
           >
             <img
               src={solution.heroImage}
-              alt={`${solution.title} — ${solution.category} solution by YesBe Technologies`}
+              alt={`${solution.title} — ${solution.category} solution by YESBE Technologies`}
               width={1200}
               height={600}
               loading="eager"
@@ -307,7 +307,7 @@ export function SolutionDetailPage() {
                   <span className="mb-3 inline-flex items-center justify-center h-9 w-9 rounded-lg bg-primary/[0.06]">
                     <FeatureIcon className="h-4.5 w-4.5 text-primary" />
                   </span>
-                  <h4 className="text-[15px] font-bold text-foreground mb-1">{feature.title}</h4>
+                  <h3 className="text-[15px] font-bold text-foreground mb-1">{feature.title}</h3>
                   <p className="text-[13px] leading-relaxed text-muted-foreground">{feature.description}</p>
                 </motion.div>
               );
@@ -384,7 +384,7 @@ export function SolutionDetailPage() {
                     {i + 1}
                   </span>
                   <div className="rounded-2xl border border-white/40 bg-white p-5 flex-1">
-                    <h4 className="text-[15px] font-bold text-foreground mb-1">{step.step}</h4>
+                    <h3 className="text-[15px] font-bold text-foreground mb-1">{step.step}</h3>
                     <p className="text-[14px] leading-relaxed text-muted-foreground">{step.description}</p>
                   </div>
                 </motion.div>
@@ -429,7 +429,7 @@ export function SolutionDetailPage() {
         </div>
       </section>
 
-      {/* Why Choose YesBe */}
+      {/* Why Choose YESBE */}
       <section className="relative overflow-hidden bg-white py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -439,7 +439,7 @@ export function SolutionDetailPage() {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <SectionHeading icon={Award}>Why Choose YesBe</SectionHeading>
+            <SectionHeading icon={Award}>Why Choose YESBE</SectionHeading>
           </motion.div>
           <motion.div
             variants={staggerContainer}
@@ -448,13 +448,13 @@ export function SolutionDetailPage() {
             viewport={{ once: true, margin: "-80px" }}
             className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {solution.whyYesBe.map((adv, i) => (
+            {solution.whyYESBE.map((adv, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
                 className="rounded-2xl border border-primary/10 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
               >
-                <h4 className="text-[15px] font-bold text-foreground mb-1">{adv.title}</h4>
+                <h3 className="text-[15px] font-bold text-foreground mb-1">{adv.title}</h3>
                 <p className="text-[13px] leading-relaxed text-muted-foreground">{adv.description}</p>
               </motion.div>
             ))}
@@ -473,7 +473,7 @@ export function SolutionDetailPage() {
           >
             <SectionHeading icon={Target}>Case Study</SectionHeading>
             <div className="rounded-[20px] border border-white/40 bg-white p-6 sm:p-8" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}>
-              <h4 className="text-[17px] font-bold text-foreground mb-2">{solution.caseStudy.title}</h4>
+              <h3 className="text-[17px] font-bold text-foreground mb-2">{solution.caseStudy.title}</h3>
               <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">{solution.caseStudy.outcome}</p>
               <div className="inline-flex items-center gap-2 rounded-full bg-primary/[0.06] px-4 py-2">
                 <TrendingUp className="h-4 w-4 text-primary" />
@@ -547,7 +547,7 @@ export function SolutionDetailPage() {
                 return (
                   <motion.div key={rel.slug} variants={fadeInUp}>
                     <Link
-                      to={`/solutions/${rel.slug}`}
+                      to={`/services/${rel.slug}`}
                       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                       className="group block rounded-2xl border border-white/40 bg-white p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
                     >
@@ -559,9 +559,9 @@ export function SolutionDetailPage() {
                           {rel.category}
                         </span>
                       </div>
-                      <h4 className="text-[14px] font-bold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-[14px] font-bold text-foreground group-hover:text-primary transition-colors">
                         {rel.title}
-                      </h4>
+                      </h3>
                       <p className="mt-1 text-[12px] text-muted-foreground line-clamp-2">
                         {rel.description}
                       </p>
@@ -606,7 +606,7 @@ export function SolutionDetailPage() {
                 className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/20"
               >
                 <Phone className="h-4 w-4" />
-                Contact YesBe
+                Contact YESBE
               </Link>
             </div>
           </motion.div>

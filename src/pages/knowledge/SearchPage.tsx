@@ -100,16 +100,16 @@ export function SearchPage() {
   // SEO metadata optimization
   useSEO({
     title: q
-      ? `Search: ${q} (${results.length} results) | YesBe Knowledge Center`
+      ? `Search: ${q} (${results.length} results) | YESBE Insights`
       : category
-      ? `${category.name} Articles | YesBe Knowledge Center`
-      : "Search Articles & Guides | YesBe Knowledge Center",
+      ? `${category.name} Articles | YESBE Insights`
+      : "Search Articles & Guides | YESBE Insights",
     description: category
-      ? `Discover expert ${category.name} articles, tutorials, and case studies at YesBe.`
+      ? `Discover expert ${category.name} articles, tutorials, and case studies at YESBE.`
       : "Search articles, guides, and insights on AI, ERP, CRM, Websites, Power BI, SEO, and Business Tech.",
     canonical: q
-      ? `${SITE_URL}/knowledge-center/search?q=${encodeURIComponent(q)}`
-      : `${SITE_URL}/knowledge-center/search`,
+      ? `${SITE_URL}/insights/search?q=${encodeURIComponent(q)}`
+      : `${SITE_URL}/insights/search`,
     noindex: true, // Prevent indexing empty/filtered search parameter variations
   });
 
@@ -147,7 +147,7 @@ export function SearchPage() {
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
         <Breadcrumbs
           items={[
-            { label: "Knowledge Center", href: "/knowledge-center" },
+            { label: "Insights", href: "/insights" },
             { label: "Search" },
           ]}
         />
@@ -163,7 +163,7 @@ export function SearchPage() {
             className="inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white/80 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-primary shadow-xs"
           >
             <Sparkles className="h-3.5 w-3.5" />
-            YesBe Intelligent Search
+            YESBE Intelligent Search
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
@@ -230,7 +230,7 @@ export function SearchPage() {
                     Search results for <span className="text-primary">“{q}”</span>
                   </>
                 ) : (
-                  "Knowledge Center Library"
+                  "Insights Library"
                 )}
               </h2>
               <p className="mt-1 text-xs text-muted-foreground">
@@ -408,10 +408,10 @@ export function SearchPage() {
 
               {/* Suggestions Box */}
               <div className="mt-6 rounded-2xl bg-slate-50 p-5 text-left dark:bg-slate-800/60">
-                <h4 className="text-xs font-bold text-foreground uppercase tracking-wider flex items-center gap-1.5">
+                <h3 className="text-xs font-bold text-foreground uppercase tracking-wider flex items-center gap-1.5">
                   <HelpCircle className="h-4 w-4 text-primary" />
                   Try these helpful suggestions:
-                </h4>
+                </h3>
                 <ul className="mt-3 space-y-2 text-xs text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -443,7 +443,7 @@ export function SearchPage() {
                   className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-xs hover:border-primary/30 hover:text-primary transition-all dark:border-slate-800 dark:bg-slate-800"
                 >
                   <Mail className="h-4 w-4 text-primary" />
-                  Contact YesBe
+                  Contact YESBE
                 </Link>
               </div>
 

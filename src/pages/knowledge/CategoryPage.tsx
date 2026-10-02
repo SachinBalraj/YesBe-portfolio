@@ -143,7 +143,7 @@ export function CategoryPage() {
   useSEO({
     title: category ? (category.seoTitle ?? getCategorySeoTitle(category)) : "Category Not Found",
     description: category ? (category.metaDescription ?? getCategorySeoDescription(category)) : "Category not found.",
-    canonical: category ? categoryUrl(category.slug) : `${SITE_URL}/knowledge-center`,
+    canonical: category ? categoryUrl(category.slug) : `${SITE_URL}/insights`,
     ogType: "website",
   });
 
@@ -155,14 +155,14 @@ export function CategoryPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground">Topic Category Not Found</h1>
         <p className="mt-2 text-muted-foreground">
-          The requested category page “{slug}” could not be found in our Knowledge Center library.
+          The requested category page “{slug}” could not be found in our Insights library.
         </p>
         <Link
-          to="/knowledge-center"
+          to="/insights"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
         >
           <ArrowLeft className="h-4 w-4" />
-          Explore Knowledge Center
+          Explore Insights
         </Link>
       </div>
     );
@@ -191,7 +191,7 @@ export function CategoryPage() {
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
         <Breadcrumbs
           items={[
-            { label: "Knowledge Center", href: "/knowledge-center" },
+            { label: "Insights", href: "/insights" },
             { label: category.name },
           ]}
         />
@@ -209,7 +209,7 @@ export function CategoryPage() {
               className="flex items-center gap-3 mb-4"
             >
               <Link
-                to="/knowledge-center"
+                to="/insights"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:text-primary"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -419,7 +419,7 @@ export function CategoryPage() {
               You May Also Explore:
             </h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              Discover related technology topics across the YesBe Knowledge Center.
+              Discover related technology topics across the YESBE Insights.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
@@ -429,7 +429,7 @@ export function CategoryPage() {
               return (
                 <Link
                   key={relCat.slug}
-                  to={`/knowledge-center/${relCat.slug}`}
+                  to={`/insights/${relCat.slug}`}
                   className="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
                 >
                   <div>
@@ -465,7 +465,7 @@ export function CategoryPage() {
               Need Technology Solutions For Your Business?
             </h2>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-              YesBe helps businesses implement AI, ERP, automation, analytics, websites, and digital transformation solutions.
+              YESBE helps businesses implement AI, ERP, automation, analytics, websites, and digital transformation solutions.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
@@ -481,7 +481,7 @@ export function CategoryPage() {
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-xs font-bold text-white backdrop-blur-md hover:bg-white/20 transition-all"
               >
                 <Mail className="h-4 w-4" />
-                Contact YesBe
+                Contact YESBE
               </Link>
             </div>
           </div>

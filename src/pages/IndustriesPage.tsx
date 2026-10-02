@@ -72,6 +72,7 @@ export function IndustriesPage() {
           <div className="absolute bottom-[12%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.05] blur-[100px]" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="sr-only">Industries We Serve</h2>
           <motion.div
             variants={staggerContainer}
             initial="initial"

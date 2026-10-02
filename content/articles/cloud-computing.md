@@ -2,8 +2,8 @@
 title: "Cloud Computing for Growing Businesses: AWS, Azure, and Beyond"
 slug: "cloud-computing"
 category: "Cloud Computing"
-author: "YesBe Team"
-authorRole: "YesBe Technologies"
+author: "YESBE Team"
+authorRole: "YESBE Technologies"
 publishedDate: "2026-07-19"
 updatedDate: "2026-07-29"
 readingTime: 6

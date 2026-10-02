@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Clock, Calendar, RefreshCw, User, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Article } from "@/knowledge/types";
+import { FOUNDER_AUTHOR_NAME } from "@/constants";
 import { formatDate } from "./share";
 
 interface ArticleHeaderMetadataProps {
@@ -10,6 +12,7 @@ interface ArticleHeaderMetadataProps {
 export function ArticleHeaderMetadata({ article }: ArticleHeaderMetadataProps) {
   const publishedFormatted = formatDate(article.publishedDate);
   const updatedFormatted = formatDate(article.updatedDate);
+  const isFounder = article.author === FOUNDER_AUTHOR_NAME;
 
   return (
     <motion.div
@@ -46,7 +49,17 @@ export function ArticleHeaderMetadata({ article }: ArticleHeaderMetadataProps) {
       {/* ✍️ Author Pill */}
       <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-primary font-semibold shadow-2xs">
         <User className="h-3.5 w-3.5" />
-        <span>Written by {article.author}</span>
+        <span>Written by </span>
+        {isFounder ? (
+          <Link
+            to="/sachin-balraj"
+            className="underline-offset-4 hover:underline"
+          >
+            {article.author}
+          </Link>
+        ) : (
+          <span>{article.author}</span>
+        )}
       </span>
 
       {/* Content Type Pill */}

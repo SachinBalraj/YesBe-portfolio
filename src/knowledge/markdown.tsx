@@ -17,7 +17,12 @@ const renderer = new marked.Renderer();
 renderer.heading = function ({ tokens, depth }) {
   const text = this.parser.parseInline(tokens);
   const id = slugify(text);
-  return `<h${depth} id="${id}">${text}</h${depth}>`;
+  // The article/page title is already the single <h1>. A depth-1 heading inside
+  // the body would create a second one, so it is demoted to <h2> and every
+  // deeper level shifts with it. Keeps one logical primary heading per page
+  // while preserving the author's intended nesting below the title.
+  const level = Math.min(Math.max(depth, 1) + 1, 6);
+  return `<h${level} id="${id}">${text}</h${level}>`;
 };
 
 renderer.link = function ({ href, title, tokens }) {
