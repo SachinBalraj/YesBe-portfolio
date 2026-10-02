@@ -38,19 +38,27 @@ const CONCURRENCY = 6;
 /** The exact title the founder page is required to carry. */
 const FOUNDER_TITLE = "Sachin Balraj | Founder of YESBE Technologies";
 
-/** Chromium is present locally but not on a fresh CI/Vercel builder. */
+/**
+ * Chromium is present on a developer machine but not on a fresh CI builder.
+ *
+ * Installing the browser alone is not enough: Vercel's build image does not
+ * ship the shared libraries Chromium links against (libnspr4/libnss3), and the
+ * launch fails with "error while loading shared libraries". They come with
+ * `--with-deps`, so that is what CI needs; a plain install is kept as a
+ * fallback for images that already have the libraries.
+ */
 function ensureBrowser(): void {
   if (existsSync(chromium.executablePath())) return;
   console.log("prerender: Chromium not found, installing…");
-  const res = spawnSync("npx", ["playwright", "install", "chromium"], {
-    stdio: "inherit",
-    cwd: ROOT,
-  });
-  if (res.status !== 0) {
-    throw new Error(
-      "prerender: `playwright install chromium` failed — cannot generate static HTML.",
-    );
+
+  for (const args of [["playwright", "install", "--with-deps", "chromium"], ["playwright", "install", "chromium"]]) {
+    const res = spawnSync("npx", args, { stdio: "inherit", cwd: ROOT });
+    if (res.status === 0) return;
+    console.warn(`prerender: \`npx ${args.join(" ")}\` failed, trying the next option`);
   }
+  throw new Error(
+    "prerender: could not install Chromium — static HTML cannot be generated.",
+  );
 }
 
 async function startPreview(): Promise<void> {
@@ -208,7 +216,17 @@ async function main(): Promise<void> {
   ensureBrowser();
 
   const preview = await startPreview();
-  const browser: Browser = await chromium.launch();
+  let browser: Browser;
+  try {
+    browser = await chromium.launch();
+  } catch (err) {
+    preview.kill();
+    throw new Error(
+      `prerender: Chromium could not launch. Its system libraries are probably ` +
+        `missing on this image — install with \`npx playwright install --with-deps chromium\`.\n` +
+        `${(err as Error).message.split("\n")[0]}`,
+    );
+  }
   const failures: string[] = [];
 
   try {
