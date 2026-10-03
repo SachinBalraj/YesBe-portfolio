@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
-import founderImage from "@/assets/images/sachin.jpg";
+import founderImage from "@/assets/images/founder-portrait.jpeg";
 import { SITE_CONFIG } from "@/constants";
 
 function FounderPortrait() {

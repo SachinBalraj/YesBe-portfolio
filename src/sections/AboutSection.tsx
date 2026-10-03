@@ -3,7 +3,7 @@ import { fadeInUp, staggerContainer } from "@/animations";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import logoImg from "@/assets/images/YBlogo.png";
-import founderImage from "@/assets/images/sachin.jpg";
+import founderImage from "@/assets/images/founder-portrait.jpeg";
 
 const focusAreas = [
   { value: "Consulting", label: "IT strategy, requirements and solution architecture" },
