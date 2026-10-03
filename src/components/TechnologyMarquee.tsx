@@ -92,7 +92,7 @@ export function TechnologyMarquee() {
     <section
       className="relative overflow-hidden py-16 lg:py-20"
       style={{ background: "#F8FAFC" }}
-      aria-label="Trusted Technologies We Build With"
+      aria-label="Technologies We Build With"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
@@ -100,7 +100,7 @@ export function TechnologyMarquee() {
             Technology Stack
           </span>
           <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Trusted Technologies <span className="text-primary">We Build With</span>
+            Technologies <span className="text-primary">We Build With</span>
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
             Modern technologies powering scalable AI, ERP, Cloud, Web, Mobile, and Enterprise solutions.

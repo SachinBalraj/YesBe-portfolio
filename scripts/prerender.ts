@@ -122,7 +122,9 @@ const SETTLE = async (page: Page): Promise<void> => {
     await sleep(250);
     await (document as Document & { fonts?: FontFaceSet }).fonts?.ready;
   });
-  await page.waitForLoadState("load");
+  // Only the DOM matters for the captured HTML. Waiting indefinitely on "load"
+  // makes the build hostage to third-party image CDNs, so this is bounded.
+  await page.waitForLoadState("load", { timeout: 10_000 }).catch(() => {});
 };
 
 async function capture(page: Page, routePath: string): Promise<string> {

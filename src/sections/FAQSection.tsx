@@ -12,7 +12,7 @@ const faqData: FAQItem[] = [
   {
     question: "What is YESBE?",
     answer:
-      "YESBE builds AI tools, ERP systems, Power BI dashboards, websites, and automation for startups, SMEs, and enterprises worldwide.",
+      "YESBE is an IT consulting and software development company. We build custom software, ERP systems, web applications, AI and automation tooling, and analytics dashboards for businesses of all sizes.",
   },
   {
     question: "What services does YESBE provide?",

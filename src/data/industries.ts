@@ -82,7 +82,7 @@ export interface IndustryDetail {
   process: { step: string; description: string }[];
   technologies: { name: string; description: string }[];
   whyYESBE: { title: string; description: string }[];
-  caseStudy: { title: string; outcome: string; metric: string };
+  exampleProject: { title: string; scope: string; focus: string };
   faq: { question: string; answer: string }[];
   relatedSolutions: string[];
 }
@@ -147,8 +147,8 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Launch your MVP in 4-8 weeks instead of 6-12 months",
-      "Reduce initial development costs by up to 60% with lean, focused builds",
+      "Reach a usable first release without paying to build features you do not yet need",
+      "Keep initial development cost down by building only what the first release needs",
       "Scale infrastructure on-demand without upfront capital expenditure",
       "Attract investors with a polished, performant product backed by solid architecture",
       "Iterate rapidly based on real user feedback with modular, decoupled code",
@@ -235,18 +235,19 @@ export const industries: IndustryDetail[] = [
           "We build with the future in mind, ensuring your initial investment creates a platform that scales with you rather than a ceiling you'll hit later.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "HealthTech MVP — From Concept to 5,000 Users in 10 Weeks",
-      outcome:
-        "Built a telehealth platform MVP that secured seed funding and onboarded 5,000 active users within the first quarter of launch.",
-      metric: "10 weeks to launch",
+        "MVP build for an early-stage product",
+      scope:
+        "An MVP scoped to validate a specific hypothesis rather than to cover every possible feature: core user journey first, feedback captured in-product, and a roadmap for what comes after launch.",
+      focus:
+        "Validate before you scale",
     },
     faq: [
       {
         question: "How quickly can you deliver an MVP?",
         answer:
-          "Most MVPs are delivered in 4-8 weeks depending on complexity. We use modular architectures and reusable components to accelerate development without sacrificing quality.",
+          "MVP timelines depend on scope. We use modular architecture and reusable components so the first release can go live without compromising the build.",
       },
       {
         question: "Can you work with our existing codebase?",
@@ -256,7 +257,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "What happens after the MVP launches?",
         answer:
-          "We offer ongoing development partnerships with flexible sprint-based engagement models. Most startups continue with 2-4 week迭代 cycles to add features, optimize performance, and scale infrastructure.",
+          "We offer ongoing development partnerships with flexible sprint-based engagement models. Most ongoing work runs in short iteration cycles, adding features, improving performance and scaling infrastructure in stages.",
       },
       {
         question: "How do you handle budget constraints?",
@@ -278,9 +279,9 @@ export const industries: IndustryDetail[] = [
     heroImage:
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=600&fit=crop",
     overview:
-      "Small and medium enterprises are the backbone of the global economy, yet most lack the technology infrastructure to compete with larger rivals. Our SME-focused solutions deliver enterprise-grade functionality — ERP systems, business automation, customer management, and data analytics — tailored to the budget, team size, and operational realities of growing businesses. We help SMEs punch above their weight with technology that drives efficiency, reduces waste, and unlocks new revenue channels.",
+      "Small and medium enterprises are the backbone of the global economy, yet most lack the technology infrastructure to compete with larger rivals. Our SME-focused solutions deliver proven functionality — ERP systems, business automation, customer management, and data analytics — tailored to the budget, team size, and operational realities of growing businesses. We help SMEs punch above their weight with technology that drives efficiency, reduces waste, and unlocks new revenue channels.",
     whyNeeded:
-      "SMEs that rely on spreadsheets, manual processes, and disconnected tools lose up to 30% of productive time to inefficiency. As competition intensifies and customer expectations rise, the gap between technology-enabled businesses and manual operators widens every year. Purpose-built SME solutions deliver the automation, visibility, and control that larger competitors take for granted — without the enterprise price tag.",
+      "Businesses still running on spreadsheets and disconnected tools lose productive time to avoidable inefficiency — rekeying data, chasing status, rebuilding the same reports. As competition increases, the gap between technology-enabled businesses and manual operators keeps widening. Purpose-built SME solutions bring automation, visibility and control within reach of smaller budgets, without an enterprise-scale price tag.",
     challenges: [
       "Limited budgets require maximum ROI from every technology investment with no room for failed projects",
       "Staff wear multiple hats, making it critical that tools are intuitive and require minimal training",
@@ -326,12 +327,12 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Reduce operational costs by 25-40% through process automation and elimination of manual work",
+      "Reduce operational cost through process automation and less manual work",
       "Gain real-time visibility into every aspect of your business from a single dashboard",
       "Improve customer satisfaction and retention through faster response times and personalized service",
       "Scale operations smoothly without hiring additional administrative and management staff",
       "Make data-driven decisions with accurate, up-to-date financial and operational insights",
-      "Compete effectively against larger rivals with enterprise-grade tools scoped to SME budgets",
+      "Compete effectively against larger rivals with properly built tools scoped to SME budgets",
     ],
     process: [
       {
@@ -414,12 +415,13 @@ export const industries: IndustryDetail[] = [
           "We implement systems that grow with you — starting affordable and expanding functionality as your business matures and your needs become more complex.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Manufacturing SME — ERP Transformation Across 3 Factories",
-      outcome:
-        "Unified three separate factory operations into a single ERP system, reducing inventory waste by 35% and improving order fulfillment speed by 50%.",
-      metric: "35% waste reduction",
+        "Order and inventory system for a growing retailer",
+      scope:
+        "Stock, purchasing and sales in one place, so purchasing decisions are made from current stock levels rather than memory. Works on mobile for staff on the floor.",
+      focus:
+        "Stock and purchasing in one place",
     },
     faq: [
       {
@@ -435,7 +437,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "How long does a typical ERP implementation take?",
         answer:
-          "A full ERP implementation typically takes 8-16 weeks depending on scope. We use agile methodology with regular checkpoints to ensure progress stays on track.",
+          "A full ERP implementation is one of the larger projects we take on. We use staged delivery with regular checkpoints so progress is visible throughout.",
       },
       {
         question: "Do you provide ongoing support after implementation?",
@@ -505,7 +507,7 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Reduce legacy maintenance costs by 40-60% while improving system reliability and performance",
+      "Reduce the cost of maintaining legacy systems while improving their reliability",
       "Break down data silos to enable cross-functional analytics and unified business intelligence",
       "Accelerate time-to-market for new products and services through modern development practices",
       "Improve security posture with cloud-native architectures and zero-trust security models",
@@ -568,7 +570,7 @@ export const industries: IndustryDetail[] = [
       {
         name: "Spring Boot & .NET Core",
         description:
-          "Enterprise-grade application frameworks for building robust, scalable, and secure backend services and APIs",
+          "Application frameworks for building robust, scalable, and secure backend services and APIs",
       },
     ],
     whyYESBE: [
@@ -593,18 +595,19 @@ export const industries: IndustryDetail[] = [
           "We provide objective, vendor-neutral recommendations that prioritize your business needs over any single technology vendor's interests.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Global Logistics Firm — Legacy-to-Cloud Migration",
-      outcome:
-        "Migrated a 15-year-old monolithic system to a microservices architecture on AWS, reducing infrastructure costs by 45% and deployment frequency from monthly to daily.",
-      metric: "45% cost reduction",
+        "Integration layer across existing enterprise systems",
+      scope:
+        "Connecting systems that were bought separately and never integrated, so data moves between them on defined triggers with reconciliation and audit trails instead of manual exports.",
+      focus:
+        "Connect systems without replacing them",
     },
     faq: [
       {
         question: "How do you handle enterprise security requirements?",
         answer:
-          "We implement defense-in-depth security including encryption at rest and in transit, RBAC, SOC 2 compliance patterns, penetration testing, and comprehensive audit logging. Every solution is reviewed against your specific security standards.",
+          "We implement layered security including encryption at rest and in transit, role-based access control, audit logging and testing. Every solution is reviewed against your specific security standards.",
       },
       {
         question: "Can you work alongside our internal IT team?",
@@ -619,7 +622,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "How long does enterprise modernization typically take?",
         answer:
-          "Enterprise modernization is typically delivered in phases over 6-18 months. Each phase delivers independent value, allowing the business to realize ROI incrementally while building toward the complete transformation.",
+          "Enterprise modernisation is delivered in phases, each of which is independently useful, so the business gets value while the wider programme continues.",
       },
     ],
     relatedSolutions: ["custom-software", "cloud-devops", "database-management"],
@@ -638,7 +641,7 @@ export const industries: IndustryDetail[] = [
     overview:
       "Healthcare technology solutions must balance innovation with uncompromising standards for patient safety, data privacy, and regulatory compliance. Our healthcare practice delivers HIPAA-compliant systems including electronic health records, telemedicine platforms, clinical workflow automation, and patient engagement tools. We work with hospitals, clinics, diagnostics labs, and health-tech startups to build technology that improves patient outcomes while reducing administrative burden on healthcare professionals.",
     whyNeeded:
-      "Healthcare providers lose an estimated 15-20% of revenue to administrative inefficiency, while clinician burnout from poor technology systems contributes to staffing shortages. Meanwhile, patients increasingly expect digital-first experiences — from online appointment booking to virtual consultations to real-time access to their health data. Healthcare organizations that invest in purpose-built technology improve both operational efficiency and patient satisfaction.",
+      "Administrative inefficiency absorbs a significant share of healthcare revenue, and clinicians burn out working with systems that were not designed for care delivery. Patients, meanwhile, now expect digital-first experiences — online booking, virtual consultations and access to their own records. Purpose-built technology improves both staff efficiency and the patient experience.",
     challenges: [
       "Strict HIPAA, HITECH, and regional healthcare regulations that constrain technology choices and data handling practices",
       "Integration with complex hospital information systems, lab equipment, and pharmacy networks with varying standards",
@@ -684,10 +687,10 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Reduce clinician documentation time by 30-50% through intelligent automation and voice-enabled workflows",
+      "Reduce clinician documentation time through automation and voice-enabled workflows",
       "Improve patient satisfaction scores with seamless digital experiences and instant access to health information",
       "Achieve and maintain HIPAA compliance with built-in security controls and automated audit capabilities",
-      "Decrease no-show rates by 25-40% with automated reminders, easy rescheduling, and telehealth alternatives",
+      "Reduce no-shows with automated reminders, easy rescheduling and telehealth options",
       "Unlock clinical insights from patient data to improve outcomes and support population health management",
       "Reduce administrative costs by automating billing, coding, insurance verification, and claims processing",
     ],
@@ -772,12 +775,13 @@ export const industries: IndustryDetail[] = [
           "Our portfolio includes EHR implementations, telemedicine platforms, and clinical analytics systems delivered on time and within budget for healthcare organizations.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Multi-Specialty Hospital — Telemedicine & EHR Integration",
-      outcome:
-        "Deployed an integrated telemedicine and EHR system across 12 departments, reducing average patient wait times by 40% and enabling 500+ virtual consultations per week.",
-      metric: "500+ weekly teleconsultations",
+        "Clinic scheduling and records system",
+      scope:
+        "Appointment scheduling, patient records and billing for a clinic, with role-based access so staff see only what their role requires, and an audit trail on record changes.",
+      focus:
+        "Records, scheduling and billing",
     },
     faq: [
       {
@@ -788,7 +792,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "Can you integrate with our existing EHR system?",
         answer:
-          "We have extensive experience integrating with major EHR platforms including Epic, Cerner, and Allscripts using HL7 FHIR standards. We also build custom interfaces for proprietary systems.",
+          "We work with the major EHR platforms and the HL7 FHIR standard, and build custom interfaces where a proprietary system needs one.",
       },
       {
         question: "How do you handle patient data during development?",
@@ -798,7 +802,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "What ongoing support do you provide?",
         answer:
-          "We offer dedicated healthcare support packages including 24/7 monitoring, security patch management, regulatory update implementation, feature enhancements, and clinical workflow optimization.",
+          "We offer dedicated healthcare support covering monitoring, security patch management, regulatory updates and feature work.",
       },
     ],
     relatedSolutions: ["custom-software", "ai-solutions", "cloud-devops"],
@@ -863,7 +867,7 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Reduce administrative workload by 40-60% through automated enrollment, grading, and reporting processes",
+      "Reduce administrative workload through automated enrolment, grading and reporting",
       "Improve student engagement and outcomes with interactive digital learning experiences and personalized pathways",
       "Enable remote and hybrid learning models that extend institutional reach beyond physical campus boundaries",
       "Achieve regulatory compliance with FERPA, COPPA, and regional data protection requirements built into the platform",
@@ -951,12 +955,13 @@ export const industries: IndustryDetail[] = [
           "We build FERPA-compliant systems with data handling practices that protect student privacy while enabling the analytics and reporting institutions need.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "University Network — Unified Student Management Platform",
-      outcome:
-        "Consolidated 8 separate campus systems into a unified student management platform serving 25,000 students, reducing administrative processing time by 60%.",
-      metric: "60% faster administration",
+        "Campus ERP for academic and administrative work",
+      scope:
+        "Admissions, attendance, grades, fees and examination workflows in a single system, with role-based access for students, faculty and administrators and reports for each of them.",
+      focus:
+        "One system across departments",
     },
     faq: [
       {
@@ -1042,8 +1047,8 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Increase revenue per customer by 15-25% through personalized recommendations and targeted loyalty incentives",
-      "Reduce stockouts by 30-50% with real-time inventory visibility and automated replenishment triggers",
+      "Grow revenue per customer through relevant recommendations and targeted loyalty incentives",
+      "Reduce stockouts with live inventory visibility and automatic replenishment triggers",
       "Deliver a seamless omnichannel experience that meets modern customer expectations for consistency and convenience",
       "Optimize pricing and promotions with data-driven insights into customer behavior and competitive dynamics",
       "Minimize shrinkage and waste through accurate inventory tracking and loss prevention analytics",
@@ -1130,12 +1135,13 @@ export const industries: IndustryDetail[] = [
           "Every recommendation is backed by data. We instrument analytics from day one, enabling continuous optimization based on real customer behavior.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Fashion Retailer — Omnichannel Transformation",
-      outcome:
-        "Unified 15 physical stores with e-commerce, enabling buy-online-pickup-in-store and real-time inventory across all channels, increasing revenue by 28%.",
-      metric: "28% revenue increase",
+        "Omnichannel retail platform",
+      scope:
+        "A single stock and order system across online and physical channels, so a sale in store and a sale online draw from the same inventory and fulfil from the same location.",
+      focus:
+        "One inventory across channels",
     },
     faq: [
       {
@@ -1175,7 +1181,7 @@ export const industries: IndustryDetail[] = [
     overview:
       "Manufacturing is undergoing its fourth industrial revolution, where IoT sensors, real-time data analytics, and automation are transforming traditional factories into smart, connected operations. Our manufacturing technology solutions connect production lines, supply chains, quality systems, and enterprise resource planning into an integrated digital ecosystem. We help manufacturers reduce downtime, improve quality, optimize inventory, and gain real-time visibility across their entire operation.",
     whyNeeded:
-      "Manufacturers face intense pressure to reduce costs, improve quality, and shorten lead times while managing increasingly complex supply chains. Unplanned downtime alone costs the average manufacturer $260,000 per hour. Purpose-built manufacturing technology — from IoT-enabled production monitoring to AI-powered quality inspection to predictive maintenance — delivers the visibility and automation needed to compete in modern industrial markets.",
+      "Manufacturers face sustained pressure to reduce cost, improve quality and shorten lead times while supply chains get more complex. Unplanned downtime stops a line and everything queued behind it. Purpose-built manufacturing technology — from sensor-based production monitoring to automated quality inspection to condition-based maintenance — delivers the visibility and automation needed to stay competitive.",
     challenges: [
       "Connecting legacy production equipment and OT systems with modern IT infrastructure and analytics platforms",
       "Real-time quality control at production speeds that manual inspection cannot match",
@@ -1221,11 +1227,11 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Reduce unplanned downtime by 30-50% through predictive maintenance and real-time equipment monitoring",
+      "Reduce unplanned downtime through condition-based maintenance and equipment monitoring",
       "Improve product quality and reduce scrap rates with automated inspection and statistical process control",
       "Optimize inventory levels across raw materials, work-in-progress, and finished goods to reduce carrying costs",
       "Gain end-to-end supply chain visibility to anticipate disruptions and respond proactively",
-      "Increase overall equipment effectiveness (OEE) by 10-20% through data-driven process optimization",
+      "Improve overall equipment effectiveness through data-driven process optimisation",
       "Enable just-in-time manufacturing with real-time demand signals and production scheduling",
     ],
     process: [
@@ -1309,12 +1315,13 @@ export const industries: IndustryDetail[] = [
           "Our IoT platforms start with a single production line and scale to multi-facility deployments, protecting your initial investment as capabilities grow.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Automotive Parts Manufacturer — Predictive Maintenance System",
-      outcome:
-        "Deployed IoT sensors across 200+ machines with predictive maintenance AI that reduced unplanned downtime by 45% and saved $2.3M annually in maintenance costs.",
-      metric: "$2.3M annual savings",
+        "Production planning and shop-floor tracking",
+      scope:
+        "Work orders, job tracking and machine status captured on the floor, feeding production plans and material requirements so scheduling is based on actual output rather than estimates.",
+      focus:
+        "Production data from the floor",
     },
     faq: [
       {
@@ -1325,7 +1332,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "How long does a typical IoT deployment take?",
         answer:
-          "A pilot deployment on a single production line typically takes 8-12 weeks. Full factory deployment follows over 3-6 months, with each phase delivering independent value.",
+          "A pilot on a single production line is the sensible first step. Factory-wide rollout follows in phases, each delivering independent value.",
       },
       {
         question: "What about network reliability on the factory floor?",
@@ -1400,9 +1407,9 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Reduce fuel costs by 15-25% through intelligent route optimization and driver behavior monitoring",
-      "Improve on-time delivery rates to 95%+ with real-time tracking and proactive exception management",
-      "Increase warehouse throughput by 20-30% with optimized pick paths and automated inventory management",
+      "Reduce fuel cost through route optimisation and driver behaviour monitoring",
+      "Improve on-time delivery with live tracking and proactive exception handling",
+      "Increase warehouse throughput with optimised pick paths and automated inventory management",
       "Enhance customer satisfaction with real-time tracking, accurate ETAs, and proactive delivery notifications",
       "Minimize vehicle downtime with predictive maintenance scheduling based on real usage data",
       "Gain complete operational visibility to identify bottlenecks, reduce waste, and optimize resource allocation",
@@ -1488,12 +1495,13 @@ export const industries: IndustryDetail[] = [
           "Every logistics solution we deliver is measured in concrete savings — fuel reduction, delivery improvement, labor efficiency, and customer retention.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Regional Delivery Network — Fleet Optimization Platform",
-      outcome:
-        "Deployed route optimization and fleet tracking across 300+ vehicles, reducing fuel costs by 22%, improving on-time delivery to 97%, and cutting customer complaints by 60%.",
-      metric: "22% fuel cost reduction",
+        "Fleet tracking and delivery management platform",
+      scope:
+        "Vehicle and driver assignment, route planning, delivery status capture and proof of delivery, with customer-facing tracking and reconciliation of delivered quantities.",
+      focus:
+        "Track every delivery in transit",
     },
     faq: [
       {
@@ -1504,7 +1512,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "How accurate are your route optimization algorithms?",
         answer:
-          "Our route optimization considers 15+ variables including real-time traffic, delivery windows, vehicle capacity, and driver hours. Clients typically see 15-25% fuel reduction in the first quarter.",
+          "Route optimisation considers live traffic, delivery windows, vehicle capacity and driver hours. We baseline fuel use before rollout so the effect can be measured honestly.",
       },
       {
         question: "Do you support cold chain and specialized logistics?",
@@ -1533,7 +1541,7 @@ export const industries: IndustryDetail[] = [
     overview:
       "Hospitality thrives on exceptional guest experiences, yet most operators struggle with outdated technology that creates friction instead of delight. Our hospitality technology solutions cover restaurant management systems, hotel operations platforms, reservation and booking engines, kitchen display systems, and guest engagement tools. We help restaurants, hotels, cafes, and catering companies deliver memorable experiences through technology that streamlines operations and deepens customer relationships.",
     whyNeeded:
-      "The hospitality industry operates on razor-thin margins where a 1% improvement in table utilization or a 5-point increase in guest satisfaction scores can mean the difference between profit and loss. Manual processes, disconnected systems, and poor data visibility prevent operators from optimizing their most valuable resources — tables, rooms, staff, and ingredients. Purpose-built hospitality technology turns these challenges into competitive advantages.",
+      "Hospitality runs on thin margins, so small gains in table utilisation, food cost or guest satisfaction matter. Manual processes, disconnected systems and poor data visibility stop operators getting the most out of their most valuable resources — tables, rooms, staff and ingredients. Purpose-built hospitality technology turns that visibility into better day-to-day decisions.",
     challenges: [
       "Managing peak demand periods with dynamic seating, reservation balancing, and staff allocation in real time",
       "Inventory waste in food service — perishable ingredients require precise demand forecasting and portion control",
@@ -1579,10 +1587,10 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Increase table turnover by 15-20% through intelligent reservation management and table optimization",
-      "Reduce food waste by 25-35% with demand forecasting, portion control analytics, and automated ordering",
+      "Increase table turnover through smarter reservation and table management",
+      "Reduce food waste with demand forecasting, portion analytics and automated ordering",
       "Improve guest satisfaction scores through personalized service and faster, more accurate order fulfillment",
-      "Lower labor costs by 10-15% with data-driven scheduling that matches staffing to actual demand patterns",
+      "Lower labour cost with scheduling driven by actual demand rather than guesswork",
       "Gain real-time visibility into sales, costs, and performance across all locations from a single dashboard",
       "Build lasting customer loyalty through rewards programs and personalized engagement based on visit history",
     ],
@@ -1667,12 +1675,13 @@ export const industries: IndustryDetail[] = [
           "Every hospitality solution we deliver is measured in revenue impact — higher table utilization, lower food costs, improved guest retention, and increased average check sizes.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Restaurant Chain — Integrated Operations Platform",
-      outcome:
-        "Unified POS, kitchen displays, inventory management, and loyalty across 8 locations, reducing food waste by 30%, improving table turnover by 20%, and increasing repeat visits by 35%.",
-      metric: "35% more repeat visits",
+        "Reservation and ordering system for a restaurant group",
+      scope:
+        "Table and online reservations, kitchen-order routing from front-of-house and QR ordering, and a single menu and pricing source shared across outlets.",
+      focus:
+        "One menu, one order flow",
     },
     faq: [
       {
@@ -1683,7 +1692,7 @@ export const industries: IndustryDetail[] = [
       {
         question: "How quickly can you deploy during a busy season?",
         answer:
-          "We understand hospitality seasonality. We schedule deployments during slower periods and can execute core implementations in 2-4 weeks when timing is critical.",
+          "We understand hospitality seasonality and schedule deployments around your quieter periods where possible.",
       },
       {
         question: "Do you support multi-location restaurant or hotel chains?",
@@ -1758,7 +1767,7 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Automate 60-80% of compliance reporting processes, reducing manual effort and human error",
+      "Automate repetitive compliance reporting and reduce the manual effort and errors involved",
       "Achieve real-time financial visibility with dashboards that update as transactions occur",
       "Reduce fraud losses through AI-powered detection systems that identify suspicious patterns in real time",
       "Accelerate regulatory filings and audit preparation with automated data collection and report generation",
@@ -1806,7 +1815,7 @@ export const industries: IndustryDetail[] = [
       {
         name: "Java & Spring Boot",
         description:
-          "Enterprise-grade frameworks for building secure, high-throughput financial applications with strong typing and transaction management",
+          "Frameworks for building secure, high-throughput financial applications with strong typing and transaction management",
       },
       {
         name: "Apache Kafka & RabbitMQ",
@@ -1833,7 +1842,7 @@ export const industries: IndustryDetail[] = [
       {
         title: "Security-First Engineering",
         description:
-          "Every financial solution we build implements enterprise-grade security — encryption, access controls, audit logging, and fraud detection — as foundational architecture.",
+          "Every financial solution we build applies real security controls — encryption, access controls, audit logging, and fraud detection — as foundational architecture.",
       },
       {
         title: "Compliance Built In",
@@ -1846,12 +1855,13 @@ export const industries: IndustryDetail[] = [
           "Financial calculations demand absolute accuracy. Our testing methodologies ensure that every number, every transaction, and every report is correct.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Mid-Size Bank — Compliance Automation Platform",
-      outcome:
-        "Automated regulatory reporting across 5 jurisdictions, reducing compliance team workload by 70% and cutting report preparation time from 2 weeks to 2 hours.",
-      metric: "70% compliance workload reduction",
+        "Reconciliation and reporting automation",
+      scope:
+        "Automated matching of transactions across accounts, exception reporting for what needs manual review, and reporting that closes faster because the data is already reconciled.",
+      focus:
+        "Less manual reconciliation",
     },
     faq: [
       {
@@ -1937,9 +1947,9 @@ export const industries: IndustryDetail[] = [
       },
     ],
     benefits: [
-      "Increase lead conversion rates by 25-40% through automated follow-up and intelligent lead scoring",
-      "Reduce property management administrative time by 30-50% with tenant self-service portals and automated workflows",
-      "Accelerate transaction closing times by 20-30% with digital document management and automated coordination",
+      "Improve lead conversion through prompt follow-up and lead scoring",
+      "Reduce property management admin time with tenant self-service and automated workflows",
+      "Shorten transaction timelines with digital document handling and automated coordination",
       "Gain market intelligence advantage with real-time comparable analysis and automated property valuations",
       "Improve client satisfaction through faster communication, personalized service, and transparent transaction tracking",
       "Scale property portfolios without proportionally increasing management staff through automation and self-service tools",
@@ -2025,12 +2035,13 @@ export const industries: IndustryDetail[] = [
           "We connect real-time market data, property analytics, and valuation tools directly into agent and brokerage workflows for smarter decision-making.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Regional Brokerage — Digital Transformation Platform",
-      outcome:
-        "Built a unified CRM, listing management, and transaction coordination platform for 150 agents, increasing lead conversion by 35% and reducing transaction time by 25%.",
-      metric: "35% higher lead conversion",
+        "Property listings and enquiry management platform",
+      scope:
+        "Listings, availability and enquiry tracking in one place, with agent workflows for follow-up, document sharing for applications, and a public site fed from the same data.",
+      focus:
+        "Listings and enquiries in sync",
     },
     faq: [
       {

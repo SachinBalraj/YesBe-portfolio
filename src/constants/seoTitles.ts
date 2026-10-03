@@ -1,10 +1,10 @@
 export const SEO_TITLES = {
   home: "IT Consulting & Software Development Company | YESBE Technologies",
-  about: "About YESBE Technologies | AI Digital Solutions Company",
+  about: "About YESBE Technologies | IT Consulting & Software Development",
   founder: "Sachin Balraj | Founder of YESBE Technologies",
-  services: "Technology Services | AI ERP Web | YESBE Technologies",
+  services: "IT Consulting, Web, Software, ERP & AI Services | YESBE Technologies",
   industries: "Industry Technology Solutions | YESBE Technologies",
-  caseStudies: "Client Success Stories & Results | YESBE Technologies",
+  caseStudies: "Technology Projects & Solutions | YESBE Technologies",
   insights: "Technology Blog & AI ERP Web Guides | YESBE Technologies",
   contact: "Contact YESBE Technologies | Get a Free Consultation",
   privacyPolicy: "Privacy Policy & Data Protection | YESBE Technologies",
@@ -15,7 +15,7 @@ export const SEO_TITLES = {
   notFound: "Page Not Found Error | Return Home | YESBE Technologies",
   solutionNotFound: "Solution Not Found | Services | YESBE Technologies",
   industryNotFound: "Industry Not Found | Solutions | YESBE Technologies",
-  caseStudyNotFound: "Case Study Not Found | Results | YESBE Technologies",
+  caseStudyNotFound: "Project Not Found | YESBE Technologies",
 } as const;
 
 export const SOLUTION_SEO_TITLES: Record<string, string> = {
@@ -55,15 +55,15 @@ export const INDUSTRY_SEO_TITLES: Record<string, string> = {
 };
 
 export const CASE_STUDY_SEO_TITLES: Record<string, string> = {
-  "fashion-fusion": "E-Commerce Platform Case Study | YESBE Technologies",
-  "restaurant-qr-ordering": "QR Ordering System Case Study | YESBE Technologies",
-  "library-management": "Library Management Case Study | YESBE Technologies",
-  "business-portfolio": "Business Portfolio Website Case Study | YESBE Technologies",
-  "ai-business-assistant": "AI Business Assistant Case Study | YESBE Technologies",
-  "erp-management": "ERP Management System Case Study | YESBE Technologies",
-  "powerbi-dashboard": "Power BI Dashboard Case Study | YESBE Technologies",
-  "seo-digital-growth": "SEO Digital Growth Case Study | YESBE Technologies",
-  "business-automation": "Automation Platform Case Study | YESBE Technologies",
+  "fashion-fusion": "E-Commerce Platform Project | YESBE Technologies",
+  "restaurant-qr-ordering": "QR Ordering System Project | YESBE Technologies",
+  "library-management": "Library Management System Project | YESBE Technologies",
+  "business-portfolio": "Business Website Project | YESBE Technologies",
+  "ai-business-assistant": "AI Business Assistant Project | YESBE Technologies",
+  "erp-management": "ERP Management System Project | YESBE Technologies",
+  "powerbi-dashboard": "Power BI Dashboard Project | YESBE Technologies",
+  "seo-digital-growth": "SEO & Digital Growth Project | YESBE Technologies",
+  "business-automation": "Business Automation Platform Project | YESBE Technologies",
 };
 
 export function getSolutionSeoTitle(slug: string, fallbackTitle: string) {
@@ -75,27 +75,27 @@ export function getIndustrySeoTitle(slug: string, fallbackTitle: string) {
 }
 
 export function getCaseStudySeoTitle(slug: string, fallbackTitle: string) {
-  return CASE_STUDY_SEO_TITLES[slug] ?? `${fallbackTitle} Case Study | YESBE Technologies`;
+  return CASE_STUDY_SEO_TITLES[slug] ?? `${fallbackTitle} | YESBE Technologies`;
 }
 
 export const SEO_DESCRIPTIONS = {
-  home: "YESBE Technologies is an IT consulting and software development company delivering IT consulting, custom software development, web development, AI solutions, business automation and digital transformation for growing businesses.",
-  about: "About YESBE Technologies: learn our mission, founder expertise and approach to AI, ERP, cloud, software development and business automation for growth.",
+  home: "YESBE Technologies is an IT consulting and software development company. Web development, custom software, ERP, AI, automation and digital transformation.",
+  about: "About YESBE Technologies: an IT consulting and software development company delivering web development, custom software, ERP, AI, automation and digital transformation.",
   founder: "Sachin Balraj is the Founder of YESBE Technologies and a Solution Architect at Springreen, working across software architecture, AI, web technologies, automation and practical digital solutions for businesses.",
-  services: "Technology services from YESBE Technologies include AI development, ERP systems, Power BI dashboards, cloud, automation, SEO and custom software support.",
+  services: "Technology services from YESBE Technologies include IT consulting, web development, custom software, ERP systems, AI solutions, business automation, Power BI, cloud and SEO.",
   industries: "Industry technology solutions by YESBE Technologies help healthcare, retail, education, manufacturing, logistics, finance and startups digitize faster.",
-  caseStudies: "Client success stories from YESBE Technologies show measurable results from AI, ERP, automation, Power BI, SEO and custom software projects for growth.",
+  caseStudies: "Selected technology projects and solutions designed and built by YESBE Technologies across web, ERP, AI, automation, analytics and SEO.",
   insights: "Technology blog from YESBE Technologies with practical guides on AI, ERP, web development, SEO, cloud, Power BI and business automation for leaders today.",
-  contact: "Contact YESBE Technologies for a free consultation on AI, ERP, web development, cloud, automation, SEO, Power BI and digital transformation projects today.",
+  contact: "Contact YESBE Technologies for a free consultation on IT consulting, web development, custom software, ERP, AI, automation, SEO and digital transformation.",
   privacyPolicy: "Privacy Policy from YESBE Technologies explains how we collect, use, store and protect your personal data when you use our website and services safely.",
   termsAndConditions: "Terms and Conditions from YESBE Technologies explain website use, service agreements, payments, intellectual property and client responsibilities clearly.",
   refundPolicy: "Refund Policy from YESBE Technologies explains advance payments, cancellation terms, refund eligibility and project termination for services clearly today.",
   cookiePolicy: "Cookie Policy from YESBE Technologies explains how cookies, analytics and tracking technologies improve website performance and user experience safely.",
   disclaimer: "Legal Disclaimer from YESBE Technologies outlines service notices, quotation guidance, third-party tools, liability limits and content accuracy clearly.",
-  notFound: "Page not found. Return to YESBE Technologies to explore AI, ERP, custom software, cloud, SEO, Power BI and automation services for business growth today.",
-  solutionNotFound: "Solution not found. Explore YESBE Technologies services for AI, ERP, web development, Power BI, cloud, SEO and business automation support for growth.",
+  notFound: "Page not found. Return to YESBE Technologies to explore IT consulting, web development, custom software, ERP, AI, automation and SEO services.",
+  solutionNotFound: "Solution not found. Explore YESBE Technologies services for IT consulting, web development, custom software, ERP, AI and business automation support.",
   industryNotFound: "Industry not found. Explore YESBE Technologies industry solutions for healthcare, retail, education, finance, logistics and manufacturing businesses today.",
-  caseStudyNotFound: "Case study not found. Browse YESBE Technologies success stories in AI, ERP, Power BI, SEO, automation, ecommerce and custom software delivery today now.",
+  caseStudyNotFound: "Project not found. Browse YESBE Technologies technology projects across web development, ERP, AI, automation, analytics and SEO.",
 } as const;
 
 export const SOLUTION_SEO_DESCRIPTIONS: Record<string, string> = {
@@ -135,25 +135,26 @@ export const INDUSTRY_SEO_DESCRIPTIONS: Record<string, string> = {
 };
 
 export const CASE_STUDY_SEO_DESCRIPTIONS: Record<string, string> = {
-  "fashion-fusion": "E-Commerce platform case study showing how YESBE Technologies improved online sales, inventory, checkout and order management for a fashion brand today.",
-  "restaurant-qr-ordering": "QR ordering system case study showing how YESBE Technologies digitized restaurant menus, orders, kitchen workflows and customer experience for growth.",
-  "library-management": "Library management case study showing how YESBE Technologies automated cataloging, borrowing, returns, reports and student access workflows securely now.",
-  "business-portfolio": "Business portfolio website case study showing how YESBE Technologies improved brand trust, service visibility, SEO and inbound lead generation online.",
-  "ai-business-assistant": "AI business assistant case study showing how YESBE Technologies used automation and intelligent workflows to improve decisions and productivity fast today.",
-  "erp-management": "ERP management system case study showing how YESBE Technologies unified operations, inventory, finance, reporting and business workflows for growth today.",
-  "powerbi-dashboard": "Power BI dashboard case study showing how YESBE Technologies converted sales data into real-time KPIs, reports and actionable business insights today.",
-  "seo-digital-growth": "SEO digital growth case study showing how YESBE Technologies improved organic visibility, search rankings, traffic and qualified business leads today.",
-  "business-automation": "Automation platform case study showing how YESBE Technologies reduced manual work, connected workflows and improved operational efficiency for growth.",
+  "fashion-fusion": "E-commerce platform project by YESBE Technologies covering product catalogue, cart, checkout, inventory and order management for a retail brand.",
+  "restaurant-qr-ordering": "QR ordering project by YESBE Technologies covering digital menus, table ordering, a real-time kitchen queue and a sales dashboard for restaurants.",
+  "library-management": "Library management system project by YESBE Technologies covering catalogue search, barcode issue and return, fine calculation and reporting.",
+  "business-portfolio": "Business website project by YESBE Technologies covering responsive pages, service detail pages, lead capture forms and technical SEO foundations.",
+  "ai-business-assistant": "RAG-based AI assistant project by YESBE Technologies covering document ingestion, a vector index, source-linked answers and an admin panel for managing documents.",
+  "erp-management": "Custom ERP project by YESBE Technologies covering inventory, employee records, billing, purchase orders, role-based access and reporting.",
+  "powerbi-dashboard": "Power BI dashboard project by YESBE Technologies covering data modelling, DAX measures, ETL pipelines, scheduled refresh and role-based access.",
+  "seo-digital-growth": "SEO project by YESBE Technologies covering technical audits, on-page optimisation, schema markup, content strategy and GEO and AEO structuring.",
+  "business-automation": "Business automation project by YESBE Technologies covering a visual workflow builder, approval chains, notifications and reporting.",
 };
 
+export function getCaseStudySeoDescription(slug: string, fallbackTitle: string) {
+  return CASE_STUDY_SEO_DESCRIPTIONS[slug] ?? `${fallbackTitle} project from YESBE Technologies showing the scope, architecture and features built for a business requirement.`;
+}
+
 export function getSolutionSeoDescription(slug: string, fallbackTitle: string) {
-  return SOLUTION_SEO_DESCRIPTIONS[slug] ?? `${fallbackTitle} services from YESBE Technologies help businesses plan, build and scale reliable digital systems with expert implementation support.`;
+  return SOLUTION_SEO_DESCRIPTIONS[slug] ?? `${fallbackTitle} from YESBE Technologies — scope, approach, technology and typical project shape for teams evaluating this service.`;
 }
 
 export function getIndustrySeoDescription(slug: string, fallbackTitle: string) {
   return INDUSTRY_SEO_DESCRIPTIONS[slug] ?? `${fallbackTitle} technology solutions from YESBE Technologies help organizations digitize operations, automate workflows and grow with modern systems.`;
 }
 
-export function getCaseStudySeoDescription(slug: string, fallbackTitle: string) {
-  return CASE_STUDY_SEO_DESCRIPTIONS[slug] ?? `${fallbackTitle} case study from YESBE Technologies shows practical software, automation and analytics results delivered for business growth.`;
-}

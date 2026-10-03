@@ -429,7 +429,7 @@ export function CategoryPage() {
               return (
                 <Link
                   key={relCat.slug}
-                  to={`/insights/${relCat.slug}`}
+                  to={`/insights/category/${relCat.slug}`}
                   className="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
                 >
                   <div>

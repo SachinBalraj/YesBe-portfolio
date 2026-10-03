@@ -75,7 +75,7 @@ export interface SolutionDetail {
   process: { step: string; description: string }[];
   technologies: { name: string; description: string }[];
   whyYESBE: { title: string; description: string }[];
-  caseStudy: { title: string; outcome: string; metric: string };
+  exampleProject: { title: string; scope: string; focus: string };
   faq: { question: string; answer: string }[];
   relatedSolutions: string[];
 }
@@ -93,13 +93,13 @@ export const solutions: SolutionDetail[] = [
     icon: Brain,
     category: "Artificial Intelligence",
     description:
-      "Enterprise-grade AI solutions that transform how your business operates, from intelligent automation to predictive analytics and custom machine learning models.",
+      "AI solutions built for real operational use, from intelligent automation to predictive analytics and custom machine learning models.",
     heroImage:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
     overview:
       "Our AI Solutions service delivers end-to-end artificial intelligence implementations tailored to your specific business needs. We design, develop, and deploy custom AI models, intelligent automation workflows, and predictive systems that drive measurable outcomes. From natural language processing to computer vision, our team leverages cutting-edge frameworks and deep domain expertise to solve complex challenges that traditional software cannot address.",
     whyNeeded:
-      "Businesses that fail to adopt AI risk falling behind competitors who leverage intelligent automation, data-driven decision making, and predictive capabilities. AI solutions reduce operational costs by 20-40%, improve accuracy in complex tasks, and unlock insights hidden in vast datasets — turning your data into a strategic advantage.",
+      "Competitors are already using automation, data-driven decisions and prediction to operate more cheaply and react faster. AI solutions help you cut repetitive work, improve accuracy on tasks that are hard to do by hand, and surface patterns in your data that are easy to miss — turning stored data into something you can act on.",
     challenges: [
       "Identifying the right AI use cases that deliver genuine ROI rather than hype-driven projects",
       "Ensuring data quality, availability, and governance for reliable model training and deployment",
@@ -145,7 +145,7 @@ export const solutions: SolutionDetail[] = [
       },
     ],
     benefits: [
-      "Reduce operational costs by 20-40% through intelligent process automation",
+      "Lower operational cost by automating the work that does not need a person",
       "Make faster, more accurate decisions powered by real-time data insights",
       "Scale operations without proportionally increasing headcount",
       "Gain competitive advantage through proprietary AI capabilities",
@@ -198,7 +198,7 @@ export const solutions: SolutionDetail[] = [
       {
         name: "OpenAI & Azure AI",
         description:
-          "Enterprise-grade AI APIs and cloud services for NLP, vision, and generative AI capabilities",
+          "AI APIs and cloud services for NLP, vision, and generative AI capabilities",
       },
       {
         name: "Apache Spark MLlib",
@@ -233,18 +233,19 @@ export const solutions: SolutionDetail[] = [
           "We embed fairness, transparency, and accountability into every model we build, ensuring responsible AI deployment.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Intelligent Document Processing for a Leading Insurance Provider",
-      outcome:
-        "Automated claims processing reduced manual review time by 75% and improved accuracy to 98.5%, enabling the company to handle 3x more claims with the same team.",
-      metric: "75% faster processing",
+        "Custom AI assistant for internal document search",
+      scope:
+        "A retrieval-augmented generation system that ingests your policies, manuals and reference material, then answers staff questions with citations back to the source document. Access is scoped by role, and unanswered questions are logged for review.",
+      focus:
+        "Grounded answers with source citations",
     },
     faq: [
       {
         question: "How long does a typical AI project take?",
         answer:
-          "Timelines vary based on complexity. A focused predictive analytics project might take 6-8 weeks, while a full custom AI platform can take 3-6 months. We always start with a discovery phase to provide accurate estimates.",
+          "It depends on scope and on how much of your data is already usable. A focused prototype is a matter of weeks; a production platform integrated with your systems takes considerably longer. We start with a discovery phase and give you an estimate based on your actual data and requirements before committing to a plan.",
       },
       {
         question: "Do we need clean data before starting?",
@@ -259,7 +260,7 @@ export const solutions: SolutionDetail[] = [
       {
         question: "How do you handle data privacy and security?",
         answer:
-          "We follow enterprise-grade security practices including data encryption, access controls, and compliance with GDPR, HIPAA, and other relevant regulations. We can deploy models on-premise or in your private cloud.",
+          "We apply recognised security practices including data encryption, access controls, and compliance with GDPR, HIPAA, and other relevant regulations. We can deploy models on-premise or in your private cloud.",
       },
     ],
     relatedSolutions: ["data-analytics", "business-automation", "it-consulting"],
@@ -279,7 +280,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our AI Chatbots service builds sophisticated conversational agents that understand context, learn from interactions, and deliver human-like conversations at scale. Powered by advanced large language models and custom training data, our chatbots handle customer inquiries, qualify leads, process orders, and provide support across web, mobile, and messaging platforms. We go beyond simple rule-based bots to create truly intelligent conversational experiences.",
     whyNeeded:
-      "Customer expectations have shifted — they demand instant, accurate responses around the clock. AI chatbots reduce support costs by up to 60%, handle unlimited concurrent conversations, and maintain consistent quality 24/7. Businesses that deploy intelligent chatbots see 35% higher customer satisfaction scores and 50% faster response times.",
+      "Customers expect a quick, accurate answer whenever they ask, and that expectation has changed how support has to work. A well-built chatbot answers common questions immediately, handles any number of conversations at once, and keeps response quality consistent — so your team only deals with the questions that genuinely need a person.",
     challenges: [
       "Creating chatbots that understand nuanced queries and maintain context across long conversations",
       "Seamlessly handing off complex issues to human agents without frustrating customers",
@@ -325,7 +326,7 @@ export const solutions: SolutionDetail[] = [
       },
     ],
     benefits: [
-      "Provide instant 24/7 support without increasing support staff",
+      "Answer common questions at any hour without adding support headcount",
       "Handle unlimited concurrent conversations simultaneously",
       "Reduce average response time from hours to seconds",
       "Capture and qualify leads automatically around the clock",
@@ -413,18 +414,19 @@ export const solutions: SolutionDetail[] = [
           "We don't just launch and leave — ongoing analytics and model refinement keep your chatbot improving.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "AI Customer Service Bot for a SaaS Platform Serving 50K+ Users",
-      outcome:
-        "Reduced support ticket volume by 62% while maintaining a 94% customer satisfaction rating. The bot resolved common issues in under 30 seconds on average.",
-      metric: "62% ticket reduction",
+        "Website chat assistant with human handover",
+      scope:
+        "A chat assistant trained on your services, pricing and FAQs, embedded on your website. It qualifies enquiries, captures contact details, and hands the conversation to a person when the question falls outside its scope.",
+      focus:
+        "24/7 first response with human handover",
     },
     faq: [
       {
         question: "How accurate are AI chatbots compared to human agents?",
         answer:
-          "Modern AI chatbots trained on your specific knowledge base can achieve 90-95% accuracy for common inquiries. They excel at structured questions and tasks, with intelligent escalation for complex scenarios requiring human judgment.",
+          "Chatbots trained on your own knowledge base handle structured questions well. Accuracy depends on how complete and current that content is, so we review unanswered questions and extend the knowledge base over time.",
       },
       {
         question: "Can the chatbot learn from conversations over time?",
@@ -439,7 +441,7 @@ export const solutions: SolutionDetail[] = [
       {
         question: "How long does it take to build a custom chatbot?",
         answer:
-          "A focused chatbot for specific use cases can be launched in 4-6 weeks. More complex implementations with multiple integrations and extensive knowledge bases typically take 8-12 weeks.",
+          "A focused chatbot for one clear use case is quicker to deliver than one that spans several systems. We give you a timeline for your specific scope after the discovery call.",
       },
     ],
     relatedSolutions: ["ai-solutions", "digital-transformation", "business-automation"],
@@ -459,7 +461,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our ERP Systems service delivers comprehensive enterprise resource planning solutions that connect every department in your organization. We design, customize, and implement ERP platforms that streamline operations, provide real-time visibility into business performance, and eliminate data silos. From finance and HR to supply chain and manufacturing, we build ERP systems that scale with your growth and adapt to your unique processes.",
     whyNeeded:
-      "Disconnected systems create inefficiency, data inconsistencies, and blind spots that cost businesses 20-30% in operational waste. A unified ERP system provides a single source of truth, automates cross-departmental workflows, and delivers real-time insights that enable faster, smarter decisions across your entire organization.",
+      "Disconnected systems create duplicated data entry, inconsistencies between departments, and blind spots nobody notices until they cause a problem. A unified ERP provides a single source of truth, automates cross-departmental hand-offs, and gives current insight so decisions are made on the same set of numbers.",
     challenges: [
       "Migrating data from legacy systems while maintaining data integrity and business continuity",
       "Balancing out-of-the-box ERP functionality with necessary customizations for unique business processes",
@@ -558,7 +560,7 @@ export const solutions: SolutionDetail[] = [
       {
         name: "SAP Business One",
         description:
-          "Enterprise-grade ERP platform for mid-market businesses with comprehensive functionality and scalability",
+          "A configurable ERP platform for mid-market businesses, with functionality that scales as you grow",
       },
       {
         name: "Microsoft Dynamics 365",
@@ -593,18 +595,19 @@ export const solutions: SolutionDetail[] = [
           "Pre-built configurations and best practices for manufacturing, retail, services, and distribution industries.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Custom ERP Implementation for a Multi-Location Manufacturing Company",
-      outcome:
-        "Unified 5 factory locations onto a single ERP platform, reducing inventory discrepancies by 90% and cutting month-end closing from 12 days to 3 days.",
-      metric: "90% less inventory errors",
+        "Operations ERP for a multi-branch service business",
+      scope:
+        "A modular ERP covering customer records, job tracking, inventory and invoicing, built around how your team already works rather than a generic template. Role-based access and audit trails are included from the start.",
+      focus:
+        "One system across sales, stock and billing",
     },
     faq: [
       {
         question: "How long does an ERP implementation take?",
         answer:
-          "Timeline depends on complexity. A single-module implementation for a small business takes 3-4 months. A full multi-module ERP for a mid-market company typically takes 6-12 months.",
+          "Timeline depends on how many modules you need and how ready your data and processes are. A single-module implementation and a full multi-module ERP are very different projects. We scope and estimate yours before committing.",
       },
       {
         question: "Should we choose cloud or on-premise ERP?",
@@ -643,9 +646,9 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our Website Development service creates custom, high-performance websites that serve as powerful business assets. We build responsive, SEO-optimized sites using modern frameworks like Next.js and React that load in under 2 seconds, convert visitors into customers, and scale seamlessly. From corporate sites and landing pages to complex content platforms, we deliver websites that look exceptional and perform even better.",
     whyNeeded:
-      "Your website is your digital storefront — first impressions happen in 0.05 seconds. 53% of visitors leave sites that take over 3 seconds to load. A professionally built website improves search rankings, builds trust, captures leads, and drives revenue. Poor website performance costs businesses thousands in lost opportunities every month.",
+      "Your website is your digital storefront, and visitors decide quickly whether to stay. Slow pages, unclear messaging and a hard enquiry path all lose you business before anyone gets in touch. A professionally built website loads quickly, reads clearly, works on every device, and makes contacting you straightforward.",
     challenges: [
-      "Achieving sub-2-second load times while maintaining rich visual experiences and functionality",
+      "Achieving fast load times while maintaining rich visual experiences and functionality",
       "Building truly responsive designs that provide optimal experiences across all device sizes",
       "Ensuring SEO best practices are implemented in the architecture, not just bolted on afterward",
       "Creating websites that balance stunning design with conversion-focused user experience",
@@ -777,18 +780,19 @@ export const solutions: SolutionDetail[] = [
           "We use modern, maintainable technologies that won't become obsolete, ensuring your website investment lasts for years.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Corporate Website Redesign for a B2B Technology Company",
-      outcome:
-        "Redesigned website achieved 98 Lighthouse performance score, reduced load time from 7.2s to 1.4s, and increased organic traffic by 145% within 6 months.",
-      metric: "145% more organic traffic",
+        "Marketing website rebuild for a B2B services firm",
+      scope:
+        "A redesign focused on clarity and conversion: service pages that explain what you do and who it is for, an enquiry flow that is short on mobile, and a content structure that search engines can crawl.",
+      focus:
+        "Clear service pages and simpler enquiries",
     },
     faq: [
       {
         question: "How long does it take to build a website?",
         answer:
-          "A typical business website takes 4-8 weeks from kickoff to launch. More complex sites with custom features, extensive content, or e-commerce functionality may take 8-12 weeks.",
+          "A content-led marketing site and a site with custom functionality or e-commerce are different sizes of project. We confirm scope, content responsibilities and a launch date at kickoff.",
       },
       {
         question: "Will my website rank on Google?",
@@ -957,12 +961,13 @@ export const solutions: SolutionDetail[] = [
           "We build web apps for the long haul — ongoing support, feature evolution, and scaling assistance beyond launch.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Custom SaaS Platform for a Healthcare Scheduling Startup",
-      outcome:
-          "Built a complete appointment management platform handling 10,000+ daily bookings with real-time availability, automated reminders, and payment processing.",
-      metric: "10K+ daily bookings",
+        "Customer portal for account and job tracking",
+      scope:
+        "A secure web application where customers can log in to review accounts, submit requests, download documents and follow progress, with notifications for status changes.",
+      focus:
+        "Self-service account access",
     },
     faq: [
       {
@@ -1003,7 +1008,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our E-Commerce service builds online stores that convert browsers into buyers. We create custom e-commerce solutions and optimize existing platforms like Shopify and WooCommerce to maximize revenue. From product catalogs and shopping carts to payment processing and inventory management, we deliver complete e-commerce experiences that are fast, secure, and designed to drive sales growth.",
     whyNeeded:
-      "E-commerce is projected to reach $8.1 trillion by 2026. A poorly optimized store loses 69% of carts to abandonment. Custom e-commerce solutions with optimized checkout flows, personalized experiences, and robust backend operations can increase conversion rates by 35% and average order value by 20%, directly impacting your bottom line.",
+      "A store that is slow, hard to navigate, or confusing at checkout will lose customers who were already ready to buy. Custom e-commerce work focuses on the checkout path, the product experience and reliable order handling — the parts that decide whether a visit turns into an order.",
     challenges: [
       "Reducing cart abandonment through optimized checkout flows and trust-building elements",
       "Managing complex product catalogs with variants, bundles, subscriptions, and digital products",
@@ -1137,12 +1142,13 @@ export const solutions: SolutionDetail[] = [
           "Beyond development, we advise on UX strategy, conversion optimization, and technical SEO for e-commerce.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Shopify Plus Migration for a D2C Fashion Brand Processing $2M+ Annually",
-      outcome:
-        "Migrated from WooCommerce to Shopify Plus, resulting in 47% faster page loads, 28% increase in conversion rate, and 35% reduction in cart abandonment.",
-      metric: "28% conversion increase",
+        "Direct-to-consumer storefront with online payments",
+      scope:
+        "A storefront with catalogue management, search and filtering, cart and checkout, payment gateway integration, order tracking and an admin area for stock and orders.",
+      focus:
+        "Catalogue to fulfilled order",
     },
     faq: [
       {
@@ -1183,7 +1189,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our Business Automation service identifies, designs, and implements automated workflows that transform how your business operates. We analyze your manual processes, design optimized automated workflows, and deploy solutions using industry-leading tools and custom integrations. From simple task automation to complex multi-step business processes, we eliminate inefficiency and human error while dramatically increasing throughput.",
     whyNeeded:
-      "Knowledge workers spend 60% of their time on tasks that could be automated — data entry, approvals, report generation, and notifications. Business automation reduces operational costs by 25-50%, eliminates human error, accelerates process completion by 10x, and allows your team to focus on strategic work that drives growth instead of repetitive manual tasks.",
+      "A large share of knowledge work is data entry, approvals, report generation and chasing notifications — work that is repetitive, error-prone and easy to automate. Business automation moves those tasks to software, so your team spends its time on judgement and problem-solving instead of rekeying the same information.",
     challenges: [
       "Identifying the highest-impact automation opportunities among dozens of potential candidates",
       "Integrating automation across multiple disconnected systems without creating new bottlenecks",
@@ -1229,9 +1235,9 @@ export const solutions: SolutionDetail[] = [
       },
     ],
     benefits: [
-      "Eliminate repetitive manual tasks and reduce human error by up to 99%",
-      "Process tasks 10x faster with automated workflows running 24/7",
-      "Reduce operational costs by 25-50% through intelligent automation",
+      "Take repetitive manual tasks off the team and cut the errors they cause",
+      "Run recurring workflows continuously instead of in batches",
+      "Reduce operational cost by automating repetitive processes",
       "Improve compliance with automated audit trails and process documentation",
       "Free your team to focus on strategic, creative, and high-value activities",
       "Scale operations without proportional headcount increases",
@@ -1317,12 +1323,13 @@ export const solutions: SolutionDetail[] = [
           "Every automation project includes time-tracking and cost-saving metrics so you can see the exact ROI of your investment.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "End-to-End Sales Process Automation for a B2B Services Company",
-      outcome:
-          "Automated lead capture, qualification, proposal generation, and contract signing reduced average deal cycle from 21 days to 8 days while improving follow-up consistency.",
-      metric: "62% faster deal cycles",
+        "Approval and notification workflow automation",
+      scope:
+        "Replacing spreadsheet and email-based approvals with tracked workflows. Each step is assigned, timed and auditable, with reminders for pending items and a dashboard for anything overdue.",
+      focus:
+        "Fewer manual follow-ups",
     },
     faq: [
       {
@@ -1338,7 +1345,7 @@ export const solutions: SolutionDetail[] = [
       {
         question: "How long does automation implementation take?",
         answer:
-          "Simple automations like email notifications or data sync can be set up in days. Complex multi-system workflows typically take 2-4 weeks. We start with quick wins that deliver immediate value.",
+          "Simple automations such as notifications or a single data sync are quick to set up. Multi-system workflows need proper error handling and testing first. We start with the quickest win and build from there.",
       },
       {
         question: "What happens when an automation fails?",
@@ -1363,7 +1370,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our Data Analytics service turns your data into your most valuable strategic asset. We design and implement end-to-end analytics solutions — from data warehousing and ETL pipelines to interactive dashboards and predictive models. Whether you need executive dashboards, operational metrics, or customer behavior analysis, we deliver clear, actionable insights that help you make faster, data-driven decisions.",
     whyNeeded:
-      "Organizations that leverage data-driven decision making are 23x more likely to acquire customers and 6x more likely to retain them. Yet 73% of enterprise data goes unused for analytics. Our service helps you harness this untapped potential to identify opportunities, optimize operations, and predict trends before competitors.",
+      "Most businesses collect far more data than they analyse, so decisions end up based on opinion and habit. Analytics turns that stored data into something you can act on — identifying where the real opportunities are, which processes are actually costing you, and what is likely to happen next.",
     challenges: [
       "Consolidating data from disparate sources into a unified, trustworthy data foundation",
       "Building dashboards that provide actionable insights rather than overwhelming with vanity metrics",
@@ -1497,18 +1504,19 @@ export const solutions: SolutionDetail[] = [
           "Our data infrastructure grows with your needs — from initial dashboards to advanced ML-powered analytics.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Enterprise Analytics Platform for a Retail Chain with 200+ Locations",
-      outcome:
-        "Built a unified analytics platform consolidating POS, inventory, and customer data across 200 stores, enabling real-time performance monitoring and predictive demand forecasting with 92% accuracy.",
-      metric: "92% forecast accuracy",
+        "Reporting layer over existing business systems",
+      scope:
+        "A reporting layer that pulls data from the systems you already run and standardises it into a single reporting model, so figures can be traced back to their source instead of retyped.",
+      focus:
+        "One definition per metric",
     },
     faq: [
       {
         question: "How quickly can we start seeing insights?",
         answer:
-          "With our phased approach, you'll have initial dashboards and insights within 3-4 weeks. More advanced analytics like predictive models typically build on this foundation over the following weeks.",
+          "We start with the reporting that answers your most immediate questions, then layer in more advanced analysis once the underlying data is reliable.",
       },
       {
         question: "What if our data is messy or scattered across systems?",
@@ -1545,14 +1553,14 @@ export const solutions: SolutionDetail[] = [
     heroImage:
       "https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=1200&h=600&fit=crop",
     overview:
-      "Our Power BI Dashboards service delivers professional Microsoft Power BI implementations that unlock the full potential of your data. From initial data modeling and DAX optimization to pixel-perfect report design and enterprise deployment, we create Power BI solutions that provide real-time visibility into every aspect of your business. Our certified Power BI experts build dashboards that executives love and teams actually use.",
+      "Our Power BI Dashboards service delivers professional Microsoft Power BI implementations that unlock the full potential of your data. From initial data modeling and DAX optimization to pixel-perfect report design and enterprise deployment, we create Power BI solutions that provide real-time visibility into every aspect of your business. We build dashboards that executives can read at a glance and teams keep using day to day.",
     whyNeeded:
-      "Power BI is the most widely adopted BI platform, but 70% of implementations underperform due to poor data modeling, confusing layouts, and lack of governance. Expert Power BI development ensures your dashboards are fast, accurate, visually compelling, and adopted by the teams who need them — turning your Microsoft investment into genuine business intelligence.",
+      "A Power BI licence does not by itself produce useful reporting. Dashboards underperform when the data model is weak, the layout is confusing, or there is no agreed definition of each metric. Good Power BI development addresses all three, so the reports are fast, accurate, readable, and actually used.",
     challenges: [
       "Designing data models that perform well at scale with millions of rows and complex relationships",
       "Optimizing DAX measures and queries for fast report rendering without slowing down source systems",
       "Creating intuitive layouts that different user roles can navigate without training or documentation",
-      "Establishing governance, security, and refresh schedules for enterprise-grade Power BI deployments",
+      "Establishing governance, security, and refresh schedules for Power BI deployments",
     ],
     features: [
       {
@@ -1596,8 +1604,8 @@ export const solutions: SolutionDetail[] = [
       "Get a single source of truth with optimized data models and governance",
       "Reduce report generation time from hours to seconds with automated dashboards",
       "Enable self-service analytics so every team member can explore data independently",
-      "Ensure data security with enterprise-grade row-level security and access controls",
-      "Maximize ROI on your Microsoft 365 and Power Platform investment",
+      "Protect data with row-level security and access controls",
+      "Get usable value from the Microsoft 365 and Power Platform licences you already pay for",
       "Access insights anywhere with mobile-optimized Power BI dashboards",
     ],
     process: [
@@ -1661,9 +1669,9 @@ export const solutions: SolutionDetail[] = [
     ],
     whyYESBE: [
       {
-        title: "Certified Power BI Experts",
+        title: "Hands-On Power BI Development",
         description:
-          "Our team holds Microsoft Power BI certifications and has built hundreds of dashboards across industries.",
+          "We design and build Power BI reports directly, covering data modelling, DAX measures and report layout.",
       },
       {
         title: "Performance Optimization",
@@ -1681,23 +1689,24 @@ export const solutions: SolutionDetail[] = [
           "We implement proper governance frameworks including workspaces, deployment pipelines, and security policies.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Power BI Dashboard Suite for a Financial Services Firm",
-      outcome:
-        "Created 25 interconnected Power BI dashboards covering financial performance, risk metrics, and compliance reporting, reducing monthly reporting time from 5 days to 4 hours.",
-      metric: "96% faster reporting",
+        "Management dashboard with scheduled report delivery",
+      scope:
+        "An interactive Power BI model covering your core KPIs, with drill-down from summary to individual records and scheduled report delivery to the people who need it.",
+      focus:
+        "KPIs with drill-down to detail",
     },
     faq: [
       {
         question: "How many dashboards can you build?",
         answer:
-          "We typically start with a core set of 3-5 high-impact dashboards and expand from there. The number depends on your data maturity and reporting needs — some clients need 5 dashboards, others need 50+.",
+          "We start with the dashboards that answer the questions your leadership asks most, then expand from there. The right number depends on your data maturity and who needs to use them.",
       },
       {
         question: "Can you connect Power BI to our specific data sources?",
         answer:
-          "Power BI connects to 100+ data sources natively. We've connected to SQL Server, Oracle, Salesforce, SAP, Excel, Google Analytics, and custom APIs. If it has data, we can connect it.",
+          "Power BI connects to a wide range of databases, files and services natively, and custom APIs can be connected through connectors we build. We confirm connectivity during the data assessment.",
       },
       {
         question: "How often should dashboards refresh?",
@@ -1721,13 +1730,13 @@ export const solutions: SolutionDetail[] = [
     icon: Cloud,
     category: "Infrastructure",
     description:
-      "Cloud infrastructure design, migration, and DevOps automation that delivers 99.99% uptime, infinite scalability, and deployment pipelines that ship in minutes.",
+      "Cloud infrastructure design, migration, and DevOps automation that give you defined availability targets, room to scale, and deployment pipelines you can run without drama.",
     heroImage:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop",
     overview:
-      "Our Cloud & DevOps service architects, builds, and manages cloud infrastructure that powers your applications with enterprise-grade reliability and performance. We design infrastructure-as-code, implement CI/CD pipelines, and establish DevOps practices that enable your team to deploy confidently multiple times per day. From initial cloud migration to ongoing infrastructure management, we ensure your systems are secure, scalable, and always available.",
+      "Our Cloud & DevOps service architects, builds, and manages cloud infrastructure that powers your applications with documented reliability and performance. We design infrastructure-as-code, implement CI/CD pipelines, and establish DevOps practices that enable your team to deploy confidently multiple times per day. From initial cloud migration to ongoing infrastructure management, we ensure your systems are secure, scalable, and always available.",
     whyNeeded:
-      "Downtime costs businesses $5,600 per minute on average. Manual deployments introduce errors, slow release cycles, and create fear around shipping changes. Cloud-native architectures with proper DevOps practices enable 99.99% uptime, 200x more frequent deployments, and 24x faster recovery from failures — transforming your infrastructure from a bottleneck into a competitive advantage.",
+      "Manual deployments introduce errors, slow release cycles, and make teams afraid to ship. Proper DevOps practice — automated pipelines, tested releases, infrastructure defined as code, and monitoring with alerting — shortens the gap between an idea and a live change, and makes recovery from failure routine rather than an emergency.",
     challenges: [
       "Migrating legacy applications to cloud without disrupting business operations or data integrity",
       "Designing cost-effective architectures that scale with demand without runaway cloud bills",
@@ -1773,10 +1782,10 @@ export const solutions: SolutionDetail[] = [
       },
     ],
     benefits: [
-      "Achieve 99.99% uptime with redundant, self-healing cloud architectures",
+      "Design for availability with redundancy, monitoring and automatic recovery",
       "Deploy multiple times per day with confidence using automated CI/CD pipelines",
       "Scale infrastructure automatically to handle traffic spikes without manual intervention",
-      "Reduce cloud costs by 30-50% through right-sizing, reserved instances, and optimization",
+      "Reduce cloud cost through right-sizing, reserved capacity and removing unused resources",
       "Recover from incidents in minutes instead of hours with automated failover and rollback",
       "Maintain complete audit trail of infrastructure changes for compliance requirements",
     ],
@@ -1861,12 +1870,13 @@ export const solutions: SolutionDetail[] = [
           "We don't just build and leave. Our managed services ensure your infrastructure stays performant, secure, and cost-effective.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Cloud Migration for a Financial Platform Processing 1M+ Daily Transactions",
-      outcome:
-        "Migrated from on-premise data center to AWS, achieving 99.995% uptime, 40% infrastructure cost reduction, and deployment frequency from monthly to multiple times daily.",
-      metric: "40% cost reduction",
+        "CI/CD pipeline and staging environments",
+      scope:
+        "Automated build, test and deployment pipelines with separate development, staging and production environments, infrastructure defined as code, and monitoring with alerting in place.",
+      focus:
+        "Repeatable, observable deployments",
     },
     faq: [
       {
@@ -1882,7 +1892,7 @@ export const solutions: SolutionDetail[] = [
       {
         question: "Can you reduce our current cloud costs?",
         answer:
-          "We frequently save clients 30-50% on cloud costs through right-sizing, Reserved Instance planning, Spot instances, architectural optimization, and eliminating unused resources. We start with a cost audit to identify immediate savings.",
+          "Cloud cost is usually a matter of right-sizing, commitment planning and removing resources nobody is using. We start with a cost audit so you can see where the money is going before anything is changed.",
       },
       {
         question: "Do you offer managed infrastructure services?",
@@ -1907,7 +1917,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our Database Management service ensures your most critical asset — your data — is properly designed, optimized, and managed for peak performance. We handle database architecture, performance tuning, migration, backup strategies, and ongoing administration for SQL, NoSQL, and hybrid database environments. Whether you need a new database designed from scratch or your existing databases optimized for better performance, our experts deliver reliable, scalable data infrastructure.",
     whyNeeded:
-      "Database performance directly impacts application speed and user experience. Poorly designed databases cause slow queries, data inconsistencies, and scalability bottlenecks. 40% of application downtime is database-related. Expert database management ensures your data layer performs optimally, remains secure, scales seamlessly, and is protected against data loss.",
+      "Database performance has a direct effect on how fast your application feels. Poorly designed schemas produce slow queries, data inconsistencies and problems that only appear once volume grows. Careful database design, indexing and maintenance keep the data layer responsive, secure, and able to grow with the business.",
     challenges: [
       "Optimizing query performance for complex joins and aggregations across large datasets",
       "Planning and executing zero-downtime database migrations with data integrity validation",
@@ -2041,12 +2051,13 @@ export const solutions: SolutionDetail[] = [
           "We monitor and optimize databases proactively, addressing performance issues before they impact users.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Database Migration and Optimization for a Healthcare Platform",
-      outcome:
-        "Migrated from MySQL to PostgreSQL with schema optimization, reducing average query time from 340ms to 12ms and supporting 5x growth in patient records without performance degradation.",
-      metric: "96% faster queries",
+        "Data platform migration and normalisation",
+      scope:
+        "Consolidating spreadsheets and legacy databases into a normalised relational model, with migration scripts, validation rules and backup and restore procedures.",
+      focus:
+        "Clean, validated data model",
     },
     faq: [
       {
@@ -2087,7 +2098,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our API Development service designs, builds, and documents APIs that serve as the backbone of modern software systems. We create RESTful and GraphQL APIs that are secure, performant, well-documented, and built to scale. Whether you need APIs to power your mobile app, connect with third-party services, or expose your data to partners, we deliver interfaces that developers love to use and that stand up to production demands.",
     whyNeeded:
-      "APIs are the connective tissue of modern software — 83% of web traffic is API-driven. Poorly designed APIs cause integration nightmares, security vulnerabilities, and scalability limitations. Well-architected APIs accelerate development, enable partner ecosystems, and provide the foundation for mobile, web, and IoT applications to deliver seamless experiences.",
+      "APIs are how modern software connects, and most of what your team uses talks to everything else through them. Poorly designed APIs create integration problems, security gaps and limits that surface under load. A properly designed, documented API speeds up future development and gives mobile, web and partner integrations a stable foundation.",
     challenges: [
       "Designing intuitive API interfaces that developers find easy to understand and integrate with",
       "Ensuring API security through authentication, rate limiting, and protection against common attack vectors",
@@ -2221,12 +2232,13 @@ export const solutions: SolutionDetail[] = [
           "Interactive documentation with code examples in multiple languages ensures fast partner and developer adoption.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Partner API Platform for a FinTech Company",
-      outcome:
-        "Built a comprehensive partner API platform enabling 50+ third-party integrations, processing 2M+ API calls daily with 99.99% uptime and average response time under 100ms.",
-      metric: "2M+ daily API calls",
+        "Integration layer between business systems",
+      scope:
+        "REST APIs and integration jobs that connect your tools so information moves between them automatically, with authentication, error handling and retry logic rather than manual exports.",
+      focus:
+        "Systems that talk to each other",
     },
     faq: [
       {
@@ -2237,12 +2249,12 @@ export const solutions: SolutionDetail[] = [
       {
         question: "How do you handle API versioning?",
         answer:
-          "We typically use URL-based versioning (/api/v1/) for simplicity and backward compatibility. We also implement deprecation notices and migration support to help consumers transition between versions smoothly.",
+          "We typically use URL-based versioning for simplicity and backward compatibility, with deprecation notices and migration support so existing consumers can move across versions without breaking.",
       },
       {
         question: "How do you secure public APIs?",
         answer:
-          "We implement multiple security layers: OAuth 2.0 or API key authentication, rate limiting per consumer, input validation, HTTPS enforcement, CORS policies, and regular security audits against OWASP API Security Top 10.",
+          "We implement multiple security layers: OAuth 2.0 or API key authentication, rate limiting per consumer, input validation, HTTPS enforcement and CORS policies, and we review the design against the OWASP API Security Top 10.",
       },
       {
         question: "Can you help build a developer portal for our API?",
@@ -2267,7 +2279,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our SEO service delivers comprehensive search engine optimization that drives sustainable organic growth. We combine technical SEO, content strategy, and authority building to improve your search rankings and drive qualified traffic. Our approach goes beyond rankings — we focus on organic traffic that converts into revenue, with transparent reporting that shows the direct business impact of every optimization.",
     whyNeeded:
-      "Organic search drives 53% of all website traffic and generates 1000%+ more traffic than social media. The first page of Google captures 71% of clicks, while the top 3 results get 54% of all traffic. Without strategic SEO, your business is invisible to the majority of potential customers actively searching for your products and services.",
+      "Most people searching for what you sell only ever see the first page of results, so being absent from that page means being absent from the consideration set. SEO work — technical fixes, clear service pages and useful content — is how a business becomes findable by people already looking to buy.",
     challenges: [
       "Navigating constant Google algorithm updates while maintaining and improving rankings",
       "Building topical authority in competitive niches with established competitors",
@@ -2313,8 +2325,8 @@ export const solutions: SolutionDetail[] = [
       },
     ],
     benefits: [
-      "Increase organic traffic by 100-300% within 6-12 months of consistent optimization",
-      "Rank on page 1 of Google for high-intent keywords that drive qualified leads",
+      "Build sustainable organic growth through technical fixes and sustained content work",
+      "Target the high-intent keywords your buyers actually search for",
       "Build sustainable organic visibility that compounds over time without ongoing ad spend",
       "Improve conversion rates with SEO-optimized landing pages and content",
       "Gain competitive advantage through higher search visibility than competitors",
@@ -2401,28 +2413,29 @@ export const solutions: SolutionDetail[] = [
           "We build sustainable SEO strategies that withstand algorithm updates because they focus on genuinely best practices.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "SEO Growth Strategy for a B2B SaaS Company",
-      outcome:
-        "Increased organic traffic by 340% in 12 months, ranked page 1 for 120+ target keywords, and grew organic-driven pipeline by 280% — making SEO their #1 lead channel.",
-      metric: "340% organic traffic growth",
+        "Technical SEO and content restructuring for a service site",
+      scope:
+        "Crawlability and indexation fixes, URL and metadata cleanup, internal link restructuring, page-speed work and content consolidation across duplicated pages.",
+      focus:
+        "Technical fixes, then content",
     },
     faq: [
       {
         question: "How long does SEO take to show results?",
         answer:
-          "SEO is a long-term strategy. Most clients see meaningful traffic improvements within 3-6 months, with significant results in 6-12 months. Technical fixes can show faster improvements, while content and authority building compound over time.",
+          "SEO is a long-term strategy and results take time to accumulate. Technical fixes often show up sooner; content and authority take longer to compound. We report on leading indicators in the meantime so progress is visible before traffic moves.",
       },
       {
-        question: "Do you guarantee #1 rankings?",
+        question: "Can you guarantee specific rankings?",
         answer:
-          "No reputable SEO agency can guarantee specific rankings because search algorithms are constantly changing. What we do guarantee is proven methodologies, transparent reporting, and measurable improvements in organic traffic and revenue.",
+          "No, and you should be cautious about anyone who says otherwise. Search algorithms change constantly and rankings depend on factors outside anyone's control, including competitor activity. What we commit to is a documented methodology, transparent reporting on the metrics we can measure, and honest advice about what is achievable for your site.",
       },
       {
         question: "How do you measure SEO ROI?",
         answer:
-          "We set up proper conversion tracking in Google Analytics 4 and tie organic traffic to business outcomes — leads, signups, and revenue. Our reports show exactly how much revenue organic search drives each month.",
+          "We set up conversion tracking in Google Analytics 4 and tie organic traffic to the outcomes that matter to you — leads, signups, revenue — so you can see what search is actually worth.",
       },
       {
         question: "Can SEO work alongside paid advertising?",
@@ -2447,7 +2460,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our GEO (Generative Engine Optimization) service prepares your brand for the future of search — where AI models like ChatGPT, Google Gemini, and Perplexity generate answers instead of listing links. We optimize your content, structured data, and online presence to ensure your brand is cited, recommended, and surfaced in AI-generated responses. GEO is the evolution of SEO for the AI era, and early adopters gain a massive competitive advantage.",
     whyNeeded:
-      "AI-powered search is rapidly replacing traditional search. 40% of queries now trigger AI-generated answers, and this number is growing monthly. Brands not optimized for AI models will become invisible as users shift from clicking links to asking AI questions. GEO ensures your business remains discoverable, cited, and recommended in the AI-first search landscape.",
+      "More searches are now answered by AI assistants rather than a list of links, and that share keeps growing. If an assistant cannot understand what your business actually does, it cannot recommend you. GEO makes your services and facts unambiguous and easy to quote, so you stay visible when people stop clicking and start asking.",
     challenges: [
       "Understanding how AI models select, cite, and prioritize content in their responses",
       "Optimizing content to be cited by LLMs without traditional ranking signals like backlinks",
@@ -2581,12 +2594,13 @@ export const solutions: SolutionDetail[] = [
           "We stay ahead of AI search trends so you're always prepared for the next shift in how people find information.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "GEO Optimization for a Healthcare Technology Company",
-      outcome:
-        "Achieved brand citations in 78% of relevant AI-generated healthcare queries, up from 12% before optimization, resulting in a 180% increase in AI-referred website traffic.",
-      metric: "78% AI citation rate",
+        "Generative engine optimisation for AI search visibility",
+      scope:
+        "Restructuring content so AI assistants can quote it accurately: clear factual claims, question-and-answer formatting, entity descriptions and structured data that identifies the business unambiguously.",
+      focus:
+        "Content that AI answers can cite",
     },
     faq: [
       {
@@ -2627,7 +2641,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our AEO (Answer Engine Optimization) service ensures your content becomes the direct answer users get from featured snippets, voice assistants like Siri and Alexa, and AI answer engines. We optimize your content structure, FAQ pages, and knowledge base to be selected as the authoritative answer to questions your audience asks. AEO captures position zero — the answer that appears above all search results.",
     whyNeeded:
-      "30% of all searches now show featured snippets, and 50% of voice search results come from featured snippets. When Siri, Alexa, or Google Assistant answers a question, they pull from optimized answer content. AEO ensures your brand provides those answers, establishing authority and capturing attention at the exact moment of user intent.",
+      "Voice assistants and AI answers pull their response from content that answers the question directly and unambiguously. AEO structures your pages around the questions people actually ask, so your business is the one that gets quoted at the moment someone is ready to act.",
     challenges: [
       "Structuring content to be selected as the definitive answer for voice and AI assistants",
       "Optimizing for conversational, long-tail queries that differ from traditional search patterns",
@@ -2761,12 +2775,13 @@ export const solutions: SolutionDetail[] = [
           "We've developed proprietary tracking methods for measuring answer engine performance across platforms.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "AEO Campaign for a Financial Advisory Firm",
-      outcome:
-        "Won featured snippets for 85+ financial advice queries and became the primary voice assistant response for key retirement planning questions, driving 3x more qualified leads.",
-      metric: "85+ featured snippets won",
+        "Answer engine optimisation for voice and AI search",
+      scope:
+        "Aligning service pages with the questions people actually ask, so your business appears in assistant, voice and featured-answer results rather than only traditional blue links.",
+      focus:
+        "Optimised for featured answers",
     },
     faq: [
       {
@@ -2782,12 +2797,12 @@ export const solutions: SolutionDetail[] = [
       {
         question: "How do you optimize for voice assistants?",
         answer:
-          "Voice optimization involves creating content that directly answers conversational questions, using natural language, providing concise answers (29 words is the average voice result length), and implementing proper schema markup that voice platforms reference.",
+          "Voice optimization means writing content that answers conversational questions directly, in natural language, with concise answers and the structured data voice platforms rely on.",
       },
       {
         question: "Can you guarantee featured snippets?",
         answer:
-          "We can't guarantee snippets as Google decides which content to feature, but our methodology significantly increases your chances. Our clients typically win 40-60% of targeted snippet positions within the first 6 months.",
+          "No. Search engines decide which content to feature, so no one outside the search engine can guarantee it. We can structure your pages so they are eligible for featured answers — clear definitions, direct question-and-answer formatting, and accurate structured data — and then track whether you are being selected.",
       },
     ],
     relatedSolutions: ["seo", "geo", "digital-marketing"],
@@ -2807,7 +2822,7 @@ export const solutions: SolutionDetail[] = [
     overview:
       "Our Digital Marketing service delivers integrated marketing strategies that drive real business results — not just impressions and clicks. We combine paid advertising, content marketing, social media, email marketing, and conversion rate optimization into cohesive campaigns that move prospects through the full funnel. Every campaign is measured against revenue metrics, ensuring your marketing investment delivers measurable ROI.",
     whyNeeded:
-      "Most businesses waste 40-60% of their marketing budget on ineffective channels and poorly optimized campaigns. Strategic digital marketing ensures every dollar works harder through precise targeting, compelling messaging, and continuous optimization. Companies with integrated digital marketing strategies see 3.3x more revenue growth than those with siloed approaches.",
+      "Marketing budgets usually underperform because channels are run separately, targeting is too broad, and results are never properly measured. Working the channels together — consistent message, shared tracking, and continuous testing against what actually converts — makes each pound of spend work harder.",
     challenges: [
       "Attributing revenue to specific marketing channels in a multi-touch, multi-device customer journey",
       "Standing out in increasingly crowded digital channels with rising advertising costs",
@@ -2941,18 +2956,19 @@ export const solutions: SolutionDetail[] = [
           "Our strategies coordinate across all channels for consistent messaging and compounding results, not siloed efforts.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Full-Funnel Marketing Strategy for a B2B SaaS Startup",
-      outcome:
-        "Built an integrated marketing engine generating 500+ MQLs per month, reducing CAC by 42%, and increasing marketing-sourced revenue from 15% to 45% of total pipeline.",
-      metric: "42% lower CAC",
+        "Campaign tracking and reporting foundation",
+      scope:
+        "Clean analytics and conversion tracking across paid and organic channels, with attribution you can audit and reporting that ties spend back to enquiries.",
+      focus:
+        "Reporting you can audit",
     },
     faq: [
       {
         question: "How much should we spend on digital marketing?",
         answer:
-          "Budget depends on your industry, growth goals, and competitive landscape. We typically recommend 10-20% of revenue for growth-stage companies. We'll help you allocate budget across channels for maximum ROI based on your specific situation.",
+          "Budget depends on your market, goals and what you are already spending. We work from your actual numbers to work out what is realistic, then allocate across channels based on what has performed for you.",
       },
       {
         question: "How quickly will we see results?",
@@ -2967,7 +2983,7 @@ export const solutions: SolutionDetail[] = [
       {
         question: "How do you measure marketing ROI?",
         answer:
-          "We set up end-to-end tracking from first touch to revenue, using GA4, CRM data, and attribution modeling. Our reports show cost per lead, cost per acquisition, customer lifetime value, and ROI by channel.",
+          "We set up end-to-end tracking using GA4 and your CRM data, so reports show cost per lead, cost per acquisition and return by channel rather than just clicks.",
       },
     ],
     relatedSolutions: ["seo", "aeo", "website-development"],
@@ -3121,12 +3137,13 @@ export const solutions: SolutionDetail[] = [
           "Regular demos, shared project boards, and open communication mean you always know exactly where your project stands.",
       },
     ],
-    caseStudy: {
+    exampleProject: {
       title:
-        "Custom Mobile App for a Logistics Company Managing 500+ Drivers",
-      outcome:
-        "Built a cross-platform mobile app for driver management, route optimization, and real-time delivery tracking, reducing delivery times by 28% and improving customer satisfaction scores by 40%.",
-      metric: "28% faster deliveries",
+        "Internal operations platform for a growing business",
+      scope:
+        "A tailored application replacing disconnected tools and manual spreadsheets, covering the workflows your team depends on, with role-based access and an audit trail on sensitive actions.",
+      focus:
+        "Built around your actual workflow",
     },
     faq: [
       {

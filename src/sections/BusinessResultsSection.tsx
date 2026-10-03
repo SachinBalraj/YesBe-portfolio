@@ -24,11 +24,11 @@ interface Result {
   outcomes: string[];
 }
 
-const results: Result[] = [
-  { service: "ERP System", outcomes: ["Reduce paperwork by 80%", "Improve inventory accuracy", "Better financial reporting", "Streamlined operations"] },
-  { service: "AI Chatbot", outcomes: ["24/7 customer support", "Instant query resolution", "Reduced support costs", "Higher customer satisfaction"] },
-  { service: "Business Website", outcomes: ["Increase online presence", "Generate qualified leads", "Build brand credibility", "Improve search rankings"] },
-  { service: "Power BI Dashboard", outcomes: ["Real-time decision making", "Automated report generation", "Identify revenue opportunities", "Track KPIs instantly"] },
+const scope: Result[] = [
+  { service: "ERP System", outcomes: ["Centralise business records in one place", "Structured inventory tracking", "Consolidated financial reporting", "Standardised internal processes"] },
+  { service: "AI Chatbot", outcomes: ["Round-the-clock query handling", "Consistent first-response answers", "Deflection of repetitive questions", "Escalation to human agents where needed"] },
+  { service: "Business Website", outcomes: ["A clear online presence for your services", "Enquiry and contact capture", "Credible brand presentation", "Search-friendly page structure"] },
+  { service: "Power BI Dashboard", outcomes: ["Refreshed reporting on connected data", "Reduced manual report preparation", "KPI visibility for stakeholders", "Drill-down into underlying records"] },
 ];
 
 export function BusinessResultsSection() {
@@ -36,7 +36,7 @@ export function BusinessResultsSection() {
     <section
       id="business-results"
       className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-12 lg:py-16"
-      aria-label="Business benefits and results — Increase sales, reduce manual work, automate processes, save costs"
+      aria-label="What our technology solutions are built to deliver — sales, automation, reporting, cost and engagement improvements"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Benefits */}
@@ -58,8 +58,8 @@ export function BusinessResultsSection() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
             >
-              Real Business{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Outcomes</span>
+              What Solutions{" "}
+              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Are Built To Deliver</span>
             </motion.h2>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -75,7 +75,7 @@ export function BusinessResultsSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
             >
-              Technology should solve real problems. Here's what each solution delivers.
+              Every engagement starts with a business problem. These are the outcomes each type of solution is designed for.
             </motion.p>
           </div>
 
@@ -109,13 +109,13 @@ export function BusinessResultsSection() {
               transition={{ duration: 0.5 }}
               className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl"
             >
-              Business Results by{" "}
+              Typical Scope by{" "}
               <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Service</span>
             </motion.h3>
           </div>
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {results.map((r, i) => (
+            {scope.map((r, i) => (
               <motion.div
                 key={r.service}
                 initial={{ opacity: 0, y: 20 }}

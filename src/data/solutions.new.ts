@@ -161,11 +161,13 @@ export const itConsulting: SolutionDetail = {
         "The assessment is a deliverable in its own right. It is useful to you whether or not any further project follows.",
     },
   ],
-  caseStudy: {
-    title: "Consolidated Overlapping Business Systems",
-    outcome:
-      "A growing services business had accumulated four separate systems for scheduling, invoicing, customer records and reporting. We audited all four, found substantial duplication in data entry, and produced a consolidation roadmap that removed redundant tooling and reduced monthly reconciliation work without interrupting operations.",
-    metric: "4 systems audited",
+  exampleProject: {
+    title:
+      "Technology discovery and roadmap engagement",
+    scope:
+      "We start by reviewing your current systems, processes and constraints, then document what is worth building, what should be left alone, and in what order. The output is a scoped roadmap with effort estimates and an honest view of the risks involved.",
+    focus:
+      "A roadmap before any build",
   },
   faq: [
     {
@@ -335,11 +337,13 @@ export const digitalTransformation: SolutionDetail = {
         "A process nobody adopts delivers nothing. Training, communication and feedback are planned alongside the technology from the start.",
     },
   ],
-  caseStudy: {
-    title: "Manual Operations to Connected Digital Workflow",
-    outcome:
-      "A business running orders, stock and invoicing from spreadsheets and paper forms commissioned an end-to-end digital workflow. We mapped the existing process, digitised order capture and stock control, integrated it with their existing accounts package, and phased staff adoption alongside each release so operations continued uninterrupted throughout.",
-    metric: "Paper-based to connected",
+  exampleProject: {
+    title:
+      "Phased legacy system modernisation",
+    scope:
+      "Migration planned in phases rather than a single cutover: integrate what is already working, replace what is genuinely blocking progress, and keep the business running while each phase goes live.",
+    focus:
+      "Modernise in phases, not big-bang",
   },
   faq: [
     {

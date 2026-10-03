@@ -1,9 +1,9 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  CheckCircle2, Clock, ArrowRight, ArrowLeft,
+  CheckCircle2, ArrowRight, ArrowLeft,
   ExternalLink, ChevronDown, Layers, Lightbulb, Target,
-  TrendingUp, MessageCircle, Phone,
+  ListChecks, MessageCircle, Phone,
 } from "lucide-react";
 import { useState, useCallback } from "react";
 import { useSEO } from "@/hooks/useSEO";
@@ -64,7 +64,7 @@ function RelatedProjects({ currentSlug }: { currentSlug: string }) {
 
   return (
     <div className="rounded-[24px] border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-8">
-      <SectionHeading icon={Layers}>Related Case Studies</SectionHeading>
+      <SectionHeading icon={Layers}>Related Projects</SectionHeading>
       <div className="grid gap-4 sm:grid-cols-3">
         {related.map((cs) => (
           <button
@@ -143,14 +143,14 @@ export function CaseStudyDetailPage() {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground">Case Study Not Found</h1>
-          <p className="mt-2 text-muted-foreground">The case study you're looking for doesn't exist.</p>
+          <h1 className="text-2xl font-bold text-foreground">Project Not Found</h1>
+          <p className="mt-2 text-muted-foreground">The project you're looking for doesn't exist.</p>
           <button
             onClick={() => navigate("/case-studies")}
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Case Studies
+            Back to Projects
           </button>
         </div>
       </div>
@@ -190,7 +190,7 @@ export function CaseStudyDetailPage() {
             className="max-w-4xl"
           >
             <motion.div variants={fadeInUp}>
-              <Breadcrumbs items={[{ label: "Case Studies", href: "/case-studies" }, { label: study.title }]} />
+              <Breadcrumbs items={[{ label: "Projects", href: "/case-studies" }, { label: study.title }]} />
             </motion.div>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-3 mb-4">
@@ -199,15 +199,11 @@ export function CaseStudyDetailPage() {
               </span>
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <span className="inline-block h-2 w-2 rounded-full bg-[#2563eb]" />
-                {study.clientType}
+                Built for {study.builtFor.toLowerCase()}
               </span>
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <Clock className="h-3.5 w-3.5" />
-                {study.duration}
-              </span>
-              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
-                {study.status}
+                <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
+                {study.label}
               </span>
             </motion.div>
 
@@ -247,7 +243,7 @@ export function CaseStudyDetailPage() {
           >
             <img
               src={study.image}
-              alt={`${study.title} — ${study.category} case study by YESBE Technologies`}
+              alt={`${study.title} — illustrative image for a ${study.category} project`}
               width={1200}
               height={600}
               loading="eager"
@@ -368,9 +364,9 @@ export function CaseStudyDetailPage() {
                 variants={fadeInUp}
                 className="rounded-[20px] border border-emerald-100 bg-emerald-50/50 p-6"
               >
-                <SectionHeading icon={TrendingUp}>Business Results</SectionHeading>
+                <SectionHeading icon={ListChecks}>What It Does</SectionHeading>
                 <ul className="space-y-2">
-                  {study.businessResult.map((r) => (
+                  {study.capabilities.map((r) => (
                     <li key={r} className="flex items-start gap-2">
                       <span className="mt-0.5 text-emerald-500">▸</span>
                       <span className="text-[13px] text-muted-foreground">{r}</span>
@@ -385,9 +381,9 @@ export function CaseStudyDetailPage() {
                 className="rounded-[20px] border border-white/40 bg-white p-6"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
               >
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Client Benefits</h3>
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Business Problems It Addresses</h3>
                 <ul className="space-y-2">
-                  {study.clientBenefits.map((b) => (
+                  {study.businessValue.map((b) => (
                     <li key={b} className="flex items-start gap-2">
                       <span className="mt-0.5 text-primary">✓</span>
                       <span className="text-[13px] text-muted-foreground">{b}</span>
@@ -509,7 +505,7 @@ export function CaseStudyDetailPage() {
               className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
             >
               <ArrowLeft className="h-4 w-4" />
-              View All Case Studies
+              View All Projects
             </button>
           </motion.div>
         </div>

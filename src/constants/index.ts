@@ -7,9 +7,9 @@ export const NAV_LINKS = [
 
 export const SITE_CONFIG = {
   name: "YESBE Technologies",
-  title: "AI, ERP, Web Development & Business Solutions",
+  title: "IT Consulting & Software Development",
   description:
-    "YESBE helps startups, SMEs, and enterprises with AI tools, ERP systems, web development, data analytics, cloud services, and search optimization.",
+    "YESBE Technologies is an IT consulting and software development company delivering web development, custom software, ERP, AI solutions, business automation and digital transformation.",
   email: "hello@yesbe.tech",
   phone: "9087795970",
   location: "Salem, Tamil Nadu, India",
@@ -87,7 +87,7 @@ export const BUSINESS_INFO = {
     url: "https://www.yesbe.tech",
     logo: "https://www.yesbe.tech/YBlogo.png",
     description:
-      "YESBE Technologies is an IT consulting and software development company providing IT consulting, custom software development, website development, AI solutions, business automation, digital transformation, ERP systems, cloud and search visibility services.",
+      "YESBE Technologies is an IT consulting and software development company providing IT consulting, web development, custom software development, ERP systems, business automation, digital transformation, AI solutions, cloud and SEO services.",
     foundingDate: "2024",
     // References the shared FOUNDER_PERSON node so the founder is one entity,
     // not a second near-duplicate of the Person on /sachin-balraj.
@@ -132,7 +132,7 @@ export const BUSINESS_INFO = {
     alternateName: "YesBe",
     url: "https://www.yesbe.tech",
     description:
-      "YESBE Technologies is an IT consulting and software development company providing IT consulting, custom software development, website development, AI solutions, business automation, digital transformation, ERP systems, cloud and search visibility services.",
+      "YESBE Technologies is an IT consulting and software development company providing IT consulting, web development, custom software development, ERP systems, business automation, digital transformation, AI solutions, cloud and SEO services.",
     publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
     copyrightHolder: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
     inLanguage: "en",

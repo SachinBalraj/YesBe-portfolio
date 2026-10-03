@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ExternalLink, CheckCircle2, Clock, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { caseStudies, type CaseStudy } from "@/data/caseStudies";
 
@@ -42,7 +42,7 @@ function ProjectCard({
       <div className="relative h-48 overflow-hidden cursor-pointer" onClick={goToDetail}>
         <img
           src={project.image}
-          alt={`${project.title} — ${project.category} case study by YESBE Technologies`}
+          alt={`${project.title} — illustrative image for a ${project.category} project`}
           loading="lazy"
           decoding="async"
           width={700}
@@ -57,10 +57,9 @@ function ProjectCard({
           {project.category}
         </span>
 
-        {/* Status badge */}
-        <span className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-white" />
-          {project.status}
+        {/* Label — states what this entry is, without implying a client outcome */}
+        <span className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-slate-900/80 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-sm">
+          {project.label}
         </span>
       </div>
 
@@ -91,13 +90,13 @@ function ProjectCard({
           )}
         </div>
 
-        {/* Business impact mini */}
-        <div className="mt-3 rounded-xl border border-emerald-100 bg-emerald-50/50 px-3 py-2">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">
-            Impact
+        {/* What it does */}
+        <div className="mt-3 rounded-xl border border-primary/10 bg-primary/[0.03] px-3 py-2">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
+            What it does
           </span>
           <p className="mt-0.5 text-[12px] text-muted-foreground leading-snug">
-            {project.businessResult[0]}
+            {project.capabilities[0]}
           </p>
         </div>
 
@@ -107,20 +106,9 @@ function ProjectCard({
             onClick={goToDetail}
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-4 py-3 text-[13px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
           >
-            View Case Study
+            View Project
             <ArrowUpRight className="h-3.5 w-3.5" />
           </button>
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${project.title} Live Demo`}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/40 bg-white text-muted-foreground shadow-sm transition-all hover:border-primary/30 hover:text-foreground hover:shadow-md"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          )}
         </div>
       </div>
     </motion.article>
@@ -134,7 +122,7 @@ export function PortfolioSection() {
     <section
       id="projects"
       className="relative py-12 lg:py-16 bg-white overflow-hidden"
-      aria-label="Featured Projects — Client case studies in e-commerce, restaurant automation, library management, analytics, and AI"
+      aria-label="Selected technology projects — e-commerce, restaurant automation, library management, analytics, AI and automation built by YESBE"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
@@ -153,11 +141,11 @@ export function PortfolioSection() {
         >
           <motion.div variants={fadeInUp}>
             <span className="inline-block rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
-              Case Studies
+              Selected Work
             </span>
           </motion.div>
           <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Featured <span className="text-primary">Projects</span>
+            Selected Technology <span className="text-primary">Projects</span>
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -167,7 +155,7 @@ export function PortfolioSection() {
             className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
-            Real projects, real results. Each one solved a specific business problem.
+            Solutions we&apos;ve designed and built. Each one addresses a specific business problem.
           </motion.p>
         </motion.div>
 

@@ -26,11 +26,11 @@ export function CaseStudiesPage() {
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PageHeader
-        badge="Case Studies"
-        title="Our"
-        highlight="Case Studies"
-        description="Real results from AI, ERP, web development, and automation projects."
-        breadcrumbs={[{ label: "Case Studies" }]}
+        badge="Projects"
+        title="Technology"
+        highlight="Projects"
+        description="Systems we have designed and built across web, ERP, AI, automation, analytics and SEO."
+        breadcrumbs={[{ label: "Projects" }]}
       />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
         <PortfolioSection />

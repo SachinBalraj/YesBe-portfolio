@@ -347,7 +347,7 @@ export function FounderWorkSection() {
           >
             <p className="flex items-center justify-center gap-2 text-[13px] text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-              Based in {SITE_CONFIG.location} · Working with clients worldwide
+              Based in {SITE_CONFIG.location} · Working with businesses across India
             </p>
             <Link
               to="/contact"

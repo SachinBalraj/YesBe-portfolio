@@ -4,11 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import logoImg from "@/assets/images/YBlogo.png";
 
-const stats = [
-  { value: "3+", label: "Years Experience" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "30+", label: "Happy Clients" },
-  { value: "15+", label: "Technologies Mastered" },
+const focusAreas = [
+  { value: "Consulting", label: "IT strategy, requirements and solution architecture" },
+  { value: "Engineering", label: "Web apps, ERP systems, APIs and integrations" },
+  { value: "AI & Automation", label: "RAG systems, chatbots and workflow automation" },
+  { value: "Data & Analytics", label: "Dashboards, reporting and decision support" },
 ];
 
 const specializations = [
@@ -24,7 +24,7 @@ export function AboutSection() {
     <section
       id="about"
       className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-16 lg:py-20"
-      aria-label="About YESBE — AI, ERP, Web Development & Business Solutions in Salem, Tamil Nadu, India"
+      aria-label="About YESBE Technologies — IT consulting, custom software development, AI and automation, and data analytics"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[10%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
@@ -72,7 +72,7 @@ export function AboutSection() {
               className="inline-flex items-center gap-2 rounded-full border border-[#2563eb]/10 bg-[#eff6ff] px-4 py-2 text-[13px] font-medium text-[#2563eb]"
             >
               <CheckCircle className="h-4 w-4" />
-              Trusted AI & Business Solutions Company
+              IT Consulting & Software Development
             </motion.div>
           </motion.div>
 
@@ -93,13 +93,13 @@ export function AboutSection() {
 
             <motion.div variants={fadeInUp} className="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
               <p>
-                YESBE builds AI tools, ERP systems, Power BI dashboards, web apps, and automation — for startups, SMEs, and enterprises. Based in Salem, Tamil Nadu, serving clients worldwide.
+                YESBE Technologies is an IT consulting and software development company based in Salem, Tamil Nadu. We design and build custom software, ERP systems, web applications, AI and automation tooling, and analytics dashboards.
               </p>
               <p>
-                Over 10 years of combined experience. 50+ projects delivered across education, healthcare, retail, restaurants, manufacturing, and finance. Our stack: React, Node.js, Python, MongoDB, PostgreSQL, AWS, Docker, OpenAI, LangChain, and Power BI.
+                Our work spans education, healthcare, retail, restaurants, manufacturing and finance. The stack we build with includes React, Node.js, Python, MongoDB, PostgreSQL, AWS, Docker, OpenAI, LangChain, and Power BI.
               </p>
               <p>
-                We work directly with business owners, CTOs, and founders — from requirements to deployment and ongoing support. The focus is always on solving real problems, not just writing code.
+                We work directly with business owners, CTOs and founders, from requirements through deployment and ongoing support. The focus is on solving real problems, not just writing code.
               </p>
             </motion.div>
 
@@ -168,14 +168,14 @@ export function AboutSection() {
         >
           <motion.div variants={fadeInUp}>
             <div className="grid grid-cols-2 gap-5">
-              {stats.map((stat) => (
+              {focusAreas.map((area) => (
                 <div
-                  key={stat.label}
+                  key={area.value}
                   className="rounded-[20px] border border-white/40 bg-white p-6 text-center"
                   style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
                 >
-                  <div className="text-3xl font-extrabold text-primary">{stat.value}</div>
-                  <div className="mt-1 text-sm font-medium text-muted-foreground">{stat.label}</div>
+                  <div className="text-xl font-extrabold text-primary">{area.value}</div>
+                  <div className="mt-1.5 text-sm font-medium text-muted-foreground">{area.label}</div>
                 </div>
               ))}
             </div>
@@ -196,7 +196,7 @@ export function AboutSection() {
             <div className="mt-5 rounded-[20px] border border-white/40 bg-white p-5">
               <h3 className="mb-2 text-sm font-bold text-foreground">Business Focus</h3>
               <p className="text-[13px] leading-relaxed text-muted-foreground">
-                Education ERP, Hospital Management, Restaurant AI Ordering, Retail E-commerce, Corporate Analytics Dashboards, Startup MVP Development, and Enterprise Digital Transformation — serving clients in Salem, Tamil Nadu, India and worldwide.
+                Education ERP, hospital management, restaurant ordering, retail e-commerce, corporate analytics dashboards, MVP development, and digital transformation — for businesses in Salem, Tamil Nadu and beyond.
               </p>
             </div>
           </motion.div>

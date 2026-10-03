@@ -1,25 +1,35 @@
-/* ─── Case Study Data ─── */
+/* ─── Project Data ──────────────────────────────────────────────────────────
+ *
+ * These entries document systems YESBE has designed and built. They describe
+ * scope, architecture and purpose — they do not publish client names, project
+ * durations or measured business outcomes, because no verified record of those
+ * is kept in this repository.
+ *
+ * `label` states plainly what each entry is. If a project is ever confirmed as a
+ * client engagement with measured outcomes, that evidence should be added here
+ * and the label updated — not inferred.
+ * ────────────────────────────────────────────────────────────────────────── */
 
 export interface CaseStudy {
   slug: string;
   title: string;
+  label: string;
   shortOverview: string;
   category: string;
-  clientType: string;
-  duration: string;
-  status: "Completed" | "In Progress";
+  builtFor: string;
   image: string;
   technologies: string[];
   techGroups: { label: string; items: string[] }[];
   problem: string;
   solution: string;
   features: string[];
-  businessResult: string[];
+  /** What the system is designed to do. Not a record of measured results. */
+  capabilities: string[];
   challenge: string;
   futureEnhancements: string[];
-  live?: string;
   developmentProcess: string[];
-  clientBenefits: string[];
+  /** The business problems this kind of system is built to address. */
+  businessValue: string[];
   relatedServices: string[];
   faqs: { question: string; answer: string }[];
 }
@@ -28,12 +38,11 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "fashion-fusion",
     title: "Fashion Fusion E-Commerce Platform",
+    label: "Portfolio build",
     shortOverview:
-      "E-commerce platform for a clothing brand — online sales, inventory, and orders replacing manual WhatsApp selling.",
+      "A full-stack e-commerce platform for a clothing brand — product catalogue, cart, checkout, inventory and order management in one system.",
     category: "E-Commerce",
-    clientType: "Retail / Fashion Brand",
-    duration: "4 Weeks",
-    status: "Completed",
+    builtFor: "Retail / Fashion Brand",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&h=450&fit=crop",
     technologies: ["React", "Node.js", "MongoDB", "Express.js", "Stripe", "Tailwind CSS"],
@@ -44,9 +53,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Cloud", items: ["Vercel", "Render"] },
     ],
     problem:
-      "The client needed a modern e-commerce platform to showcase premium textile products and simplify online sales. Previously, everything ran through WhatsApp and spreadsheets — no online store, limited reach, and hours spent chasing orders.",
+      "Fashion brands often start with WhatsApp conversations, spreadsheets and informal order tracking. There is no searchable catalogue, no single view of stock, and no reliable record of what was sold or owed.",
     solution:
-      "Designed and developed a responsive e-commerce website with category management, product showcase, inquiry system, and SEO optimization. Built a full-stack platform with product catalog, cart, Stripe checkout, and an admin dashboard for real-time inventory, orders, and sales analytics.",
+      "Designed and developed a responsive e-commerce website with category management, product showcase, inquiry system and SEO optimisation, built as a full-stack platform with a product catalogue, cart, Stripe checkout and an admin dashboard for inventory, orders and sales reporting.",
     features: [
       "Responsive product catalog with search & filters",
       "Secure user authentication & profiles",
@@ -57,15 +66,15 @@ export const caseStudies: CaseStudy[] = [
       "Order tracking & status updates",
       "Mobile-first responsive design",
     ],
-    businessResult: [
-      "Improved online presence and expanded customer reach beyond local to nationwide",
-      "Faster customer inquiries with automated order processing",
-      "Better product presentation driving a 40% increase in monthly revenue within the first quarter",
-      "Reduced order processing time from 15 minutes to under 2 minutes",
-      "Eliminated inventory discrepancies caused by manual tracking",
+    capabilities: [
+      "Presents a browsable, searchable product catalogue instead of scattered images and messages",
+      "Takes orders through a structured checkout rather than manual confirmation",
+      "Keeps stock levels in one place so availability is visible to buyers and staff",
+      "Gives the owner a single view of orders, revenue and best-selling lines",
+      "Removes re-keying of the same order data across spreadsheets and messages",
     ],
     challenge:
-      "Real-time inventory sync when multiple customers buy the same item. Solved with MongoDB transactions and optimistic locking.",
+      "Keeping inventory accurate when multiple customers buy the same item at once. Addressed with MongoDB transactions and optimistic locking so a completed order cannot oversell stock.",
     futureEnhancements: [
       "AI-powered product recommendations based on browsing history",
       "WhatsApp order notification integration",
@@ -73,7 +82,7 @@ export const caseStudies: CaseStudy[] = [
       "Advanced coupon and loyalty program system",
     ],
     developmentProcess: [
-      "Discovery and requirements gathering with the client team",
+      "Discovery and requirements definition before any code was written",
       "UI/UX design focused on clean product presentation",
       "Frontend development with React and Tailwind CSS",
       "Backend API development with Node.js and Express",
@@ -81,11 +90,11 @@ export const caseStudies: CaseStudy[] = [
       "Testing across devices and browsers",
       "Deployment to Vercel and Render",
     ],
-    clientBenefits: [
-      "24/7 online sales without manual intervention",
-      "Professional brand presence on the web",
-      "Streamlined order and inventory management",
-      "Scalable platform ready for growth",
+    businessValue: [
+      "A professional web presence that customers can browse without contacting anyone first",
+      "Order handling that no longer depends on individual staff remembering conversations",
+      "Inventory that staff and customers see from the same source of truth",
+      "Sales and product data available for buying and marketing decisions",
     ],
     relatedServices: [
       "E-Commerce Development",
@@ -95,29 +104,30 @@ export const caseStudies: CaseStudy[] = [
     ],
     faqs: [
       {
-        question: "How long did the project take?",
-        answer: "The complete e-commerce platform was delivered in 4 weeks, including design, development, testing, and deployment.",
+        question: "What does the platform include?",
+        answer:
+          "A product catalogue with search and filters, user accounts, a persistent cart, Stripe checkout, order tracking, real-time inventory and an admin dashboard covering orders and sales reporting.",
       },
       {
         question: "Can the platform handle high traffic?",
-        answer: "Yes. The platform is built on scalable cloud infrastructure and can handle traffic spikes during sales events.",
+        answer:
+          "It is built on scalable cloud infrastructure and can handle traffic spikes during sales events.",
       },
       {
         question: "Is the platform mobile-friendly?",
-        answer: "Absolutely. The entire experience is designed mobile-first, ensuring a seamless shopping experience on any device.",
+        answer:
+          "Yes. The entire experience is designed mobile-first, so the catalogue, cart and checkout work on any device.",
       },
     ],
-
   },
   {
     slug: "restaurant-qr-ordering",
     title: "Restaurant QR Ordering System",
+    label: "Portfolio build",
     shortOverview:
-      "QR-based contactless ordering — customers browse, order, and the kitchen gets notified instantly.",
+      "QR-based ordering — customers browse the menu and place their order from their own phone, and it appears in the kitchen queue.",
     category: "Restaurant Automation",
-    clientType: "Restaurant / F&B",
-    duration: "3 Weeks",
-    status: "Completed",
+    builtFor: "Restaurant / F&B",
     image:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&h=450&fit=crop",
     technologies: ["React", "Node.js", "QR Technology", "MongoDB", "Socket.io"],
@@ -128,9 +138,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Integrations", items: ["QR Code API", "Real-time Notifications"] },
     ],
     problem:
-      "Manual ordering caused delays and order mistakes. During peak hours, waiters were overwhelmed. Customers waited 10–15 minutes just to order, and frequent errors occurred with handwritten orders.",
+      "Manual ordering puts a waiter between the customer and the kitchen. During busy periods the queue of questions and hand-written tickets grows, and orders depend on handwriting being read correctly.",
     solution:
-      "Developed a QR-based digital ordering system allowing customers to browse menus and place orders directly from their phones. Each table gets a unique QR code. Customers scan, browse the menu, customize orders, and submit directly to the kitchen queue.",
+      "Developed a QR-based digital ordering system that lets customers browse menus and place orders directly from their own phones. Each table has a unique QR code; the customer scans, browses, customises and submits straight into the kitchen queue, with no app to install.",
     features: [
       "Unique QR code per table with instant menu access",
       "Full menu with images, descriptions & prices",
@@ -141,15 +151,15 @@ export const caseStudies: CaseStudy[] = [
       "Automatic order confirmation receipts",
       "Mobile-optimized for customer phones",
     ],
-    businessResult: [
-      "Reduced waiting time — order placement dropped from 12 minutes to under 3 minutes",
-      "Improved customer experience with contactless, self-service ordering",
-      "Faster order processing with 95% fewer errors compared to manual taking",
-      "Increased table turnover rate by 30% during peak hours",
-      "Gained real-time visibility into daily sales and popular items",
+    capabilities: [
+      "Lets customers order without waiting for a waiter to reach the table",
+      "Delivers orders to the kitchen as structured digital tickets instead of handwriting",
+      "Carries special instructions and customisations with the order rather than verbally",
+      "Shows kitchen and floor staff which tables have open or completed orders",
+      "Reports daily sales and the items that actually sell, by time of day",
     ],
     challenge:
-      "Real-time delivery to the kitchen was critical. Used WebSocket with auto-reconnection and fallback polling — orders reach the kitchen within seconds even if the connection drops.",
+      "Getting an order to the kitchen reliably. Implemented WebSocket delivery with automatic reconnection and a polling fallback, so an order still reaches the kitchen if the connection drops.",
     futureEnhancements: [
       "AI-based demand forecasting for inventory pre-ordering",
       "Customer loyalty program with visit tracking",
@@ -165,11 +175,11 @@ export const caseStudies: CaseStudy[] = [
       "Testing with live restaurant operations",
       "Deployment and staff training",
     ],
-    clientBenefits: [
-      "Reduced staffing needs by 2 waiters per shift",
-      "Faster table turnover during peak hours",
-      "Zero order errors from manual taking",
-      "Real-time business insights for better decisions",
+    businessValue: [
+      "Removes the ordering bottleneck between table and kitchen during busy periods",
+      "Fewer misread or forgotten orders, since the ticket is digital",
+      "Less time spent taking and re-keying orders by hand",
+      "Sales and popular-item visibility without closing the till and counting",
     ],
     relatedServices: [
       "Restaurant Automation",
@@ -180,28 +190,29 @@ export const caseStudies: CaseStudy[] = [
     faqs: [
       {
         question: "How does the QR ordering work?",
-        answer: "Each table has a unique QR code. Customers scan it with their phone camera, which opens the menu directly in their browser — no app download needed.",
+        answer:
+          "Each table has a unique QR code. Customers scan it with their phone camera, which opens the menu directly in their browser — no app download needed.",
       },
       {
         question: "Can the restaurant customize the menu easily?",
-        answer: "Yes. The admin dashboard allows staff to add, update, or remove menu items, change prices, and update availability in real time.",
+        answer:
+          "Yes. The admin dashboard allows staff to add, update, or remove menu items, change prices, and update availability in real time.",
       },
       {
         question: "Does it work offline?",
-        answer: "The system includes offline fallback with auto-reconnection. Orders are queued and delivered as soon as connectivity is restored.",
+        answer:
+          "The system includes offline fallback with auto-reconnection. Orders are queued and delivered as soon as connectivity is restored.",
       },
     ],
-
   },
   {
     slug: "library-management",
     title: "Library Management System",
+    label: "Portfolio build",
     shortOverview:
-      "Digital library system — book inventory, member management, issue/return tracking, and reporting.",
+      "A digital library system — catalogue search, member management, issue and return tracking, automated fines and reporting.",
     category: "Education ERP",
-    clientType: "Educational Institution",
-    duration: "3 Weeks",
-    status: "Completed",
+    builtFor: "Educational Institution",
     image:
       "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=700&h=450&fit=crop",
     technologies: ["React", "Express", "MongoDB", "Barcode API"],
@@ -212,9 +223,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Integrations", items: ["Barcode Scanning API", "Automated Fine Calculation"] },
     ],
     problem:
-      "The library relied on manual record keeping. With 10,000+ books tracked on paper, transactions took 30 minutes, there was no remote access, and lost books went undetected for months.",
+      "Paper-based lending records make every issue and return a manual transaction, leave no remote way to check whether a book is available, and let missing stock go unnoticed until someone needs it.",
     solution:
-      "Built a complete digital library management system for book inventory, issue tracking, and user management. Included searchable catalog, barcode scanning, automated fines, member management, and a reporting dashboard.",
+      "Built a complete digital library management system for stock, issue tracking and member management. Included a searchable catalogue, barcode scanning, automated fines, member roles and a reporting dashboard.",
     features: [
       "Searchable book catalog with categories & availability",
       "Barcode scanning for quick issue/return",
@@ -225,15 +236,15 @@ export const caseStudies: CaseStudy[] = [
       "Monthly & annual report generation",
       "Overdue notification system",
     ],
-    businessResult: [
-      "Simplified operations — transaction time dropped from 5 minutes to 30 seconds",
-      "Reduced paperwork by 90% with digital record-keeping",
-      "Improved record accuracy to 99.5% with automated tracking",
-      "Enabled students to check availability remotely, reducing empty trips",
-      "Generated automated reports saving 8+ hours of monthly admin work",
+    capabilities: [
+      "Makes the whole catalogue searchable, so availability is a lookup rather than a shelf check",
+      "Records issue and return at the desk through a barcode scan instead of a written entry",
+      "Calculates overdue fines from configurable rules rather than by hand",
+      "Lets students and staff see availability and place holds remotely",
+      "Produces borrowing, overdue and stock reports for library administration",
     ],
     challenge:
-      "Migrating 10,000+ paper records to digital was the hurdle. Built a bulk CSV import with validation and duplicate detection — entire catalog digitized in 2 days instead of 2 weeks.",
+      "Moving an existing paper catalogue into the system without re-keying errors. Built a bulk CSV import with validation and duplicate detection so the catalogue can be migrated in one pass and checked before it goes live.",
     futureEnhancements: [
       "AI-powered book recommendation engine based on borrowing patterns",
       "Integration with university student information system",
@@ -249,11 +260,11 @@ export const caseStudies: CaseStudy[] = [
       "Testing with library staff and students",
       "Deployment and training sessions",
     ],
-    clientBenefits: [
-      "Complete digital transformation of library operations",
-      "Instant access to book availability for students",
-      "Automated fine calculation and notifications",
-      "Comprehensive reporting for administration",
+    businessValue: [
+      "Replaces manual record-keeping with a system that can be searched and reported on",
+      "Makes stock accuracy something the system tracks instead of something staff verify",
+      "Removes the trip to the library purely to find out whether a book is available",
+      "Frees counter time previously spent writing and filing transaction slips",
     ],
     relatedServices: [
       "Education ERP",
@@ -264,28 +275,29 @@ export const caseStudies: CaseStudy[] = [
     faqs: [
       {
         question: "How many books can the system handle?",
-        answer: "The system is designed to handle tens of thousands of books with fast search and efficient inventory management.",
+        answer:
+          "The system is designed to handle tens of thousands of books with fast search and efficient inventory management.",
       },
       {
         question: "Can students check book availability online?",
-        answer: "Yes. The system provides a web portal where students can search the catalog, check availability, and reserve books.",
+        answer:
+          "Yes. The system provides a web portal where students can search the catalog, check availability, and reserve books.",
       },
       {
         question: "How are overdue fines calculated?",
-        answer: "Fines are automatically calculated based on configurable rules — number of days overdue, book type, and institutional policies.",
+        answer:
+          "Fines are automatically calculated based on configurable rules — number of days overdue, book type, and institutional policies.",
       },
     ],
-
   },
   {
     slug: "business-portfolio",
     title: "Business Portfolio Website",
+    label: "Portfolio build",
     shortOverview:
-      "Responsive, SEO-optimized corporate website with service pages and lead generation forms.",
+      "A responsive, SEO-optimised corporate website with service detail pages and lead capture forms.",
     category: "Corporate Website",
-    clientType: "Corporate / SME",
-    duration: "2 Weeks",
-    status: "Completed",
+    builtFor: "Corporate / SME",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=450&fit=crop",
     technologies: ["React", "Tailwind CSS"],
@@ -296,9 +308,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Deployment", items: ["Vercel", "Custom Domain", "SSL"] },
     ],
     problem:
-      "The client lacked a professional online presence. Without a website, they were invisible to potential customers searching online, losing business to competitors with better digital footprints.",
+      "A business without a website depends entirely on referrals and word of mouth, cannot be found by people already searching for what it sells, and has nowhere to send an enquiry that reaches the owner directly.",
     solution:
-      "Created a responsive, SEO-optimized corporate website with service pages and lead generation. Built with modern React architecture, fast loading, and mobile-first design.",
+      "Created a responsive, SEO-optimised corporate website with service pages and lead capture. Built with modern React architecture, fast loading and a mobile-first design.",
     features: [
       "Responsive design across all devices",
       "Service pages with detailed offerings",
@@ -309,15 +321,15 @@ export const caseStudies: CaseStudy[] = [
       "Google Analytics integration",
       "Social media integration",
     ],
-    businessResult: [
-      "Stronger online credibility with a professional web presence",
-      "Increased business inquiries through optimized lead capture forms",
-      "Better brand visibility with improved search engine rankings",
-      "Mobile-responsive design reaching customers on all devices",
-      "Foundation for digital marketing campaigns",
+    capabilities: [
+      "Gives the business a page it can send customers to at any time",
+      "Explains each service on its own page rather than compressing everything onto one",
+      "Captures enquiries into a structured form instead of relying on phone numbers alone",
+      "Is built to be indexed, with per-page metadata, schema markup and a sitemap",
+      "Loads quickly and stays usable on a phone, where most visits start",
     ],
     challenge:
-      "The client had no existing brand assets or content. Created a complete content strategy, sourced professional imagery, and established brand guidelines during the project.",
+      "Brand assets and written content usually have to be produced as part of the build, not handed over. This project included a content structure, image selection and a basic set of brand guidelines.",
     futureEnhancements: [
       "Blog section for content marketing",
       "Live chat integration",
@@ -326,18 +338,18 @@ export const caseStudies: CaseStudy[] = [
     ],
     developmentProcess: [
       "Brand and content strategy workshop",
-      "UI/UX design with client feedback rounds",
+      "UI/UX design with review rounds on key screens",
       "Frontend development with React",
       "SEO implementation and meta tag optimization",
       "Performance optimization and testing",
       "Domain and hosting setup",
       "Launch and analytics configuration",
     ],
-    clientBenefits: [
-      "Professional online presence established in 2 weeks",
-      "Organic traffic growth from SEO optimization",
-      "Lead generation system capturing potential clients 24/7",
-      "Easy-to-update content management through reusable components",
+    businessValue: [
+      "A professional online presence to send prospects to instead of a phone number",
+      "A clear written explanation of what the business does, available outside working hours",
+      "Enquiries that arrive with the details already filled in, ready to act on",
+      "A foundation that later marketing and content work can build on",
     ],
     relatedServices: [
       "Website Development",
@@ -347,28 +359,30 @@ export const caseStudies: CaseStudy[] = [
     ],
     faqs: [
       {
-        question: "How long does it take to build a corporate website?",
-        answer: "A standard corporate website with 5-10 pages takes approximately 2 weeks from design to launch.",
+        question: "What is included in a corporate website build?",
+        answer:
+          "A set of pages covering the business and each service in detail, an enquiry form, technical SEO fundamentals, analytics and a deployment you own. Scope and quote follow a conversation about your pages and functionality.",
       },
       {
         question: "Will the website rank on Google?",
-        answer: "Yes. The website is built with SEO best practices including proper meta tags, schema markup, fast loading, and mobile responsiveness.",
+        answer:
+          "No one can promise a position. What the build guarantees is the technical foundation — proper meta tags, schema markup, fast loading and mobile responsiveness — which is what has to be right before ranking is even possible.",
       },
       {
         question: "Can I update the content myself?",
-        answer: "The website uses a component-based architecture that makes content updates straightforward. We also provide a handover guide.",
+        answer:
+          "The website uses a component-based architecture that makes content updates straightforward. We also provide a handover guide.",
       },
     ],
   },
   {
     slug: "ai-business-assistant",
     title: "AI Business Assistant",
+    label: "Portfolio build",
     shortOverview:
-      "AI-powered assistant using OpenAI and LangChain — answering common business questions instantly.",
+      "A retrieval-augmented assistant that answers questions from a business's own documents, with links back to the source.",
     category: "Artificial Intelligence",
-    clientType: "Enterprise / Internal Tool",
-    duration: "5 Weeks",
-    status: "Completed",
+    builtFor: "Internal Tool",
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&h=450&fit=crop",
     technologies: ["Python", "OpenAI API", "LangChain", "FastAPI", "React"],
@@ -379,9 +393,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Database", items: ["Pinecone (Vector DB)", "MongoDB"] },
     ],
     problem:
-      "Customer support required significant manual effort. The team handled 200+ daily queries across departments, searching through 500+ PDFs, Confluence pages, and shared drives with a 45-minute average response time.",
+      "Answering routine internal questions means searching across PDFs, wiki pages and shared drives by hand. The person who knows a particular answer is often not available, and staff default to asking a colleague rather than looking.",
     solution:
-      "Developed an AI-powered assistant to answer common business questions and assist customers. Built a RAG chatbot that ingests company docs, indexes them in a vector database, and uses GPT-4 with LangChain to generate accurate, source-linked answers.",
+      "Developed a retrieval-augmented assistant that answers questions from an organisation's own documents. Documents are ingested, chunked and indexed in a vector database; queries retrieve the most relevant passages, and an LLM generates an answer that cites its sources.",
     features: [
       "Natural language query interface",
       "RAG pipeline with source attribution",
@@ -392,15 +406,15 @@ export const caseStudies: CaseStudy[] = [
       "Role-based access control",
       "API endpoint for third-party integration",
     ],
-    businessResult: [
-      "Faster customer support — response time dropped from 45 minutes to under 10 seconds",
-      "Reduced repetitive tasks — 80% of routine queries handled without human intervention",
-      "Improved response times and answer accuracy to 94% with source-linked responses",
-      "Onboarded new team members 60% faster with instant knowledge access",
-      "Saved an estimated 120+ support hours per month",
+    capabilities: [
+      "Answers questions using the organisation's own documents rather than general model knowledge",
+      "Cites the source passage for every answer, so a user can check it",
+      "Declines to answer when the documents do not support one, instead of guessing",
+      "Lets staff find policy, process and reference material without searching five systems",
+      "Gives an admin view of which documents were added and which questions are asked",
     ],
     challenge:
-      "Ensuring the AI only answers from verified documents was critical. Implemented a confidence threshold — below 0.75 similarity, it says 'I don't know' instead of guessing. Source URLs let users verify every answer.",
+      "Making sure the assistant answers only from verified documents. Implemented a similarity threshold — below it, the assistant states it does not know rather than inventing an answer, and every response links back to its sources so a user can verify it.",
     futureEnhancements: [
       "Multi-language support for global teams",
       "Voice-based query interface",
@@ -416,11 +430,11 @@ export const caseStudies: CaseStudy[] = [
       "Confidence threshold tuning and testing",
       "Deployment and team training",
     ],
-    clientBenefits: [
-      "24/7 intelligent support without additional staff",
-      "Consistent, accurate answers from verified sources",
-      "Significant reduction in support team workload",
-      "Scalable solution that improves as the knowledge base grows",
+    businessValue: [
+      "Removes the need for one person to be the answer to every internal question",
+      "Points new starters to the same documented source as long-standing staff",
+      "Surfaces policy and process answers in seconds rather than by email",
+      "Shows which questions recur, which is where the real documentation gaps are",
     ],
     relatedServices: [
       "AI Solutions",
@@ -430,29 +444,30 @@ export const caseStudies: CaseStudy[] = [
     ],
     faqs: [
       {
-        question: "How accurate are the AI responses?",
-        answer: "The system achieves 94% accuracy with source-linked responses. It only answers from verified documents and clearly states when it doesn't have enough information.",
+        question: "How accurate are the responses?",
+        answer:
+          "Accuracy depends entirely on the quality and currency of the documents you provide, so we do not quote a fixed figure. The design controls for it instead: the assistant answers only from retrieved passages, cites each source, and says it does not know when the material is not there — so a wrong answer is traceable rather than authoritative.",
       },
       {
         question: "What documents can the AI learn from?",
-        answer: "PDFs, Word documents, Confluence pages, web pages, and structured data files. The system supports most common document formats.",
+        answer:
+          "PDFs, Word documents, Confluence pages, web pages, and structured data files. The system supports most common document formats.",
       },
       {
         question: "How long does implementation take?",
-        answer: "A typical RAG-based AI assistant takes 4-6 weeks, depending on the volume of documents and complexity of the knowledge base.",
+        answer:
+          "Timeline depends on the size of the document set and how complex the knowledge base needs to be. We estimate it properly once we have seen the documents.",
       },
     ],
-
   },
   {
     slug: "erp-management",
     title: "ERP Management System",
+    label: "Portfolio build",
     shortOverview:
-      "Custom ERP integrating inventory, employee management, billing, and reporting into one platform.",
+      "A custom ERP integrating inventory, employee management, billing and reporting into a single platform.",
     category: "ERP",
-    clientType: "SME / Manufacturing",
-    duration: "8 Weeks",
-    status: "Completed",
+    builtFor: "SME / Manufacturing",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=450&fit=crop",
     technologies: ["React", "Node.js", "MongoDB", "Express.js"],
@@ -463,9 +478,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Modules", items: ["Inventory", "HR", "Billing", "Reporting"] },
     ],
     problem:
-      "Business operations were managed using multiple disconnected tools — spreadsheets for inventory, separate software for payroll, and manual billing processes. This created data silos, errors, and wasted hours on reconciliation.",
+      "Operations spread across spreadsheets for stock, a separate package for payroll and manual invoicing. The same data gets re-entered in several places, and reconciling the versions takes time nobody has budgeted for.",
     solution:
-      "Built an ERP platform integrating inventory, employee management, billing, and reporting. A single system that connects all departments with real-time data flow and automated workflows.",
+      "Built an ERP platform integrating inventory, employee management, billing and reporting. A single system that connects departments through shared data and automated workflows rather than separate disconnected tools.",
     features: [
       "Inventory management with stock alerts",
       "Employee records and payroll processing",
@@ -476,15 +491,15 @@ export const caseStudies: CaseStudy[] = [
       "Vendor and supplier tracking",
       "Audit trail for all transactions",
     ],
-    businessResult: [
-      "Centralized operations — all departments connected through a single system",
-      "Improved productivity with automated workflows reducing manual data entry",
-      "Better business insights through real-time dashboards and reports",
-      "Eliminated data silos and reduced reconciliation errors by 95%",
-      "Saved 20+ hours per week previously spent on manual report compilation",
+    capabilities: [
+      "Holds inventory, staff and billing records in one database rather than several",
+      "Updates stock and billing from the same transaction, so the two cannot disagree",
+      "Applies configurable rules to recurring processes instead of relying on memory",
+      "Gives each department role-based access to the records it needs",
+      "Keeps an audit trail, so a figure can be traced back to the entries behind it",
     ],
     challenge:
-      "Integrating disparate data sources with different formats. Built a unified data layer with ETL processes that normalizes data from legacy systems into the new ERP.",
+      "Combining data that already exists in different formats. Built a unified data layer with ETL steps that normalise legacy sources into the new schema rather than asking each department to re-key their history.",
     futureEnhancements: [
       "AI-powered demand forecasting for inventory",
       "Mobile app for field employees",
@@ -500,11 +515,11 @@ export const caseStudies: CaseStudy[] = [
       "User acceptance testing with department heads",
       "Phased rollout and staff training",
     ],
-    clientBenefits: [
-      "Single source of truth for all business operations",
-      "Real-time visibility into inventory, sales, and finances",
-      "Reduced operational costs through automation",
-      "Scalable system that grows with the business",
+    businessValue: [
+      "One record per entity, instead of a version per spreadsheet and per department",
+      "Reporting assembled from live data rather than compiled by hand",
+      "Controls and approvals applied consistently because they live in the system",
+      "A platform that can be extended module by module rather than replaced wholesale",
     ],
     relatedServices: [
       "ERP Solutions",
@@ -515,27 +530,29 @@ export const caseStudies: CaseStudy[] = [
     faqs: [
       {
         question: "How long does ERP implementation take?",
-        answer: "A typical ERP implementation takes 6-12 weeks, depending on the complexity of business processes and data migration requirements.",
+        answer:
+          "ERP timelines depend on the number of modules and how much data has to be migrated. We map the processes first, then give you a phased plan with dates.",
       },
       {
         question: "Can the ERP be customized for our specific workflow?",
-        answer: "Yes. The ERP is built from scratch and can be fully customized to match your exact business processes and requirements.",
+        answer:
+          "Yes. The ERP is built from scratch and can be fully customized to match your exact business processes and requirements.",
       },
       {
         question: "What about data migration from our current systems?",
-        answer: "We handle complete data migration including validation, deduplication, and mapping to ensure nothing is lost in the transition.",
+        answer:
+          "We handle complete data migration including validation, deduplication, and mapping to ensure nothing is lost in the transition.",
       },
     ],
   },
   {
     slug: "powerbi-dashboard",
     title: "Power BI Sales Dashboard",
+    label: "Portfolio build",
     shortOverview:
-      "Interactive Power BI dashboards displaying KPIs, revenue trends, and sales insights in real time.",
+      "Interactive Power BI dashboards presenting KPIs, revenue trends and sales performance from several source systems.",
     category: "Business Analytics",
-    clientType: "Corporate / SME",
-    duration: "2 Weeks",
-    status: "Completed",
+    builtFor: "Corporate / SME",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=450&fit=crop",
     technologies: ["Power BI", "SQL", "DAX", "Excel"],
@@ -546,9 +563,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Deployment", items: ["Power BI Service", "Scheduled Refresh"] },
     ],
     problem:
-      "The client had difficulty tracking business performance. Management relied on weekly Excel reports compiled from 5 different systems. By the time reports arrived, data was 5–7 days old.",
+      "Performance reporting assembled by hand in Excel from several systems. Every report has to be rebuilt and re-checked, so by the time it reaches management the numbers describe a past period and nobody can drill into why.",
     solution:
-      "Created interactive dashboards displaying KPIs, revenue trends, and sales insights. Connected multiple data sources through Azure Data Factory with executive, sales, ops, and finance views featuring drill-down, anomaly detection, and scheduled email reports.",
+      "Created interactive dashboards presenting KPIs, revenue trends and sales performance. Connected multiple data sources through Azure Data Factory with executive, sales, operations and finance views, plus drill-down, anomaly flags and scheduled email delivery.",
     features: [
       "Executive KPI dashboard with drill-down capability",
       "Sales performance by region, product & team",
@@ -559,15 +576,15 @@ export const caseStudies: CaseStudy[] = [
       "Custom DAX measures for business-specific KPIs",
       "Role-based dashboard access",
     ],
-    businessResult: [
-      "Better decision-making with real-time data instead of 5-day-old reports",
-      "Real-time reporting eliminating 40+ hours of monthly manual report compilation",
-      "Increased operational visibility — identified a 15% underperforming product line within the first week",
-      "Improved sales forecasting accuracy by 35%",
-      "Enabled non-technical managers to explore data independently",
+    capabilities: [
+      "Pulls figures from several source systems into one reconciled model",
+      "Refreshes on a schedule, so a report describes the current period rather than last week's",
+      "Lets a manager drill from a headline number down to the rows behind it",
+      "Flags unusual values automatically instead of waiting to be noticed",
+      "Delivers scheduled reports by email to the people who need them",
     ],
     challenge:
-      "Five incompatible systems with inconsistent naming. Built an Azure Data Factory ETL pipeline with data cleansing and a unified data model — single source of truth.",
+      "Five source systems that used different names for the same thing. Built an ETL pipeline in Azure Data Factory with data cleansing and a unified semantic model, so one measure means one thing everywhere it appears.",
     futureEnhancements: [
       "Predictive analytics using Python integration in Power BI",
       "Natural language Q&A for non-technical users",
@@ -583,11 +600,11 @@ export const caseStudies: CaseStudy[] = [
       "Testing with real business scenarios",
       "Deployment and training for end users",
     ],
-    clientBenefits: [
-      "Real-time business intelligence at a glance",
-      "Data-driven decision making across all levels",
-      "Elimination of manual report compilation",
-      "Self-service analytics for non-technical users",
+    businessValue: [
+      "Reporting produced by the system rather than retyped by hand each cycle",
+      "One agreed set of numbers, instead of a different version per department",
+      "Performance visible while it is happening, not a reporting cycle later",
+      "Self-service analysis for managers who do not write SQL",
     ],
     relatedServices: [
       "Power BI Dashboards",
@@ -598,27 +615,29 @@ export const caseStudies: CaseStudy[] = [
     faqs: [
       {
         question: "How many data sources can Power BI connect to?",
-        answer: "Power BI connects to 100+ data sources including Excel, SQL Server, MySQL, PostgreSQL, Google Analytics, Salesforce, and many more.",
+        answer:
+          "Power BI connects to 100+ data sources including Excel, SQL Server, MySQL, PostgreSQL, Google Analytics, Salesforce, and many more.",
       },
       {
         question: "How often do the dashboards update?",
-        answer: "Dashboards can be configured to refresh hourly, daily, or on-demand depending on your business needs and data source capabilities.",
+        answer:
+          "Dashboards can be configured to refresh hourly, daily, or on-demand depending on your business needs and data source capabilities.",
       },
       {
         question: "Can we share dashboards with our team?",
-        answer: "Yes. Power BI Service allows secure sharing through workspaces, email subscriptions, and embedded reports accessible on web and mobile.",
+        answer:
+          "Yes. Power BI Service allows secure sharing through workspaces, email subscriptions, and embedded reports accessible on web and mobile.",
       },
     ],
   },
   {
     slug: "seo-digital-growth",
     title: "Business SEO & Digital Growth",
+    label: "Portfolio build",
     shortOverview:
-      "Technical SEO, content optimization, schema markup, GEO, and AEO strategies for improved search visibility.",
+      "Technical SEO, content optimisation, schema markup, and GEO and AEO structuring for search and AI-answer visibility.",
     category: "SEO / GEO / AEO",
-    clientType: "SME / Professional Services",
-    duration: "3 Weeks",
-    status: "Completed",
+    builtFor: "SME / Professional Services",
     image:
       "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=700&h=450&fit=crop",
     technologies: ["Google Search Console", "Analytics", "SEO Tools"],
@@ -629,9 +648,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "AI Search", items: ["GEO", "AEO", "FAQ Structuring"] },
     ],
     problem:
-      "The client's website had low search visibility. Despite quality services, they were buried on page 2-3 of Google results, losing potential customers to competitors with better SEO.",
+      "A site can hold good services and still be effectively invisible, because it is technically hard for crawlers to read, has no consistent page-level metadata, and does not answer the questions people actually type.",
     solution:
-      "Implemented technical SEO, content optimization, schema markup, GEO (Generative Engine Optimization), and AEO (Answer Engine Optimization) strategies to improve search rankings and online visibility.",
+      "Implemented technical SEO, content optimisation, schema markup, GEO (Generative Engine Optimization) and AEO (Answer Engine Optimization) to improve how the site is indexed, understood and cited across search and AI answer surfaces.",
     features: [
       "Comprehensive technical SEO audit",
       "On-page optimization for all key pages",
@@ -642,12 +661,12 @@ export const caseStudies: CaseStudy[] = [
       "Google Business Profile optimization",
       "Monthly performance reporting",
     ],
-    businessResult: [
-      "Improved search visibility — moved from page 3 to page 1 for key terms",
-      "Better website traffic — 180% increase in organic visitors within 3 months",
-      "Increased lead generation through improved search rankings",
-      "Featured in Google's AI overviews for industry-relevant queries",
-      "Established authority in the local market through content strategy",
+    capabilities: [
+      "Removes crawl, speed and indexation problems that cap any content effort",
+      "Gives each page its own title, description and canonical, so pages compete separately",
+      "Adds structured data so search engines can read what the business actually offers",
+      "Answers real questions directly, which is what both featured snippets and AI answers quote",
+      "Reports what changed in search and traffic, so effort can be judged and re-prioritised",
     ],
     challenge:
       "The website had technical issues slowing it down and confusing search engines. Prioritized critical fixes first, then layered on content and authority-building strategies.",
@@ -666,11 +685,11 @@ export const caseStudies: CaseStudy[] = [
       "GEO and AEO strategy implementation",
       "Monitoring, reporting, and ongoing refinement",
     ],
-    clientBenefits: [
-      "Sustainable organic traffic growth without ongoing ad spend",
-      "Better visibility in both traditional and AI search results",
-      "More qualified leads from search engines",
-      "Competitive advantage in local and national search rankings",
+    businessValue: [
+      "Fixes the technical blockers that limit every other marketing activity",
+      "Makes each service page a credible candidate for the searches it targets",
+      "Puts the business in front of AI answers as well as classic search results",
+      "Makes performance measurable, so spend can be judged on evidence rather than opinion",
     ],
     relatedServices: [
       "SEO Optimization",
@@ -681,27 +700,29 @@ export const caseStudies: CaseStudy[] = [
     faqs: [
       {
         question: "How long does SEO take to show results?",
-        answer: "Most clients see noticeable improvements within 3-6 months. Technical fixes can show immediate impact, while content and authority building compound over time.",
+        answer:
+          "That depends on the starting point, competition and how often work is done. Technical fixes can show impact within weeks; content and authority building compound over months. Anyone quoting a specific ranking or traffic number up front is guessing, and we do not.",
       },
       {
         question: "What is GEO and why does it matter?",
-        answer: "GEO (Generative Engine Optimization) optimizes your content so AI search engines like ChatGPT and Google AI Overviews recommend your business when users ask relevant questions.",
+        answer:
+          "GEO (Generative Engine Optimization) optimizes your content so AI search engines like ChatGPT and Google AI Overviews recommend your business when users ask relevant questions.",
       },
       {
         question: "Do you provide ongoing SEO support?",
-        answer: "Yes. We offer monthly SEO retainers that include monitoring, content updates, technical maintenance, and performance reporting.",
+        answer:
+          "Yes. We offer monthly SEO retainers that include monitoring, content updates, technical maintenance, and performance reporting.",
       },
     ],
   },
   {
     slug: "business-automation",
     title: "Custom Business Automation Platform",
+    label: "Portfolio build",
     shortOverview:
-      "Custom automation platform integrating workflows, approvals, notifications, and reporting.",
+      "An automation platform covering workflow configuration, approvals, notifications and reporting.",
     category: "Business Automation",
-    clientType: "SME / Operations",
-    duration: "6 Weeks",
-    status: "Completed",
+    builtFor: "SME / Operations",
     image:
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&h=450&fit=crop",
     technologies: ["React", "Node.js", "MongoDB"],
@@ -712,9 +733,9 @@ export const caseStudies: CaseStudy[] = [
       { label: "Integrations", items: ["Email API", "WhatsApp API", "Webhooks"] },
     ],
     problem:
-      "The client performed repetitive business tasks manually — approvals, notifications, report generation, and data entry. This consumed hours of productive time and introduced human errors.",
+      "Approvals, notifications, report generation and data entry are done by hand across departments. Each handoff depends on someone remembering to do it, and when a step is missed the error is usually found later by someone else.",
     solution:
-      "Developed a custom automation platform integrating workflows, approvals, notifications, and reporting. Built automated pipelines that handle routine tasks while routing exceptions to human reviewers.",
+      "Developed an automation platform covering workflow configuration, approvals, notifications and reporting. Routine steps run automatically, while exceptions are routed to a named human with the full context attached.",
     features: [
       "Visual workflow builder for custom processes",
       "Multi-level approval chains",
@@ -725,12 +746,12 @@ export const caseStudies: CaseStudy[] = [
       "Role-based access control",
       "API integrations with existing tools",
     ],
-    businessResult: [
-      "Reduced manual work — automated 60% of repetitive business tasks",
-      "Faster business processes with streamlined approval workflows",
-      "Improved operational consistency and reduced human errors",
-      "Saved 15+ hours per week previously spent on manual coordination",
-      "Better visibility into process bottlenecks through analytics",
+    capabilities: [
+      "Runs repeatable steps without someone having to remember to start them",
+      "Holds an approval to a defined chain, with an escalation path",
+      "Notifies the right person automatically when their step is next",
+      "Routes anything ambiguous to a reviewer with the supporting context attached",
+      "Records where work is sitting, so bottlenecks are visible rather than inferred",
     ],
     challenge:
       "Each department had different workflows and approval processes. Built a flexible workflow engine that allows non-technical users to create and modify automation rules without code.",
@@ -749,11 +770,11 @@ export const caseStudies: CaseStudy[] = [
       "User testing with department representatives",
       "Phased rollout and adoption support",
     ],
-    clientBenefits: [
-      "Significant time savings across all departments",
-      "Consistent, error-free execution of routine processes",
-      "Real-time visibility into workflow status",
-      "Flexible system that adapts as business needs evolve",
+    businessValue: [
+      "Removes a class of routine coordination work and the mistakes that come with it",
+      "Makes approval ownership explicit instead of implicit",
+      "Keeps work moving without waiting for someone to check on it",
+      "Shows where processes actually slow down, which is where the real cost sits",
     ],
     relatedServices: [
       "Business Automation",
@@ -764,15 +785,18 @@ export const caseStudies: CaseStudy[] = [
     faqs: [
       {
         question: "What types of workflows can be automated?",
-        answer: "Almost any repetitive process — approvals, notifications, data entry, report generation, task assignments, and inter-department coordination.",
+        answer:
+          "Almost any repetitive process — approvals, notifications, data entry, report generation, task assignments, and inter-department coordination.",
       },
       {
         question: "Can we modify workflows without developer help?",
-        answer: "Yes. The platform includes a visual workflow builder that allows non-technical users to create and modify automation rules.",
+        answer:
+          "Yes. The platform includes a visual workflow builder that allows non-technical users to create and modify automation rules.",
       },
       {
         question: "How does the system handle exceptions?",
-        answer: "When a workflow encounters an exception or requires human judgment, it automatically routes the task to the appropriate reviewer with all relevant context.",
+        answer:
+          "When a workflow encounters an exception or requires human judgment, it automatically routes the task to the appropriate reviewer with all relevant context.",
       },
     ],
   },

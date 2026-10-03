@@ -7,20 +7,17 @@ import fashionLogo from "@/assets/images/fflogo.jpg";
 import fashionLogoWebp from "@/assets/images/fflogo.webp";
 import rosisLogo from "@/assets/images/rosis46.jpg";
 import rosisLogoWebp from "@/assets/images/rosis46.webp";
-import balrajLogo from "@/assets/images/balraj.png";
 import balrajLogoWebp from "@/assets/images/balraj.webp";
 
 const PLACEHOLDER_LOGO =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='90' viewBox='0 0 170 90'%3E%3Crect width='170' height='90' fill='%23f8fafc' rx='8'/%3E%3Cpath d='M65 35h40v20a4 4 0 01-4 4H69a4 4 0 01-4-4V35z' fill='%23e2e8f0'/%3E%3Cpath d='M55 33a4 4 0 014-4h52a4 4 0 014 4v2H55v-2z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 
 interface Brand {
-  logo: string;
+  logo?: string;
   logoWebp: string;
   alt: string;
   name: string;
   category: string;
-  status: string;
-  statusColor: string;
 }
 
 const brands: Brand[] = [
@@ -29,36 +26,27 @@ const brands: Brand[] = [
     logoWebp: apolloLogoWebp,
     alt: "Apollo Tyres Logo",
     name: "Apollo Tyres",
-    category: "Corporate Business Website",
-    status: "✔ Completed",
-    statusColor: "text-emerald-600 bg-emerald-50",
+    category: "Corporate business website",
   },
   {
     logo: fashionLogo,
     logoWebp: fashionLogoWebp,
     alt: "Fashion Fusion Logo",
     name: "Fashion Fusion",
-    category: "E-Commerce Platform",
-    status: "✔ Live Project",
-    statusColor: "text-blue-600 bg-blue-50",
+    category: "E-commerce platform",
   },
   {
     logo: rosisLogo,
     logoWebp: rosisLogoWebp,
     alt: "Rosis Logo",
     name: "Rosis",
-    category: "Business Website",
-    status: "✔ Completed",
-    statusColor: "text-emerald-600 bg-emerald-50",
+    category: "Business website",
   },
   {
-    logo: balrajLogo,
     logoWebp: balrajLogoWebp,
     alt: "Balraj Logo",
     name: "Balraj",
-    category: "Business Technology Consultancy",
-    status: "✔ Portfolio Project",
-    statusColor: "text-primary bg-primary/[0.06]",
+    category: "Technology consultancy website",
   },
 ];
 
@@ -71,7 +59,7 @@ export function TrustedBrandsSection() {
     <section
       id="brands"
       className="relative overflow-hidden bg-white py-12 lg:py-16"
-      aria-label="Trusted Projects and Brands — Businesses we've designed and developed for"
+      aria-label="Client projects — websites and platforms we have designed and developed for businesses"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
@@ -108,12 +96,11 @@ export function TrustedBrandsSection() {
         >
           <motion.div variants={fadeInUp}>
             <span className="inline-block rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
-              Trusted Partners
+              Our Clients
             </span>
           </motion.div>
           <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Trusted Projects &amp;{" "}
-            <span className="text-primary">Brands</span>
+            Client <span className="text-primary">Projects</span>
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -123,7 +110,7 @@ export function TrustedBrandsSection() {
             className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
-            Businesses we&apos;ve built for — retail, automotive, fashion, consulting, and tech.
+            Websites and platforms we have designed, built and delivered for businesses in automotive, fashion and consulting.
           </motion.p>
         </motion.div>
 
@@ -157,7 +144,7 @@ export function TrustedBrandsSection() {
                 <picture>
                   <source srcSet={brand.logoWebp} type="image/webp" />
                   <img
-                    src={brand.logo}
+                    src={brand.logo ?? brand.logoWebp}
                     alt={brand.alt}
                     width={170}
                     height={90}
@@ -173,8 +160,8 @@ export function TrustedBrandsSection() {
               <div className="mt-4 text-center">
                 <h3 className="text-sm font-bold text-foreground">{brand.name}</h3>
                 <p className="mt-1 text-[12px] text-muted-foreground">{brand.category}</p>
-                <span className={`mt-2.5 inline-block rounded-full px-3 py-1 text-[11px] font-semibold ${brand.statusColor}`}>
-                  {brand.status}
+                <span className="mt-2.5 inline-block rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
+                  Client project
                 </span>
               </div>
             </motion.div>
@@ -190,7 +177,7 @@ export function TrustedBrandsSection() {
           className="mt-10 text-center"
         >
           <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-            We&apos;ve delivered digital solutions across retail, automotive, fashion, consulting, and tech.
+            Every project here was built and delivered by YESBE for a real client business.
           </p>
           <a
             href="#contact"

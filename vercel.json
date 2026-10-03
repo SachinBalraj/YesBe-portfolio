@@ -44,6 +44,11 @@
       "source": "/search",
       "destination": "/insights/search",
       "permanent": true
+    },
+    {
+      "source": "/insights/:slug",
+      "destination": "/insights/category/:slug",
+      "permanent": true
     }
   ],
   "headers": [

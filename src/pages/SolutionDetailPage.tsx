@@ -462,7 +462,7 @@ export function SolutionDetailPage() {
         </div>
       </section>
 
-      {/* Case Study */}
+      {/* Example project scope */}
       <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -471,13 +471,14 @@ export function SolutionDetailPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <SectionHeading icon={Target}>Case Study</SectionHeading>
+            <SectionHeading icon={Target}>Example Project Scope</SectionHeading>
             <div className="rounded-[20px] border border-white/40 bg-white p-6 sm:p-8" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}>
-              <h3 className="text-[17px] font-bold text-foreground mb-2">{solution.caseStudy.title}</h3>
-              <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">{solution.caseStudy.outcome}</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">Portfolio build</p>
+              <h3 className="text-[17px] font-bold text-foreground mb-2">{solution.exampleProject.title}</h3>
+              <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">{solution.exampleProject.scope}</p>
               <div className="inline-flex items-center gap-2 rounded-full bg-primary/[0.06] px-4 py-2">
                 <TrendingUp className="h-4 w-4 text-primary" />
-                <span className="text-[14px] font-semibold text-primary">{solution.caseStudy.metric}</span>
+                <span className="text-[14px] font-semibold text-primary">{solution.exampleProject.focus}</span>
               </div>
               <div className="mt-5">
                 <Link
@@ -485,7 +486,7 @@ export function SolutionDetailPage() {
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
                 >
-                  View Full Case Studies
+                  View Full Projects
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>

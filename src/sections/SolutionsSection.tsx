@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Brain, Globe, Boxes, BarChart3, Database, TrendingUp,
-  Megaphone, Cloud, Workflow, Smartphone, Shield, Briefcase,
+  Megaphone, Cloud, Workflow, Smartphone, Briefcase,
   ArrowRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -209,22 +209,22 @@ const solutions: Solution[] = [
     slug: "custom-software",
   },
   {
-    title: "Cybersecurity",
-    description: "Protect your data and systems with proper security practices.",
-    icon: Shield,
-    accent: "red",
-    features: ["SSL & Encryption", "Security Audit", "Backup Systems", "Auth Controls"],
-    layout: "standard",
-    slug: "cloud-devops",
+    title: "Digital Transformation",
+    description: "Modernise legacy systems in phases, without stopping the business.",
+    icon: Workflow,
+    accent: "teal",
+    features: ["Legacy Modernisation", "System Integration", "Phased Migration", "Process Redesign"],
+    layout: "compact",
+    slug: "digital-transformation",
   },
   {
-    title: "Business Consulting",
-    description: "Technology advisory that ties IT decisions to business outcomes.",
+    title: "IT Consulting",
+    description: "Technology advisory that ties IT decisions to business needs.",
     icon: Briefcase,
     accent: "teal",
-    features: ["Solution Architecture", "Tech Planning", "Digital Transform", "IT Advisory"],
+    features: ["Solution Architecture", "Tech Planning", "System Audits", "IT Advisory"],
     layout: "standard",
-    slug: "business-automation",
+    slug: "it-consulting",
   },
 ];
 
