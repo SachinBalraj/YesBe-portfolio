@@ -67,6 +67,7 @@ export const FOUNDER_PERSON = {
   "@id": FOUNDER_PERSON_ID,
   name: "Sachin Balraj",
   url: FOUNDER_PROFILE_URL,
+  image: "https://www.yesbe.tech/sachin.webp",
   jobTitle: "Founder",
   description: FOUNDER_DESCRIPTION,
   worksFor: [

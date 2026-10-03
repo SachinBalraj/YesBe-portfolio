@@ -31,10 +31,7 @@ export function FounderPage() {
     canonical: FOUNDER_PROFILE_URL,
     ogType: "profile",
     ogDescription: OG_DESCRIPTION,
-    // TODO(founder-photo): no professional founder image exists in the project
-    // yet, so the site default social image is used. Replace with the founder's
-    // real headshot asset once available.
-    ogImage: "https://www.yesbe.tech/YBlogo.png",
+    ogImage: "https://www.yesbe.tech/sachin.webp",
   });
 
   return (

@@ -3,6 +3,7 @@ import { fadeInUp, staggerContainer } from "@/animations";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import logoImg from "@/assets/images/YBlogo.png";
+import founderImage from "@/assets/images/sachin.jpg";
 
 const focusAreas = [
   { value: "Consulting", label: "IT strategy, requirements and solution architecture" },
@@ -109,32 +110,45 @@ export function AboutSection() {
               aria-labelledby="about-founder-heading"
               className="mt-8 rounded-[20px] border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
             >
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
-                Founder
-              </p>
-              <h3 id="about-founder-heading" className="text-lg font-bold text-foreground">
-                <Link
-                  to="/sachin-balraj"
-                  className="rounded-sm transition-colors hover:text-primary"
-                >
-                  Sachin Balraj
-                </Link>
-              </h3>
-              <p className="text-[13px] text-muted-foreground">
-                Founder, YESBE Technologies
-              </p>
-              <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
-                Sachin Balraj is the Founder of YESBE Technologies, leading the
-                company&apos;s technology and digital solution initiatives. He
-                also works as a Solution Architect at Springreen.
-              </p>
-              <Link
-                to="/sachin-balraj"
-                className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary transition-all duration-200 hover:gap-2.5"
-              >
-                Read the founder profile
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
+              <div className="flex items-center gap-4 sm:gap-5">
+                <img
+                  src={founderImage}
+                  alt="Sachin Balraj, Founder of YESBE Technologies"
+                  width={120}
+                  height={120}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-[110px] w-[110px] rounded-full object-cover object-center ring-1 ring-primary/10 sm:h-[120px] sm:w-[120px] md:h-[126px] md:w-[126px]"
+                />
+                <div className="min-w-0 flex-1">
+                  <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+                    Founder
+                  </p>
+                  <h3 id="about-founder-heading" className="text-lg font-bold text-foreground">
+                    <Link
+                      to="/sachin-balraj"
+                      className="rounded-sm transition-colors hover:text-primary"
+                    >
+                      Sachin Balraj
+                    </Link>
+                  </h3>
+                  <p className="text-[13px] text-muted-foreground">
+                    Founder, YESBE Technologies
+                  </p>
+                  <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
+                    Sachin Balraj is the Founder of YESBE Technologies, leading the
+                    company&apos;s technology and digital solution initiatives. He
+                    also works as a Solution Architect at Springreen.
+                  </p>
+                  <Link
+                    to="/sachin-balraj"
+                    className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary transition-all duration-200 hover:gap-2.5"
+                  >
+                    Read the founder profile
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
             </motion.section>
 
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">

@@ -2,27 +2,20 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
+import founderImage from "@/assets/images/sachin.jpg";
 import { SITE_CONFIG } from "@/constants";
 
-/**
- * No professional photograph of the founder exists in the project yet, so a
- * monogram tile is used rather than a stock photo of an unrelated person.
- *
- * TODO(founder-photo): once a real professional headshot is added to
- * `src/assets/images/`, swap the monogram below for an <img> (or Vite asset
- * import) with descriptive alt text, and pass the same file as `ogImage` on
- * the founder page so social previews match.
- */
-function FounderMonogram() {
+function FounderPortrait() {
   return (
-    <div
-      aria-hidden="true"
-      className="flex h-[180px] w-[180px] items-center justify-center rounded-[28px] border border-white/40 bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] shadow-[0_8px_40px_rgba(37,99,235,0.22)] sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px]"
-    >
-      <span className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl">
-        SB
-      </span>
-    </div>
+    <img
+      src={founderImage}
+      alt="Sachin Balraj, Founder of YESBE Technologies"
+      width={260}
+      height={260}
+      loading="eager"
+      decoding="async"
+      className="h-[180px] w-[180px] rounded-[28px] border border-white/40 object-cover object-center shadow-[0_8px_30px_rgba(37,99,235,0.12)] sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px]"
+    />
   );
 }
 
@@ -51,9 +44,9 @@ export function FounderHeroSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="grid items-center gap-8 lg:grid-cols-[auto_1fr] lg:gap-12"
         >
-          {/* ── Monogram / photo slot ── */}
+          {/* ── Founder photo slot ── */}
           <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start">
-            <FounderMonogram />
+            <FounderPortrait />
           </motion.div>
 
           {/* ── Identity + roles ── */}
