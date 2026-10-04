@@ -23,9 +23,9 @@ export function PremiumHero() {
     <section
       id="hero"
       aria-label="Hero — YESBE Technologies, IT consulting and software development company"
-      className="min-h-screen flex items-center bg-white"
+      className="flex items-center bg-white"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-[90px] pb-24 lg:pt-[110px] lg:pb-0">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-[90px] pb-10 lg:pt-[110px] lg:pb-10">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-6 items-center">
           {/* ── Left Content ── */}
           <div className="max-w-xl">

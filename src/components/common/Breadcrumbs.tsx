@@ -9,9 +9,15 @@ interface Crumb {
 interface BreadcrumbsProps {
   items: Crumb[];
   className?: string;
+  /**
+   * Emit only the BreadcrumbList JSON-LD and skip the visible breadcrumb
+   * trail. Used where a page drops the breadcrumb UI but the structured
+   * data is still valid and worth keeping for SEO.
+   */
+  schemaOnly?: boolean;
 }
 
-export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
+export function Breadcrumbs({ items, className = "", schemaOnly = false }: BreadcrumbsProps) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -29,22 +35,24 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <nav aria-label="Breadcrumb" className={`mb-6 flex items-center gap-2 text-sm text-muted-foreground ${className}`}>
-        <Link to="/" className="inline-flex items-center gap-1 hover:text-primary transition-colors">
-          <Home className="h-3.5 w-3.5" />
-          Home
-        </Link>
-        {items.map((crumb, i) => (
-          <span key={i} className="flex items-center gap-2">
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50" />
-            {crumb.href ? (
-              <Link to={crumb.href} className="hover:text-primary transition-colors">{crumb.label}</Link>
-            ) : (
-              <span className="text-foreground font-medium">{crumb.label}</span>
-            )}
-          </span>
-        ))}
-      </nav>
+      {!schemaOnly && (
+        <nav aria-label="Breadcrumb" className={`mb-6 flex items-center gap-2 text-sm text-muted-foreground ${className}`}>
+          <Link to="/" className="inline-flex items-center gap-1 hover:text-primary transition-colors">
+            <Home className="h-3.5 w-3.5" />
+            Home
+          </Link>
+          {items.map((crumb, i) => (
+            <span key={i} className="flex items-center gap-2">
+              <ChevronRight className="h-3 w-3 text-muted-foreground/50" />
+              {crumb.href ? (
+                <Link to={crumb.href} className="hover:text-primary transition-colors">{crumb.label}</Link>
+              ) : (
+                <span className="text-foreground font-medium">{crumb.label}</span>
+              )}
+            </span>
+          ))}
+        </nav>
+      )}
     </>
   );
 }

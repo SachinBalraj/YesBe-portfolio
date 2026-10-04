@@ -28,7 +28,7 @@ export function FounderHeroSection() {
   return (
     <section
       id="founder-hero"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-14 lg:py-20"
+      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-6 lg:py-9"
       aria-label="Sachin Balraj — Founder of YESBE Technologies and Solution Architect at Springreen"
     >
       <div className="pointer-events-none absolute inset-0">

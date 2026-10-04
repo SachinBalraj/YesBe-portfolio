@@ -72,7 +72,7 @@ export function LegalPageLayout({
       )}
 
       {/* Hero Header */}
-      <section className="relative overflow-hidden bg-white pt-[140px] pb-12 lg:pt-[160px] lg:pb-16">
+      <section className="relative overflow-hidden bg-white pt-[88px] pb-10 lg:pt-[104px] lg:pb-10">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
           <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
@@ -130,7 +130,7 @@ export function LegalPageLayout({
       </section>
 
       {/* Content Area */}
-      <section className="relative bg-white py-8 lg:py-12">
+      <section className="relative bg-white py-6 lg:py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[260px_1fr] xl:grid-cols-[280px_1fr]">
             {/* Sidebar TOC (Desktop) */}
@@ -212,7 +212,7 @@ export function LegalPageLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f8fafc] to-white py-16 lg:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f8fafc] to-white py-6 lg:py-9">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_50%,rgba(37,99,235,0.04)_0%,transparent_70%)]" />
         <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.div

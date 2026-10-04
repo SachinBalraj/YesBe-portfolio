@@ -60,7 +60,7 @@ export function DevelopmentProcessSection() {
   return (
     <section
       id="process"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16"
+      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9"
       aria-label="Development process — Discovery, Planning, Design, Development, Testing, Deployment, Support"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

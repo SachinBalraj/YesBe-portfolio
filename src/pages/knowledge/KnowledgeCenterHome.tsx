@@ -147,7 +147,7 @@ export function KnowledgeCenterHome() {
 
       <CategoryNav />
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
         {featured && (
           <div className="pt-10">
             <FeaturedArticle article={featured} />
@@ -174,7 +174,7 @@ export function KnowledgeCenterHome() {
           />
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <div className="mb-6">
             <h2 className="text-2xl font-bold tracking-tight text-foreground">
               Popular Reads
@@ -186,7 +186,7 @@ export function KnowledgeCenterHome() {
           <ArticleGrid articles={popular} />
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <div className="mb-6">
             <h2 className="text-2xl font-bold tracking-tight text-foreground">
               Browse by Topic
@@ -227,7 +227,7 @@ export function KnowledgeCenterHome() {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <NewsletterSignup />
         </div>
       </section>

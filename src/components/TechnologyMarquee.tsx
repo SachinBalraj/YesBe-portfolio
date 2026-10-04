@@ -90,7 +90,7 @@ export function TechnologyMarquee() {
 
   return (
     <section
-      className="relative overflow-hidden py-16 lg:py-20"
+      className="relative overflow-hidden py-5 lg:py-7"
       style={{ background: "#F8FAFC" }}
       aria-label="Technologies We Build With"
     >

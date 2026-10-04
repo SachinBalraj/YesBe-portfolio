@@ -24,7 +24,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-16 lg:py-20"
+      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9"
       aria-label="About YESBE Technologies — IT consulting, custom software development, AI and automation, and data analytics"
     >
       <div className="absolute inset-0 pointer-events-none">

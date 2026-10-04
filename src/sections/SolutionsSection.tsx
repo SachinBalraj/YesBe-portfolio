@@ -363,7 +363,7 @@ function SolutionCard({
 
 export function SolutionsSection() {
   return (
-    <section id="solutions" className="relative overflow-hidden bg-white py-12 lg:py-16" aria-label="Business Solutions — AI, ERP, Web Development, Power BI, Cloud, and Digital Transformation services">
+    <section id="solutions" className="relative overflow-hidden bg-white py-6 lg:py-9" aria-label="Business Solutions — AI, ERP, Web Development, Power BI, Cloud, and Digital Transformation services">
       {/* Background decorations */}
       <div className="pointer-events-none absolute inset-0">
         {/* Radial gradient base */}

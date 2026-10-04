@@ -149,7 +149,7 @@ export function CategoryPage() {
 
   if (!category) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 lg:px-8">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
           <BookOpen className="h-8 w-8" />
         </div>
@@ -180,7 +180,7 @@ export function CategoryPage() {
   };
 
   return (
-    <div className="bg-ice-gradient min-h-screen pb-24">
+    <div className="bg-ice-gradient min-h-screen pb-10">
       {/* Schema: FAQ if present */}
 
       {category.faq && category.faq.length > 0 && (
@@ -267,10 +267,10 @@ export function CategoryPage() {
       {/* Category Horizontal Navigation */}
       <CategoryNav activeSlug={category.slug} />
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
         {/* 3. Featured Article Section */}
         {featured && (
-          <div className="mb-14">
+          <div className="mb-10">
             <div className="mb-4 flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-primary" />
               <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
@@ -388,7 +388,7 @@ export function CategoryPage() {
 
         {/* 7. Popular / Trending Articles Section within Category */}
         {popularCategoryArticles.length > 0 && (
-          <div className="mt-16 border-t border-slate-200/80 pt-12 dark:border-slate-800">
+          <div className="mt-10 border-t border-slate-200/80 pt-8 dark:border-slate-800">
             <div className="mb-6 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
@@ -406,13 +406,13 @@ export function CategoryPage() {
 
         {/* Category FAQ Section (If Defined) */}
         {category.faq && category.faq.length > 0 && (
-          <div className="mt-16">
+          <div className="mt-10">
             <FAQSection faq={category.faq} />
           </div>
         )}
 
         {/* 8. Related Categories Section ("You may also explore") */}
-        <div className="mt-16 border-t border-slate-200/80 pt-12 dark:border-slate-800">
+        <div className="mt-10 border-t border-slate-200/80 pt-8 dark:border-slate-800">
           <div className="mb-6">
             <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
               <Layers className="h-4 w-4 text-primary" />
@@ -450,12 +450,12 @@ export function CategoryPage() {
         </div>
 
         {/* 9. Newsletter Section */}
-        <div className="mt-16">
+        <div className="mt-10">
           <NewsletterSignup />
         </div>
 
         {/* 10. Conversion CTA Section */}
-        <div className="mt-16 overflow-hidden rounded-3xl bg-gradient-to-br from-[#1e293b] via-[#0f172a] to-[#1e1b4b] p-8 sm:p-12 text-white shadow-2xl relative">
+        <div className="mt-10 overflow-hidden rounded-3xl bg-gradient-to-br from-[#1e293b] via-[#0f172a] to-[#1e1b4b] p-8 sm:p-12 text-white shadow-2xl relative">
           <div className="relative z-10 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-blue-300 backdrop-blur-md mb-4">
               <Sparkles className="h-3.5 w-3.5" />

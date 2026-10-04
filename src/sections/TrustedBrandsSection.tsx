@@ -58,7 +58,7 @@ export function TrustedBrandsSection() {
   return (
     <section
       id="brands"
-      className="relative overflow-hidden bg-white py-12 lg:py-16"
+      className="relative overflow-hidden bg-white py-6 lg:py-9"
       aria-label="Client projects — websites and platforms we have designed and developed for businesses"
     >
       {/* Background */}

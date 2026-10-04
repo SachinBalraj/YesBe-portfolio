@@ -129,7 +129,7 @@ export function SolutionDetailPage() {
         })),
       }} />
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-[140px] pb-16 lg:pt-[160px] lg:pb-20">
+      <section className="relative overflow-hidden bg-white pt-[88px] pb-10 lg:pt-[104px] lg:pb-10">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
           <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
@@ -203,7 +203,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Hero Image */}
-      <section className="bg-white pb-16">
+      <section className="bg-white pb-6 lg:pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -228,7 +228,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Overview */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[20%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.06] blur-[100px]" />
         </div>
@@ -278,7 +278,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Key Features */}
-      <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -317,7 +317,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Benefits */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -352,7 +352,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Our Process */}
-      <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -395,7 +395,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Technologies Used */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -430,7 +430,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Why Choose YESBE */}
-      <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -463,7 +463,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Example project scope */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -496,7 +496,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -525,7 +525,7 @@ export function SolutionDetailPage() {
 
       {/* Related Solutions */}
       {relatedSolutionsData.length > 0 && (
-        <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -579,7 +579,7 @@ export function SolutionDetailPage() {
       )}
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

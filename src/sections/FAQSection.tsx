@@ -125,7 +125,7 @@ export function FAQSection() {
       }} />
       <section
       id="faq"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-12 lg:py-16"
+      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9"
       aria-label="Frequently Asked Questions — Services, quotations, technologies, and development process"
     >
       <div className="pointer-events-none absolute inset-0">

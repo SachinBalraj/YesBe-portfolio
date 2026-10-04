@@ -30,7 +30,7 @@ export function FAQSection({
   if (!items.length) return null;
 
   return (
-    <section aria-label="Frequently asked questions" className="mt-16">
+    <section aria-label="Frequently asked questions" className="mt-10">
       <div className="mb-8 max-w-3xl">
         <div className="mb-4 flex items-center gap-3">
           <span className="flex h-11 w-11 items-center justify-center rounded-3xl bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white shadow-lg shadow-[#1d4ed8]/10">

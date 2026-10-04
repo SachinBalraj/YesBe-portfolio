@@ -91,9 +91,10 @@ export function ServicesPage() {
         highlight="Solutions"
         description="AI tools, ERP systems, web development, and analytics — built for startups, SMEs, and enterprises."
         breadcrumbs={[{ label: "Services" }]}
+        hideBreadcrumbNav
       />
 
-      <section className="relative bg-white py-12 lg:py-16">
+      <section className="relative bg-white py-6 lg:py-9">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-[5%] right-[10%] h-[400px] w-[400px] rounded-full bg-[#dbeafe] opacity-[0.06] blur-[120px]" />
           <div className="absolute bottom-[10%] left-[5%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.05] blur-[100px]" />

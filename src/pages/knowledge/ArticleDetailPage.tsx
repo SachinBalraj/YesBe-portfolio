@@ -55,7 +55,7 @@ export function ArticleDetailPage() {
 
   if (!article) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-foreground">Article not found</h1>
         <p className="mt-3 text-muted-foreground">
           The article you're looking for may have been moved or removed.
@@ -173,15 +173,15 @@ export function ArticleDetailPage() {
             </aside>
           </div>
 
-          <div className="mt-16">
+          <div className="mt-10">
             <ContactCTA />
           </div>
 
-          <div className="mt-16">
+          <div className="mt-10">
             <RelatedArticles articles={related} />
           </div>
 
-          <div className="mt-16">
+          <div className="mt-10">
             <NewsletterSignup />
           </div>
         </div>

@@ -26,6 +26,11 @@ interface PageHeaderProps {
   titleAfter?: string;
   description: string;
   breadcrumbs?: Crumb[];
+  /**
+   * Keep emitting the BreadcrumbList JSON-LD from `breadcrumbs` but drop the
+   * visible breadcrumb trail and the whitespace it occupied.
+   */
+  hideBreadcrumbNav?: boolean;
   primaryAction?: PageHeaderAction;
   secondaryAction?: PageHeaderAction;
   /** Tighter vertical rhythm — opt-in so existing pages keep their current spacing. */
@@ -39,6 +44,7 @@ export function PageHeader({
   titleAfter,
   description,
   breadcrumbs,
+  hideBreadcrumbNav = false,
   primaryAction,
   secondaryAction,
   compact = false,
@@ -50,7 +56,7 @@ export function PageHeader({
       className={`relative overflow-hidden bg-white ${
         compact
           ? "pt-[112px] pb-10 sm:pt-[124px] sm:pb-12 lg:pt-[132px] lg:pb-14"
-          : "pt-[140px] pb-16 lg:pt-[160px] lg:pb-20"
+          : "pt-[104px] pb-10 sm:pt-[112px] sm:pb-12 lg:pt-[120px] lg:pb-12"
       }`}
     >
       <div className="pointer-events-none absolute inset-0">
@@ -66,8 +72,8 @@ export function PageHeader({
           className="max-w-3xl mx-auto"
         >
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <motion.div variants={fadeInUp} className="text-left mb-6">
-              <Breadcrumbs items={breadcrumbs} />
+            <motion.div variants={fadeInUp} className={hideBreadcrumbNav ? "" : "text-left mb-6"}>
+              <Breadcrumbs items={breadcrumbs} schemaOnly={hideBreadcrumbNav} />
             </motion.div>
           )}
           <motion.div variants={fadeInUp} className="text-center">

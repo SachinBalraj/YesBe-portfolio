@@ -35,7 +35,7 @@ export function BusinessResultsSection() {
   return (
     <section
       id="business-results"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-12 lg:py-16"
+      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-6 lg:py-9"
       aria-label="What our technology solutions are built to deliver — sales, automation, reporting, cost and engagement improvements"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

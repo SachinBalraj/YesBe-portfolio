@@ -20,7 +20,7 @@ export function TechStackSection() {
   return (
     <section
       id="tech-stack"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-10 lg:py-14"
+      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-6 lg:py-9"
       aria-label="Technology stack — React, Node.js, Python, MongoDB, AWS, Power BI, OpenAI, and more"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -51,7 +51,7 @@ export function VideoPage() {
 
       {videoSchema && <VideoSchema video={videoSchema} />}
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
         <Breadcrumbs items={[{ label: "Videos" }]} />
 
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">

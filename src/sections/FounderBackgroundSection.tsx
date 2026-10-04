@@ -114,7 +114,7 @@ const experience: {
 export function FounderBackgroundSection() {
   return (
     <section
-      className="relative overflow-hidden bg-white py-16 lg:py-20"
+      className="relative overflow-hidden bg-white py-6 lg:py-9"
       aria-labelledby="about-sachin-balraj"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -149,7 +149,7 @@ export function FounderBackgroundSection() {
         </motion.div>
 
         {/* ── Founder of YESBE Technologies ── */}
-        <div className="mt-16">
+        <div className="mt-10">
           <SectionHeader
             id="founder-of-yesbe"
             eyebrow="Company"
@@ -200,7 +200,7 @@ export function FounderBackgroundSection() {
         </div>
 
         {/* ── Professional Experience ── */}
-        <div className="mt-16">
+        <div className="mt-10">
           <SectionHeader
             id="professional-experience"
             eyebrow="Career"

@@ -117,11 +117,23 @@ function ProjectCard({
 
 /* ─── Main Section ─── */
 
-export function PortfolioSection() {
+const headingClass = "text-3xl sm:text-4xl font-bold tracking-tight text-foreground";
+
+export function PortfolioSection({
+  asH1 = false,
+  clearNavbar = false,
+}: {
+  /** Promote the section heading to the page H1 when it is the first content block. */
+  asH1?: boolean;
+  /** Add top clearance for the fixed navbar when this section starts the page. */
+  clearNavbar?: boolean;
+} = {}) {
   return (
     <section
       id="projects"
-      className="relative py-12 lg:py-16 bg-white overflow-hidden"
+      className={`relative bg-white overflow-hidden ${
+        clearNavbar ? "pt-[88px] pb-6 lg:pt-[112px] lg:pb-9" : "py-6 lg:py-9"
+      }`}
       aria-label="Selected technology projects — e-commerce, restaurant automation, library management, analytics, AI and automation built by YESBE"
     >
       {/* Background */}
@@ -144,9 +156,15 @@ export function PortfolioSection() {
               Selected Work
             </span>
           </motion.div>
-          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Selected Technology <span className="text-primary">Projects</span>
-          </motion.h2>
+          {asH1 ? (
+            <motion.h1 variants={fadeInUp} className={headingClass}>
+              Selected Technology <span className="text-primary">Projects</span>
+            </motion.h1>
+          ) : (
+            <motion.h2 variants={fadeInUp} className={headingClass}>
+              Selected Technology <span className="text-primary">Projects</span>
+            </motion.h2>
+          )}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}

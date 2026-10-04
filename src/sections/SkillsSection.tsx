@@ -281,7 +281,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-white py-12 lg:py-16"
+      className="relative overflow-hidden bg-white py-6 lg:py-9"
       aria-label="Skills and Technologies — Full stack, AI, databases, cloud, analytics, and digital growth expertise"
     >
       {/* ── Background ── */}

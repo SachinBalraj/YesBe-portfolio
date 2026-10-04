@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
-import { PageHeader } from "@/components/common/PageHeader";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 
 const PortfolioSection = lazy(() => import("@/sections/PortfolioSection").then(m => ({ default: m.PortfolioSection })));
 const BusinessResultsSection = lazy(() => import("@/sections/BusinessResultsSection").then(m => ({ default: m.BusinessResultsSection })));
@@ -25,15 +25,9 @@ export function CaseStudiesPage() {
         url: "https://www.yesbe.tech/case-studies",
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
-      <PageHeader
-        badge="Projects"
-        title="Technology"
-        highlight="Projects"
-        description="Systems we have designed and built across web, ERP, AI, automation, analytics and SEO."
-        breadcrumbs={[{ label: "Projects" }]}
-      />
+      <Breadcrumbs items={[{ label: "Projects" }]} schemaOnly />
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <PortfolioSection />
+        <PortfolioSection asH1 clearNavbar />
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
         <BusinessResultsSection />

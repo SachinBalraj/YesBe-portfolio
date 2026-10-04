@@ -207,7 +207,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-12 lg:py-16 bg-white overflow-hidden" aria-label="Contact YESBE — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
+    <section id="contact" className="relative py-6 lg:py-9 bg-white overflow-hidden" aria-label="Contact YESBE — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -64,9 +64,10 @@ export function IndustriesPage() {
         highlight="Serve"
         description="Custom tech solutions for healthcare, education, retail, manufacturing, and more."
         breadcrumbs={[{ label: "Industries" }]}
+        hideBreadcrumbNav
       />
 
-      <section className="relative bg-white py-12 lg:py-16">
+      <section className="relative bg-white py-6 lg:py-9">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-[8%] left-[10%] h-[400px] w-[400px] rounded-full bg-[#dbeafe] opacity-[0.06] blur-[120px]" />
           <div className="absolute bottom-[12%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.05] blur-[100px]" />

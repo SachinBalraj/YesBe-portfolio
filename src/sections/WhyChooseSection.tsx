@@ -47,7 +47,7 @@ export function WhyChooseSection() {
   return (
     <section
       id="why-choose"
-      className="relative overflow-hidden bg-white py-12 lg:py-16"
+      className="relative overflow-hidden bg-white py-6 lg:py-9"
       aria-label="Why choose YESBE — Clear quotations, scalable architecture, AI-first solutions"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

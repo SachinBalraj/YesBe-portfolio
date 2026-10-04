@@ -24,7 +24,7 @@ const featured = founderArticles.slice(0, 6);
 export function FounderInsightsSection() {
   return (
     <section
-      className="relative overflow-hidden bg-white py-16 lg:py-20"
+      className="relative overflow-hidden bg-white py-6 lg:py-9"
       aria-labelledby="founder-latest-insights"
     >
       <div className="pointer-events-none absolute inset-0">

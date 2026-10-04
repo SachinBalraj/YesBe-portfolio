@@ -89,7 +89,7 @@ export function MiniGuidesSection() {
   return (
     <section
       id="guides"
-      className="relative overflow-hidden bg-white py-12 lg:py-16"
+      className="relative overflow-hidden bg-white py-6 lg:py-9"
       aria-label="Technology guides — What is ERP, What is RAG, Why Power BI, SEO vs GEO vs AEO"
     >
       <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

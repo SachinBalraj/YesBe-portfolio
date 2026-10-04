@@ -33,7 +33,7 @@ export function IndustriesSection() {
   return (
     <section
       id="industries"
-      className="relative overflow-hidden bg-white py-12 lg:py-16"
+      className="relative overflow-hidden bg-white py-6 lg:py-9"
       aria-label="Industries served — Education, Healthcare, Retail, Manufacturing, Finance, and more"
     >
       <div className="absolute inset-0 pointer-events-none">
