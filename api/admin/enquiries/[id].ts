@@ -1,4 +1,6 @@
+import { randomUUID } from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { UpdateFilter } from "mongodb";
 import { requireAdmin } from "../../_lib/auth.js";
 import {
   ConfigError,
@@ -8,8 +10,15 @@ import {
   type EnquiryDoc,
   type EnquiryStatus,
 } from "../../_lib/db.js";
-import { allowMethods, readJsonBody, sendError, sendJson } from "../../_lib/http.js";
+import {
+  allowMethods,
+  assertSameOrigin,
+  readJsonBody,
+  sendError,
+  sendJson,
+} from "../../_lib/http.js";
 import { toObjectId } from "../../_lib/objectId.js";
+import { cleanMultiline } from "../../_lib/validate.js";
 
 /**
  * /api/admin/enquiries/:id — admin only.
@@ -19,6 +28,7 @@ import { toObjectId } from "../../_lib/objectId.js";
  */
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   if (!allowMethods(req, res, ["GET", "PATCH", "DELETE"])) return;
+  if (!assertSameOrigin(req, res)) return;
   if (!requireAdmin(req, res)) return;
 
   const _id = toObjectId(req.query.id);
@@ -47,19 +57,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
         sendError(res, body.status, body.error);
         return;
       }
-      const status = body.data.status;
-      if (typeof status !== "string" || !(ENQUIRY_STATUSES as readonly string[]).includes(status)) {
-        sendError(res, 422, "status must be one of: " + ENQUIRY_STATUSES.join(", "));
+
+      const hasStatus = Object.hasOwn(body.data, "status");
+      const hasNote = Object.hasOwn(body.data, "note");
+      if (!hasStatus && !hasNote) {
+        sendError(res, 422, "Provide a status or a follow-up note");
         return;
       }
 
-      // Only `status` and `updatedAt` are ever written; no other field is
-      // reachable, so a client cannot modify the enquiry contents.
-      const item = await col.findOneAndUpdate(
-        { _id },
-        { $set: { status: status as EnquiryStatus, updatedAt: new Date() } },
-        { returnDocument: "after" },
-      );
+      const now = new Date();
+      const update: UpdateFilter<EnquiryDoc> = { $set: { updatedAt: now } };
+
+      if (hasStatus) {
+        const status = body.data.status;
+        if (typeof status !== "string" || !(ENQUIRY_STATUSES as readonly string[]).includes(status)) {
+          sendError(res, 422, "status must be one of: " + ENQUIRY_STATUSES.join(", "));
+          return;
+        }
+        update.$set = { ...update.$set, status: status as EnquiryStatus };
+      }
+
+      if (hasNote) {
+        const note = cleanMultiline(body.data.note, 2000);
+        if (note.length === 0) {
+          sendError(res, 422, "note must not be empty");
+          return;
+        }
+        // Append-only: notes are never overwritten, so the follow-up history
+        // is preserved. `id` lets the UI key/delete individual entries later.
+        update.$push = { notes: { id: randomUUID(), text: note, createdAt: now } };
+      }
+
+      // Only `status`, appended notes and `updatedAt` are ever written; no
+      // other field is reachable, so a client cannot modify the lead itself.
+      const item = await col.findOneAndUpdate({ _id }, update, { returnDocument: "after" });
       if (!item) {
         sendError(res, 404, "Enquiry not found");
         return;

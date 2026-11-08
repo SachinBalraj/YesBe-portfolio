@@ -2,8 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   AlertCircle,
+  ArrowDownWideNarrow,
   ChevronLeft,
   ChevronRight,
+  Eye,
   Inbox,
   Loader2,
   Search,
@@ -19,9 +21,16 @@ import {
   resolveStatus,
   type EnquiryListResponse,
   type EnquiryRecord,
+  type EnquirySort,
   type EnquiryStatus,
   type SubscriberRecord,
 } from "@/services/admin";
+import {
+  BUDGET_LABELS,
+  SERVICE_LABELS,
+  TIMELINE_LABELS,
+  optionLabel,
+} from "@/constants/enquiry";
 import { ApiError } from "@/services/enquiries";
 
 type Tab = "enquiries" | "newsletter";
@@ -39,7 +48,11 @@ export function AdminDashboardPage() {
         </TabButton>
       </div>
       <div className="mt-5">
-        {tab === "enquiries" ? <EnquiriesPanel /> : <NewsletterPanel />}
+        {tab === "enquiries" ? (
+          <EnquiriesPanel onOpenNewsletter={() => setTab("newsletter")} />
+        ) : (
+          <NewsletterPanel />
+        )}
       </div>
     </div>
   );
@@ -68,42 +81,58 @@ function TabButton({
 }
 
 /**
- * Summary cards shown above the table.
+ * Summary cards.
  *
- * `statusKey` is the value stored in MongoDB. "In Progress" is the operator-
- * facing name for the stored "In Discussion", so existing records are counted
- * correctly without rewriting any real client data.
+ * `status` is a canonical pipeline value; the API maps legacy stored values
+ * (In Discussion / Proposal Sent / Won) into these buckets without rewriting
+ * any client data. The Newsletter card switches to the subscriber tab.
  */
-const SUMMARY_CARDS: { label: string; statusKey: string | null }[] = [
-  { label: "Total Enquiries", statusKey: null },
-  { label: "New", statusKey: "New" },
-  { label: "Contacted", statusKey: "Contacted" },
-  { label: "In Progress", statusKey: "In Discussion" },
-  { label: "Closed", statusKey: "Closed" },
+const SUMMARY_CARDS: {
+  label: string;
+  status?: EnquiryStatus;
+  kind?: "total" | "subscribers";
+}[] = [
+  { label: "Total Enquiries", kind: "total" },
+  { label: "New", status: "New" },
+  { label: "Contacted", status: "Contacted" },
+  { label: "In Progress", status: "In Progress" },
+  { label: "Closed", status: "Closed" },
+  { label: "Newsletter Subscribers", kind: "subscribers" },
+];
+
+const SORT_OPTIONS: { value: string; label: string }[] = [
+  { value: "createdAt:desc", label: "Newest first" },
+  { value: "createdAt:asc", label: "Oldest first" },
+  { value: "name:asc", label: "Name A–Z" },
+  { value: "name:desc", label: "Name Z–A" },
+  { value: "status:asc", label: "Status" },
+  { value: "service:asc", label: "Service" },
 ];
 
 /* ── Enquiries ─────────────────────────────────────────────── */
 
-function EnquiriesPanel() {
+function EnquiriesPanel({ onOpenNewsletter }: { onOpenNewsletter: () => void }) {
   const [data, setData] = useState<EnquiryListResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("all");
   const [service, setService] = useState("all");
+  const [sort, setSort] = useState<EnquirySort>("createdAt");
+  const [dir, setDir] = useState<"asc" | "desc">("desc");
   const [page, setPage] = useState(1);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
-      setData(await listEnquiries({ q, status, service, page, limit: 25 }));
+      setData(await listEnquiries({ q, status, service, page, limit: 25, sort, dir }));
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Unable to load enquiries.");
     } finally {
       setLoading(false);
     }
-  }, [q, status, service, page]);
+  }, [q, status, service, page, sort, dir]);
 
   useEffect(() => {
     void load();
@@ -132,42 +161,52 @@ function EnquiriesPanel() {
   };
 
   const counts = data?.counts;
+  const summary = data?.summary;
+
+  const summaryValue = (card: (typeof SUMMARY_CARDS)[number]) => {
+    if (card.kind === "total") return summary?.total ?? data?.total ?? "—";
+    if (card.kind === "subscribers") return summary?.subscribers ?? "—";
+    return summary?.counts?.[card.status as EnquiryStatus] ?? "—";
+  };
 
   return (
     <div>
       {/* Summary cards */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
         {SUMMARY_CARDS.map((card) => {
-          const active = card.statusKey !== null && status === card.statusKey;
-          const value = card.statusKey === null
-            ? (data?.total ?? "—")
-            : (counts?.[card.statusKey as EnquiryStatus] ?? "—");
+          const isNewsletter = card.kind === "subscribers";
+          const isTotal = card.kind === "total";
+          const active = isTotal
+            ? status === "all"
+            : card.status
+              ? status === card.status
+              : false;
           return (
             <button
               key={card.label}
               type="button"
               onClick={() => {
-                if (card.statusKey === null) {
+                if (isNewsletter) {
+                  onOpenNewsletter();
+                } else if (isTotal) {
                   setFilter(() => setStatus("all"));
-                } else {
-                  setFilter(() => setStatus(active ? "all" : card.statusKey!));
+                } else if (card.status) {
+                  setFilter(() => setStatus(active ? "all" : card.status!));
                 }
               }}
-              aria-pressed={card.statusKey === null ? status === "all" : active}
+              aria-pressed={isNewsletter ? undefined : active}
               className={`rounded-xl border p-3 text-left transition-colors ${
-                (card.statusKey === null ? status === "all" : active)
-                  ? "border-primary bg-primary/5"
-                  : "border-border bg-card hover:bg-muted"
+                active ? "border-primary bg-primary/5" : "border-border bg-card hover:bg-muted"
               }`}
             >
               <p className="text-xs font-medium text-muted-foreground">{card.label}</p>
-              <p className="mt-1 text-xl font-bold text-foreground">{value}</p>
+              <p className="mt-1 text-xl font-bold text-foreground">{summaryValue(card)}</p>
             </button>
           );
         })}
       </div>
 
-      {/* Status filter chips — the full pipeline stays available */}
+      {/* Status filter chips */}
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
           Status
@@ -216,10 +255,34 @@ function EnquiriesPanel() {
           <option value="all">All services</option>
           {data?.services.map((s) => (
             <option key={s} value={s}>
-              {s}
+              {optionLabel(s, SERVICE_LABELS)}
             </option>
           ))}
         </select>
+        <div className="relative">
+          <ArrowDownWideNarrow
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+            aria-hidden="true"
+          />
+          <select
+            value={`${sort}:${dir}`}
+            onChange={(e) => {
+              const [nextSort, nextDir] = e.target.value.split(":") as [EnquirySort, "asc" | "desc"];
+              setFilter(() => {
+                setSort(nextSort);
+                setDir(nextDir);
+              });
+            }}
+            aria-label="Sort enquiries"
+            className="w-full rounded-xl border border-border bg-card py-2.5 pl-9 pr-8 text-sm outline-none focus:border-primary sm:w-auto"
+          >
+            {SORT_OPTIONS.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {error && (
@@ -240,19 +303,20 @@ function EnquiriesPanel() {
       ) : (
         <>
           {/* Desktop table */}
-          <div className="mt-5 hidden overflow-hidden rounded-xl border border-border lg:block">
+          <div className="mt-5 hidden overflow-x-auto rounded-xl border border-border lg:block">
             <table className="w-full text-left text-sm">
               <thead className="bg-muted text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
-                  <th className="px-3 py-3 font-semibold">Date</th>
+                  <th className="px-3 py-3 font-semibold">Submitted</th>
                   <th className="px-3 py-3 font-semibold">Client Name</th>
                   <th className="px-3 py-3 font-semibold">Business / Company</th>
                   <th className="px-3 py-3 font-semibold">Email</th>
                   <th className="px-3 py-3 font-semibold">Phone</th>
                   <th className="px-3 py-3 font-semibold">Service</th>
+                  <th className="px-3 py-3 font-semibold">Budget</th>
                   <th className="px-3 py-3 font-semibold">Message</th>
                   <th className="px-3 py-3 font-semibold">Status</th>
-                  <th className="px-3 py-3 font-semibold"><span className="sr-only">Actions</span></th>
+                  <th className="px-3 py-3 text-right font-semibold">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border bg-card">
@@ -275,22 +339,36 @@ function EnquiriesPanel() {
                     <td className="whitespace-nowrap px-3 py-3 text-muted-foreground">
                       {item.phone || "—"}
                     </td>
-                    <td className="px-3 py-3 text-muted-foreground">{item.service || "—"}</td>
-                    <td className="max-w-[22rem] px-3 py-3 text-xs text-muted-foreground">
+                    <td className="px-3 py-3 text-muted-foreground">
+                      {optionLabel(item.service, SERVICE_LABELS)}
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3 text-muted-foreground">
+                      {optionLabel(item.budget, BUDGET_LABELS)}
+                    </td>
+                    <td className="max-w-[20rem] px-3 py-3 text-xs text-muted-foreground">
                       <span className="line-clamp-2" title={item.projectDescription}>
                         {item.projectDescription || "—"}
                       </span>
                     </td>
                     <td className="px-3 py-3"><StatusBadge status={item.status} /></td>
-                    <td className="px-3 py-3 text-right">
-                      <button
-                        type="button"
-                        onClick={() => requestDelete(item)}
-                        aria-label={`Delete enquiry from ${item.name}`}
-                        className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
-                      >
-                        <Trash2 className="h-4 w-4" aria-hidden="true" />
-                      </button>
+                    <td className="px-3 py-3">
+                      <div className="flex items-center justify-end gap-1">
+                        <Link
+                          to={`/admin/enquiries/${item._id}`}
+                          aria-label={`View details for ${item.name}`}
+                          className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/10"
+                        >
+                          <Eye className="h-4 w-4" aria-hidden="true" /> View
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => requestDelete(item)}
+                          aria-label={`Delete enquiry from ${item.name}`}
+                          className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+                        >
+                          <Trash2 className="h-4 w-4" aria-hidden="true" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -313,7 +391,19 @@ function EnquiriesPanel() {
                 )}
                 <p className="mt-1 break-all text-sm text-muted-foreground">{item.email || "—"}</p>
                 {item.phone && <p className="text-sm text-muted-foreground">{item.phone}</p>}
-                <p className="mt-2 text-sm text-foreground">{item.service || "—"}</p>
+                <p className="mt-2 text-sm text-foreground">
+                  {optionLabel(item.service, SERVICE_LABELS)}
+                </p>
+                {(item.budget || item.timeline) && (
+                  <p className="text-sm text-muted-foreground">
+                    {[
+                      optionLabel(item.budget, BUDGET_LABELS),
+                      optionLabel(item.timeline, TIMELINE_LABELS),
+                    ]
+                      .filter((v) => v !== "—")
+                      .join(" · ")}
+                  </p>
+                )}
                 {item.projectDescription && (
                   <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
                     {item.projectDescription}
@@ -323,14 +413,23 @@ function EnquiriesPanel() {
                   <span className="text-xs text-muted-foreground">
                     {formatDate(item.createdAt)} · {item.pageSource}
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => requestDelete(item)}
-                    aria-label={`Delete enquiry from ${item.name}`}
-                    className="rounded-lg p-2 text-muted-foreground hover:text-destructive"
-                  >
-                    <Trash2 className="h-4 w-4" aria-hidden="true" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      to={`/admin/enquiries/${item._id}`}
+                      aria-label={`View details for ${item.name}`}
+                      className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs font-semibold text-primary hover:bg-primary/10"
+                    >
+                      <Eye className="h-4 w-4" aria-hidden="true" /> Details
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => requestDelete(item)}
+                      aria-label={`Delete enquiry from ${item.name}`}
+                      className="rounded-lg p-2 text-muted-foreground hover:text-destructive"
+                    >
+                      <Trash2 className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                  </div>
                 </div>
               </li>
             ))}
@@ -521,14 +620,12 @@ export function ConfirmDeleteDialog({
 /* ── Shared bits ───────────────────────────────────────────── */
 
 export function StatusBadge({ status }: { status: EnquiryStatus }) {
-  // Tolerates a legacy value from before the consultation pipeline existed.
+  // Tolerates a legacy value from before the current pipeline existed.
   const resolved = resolveStatus(status);
   const styles: Record<EnquiryStatus, string> = {
     New: "bg-blue-100 text-blue-800",
     Contacted: "bg-amber-100 text-amber-800",
-    "In Discussion": "bg-violet-100 text-violet-800",
-    "Proposal Sent": "bg-cyan-100 text-cyan-800",
-    Won: "bg-emerald-100 text-emerald-800",
+    "In Progress": "bg-violet-100 text-violet-800",
     Closed: "bg-slate-200 text-slate-700",
   };
   return (

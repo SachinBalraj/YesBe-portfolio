@@ -80,6 +80,75 @@ export function readJsonBody(
   return { ok: false, status: 400, error: "Request body must be valid JSON" };
 }
 
+const STATE_CHANGING_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
+
+function headerValue(req: VercelRequest, name: string): string | null {
+  const raw = req.headers[name];
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  if (typeof value !== "string" || value.trim() === "") return null;
+  return value.trim();
+}
+
+/**
+ * CSRF defence for state-changing requests.
+ *
+ * The session cookie is HttpOnly + SameSite=Strict, which already stops a
+ * cross-site page from attaching it. This is the second layer: browsers send
+ * an Origin header on cross-site form/fetch requests, so a mismatched (or
+ * sandboxed "null") origin is rejected outright. Requests with no Origin and
+ * no Referer are non-browser clients (curl, tests, server-to-server), which a
+ * browser cannot be tricked into making, so they are allowed.
+ *
+ * Returns false after sending the error response.
+ */
+export function assertSameOrigin(req: VercelRequest, res: VercelResponse): boolean {
+  if (!req.method || !STATE_CHANGING_METHODS.has(req.method)) return true;
+
+  const origin = headerValue(req, "origin");
+  if (origin === "null") {
+    sendError(res, 403, "Cross-site request blocked");
+    return false;
+  }
+
+  const source = origin ?? headerValue(req, "referer");
+  if (!source) return true;
+
+  let sourceHost: string;
+  try {
+    sourceHost = new URL(source).host.toLowerCase();
+  } catch {
+    sendError(res, 403, "Cross-site request blocked");
+    return false;
+  }
+
+  const allowedHosts = new Set<string>();
+  const forwardedHost = headerValue(req, "x-forwarded-host");
+  if (forwardedHost) {
+    for (const host of forwardedHost.split(",")) {
+      if (host.trim()) allowedHosts.add(host.trim().toLowerCase());
+    }
+  }
+  const host = headerValue(req, "host");
+  if (host) allowedHosts.add(host.toLowerCase());
+
+  // Optional explicit allowlist (e.g. a custom domain in front of Vercel).
+  const configured = process.env.APP_ORIGIN;
+  if (configured) {
+    try {
+      allowedHosts.add(new URL(configured).host.toLowerCase());
+    } catch {
+      // Ignore malformed configuration; the request-host check still applies.
+    }
+  }
+
+  if (allowedHosts.size === 0 || !allowedHosts.has(sourceHost)) {
+    sendError(res, 403, "Cross-site request blocked");
+    return false;
+  }
+
+  return true;
+}
+
 export function isPlainObject(value: unknown): value is Record<string, unknown> {
   if (typeof value !== "object" || value === null || Array.isArray(value)) return false;
   const proto = Object.getPrototypeOf(value);

@@ -1,12 +1,20 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { checkCredentials, setSessionCookie } from "../_lib/auth.js";
-import { allowMethods, clientIp, readJsonBody, sendError, sendJson } from "../_lib/http.js";
+import {
+  allowMethods,
+  assertSameOrigin,
+  clientIp,
+  readJsonBody,
+  sendError,
+  sendJson,
+} from "../_lib/http.js";
 import { LOGIN_LIMIT, guard } from "../_lib/rateLimit.js";
 import { cleanText } from "../_lib/validate.js";
 
 /** POST /api/admin/login */
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   if (!allowMethods(req, res, ["POST"])) return;
+  if (!assertSameOrigin(req, res)) return;
 
   if (!process.env.ADMIN_EMAIL || !(process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH)) {
     sendError(res, 503, "Admin access is not configured");

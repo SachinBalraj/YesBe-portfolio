@@ -6,6 +6,11 @@ import {
   User, Building2, Briefcase, FileText,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
+import {
+  BUDGET_LABELS as budgetLabels,
+  SERVICE_LABELS as serviceLabels,
+  TIMELINE_LABELS as timelineLabels,
+} from "@/constants/enquiry";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/animations";
 import { trackGenerateLead, trackContactClick, trackPhoneClick, trackWhatsAppClick } from "@/utils/analytics";
@@ -47,24 +52,6 @@ const STEPS = [
   { label: "Project", fullLabel: "Project Details", icon: Briefcase },
   { label: "Requirements", fullLabel: "Review Requirements", icon: FileText },
 ];
-
-const serviceLabels: Record<string, string> = {
-  ai: "AI Solutions", web: "Website Development", erp: "ERP Solutions",
-  powerbi: "Power BI Dashboard", analytics: "Data Analytics",
-  cloud: "Cloud & DevOps", seo: "SEO / Digital Marketing",
-  software: "Custom Software", consulting: "Business Consulting", other: "Other",
-};
-
-const budgetLabels: Record<string, string> = {
-  "under-25k": "Under ₹25,000", "25k-50k": "₹25,000 – ₹50,000",
-  "50k-1l": "₹50,000 – ₹1 Lakh", "1l-5l": "₹1 Lakh – ₹5 Lakhs",
-  "5l+": "₹5 Lakhs+", flexible: "Flexible / To be discussed",
-};
-
-const timelineLabels: Record<string, string> = {
-  urgent: "Urgent (1–2 weeks)", "1month": "Within 1 month",
-  "3months": "Within 3 months", "6months": "Within 6 months", flexible: "Flexible",
-};
 
 const formatLabel = (value: string, options?: Record<string, string>) => {
   if (!value) return "Not specified";

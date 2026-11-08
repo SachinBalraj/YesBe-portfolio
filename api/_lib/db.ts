@@ -62,29 +62,68 @@ export function getDb(): Db {
    Document shapes
 ──────────────────────────────────────────────────────────── */
 
+/**
+ * Canonical enquiry pipeline. Only these four values can be written by an
+ * administrator; legacy values stored by earlier versions remain readable and
+ * are mapped through LEGACY_STATUS_LABELS below.
+ */
 export const ENQUIRY_STATUSES = [
   "New",
   "Contacted",
-  "In Discussion",
-  "Proposal Sent",
-  "Won",
+  "In Progress",
   "Closed",
 ] as const;
 export type EnquiryStatus = (typeof ENQUIRY_STATUSES)[number];
 
+/** Any status value that may physically exist in an old document. */
+export type StoredEnquiryStatus =
+  | EnquiryStatus
+  | "In Discussion"
+  | "Proposal Sent"
+  | "Won"
+  | "Converted";
+
 /**
- * Statuses used before the consultation-based pipeline was introduced.
- * Existing documents keep their stored value; the admin UI renders them
- * through LEGACY_STATUS_LABELS and `scripts/migrate-statuses.ts` can remap
- * them to the current pipeline.
+ * Values written by earlier versions of the dashboard. They are never removed
+ * from existing documents — reads normalise them to the current pipeline so no
+ * client data is rewritten or lost.
  */
-export const LEGACY_STATUS_LABELS: Record<string, string> = {
-  "In Progress": "In Discussion",
-  Converted: "Won",
+export const LEGACY_STATUS_LABELS: Record<string, EnquiryStatus> = {
+  "In Discussion": "In Progress",
+  "Proposal Sent": "In Progress",
+  Won: "Closed",
+  Converted: "Closed",
 };
+
+/** Every stored value that should be treated as the given canonical status. */
+export function statusFilterValues(status: EnquiryStatus): StoredEnquiryStatus[] {
+  switch (status) {
+    case "In Progress":
+      return ["In Progress", "In Discussion", "Proposal Sent"];
+    case "Closed":
+      return ["Closed", "Won", "Converted"];
+    default:
+      return [status];
+  }
+}
+
+/** Maps any stored status (current or legacy) to the canonical pipeline value. */
+export function resolveStoredStatus(value: string): EnquiryStatus {
+  if ((ENQUIRY_STATUSES as readonly string[]).includes(value)) {
+    return value as EnquiryStatus;
+  }
+  return LEGACY_STATUS_LABELS[value] ?? "New";
+}
 
 export const ENQUIRY_FORM_TYPES = ["contact", "consultation", "proposal", "newsletter"] as const;
 export type EnquiryFormType = (typeof ENQUIRY_FORM_TYPES)[number];
+
+/** A private, admin-only follow-up note. Append-only for audit history. */
+export interface FollowUpNote {
+  id: string;
+  text: string;
+  createdAt: Date;
+}
 
 export interface EnquiryDoc {
   name: string;
@@ -101,7 +140,10 @@ export interface EnquiryDoc {
   formType: EnquiryFormType;
   /** Page the enquiry was submitted from, e.g. "/services". */
   pageSource: string;
-  status: EnquiryStatus;
+  /** Canonical on new records; legacy values may exist on older documents. */
+  status: StoredEnquiryStatus;
+  /** Private follow-up notes; absent on records created before notes existed. */
+  notes?: FollowUpNote[];
   createdAt: Date;
   updatedAt: Date;
 }

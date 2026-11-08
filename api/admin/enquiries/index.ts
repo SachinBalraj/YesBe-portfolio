@@ -5,6 +5,9 @@ import {
   ENQUIRY_STATUSES,
   ensureIndexes,
   enquiries,
+  resolveStoredStatus,
+  statusFilterValues,
+  subscribers,
   type EnquiryDoc,
   type EnquiryStatus,
 } from "../../_lib/db.js";
@@ -27,7 +30,14 @@ function asString(value: unknown): string | undefined {
   return trimmed.length > 0 ? trimmed : undefined;
 }
 
-/** GET /api/admin/enquiries — admin only. Supports q, status, service, from, to, limit, page. */
+const SORT_FIELDS = ["createdAt", "name", "status", "service"] as const;
+type SortField = (typeof SORT_FIELDS)[number];
+
+function emptyCounts(): Record<EnquiryStatus, number> {
+  return Object.fromEntries(ENQUIRY_STATUSES.map((s) => [s, 0])) as Record<EnquiryStatus, number>;
+}
+
+/** GET /api/admin/enquiries — admin only. Supports q, status, service, from, to, sort, dir, limit, page. */
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   if (!allowMethods(req, res, ["GET"])) return;
   if (!requireAdmin(req, res)) return;
@@ -41,7 +51,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       sendError(res, 400, "Unknown status filter");
       return;
     }
-    filter.status = status as EnquiryStatus;
+    // Canonical statuses include legacy stored values (e.g. "Won" counts as
+    // Closed) so old records remain filterable without being rewritten.
+    filter.status = { $in: statusFilterValues(status as EnquiryStatus) };
   }
 
   const service = asString(q.service);
@@ -81,6 +93,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     filter.createdAt = range;
   }
 
+  const sortRaw = (asString(q.sort) ?? "createdAt") as SortField;
+  if (!SORT_FIELDS.includes(sortRaw)) {
+    sendError(res, 400, "Invalid sort field");
+    return;
+  }
+  const dirRaw = (asString(q.dir) ?? "desc").toLowerCase();
+  if (dirRaw !== "asc" && dirRaw !== "desc") {
+    sendError(res, 400, "Invalid sort direction");
+    return;
+  }
+  const sortDirection = dirRaw === "asc" ? 1 : -1;
+  // Always break ties by newest so pagination is stable.
+  const sort: Record<string, 1 | -1> =
+    sortRaw === "createdAt" ? { createdAt: sortDirection } : { [sortRaw]: sortDirection, createdAt: -1 };
+
   const limitRaw = Number(asString(q.limit) ?? "25");
   const limit = Number.isFinite(limitRaw)
     ? Math.min(Math.max(Math.trunc(limitRaw), 1), MAX_LIMIT)
@@ -92,24 +119,37 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   try {
     await ensureIndexes();
     const col = enquiries();
-    // Newest first by default (task 18).
-    const [items, total, statusCounts] = await Promise.all([
-      col.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).toArray(),
-      col.countDocuments(filter),
-      col
-        .aggregate<{ _id: EnquiryStatus; count: number }>([
-          { $group: { _id: "$status", count: { $sum: 1 } } },
-        ])
-        .toArray(),
-    ]);
 
-    const counts: Record<string, number> = {};
-    for (const status of ENQUIRY_STATUSES) counts[status] = 0;
+    const [items, total, statusCounts, summaryRows, summaryTotal, subscriberTotal, distinctServices] =
+      await Promise.all([
+        col.find(filter).sort(sort).skip(skip).limit(limit).toArray(),
+        col.countDocuments(filter),
+        col
+          .aggregate<{ _id: string; count: number }>([
+            { $match: filter },
+            { $group: { _id: "$status", count: { $sum: 1 } } },
+          ])
+          .toArray(),
+        col.aggregate<{ _id: string; count: number }>([
+          { $group: { _id: "$status", count: { $sum: 1 } } },
+        ]).toArray(),
+        col.countDocuments({}),
+        subscribers().countDocuments(),
+        col.distinct("service"),
+      ]);
+
+    const counts = emptyCounts();
     for (const row of statusCounts) {
-      if (row._id in counts) counts[row._id] = row.count;
+      counts[resolveStoredStatus(row._id)] += row.count;
     }
 
-    const distinctServices = await col.distinct("service");
+    // Dashboard summary is global: it must not change when the table is
+    // searched or filtered. Unknown legacy values are bucketed by the same
+    // resolver so the card totals always reconcile with the grand total.
+    const summaryCounts = emptyCounts();
+    for (const row of summaryRows) {
+      summaryCounts[resolveStoredStatus(row._id)] += row.count;
+    }
 
     sendJson(res, 200, {
       ok: true,
@@ -120,6 +160,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       pages: Math.max(1, Math.ceil(total / limit)),
       counts,
       services: distinctServices.filter((s): s is string => typeof s === "string" && s.length > 0).sort(),
+      sort: sortRaw,
+      dir: dirRaw,
+      summary: {
+        total: summaryTotal,
+        counts: summaryCounts,
+        subscribers: subscriberTotal,
+      },
     });
   } catch (err) {
     if (err instanceof ConfigError) {

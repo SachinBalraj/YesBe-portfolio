@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import type { Filter } from "mongodb";
 import { requireAdmin } from "../_lib/auth.js";
 import { ConfigError, ensureIndexes, subscribers } from "../_lib/db.js";
-import { allowMethods, sendError, sendJson } from "../_lib/http.js";
+import { allowMethods, assertSameOrigin, sendError, sendJson } from "../_lib/http.js";
 import { toObjectId } from "../_lib/objectId.js";
 
 /**
@@ -12,6 +12,7 @@ import { toObjectId } from "../_lib/objectId.js";
  */
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   if (!allowMethods(req, res, ["GET", "DELETE"])) return;
+  if (!assertSameOrigin(req, res)) return;
   if (!requireAdmin(req, res)) return;
 
   try {

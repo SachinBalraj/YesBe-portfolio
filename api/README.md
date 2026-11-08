@@ -36,8 +36,10 @@ Owner   ──► /admin (login)      ──GET/PATCH/DELETE──► /api/admin
 ```
 name, email, phone, company, designation, service, budget, timeline,
 projectDescription, businessChallenges, goals,
-formType, pageSource, status, createdAt, updatedAt
+formType, pageSource, status, notes, createdAt, updatedAt
 ```
+
+`notes` is an append-only admin-only timeline of `{ id, text, createdAt }`.
 
 `newsletter_subscribers` — `email` (unique), `source`, `createdAt`.
 
@@ -46,9 +48,11 @@ Indexes are created automatically and idempotently on first use:
 - `enquiries`: `createdAt` desc, `status + createdAt`, `service`, `email`, `phone`
 - `newsletter_subscribers`: `createdAt` desc, **unique** `email`
 
-Status values: `New`, `Contacted`, `In Progress`, `Converted`, `Closed`.
-New enquiries always start as `New`. Only `status` and `updatedAt` are
-writable after creation.
+Status values: `New`, `Contacted`, `In Progress`, `Closed`. New enquiries
+always start as `New`. Legacy values from older documents (`In Discussion`,
+`Proposal Sent`, `Won`, `Converted`) remain readable and are mapped onto the
+current pipeline without being rewritten. Only `status`, appended `notes` and
+`updatedAt` are writable after creation.
 
 ## Setup
 
@@ -70,10 +74,12 @@ expose them to the browser.
 | --- | --- | --- |
 | `MONGODB_URI` | yes | Atlas connection string. |
 | `MONGODB_DB_NAME` | no | Defaults to `yesbe`. |
-| `ADMIN_EMAIL` | yes | The only email that can sign in. |
+| `ADMIN_EMAIL` | yes | The admin account email / session subject. |
+| `ADMIN_LOGIN_ID` | no | Short login alias; defaults to `yesbe.tech`. |
 | `ADMIN_PASSWORD_HASH` | yes* | `scrypt$<saltHex>$<hashHex>`. |
 | `ADMIN_PASSWORD` | fallback | Plaintext; only if the hash is unset. |
 | `SESSION_SECRET` | yes | ≥ 32 random chars. `openssl rand -hex 32`. |
+| `APP_ORIGIN` | no | Extra allowed origin for the CSRF check (custom domain). |
 
 Generate a password hash:
 
@@ -108,6 +114,11 @@ sends `X-Robots-Tag: noindex, nofollow`.
   gate and no token in JavaScript, so access cannot be forged from the browser.
 - **Session cookie** is `HttpOnly`, `Secure`, `SameSite=Strict`, `Path=/`, and
   expires after 8 hours.
+- **CSRF.** State-changing requests (login, logout, status/notes updates,
+  deletes) reject a mismatched browser `Origin`/`Referer`, on top of the
+  `SameSite=Strict` session cookie.
+- **No accidental duplicates.** Re-submitting the same enquiry within two
+  minutes returns success without inserting a second record.
 - **Passwords** are compared with `scrypt` and `timingSafeEqual`. Email
   comparison is constant-time, and a wrong email and a wrong password return
   the same message so accounts cannot be enumerated.

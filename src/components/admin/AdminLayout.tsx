@@ -151,15 +151,17 @@ function LoginForm({
         </p>
 
         <label htmlFor="admin-email" className="mt-5 block text-sm font-medium text-foreground">
-          Email
+          Email or admin ID
         </label>
         <input
           id="admin-email"
-          type="email"
+          type="text"
           required
           autoComplete="username"
+          inputMode="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="hello@yesbe.tech or yesbe.tech"
           className="mt-1 w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
         />
 

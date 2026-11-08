@@ -1,8 +1,21 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ConfigError, ensureIndexes, enquiries } from "./_lib/db.js";
-import { allowMethods, clientIp, readJsonBody, sendError, sendJson } from "./_lib/http.js";
+import {
+  allowMethods,
+  assertSameOrigin,
+  clientIp,
+  readJsonBody,
+  sendError,
+  sendJson,
+} from "./_lib/http.js";
 import { ENQUIRY_LIMIT, guard } from "./_lib/rateLimit.js";
 import { validateEnquiry, ValidationError } from "./_lib/validate.js";
+
+/**
+ * A resubmission of the exact same enquiry within this window is treated as a
+ * double-click/retry rather than a new lead. The existing record is left alone.
+ */
+const DUPLICATE_WINDOW_MS = 2 * 60_000;
 
 /**
  * POST /api/enquiries — public.
@@ -12,6 +25,7 @@ import { validateEnquiry, ValidationError } from "./_lib/validate.js";
  */
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   if (!allowMethods(req, res, ["POST"])) return;
+  if (!assertSameOrigin(req, res)) return;
 
   const ip = clientIp(req);
 
@@ -56,9 +70,32 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   const now = new Date();
   try {
     await ensureIndexes();
-    await enquiries().insertOne({
+    const col = enquiries();
+
+    // Idempotency guard: an accidental double submit (refresh, slow retry,
+    // impatient double-click) must not create a second lead.
+    const duplicate = await col.findOne(
+      {
+        email: validated.data.email,
+        projectDescription: validated.data.projectDescription,
+        formType: validated.data.formType,
+        createdAt: { $gte: new Date(now.getTime() - DUPLICATE_WINDOW_MS) },
+      },
+      { projection: { _id: 1 } },
+    );
+    if (duplicate) {
+      sendJson(res, 201, {
+        ok: true,
+        message:
+          "Thank you! Your enquiry has already been received. Our team will contact you shortly.",
+      });
+      return;
+    }
+
+    await col.insertOne({
       ...validated.data,
       status: "New",
+      notes: [],
       createdAt: now,
       updatedAt: now,
     });

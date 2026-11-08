@@ -135,13 +135,13 @@ test("admin detail shows every submitted field and can change status", async () 
   assert.ok(await page.getByText("Browser Corp").first().isVisible(), "company must be shown");
   assert.ok(await page.getByText("QA Lead").first().isVisible(), "designation must be shown");
 
-  await page.getByRole("button", { name: "Proposal Sent", exact: true }).click();
+  await page.getByRole("button", { name: "In Progress", exact: true }).click();
   await page.getByText("Saved", { exact: true }).waitFor({ timeout: 20000 });
 
   await page.getByRole("link", { name: /back to enquiries/i }).click();
   await page.getByRole("link", { name: "Browser Test User" }).first().waitFor({ timeout: 20000 });
   assert.ok(
-    (await page.locator("table").getByText("Proposal Sent").count()) > 0,
+    (await page.locator("table").getByText("In Progress").count()) > 0,
     "the new status must be reflected in the list",
   );
 });

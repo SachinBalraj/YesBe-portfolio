@@ -7,6 +7,12 @@ import { ApiError } from "./enquiries";
  * operator back to the login screen.
  */
 
+export interface FollowUpNote {
+  id: string;
+  text: string;
+  createdAt: string;
+}
+
 export interface EnquiryRecord {
   _id: string;
   name: string;
@@ -23,29 +29,30 @@ export interface EnquiryRecord {
   formType: string;
   pageSource: string;
   status: EnquiryStatus;
+  notes?: FollowUpNote[];
   createdAt: string;
   updatedAt: string;
 }
 
-export type EnquiryStatus = "New" | "Contacted" | "In Discussion" | "Proposal Sent" | "Won" | "Closed";
+export type EnquiryStatus = "New" | "Contacted" | "In Progress" | "Closed";
 
 export const ENQUIRY_STATUSES: EnquiryStatus[] = [
   "New",
   "Contacted",
-  "In Discussion",
-  "Proposal Sent",
-  "Won",
+  "In Progress",
   "Closed",
 ];
 
 /**
- * Documents created before the consultation pipeline keep their old status
- * string. They are displayed under the equivalent current label so nothing
- * appears blank; `scripts/migrate-statuses.ts` rewrites them in the database.
+ * Documents written by older versions keep their stored status. They are
+ * displayed under the equivalent current pipeline value so no client data is
+ * rewritten or lost.
  */
 const LEGACY_STATUS_LABELS: Record<string, EnquiryStatus> = {
-  "In Progress": "In Discussion",
-  Converted: "Won",
+  "In Discussion": "In Progress",
+  "Proposal Sent": "In Progress",
+  Won: "Closed",
+  Converted: "Closed",
 };
 
 export function resolveStatus(value: string): EnquiryStatus {
@@ -60,6 +67,12 @@ export interface SubscriberRecord {
   createdAt: string;
 }
 
+export interface EnquirySummary {
+  total: number;
+  counts: Record<EnquiryStatus, number>;
+  subscribers: number;
+}
+
 export interface EnquiryListResponse {
   ok: true;
   items: EnquiryRecord[];
@@ -69,7 +82,12 @@ export interface EnquiryListResponse {
   pages: number;
   counts: Partial<Record<EnquiryStatus, number>>;
   services: string[];
+  sort: EnquirySort;
+  dir: "asc" | "desc";
+  summary: EnquirySummary;
 }
+
+export type EnquirySort = "createdAt" | "name" | "status" | "service";
 
 export interface SubscriberListResponse {
   ok: true;
@@ -139,6 +157,8 @@ export interface EnquiryQuery {
   service?: string;
   from?: string;
   to?: string;
+  sort?: EnquirySort;
+  dir?: "asc" | "desc";
   limit?: number;
   page?: number;
 }
@@ -161,12 +181,26 @@ export function updateEnquiryStatus(
   });
 }
 
+export function addEnquiryNote(
+  id: string,
+  note: string,
+): Promise<{ ok: true; item: EnquiryRecord }> {
+  return request(`/api/admin/enquiries/${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    body: JSON.stringify({ note }),
+  });
+}
+
 export function deleteEnquiry(id: string): Promise<{ ok: true; deletedId: string }> {
   return request(`/api/admin/enquiries/${encodeURIComponent(id)}`, { method: "DELETE" });
 }
 
-export function listSubscribers(q: string): Promise<SubscriberListResponse> {
-  return request(`/api/newsletter${qs({ q })}`);
+export function listSubscribers(
+  q: string,
+  page = 1,
+  limit = 25,
+): Promise<SubscriberListResponse> {
+  return request(`/api/newsletter${qs({ q, page, limit })}`);
 }
 
 export function deleteSubscriber(id: string): Promise<{ ok: true; deletedId: string }> {

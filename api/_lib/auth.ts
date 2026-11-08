@@ -164,11 +164,34 @@ export function requireAdmin(req: VercelRequest, res: VercelResponse): boolean {
   return true;
 }
 
-export async function checkCredentials(email: string, password: string): Promise<boolean> {
-  const expected = process.env.ADMIN_EMAIL;
-  if (!expected) return false;
-  const a = Buffer.from(email.trim().toLowerCase());
-  const b = Buffer.from(expected.trim().toLowerCase());
-  if (a.length !== b.length || !timingSafeEqual(a, b)) return false;
+/**
+ * Login identifiers. The administrator can sign in with the configured email
+ * or with the short admin ID (defaults to "yesbe.tech"). The session always
+ * stores ADMIN_EMAIL as its subject, so authorisation is unchanged.
+ */
+function loginIdentifiers(): string[] {
+  const ids = new Set<string>();
+  const email = process.env.ADMIN_EMAIL;
+  if (email) ids.add(email.trim().toLowerCase());
+  const loginId = process.env.ADMIN_LOGIN_ID || "yesbe.tech";
+  if (loginId) ids.add(loginId.trim().toLowerCase());
+  return [...ids];
+}
+
+export async function checkCredentials(identifier: string, password: string): Promise<boolean> {
+  const allowed = loginIdentifiers();
+  if (allowed.length === 0) return false;
+
+  const supplied = Buffer.from(identifier.trim().toLowerCase());
+  let matched = false;
+  // Compare against every allowed identifier so response time does not reveal
+  // which one (if any) was correct.
+  for (const candidate of allowed) {
+    const expected = Buffer.from(candidate);
+    if (supplied.length === expected.length && timingSafeEqual(supplied, expected)) {
+      matched = true;
+    }
+  }
+  if (!matched) return false;
   return verifyPassword(password);
 }

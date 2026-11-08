@@ -12,6 +12,7 @@
  * dedicated test instead of interfering with the rest of the suite.
  */
 import assert from "node:assert/strict";
+import { createHmac } from "node:crypto";
 import test, { before, after } from "node:test";
 import { ObjectId } from "mongodb";
 import { ENQUIRY_STATUSES } from "../api/_lib/db.ts";
@@ -215,6 +216,18 @@ test("non-JSON body is rejected", async () => {
   assert.equal(status, 400);
 });
 
+test("repeated identical submission is idempotent", async () => {
+  const before = await db.collection("enquiries").countDocuments();
+  const { status, body } = await call("submit", { method: "POST", body: validEnquiry });
+  assert.equal(status, 201);
+  assert.equal(body.ok, true);
+  assert.equal(
+    await db.collection("enquiries").countDocuments(),
+    before,
+    "an accidental double submit must not create a second lead",
+  );
+});
+
 test("public endpoint allows POST only", async () => {
   const get = await call("submit", { method: "GET" });
   assert.equal(get.status, 405);
@@ -288,6 +301,20 @@ test("a tampered payload is rejected", async () => {
     (await call("session", { method: "GET", headers: { cookie: `yesbe_admin_session=${encodeURIComponent(forged)}` } })).status,
     401,
   );
+});
+
+test("an expired session cookie is rejected", async () => {
+  const data = Buffer.from(
+    JSON.stringify({ email: ADMIN.email, exp: Math.floor(Date.now() / 1000) - 60 }),
+  ).toString("base64url");
+  const mac = createHmac("sha256", process.env.SESSION_SECRET!)
+    .update(data)
+    .digest("base64url");
+  const token = `${data}.${mac}`;
+  const res = await call("session", {
+    headers: { cookie: `yesbe_admin_session=${encodeURIComponent(token)}` },
+  });
+  assert.equal(res.status, 401, "an expired but correctly signed session must be rejected");
 });
 
 test("login rejects a wrong password", async () => {
@@ -410,12 +437,12 @@ test("admin updates status, and status only", async () => {
     method: "PATCH",
     headers: { cookie },
     query: { id },
-    body: { status: "Won", email: "attacker@evil.com", name: "Hacker", _id: "0" },
+    body: { status: "Closed", email: "attacker@evil.com", name: "Hacker", _id: "0" },
   });
   const after = await call("detail", { method: "GET", headers: { cookie }, query: { id } });
   assert.equal(after.body.item.email, "priya@example.com", "email must not be writable");
   assert.equal(after.body.item.name, "Priya Sharma", "name must not be writable");
-  assert.equal(after.body.item.status, "Won");
+  assert.equal(after.body.item.status, "Closed");
   assert.ok(new Date(after.body.item.updatedAt) >= new Date(list.body.items[0].updatedAt), "updatedAt must advance");
 });
 
@@ -424,7 +451,7 @@ test("retired status values are rejected by the closed enum", async () => {
   const list = await call("list", { method: "GET", headers: { cookie } });
   const id = list.body.items[0]._id;
 
-  for (const retired of ["In Progress", "Converted"]) {
+  for (const retired of ["In Discussion", "Proposal Sent", "Won", "Converted"]) {
     const res = await call("detail", {
       method: "PATCH",
       headers: { cookie },
@@ -433,6 +460,16 @@ test("retired status values are rejected by the closed enum", async () => {
     });
     assert.equal(res.status, 422, `${retired} must be rejected`);
   }
+
+  // The canonical in-progress value is writable.
+  const inProgress = await call("detail", {
+    method: "PATCH",
+    headers: { cookie },
+    query: { id },
+    body: { status: "In Progress" },
+  });
+  assert.equal(inProgress.status, 200);
+  assert.equal(inProgress.body.item.status, "In Progress");
 
   const after = await call("detail", { method: "GET", headers: { cookie }, query: { id } });
   assert.ok(
@@ -451,6 +488,96 @@ test("invalid status value is rejected", async () => {
     body: { status: "Definitely Not A Status" },
   });
   assert.equal(status, 422);
+});
+
+test("admin appends private follow-up notes without touching client fields", async () => {
+  const cookie = await authedCookie();
+  const list = await call("list", { method: "GET", headers: { cookie }, query: { q: "Priya" } });
+  const item = list.body.items[0];
+  const id = item._id;
+  const before = item.notes?.length ?? 0;
+
+  const res = await call("detail", {
+    method: "PATCH",
+    headers: { cookie },
+    query: { id },
+    body: { note: "Called client; awaiting budget confirmation." },
+  });
+  assert.equal(res.status, 200);
+  assert.equal(res.body.item.notes.length, before + 1);
+  assert.equal(
+    res.body.item.notes[res.body.item.notes.length - 1].text,
+    "Called client; awaiting budget confirmation.",
+  );
+  assert.equal(res.body.item.email, "priya@example.com", "client email must not change");
+  assert.equal(res.body.item.name, "Priya Sharma", "client name must not change");
+});
+
+test("empty follow-up note is rejected", async () => {
+  const cookie = await authedCookie();
+  const list = await call("list", { method: "GET", headers: { cookie }, query: { q: "Priya" } });
+  const res = await call("detail", {
+    method: "PATCH",
+    headers: { cookie },
+    query: { id: list.body.items[0]._id },
+    body: { note: "   " },
+  });
+  assert.equal(res.status, 422);
+});
+
+test("dashboard summary is global and reconciles", async () => {
+  const cookie = await authedCookie();
+  // A filtered request must not shrink the summary cards.
+  const filtered = await call("list", {
+    method: "GET",
+    headers: { cookie },
+    query: { q: "Priya" },
+  });
+  assert.equal(filtered.status, 200);
+  assert.equal(filtered.body.summary.total, await db.collection("enquiries").countDocuments());
+  const summed = Object.values(filtered.body.summary.counts).reduce((a: number, b: any) => a + b, 0);
+  assert.equal(summed as number, filtered.body.summary.total, "summary counts must cover every enquiry");
+  assert.equal(
+    filtered.body.summary.subscribers,
+    await db.collection("newsletter_subscribers").countDocuments(),
+    "subscriber count must be included",
+  );
+});
+
+test("admin can sort and invalid sort values are rejected", async () => {
+  const cookie = await authedCookie();
+  const asc = await call("list", {
+    method: "GET",
+    headers: { cookie },
+    query: { sort: "createdAt", dir: "asc" },
+  });
+  const times = asc.body.items.map((i: any) => new Date(i.createdAt).getTime());
+  for (let i = 1; i < times.length; i++) {
+    assert.ok(times[i - 1]! <= times[i]!, "ascending sort must be oldest first");
+  }
+  assert.equal((await call("list", { method: "GET", headers: { cookie }, query: { sort: "nope" } })).status, 400);
+  assert.equal((await call("list", { method: "GET", headers: { cookie }, query: { dir: "sideways" } })).status, 400);
+});
+
+test("admin can sign in with the yesbe.tech login ID", async () => {
+  const { status } = await call("login", {
+    method: "POST",
+    body: { email: "yesbe.tech", password: ADMIN.password },
+  });
+  assert.equal(status, 200);
+});
+
+test("cross-site state changes are blocked (CSRF)", async () => {
+  const cookie = await authedCookie();
+  const list = await call("list", { method: "GET", headers: { cookie } });
+  const id = list.body.items[0]._id;
+  const { status } = await call("detail", {
+    method: "PATCH",
+    headers: { cookie, origin: "https://evil.example", host: "localhost" },
+    query: { id },
+    body: { status: "Closed" },
+  });
+  assert.equal(status, 403, "a browser-originated cross-site PATCH must be rejected");
 });
 
 test("malformed ids are rejected", async () => {
