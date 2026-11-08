@@ -5,6 +5,7 @@ import { ChevronRight, Calendar, ArrowRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { SITE_CONFIG } from "@/constants";
 import { trackContactClick } from "@/utils/analytics";
+import { serializeJsonLd } from "@/utils/jsonLd";
 
 interface TOCItem {
   id: string;
@@ -67,7 +68,7 @@ export function LegalPageLayout({
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
         />
       )}
 

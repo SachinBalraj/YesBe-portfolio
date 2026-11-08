@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
+import { serializeJsonLd } from "@/utils/jsonLd";
 
 interface Crumb {
   label: string;
@@ -34,7 +35,7 @@ export function Breadcrumbs({ items, className = "", schemaOnly = false }: Bread
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
       {!schemaOnly && (
         <nav aria-label="Breadcrumb" className={`mb-6 flex items-center gap-2 text-sm text-muted-foreground ${className}`}>
           <Link to="/" className="inline-flex items-center gap-1 hover:text-primary transition-colors">

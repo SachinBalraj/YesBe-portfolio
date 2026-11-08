@@ -4,14 +4,19 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 export const MAX_BODY_BYTES = 16 * 1024;
 
 export function clientIp(req: VercelRequest): string {
+  // Vercel sets x-real-ip from the connecting socket, so prefer it over the
+  // proxy chain. A client-supplied x-forwarded-for must not be the only thing
+  // that decides the rate-limit key.
+  const real = req.headers["x-real-ip"];
+  const realValue = Array.isArray(real) ? real[0] : real;
+  if (typeof realValue === "string" && realValue.trim()) return realValue.trim();
+
   const fwd = req.headers["x-forwarded-for"];
   const raw = Array.isArray(fwd) ? fwd[0] : fwd;
   if (raw) {
     const first = raw.split(",")[0]?.trim();
     if (first) return first;
   }
-  const real = req.headers["x-real-ip"];
-  if (typeof real === "string" && real) return real;
   return "unknown";
 }
 
@@ -121,13 +126,11 @@ export function assertSameOrigin(req: VercelRequest, res: VercelResponse): boole
     return false;
   }
 
+  // Only trust the host the platform actually routed the request to. A
+  // client-supplied X-Forwarded-Host must not widen the allowlist, or an
+  // attacker could pair `Origin: https://evil.example` with a matching
+  // X-Forwarded-Host and defeat this check.
   const allowedHosts = new Set<string>();
-  const forwardedHost = headerValue(req, "x-forwarded-host");
-  if (forwardedHost) {
-    for (const host of forwardedHost.split(",")) {
-      if (host.trim()) allowedHosts.add(host.trim().toLowerCase());
-    }
-  }
   const host = headerValue(req, "host");
   if (host) allowedHosts.add(host.toLowerCase());
 

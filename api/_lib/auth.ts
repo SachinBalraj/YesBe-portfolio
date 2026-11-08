@@ -180,7 +180,6 @@ function loginIdentifiers(): string[] {
 
 export async function checkCredentials(identifier: string, password: string): Promise<boolean> {
   const allowed = loginIdentifiers();
-  if (allowed.length === 0) return false;
 
   const supplied = Buffer.from(identifier.trim().toLowerCase());
   let matched = false;
@@ -192,6 +191,10 @@ export async function checkCredentials(identifier: string, password: string): Pr
       matched = true;
     }
   }
-  if (!matched) return false;
-  return verifyPassword(password);
+
+  // Verify the password even when the identifier did not match. Returning
+  // early here made an unknown identifier measurably faster than a known one
+  // (scrypt was skipped), which leaks account existence through timing.
+  const passwordOk = await verifyPassword(password);
+  return matched && passwordOk;
 }

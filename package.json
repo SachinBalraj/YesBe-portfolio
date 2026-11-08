@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test:api": "node --import tsx --test scripts/api.test.ts",
+    "test:security": "node --import tsx --test scripts/security.test.ts",
     "test:pricing-removal": "node --test scripts/pricing-removal.test.ts",
     "serve": "node --env-file-if-exists=.env --import tsx scripts/serve.ts",
     "test:browser": "node --test scripts/browser.test.ts",
