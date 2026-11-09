@@ -46,7 +46,7 @@
       "permanent": true
     },
     {
-      "source": "/insights/:slug",
+      "source": "/insights/:slug((?!search$)[a-z0-9-]+)",
       "destination": "/insights/category/:slug",
       "permanent": true
     }

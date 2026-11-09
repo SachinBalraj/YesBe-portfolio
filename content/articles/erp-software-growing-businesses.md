@@ -148,7 +148,7 @@ Moving from familiar tools to a new system creates resistance. Communicate the r
 
 ## How YesBe Technologies Helps
 
-YesBe Technologies designs and implements ERP systems for growing businesses — from selecting the right platform and modules to configuring workflows, migrating data, training your team, and providing ongoing support. [Explore our ERP solutions](/solutions/erp-systems) or [discuss your requirements](/contact).
+YesBe Technologies designs and implements ERP systems for growing businesses — from selecting the right platform and modules to configuring workflows, migrating data, training your team, and providing ongoing support. [Explore our ERP solutions](/services/erp-systems) or [discuss your requirements](/contact).
 
 ## Conclusion
 

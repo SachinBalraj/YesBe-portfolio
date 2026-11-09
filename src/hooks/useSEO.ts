@@ -5,6 +5,8 @@ interface SEOData {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogImageWidth?: string;
+  ogImageHeight?: string;
   ogType?: string;
   /** Overrides only the og:/twitter: description. Defaults to `description`. */
   ogDescription?: string;
@@ -12,7 +14,7 @@ interface SEOData {
 }
 
 const SITE_URL = "https://www.yesbe.tech";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/YBlogo.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 const SITE_NAME = "YESBE Technologies";
 const OG_LOCALE = "en_IN";
 
@@ -34,6 +36,12 @@ function setOrUpdateMeta(
   el.setAttribute("content", content);
 }
 
+function removeMeta(attr: "name" | "property", value: string) {
+  document
+    .querySelector(attr === "name" ? `meta[name="${value}"]` : `meta[property="${value}"]`)
+    ?.remove();
+}
+
 function setOrUpdateLink(rel: string, href: string) {
   let el = document.querySelector(
     `link[rel="${rel}"]`,
@@ -51,6 +59,8 @@ export function useSEO({
   description,
   canonical,
   ogImage,
+  ogImageWidth,
+  ogImageHeight,
   ogType,
   ogDescription,
   noindex,
@@ -70,13 +80,17 @@ export function useSEO({
     setOrUpdateMeta("property", "og:description", socialDescription);
     setOrUpdateMeta("property", "og:url", url);
     setOrUpdateMeta("property", "og:image", image);
-    // /YBlogo.png is a square 300x300 mark. Declaring any other ratio here
-    // would make social platforms crop or reject the card, so the declared
-    // dimensions always match the image actually referenced.
-    setOrUpdateMeta("property", "og:image:width", "300");
-    setOrUpdateMeta("property", "og:image:height", "300");
     setOrUpdateMeta("property", "og:image:type", "image/png");
     setOrUpdateMeta("property", "og:image:alt", title);
+    // Only declare dimensions we actually know. The default social card is
+    // 1200x630; page-specific images (founder portrait, article covers) have
+    // their own ratios, so callers may pass exact dimensions or omit them.
+    const width = ogImageWidth ?? (!ogImage ? "1200" : undefined);
+    const height = ogImageHeight ?? (!ogImage ? "630" : undefined);
+    if (width) setOrUpdateMeta("property", "og:image:width", width);
+    else removeMeta("property", "og:image:width");
+    if (height) setOrUpdateMeta("property", "og:image:height", height);
+    else removeMeta("property", "og:image:height");
     setOrUpdateMeta("property", "og:site_name", SITE_NAME);
     setOrUpdateMeta("property", "og:locale", OG_LOCALE);
     setOrUpdateMeta("property", "og:type", ogType || "website");
@@ -89,5 +103,5 @@ export function useSEO({
     setOrUpdateMeta("name", "twitter:image:alt", title);
 
     setOrUpdateLink("canonical", url);
-  }, [title, description, canonical, ogImage, ogType, ogDescription, noindex]);
+  }, [title, description, canonical, ogImage, ogImageWidth, ogImageHeight, ogType, ogDescription, noindex]);
 }

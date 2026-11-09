@@ -129,7 +129,7 @@ Automated processes need testing — especially for edge cases and exceptions. M
 
 ## How YesBe Technologies Helps
 
-YesBe Technologies helps businesses automate repetitive office work — from simple task connections using workflow platforms to intelligent document processing and custom AI-powered automation. We map your processes, identify the highest-impact targets, and implement reliable solutions. [Discuss your requirements](/contact) or [explore our automation solutions](/solutions/business-automation).
+YesBe Technologies helps businesses automate repetitive office work — from simple task connections using workflow platforms to intelligent document processing and custom AI-powered automation. We map your processes, identify the highest-impact targets, and implement reliable solutions. [Discuss your requirements](/contact) or [explore our automation solutions](/services/business-automation).
 
 ## Conclusion
 

@@ -217,7 +217,7 @@ function EnquiriesPanel({ onOpenNewsletter }: { onOpenNewsletter: () => void }) 
             type="button"
             onClick={() => setFilter(() => setStatus(s))}
             aria-pressed={status === s}
-            className={`rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
+            className={`rounded-none border px-3 py-1 text-xs font-semibold transition-colors ${
               status === s
                 ? "border-primary bg-primary text-white"
                 : "border-border bg-card text-muted-foreground hover:bg-muted"
@@ -629,7 +629,7 @@ export function StatusBadge({ status }: { status: EnquiryStatus }) {
     Closed: "bg-slate-200 text-slate-700",
   };
   return (
-    <span className={`inline-block whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold ${styles[resolved]}`}>
+    <span className={`inline-block whitespace-nowrap rounded-none px-2.5 py-1 text-xs font-semibold ${styles[resolved]}`}>
       {resolved}
     </span>
   );

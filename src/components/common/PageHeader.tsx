@@ -61,8 +61,8 @@ export function PageHeader({
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
-        <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
-        <div className="absolute bottom-[15%] right-[8%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
+        <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
+        <div className="absolute bottom-[15%] right-[8%] h-[300px] w-[300px] rounded-circle bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -77,7 +77,7 @@ export function PageHeader({
             </motion.div>
           )}
           <motion.div variants={fadeInUp} className="text-center">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
               {badge}
             </span>
           </motion.div>
@@ -86,7 +86,7 @@ export function PageHeader({
             {highlight && <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">{highlight}</span>}
             {titleAfter && <>{titleAfter}</>}
           </motion.h1>
-          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
           <motion.p variants={fadeInUp} className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground text-center">
             {description}
           </motion.p>
@@ -99,7 +99,7 @@ export function PageHeader({
                 <a
                   href={primaryAction.href}
                   onClick={primaryAction.onClick}
-                  className="group inline-flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-[#1d4ed8] px-7 py-[14px] text-[15px] font-semibold text-white shadow-[0_1px_4px_rgba(37,99,235,0.25),0_4px_16px_rgba(37,99,235,0.12)] transition-colors duration-300 hover:bg-[#1e40af] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 sm:w-auto"
+                  className="group inline-flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-none bg-[#1d4ed8] px-7 py-[14px] text-[15px] font-semibold text-white shadow-[0_1px_4px_rgba(37,99,235,0.25),0_4px_16px_rgba(37,99,235,0.12)] transition-colors duration-300 hover:bg-[#1e40af] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 sm:w-auto"
                 >
                   {primaryAction.label}
                   <ArrowRight className="h-[18px] w-[18px] shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -109,7 +109,7 @@ export function PageHeader({
                 <a
                   href={secondaryAction.href}
                   onClick={secondaryAction.onClick}
-                  className="group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full border border-slate-200 bg-white px-7 py-[14px] text-[15px] font-semibold text-foreground shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-colors duration-300 hover:border-primary/30 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                  className="group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-none border border-slate-200 bg-white px-7 py-[14px] text-[15px] font-semibold text-foreground shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-colors duration-300 hover:border-primary/30 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                 >
                   {secondaryAction.label}
                   <ArrowRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-0.5" />

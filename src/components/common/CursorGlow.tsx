@@ -192,7 +192,7 @@ export function CursorGlow() {
         <div
           key={i}
           ref={(el) => { trailRefs.current[i] = el; }}
-          className="fixed top-0 left-0 rounded-full"
+          className="fixed top-0 left-0 rounded-circle"
           style={{
             width: 4 - i * 0.5,
             height: 4 - i * 0.5,
@@ -206,7 +206,7 @@ export function CursorGlow() {
       {/* Glow ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 rounded-full"
+        className="fixed top-0 left-0 rounded-circle"
         style={{
           width: cfg.ring,
           height: cfg.ring,
@@ -221,7 +221,7 @@ export function CursorGlow() {
       {/* Click ripple */}
       {ripple && (
         <div
-          className="fixed top-0 left-0 rounded-full"
+          className="fixed top-0 left-0 rounded-circle"
           style={{
             width: cfg.ring * 1.8,
             height: cfg.ring * 1.8,
@@ -237,7 +237,7 @@ export function CursorGlow() {
       {/* Inner dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 rounded-full"
+        className="fixed top-0 left-0 rounded-circle"
         style={{
           width: cfg.dot,
           height: cfg.dot,

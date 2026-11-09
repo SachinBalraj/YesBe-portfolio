@@ -276,7 +276,7 @@ export const solutions: SolutionDetail[] = [
     description:
       "Intelligent conversational AI chatbots that deliver 24/7 customer support, automate workflows, and provide natural, context-aware interactions across every channel.",
     heroImage:
-      "https://images.unsplash.com/photo-1531746790095-e5cbfb1e2f0e?w=1200&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=600&fit=crop",
     overview:
       "Our AI Chatbots service builds sophisticated conversational agents that understand context, learn from interactions, and deliver human-like conversations at scale. Powered by advanced large language models and custom training data, our chatbots handle customer inquiries, qualify leads, process orders, and provide support across web, mobile, and messaging platforms. We go beyond simple rule-based bots to create truly intelligent conversational experiences.",
     whyNeeded:
@@ -1887,7 +1887,7 @@ export const solutions: SolutionDetail[] = [
       {
         question: "How disruptive is cloud migration?",
         answer:
-          "Our phased migration approach ensures zero downtime. We migrate workloads incrementally, testing thoroughly at each stage, with rollback plans for every phase. Most migrations are invisible to end users.",
+          "Our phased migration approach minimizes disruption. We migrate workloads incrementally, testing thoroughly at each stage, with rollback plans for every phase.",
       },
       {
         question: "Can you reduce our current cloud costs?",
@@ -2043,7 +2043,7 @@ export const solutions: SolutionDetail[] = [
       {
         title: "Zero-Downtime Migrations",
         description:
-          "Our proven migration methodology ensures your data moves safely between platforms with zero downtime and data loss.",
+          "Our migration methodology is designed to move your data between platforms with minimal disruption and safeguards against data loss.",
       },
       {
         title: "Proactive Management",
@@ -2637,7 +2637,7 @@ export const solutions: SolutionDetail[] = [
     description:
       "Answer Engine Optimization that positions your brand to be the direct answer in featured snippets, voice assistants, and AI-powered answer engines.",
     heroImage:
-      "https://images.unsplash.com/photo-1531746790095-e5cbfb1e2f0e?w=1200&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=600&fit=crop",
     overview:
       "Our AEO (Answer Engine Optimization) service ensures your content becomes the direct answer users get from featured snippets, voice assistants like Siri and Alexa, and AI answer engines. We optimize your content structure, FAQ pages, and knowledge base to be selected as the authoritative answer to questions your audience asks. AEO captures position zero — the answer that appears above all search results.",
     whyNeeded:
@@ -2818,7 +2818,7 @@ export const solutions: SolutionDetail[] = [
     description:
       "Full-funnel digital marketing strategies combining paid media, content marketing, social media, and analytics to drive qualified leads and measurable revenue growth.",
     heroImage:
-      "https://images.unsplash.com/photo-1533750349088-cd871a92f17e?w=1200&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1200&h=600&fit=crop",
     overview:
       "Our Digital Marketing service delivers integrated marketing strategies that drive real business results — not just impressions and clicks. We combine paid advertising, content marketing, social media, email marketing, and conversion rate optimization into cohesive campaigns that move prospects through the full funnel. Every campaign is measured against revenue metrics, ensuring your marketing investment delivers measurable ROI.",
     whyNeeded:

@@ -18,6 +18,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   // Load history when modal opens
@@ -30,6 +31,42 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
     }
   }, [isOpen, initialQuery]);
 
+  // Lock background scroll and restore focus to the trigger when closing.
+  useEffect(() => {
+    if (!isOpen) return;
+    const previous = document.activeElement as HTMLElement | null;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+      if (previous && document.contains(previous)) previous.focus();
+    };
+  }, [isOpen]);
+
+  // Keep keyboard focus inside the open dialog.
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleFocusTrap = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const focusable = dialog.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handleFocusTrap);
+    return () => document.removeEventListener("keydown", handleFocusTrap);
+  }, [isOpen]);
+
   // Handle global shortcut key (⌘ K or Ctrl K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -37,9 +74,8 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
         e.preventDefault();
         if (isOpen) {
           onClose();
-        } else {
-          // Open handled by listener in parent/App if needed
         }
+        // The navbar owns opening the dialog when it is closed.
       }
       if (e.key === "Escape" && isOpen) {
         onClose();
@@ -126,15 +162,20 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
 
           {/* Modal Card */}
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="search-dialog-title"
             initial={{ opacity: 0, scale: 0.95, y: -12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -12 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl border border-white/20 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900"
           >
+            <h2 id="search-dialog-title" className="sr-only">Search YESBE insights</h2>
             {/* Top Search Input Bar */}
             <div className="relative flex items-center border-b border-slate-200/80 px-5 py-4 dark:border-slate-800">
-              <Search className="h-5 w-5 text-primary/70 shrink-0 mr-3" />
+              <Search className="h-5 w-5 text-primary/70 shrink-0 mr-3" aria-hidden="true" />
               <input
                 ref={inputRef}
                 type="text"
@@ -145,6 +186,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder="Search articles, guides, and insights..."
+                aria-label="Search articles, guides, and insights"
                 className="w-full bg-transparent text-base text-foreground placeholder-muted-foreground/70 outline-none"
               />
               {query && (
@@ -154,7 +196,8 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                     setQuery("");
                     inputRef.current?.focus();
                   }}
-                  className="mr-2 rounded-full p-1 text-muted-foreground hover:bg-slate-100 dark:hover:bg-slate-800"
+                  aria-label="Clear search"
+                  className="mr-2 rounded-none p-1 text-muted-foreground hover:bg-slate-100 dark:hover:bg-slate-800"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -162,6 +205,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
               <button
                 type="button"
                 onClick={onClose}
+                aria-label="Close search"
                 className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-semibold text-muted-foreground dark:bg-slate-800"
               >
                 ESC
@@ -182,11 +226,12 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                       {suggestions.map((article, idx) => {
                         const isSelected = idx === selectedIndex;
                         return (
-                          <div
+                          <button
                             key={article.slug}
+                            type="button"
                             onClick={() => handleSelectArticle(article)}
                             onMouseEnter={() => setSelectedIndex(idx)}
-                            className={`group flex items-start justify-between rounded-2xl p-3.5 cursor-pointer transition-all duration-150 ${
+                            className={`group flex w-full items-start justify-between rounded-2xl p-3.5 text-left transition-all duration-150 ${
                               isSelected
                                 ? "bg-primary/10 border border-primary/20 shadow-sm"
                                 : "hover:bg-slate-100 dark:hover:bg-slate-800/60"
@@ -204,7 +249,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                                   {highlightMatch(article.excerpt, query)}
                                 </p>
                                 <div className="mt-2 flex items-center gap-2">
-                                  <span className="inline-flex rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-primary dark:bg-slate-800">
+                                  <span className="inline-flex rounded-none bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-primary dark:bg-slate-800">
                                     {article.category}
                                   </span>
                                   <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
@@ -215,7 +260,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                               </div>
                             </div>
                             <ArrowRight className={`h-4 w-4 shrink-0 transition-transform ${isSelected ? "text-primary translate-x-1" : "text-muted-foreground/40"}`} />
-                          </div>
+                          </button>
                         );
                       })}
                     </div>
@@ -226,7 +271,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                       <button
                         type="button"
                         onClick={() => handleSearchSubmit()}
-                        className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-xs font-semibold text-white shadow-md hover:bg-primary/90"
+                        className="mt-4 inline-flex items-center gap-2 rounded-none bg-primary px-5 py-2 text-xs font-semibold text-white shadow-md hover:bg-primary/90"
                       >
                         Search All Topics
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -249,7 +294,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                         {recentSearches.map((term) => (
                           <div
                             key={term}
-                            className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 py-1.5 pl-3 pr-2 text-xs font-medium text-foreground transition-all hover:border-primary/30 hover:bg-white dark:border-slate-800 dark:bg-slate-800"
+                            className="group inline-flex items-center gap-1.5 rounded-none border border-slate-200 bg-slate-50 py-1.5 pl-3 pr-2 text-xs font-medium text-foreground transition-all hover:border-primary/30 hover:bg-white dark:border-slate-800 dark:bg-slate-800"
                           >
                             <button
                               type="button"
@@ -264,7 +309,8 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                                 removeSearchHistory(term);
                                 setRecentSearches(getSearchHistory());
                               }}
-                              className="rounded-full p-0.5 text-muted-foreground hover:bg-slate-200 dark:hover:bg-slate-700"
+                              aria-label={`Remove ${term} from recent searches`}
+                              className="rounded-none p-0.5 text-muted-foreground hover:bg-slate-200 dark:hover:bg-slate-700"
                             >
                               <X className="h-3 w-3" />
                             </button>
@@ -286,7 +332,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                           key={topic}
                           type="button"
                           onClick={() => handleSearchSubmit(topic)}
-                          className="rounded-full border border-slate-200/80 bg-white px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm transition-all hover:border-primary/40 hover:text-primary hover:shadow dark:border-slate-800 dark:bg-slate-800"
+                          className="rounded-none border border-slate-200/80 bg-white px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm transition-all hover:border-primary/40 hover:text-primary hover:shadow dark:border-slate-800 dark:bg-slate-800"
                         >
                           {topic}
                         </button>
@@ -325,19 +371,19 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
             <div className="flex items-center justify-between border-t border-slate-200/80 bg-slate-50/80 px-5 py-3 text-[11px] text-muted-foreground dark:border-slate-800 dark:bg-slate-900/80">
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-1">
-                  <kbd className="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-700 shadow-2xs dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                  <kbd className="rounded-none border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-700 shadow-2xs dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
                     ↑↓
                   </kbd>
                   Navigate
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-700 shadow-2xs dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                  <kbd className="rounded-none border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-700 shadow-2xs dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
                     ↵
                   </kbd>
                   Select
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-700 shadow-2xs dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                  <kbd className="rounded-none border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-700 shadow-2xs dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
                     ESC
                   </kbd>
                   Close

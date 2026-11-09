@@ -1,14 +1,5 @@
 import type { KnowledgeFAQ } from "@/knowledge/types";
 
-const fallbackAnswers: Record<string, string> = {
-  ai: "AI helps businesses automate routine work, improve decision-making, and generate insights from data so teams can focus on strategic growth.",
-  erp: "ERP is a unified software platform that streamlines finance, operations, inventory, sales, and customer management into a single system.",
-  crm: "CRM helps businesses manage customer relationships, sales pipelines, and support workflows to improve retention and grow revenue.",
-  seo: "SEO makes your website more visible in search engines by optimizing content, structure, and authority for relevant keywords.",
-  powerbi: "Power BI turns business data into interactive reports and dashboards so teams can monitor performance and make smarter decisions.",
-  automation: "Automation uses software to handle repetitive tasks, reduce errors, and accelerate workflows across marketing, sales, and operations.",
-};
-
 function cleanText(value: string) {
   return value
     .replace(/\s+/g, " ")
@@ -20,7 +11,7 @@ function splitKeywords(keywords: string[]) {
   return Array.from(
     new Set(
       keywords
-        .flatMap((keyword) => keyword.split(/[,\/\|]/gi))
+        .flatMap((keyword) => keyword.split(/[,\/|]/g))
         .map((keyword) => keyword.trim())
         .filter(Boolean),
     ),
@@ -29,27 +20,6 @@ function splitKeywords(keywords: string[]) {
 
 function formatAnswer(text: string): string {
   return cleanText(text).replace(/\s+/g, " ");
-}
-
-function shortAnswer(question: string, topic: string): string {
-  const lowerTopic = topic.toLowerCase();
-
-  switch (lowerTopic) {
-    case "ai":
-    case "artificial intelligence":
-      return "AI helps businesses automate workflows, generate insights, and personalize customer experiences with smarter software.";
-    case "erp":
-      return "ERP integrates business functions like finance, operations, and inventory into one platform to improve efficiency and visibility.";
-    case "crm":
-      return "CRM organizes customer data, sales activities, and communication to help teams close deals and improve relationships.";
-    case "power bi":
-    case "powerbi":
-      return "Power BI creates interactive dashboards and reports so businesses can monitor data and make faster decisions.";
-    case "seo":
-      return "SEO improves how your website appears in search results by optimizing content, keywords, and technical structure.";
-    default:
-      return fallbackAnswers[lowerTopic] ?? `This helps businesses use ${topic} more effectively to improve productivity and decision-making.`;
-  }
 }
 
 export function generateFAQs(articleTitle: string, keywords: string[] = []): KnowledgeFAQ[] {

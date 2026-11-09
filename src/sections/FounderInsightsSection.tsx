@@ -6,7 +6,7 @@ import { articles } from "@/knowledge/articles";
 import { formatDate } from "@/components/knowledge/share";
 import { FOUNDER_AUTHOR_NAME } from "@/constants";
 
-const card = "rounded-[20px] border border-white/40 bg-white p-6";
+const card = "rounded-none border border-white/40 bg-white p-6";
 
 /**
  * Latest writing by the founder, newest first.
@@ -29,7 +29,7 @@ export function FounderInsightsSection() {
     >
       <div className="pointer-events-none absolute inset-0">
         <div
-          className="absolute right-[6%] bottom-[6%] h-[320px] w-[320px] rounded-full bg-[#ede9fe] opacity-[0.07] blur-[120px]"
+          className="absolute right-[6%] bottom-[6%] h-[320px] w-[320px] rounded-circle bg-[#ede9fe] opacity-[0.07] blur-[120px]"
           aria-hidden="true"
         />
       </div>
@@ -42,7 +42,7 @@ export function FounderInsightsSection() {
           transition={{ duration: 0.5 }}
           className="mx-auto mb-10 max-w-2xl text-center"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
             Insights
           </span>
           <h2
@@ -54,7 +54,7 @@ export function FounderInsightsSection() {
               Insights &amp; Articles
             </span>
           </h2>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+          <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
           <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
             Practical writing on AI, ERP, web technologies and search — written
             by {FOUNDER_AUTHOR_NAME} for the YESBE Technologies Knowledge
@@ -75,7 +75,7 @@ export function FounderInsightsSection() {
                 to={`/insights/article/${article.slug}`}
                 className={`${card} group flex h-full flex-col transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]`}
               >
-                <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
+                <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-none bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
                   <BookOpen className="h-3 w-3" aria-hidden="true" />
                   {article.category}
                 </span>

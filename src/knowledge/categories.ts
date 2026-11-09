@@ -23,7 +23,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
       {
         question: "What is RAG (Retrieval-Augmented Generation)?",
         answer:
-          "RAG connects AI language models directly to private company documentation and database records, ensuring answers are 100% accurate without hallucinations.",
+          "RAG connects AI language models directly to private company documentation and database records, grounding answers in source material and reducing hallucinations.",
       },
     ],
   },

@@ -8,7 +8,7 @@ authorRole: "YESBE Technologies"
 publishedDate: "2026-08-20"
 updatedDate: "2026-08-20"
 readingTime: 8
-featuredImage: "https://images.unsplash.com/photo-1531746790095-e5eb7203e6e8?w=1600&h=900&fit=crop&q=80"
+featuredImage: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1600&h=900&fit=crop&q=80"
 excerpt: "AI chatbots handle a wide range of customer support tasks — from answering common questions to routing complex queries. Here are the use cases that deliver real value."
 tags: ["AI Chatbots", "Customer Support", "AI Use Cases", "Automation", "Customer Experience"]
 seoTitle: "AI Chatbot Use Cases for Customer Support | YesBe"
@@ -126,7 +126,7 @@ Track resolution rate (percentage of queries fully answered by the chatbot), esc
 
 ## How YesBe Technologies Helps
 
-YesBe Technologies builds AI chatbots tailored to your business — from simple FAQ bots to intelligent support systems connected to your CRM, order management, and knowledge base. We handle the design, development, training, and ongoing optimisation. [Explore our AI chatbot solutions](/solutions/ai-chatbots) or [discuss your requirements](/contact).
+YesBe Technologies builds AI chatbots tailored to your business — from simple FAQ bots to intelligent support systems connected to your CRM, order management, and knowledge base. We handle the design, development, training, and ongoing optimisation. [Explore our AI chatbot solutions](/services/ai-chatbots) or [discuss your requirements](/contact).
 
 ## Conclusion
 

@@ -102,7 +102,7 @@ const faqData: FAQItem[] = [
   {
     question: "How can I contact you?",
     answer:
-      "Email hello@yesbe.tech, call +91 9087795970, WhatsApp, LinkedIn, or use the form on this website. A proposal is typically shared within 24 hours.",
+      "Email hello@yesbe.tech, call +91 9087795970, WhatsApp, LinkedIn, or use the form on this website. We will review your requirements and respond with the next steps.",
   },
   {
     question: "How long does development take?",
@@ -129,7 +129,7 @@ export function FAQSection() {
       aria-label="Frequently Asked Questions — Services, quotations, technologies, and development process"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[20%] left-[10%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.10] blur-[100px]" />
+        <div className="absolute top-[20%] left-[10%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.10] blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -139,9 +139,9 @@ export function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
           >
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
+            <span className="inline-block h-1.5 w-1.5 rounded-circle bg-[#2563eb]" />
             FAQ
           </motion.span>
 
@@ -163,7 +163,7 @@ export function FAQSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
 
           <motion.p
@@ -182,7 +182,7 @@ export function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="overflow-hidden rounded-[20px] border border-white/50 bg-white/80"
+          className="overflow-hidden rounded-none border border-white/50 bg-white/80"
           style={{
             boxShadow: "0 1px 2px rgba(37,99,235,0.02), 0 4px 16px rgba(37,99,235,0.02)",
           }}

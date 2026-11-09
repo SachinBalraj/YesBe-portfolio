@@ -36,7 +36,7 @@ export function WhoIHelpSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
             Who I Help
           </motion.span>
@@ -55,7 +55,7 @@ export function WhoIHelpSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
         </div>
 
@@ -67,7 +67,7 @@ export function WhoIHelpSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-[20px] border border-white/40 bg-white p-5 transition-all duration-300 hover:-translate-y-1"
+              className="rounded-none border border-white/40 bg-white p-5 transition-all duration-300 hover:-translate-y-1"
               style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.03)" }}
             >
               <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06]">

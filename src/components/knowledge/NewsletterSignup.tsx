@@ -55,9 +55,9 @@ export function NewsletterSignup() {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-[32px] border border-slate-200/70 bg-white px-6 py-10 shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 sm:px-10 sm:py-14 lg:px-14">
+    <section className="relative overflow-hidden rounded-none border border-slate-200/70 bg-white px-6 py-10 shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 sm:px-10 sm:py-14 lg:px-14">
       <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[#eff6ff] to-transparent opacity-80" />
-      <div className="absolute left-1/2 top-8 h-32 w-32 -translate-x-1/2 rounded-full bg-blue-100 opacity-80 blur-[90px]" />
+      <div className="absolute left-1/2 top-8 h-32 w-32 -translate-x-1/2 rounded-circle bg-blue-100 opacity-80 blur-[90px]" />
 
       <div className="relative mx-auto flex max-w-5xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
@@ -80,9 +80,9 @@ export function NewsletterSignup() {
           </div>
         </div>
 
-        <div className="relative w-full max-w-xl rounded-[28px] border border-slate-200/80 bg-slate-50/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8">
-          <div className="absolute -right-8 top-6 h-24 w-24 rounded-full bg-gradient-to-br from-[#2563eb] to-[#60a5fa] opacity-10 blur-3xl" />
-          <div className="absolute -bottom-8 left-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#93c5fd] to-[#bfdbfe] opacity-20 blur-3xl" />
+        <div className="relative w-full max-w-xl rounded-none border border-slate-200/80 bg-slate-50/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8">
+          <div className="absolute -right-8 top-6 h-24 w-24 rounded-circle bg-gradient-to-br from-[#2563eb] to-[#60a5fa] opacity-10 blur-3xl" />
+          <div className="absolute -bottom-8 left-4 h-24 w-24 rounded-circle bg-gradient-to-br from-[#93c5fd] to-[#bfdbfe] opacity-20 blur-3xl" />
 
           <div className="mb-6 flex items-center gap-3 rounded-3xl bg-white/90 px-4 py-3 shadow-sm ring-1 ring-slate-200/70">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white shadow-sm">
@@ -96,9 +96,10 @@ export function NewsletterSignup() {
 
           {status === "success" ? (
             <motion.div
+              role="status"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-6 py-5 text-sm font-semibold text-emerald-900"
+              className="rounded-none border border-emerald-200 bg-emerald-50 px-6 py-5 text-sm font-semibold text-emerald-900"
             >
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="mt-1 h-5 w-5" />
@@ -115,7 +116,10 @@ export function NewsletterSignup() {
               </label>
               <input
                 id="newsletter-email"
+                name="email"
                 type="email"
+                autoComplete="email"
+                inputMode="email"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -124,9 +128,10 @@ export function NewsletterSignup() {
                     setMessage("");
                   }
                 }}
-                placeholder="Enter your email address"
+                placeholder="you@company.com"
                 aria-label="Enter your email address"
                 aria-invalid={status === "error"}
+                aria-describedby={status === "error" ? "newsletter-error" : undefined}
                 className="w-full rounded-3xl border border-slate-200 bg-white px-5 py-4 text-sm text-foreground outline-none transition-all duration-200 focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
               />
 
@@ -154,6 +159,8 @@ export function NewsletterSignup() {
 
               {status === "error" && (
                 <motion.p
+                  id="newsletter-error"
+                  role="alert"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-sm font-medium text-red-600"

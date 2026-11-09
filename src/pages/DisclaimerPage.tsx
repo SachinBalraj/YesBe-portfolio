@@ -173,7 +173,7 @@ export function DisclaimerPage() {
               <ul className="space-y-2">
                 <li><strong>Company:</strong> {SITE_CONFIG.name}</li>
                 <li><strong>Email:</strong> <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("disclaimer")} className="text-primary hover:underline">{SITE_CONFIG.email}</a></li>
-                <li><strong>Phone:</strong> <a href={`tel:${SITE_CONFIG.phone}`} onClick={() => trackPhoneClick("disclaimer")} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
+                <li><strong>Phone:</strong> <a href={SITE_CONFIG.phoneHref} onClick={() => trackPhoneClick("disclaimer")} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
                 <li><strong>Location:</strong> {SITE_CONFIG.location}</li>
               </ul>
             </div>

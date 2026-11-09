@@ -53,12 +53,12 @@ function ProjectCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
         {/* Category badge */}
-        <span className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur-sm">
+        <span className="absolute top-3 left-3 rounded-none bg-white/90 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur-sm">
           {project.category}
         </span>
 
         {/* Label — states what this entry is, without implying a client outcome */}
-        <span className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-slate-900/80 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-sm">
+        <span className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-none bg-slate-900/80 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-sm">
           {project.label}
         </span>
       </div>
@@ -138,8 +138,8 @@ export function PortfolioSection({
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
-        <div className="absolute bottom-[10%] right-[10%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
+        <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
+        <div className="absolute bottom-[10%] right-[10%] h-[300px] w-[300px] rounded-circle bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -152,7 +152,7 @@ export function PortfolioSection({
           className="text-center max-w-2xl mx-auto mb-8"
         >
           <motion.div variants={fadeInUp}>
-            <span className="inline-block rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
+            <span className="inline-block rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
               Selected Work
             </span>
           </motion.div>
@@ -170,7 +170,7 @@ export function PortfolioSection({
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
             Solutions we&apos;ve designed and built. Each one addresses a specific business problem.

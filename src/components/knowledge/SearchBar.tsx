@@ -132,7 +132,7 @@ export function SearchBar({
           placeholder={placeholder}
           aria-label="Search the Insights"
           className={cn(
-            "w-full rounded-full border border-slate-200/90 bg-white text-foreground shadow-[0_2px_8px_rgba(37,99,235,0.04),0_8px_24px_rgba(37,99,235,0.03)] outline-none transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/15 dark:border-slate-800 dark:bg-slate-900",
+            "w-full rounded-none border border-slate-200/90 bg-white text-foreground shadow-[0_2px_8px_rgba(37,99,235,0.04),0_8px_24px_rgba(37,99,235,0.03)] outline-none transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/15 dark:border-slate-800 dark:bg-slate-900",
             size === "lg" ? "py-4 pl-12 pr-28 text-base" : "py-2.5 pl-10 pr-20 text-sm"
           )}
         />
@@ -145,7 +145,7 @@ export function SearchBar({
                 setQuery("");
                 setSelectedIndex(-1);
               }}
-              className="rounded-full p-1 text-muted-foreground hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="rounded-none p-1 text-muted-foreground hover:bg-slate-100 dark:hover:bg-slate-800"
               aria-label="Clear query"
             >
               <X className="h-4 w-4" />

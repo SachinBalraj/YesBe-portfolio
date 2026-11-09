@@ -176,7 +176,7 @@ export function MarqueeSection() {
         {items.map((tech, i) => (
           <div
             key={`${tech.name}-${i}`}
-            className="group flex shrink-0 items-center gap-2.5 rounded-full border border-white/50 bg-white/80 px-4 py-2 shadow-[0_1px_3px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-white hover:shadow-[0_2px_12px_rgba(37,99,235,0.10)] hover:scale-[1.05]"
+            className="group flex shrink-0 items-center gap-2.5 rounded-none border border-white/50 bg-white/80 px-4 py-2 shadow-[0_1px_3px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-white hover:shadow-[0_2px_12px_rgba(37,99,235,0.10)] hover:scale-[1.05]"
           >
             <tech.Icon
               size={20}

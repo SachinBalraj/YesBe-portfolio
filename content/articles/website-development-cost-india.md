@@ -114,7 +114,7 @@ Website development is not a one-time event. You will need updates, content chan
 
 ## How YesBe Technologies Can Help
 
-YesBe Technologies builds business websites that balance cost, quality, and long-term value. We work through a structured discovery process, provide a detailed written quotation before any work begins, and offer ongoing support after launch. [Explore our web development solutions](/solutions/website-development), or [book a free consultation](/contact) to receive a quotation for your project.
+YesBe Technologies builds business websites that balance cost, quality, and long-term value. We work through a structured discovery process, provide a detailed written quotation before any work begins, and offer ongoing support after launch. [Explore our web development solutions](/services/website-development), or [book a free consultation](/contact) to receive a quotation for your project.
 
 ## Conclusion
 

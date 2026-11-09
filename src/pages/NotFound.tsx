@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowRight, Home, MessageCircle, ArrowLeft, Compass } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -19,6 +19,7 @@ const suggestions = [
 
 export function NotFound() {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   useSEO({
     title: SEO_TITLES.notFound,
@@ -29,9 +30,8 @@ export function NotFound() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim()) {
-      window.location.href = `/#${encodeURIComponent(query.trim().toLowerCase())}`;
-    }
+    const trimmed = query.trim();
+    navigate(trimmed ? `/insights/search?q=${encodeURIComponent(trimmed)}` : "/insights/search");
   };
 
   return (
@@ -51,7 +51,7 @@ export function NotFound() {
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-[#2563eb]/[0.04]"
+            className="absolute rounded-circle bg-[#2563eb]/[0.04]"
             style={{ width: 4 + i * 2, height: 4 + i * 2, left: `${12 + i * 16}%`, top: `${18 + (i % 3) * 22}%` }}
             animate={{ y: [0, -18, 0], opacity: [0.12, 0.3, 0.12] }}
             transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
@@ -70,12 +70,12 @@ export function NotFound() {
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="flex h-28 w-28 items-center justify-center rounded-[28px] border border-white/40 bg-white/60 backdrop-blur-xl shadow-lg"
+            className="flex h-28 w-28 items-center justify-center rounded-none border border-white/40 bg-white/60 backdrop-blur-xl shadow-lg"
             style={{ boxShadow: "0 8px 40px rgba(37,99,235,0.10), inset 0 1px 0 rgba(255,255,255,0.8)" }}
           >
             <Compass className="h-12 w-12 text-primary" strokeWidth={1.5} />
           </motion.div>
-          <div className="absolute -inset-4 -z-10 rounded-full bg-primary/[0.06] blur-[30px] animate-glow-pulse" />
+          <div className="absolute -inset-4 -z-10 rounded-circle bg-primary/[0.06] blur-[30px] animate-glow-pulse" />
         </motion.div>
 
         {/* 404 */}
@@ -143,13 +143,20 @@ export function NotFound() {
             <Home className="h-4 w-4 shrink-0" />
             Go Home
           </Link>
-          <a
-            href="/#contact"
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3 text-sm font-semibold text-foreground"
+          >
+            <Compass className="h-4 w-4 text-primary" />
+            Explore Services
+          </Link>
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3 text-sm font-semibold text-foreground"
           >
             <MessageCircle className="h-4 w-4 text-primary" />
             Contact YESBE
-          </a>
+          </Link>
           <button
             onClick={() => window.history.back()}
             className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3 text-sm font-semibold text-foreground"
@@ -169,14 +176,14 @@ export function NotFound() {
           <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Popular Pages</p>
           <div className="flex flex-wrap justify-center gap-2">
             {suggestions.map((s) => (
-              <a
+              <Link
                 key={s.label}
-                href={s.href}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-white/60 backdrop-blur-sm px-3.5 py-1.5 text-[12px] font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
+                to={s.href}
+                className="inline-flex items-center gap-1.5 rounded-none border border-white/40 bg-white/60 backdrop-blur-sm px-3.5 py-1.5 text-[12px] font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
               >
                 {s.label}
                 <ArrowRight className="h-3 w-3" />
-              </a>
+              </Link>
             ))}
           </div>
         </motion.div>
@@ -189,7 +196,7 @@ export function NotFound() {
           className="mt-12 flex flex-col items-center"
         >
           <img src={logoImg} loading="lazy" alt="YESBE Technologies Logo" width={40} height={40} className="h-10 w-10 object-contain rounded-xl opacity-60" />
-          <p className="mt-2 text-[11px] text-muted-foreground">&copy; 2026 YESBE</p>
+          <p className="mt-2 text-[11px] text-muted-foreground">&copy; {new Date().getFullYear()} YESBE Technologies</p>
         </motion.div>
       </div>
     </div>

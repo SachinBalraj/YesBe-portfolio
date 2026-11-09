@@ -76,8 +76,8 @@ export function LegalPageLayout({
       <section className="relative overflow-hidden bg-white pt-[88px] pb-10 lg:pt-[104px] lg:pb-10">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
-          <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
-          <div className="absolute bottom-[15%] right-[8%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
+          <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
+          <div className="absolute bottom-[15%] right-[8%] h-[300px] w-[300px] rounded-circle bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -110,7 +110,7 @@ export function LegalPageLayout({
             </motion.nav>
 
             <motion.div variants={fadeInUp}>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
                 {badge}
               </span>
             </motion.div>
@@ -118,7 +118,7 @@ export function LegalPageLayout({
               {title}{" "}
               <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">{highlight}</span>
             </motion.h1>
-            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <motion.p variants={fadeInUp} className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
               {description}
             </motion.p>
@@ -236,7 +236,7 @@ export function LegalPageLayout({
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => handleNav("/contact")}
-                className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2.5 rounded-none bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
               >
                 Contact YESBE
                 <ArrowRight className="h-4 w-4" />
@@ -244,7 +244,7 @@ export function LegalPageLayout({
               <a
                 href={`mailto:${SITE_CONFIG.email}`}
                 onClick={() => trackContactClick("legal_page")}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground shadow-card transition-all duration-200 hover:shadow-card-hover hover:border-primary/20"
+                className="inline-flex items-center gap-2 rounded-none border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground shadow-card transition-all duration-200 hover:shadow-card-hover hover:border-primary/20"
               >
                 {SITE_CONFIG.email}
               </a>

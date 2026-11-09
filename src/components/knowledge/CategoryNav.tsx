@@ -53,7 +53,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
             onClick={() => scrollBy(-1)}
             aria-label="Scroll categories left"
             className={cn(
-              "absolute -left-1 z-10 hidden h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-opacity md:flex",
+              "absolute -left-1 z-10 hidden h-8 w-8 items-center justify-center rounded-none border border-slate-200 bg-white shadow-sm transition-opacity md:flex",
               canScrollLeft ? "opacity-100" : "pointer-events-none opacity-0",
             )}
           >
@@ -67,7 +67,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
             <Link
               to="/insights"
               className={cn(
-                "shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold transition-all duration-200",
+                "shrink-0 rounded-none px-4 py-2 text-[13px] font-semibold transition-all duration-200",
                 !activeSlug
                   ? "bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
                   : "border border-slate-200 bg-white text-muted-foreground hover:border-primary/30 hover:text-primary",
@@ -80,7 +80,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
                 key={cat.slug}
                 to={`/insights/category/${cat.slug}`}
                 className={cn(
-                  "shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold transition-all duration-200",
+                  "shrink-0 rounded-none px-4 py-2 text-[13px] font-semibold transition-all duration-200",
                   activeSlug === cat.slug
                     ? "bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
                     : "border border-slate-200 bg-white text-muted-foreground hover:border-primary/30 hover:text-primary",
@@ -96,7 +96,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
             onClick={() => scrollBy(1)}
             aria-label="Scroll categories right"
             className={cn(
-              "absolute -right-1 z-10 hidden h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-opacity md:flex",
+              "absolute -right-1 z-10 hidden h-8 w-8 items-center justify-center rounded-none border border-slate-200 bg-white shadow-sm transition-opacity md:flex",
               canScrollRight ? "opacity-100" : "pointer-events-none opacity-0",
             )}
           >

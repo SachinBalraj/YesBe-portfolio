@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, BookOpenCheck, CalendarDays, Clock, Eye, RefreshCw } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { JsonLd } from "@/components/common/JsonLd";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
@@ -27,7 +27,6 @@ import { NewsletterSignup } from "@/components/knowledge/NewsletterSignup";
 import { RelatedArticles } from "@/components/knowledge/RelatedArticles";
 import { PrevNextArticle } from "@/components/knowledge/PrevNextArticle";
 import { ArticleHeaderMetadata } from "@/components/knowledge/ArticleHeaderMetadata";
-import { formatDate } from "@/components/knowledge/share";
 
 export function ArticleDetailPage() {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -62,7 +61,7 @@ export function ArticleDetailPage() {
         </p>
         <Link
           to="/insights"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
+          className="mt-6 inline-flex items-center gap-2 rounded-none bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Insights
@@ -101,12 +100,12 @@ export function ArticleDetailPage() {
           <div className="mb-5 flex flex-wrap items-center gap-2">
             <CategoryBadge name={article.category} slug={article.categorySlug} />
             {article.popular && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold text-amber-700">
+              <span className="inline-flex items-center gap-1 rounded-none bg-amber-50 px-3 py-1 text-[11px] font-bold text-amber-700">
                 Popular
               </span>
             )}
             {article.featured && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-bold text-emerald-700">
+              <span className="inline-flex items-center gap-1 rounded-none bg-emerald-50 px-3 py-1 text-[11px] font-bold text-emerald-700">
                 Featured
               </span>
             )}
@@ -130,7 +129,8 @@ export function ArticleDetailPage() {
             <img
               src={article.featuredImage}
               alt={`${article.title} — YESBE Insights guide`}
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
               decoding="async"
               width={1200}
               height={630}

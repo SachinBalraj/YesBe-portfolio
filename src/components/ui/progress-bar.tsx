@@ -19,11 +19,11 @@ export function ProgressBar({
         </div>
       )}
       <ProgressPrimitive.Root
-        className="relative h-2 w-full overflow-hidden rounded-full bg-muted"
+        className="relative h-2 w-full overflow-hidden rounded-none bg-muted"
       >
         <ProgressPrimitive.Indicator
           className={cn(
-            "h-full w-full rounded-full bg-primary transition-all duration-700 ease-out",
+            "h-full w-full rounded-none bg-primary transition-all duration-700 ease-out",
             indicatorClassName
           )}
           style={{ transform: `translateX(-${100 - percentage}%)` }}

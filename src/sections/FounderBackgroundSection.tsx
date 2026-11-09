@@ -27,7 +27,7 @@ function SectionHeader({
       transition={{ duration: 0.5 }}
       className="mx-auto mb-10 max-w-2xl text-center"
     >
-      <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+      <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
         {eyebrow}
       </span>
       <h2 id={id} className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
@@ -36,7 +36,7 @@ function SectionHeader({
           {highlight}
         </span>
       </h2>
-      <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+      <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
       <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
         {description}
       </p>
@@ -45,7 +45,7 @@ function SectionHeader({
 }
 
 const card =
-  "rounded-[20px] border border-white/40 bg-white p-6";
+  "rounded-none border border-white/40 bg-white p-6";
 
 /* ── Content ── */
 
@@ -118,7 +118,7 @@ export function FounderBackgroundSection() {
       aria-labelledby="about-sachin-balraj"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[5%] left-[5%] h-[320px] w-[320px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
+        <div className="absolute top-[5%] left-[5%] h-[320px] w-[320px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -227,7 +227,7 @@ export function FounderBackgroundSection() {
                     {job.role} — {job.organisation}
                   </h3>
                   {job.current && (
-                    <span className="rounded-full bg-[#16a34a]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#16a34a]">
+                    <span className="rounded-none bg-[#16a34a]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#16a34a]">
                       Current
                     </span>
                   )}
@@ -243,7 +243,7 @@ export function FounderBackgroundSection() {
                     >
                       <span
                         aria-hidden="true"
-                        className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+                        className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-circle bg-primary"
                       />
                       {point}
                     </li>

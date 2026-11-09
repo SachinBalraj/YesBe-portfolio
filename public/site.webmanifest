@@ -1,6 +1,6 @@
 {
-  "name": "YesBe — AI, ERP & Business Solutions",
-  "short_name": "YesBe",
+  "name": "YESBE Technologies \u2014 AI, ERP & Business Solutions",
+  "short_name": "YESBE",
   "description": "YesBe helps startups, SMEs, and enterprises with AI solutions, ERP systems, website development, data analytics, automation, cloud services, SEO, GEO, and AEO.",
   "start_url": "/",
   "display": "standalone",
@@ -8,19 +8,29 @@
   "theme_color": "#2563EB",
   "orientation": "portrait-primary",
   "scope": "/",
-  "categories": ["business", "technology", "portfolio"],
+  "categories": [
+    "business",
+    "technology",
+    "portfolio"
+  ],
   "lang": "en",
   "dir": "ltr",
   "id": "/",
   "icons": [
     {
-      "src": "/YBlogo.png?v=3",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/YBlogo.png?v=3",
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

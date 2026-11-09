@@ -47,7 +47,7 @@ export function IndustriesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
           >
             Industries
           </motion.span>
@@ -66,7 +66,7 @@ export function IndustriesSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -90,7 +90,7 @@ export function IndustriesSection() {
             >
               <Link
                 to={`/industries/${industry.slug}`}
-                className="group card-glass block rounded-[16px] p-5 transition-all duration-300"
+                className="group card-glass block rounded-none p-5 transition-all duration-300"
               >
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.05] transition-all duration-300 group-hover:bg-primary/[0.1] group-hover:scale-105">
                   <industry.icon className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />

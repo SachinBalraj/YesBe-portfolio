@@ -96,7 +96,7 @@ export function TechnologyMarquee() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
             Technology Stack
           </span>
           <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
@@ -119,7 +119,7 @@ export function TechnologyMarquee() {
               className="marquee-item flex shrink-0 items-center gap-6 sm:gap-8"
             >
               <div className="group/card flex flex-col items-center gap-2.5">
-                <div className="tech-icon-card flex items-center justify-center rounded-full bg-white shadow-lg transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-105 hover:shadow-xl">
+                <div className="tech-icon-card flex items-center justify-center rounded-none bg-white shadow-lg transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-105 hover:shadow-xl">
                   <tech.Icon className="tech-icon text-[#475569] transition-colors duration-300 group-hover/card:text-primary" />
                 </div>
                 <span className="tech-label text-[11px] font-medium text-muted-foreground whitespace-nowrap transition-colors duration-300 group-hover/card:text-primary">
@@ -128,7 +128,7 @@ export function TechnologyMarquee() {
               </div>
 
               <span
-                className="block h-1.5 w-1.5 shrink-0 rounded-full"
+                className="block h-1.5 w-1.5 shrink-0 rounded-circle"
                 style={{ backgroundColor: "#2563EB" }}
                 aria-hidden="true"
               />

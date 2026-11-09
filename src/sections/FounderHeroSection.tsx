@@ -14,7 +14,7 @@ function FounderPortrait() {
       height={260}
       loading="eager"
       decoding="async"
-      className="h-[180px] w-[180px] rounded-[28px] border border-white/40 object-cover object-center shadow-[0_8px_30px_rgba(37,99,235,0.12)] sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px]"
+      className="h-[180px] w-[180px] rounded-none border border-white/40 object-cover object-center shadow-[0_8px_30px_rgba(37,99,235,0.12)] sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px]"
     />
   );
 }
@@ -32,8 +32,8 @@ export function FounderHeroSection() {
       aria-label="Sachin Balraj — Founder of YESBE Technologies and Solution Architect at Springreen"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[10%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.10] blur-[100px]" />
-        <div className="absolute bottom-[10%] left-[5%] h-[280px] w-[280px] rounded-full bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
+        <div className="absolute top-[10%] right-[5%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.10] blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[5%] h-[280px] w-[280px] rounded-circle bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -67,7 +67,7 @@ export function FounderHeroSection() {
 
             <motion.div
               variants={fadeInUp}
-              className="mt-6 rounded-[20px] border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
+              className="mt-6 rounded-none border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
             >
               <p className="flex items-start gap-2.5 text-[15px] leading-relaxed text-foreground">
                 <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
@@ -126,8 +126,8 @@ export function FounderHeroSection() {
               key={r.label}
               className={
                 r.primary
-                  ? "rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-2 text-[13px] font-semibold text-primary"
-                  : "rounded-full border border-white/40 bg-white px-4 py-2 text-[13px] font-semibold text-muted-foreground"
+                  ? "rounded-none border border-primary/20 bg-primary/[0.06] px-4 py-2 text-[13px] font-semibold text-primary"
+                  : "rounded-none border border-white/40 bg-white px-4 py-2 text-[13px] font-semibold text-muted-foreground"
               }
             >
               {r.label}

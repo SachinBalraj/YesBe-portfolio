@@ -11,7 +11,7 @@ readingTime: 7
 featuredImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1600&h=900&fit=crop&q=80"
 excerpt: "The ultimate 25-point SEO checklist covering technical SEO, keyword research, on-page optimization, and authoritative backlink building."
 tags: ["SEO", "SEO Checklist", "Search Optimization", "Google"]
-seoTitle: "SEO Checklist: 25 Actionable Steps to Rank #1 on Google | YesBe"
+seoTitle: "SEO Checklist: 25 Actionable Steps for Better Rankings | YesBe"
 metaDescription: "Follow this 25-step SEO checklist to fix technical errors, optimize meta tags, and drive organic traffic to your website."
 keywords: ["seo checklist", "seo optimization checklist", "technical seo", "on page seo"]
 popular: true

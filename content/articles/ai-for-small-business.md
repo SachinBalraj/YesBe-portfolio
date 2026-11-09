@@ -8,7 +8,7 @@ authorRole: "AI Solutions Practice"
 publishedDate: "2026-07-22"
 updatedDate: "2026-07-30"
 readingTime: 6
-featuredImage: "https://images.unsplash.com/photo-1677442136019-21780efad99a?w=1600&h=900&fit=crop&q=80"
+featuredImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&h=900&fit=crop&q=80"
 excerpt: "A practical guide for small business owners looking to adopt AI tools for customer service, marketing, automated content generation, and data analysis."
 tags: ["AI", "Small Business", "Artificial Intelligence", "Productivity"]
 seoTitle: "AI for Small Businesses: Practical Implementation Guide | YesBe"

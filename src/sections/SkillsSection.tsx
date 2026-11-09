@@ -165,7 +165,7 @@ const marqueeItems = [
 /* ─────────────── Sub-components ─────────────── */
 
 const cardBase =
-  "relative flex flex-col rounded-[20px] border border-white/40 bg-white/80 backdrop-blur-sm p-6 transition-all duration-350 ease-out cursor-default";
+  "relative flex flex-col rounded-none border border-white/40 bg-white/80 backdrop-blur-sm p-6 transition-all duration-350 ease-out cursor-default";
 
 const cardShadow = {
   boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)",
@@ -180,7 +180,7 @@ function StatCard({ stat, index }: { stat: (typeof stats)[number]; index: number
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
       whileHover={{ y: -8, scale: 1.03 }}
-      className="glass-card relative flex flex-col items-center rounded-[20px] border border-white/40 bg-white/70 p-6 text-center backdrop-blur-sm"
+      className="glass-card relative flex flex-col items-center rounded-none border border-white/40 bg-white/70 p-6 text-center backdrop-blur-sm"
       style={{ ...cardShadow, transition: "box-shadow 0.35s ease, border-color 0.35s ease" }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = "0 8px 32px rgba(37,99,235,0.12), 0 16px 48px rgba(37,99,235,0.06)";
@@ -256,7 +256,7 @@ function SkillBentoCard({ skill, index }: { skill: SkillCard; index: number }) {
         {skill.chips.map((c) => (
           <span
             key={c}
-            className="rounded-full border border-white/40 bg-white px-3 py-1 text-[11px] font-semibold text-primary transition-all duration-200 hover:bg-[#2563eb] hover:text-white hover:-translate-y-0.5"
+            className="rounded-none border border-white/40 bg-white px-3 py-1 text-[11px] font-semibold text-primary transition-all duration-200 hover:bg-[#2563eb] hover:text-white hover:-translate-y-0.5"
           >
             {c}
           </span>
@@ -287,8 +287,8 @@ export function SkillsSection() {
       {/* ── Background ── */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
-        <div className="absolute top-[8%] left-[5%] h-[400px] w-[400px] rounded-full bg-[#dbeafe] opacity-[0.10] blur-[120px]" />
-        <div className="absolute bottom-[15%] right-[8%] h-[350px] w-[350px] rounded-full bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
+        <div className="absolute top-[8%] left-[5%] h-[400px] w-[400px] rounded-circle bg-[#dbeafe] opacity-[0.10] blur-[120px]" />
+        <div className="absolute bottom-[15%] right-[8%] h-[350px] w-[350px] rounded-circle bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
         <div
           className="absolute inset-0 opacity-[0.015]"
           style={{
@@ -301,7 +301,7 @@ export function SkillsSection() {
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full bg-[#2563eb]/[0.03]"
+              className="absolute rounded-circle bg-[#2563eb]/[0.03]"
               style={{ width: 6 + i * 3, height: 6 + i * 3, left: `${12 + i * 16}%`, top: `${18 + (i % 3) * 22}%` }}
               animate={{ y: [0, -18, 0], opacity: [0.12, 0.3, 0.12] }}
               transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.6, ease: "easeInOut" }}
@@ -319,8 +319,8 @@ export function SkillsSection() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-8"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
+          <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+            <span className="inline-block h-1.5 w-1.5 rounded-circle bg-[#2563eb]" />
             Skills &amp; Technologies
           </span>
           <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
@@ -329,7 +329,7 @@ export function SkillsSection() {
               Technologies
             </span>
           </h2>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+          <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
           <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
             Modern technologies, AI, cloud platforms, and automation — all under one roof.
           </p>
@@ -375,7 +375,7 @@ export function SkillsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.03 }}
               whileHover={{ y: -4, scale: 1.08 }}
-              className="rounded-full border border-white/40 bg-white px-4 py-2 text-[13px] font-semibold text-foreground shadow-sm transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white cursor-default"
+              className="rounded-none border border-white/40 bg-white px-4 py-2 text-[13px] font-semibold text-foreground shadow-sm transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white cursor-default"
             >
               {c}
             </motion.span>
@@ -391,7 +391,7 @@ export function SkillsSection() {
               {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((tech, i) => (
                 <div
                   key={`${tech.name}-${i}`}
-                  className="group flex shrink-0 items-center gap-2 rounded-full border border-white/50 bg-white/80 px-3.5 py-1.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-white hover:shadow-[0_2px_12px_rgba(37,99,235,0.10)] hover:scale-[1.05]"
+                  className="group flex shrink-0 items-center gap-2 rounded-none border border-white/50 bg-white/80 px-3.5 py-1.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-white hover:shadow-[0_2px_12px_rgba(37,99,235,0.10)] hover:scale-[1.05]"
                 >
                   <tech.Icon
                     size={18}

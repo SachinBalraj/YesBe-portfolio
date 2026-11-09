@@ -40,10 +40,10 @@ const inputClass =
   "w-full max-w-full box-border rounded-xl border border-border bg-card px-4 py-3.5 text-base sm:text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
 
 const contactCards = [
-  { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: `tel:${SITE_CONFIG.phone}`, color: "bg-blue-50 text-blue-600", onClick: () => trackPhoneClick("contact_section") },
+  { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.phoneHref, color: "bg-blue-50 text-blue-600", onClick: () => trackPhoneClick("contact_section") },
   { icon: MessageCircle, label: "WhatsApp", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.social.whatsapp, color: "bg-green-50 text-green-600", onClick: () => trackWhatsAppClick("contact_section") },
   { icon: Mail, label: "Email", value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}`, color: "bg-orange-50 text-orange-600", onClick: () => trackContactClick("contact_section") },
-  { icon: MapPin, label: "Location", value: SITE_CONFIG.location, href: "#", color: "bg-rose-50 text-rose-600" },
+  { icon: MapPin, label: "Location", value: SITE_CONFIG.location, href: SITE_CONFIG.mapUrl, color: "bg-rose-50 text-rose-600" },
 ];
 
 const STEPS = [
@@ -97,7 +97,9 @@ export function ContactSection() {
     } else if (step === 1) {
       if (!formData.service) errors.service = "Please select a service";
     } else if (step === 2) {
-      if (!formData.projectDescription.trim()) errors.projectDescription = "Project description is required";
+      const description = formData.projectDescription.trim();
+      if (!description) errors.projectDescription = "Project description is required";
+      else if (description.length < 10) errors.projectDescription = "Please describe your project in at least 10 characters";
     }
 
     setFieldErrors(errors);
@@ -195,7 +197,7 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="relative py-6 lg:py-9 bg-white overflow-hidden" aria-label="Contact YESBE — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-circle bg-primary/[0.03] blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* CTA Banner */}
@@ -211,7 +213,7 @@ export function ContactSection() {
             <span className="text-primary">Digital Solution</span>
           </motion.h2>
           <motion.p variants={fadeInUp} className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            Tell us about your project. We&apos;ll get back within 24 hours with a proposal.
+            Tell us about your project. We&apos;ll review your requirements and respond with clear next steps.
           </motion.p>
         </motion.div>
 
@@ -243,10 +245,10 @@ export function ContactSection() {
                         onClick={() => goToStep(i)}
                         aria-current={i === currentStep ? "step" : undefined}
                         aria-label={`${step.label} — step ${i + 1} of ${STEPS.length}`}
-                        className="group flex min-w-0 shrink items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                        className="group flex min-w-0 shrink items-center gap-2 rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       >
                         <span
-                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 sm:h-10 sm:w-10 sm:text-base ${
+                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-none text-sm font-bold transition-all duration-300 sm:h-10 sm:w-10 sm:text-base ${
                             i < currentStep
                               ? "bg-primary text-primary-foreground"
                               : i === currentStep
@@ -269,7 +271,7 @@ export function ContactSection() {
                       {i < STEPS.length - 1 && (
                         <span
                           aria-hidden="true"
-                          className={`h-0.5 min-w-0 flex-1 rounded-full transition-colors ${
+                          className={`h-0.5 min-w-0 flex-1 rounded-none transition-colors ${
                             i < currentStep ? "bg-primary" : "bg-muted"
                           }`}
                         />
@@ -279,9 +281,9 @@ export function ContactSection() {
                 </ol>
 
                 {/* Animated Progress Bar */}
-                <div className="mt-4 h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                <div className="mt-4 h-1.5 w-full rounded-none bg-muted overflow-hidden">
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-primary to-blue-400"
+                    className="h-full rounded-none bg-gradient-to-r from-primary to-blue-400"
                     initial={false}
                     animate={{ width: `${((currentStep + 1) / STEPS.length) * 100}%` }}
                     transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
@@ -336,51 +338,60 @@ export function ContactSection() {
                             Full Name <span className="text-destructive">*</span>
                           </label>
                           <input
-                            id="c-name" type="text" value={formData.name}
+                            id="c-name" name="name" type="text" value={formData.name}
+                            autoComplete="name" aria-required="true"
+                            aria-invalid={!!fieldErrors.name}
+                            aria-describedby={fieldErrors.name ? "c-name-error" : undefined}
                             onChange={(e) => update("name", e.target.value)}
-                            placeholder="John Doe" className={`${inputClass} ${inputErrorClass("name")}`}
+                            placeholder="Your full name" className={`${inputClass} ${inputErrorClass("name")}`}
                           />
-                          {fieldErrors.name && <p className="mt-1 text-xs text-destructive">{fieldErrors.name}</p>}
+                          {fieldErrors.name && <p id="c-name-error" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.name}</p>}
                         </div>
                         <div>
                           <label htmlFor="c-email" className="mb-1.5 block text-sm font-medium text-foreground">
                             Email <span className="text-destructive">*</span>
                           </label>
                           <input
-                            id="c-email" type="email" value={formData.email}
+                            id="c-email" name="email" type="email" value={formData.email}
+                            autoComplete="email" inputMode="email" aria-required="true"
+                            aria-invalid={!!fieldErrors.email}
+                            aria-describedby={fieldErrors.email ? "c-email-error" : undefined}
                             onChange={(e) => update("email", e.target.value)}
-                            placeholder="john@company.com" className={`${inputClass} ${inputErrorClass("email")}`}
+                            placeholder="you@company.com" className={`${inputClass} ${inputErrorClass("email")}`}
                           />
-                          {fieldErrors.email && <p className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>}
+                          {fieldErrors.email && <p id="c-email-error" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>}
                         </div>
                         <div>
                           <label htmlFor="c-phone" className="mb-1.5 block text-sm font-medium text-foreground">
-                            Phone
+                            Phone <span className="font-normal text-muted-foreground">(optional)</span>
                           </label>
                           <input
-                            id="c-phone" type="tel" value={formData.phone}
+                            id="c-phone" name="phone" type="tel" value={formData.phone}
+                            autoComplete="tel" inputMode="tel"
                             onChange={(e) => update("phone", e.target.value)}
                             placeholder="+91 98765 43210" className={inputClass}
                           />
                         </div>
                         <div>
                           <label htmlFor="c-company" className="mb-1.5 block text-sm font-medium text-foreground">
-                            Company
+                            Company <span className="font-normal text-muted-foreground">(optional)</span>
                           </label>
                           <input
-                            id="c-company" type="text" value={formData.company}
+                            id="c-company" name="company" type="text" value={formData.company}
+                            autoComplete="organization"
                             onChange={(e) => update("company", e.target.value)}
-                            placeholder="Acme Corp" className={inputClass}
+                            placeholder="Your company name" className={inputClass}
                           />
                         </div>
                         <div>
                           <label htmlFor="c-designation" className="mb-1.5 block text-sm font-medium text-foreground">
-                            Designation
+                            Designation <span className="font-normal text-muted-foreground">(optional)</span>
                           </label>
                           <input
-                            id="c-designation" type="text" value={formData.designation}
+                            id="c-designation" name="designation" type="text" value={formData.designation}
+                            autoComplete="organization-title"
                             onChange={(e) => update("designation", e.target.value)}
-                            placeholder="CTO" className={inputClass}
+                            placeholder="Your role" className={inputClass}
                           />
                         </div>
                       </div>
@@ -394,7 +405,10 @@ export function ContactSection() {
                             Required Service <span className="text-destructive">*</span>
                           </label>
                           <select
-                            id="c-service" value={formData.service}
+                            id="c-service" name="service" value={formData.service}
+                            aria-required="true"
+                            aria-invalid={!!fieldErrors.service}
+                            aria-describedby={fieldErrors.service ? "c-service-error" : undefined}
                             onChange={(e) => update("service", e.target.value)}
                             className={`${inputClass} ${inputErrorClass("service")}`}
                           >
@@ -403,14 +417,14 @@ export function ContactSection() {
                               <option key={value} value={value}>{label}</option>
                             ))}
                           </select>
-                          {fieldErrors.service && <p className="mt-1 text-xs text-destructive">{fieldErrors.service}</p>}
+                          {fieldErrors.service && <p id="c-service-error" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.service}</p>}
                         </div>
                         <div>
                           <label htmlFor="c-budget" className="mb-1.5 block text-sm font-medium text-foreground">
-                            Budget
+                            Budget <span className="font-normal text-muted-foreground">(optional)</span>
                           </label>
                           <select
-                            id="c-budget" value={formData.budget}
+                            id="c-budget" name="budget" value={formData.budget}
                             onChange={(e) => update("budget", e.target.value)}
                             className={inputClass}
                           >
@@ -422,10 +436,10 @@ export function ContactSection() {
                         </div>
                         <div>
                           <label htmlFor="c-timeline" className="mb-1.5 block text-sm font-medium text-foreground">
-                            Expected Timeline
+                            Expected Timeline <span className="font-normal text-muted-foreground">(optional)</span>
                           </label>
                           <select
-                            id="c-timeline" value={formData.timeline}
+                            id="c-timeline" name="timeline" value={formData.timeline}
                             onChange={(e) => update("timeline", e.target.value)}
                             className={inputClass}
                           >
@@ -446,19 +460,22 @@ export function ContactSection() {
                             Project Description <span className="text-destructive">*</span>
                           </label>
                           <textarea
-                            id="c-desc" rows={3} value={formData.projectDescription}
+                            id="c-desc" name="projectDescription" rows={3} value={formData.projectDescription}
+                            aria-required="true"
+                            aria-invalid={!!fieldErrors.projectDescription}
+                            aria-describedby={fieldErrors.projectDescription ? "c-desc-error" : undefined}
                             onChange={(e) => update("projectDescription", e.target.value)}
                             placeholder="Describe your project, its goals, and key requirements..."
                             className={`${inputClass} resize-none ${inputErrorClass("projectDescription")}`}
                           />
-                          {fieldErrors.projectDescription && <p className="mt-1 text-xs text-destructive">{fieldErrors.projectDescription}</p>}
+                          {fieldErrors.projectDescription && <p id="c-desc-error" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.projectDescription}</p>}
                         </div>
                         <div>
                           <label htmlFor="c-challenges" className="mb-1.5 block text-sm font-medium text-foreground">
-                            Business Challenges
+                            Business Challenges <span className="font-normal text-muted-foreground">(optional)</span>
                           </label>
                           <textarea
-                            id="c-challenges" rows={2} value={formData.businessChallenges}
+                            id="c-challenges" name="businessChallenges" rows={2} value={formData.businessChallenges}
                             onChange={(e) => update("businessChallenges", e.target.value)}
                             placeholder="What problems are you trying to solve?"
                             className={`${inputClass} resize-none`}
@@ -466,10 +483,10 @@ export function ContactSection() {
                         </div>
                         <div>
                           <label htmlFor="c-goals" className="mb-1.5 block text-sm font-medium text-foreground">
-                            Goals &amp; Expected Outcomes
+                            Goals &amp; Expected Outcomes <span className="font-normal text-muted-foreground">(optional)</span>
                           </label>
                           <textarea
-                            id="c-goals" rows={2} value={formData.goals}
+                            id="c-goals" name="goals" rows={2} value={formData.goals}
                             onChange={(e) => update("goals", e.target.value)}
                             placeholder="What does success look like for this project?"
                             className={`${inputClass} resize-none`}

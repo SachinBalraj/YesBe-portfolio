@@ -89,9 +89,9 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
           Loading...
         </p>
 
-        <div className="mt-4 h-[3px] w-48 overflow-hidden rounded-full bg-primary/10">
+        <div className="mt-4 h-[3px] w-48 overflow-hidden rounded-none bg-primary/10">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-[width] duration-100 ease-linear"
+            className="h-full rounded-none bg-gradient-to-r from-primary to-accent transition-[width] duration-100 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>

@@ -127,7 +127,7 @@ This flywheel compounds over time — each piece of content, each conversion opt
 
 ## How YesBe Technologies Helps
 
-YesBe Technologies builds websites designed to generate leads — fast loading, mobile responsive, SEO-optimised, and structured to guide visitors toward a clear next step. We also create the content, case studies, and optimisation strategies that fuel long-term lead generation. [Discuss your requirements](/contact) or [explore our web development solutions](/solutions/website-development).
+YesBe Technologies builds websites designed to generate leads — fast loading, mobile responsive, SEO-optimised, and structured to guide visitors toward a clear next step. We also create the content, case studies, and optimisation strategies that fuel long-term lead generation. [Discuss your requirements](/contact) or [explore our web development solutions](/services/website-development).
 
 ## Conclusion
 

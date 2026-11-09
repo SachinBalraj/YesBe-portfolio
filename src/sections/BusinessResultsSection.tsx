@@ -47,7 +47,7 @@ export function BusinessResultsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+              className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
             >
               Business Benefits
             </motion.span>
@@ -66,7 +66,7 @@ export function BusinessResultsSection() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+              className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
             />
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -87,7 +87,7 @@ export function BusinessResultsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="group card-glass rounded-[20px] p-6"
+                className="group card-glass rounded-none p-6"
               >
                 <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110">
                   <b.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
@@ -122,13 +122,13 @@ export function BusinessResultsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="card-glass rounded-[20px] p-5"
+                className="card-glass rounded-none p-5"
               >
                 <h3 className="mb-3 text-[15px] font-bold text-primary">{r.service}</h3>
                 <ul className="space-y-2">
                   {r.outcomes.map((o) => (
                     <li key={o} className="flex items-start gap-2 text-[13px] text-muted-foreground">
-                      <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2563eb]/40" />
+                      <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-circle bg-[#2563eb]/40" />
                       {o}
                     </li>
                   ))}

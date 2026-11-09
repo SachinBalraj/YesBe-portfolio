@@ -183,7 +183,7 @@ export function RefundPolicyPage() {
               <ul className="space-y-2">
                 <li><strong>Company:</strong> {SITE_CONFIG.name}</li>
                 <li><strong>Email:</strong> <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("refund_policy")} className="text-primary hover:underline">{SITE_CONFIG.email}</a></li>
-                <li><strong>Phone:</strong> <a href={`tel:${SITE_CONFIG.phone}`} onClick={() => trackPhoneClick("refund_policy")} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
+                <li><strong>Phone:</strong> <a href={SITE_CONFIG.phoneHref} onClick={() => trackPhoneClick("refund_policy")} className="text-primary hover:underline">+91 {SITE_CONFIG.phone}</a></li>
                 <li><strong>Response Time:</strong> We aim to respond to all refund requests within 2 business days</li>
               </ul>
             </div>

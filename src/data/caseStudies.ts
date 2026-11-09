@@ -366,7 +366,7 @@ export const caseStudies: CaseStudy[] = [
       {
         question: "Will the website rank on Google?",
         answer:
-          "No one can promise a position. What the build guarantees is the technical foundation — proper meta tags, schema markup, fast loading and mobile responsiveness — which is what has to be right before ranking is even possible.",
+          "No one can promise a position. What the build delivers is the technical foundation — proper meta tags, schema markup, fast loading and mobile responsiveness — which is what has to be right before ranking is even possible.",
       },
       {
         question: "Can I update the content myself?",

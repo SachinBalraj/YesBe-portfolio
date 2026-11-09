@@ -28,7 +28,7 @@ export function AboutSection() {
       aria-label="About YESBE Technologies — IT consulting, custom software development, AI and automation, and data analytics"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[10%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
+        <div className="absolute top-[10%] right-[5%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -56,21 +56,24 @@ export function AboutSection() {
             >
               <div className="relative rounded-2xl bg-white p-6 shadow-[0_4px_24px_rgba(37,99,235,0.08),0_1px_4px_rgba(0,0,0,0.04)] transition-shadow duration-300 group-hover:shadow-[0_8px_40px_rgba(37,99,235,0.14),0_2px_8px_rgba(0,0,0,0.06)]">
                 <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[#2563eb]/[0.06] to-[#60a5fa]/[0.04] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
-                <img
-                  src={logoImg}
-                  alt="YESBE Technologies Company Logo"
-                  width={400}
-                  height={400}
-                  loading="lazy"
-                  decoding="async"
-                  className="relative h-[180px] w-[180px] rounded-xl object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
-                />
+                <picture>
+                  <source srcSet="/YBlogo.webp" type="image/webp" />
+                  <img
+                    src={logoImg}
+                    alt="YESBE Technologies Company Logo"
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    decoding="async"
+                    className="relative h-[180px] w-[180px] rounded-xl object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
+                  />
+                </picture>
               </div>
             </motion.button>
 
             <motion.div
               variants={fadeInUp}
-              className="inline-flex items-center gap-2 rounded-full border border-[#2563eb]/10 bg-[#eff6ff] px-4 py-2 text-[13px] font-medium text-[#2563eb]"
+              className="inline-flex items-center gap-2 rounded-none border border-[#2563eb]/10 bg-[#eff6ff] px-4 py-2 text-[13px] font-medium text-[#2563eb]"
             >
               <CheckCircle className="h-4 w-4" />
               IT Consulting & Software Development
@@ -80,7 +83,7 @@ export function AboutSection() {
           {/* Right — Content */}
           <div>
             <motion.div variants={fadeInUp}>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
                 About YESBE
               </span>
             </motion.div>
@@ -108,7 +111,7 @@ export function AboutSection() {
             <motion.section
               variants={fadeInUp}
               aria-labelledby="about-founder-heading"
-              className="mt-8 rounded-[20px] border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
+              className="mt-8 rounded-none border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
             >
               <div className="flex items-center gap-4 sm:gap-5">
                 <img
@@ -118,7 +121,7 @@ export function AboutSection() {
                   height={120}
                   loading="lazy"
                   decoding="async"
-                  className="h-[110px] w-[110px] rounded-full object-cover object-center ring-1 ring-primary/10 sm:h-[120px] sm:w-[120px] md:h-[126px] md:w-[126px]"
+                  className="h-[110px] w-[110px] rounded-circle object-cover object-center ring-1 ring-primary/10 sm:h-[120px] sm:w-[120px] md:h-[126px] md:w-[126px]"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
@@ -185,7 +188,7 @@ export function AboutSection() {
               {focusAreas.map((area) => (
                 <div
                   key={area.value}
-                  className="rounded-[20px] border border-white/40 bg-white p-6 text-center"
+                  className="rounded-none border border-white/40 bg-white p-6 text-center"
                   style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
                 >
                   <div className="text-xl font-extrabold text-primary">{area.value}</div>
@@ -196,18 +199,18 @@ export function AboutSection() {
           </motion.div>
 
           <motion.div variants={fadeInUp}>
-            <div className="rounded-[20px] border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6">
+            <div className="rounded-none border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6">
               <h3 className="mb-3 text-sm font-bold text-foreground">Core Specializations</h3>
               <div className="flex flex-wrap gap-2">
                 {specializations.map((s) => (
-                  <span key={s} className="rounded-full bg-white border border-white/40 px-3 py-1 text-xs font-medium text-primary">
+                  <span key={s} className="rounded-none bg-white border border-white/40 px-3 py-1 text-xs font-medium text-primary">
                     {s}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="mt-5 rounded-[20px] border border-white/40 bg-white p-5">
+            <div className="mt-5 rounded-none border border-white/40 bg-white p-5">
               <h3 className="mb-2 text-sm font-bold text-foreground">Business Focus</h3>
               <p className="text-[13px] leading-relaxed text-muted-foreground">
                 Education ERP, hospital management, restaurant ordering, retail e-commerce, corporate analytics dashboards, MVP development, and digital transformation — for businesses in Salem, Tamil Nadu and beyond.

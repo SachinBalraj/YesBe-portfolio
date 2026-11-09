@@ -242,19 +242,19 @@ function SolutionCard({
 
   // Unique corner decoration per card — position cycles through 4 corners
   const cornerPositions = [
-    "top-0 right-0 rounded-bl-[40px]",
-    "bottom-0 left-0 rounded-tr-[40px]",
-    "top-0 left-0 rounded-br-[40px]",
-    "bottom-0 right-0 rounded-tl-[40px]",
+    "top-0 right-0 rounded-none",
+    "bottom-0 left-0 rounded-none",
+    "top-0 left-0 rounded-none",
+    "bottom-0 right-0 rounded-none",
   ];
   const cornerPos = cornerPositions[index % 4];
 
   // Unique decorative shapes per card
   const decorations = [
-    "absolute -top-3 -right-3 h-16 w-16 rounded-full opacity-[0.06]",
-    "absolute -bottom-4 -left-4 h-20 w-20 rounded-full opacity-[0.05]",
-    "absolute top-6 -right-2 h-10 w-10 rounded-full opacity-[0.07]",
-    "absolute -top-2 left-8 h-12 w-12 rounded-full opacity-[0.05]",
+    "absolute -top-3 -right-3 h-16 w-16 rounded-none opacity-[0.06]",
+    "absolute -bottom-4 -left-4 h-20 w-20 rounded-none opacity-[0.05]",
+    "absolute top-6 -right-2 h-10 w-10 rounded-none opacity-[0.07]",
+    "absolute -top-2 left-8 h-12 w-12 rounded-none opacity-[0.05]",
   ];
   const decoClass = decorations[index % 4];
 
@@ -273,7 +273,7 @@ function SolutionCard({
       <motion.div
         whileHover={{ y: -8 }}
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
-        className="relative h-full overflow-hidden rounded-[20px] border border-white/50 bg-white/70 p-6 sm:p-8 backdrop-blur-sm transition-all duration-300 ease-out"
+        className="relative h-full overflow-hidden rounded-none border border-white/50 bg-white/70 p-6 sm:p-8 backdrop-blur-sm transition-all duration-300 ease-out"
         style={{
           boxShadow: "0 1px 2px rgba(0,0,0,0.02), 0 2px 8px rgba(37,99,235,0.025), inset 0 1px 0 rgba(255,255,255,0.5)",
         }}
@@ -327,7 +327,7 @@ function SolutionCard({
           {solution.features.map((f) => (
             <span
               key={f}
-              className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 hover:scale-105"
+              className="inline-flex items-center gap-1.5 rounded-none px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 hover:scale-105"
               style={{
                 background: a.pillBg,
                 color: a.pillText,
@@ -369,9 +369,9 @@ export function SolutionsSection() {
         {/* Radial gradient base */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#f0f7ff_0%,transparent_60%)]" />
         {/* Floating blur circles */}
-        <div className="absolute top-[10%] left-[15%] h-[400px] w-[400px] rounded-full bg-[#dbeafe] opacity-[0.1] blur-[120px]" />
-        <div className="absolute top-[40%] right-[10%] h-[350px] w-[350px] rounded-full bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
-        <div className="absolute bottom-[10%] left-[40%] h-[300px] w-[300px] rounded-full bg-[#cffafe] opacity-[0.07] blur-[100px]" />
+        <div className="absolute top-[10%] left-[15%] h-[400px] w-[400px] rounded-circle bg-[#dbeafe] opacity-[0.1] blur-[120px]" />
+        <div className="absolute top-[40%] right-[10%] h-[350px] w-[350px] rounded-circle bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[40%] h-[300px] w-[300px] rounded-circle bg-[#cffafe] opacity-[0.07] blur-[100px]" />
         {/* Subtle grid overlay */}
         <div
           className="absolute inset-0 opacity-[0.015]"
@@ -390,9 +390,9 @@ export function SolutionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
           >
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
+            <span className="inline-block h-1.5 w-1.5 rounded-circle bg-[#2563eb]" />
             What We Offer
           </motion.span>
 
@@ -414,7 +414,7 @@ export function SolutionsSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
 
           <motion.p

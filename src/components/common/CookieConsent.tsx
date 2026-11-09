@@ -15,7 +15,7 @@ function Toggle({ checked, onToggle, label }: { checked: boolean; onToggle: () =
     <button
       onClick={onToggle}
       className={
-        "flex h-6 w-11 shrink-0 items-center rounded-full px-0.5 transition-colors duration-200 " +
+        "flex h-6 w-11 shrink-0 items-center rounded-none px-0.5 transition-colors duration-200 " +
         (checked ? "bg-primary" : "bg-border")
       }
       role="switch"
@@ -24,7 +24,7 @@ function Toggle({ checked, onToggle, label }: { checked: boolean; onToggle: () =
     >
       <div
         className={
-          "h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200 " +
+          "h-5 w-5 rounded-circle bg-white shadow-sm transition-transform duration-200 " +
           (checked ? "translate-x-5" : "translate-x-0")
         }
       />
@@ -149,8 +149,8 @@ function CookieConsentComponent() {
                           <p className="text-sm font-semibold text-foreground">Essential Cookies</p>
                           <p className="text-xs text-muted-foreground">Required for basic site functionality</p>
                         </div>
-                        <div className="flex h-6 w-11 shrink-0 items-center rounded-full bg-primary px-0.5">
-                          <div className="h-5 w-5 rounded-full bg-white shadow-sm translate-x-5" />
+                        <div className="flex h-6 w-11 shrink-0 items-center rounded-none bg-primary px-0.5">
+                          <div className="h-5 w-5 rounded-circle bg-white shadow-sm translate-x-5" />
                         </div>
                       </div>
 

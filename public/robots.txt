@@ -4,9 +4,8 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /admin/
+Disallow: /admin
 Disallow: /_vercel/
-Disallow: /insights/search
 
 # Sitemap
 Sitemap: https://www.yesbe.tech/sitemap.xml

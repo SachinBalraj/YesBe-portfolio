@@ -134,7 +134,7 @@ For most small businesses, a combination works: no-code tools for straightforwar
 
 If your automation needs involve AI document processing, custom integrations between tools that do not natively connect, or intelligent decision-making within workflows, a technology partner can accelerate implementation and ensure reliability.
 
-YesBe Technologies helps small businesses implement AI automation across operations, from simple workflow connections to intelligent document processing and custom AI assistants. [Discuss your requirements](/contact) or [explore our automation solutions](/solutions/business-automation).
+YesBe Technologies helps small businesses implement AI automation across operations, from simple workflow connections to intelligent document processing and custom AI assistants. [Discuss your requirements](/contact) or [explore our automation solutions](/services/business-automation).
 
 ## Conclusion
 

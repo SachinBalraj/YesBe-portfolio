@@ -2,9 +2,8 @@
 <browserconfig>
   <msapplication>
     <tile>
-      <square150x150logo src="/YBlogo.png?v=2"/>
+      <square150x150logo src="/mstile-150x150.png"/>
       <TileColor>#2563EB</TileColor>
     </tile>
-    <TileImage src="/YBlogo.png?v=2"/>
   </msapplication>
 </browserconfig>

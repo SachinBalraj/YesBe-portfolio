@@ -43,7 +43,7 @@ export function SearchHistory({ onSelect }: SearchHistoryProps) {
             key={query}
             type="button"
             onClick={() => onSelect(query)}
-            className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-[13px] font-medium text-muted-foreground transition-all duration-200 hover:border-primary/30 hover:text-primary"
+            className="inline-flex items-center gap-1.5 rounded-none border border-slate-200 bg-white px-3.5 py-1.5 text-[13px] font-medium text-muted-foreground transition-all duration-200 hover:border-primary/30 hover:text-primary"
           >
             <Search className="h-3 w-3" />
             {query}
@@ -81,7 +81,7 @@ export function SearchSuggestion({
           e.stopPropagation();
           onRemove();
         }}
-        className="hidden h-6 w-6 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-slate-100 group-hover:flex"
+        className="hidden h-6 w-6 items-center justify-center rounded-none text-muted-foreground transition-colors hover:bg-slate-100 group-hover:flex"
       >
         <X className="h-3 w-3" />
       </button>

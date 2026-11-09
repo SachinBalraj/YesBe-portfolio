@@ -29,7 +29,7 @@ export function PremiumHero() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-6 items-center">
           {/* ── Left Content ── */}
           <div className="max-w-xl">
-            <div className="lg:hidden inline-flex max-w-full items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.03] px-4 py-1.5 text-[12px] font-medium text-primary mb-8">
+            <div className="lg:hidden inline-flex max-w-full items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.03] px-4 py-1.5 text-[12px] font-medium text-primary mb-8">
               <Sparkles className="h-3.5 w-3.5 shrink-0" />
               <span>IT Consulting &bull; Software &bull; AI &bull; Automation</span>
             </div>

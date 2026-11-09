@@ -68,7 +68,7 @@ export const ArticleCard = memo(function ArticleCard({ article, highlight }: Art
         
         {/* Content Type Pill overlay */}
         <div className="absolute top-3 right-3 z-20">
-          <span className="rounded-full bg-slate-900/70 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold text-white shadow-sm">
+          <span className="rounded-none bg-slate-900/70 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold text-white shadow-sm">
             {article.contentType ?? "Article"}
           </span>
         </div>
@@ -77,7 +77,7 @@ export const ArticleCard = memo(function ArticleCard({ article, highlight }: Art
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-3 flex items-center justify-between gap-2">
           <CategoryBadge name={article.category} slug={article.categorySlug} className="pointer-events-none" />
-          <span className="flex shrink-0 items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-muted-foreground dark:bg-slate-800">
+          <span className="flex shrink-0 items-center gap-1 rounded-none bg-slate-100 px-3 py-1 text-[11px] font-semibold text-muted-foreground dark:bg-slate-800">
             <Clock className="h-3 w-3 text-primary" />
             {article.readingTimeText}
           </span>

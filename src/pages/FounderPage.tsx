@@ -32,6 +32,8 @@ export function FounderPage() {
     ogType: "profile",
     ogDescription: OG_DESCRIPTION,
     ogImage: "https://www.yesbe.tech/sachin.webp",
+    ogImageWidth: "375",
+    ogImageHeight: "500",
   });
 
   return (

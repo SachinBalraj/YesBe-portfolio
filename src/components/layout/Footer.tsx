@@ -1,8 +1,8 @@
 import { useState, memo } from "react";
 import { subscribeNewsletter } from "@/services/newsletter";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
-  Send, MapPin, Phone, Mail, Globe,
+  Send, MapPin, Phone, Mail,
   Clock,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
@@ -71,13 +71,11 @@ const companyLinks = [
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Insights", href: "/insights" },
-  { label: "Careers", href: "/contact", badge: "Coming Soon" },
 ];
 
 const supportLinks = [
   { label: "Contact Us", href: "/contact" },
-  { label: "Book Consultation", href: "/contact" },
-  { label: "FAQs", href: "/insights" },
+  { label: "FAQs", href: "/contact#faq" },
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
   { label: "Refund Policy", href: "/refund-policy" },
@@ -92,29 +90,32 @@ const socialLinks = [
   { label: "X", href: "https://x.com/yesbe_co", icon: XIcon },
 ];
 
-const quickLinks = [
-  { label: "Email", href: `mailto:${SITE_CONFIG.email}` },
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms", href: "/terms-and-conditions" },
-];
-
 /* ─── Footer Column Link ─── */
 
-function FooterLink({ href, label, badge, onNavigate }: { href: string; label: string; badge?: string; onNavigate: (h: string) => void }) {
+function FooterLink({ href, label, badge }: { href: string; label: string; badge?: string }) {
+  const content = (
+    <>
+      <span className="relative">
+        {label}
+        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-[#60A5FA] to-[#2563EB] transition-all duration-300 group-hover:w-full" />
+      </span>
+      {badge && (
+        <span className="rounded-none bg-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">{badge}</span>
+      )}
+    </>
+  );
+
   return (
     <li>
-      <button
-        onClick={() => onNavigate(href)}
-        className="group flex items-center gap-2 text-[13px] text-gray-400 transition-colors duration-200 hover:text-white"
-      >
-        <span className="relative">
-          {label}
-          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-[#60A5FA] to-[#2563EB] transition-all duration-300 group-hover:w-full" />
-        </span>
-        {badge && (
-          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">{badge}</span>
-        )}
-      </button>
+      {href.startsWith("/") ? (
+        <Link to={href} className="group flex items-center gap-2 text-[13px] text-gray-400 transition-colors duration-200 hover:text-white">
+          {content}
+        </Link>
+      ) : (
+        <a href={href} className="group flex items-center gap-2 text-[13px] text-gray-400 transition-colors duration-200 hover:text-white">
+          {content}
+        </a>
+      )}
     </li>
   );
 }
@@ -122,17 +123,10 @@ function FooterLink({ href, label, badge, onNavigate }: { href: string; label: s
 /* ─── Main Footer ─── */
 
 function FooterComponent() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [subscribeStatus, setSubscribeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [emailError, setEmailError] = useState("");
   const [honeypot, setHoneypot] = useState("");
-
-  const handleNav = (href: string) => {
-    if (href === "#") return;
-    navigate(href);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -188,10 +182,10 @@ function FooterComponent() {
         >
           {/* ── Column 1: Brand + Newsletter + Social ── */}
           <div className="lg:col-span-1">
-            <button onClick={() => handleNav("/")} className="group flex items-center gap-3 mb-5">
+            <Link to="/" aria-label="YESBE Technologies home" className="group flex items-center gap-3 mb-5">
               <img src={logoImg} loading="lazy" alt="YESBE Technologies Official Logo" width={44} height={44} className="h-11 w-11 rounded-xl" />
-              <span className="text-xl font-bold text-white tracking-tight">YESBE</span>
-            </button>
+              <span className="text-xl font-bold text-white tracking-tight">YESBE Technologies</span>
+            </Link>
             <p className="text-[13px] leading-relaxed text-gray-400 mb-6 max-w-xs">
               AI, ERP, web development, analytics, and automation — built for businesses that want to move faster.
             </p>
@@ -199,17 +193,16 @@ function FooterComponent() {
             {/* Attribution line — kept to one line so the footer height is unchanged */}
             <p className="-mt-3 mb-6 text-[12px] leading-relaxed text-gray-500">
               Founded by{" "}
-              <a
-                href="/sachin-balraj"
-                onClick={(e) => { e.preventDefault(); handleNav("/sachin-balraj"); }}
+              <Link
+                to="/sachin-balraj"
                 className="font-medium text-gray-400 transition-colors hover:text-white"
               >
                 Sachin Balraj
-              </a>
+              </Link>
             </p>
 
             {/* Newsletter */}
-            <form onSubmit={handleSubscribe} className="mb-6">
+            <form onSubmit={handleSubscribe} className="mb-6" aria-label="Newsletter subscription">
               <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Subscribe to our newsletter</h3>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
@@ -227,12 +220,15 @@ function FooterComponent() {
                   </div>
                   <input
                     type="email"
+                    name="email"
                     value={email}
                     onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
-                    placeholder="Enter your email"
+                    placeholder="you@company.com"
+                    autoComplete="email"
                     required
                     aria-label="Email address for newsletter"
                     aria-invalid={!!emailError}
+                    aria-describedby={emailError ? "footer-newsletter-error" : undefined}
                     className="flex-1 min-w-0 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition-all duration-200 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                   />
                   <button
@@ -248,8 +244,11 @@ function FooterComponent() {
                   </button>
                 </div>
                 {emailError && (
-                  <p className="text-xs text-red-400">{emailError}</p>
+                  <p id="footer-newsletter-error" role="alert" className="text-xs text-red-400">{emailError}</p>
                 )}
+                <p className="sr-only" role="status" aria-live="polite">
+                  {subscribeStatus === "success" ? "Subscribed successfully." : ""}
+                </p>
               </div>
             </form>
 
@@ -278,7 +277,7 @@ function FooterComponent() {
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Solutions</h3>
             <ul className="space-y-3">
               {solutionsLinks.map((l) => (
-                <FooterLink key={l.label} {...l} onNavigate={handleNav} />
+                <FooterLink key={l.label} {...l} />
               ))}
             </ul>
           </div>
@@ -288,7 +287,7 @@ function FooterComponent() {
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Company</h3>
             <ul className="space-y-3">
               {companyLinks.map((l) => (
-                <FooterLink key={l.label} {...l} onNavigate={handleNav} />
+                <FooterLink key={l.label} {...l} />
               ))}
             </ul>
           </div>
@@ -298,7 +297,7 @@ function FooterComponent() {
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">Support</h3>
             <ul className="space-y-3">
               {supportLinks.map((l) => (
-                <FooterLink key={l.label} {...l} onNavigate={handleNav} />
+                <FooterLink key={l.label} {...l} />
               ))}
             </ul>
           </div>
@@ -313,15 +312,11 @@ function FooterComponent() {
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`tel:${SITE_CONFIG.phone}`} onClick={() => trackPhoneClick("footer")} className="text-[13px] text-gray-400 hover:text-white transition-colors">+91 {SITE_CONFIG.phone}</a>
+                <a href={SITE_CONFIG.phoneHref} onClick={() => trackPhoneClick("footer")} className="text-[13px] text-gray-400 hover:text-white transition-colors">+91 {SITE_CONFIG.phone}</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span className="text-[13px] text-gray-400">{SITE_CONFIG.location}</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Globe className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span className="text-[13px] text-gray-400">Based in Salem, Tamil Nadu, India</span>
+                <a href={SITE_CONFIG.mapUrl} target="_blank" rel="noopener noreferrer" className="text-[13px] text-gray-400 hover:text-white transition-colors">{SITE_CONFIG.location}</a>
               </li>
             </ul>
 
@@ -343,41 +338,13 @@ function FooterComponent() {
         {/* ── Bottom Bar ── */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
           <p className="text-xs text-gray-500">
-            &copy; 2026 YESBE. All Rights Reserved.
+            &copy; {new Date().getFullYear()} YESBE Technologies. All rights reserved.
           </p>
           <p className="text-xs text-gray-500">
             Designed &amp; Developed with <span className="text-red-400">❤️</span> by{" "}
-            <button onClick={() => handleNav("/")} className="font-semibold text-primary hover:text-white transition-colors">YESBE</button>
+            <Link to="/" className="font-semibold text-primary hover:text-white transition-colors">YESBE Technologies</Link>
           </p>
-          <nav className="flex gap-4" aria-label="Quick links">
-            {quickLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={(e) => { e.preventDefault(); handleNav(l.href); }}
-                className="text-xs text-gray-500 transition-colors hover:text-white"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
         </div>
-      </div>
-
-      {/* ── Premium Footer Signature ── */}
-      <div className="w-full border-t border-white/[0.08] bg-[#0B1220] px-4">
-        <p className="py-5 text-center text-sm font-[400] tracking-[0.2px] text-white/65 sm:text-base">
-          Designed &amp; Developed with{" "}
-          <span className="text-red-500">❤️</span> by{" "}
-          <a
-            href="https://www.yesbe.tech"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-pointer text-[#2563EB] transition-all duration-300 ease-in-out hover:text-[#60A5FA]"
-          >
-            YESBE Technologies
-          </a>
-        </p>
       </div>
     </footer>
   );

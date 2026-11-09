@@ -89,7 +89,7 @@ export function KnowledgeCenterHome() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white px-4 py-1.5 text-[12px] font-semibold text-primary shadow-xs"
+              className="inline-flex items-center gap-1.5 rounded-none border border-primary/15 bg-white px-4 py-1.5 text-[12px] font-semibold text-primary shadow-xs"
             >
               <Sparkles className="h-3.5 w-3.5" />
               YESBE Insights
@@ -135,7 +135,7 @@ export function KnowledgeCenterHome() {
                   key={topic.label}
                   type="button"
                   onClick={() => handleTopicClick(topic.query)}
-                  className="rounded-full border border-slate-200/80 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 shadow-2xs transition-all duration-200 hover:border-primary/40 hover:text-primary hover:shadow-xs"
+                  className="rounded-none border border-slate-200/80 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 shadow-2xs transition-all duration-200 hover:border-primary/40 hover:text-primary hover:shadow-xs"
                 >
                   {topic.label}
                 </button>

@@ -42,7 +42,7 @@ export function ShareButtons({ article, className }: ShareButtonsProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Share on ${link.label}`}
-            className={`flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${link.color}`}
+            className={`flex h-9 w-9 items-center justify-center rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${link.color}`}
           >
             <Icon className="h-4 w-4" />
           </a>
@@ -52,7 +52,7 @@ export function ShareButtons({ article, className }: ShareButtonsProps) {
         type="button"
         onClick={handleCopy}
         aria-label="Copy link"
-        className={`flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${
+        className={`flex h-9 items-center gap-1.5 rounded-none px-3 text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${
           copied
             ? "bg-emerald-500 text-white"
             : "bg-[#eff6ff] text-primary hover:bg-primary hover:text-white"

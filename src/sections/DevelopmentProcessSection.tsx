@@ -70,7 +70,7 @@ export function DevelopmentProcessSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
           >
             Process
           </motion.span>
@@ -89,7 +89,7 @@ export function DevelopmentProcessSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -121,7 +121,7 @@ export function DevelopmentProcessSection() {
               </div>
               <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{step.title}</h3>
               <p className="mb-2 text-[13px] leading-relaxed text-muted-foreground">{step.description}</p>
-              <span className="inline-block rounded-full bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-primary">
+              <span className="inline-block rounded-none bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-primary">
                 {step.duration}
               </span>
             </motion.div>
@@ -147,7 +147,7 @@ export function DevelopmentProcessSection() {
               </div>
               <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{step.title}</h3>
               <p className="mb-2 text-[13px] leading-relaxed text-muted-foreground">{step.description}</p>
-              <span className="inline-block rounded-full bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-primary">
+              <span className="inline-block rounded-none bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-primary">
                 {step.duration}
               </span>
             </motion.div>
@@ -162,7 +162,7 @@ export function DevelopmentProcessSection() {
           className="mt-10 text-center"
         >
           <div className="mx-auto max-w-2xl rounded-2xl border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-8">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa] px-5 py-2 text-sm font-bold text-white shadow-sm">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa] px-5 py-2 text-sm font-bold text-white shadow-sm">
               ⚡ Typical Project Delivery Time
             </span>
             <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">

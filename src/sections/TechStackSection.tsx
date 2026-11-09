@@ -30,7 +30,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
           >
             Technology Stack
           </motion.span>
@@ -49,7 +49,7 @@ export function TechStackSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -70,7 +70,7 @@ export function TechStackSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-[16px] border border-white/50 bg-white/80 p-5 transition-all duration-300 hover:border-primary/10 hover:bg-white"
+              className="rounded-none border border-white/50 bg-white/80 p-5 transition-all duration-300 hover:border-primary/10 hover:bg-white"
               style={{ boxShadow: "0 1px 2px rgba(37,99,235,0.02)" }}
             >
               <h3 className="mb-3 text-[13px] font-bold text-primary">{group.category}</h3>
@@ -78,7 +78,7 @@ export function TechStackSection() {
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-primary/[0.04] px-3 py-1 text-[11px] font-medium text-foreground border border-primary/[0.06]"
+                    className="rounded-none bg-primary/[0.04] px-3 py-1 text-[11px] font-medium text-foreground border border-primary/[0.06]"
                   >
                     {item}
                   </span>

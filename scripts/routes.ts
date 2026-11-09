@@ -80,7 +80,6 @@ export function publicRoutes(): RouteEntry[] {
     entry("/insights", "0.8", "weekly"),
     entry("/case-studies", "0.7", "monthly"),
     entry("/contact", "0.9", "monthly"),
-    entry("/videos", "0.5", "monthly"),
 
     // ── Legal (indexable, low value) ──────────────────────────────
     entry("/privacy-policy", "0.3", "yearly"),
@@ -112,8 +111,9 @@ export function publicRoutes(): RouteEntry[] {
  * Real pages that are reachable but deliberately kept out of the sitemap.
  *
  * The insights search page renders a different result set per query string and
- * is marked noindex, so advertising a single canonical variant in the sitemap
- * would be wrong — but it still deserves a real HTML document instead of the
- * generic shell, otherwise a shared search URL could itself read as a soft 404.
+ * is marked noindex, while the videos page is held back until real videos are
+ * published. Neither belongs in the sitemap, but both still deserve a real HTML
+ * document instead of the generic shell, otherwise a shared URL could itself
+ * read as a soft 404.
  */
-export const PRERENDER_ONLY_ROUTES: string[] = ["/insights/search"];
+export const PRERENDER_ONLY_ROUTES: string[] = ["/insights/search", "/videos"];

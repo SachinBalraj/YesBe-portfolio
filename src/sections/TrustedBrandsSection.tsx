@@ -64,14 +64,14 @@ export function TrustedBrandsSection() {
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,#eaf6ff_0%,transparent_70%)]" />
-        <div className="absolute top-[20%] left-[10%] h-[300px] w-[300px] rounded-full bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
-        <div className="absolute bottom-[20%] right-[10%] h-[250px] w-[250px] rounded-full bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
+        <div className="absolute top-[20%] left-[10%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
+        <div className="absolute bottom-[20%] right-[10%] h-[250px] w-[250px] rounded-circle bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
         {/* Particles — hidden on mobile for performance */}
         <div className="hidden sm:block">
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full bg-[#2563eb]/[0.04]"
+              className="absolute rounded-circle bg-[#2563eb]/[0.04]"
               style={{
                 width: 4 + i * 2,
                 height: 4 + i * 2,
@@ -95,7 +95,7 @@ export function TrustedBrandsSection() {
           className="text-center max-w-2xl mx-auto mb-8"
         >
           <motion.div variants={fadeInUp}>
-            <span className="inline-block rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
+            <span className="inline-block rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
               Our Clients
             </span>
           </motion.div>
@@ -107,7 +107,7 @@ export function TrustedBrandsSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
           />
           <motion.p variants={fadeInUp} className="mt-5 text-[15px] text-muted-foreground leading-relaxed">
             Websites and platforms we have designed, built and delivered for businesses in automotive, fashion and consulting.
@@ -128,7 +128,7 @@ export function TrustedBrandsSection() {
               variants={fadeInUp}
               whileHover={{ y: -10, scale: 1.03 }}
               transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-              className="group relative flex flex-col items-center rounded-[20px] border border-white/40 bg-white p-6 transition-all duration-350 hover:border-[#2563eb]/40"
+              className="group relative flex flex-col items-center rounded-none border border-white/40 bg-white p-6 transition-all duration-350 hover:border-[#2563eb]/40"
               style={{
                 boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)",
               }}
@@ -160,7 +160,7 @@ export function TrustedBrandsSection() {
               <div className="mt-4 text-center">
                 <h3 className="text-sm font-bold text-foreground">{brand.name}</h3>
                 <p className="mt-1 text-[12px] text-muted-foreground">{brand.category}</p>
-                <span className="mt-2.5 inline-block rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
+                <span className="mt-2.5 inline-block rounded-none bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
                   Client project
                 </span>
               </div>

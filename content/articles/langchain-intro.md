@@ -7,7 +7,7 @@ authorRole: "Founder, YESBE Technologies"
 publishedDate: "2026-07-20"
 updatedDate: "2026-07-29"
 readingTime: 7
-featuredImage: "https://images.unsplash.com/photo-1684163761398-8f5a459f3e40?w=1600&h=900&fit=crop&q=80"
+featuredImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&h=900&fit=crop&q=80"
 excerpt: "LangChain simplifies building AI applications with LLMs, chains, agents, memory, and tool integrations. Here's how to get started the right way."
 tags: ["LangChain", "AI", "LLM", "Agents", "OpenAI"]
 seoTitle: "LangChain Introduction: Build AI Apps Faster | YesBe"

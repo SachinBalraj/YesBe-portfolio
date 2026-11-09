@@ -12,7 +12,10 @@ export const SITE_CONFIG = {
     "YESBE Technologies is an IT consulting and software development company delivering web development, custom software, ERP, AI solutions, business automation and digital transformation.",
   email: "hello@yesbe.tech",
   phone: "9087795970",
+  phoneHref: "tel:+919087795970",
   location: "Salem, Tamil Nadu, India",
+  mapUrl:
+    "https://www.google.com/maps/search/?api=1&query=Salem%2C%20Tamil%20Nadu%2C%20India",
   social: {
     linkedin: "https://www.linkedin.com/in/sachin-balraj-2b7650406",
     whatsapp: "https://wa.me/919087795970",
@@ -137,7 +140,7 @@ export const BUSINESS_INFO = {
     publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
     copyrightHolder: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
     inLanguage: "en",
-    copyrightYear: "2026",
+    copyrightYear: String(new Date().getFullYear()),
   },
 };
 

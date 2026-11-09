@@ -55,10 +55,10 @@ export function AdminLayout() {
         <ShieldAlert className="h-6 w-6 text-amber-600" aria-hidden="true" />
         <h1 className="mt-3 text-lg font-semibold text-foreground">Admin access is not configured</h1>
         <p className="mt-2 max-w-md text-center text-sm text-muted-foreground">
-          Set <code className="rounded bg-muted px-1">MONGODB_URI</code>,{" "}
-          <code className="rounded bg-muted px-1">ADMIN_EMAIL</code>,{" "}
-          <code className="rounded bg-muted px-1">ADMIN_PASSWORD_HASH</code> and{" "}
-          <code className="rounded bg-muted px-1">SESSION_SECRET</code> in the environment, then redeploy.
+          Set <code className="rounded-none bg-muted px-1">MONGODB_URI</code>,{" "}
+          <code className="rounded-none bg-muted px-1">ADMIN_EMAIL</code>,{" "}
+          <code className="rounded-none bg-muted px-1">ADMIN_PASSWORD_HASH</code> and{" "}
+          <code className="rounded-none bg-muted px-1">SESSION_SECRET</code> in the environment, then redeploy.
         </p>
       </Centered>
     );

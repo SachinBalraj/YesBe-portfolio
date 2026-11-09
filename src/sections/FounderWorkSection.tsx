@@ -19,7 +19,7 @@ import type { LucideIcon } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 import { FOUNDER_SAME_AS, SITE_CONFIG, TECH_STACK } from "@/constants";
 
-const card = "rounded-[20px] border border-white/40 bg-white p-6";
+const card = "rounded-none border border-white/40 bg-white p-6";
 
 /* ── Technical expertise ── */
 
@@ -74,7 +74,7 @@ const connectChannels = [
   },
   {
     label: `+91 ${SITE_CONFIG.phone}`,
-    href: `tel:+${SITE_CONFIG.phone}`,
+    href: SITE_CONFIG.phoneHref,
     helper: "Phone",
     Icon: Phone,
     external: false,
@@ -99,7 +99,7 @@ export function FounderWorkSection() {
         aria-labelledby="technical-expertise"
       >
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute top-[8%] left-[5%] h-[340px] w-[340px] rounded-full bg-[#dbeafe] opacity-[0.10] blur-[120px]" />
+          <div className="absolute top-[8%] left-[5%] h-[340px] w-[340px] rounded-circle bg-[#dbeafe] opacity-[0.10] blur-[120px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -110,7 +110,7 @@ export function FounderWorkSection() {
             transition={{ duration: 0.5 }}
             className="mx-auto mb-10 max-w-2xl text-center"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
               Capabilities
             </span>
             <h2
@@ -122,7 +122,7 @@ export function FounderWorkSection() {
                 Expertise
               </span>
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+            <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
               The areas he works in directly, and the technologies those projects
               are built with.
@@ -167,7 +167,7 @@ export function FounderWorkSection() {
               {TECH_STACK.map((tech) => (
                 <li
                   key={tech}
-                  className="rounded-full border border-white/40 bg-white px-3.5 py-1.5 text-[13px] font-semibold text-foreground shadow-sm"
+                  className="rounded-none border border-white/40 bg-white px-3.5 py-1.5 text-[13px] font-semibold text-foreground shadow-sm"
                 >
                   {tech}
                 </li>
@@ -190,7 +190,7 @@ export function FounderWorkSection() {
             transition={{ duration: 0.5 }}
             className="mx-auto mb-10 max-w-2xl text-center"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
               Portfolio
             </span>
             <h2
@@ -202,7 +202,7 @@ export function FounderWorkSection() {
                 Areas of Work
               </span>
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+            <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
               Delivered work spans education, healthcare, retail, hospitality,
               manufacturing and finance — from ERP systems and AI assistants to
@@ -265,7 +265,7 @@ export function FounderWorkSection() {
         aria-labelledby="connect-with-sachin-balraj"
       >
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute bottom-[10%] right-[5%] h-[300px] w-[300px] rounded-full bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
+          <div className="absolute bottom-[10%] right-[5%] h-[300px] w-[300px] rounded-circle bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -276,7 +276,7 @@ export function FounderWorkSection() {
             transition={{ duration: 0.5 }}
             className="mx-auto mb-10 max-w-2xl text-center"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
               Contact
             </span>
             <h2
@@ -288,7 +288,7 @@ export function FounderWorkSection() {
                 Book a Consultation
               </span>
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
+            <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
               The fastest way to reach him is through the YESBE Technologies
               contact channels, which go directly to the founder.
@@ -309,7 +309,7 @@ export function FounderWorkSection() {
                   {...(c.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="group flex h-full items-center gap-4 rounded-[20px] border border-white/40 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]"
+                  className="group flex h-full items-center gap-4 rounded-none border border-white/40 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#dbeafe] to-[#eff6ff]">
                     <c.Icon className="h-5 w-5 text-primary" aria-hidden="true" />
