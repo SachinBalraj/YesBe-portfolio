@@ -146,9 +146,27 @@ export function getSession(req: VercelRequest): SessionPayload | null {
   }
 }
 
+/**
+ * Stable session subject. ADMIN_EMAIL remains the preferred subject so
+ * existing sessions survive the move to username-based login. Deployments
+ * configured with only ADMIN_USERNAME (or legacy ADMIN_LOGIN_ID) also work.
+ */
+export function adminSubject(): string {
+  return (
+    process.env.ADMIN_EMAIL ||
+    process.env.ADMIN_USERNAME ||
+    process.env.ADMIN_LOGIN_ID ||
+    "yesbe.tech"
+  ).trim();
+}
+
+export function isAdminConfigured(): boolean {
+  return Boolean(adminSubject() && (process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH));
+}
+
 /** Server-side authorisation gate for every admin route. */
 export function requireAdmin(req: VercelRequest, res: VercelResponse): boolean {
-  if (!process.env.ADMIN_EMAIL || !(process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH)) {
+  if (!isAdminConfigured()) {
     sendError(res, 503, "Admin access is not configured");
     return false;
   }
@@ -157,7 +175,7 @@ export function requireAdmin(req: VercelRequest, res: VercelResponse): boolean {
     sendError(res, 401, "Authentication required");
     return false;
   }
-  if (session.email.toLowerCase() !== process.env.ADMIN_EMAIL.toLowerCase()) {
+  if (session.email.toLowerCase() !== adminSubject().toLowerCase()) {
     sendError(res, 403, "Not authorised");
     return false;
   }
@@ -165,16 +183,19 @@ export function requireAdmin(req: VercelRequest, res: VercelResponse): boolean {
 }
 
 /**
- * Login identifiers. The administrator can sign in with the configured email
- * or with the short admin ID (defaults to "yesbe.tech"). The session always
- * stores ADMIN_EMAIL as its subject, so authorisation is unchanged.
+ * Login identifiers. ADMIN_USERNAME is preferred; ADMIN_EMAIL and the legacy
+ * ADMIN_LOGIN_ID remain valid so existing deployments can migrate without
+ * interrupting access. "yesbe.tech" is the default and documented admin ID.
  */
 function loginIdentifiers(): string[] {
   const ids = new Set<string>();
+  const username = process.env.ADMIN_USERNAME;
+  if (username) ids.add(username.trim().toLowerCase());
   const email = process.env.ADMIN_EMAIL;
   if (email) ids.add(email.trim().toLowerCase());
-  const loginId = process.env.ADMIN_LOGIN_ID || "yesbe.tech";
-  if (loginId) ids.add(loginId.trim().toLowerCase());
+  const legacyId = process.env.ADMIN_LOGIN_ID;
+  if (legacyId) ids.add(legacyId.trim().toLowerCase());
+  ids.add("yesbe.tech");
   return [...ids];
 }
 

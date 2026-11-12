@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { checkCredentials, setSessionCookie } from "../_lib/auth.js";
+import { adminSubject, checkCredentials, isAdminConfigured, setSessionCookie } from "../_lib/auth.js";
 import {
   allowMethods,
   assertSameOrigin,
@@ -16,7 +16,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   if (!allowMethods(req, res, ["POST"])) return;
   if (!assertSameOrigin(req, res)) return;
 
-  if (!process.env.ADMIN_EMAIL || !(process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH)) {
+  if (!isAdminConfigured()) {
     sendError(res, 503, "Admin access is not configured");
     return;
   }
@@ -35,21 +35,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     return;
   }
 
-  const email = cleanText(body.data.email, 254);
+  const identifier = cleanText(body.data.username ?? body.data.email, 254);
   const password = typeof body.data.password === "string" ? body.data.password.slice(0, 512) : "";
 
-  if (!email || !password) {
-    sendError(res, 400, "Email and password are required");
+  if (!identifier || !password) {
+    sendError(res, 400, "Admin ID and password are required");
     return;
   }
 
-  const ok = await checkCredentials(email, password);
+  const ok = await checkCredentials(identifier, password);
   if (!ok) {
-    // Same message for unknown email and wrong password — no user enumeration.
-    sendError(res, 401, "Invalid email or password");
+    // Same message for unknown admin ID and wrong password — no enumeration.
+    sendError(res, 401, "Invalid admin ID or password");
     return;
   }
 
-  setSessionCookie(res, process.env.ADMIN_EMAIL);
-  sendJson(res, 200, { ok: true, email: process.env.ADMIN_EMAIL });
+  const subject = adminSubject();
+  setSessionCookie(res, subject);
+  sendJson(res, 200, { ok: true, username: subject, email: subject });
 }

@@ -74,20 +74,23 @@ expose them to the browser.
 | --- | --- | --- |
 | `MONGODB_URI` | yes | Atlas connection string. |
 | `MONGODB_DB_NAME` | no | Defaults to `yesbe`. |
-| `ADMIN_EMAIL` | yes | The admin account email / session subject. |
-| `ADMIN_LOGIN_ID` | no | Short login alias; defaults to `yesbe.tech`. |
+| `ADMIN_USERNAME` | yes* | Preferred admin login ID, e.g. `yesbe.tech`. |
+| `ADMIN_EMAIL` | no | Legacy identifier and preferred session subject for compatibility. |
+| `ADMIN_LOGIN_ID` | no | Legacy short login alias; still accepted during migration. |
 | `ADMIN_PASSWORD_HASH` | yes* | `scrypt$<saltHex>$<hashHex>`. |
 | `ADMIN_PASSWORD` | fallback | Plaintext; only if the hash is unset. |
 | `SESSION_SECRET` | yes | ≥ 32 random chars. `openssl rand -hex 32`. |
 | `APP_ORIGIN` | no | Extra allowed origin for the CSRF check (custom domain). |
 
-Generate a password hash:
+Generate and store a password hash privately:
 
 ```bash
-node --input-type=module -e \
-  "import { createPasswordHash } from './api/_lib/auth.ts';
-   console.log(await createPasswordHash('your-password'))"
+npm run admin:password
 ```
+
+This prompts without echoing the password, updates the local ignored `.env`
+with `ADMIN_USERNAME=yesbe.tech` and a scrypt `ADMIN_PASSWORD_HASH`, removes
+legacy plaintext/login-ID values, and prints only the hash to copy into Vercel.
 
 Optional tuning (defaults are production-safe):
 
@@ -161,7 +164,7 @@ docker run -p 27017:27017 mongo:7
 # terminal 2
 MONGODB_URI=mongodb://127.0.0.1:27017 \
 MONGODB_DB_NAME=yesbe_dev \
-ADMIN_EMAIL=you@example.com \
+ADMIN_USERNAME=yesbe.tech \
 ADMIN_PASSWORD_HASH=scrypt$N$r$p$salt$derivedkey \
 SESSION_SECRET=dev-secret-at-least-32-characters-long \
 ENQUIRY_RATE_LIMIT=1000 \

@@ -15,7 +15,7 @@ import { useSEO } from "@/hooks/useSEO";
  */
 export function AdminLayout() {
   const [state, setState] = useState<"checking" | "anon" | "authed" | "unconfigured">("checking");
-  const [email, setEmail] = useState("");
+  const [adminId, setAdminId] = useState("");
 
   useSEO({
     title: "Admin",
@@ -56,7 +56,7 @@ export function AdminLayout() {
         <h1 className="mt-3 text-lg font-semibold text-foreground">Admin access is not configured</h1>
         <p className="mt-2 max-w-md text-center text-sm text-muted-foreground">
           Set <code className="rounded-none bg-muted px-1">MONGODB_URI</code>,{" "}
-          <code className="rounded-none bg-muted px-1">ADMIN_EMAIL</code>,{" "}
+          <code className="rounded-none bg-muted px-1">ADMIN_USERNAME</code>,{" "}
           <code className="rounded-none bg-muted px-1">ADMIN_PASSWORD_HASH</code> and{" "}
           <code className="rounded-none bg-muted px-1">SESSION_SECRET</code> in the environment, then redeploy.
         </p>
@@ -65,7 +65,7 @@ export function AdminLayout() {
   }
 
   if (state === "anon") {
-    return <LoginForm onSuccess={() => setState("authed")} email={email} setEmail={setEmail} />;
+    return <LoginForm onSuccess={() => setState("authed")} adminId={adminId} setAdminId={setAdminId} />;
   }
 
   return (
@@ -74,7 +74,7 @@ export function AdminLayout() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-3">
             <span className="rounded-lg bg-primary px-2 py-1 text-xs font-bold text-white">ADMIN</span>
-            <span className="text-sm font-semibold text-foreground">{email || "Signed in"}</span>
+            <span className="text-sm font-semibold text-foreground">{adminId || "Signed in"}</span>
           </div>
           <div className="flex items-center gap-3">
             <Link
@@ -114,12 +114,12 @@ function Centered({ children }: { children: React.ReactNode }) {
 
 function LoginForm({
   onSuccess,
-  email,
-  setEmail,
+  adminId,
+  setAdminId,
 }: {
   onSuccess: () => void;
-  email: string;
-  setEmail: (value: string) => void;
+  adminId: string;
+  setAdminId: (value: string) => void;
 }) {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
@@ -130,8 +130,8 @@ function LoginForm({
     setError("");
     setStatus("loading");
     try {
-      const result = await login(email.trim(), password);
-      setEmail(result.email);
+      const result = await login(adminId.trim(), password);
+      setAdminId(result.username);
       onSuccess();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Unable to sign in.");
@@ -150,18 +150,19 @@ function LoginForm({
           Access is restricted to the site owner.
         </p>
 
-        <label htmlFor="admin-email" className="mt-5 block text-sm font-medium text-foreground">
-          Email or admin ID
+        <label htmlFor="admin-id" className="mt-5 block text-sm font-medium text-foreground">
+          Admin ID
         </label>
         <input
-          id="admin-email"
+          id="admin-id"
           type="text"
           required
           autoComplete="username"
-          inputMode="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="hello@yesbe.tech or yesbe.tech"
+          autoCapitalize="none"
+          spellCheck={false}
+          value={adminId}
+          onChange={(e) => setAdminId(e.target.value)}
+          placeholder="yesbe.tech"
           className="mt-1 w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
         />
 

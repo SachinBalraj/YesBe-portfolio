@@ -19,6 +19,8 @@ import { ENQUIRY_STATUSES } from "../api/_lib/db.ts";
 
 process.env.NODE_ENV = "test";
 process.env.ADMIN_EMAIL = "owner@yesbe.tech";
+process.env.ADMIN_USERNAME = "yesbe.tech";
+delete process.env.ADMIN_LOGIN_ID;
 delete process.env.ADMIN_PASSWORD_HASH;
 process.env.ADMIN_PASSWORD = "s3cret-admin-pw";
 process.env.SESSION_SECRET = "test-secret-value-that-is-long-enough-123456";
@@ -99,7 +101,7 @@ async function call(
   return { status: res.statusCode, body: res.body, res };
 }
 
-const ADMIN = { email: "owner@yesbe.tech", password: "s3cret-admin-pw" };
+const ADMIN = { username: "yesbe.tech", password: "s3cret-admin-pw" };
 
 /** Logs in and returns the session cookie header pair. */
 async function authedCookie(): Promise<string> {
@@ -282,7 +284,7 @@ test("admin routes reject an unauthenticated request", async () => {
 });
 
 test("a forged session cookie is rejected", async () => {
-  const forged = `${Buffer.from(JSON.stringify({ email: ADMIN.email, exp: 9e12 })).toString("base64url")}.deadbeef`;
+  const forged = `${Buffer.from(JSON.stringify({ email: process.env.ADMIN_EMAIL, exp: 9e12 })).toString("base64url")}.deadbeef`;
   assert.equal(
     (await call("session", { method: "GET", headers: { cookie: `yesbe_admin_session=${encodeURIComponent(forged)}` } })).status,
     401,
@@ -305,7 +307,7 @@ test("a tampered payload is rejected", async () => {
 
 test("an expired session cookie is rejected", async () => {
   const data = Buffer.from(
-    JSON.stringify({ email: ADMIN.email, exp: Math.floor(Date.now() / 1000) - 60 }),
+    JSON.stringify({ email: process.env.ADMIN_EMAIL, exp: Math.floor(Date.now() / 1000) - 60 }),
   ).toString("base64url");
   const mac = createHmac("sha256", process.env.SESSION_SECRET!)
     .update(data)
@@ -320,19 +322,47 @@ test("an expired session cookie is rejected", async () => {
 test("login rejects a wrong password", async () => {
   const { status, body } = await call("login", {
     method: "POST",
-    body: { email: ADMIN.email, password: "wrong" },
+    body: { username: ADMIN.username, password: "wrong" },
   });
   assert.equal(status, 401);
-  assert.equal(body.error, "Invalid email or password", "must not reveal whether the email exists");
+  assert.equal(body.error, "Invalid admin ID or password", "must not reveal whether the admin ID exists");
 });
 
-test("login rejects an unknown email with the same message", async () => {
+test("login rejects an unknown admin ID with the same message", async () => {
   const { status, body } = await call("login", {
     method: "POST",
-    body: { email: "nobody@nowhere.com", password: ADMIN.password },
+    body: { username: "nobody", password: ADMIN.password },
   });
   assert.equal(status, 401);
-  assert.equal(body.error, "Invalid email or password");
+  assert.equal(body.error, "Invalid admin ID or password");
+});
+
+test("login still accepts the legacy email identifier", async () => {
+  const { status } = await call("login", {
+    method: "POST",
+    body: { email: process.env.ADMIN_EMAIL, password: ADMIN.password },
+  });
+  assert.equal(status, 200);
+});
+
+test("username-only configuration signs in and authorises admin APIs", async () => {
+  const previousEmail = process.env.ADMIN_EMAIL;
+  delete process.env.ADMIN_EMAIL;
+  try {
+    const login = await call("login", {
+      method: "POST",
+      body: { username: "yesbe.tech", password: ADMIN.password },
+    });
+    assert.equal(login.status, 200);
+    assert.equal(login.body.username, "yesbe.tech");
+
+    const cookie = String(login.res.headers["Set-Cookie"]).split(";")[0]!;
+    const session = await call("session", { headers: { cookie } });
+    assert.equal(session.status, 200);
+    assert.equal(session.body.username, "yesbe.tech");
+  } finally {
+    process.env.ADMIN_EMAIL = previousEmail;
+  }
 });
 
 test("login issues a signed httpOnly Secure SameSite=Strict cookie", async () => {
@@ -559,12 +589,13 @@ test("admin can sort and invalid sort values are rejected", async () => {
   assert.equal((await call("list", { method: "GET", headers: { cookie }, query: { dir: "sideways" } })).status, 400);
 });
 
-test("admin can sign in with the yesbe.tech login ID", async () => {
-  const { status } = await call("login", {
+test("admin can sign in with the yesbe.tech admin ID", async () => {
+  const { status, body } = await call("login", {
     method: "POST",
-    body: { email: "yesbe.tech", password: ADMIN.password },
+    body: { username: "yesbe.tech", password: ADMIN.password },
   });
   assert.equal(status, 200);
+  assert.equal(body.username, process.env.ADMIN_EMAIL, "session subject remains stable");
 });
 
 test("cross-site state changes are blocked (CSRF)", async () => {

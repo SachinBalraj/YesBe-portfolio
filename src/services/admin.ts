@@ -136,14 +136,14 @@ function qs(params: Record<string, string | number | undefined>): string {
   return str ? `?${str}` : "";
 }
 
-export function checkSession(): Promise<{ ok: true; email: string }> {
+export function checkSession(): Promise<{ ok: true; username: string }> {
   return request("/api/admin/session");
 }
 
-export function login(email: string, password: string): Promise<{ ok: true; email: string }> {
+export function login(username: string, password: string): Promise<{ ok: true; username: string }> {
   return request("/api/admin/login", {
     method: "POST",
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ username, password }),
   });
 }
 

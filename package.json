@@ -12,6 +12,7 @@
     "test:security": "node --import tsx --test scripts/security.test.ts",
     "test:pricing-removal": "node --test scripts/pricing-removal.test.ts",
     "serve": "node --env-file-if-exists=.env --import tsx scripts/serve.ts",
+    "admin:password": "node --import tsx scripts/set-admin-password.ts",
     "test:browser": "node --test scripts/browser.test.ts",
     "generate:sitemap": "node --import tsx scripts/generate-sitemap.ts",
     "prerender": "node --experimental-strip-types scripts/prerender.ts",

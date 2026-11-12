@@ -16,17 +16,19 @@ const BASE = process.env.TEST_BASE_URL ?? "http://localhost:3111";
 
 /**
  * Admin credentials come from the environment — never a literal in this file.
- * Set TEST_ADMIN_EMAIL / TEST_ADMIN_PASSWORD to the same values as
- * ADMIN_EMAIL and the password whose scrypt hash is in ADMIN_PASSWORD_HASH.
+ * Set TEST_ADMIN_USERNAME / TEST_ADMIN_PASSWORD to the same values as
+ * ADMIN_USERNAME and the password whose scrypt hash is in ADMIN_PASSWORD_HASH.
  */
 const ADMIN = {
-  email: process.env.TEST_ADMIN_EMAIL ?? process.env.ADMIN_EMAIL ?? "",
+  username:
+    process.env.TEST_ADMIN_USERNAME ??
+    process.env.ADMIN_USERNAME ??
+    process.env.ADMIN_LOGIN_ID ??
+    "yesbe.tech",
   password: process.env.TEST_ADMIN_PASSWORD ?? "",
 };
-if (!ADMIN.email || !ADMIN.password) {
-  throw new Error(
-    "TEST_ADMIN_EMAIL and TEST_ADMIN_PASSWORD must be set to run the admin browser tests.",
-  );
+if (!ADMIN.password) {
+  throw new Error("TEST_ADMIN_PASSWORD must be set to run the admin browser tests.");
 }
 
 let browser: Browser;
@@ -105,7 +107,7 @@ test("enquiry form posts to the API and never opens WhatsApp", async () => {
 test("stored enquiry is visible in the admin dashboard", async () => {
   await page.goto(`${BASE}/admin`, { waitUntil: "networkidle" });
 
-  await page.getByLabel("Email").fill(ADMIN.email);
+  await page.getByLabel("Admin ID").fill(ADMIN.username);
   await page.getByLabel("Password").fill(ADMIN.password);
   await page.getByRole("button", { name: /^sign in$/i }).click();
 
