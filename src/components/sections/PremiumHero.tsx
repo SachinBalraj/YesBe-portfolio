@@ -8,8 +8,7 @@ import {
 } from "lucide-react";
 import { trackConsultationClick } from "@/utils/analytics";
 
-const logoImg = "/YBlogo.png";
-const logoImgWebp = "/YBlogo.webp";
+const heroImage = "/sachin.webp";
 
 /** Factual descriptions of what YESBE actually delivers — no credential claims. */
 const capabilities = [
@@ -77,21 +76,18 @@ export function PremiumHero() {
             </div>
           </div>
 
-          {/* ── Right — Logo ── */}
+          {/* ── Right — Founder image ── */}
           <div className="flex justify-center lg:justify-end">
-            <picture>
-              <source srcSet={logoImgWebp} type="image/webp" />
-              <img
-                src={logoImg}
-                alt="YESBE Technologies logo"
-                width={400}
-                height={400}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="h-60 w-60 sm:h-[320px] sm:w-[320px] lg:h-[400px] lg:w-[400px] object-contain"
-              />
-            </picture>
+            <img
+              src={heroImage}
+              alt="Sachin Balraj, founder of YESBE Technologies"
+              width={375}
+              height={500}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="h-[320px] w-[240px] rounded-2xl object-cover object-top sm:h-[400px] sm:w-[300px] lg:h-[480px] lg:w-[360px]"
+            />
           </div>
         </div>
       </div>
