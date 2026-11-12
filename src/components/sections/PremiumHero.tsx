@@ -4,6 +4,11 @@ import { SITE_CONFIG } from "@/constants";
 import { trackConsultationClick } from "@/utils/analytics";
 
 const heroImage = "/yesbe.homepage.png";
+const heroAvifSet =
+  "/images/hero/yesbe-homepage-640.avif 640w, /images/hero/yesbe-homepage-960.avif 960w, /images/hero/yesbe-homepage-1280.avif 1280w, /images/hero/yesbe-homepage-1536.avif 1536w";
+const heroJpgSet =
+  "/images/hero/yesbe-homepage-640.jpg 640w, /images/hero/yesbe-homepage-960.jpg 960w, /images/hero/yesbe-homepage-1280.jpg 1280w, /images/hero/yesbe-homepage-1536.jpg 1536w";
+const heroSizes = "(min-width: 768px) 620px, 100vw";
 
 /** Factual descriptions of what YESBE actually delivers — no credential claims. */
 const capabilities = [
@@ -21,7 +26,7 @@ export function PremiumHero() {
       className="border-b border-border/70 bg-white"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-[112px] pb-14 lg:pt-[136px] lg:pb-20">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+        <div className="grid items-center gap-10 lg:grid-cols-[48fr_52fr] lg:gap-9 xl:gap-10">
           {/* Left content */}
           <div className="max-w-xl">
             <p className="section-kicker">YESBE Technologies · {SITE_CONFIG.location}</p>
@@ -71,17 +76,21 @@ export function PremiumHero() {
           </div>
 
           {/* Right — hero image */}
-          <div className="lg:justify-self-end">
-            <img
-              src={heroImage}
-              alt="Business professionals collaborating around a laptop in an office"
-              width={1536}
-              height={1024}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="aspect-[3/2] w-full max-w-[560px] border border-border object-cover"
-            />
+          <div className="w-full lg:justify-self-end">
+            <picture>
+              <source type="image/avif" srcSet={heroAvifSet} sizes={heroSizes} />
+              <source type="image/jpeg" srcSet={heroJpgSet} sizes={heroSizes} />
+              <img
+                src={heroImage}
+                alt="Business professionals collaborating around a laptop in an office"
+                width={1536}
+                height={1024}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="h-auto w-full max-w-[620px] rounded-[10px] border border-border object-cover"
+              />
+            </picture>
           </div>
         </div>
       </div>

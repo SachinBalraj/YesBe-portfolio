@@ -56,12 +56,12 @@ function PowerBiIcon(props: IconProps) {
 export function TechnologyMarquee() {
   return (
     <section
-      className="border-b border-border/70 bg-slate-50 py-10 lg:py-12"
+      className="border-b border-border/70 bg-slate-50 py-12 lg:py-16"
       aria-label="Technologies we work with"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-16">
-          <div className="shrink-0 lg:w-64">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-14">
+          <div className="shrink-0 lg:w-60">
             <h2 className="text-lg font-semibold tracking-[-0.01em] text-navy">
               Technologies we work with
             </h2>
@@ -69,10 +69,10 @@ export function TechnologyMarquee() {
               Chosen per project — not a fixed stack.
             </p>
           </div>
-          <ul className="flex flex-1 flex-wrap gap-x-7 gap-y-4">
+          <ul className="grid flex-1 grid-cols-2 gap-x-6 gap-y-3.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {techStack.map((tech) => (
-              <li key={tech.name} className="flex items-center gap-2 text-[13px] font-medium text-slate-600">
-                <tech.Icon className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+              <li key={tech.name} className="flex items-center gap-2.5 text-[13px] font-medium text-slate-700">
+                <tech.Icon className="h-[18px] w-[18px] shrink-0 text-slate-500" aria-hidden="true" />
                 {tech.name}
               </li>
             ))}
