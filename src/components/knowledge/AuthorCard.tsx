@@ -42,7 +42,7 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
             className="h-8 w-8 rounded-circle object-cover ring-2 ring-primary/20"
           />
         ) : (
-          <div className="flex h-8 w-8 items-center justify-center rounded-circle bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-xs font-bold text-white shadow-2xs">
+          <div className="flex h-8 w-8 items-center justify-center rounded-circle bg-primary text-xs font-bold text-white shadow-2xs">
             {initials}
           </div>
         )}
@@ -79,7 +79,7 @@ export function AuthorCard({ article, variant = "card" }: AuthorCardProps) {
               className="h-16 w-16 rounded-2xl object-cover ring-4 ring-primary/10 shadow-sm"
             />
           ) : (
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-xl font-extrabold text-white shadow-md">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-xl font-extrabold text-white shadow-md">
               {initials}
             </div>
           )}

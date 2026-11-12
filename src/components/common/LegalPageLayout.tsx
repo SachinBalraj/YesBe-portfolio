@@ -73,18 +73,13 @@ export function LegalPageLayout({
       )}
 
       {/* Hero Header */}
-      <section className="relative overflow-hidden bg-white pt-[88px] pb-10 lg:pt-[104px] lg:pb-10">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
-          <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
-          <div className="absolute bottom-[15%] right-[8%] h-[300px] w-[300px] rounded-circle bg-[#ede9fe] opacity-[0.06] blur-[100px]" />
-        </div>
+      <section className="relative overflow-hidden bg-white pt-[112px] pb-10 lg:pt-[128px] lg:pb-12">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
             initial="initial"
             animate="animate"
-            className="max-w-3xl mx-auto"
+            className="max-w-3xl"
           >
             {/* Breadcrumbs */}
             <motion.nav variants={fadeInUp} aria-label="Breadcrumb" className="mb-6">
@@ -109,17 +104,14 @@ export function LegalPageLayout({
               </ol>
             </motion.nav>
 
-            <motion.div variants={fadeInUp}>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                {badge}
-              </span>
-            </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+            <motion.p variants={fadeInUp} className="mb-3 text-[13px] font-semibold text-primary">
+              {badge}
+            </motion.p>
+            <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] leading-tight text-navy">
               {title}{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">{highlight}</span>
+              <span className="text-primary">{highlight}</span>
             </motion.h1>
-            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
-            <motion.p variants={fadeInUp} className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
+            <motion.p variants={fadeInUp} className="mt-4 text-base leading-relaxed text-muted-foreground">
               {description}
             </motion.p>
             <motion.div variants={fadeInUp} className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
@@ -131,14 +123,14 @@ export function LegalPageLayout({
       </section>
 
       {/* Content Area */}
-      <section className="relative bg-white py-6 lg:py-8">
+      <section className="relative bg-white py-10 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[260px_1fr] xl:grid-cols-[280px_1fr]">
             {/* Sidebar TOC (Desktop) */}
             <aside className="hidden lg:block" aria-label="Table of contents">
               <div className="sticky top-24">
                 <nav className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <p className="mb-4 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  <p className="mb-4 text-xs font-bold tracking-wide text-muted-foreground">
                     On This Page
                   </p>
                   <ul className="space-y-1">
@@ -165,7 +157,7 @@ export function LegalPageLayout({
 
                 {/* Related Legal Pages */}
                 <div className="mt-4 rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  <p className="mb-3 text-xs font-bold tracking-wide text-muted-foreground">
                     Legal Pages
                   </p>
                   <ul className="space-y-1.5">
@@ -213,8 +205,7 @@ export function LegalPageLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f8fafc] to-white py-6 lg:py-9">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_50%,rgba(37,99,235,0.04)_0%,transparent_70%)]" />
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -236,7 +227,7 @@ export function LegalPageLayout({
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => handleNav("/contact")}
-                className="inline-flex items-center gap-2.5 rounded-none bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2.5 rounded-none bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] "
               >
                 Contact YESBE
                 <ArrowRight className="h-4 w-4" />

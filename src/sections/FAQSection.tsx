@@ -125,11 +125,10 @@ export function FAQSection() {
       }} />
       <section
       id="faq"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
       aria-label="Frequently Asked Questions — Services, quotations, technologies, and development process"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[20%] left-[10%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.10] blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -139,7 +138,7 @@ export function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold tracking-[0.08em] text-primary"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-circle bg-[#2563eb]" />
             FAQ
@@ -153,7 +152,7 @@ export function FAQSection() {
             className="text-3xl font-extrabold tracking-[-0.02em] text-foreground sm:text-4xl"
           >
             Frequently Asked{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
+            <span className="text-primary">
               Questions
             </span>
           </motion.h2>
@@ -163,7 +162,7 @@ export function FAQSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-primary"
           />
 
           <motion.p
@@ -182,7 +181,7 @@ export function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="overflow-hidden rounded-none border border-white/50 bg-white/80"
+          className="overflow-hidden rounded-none border border-border bg-white/80"
           style={{
             boxShadow: "0 1px 2px rgba(37,99,235,0.02), 0 4px 16px rgba(37,99,235,0.02)",
           }}

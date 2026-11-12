@@ -24,11 +24,10 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
       aria-label="About YESBE Technologies — IT consulting, custom software development, AI and automation, and data analytics"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[10%] right-[5%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -49,13 +48,10 @@ export function AboutSection() {
                 navigate("/");
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="group relative inline-block cursor-pointer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+              className="relative inline-block"
               aria-label="YESBE Technologies Company Logo — Go to homepage"
             >
-              <div className="relative rounded-2xl bg-white p-6 shadow-[0_4px_24px_rgba(37,99,235,0.08),0_1px_4px_rgba(0,0,0,0.04)] transition-shadow duration-300 group-hover:shadow-[0_8px_40px_rgba(37,99,235,0.14),0_2px_8px_rgba(0,0,0,0.06)]">
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[#2563eb]/[0.06] to-[#60a5fa]/[0.04] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="border border-border bg-white p-4 sm:p-6">
                 <picture>
                   <source srcSet="/YBlogo.webp" type="image/webp" />
                   <img
@@ -65,7 +61,7 @@ export function AboutSection() {
                     height={400}
                     loading="lazy"
                     decoding="async"
-                    className="relative h-[180px] w-[180px] rounded-xl object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
+                    className="relative h-[180px] w-[180px] object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
                   />
                 </picture>
               </div>
@@ -73,7 +69,7 @@ export function AboutSection() {
 
             <motion.div
               variants={fadeInUp}
-              className="inline-flex items-center gap-2 rounded-none border border-[#2563eb]/10 bg-[#eff6ff] px-4 py-2 text-[13px] font-medium text-[#2563eb]"
+              className="inline-flex items-center gap-2 text-[13px] font-medium text-primary"
             >
               <CheckCircle className="h-4 w-4" />
               IT Consulting & Software Development
@@ -82,17 +78,15 @@ export function AboutSection() {
 
           {/* Right — Content */}
           <div>
-            <motion.div variants={fadeInUp}>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                About YESBE
-              </span>
-            </motion.div>
+            <motion.p variants={fadeInUp} className="mb-3 text-[13px] font-semibold text-primary">
+              About YESBE
+            </motion.p>
 
             <motion.h2
               variants={fadeInUp}
-              className="mb-6 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+              className="mb-5 text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl"
             >
-              About YESBE
+              Technology partner for growing businesses
             </motion.h2>
 
             <motion.div variants={fadeInUp} className="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
@@ -111,7 +105,7 @@ export function AboutSection() {
             <motion.section
               variants={fadeInUp}
               aria-labelledby="about-founder-heading"
-              className="mt-8 rounded-none border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
+              className="mt-8 border border-border bg-slate-50 p-6"
             >
               <div className="flex items-center gap-4 sm:gap-5">
                 <img
@@ -124,7 +118,7 @@ export function AboutSection() {
                   className="h-[110px] w-[110px] rounded-circle object-cover object-center ring-1 ring-primary/10 sm:h-[120px] sm:w-[120px] md:h-[126px] md:w-[126px]"
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+                  <p className="mb-2 text-xs font-bold tracking-wide text-primary">
                     Founder
                   </p>
                   <h3 id="about-founder-heading" className="text-lg font-bold text-foreground">
@@ -157,7 +151,7 @@ export function AboutSection() {
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
+                className="btn-primary inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold"
               >
                 Discuss Your Project
               </Link>
@@ -167,7 +161,7 @@ export function AboutSection() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 aria-label="View YESBE Services"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] cursor-pointer"
+                className="btn-secondary inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold"
               >
                 View Services
               </button>
@@ -188,8 +182,7 @@ export function AboutSection() {
               {focusAreas.map((area) => (
                 <div
                   key={area.value}
-                  className="rounded-none border border-white/40 bg-white p-6 text-center"
-                  style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
+                  className="border border-border bg-white p-6 text-center"
                 >
                   <div className="text-xl font-extrabold text-primary">{area.value}</div>
                   <div className="mt-1.5 text-sm font-medium text-muted-foreground">{area.label}</div>
@@ -199,18 +192,18 @@ export function AboutSection() {
           </motion.div>
 
           <motion.div variants={fadeInUp}>
-            <div className="rounded-none border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6">
+            <div className="border border-border bg-slate-50 p-6">
               <h3 className="mb-3 text-sm font-bold text-foreground">Core Specializations</h3>
               <div className="flex flex-wrap gap-2">
                 {specializations.map((s) => (
-                  <span key={s} className="rounded-none bg-white border border-white/40 px-3 py-1 text-xs font-medium text-primary">
+                  <span key={s} className="rounded-none bg-white border border-border px-3 py-1 text-xs font-medium text-primary">
                     {s}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="mt-5 rounded-none border border-white/40 bg-white p-5">
+            <div className="mt-5 border border-border bg-white p-5">
               <h3 className="mb-2 text-sm font-bold text-foreground">Business Focus</h3>
               <p className="text-[13px] leading-relaxed text-muted-foreground">
                 Education ERP, hospital management, restaurant ordering, retail e-commerce, corporate analytics dashboards, MVP development, and digital transformation — for businesses in Salem, Tamil Nadu and beyond.

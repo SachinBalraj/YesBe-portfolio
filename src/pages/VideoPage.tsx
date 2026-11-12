@@ -76,7 +76,7 @@ export function VideoPage() {
               <Link
                 key={resource.title}
                 to={resource.href}
-                className="group rounded-3xl border border-slate-200/80 bg-slate-50 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-white hover:shadow-card"
+                className="group rounded-3xl border border-slate-200/80 bg-slate-50 p-5 transition-all duration-200 hover:border-primary/30 hover:bg-white hover:shadow-card"
               >
                 <resource.icon className="h-5 w-5 text-primary" aria-hidden="true" />
                 <h3 className="mt-4 text-base font-semibold text-foreground">{resource.title}</h3>

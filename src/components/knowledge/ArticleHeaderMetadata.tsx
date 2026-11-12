@@ -22,7 +22,7 @@ export function ArticleHeaderMetadata({ article }: ArticleHeaderMetadataProps) {
       className="mt-6 flex flex-col gap-3 text-xs font-medium text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center"
     >
       {/* 📖 Reading Time Pill */}
-      <span className="inline-flex items-center gap-1.5 rounded-none border border-slate-200/80 bg-white/90 px-3.5 py-1.5 text-slate-700 shadow-2xs backdrop-blur-md dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 hover:border-primary/40 hover:text-primary transition-all">
+      <span className="inline-flex items-center gap-1.5 rounded-none border border-slate-200/80 bg-white px-3.5 py-1.5 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 hover:border-primary/40 hover:text-primary transition-all">
         <Clock className="h-3.5 w-3.5 text-primary" />
         <span>{article.readingTimeText}</span>
         {article.wordCount && (
@@ -33,14 +33,14 @@ export function ArticleHeaderMetadata({ article }: ArticleHeaderMetadataProps) {
       </span>
 
       {/* 📅 Published Date Pill */}
-      <span className="inline-flex items-center gap-1.5 rounded-none border border-slate-200/80 bg-white/90 px-3.5 py-1.5 text-slate-700 shadow-2xs backdrop-blur-md dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+      <span className="inline-flex items-center gap-1.5 rounded-none border border-slate-200/80 bg-white px-3.5 py-1.5 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
         <Calendar className="h-3.5 w-3.5 text-primary" />
         <span>Published {publishedFormatted}</span>
       </span>
 
       {/* 🔄 Updated Date Pill */}
       {article.updatedDate && article.updatedDate !== article.publishedDate && (
-        <span className="inline-flex items-center gap-1.5 rounded-none border border-slate-200/80 bg-white/90 px-3.5 py-1.5 text-slate-700 shadow-2xs backdrop-blur-md dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+        <span className="inline-flex items-center gap-1.5 rounded-none border border-slate-200/80 bg-white px-3.5 py-1.5 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
           <RefreshCw className="h-3.5 w-3.5 text-primary" />
           <span>Updated {updatedFormatted}</span>
         </span>

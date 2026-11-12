@@ -11,11 +11,9 @@ export function FeaturedArticle({ article }: { article: Article }) {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-      className="group relative overflow-hidden rounded-none border border-primary/15 bg-gradient-to-br from-[#eff6ff] via-white to-[#f8fbff] shadow-[0_1px_3px_rgba(37,99,235,0.05),0_8px_32px_rgba(37,99,235,0.06)] transition-all duration-300 hover:border-primary/30 hover:shadow-[0_16px_48px_rgba(37,99,235,0.12)]"
+      className="group relative overflow-hidden rounded-none border border-primary/15 bg-white shadow-[0_1px_3px_rgba(37,99,235,0.05),0_8px_32px_rgba(37,99,235,0.06)] transition-all duration-300 hover:border-primary/30 hover:shadow-[0_16px_48px_rgba(37,99,235,0.12)]"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #2563eb 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
-        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-circle bg-[#dbeafe] opacity-30 blur-[100px]" />
       </div>
 
       <div className="relative grid lg:grid-cols-2">
@@ -40,7 +38,7 @@ export function FeaturedArticle({ article }: { article: Article }) {
 
         <div className="flex flex-col justify-center p-7 lg:p-10 lg:pl-2">
           <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-none bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-[0_2px_8px_rgba(37,99,235,0.3)]">
+            <span className="inline-flex items-center gap-1 rounded-none bg-primary px-3 py-1 text-[11px] font-bold tracking-wide text-white shadow-[0_2px_8px_rgba(37,99,235,0.3)]">
               <Star className="h-3 w-3" />
               Featured
             </span>
@@ -68,7 +66,7 @@ export function FeaturedArticle({ article }: { article: Article }) {
           </div>
 
           <div className="pointer-events-none">
-            <span className="inline-flex items-center gap-2 rounded-none bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)] transition-all duration-300 group-hover:shadow-[0_8px_32px_rgba(37,99,235,0.35)]">
+            <span className="inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)] transition-all duration-300 group-hover:shadow-[0_8px_32px_rgba(37,99,235,0.35)]">
               Read the featured guide
               <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
             </span>

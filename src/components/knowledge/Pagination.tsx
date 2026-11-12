@@ -59,7 +59,7 @@ export function Pagination({ page, totalPages, onPageChange, className }: Pagina
             className={cn(
               "h-10 min-w-10 rounded-xl px-3 text-sm font-semibold transition-all duration-200",
               p === page
-                ? "bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
+                ? "bg-primary text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
                 : "border border-slate-200 bg-white text-muted-foreground hover:border-primary/30 hover:text-primary",
             )}
           >

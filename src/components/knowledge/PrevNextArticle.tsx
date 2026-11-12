@@ -14,7 +14,7 @@ export function PrevNextArticle({ prev, next }: { prev: Article | null; next: Ar
             <ArrowLeft className="h-4 w-4" />
           </span>
           <span className="min-w-0">
-            <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="block text-[11px] font-semibold tracking-wide text-muted-foreground">
               Previous
             </span>
             <span className="mt-0.5 line-clamp-1 block text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
@@ -36,7 +36,7 @@ export function PrevNextArticle({ prev, next }: { prev: Article | null; next: Ar
           className="group flex items-center justify-end gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 text-right transition-all duration-200 hover:border-primary/25 hover:shadow-[0_8px_32px_rgba(37,99,235,0.08)]"
         >
           <span className="min-w-0">
-            <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="block text-[11px] font-semibold tracking-wide text-muted-foreground">
               Next
             </span>
             <span className="mt-0.5 line-clamp-1 block text-sm font-semibold text-foreground transition-colors group-hover:text-primary">

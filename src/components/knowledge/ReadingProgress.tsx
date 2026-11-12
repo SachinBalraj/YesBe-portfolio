@@ -36,7 +36,7 @@ export function ReadingProgress({ containerId }: { containerId?: string }) {
       aria-hidden="true"
     >
       <motion.div
-        className="h-full bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb]"
+        className="h-full bg-primary"
         style={{ scaleX: progress, transformOrigin: "left" }}
       />
     </div>

@@ -56,8 +56,6 @@ export function NewsletterSignup() {
 
   return (
     <section className="relative overflow-hidden rounded-none border border-slate-200/70 bg-white px-6 py-10 shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 sm:px-10 sm:py-14 lg:px-14">
-      <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[#eff6ff] to-transparent opacity-80" />
-      <div className="absolute left-1/2 top-8 h-32 w-32 -translate-x-1/2 rounded-circle bg-blue-100 opacity-80 blur-[90px]" />
 
       <div className="relative mx-auto flex max-w-5xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
@@ -80,12 +78,10 @@ export function NewsletterSignup() {
           </div>
         </div>
 
-        <div className="relative w-full max-w-xl rounded-none border border-slate-200/80 bg-slate-50/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8">
-          <div className="absolute -right-8 top-6 h-24 w-24 rounded-circle bg-gradient-to-br from-[#2563eb] to-[#60a5fa] opacity-10 blur-3xl" />
-          <div className="absolute -bottom-8 left-4 h-24 w-24 rounded-circle bg-gradient-to-br from-[#93c5fd] to-[#bfdbfe] opacity-20 blur-3xl" />
+        <div className="relative w-full max-w-xl rounded-none border border-slate-200/80 bg-slate-50 p-6 sm:p-8">
 
           <div className="mb-6 flex items-center gap-3 rounded-3xl bg-white/90 px-4 py-3 shadow-sm ring-1 ring-slate-200/70">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white shadow-sm">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-white shadow-sm">
               <Mail className="h-5 w-5" />
             </div>
             <div>
@@ -151,7 +147,7 @@ export function NewsletterSignup() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="inline-flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-4 text-sm font-semibold text-white shadow-[0_12px_32px_rgba(37,99,235,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_48px_rgba(37,99,235,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center justify-center gap-2 rounded-3xl bg-primary px-6 py-4 text-sm font-semibold text-white shadow-[0_12px_32px_rgba(37,99,235,0.25)] transition-all duration-200 hover:shadow-[0_16px_48px_rgba(37,99,235,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {status === "loading" ? "Subscribing..." : "Subscribe"}
                 <Send className="h-4 w-4" />

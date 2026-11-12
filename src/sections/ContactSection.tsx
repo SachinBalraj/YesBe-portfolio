@@ -196,9 +196,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-6 lg:py-9 bg-white overflow-hidden" aria-label="Contact YESBE — Get in touch for AI solutions, web development, and business consulting in Salem, Tamil Nadu">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-circle bg-primary/[0.03] blur-[120px]" />
-
+    <section id="contact" className="border-t border-border/70 bg-slate-50 py-16 sm:py-20 lg:py-24" aria-label="Contact YESBE">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* CTA Banner */}
         <motion.div
@@ -206,13 +204,13 @@ export function ContactSection() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center max-w-3xl mx-auto mb-10"
+          className="max-w-2xl mb-10"
         >
-          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
-            Let&apos;s Build Your Next{" "}
-            <span className="text-primary">Digital Solution</span>
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] leading-tight text-navy">
+            Let&apos;s build your next{" "}
+            <span className="text-primary">digital solution</span>
           </motion.h2>
-          <motion.p variants={fadeInUp} className="mt-5 text-lg text-muted-foreground leading-relaxed">
+          <motion.p variants={fadeInUp} className="mt-4 text-[16px] text-muted-foreground leading-relaxed">
             Tell us about your project. We&apos;ll review your requirements and respond with clear next steps.
           </motion.p>
         </motion.div>
@@ -226,7 +224,7 @@ export function ContactSection() {
             viewport={{ once: true, margin: "-100px" }}
             className="min-w-0 lg:col-span-3"
           >
-            <div className="w-full min-w-0 max-w-full rounded-3xl border border-border/60 bg-card shadow-card overflow-hidden">
+            <div className="w-full min-w-0 max-w-full border border-border bg-white overflow-hidden">
               {/* Progress Indicator */}
               <div className="border-b border-border/50 px-4 pt-5 pb-4 sm:px-8 sm:pt-8">
                 {/*
@@ -283,7 +281,7 @@ export function ContactSection() {
                 {/* Animated Progress Bar */}
                 <div className="mt-4 h-1.5 w-full rounded-none bg-muted overflow-hidden">
                   <motion.div
-                    className="h-full rounded-none bg-gradient-to-r from-primary to-blue-400"
+                    className="h-full bg-primary"
                     initial={false}
                     animate={{ width: `${((currentStep + 1) / STEPS.length) * 100}%` }}
                     transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
@@ -502,7 +500,7 @@ export function ContactSection() {
                           Please review your information before submitting.
                         </p>
                         <div className="rounded-xl border border-border/60 bg-muted/30 p-4 space-y-0">
-                          <h3 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Personal Information</h3>
+                          <h3 className="mb-2 text-[12px] font-semibold text-primary">Personal Information</h3>
                           <ReviewRow label="Full Name" value={formData.name} />
                           <ReviewRow label="Email" value={formData.email} />
                           <ReviewRow label="Phone" value={formData.phone} />
@@ -510,13 +508,13 @@ export function ContactSection() {
                           <ReviewRow label="Designation" value={formData.designation} />
                         </div>
                         <div className="rounded-xl border border-border/60 bg-muted/30 p-4 space-y-0">
-                          <h3 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Business Information</h3>
+                          <h3 className="mb-2 text-[12px] font-semibold text-primary">Business Information</h3>
                           <ReviewRow label="Service" value={formatLabel(formData.service, serviceLabels)} />
                           <ReviewRow label="Budget" value={formatLabel(formData.budget, budgetLabels)} />
                           <ReviewRow label="Timeline" value={formatLabel(formData.timeline, timelineLabels)} />
                         </div>
                         <div className="rounded-xl border border-border/60 bg-muted/30 p-4 space-y-0">
-                          <h3 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Project Details</h3>
+                          <h3 className="mb-2 text-[12px] font-semibold text-primary">Project Details</h3>
                           <ReviewRow label="Description" value={formData.projectDescription} />
                           <ReviewRow label="Challenges" value={formData.businessChallenges} />
                           <ReviewRow label="Goals" value={formData.goals} />
@@ -606,13 +604,13 @@ export function ContactSection() {
                 target={card.href.startsWith("http") ? "_blank" : undefined}
                 rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={card.onClick}
-                className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-card p-5 shadow-card hover:shadow-card-hover hover:border-primary/20 transition-all duration-200"
+                className="group flex items-center gap-4 border border-border bg-white p-5 transition-colors hover:border-slate-300"
               >
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${card.color} group-hover:scale-110 transition-transform duration-200`}>
+                <div className={`flex h-11 w-11 shrink-0 items-center justify-center ${card.color}`}>
                   <card.icon className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  <div className="text-[12px] font-medium text-muted-foreground">
                     {card.label}
                   </div>
                   <div className="text-sm font-medium text-foreground truncate">

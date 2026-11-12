@@ -29,17 +29,17 @@ const NAV_ITEMS: NavItem[] = [
 
 function navLinkClass(isActive: boolean) {
   return cn(
-    "relative shrink-0 px-4 py-2 text-[15px] font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 border-b-2",
+    "relative shrink-0 px-3.5 py-2 text-[14px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 border-b-2",
     isActive
-      ? "text-[#2563EB] border-[#2563EB]"
-      : "text-[#1E293B] border-transparent hover:text-[#2563EB] hover:border-[#dbeafe]"
+      ? "text-primary border-primary font-semibold"
+      : "text-slate-700 border-transparent hover:text-primary hover:border-slate-300"
   );
 }
 
 function mobileNavLinkClass(isActive: boolean) {
   return cn(
-    "flex w-full rounded-xl px-4 py-3.5 text-[14px] font-medium transition-all duration-200 text-left",
-    isActive ? "bg-[#eff6ff] text-[#2563EB]" : "text-[#1E293B] hover:bg-[#f8fafc]/80"
+    "flex w-full px-4 py-3 text-[15px] font-medium transition-colors duration-200 text-left border-l-2",
+    isActive ? "border-primary bg-primary/[0.04] text-primary" : "border-transparent text-slate-700 hover:bg-slate-50"
   );
 }
 
@@ -148,13 +148,13 @@ function NavbarComponent() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
           isScrolled
-            ? "bg-white/75 backdrop-blur-2xl border-b border-[#e2e8f0]/40 shadow-[0_1px_2px_rgba(0,0,0,0.02),0_2px_16px_rgba(0,0,0,0.02)]"
-            : "bg-white",
+            ? "bg-white/95 backdrop-blur border-b border-border"
+            : "bg-white border-b border-transparent",
           hidden ? "-translate-y-full" : "translate-y-0"
         )}
       >
         <nav
-          className="mx-auto flex h-[56px] items-center px-5 sm:px-6 lg:px-10"
+          className="mx-auto flex h-[68px] items-center px-4 sm:px-6 lg:px-8"
           style={{ maxWidth: "1280px" }}
           aria-label="Main navigation"
           role="navigation"
@@ -163,22 +163,22 @@ function NavbarComponent() {
           <Link
             to="/"
             aria-label="YESBE Technologies home"
-            className="relative z-10 flex shrink-0 items-center group mr-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:rounded-xl"
+            className="relative z-10 flex shrink-0 items-center mr-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:rounded-sm"
           >
             <img
               src={logoImg}
               alt="YESBE Technologies Logo"
-              width={48}
-              height={48}
+              width={40}
+              height={40}
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="h-[46px] w-[46px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
+              className="h-10 w-10 object-contain transition-opacity duration-200 hover:opacity-80"
             />
           </Link>
 
           {/* ── Desktop Navigation ── */}
-          <div className="hidden shrink-0 items-center gap-2 lg:flex">
+          <div className="hidden shrink-0 items-center gap-1 lg:flex">
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.label}
@@ -196,31 +196,31 @@ function NavbarComponent() {
           <div className="flex-1" aria-hidden="true" />
 
           {/* ── CTA + Search + Mobile Toggle ── */}
-          <div className="flex shrink-0 items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2.5">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="inline-flex min-h-11 items-center gap-2 rounded-none border border-slate-200/80 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all duration-200 hover:border-primary/40 hover:text-primary hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:min-h-0 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300"
+              className="inline-flex min-h-10 items-center gap-2 border border-border bg-white px-3 py-2 text-[13px] font-medium text-slate-700 transition-colors duration-200 hover:border-slate-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               title="Search Insights (⌘ K)"
               aria-label="Search insights"
               aria-haspopup="dialog"
             >
-              <Search className="h-4 w-4 text-primary" />
+              <Search className="h-4 w-4 text-slate-500" />
               <span className="hidden sm:inline">Search</span>
-              <kbd className="hidden md:inline-block rounded-none border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-500 shadow-2xs dark:border-slate-700 dark:bg-slate-900">
+              <kbd className="hidden md:inline-block border border-border bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
                 ⌘K
               </kbd>
             </button>
 
             <button
               onClick={() => { trackConsultationClick("navbar"); handleNavigate("/contact"); }}
-              className="hidden xl:inline-flex items-center gap-3 whitespace-nowrap rounded-none bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_32px_rgba(37,99,235,0.12),0_0_20px_rgba(37,99,235,0.08)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+              className="hidden xl:inline-flex items-center gap-2 whitespace-nowrap bg-primary px-5 py-2.5 text-[13px] font-semibold leading-[1.2] text-white transition-colors duration-200 hover:bg-[#1d4ed8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Book a Free Consultation
-              <ArrowRight className="h-[18px] w-[18px] shrink-0" />
+              <ArrowRight className="h-4 w-4 shrink-0" />
             </button>
             <button
               ref={mobileToggleRef}
-              className="lg:hidden rounded-lg p-2.5 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="lg:hidden p-2.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-label={isMobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileOpen}
@@ -240,7 +240,7 @@ function NavbarComponent() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-slate-900/30 lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             />
             <motion.div
@@ -249,24 +249,24 @@ function NavbarComponent() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed right-0 top-0 z-50 h-full w-80 max-w-[calc(100vw-1rem)] border-l border-[#e2e8f0]/50 bg-white/95 backdrop-blur-2xl shadow-[−8px_0_24px_rgba(0,0,0,0.06)] lg:hidden"
+              transition={{ duration: 0.25, ease: [0.25, 0.4, 0.25, 1] }}
+              className="fixed right-0 top-0 z-50 h-full w-80 max-w-[calc(100vw-1rem)] border-l border-border bg-white lg:hidden"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation"
             >
-              <div className="flex h-[56px] items-center justify-between px-6">
+              <div className="flex h-[68px] items-center justify-between px-5">
                 <img
                   src={logoImg}
                   alt="YESBE Technologies Logo"
-                  width={44}
-                  height={44}
-                loading="eager"
-                decoding="async"
-                  className="h-11 w-11 object-contain rounded-xl"
+                  width={40}
+                  height={40}
+                  loading="eager"
+                  decoding="async"
+                  className="h-10 w-10 object-contain"
                 />
                 <button
-                  className="rounded-lg p-2.5 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"
+                  className="p-2.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
                   onClick={() => setIsMobileOpen(false)}
                   aria-label="Close menu"
                 >
@@ -274,30 +274,24 @@ function NavbarComponent() {
                 </button>
               </div>
 
-              <div className="flex flex-col gap-1 px-4 pb-6 overflow-y-auto max-h-[calc(100vh-56px)]">
-                {NAV_ITEMS.map((item, i) => (
-                  <motion.div
+              <div className="flex flex-col border-t border-border pb-6 overflow-y-auto max-h-[calc(100vh-68px)]">
+                {NAV_ITEMS.map((item) => (
+                  <NavLink
                     key={item.label}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.04, duration: 0.2 }}
+                    to={item.href}
+                    end={item.href === "/"}
+                    className={({ isActive }) => mobileNavLinkClass(isActive)}
+                    onClick={() => setIsMobileOpen(false)}
                   >
-                    <NavLink
-                      to={item.href}
-                      end={item.href === "/"}
-                      className={({ isActive }) => mobileNavLinkClass(isActive)}
-                      onClick={() => setIsMobileOpen(false)}
-                    >
-                      {item.label}
-                    </NavLink>
-                  </motion.div>
+                    {item.label}
+                  </NavLink>
                 ))}
               </div>
 
-              <div className="border-t border-[#e2e8f0]/50 px-5 py-5">
+              <div className="border-t border-border px-5 py-5">
                 <button
                   onClick={() => { trackConsultationClick("navbar_mobile"); handleNavigate("/contact"); }}
-                  className="flex w-full items-center justify-center gap-3 whitespace-nowrap rounded-none bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-6 py-3.5 text-[14px] font-semibold leading-[1.2] tracking-[0.2px] text-white shadow-[0_1px_4px_rgba(37,99,235,0.2),0_4px_16px_rgba(37,99,235,0.1)]"
+                  className="flex w-full items-center justify-center gap-2 whitespace-nowrap bg-primary px-5 py-3.5 text-[14px] font-semibold leading-[1.2] text-white transition-colors hover:bg-[#1d4ed8]"
                 >
                   Book a Free Consultation
                   <ArrowRight className="h-[18px] w-[18px] shrink-0" />

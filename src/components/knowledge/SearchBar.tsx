@@ -168,9 +168,9 @@ export function SearchBar({
 
       {/* Live Search Autocomplete Dropdown */}
       {isFocused && query.trim().length > 0 && (
-        <div className="absolute left-0 right-0 top-full z-[100] mt-2 overflow-hidden rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-xl shadow-2xl transition-all dark:border-slate-800 dark:bg-slate-900/95">
+        <div className="absolute left-0 right-0 top-full z-[100] mt-2 overflow-hidden border border-slate-200 bg-white shadow-lg transition-all dark:border-slate-800 dark:bg-slate-900">
           <div className="p-3">
-            <div className="mb-2 flex items-center justify-between px-3 pt-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <div className="mb-2 flex items-center justify-between px-3 pt-1 text-[11px] font-semibold tracking-wide text-muted-foreground">
               <span>Suggestions ({suggestions.length})</span>
               <span>Press Enter to view all</span>
             </div>

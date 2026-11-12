@@ -22,7 +22,7 @@ import { ContactSection } from "@/sections/ContactSection";
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-2xl border border-white/40 bg-white overflow-hidden">
+    <div className="rounded-2xl border border-border bg-white overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -47,7 +47,7 @@ function SectionHeading({ children, icon: Icon }: { children: React.ReactNode; i
   return (
     <div className="flex items-center gap-2 mb-4">
       {Icon && <Icon className="h-4 w-4 text-primary" />}
-      <h2 className="text-lg font-bold text-foreground">{children}</h2>
+      <h2 className="text-2xl font-bold tracking-[-0.02em] text-navy">{children}</h2>
     </div>
   );
 }
@@ -62,7 +62,7 @@ function RelatedProjects({ currentSlug }: { currentSlug: string }) {
   const navigate = useNavigate();
 
   return (
-    <div className="rounded-none border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-8">
+    <div className="rounded-none border border-border bg-slate-50 p-8">
       <SectionHeading icon={Layers}>Related Projects</SectionHeading>
       <div className="grid gap-4 sm:grid-cols-3">
         {related.map((cs) => (
@@ -72,7 +72,7 @@ function RelatedProjects({ currentSlug }: { currentSlug: string }) {
               navigate(`/case-studies/${cs.slug}`);
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="group rounded-2xl border border-white/40 bg-white p-5 text-left transition-all duration-300 hover:border-primary/30 hover:shadow-md"
+            className="group rounded-2xl border border-border bg-white p-5 text-left transition-all duration-300 hover:border-primary/30 hover:shadow-md"
           >
             <span className="mb-2 inline-block rounded-none bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
               {cs.category}
@@ -176,11 +176,7 @@ export function CaseStudyDetailPage() {
         })),
       }} />
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-[88px] pb-10 lg:pt-[104px] lg:pb-10">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
-          <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
-        </div>
+      <section className="relative overflow-hidden bg-white pt-[104px] pb-12 lg:pt-[124px] lg:pb-14">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
@@ -193,7 +189,7 @@ export function CaseStudyDetailPage() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="rounded-none bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+              <span className="rounded-none bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold tracking-wide text-primary">
                 {study.category}
               </span>
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -213,13 +209,6 @@ export function CaseStudyDetailPage() {
               {study.title}
             </motion.h1>
 
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
-            />
-
             <motion.p
               variants={fadeInUp}
               className="mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground"
@@ -237,8 +226,7 @@ export function CaseStudyDetailPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative overflow-hidden rounded-3xl"
-            style={{ boxShadow: "0 4px 24px rgba(37,99,235,0.08), 0 16px 64px rgba(0,0,0,0.06)" }}
+            className="relative overflow-hidden border border-border"
           >
             <img
               src={study.image}
@@ -251,15 +239,13 @@ export function CaseStudyDetailPage() {
               onError={handleImgError}
               className="h-64 w-full object-cover sm:h-80 lg:h-[450px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </motion.div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[20%] right-[5%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.06] blur-[100px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -294,7 +280,7 @@ export function CaseStudyDetailPage() {
                 <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">
                   {study.solution}
                 </p>
-                <div className="rounded-2xl border border-white/40 bg-muted/50 p-5">
+                <div className="rounded-2xl border border-border bg-muted/50 p-5">
                   <p className="text-[13px] font-semibold text-foreground mb-2">Technical Challenge</p>
                   <p className="text-[14px] leading-relaxed text-muted-foreground">{study.challenge}</p>
                 </div>
@@ -334,21 +320,21 @@ export function CaseStudyDetailPage() {
               {/* Tech Stack */}
               <motion.div
                 variants={fadeInUp}
-                className="rounded-none border border-white/40 bg-white p-6"
+                className="rounded-none border border-border bg-white p-6"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
               >
-                <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-foreground">Technologies Used</h3>
+                <h3 className="mb-4 text-sm font-bold tracking-wide text-foreground">Technologies Used</h3>
                 <div className="space-y-4">
                   {study.techGroups.map((group) => (
                     <div key={group.label}>
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-primary mb-2">
+                      <p className="text-[11px] font-bold tracking-wide text-primary mb-2">
                         {group.label}
                       </p>
                       <div className="flex flex-wrap gap-1.5">
                         {group.items.map((item) => (
                           <span
                             key={item}
-                            className="rounded-md border border-white/40 bg-muted px-2.5 py-1 text-[12px] font-medium text-primary"
+                            className="rounded-md border border-border bg-muted px-2.5 py-1 text-[12px] font-medium text-primary"
                           >
                             {item}
                           </span>
@@ -378,10 +364,10 @@ export function CaseStudyDetailPage() {
               {/* Client Benefits */}
               <motion.div
                 variants={fadeInUp}
-                className="rounded-none border border-white/40 bg-white p-6"
+                className="rounded-none border border-border bg-white p-6"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
               >
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Business Problems It Addresses</h3>
+                <h3 className="mb-3 text-sm font-bold tracking-wide text-foreground">Business Problems It Addresses</h3>
                 <ul className="space-y-2">
                   {study.businessValue.map((b) => (
                     <li key={b} className="flex items-start gap-2">
@@ -395,7 +381,7 @@ export function CaseStudyDetailPage() {
               {/* CTA */}
               <motion.div
                 variants={fadeInUp}
-                className="rounded-none bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] p-6 text-white"
+                className="rounded-none bg-primary p-6 text-white"
               >
                 <h3 className="text-lg font-bold mb-2">Need a Similar Solution?</h3>
                 <p className="text-[13px] text-white/80 mb-4">
@@ -428,7 +414,7 @@ export function CaseStudyDetailPage() {
               {study.futureEnhancements.map((e) => (
                 <span
                   key={e}
-                  className="rounded-none border border-white/40 bg-white px-4 py-2 text-[13px] font-medium text-primary"
+                  className="rounded-none border border-border bg-white px-4 py-2 text-[13px] font-medium text-primary"
                 >
                   {e}
                 </span>
@@ -502,7 +488,7 @@ export function CaseStudyDetailPage() {
                 navigate("/case-studies");
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
             >
               <ArrowLeft className="h-4 w-4" />
               View All Projects

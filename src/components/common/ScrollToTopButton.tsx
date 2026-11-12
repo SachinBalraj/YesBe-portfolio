@@ -65,7 +65,7 @@ function ScrollToTopButtonComponent({
             size="icon"
             variant="outline"
             onClick={scrollToTop}
-            className="h-11 w-11 rounded-xl shadow-md bg-card/80 backdrop-blur-sm"
+            className="h-11 w-11 border border-border bg-white text-navy hover:bg-slate-50"
             aria-label="Scroll to top"
           >
             <ArrowUp className="h-4 w-4" />

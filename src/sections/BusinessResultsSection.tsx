@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
 import {
   TrendingUp, Clock, Cpu, BarChart3, IndianRupee, Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { SectionHeading } from "@/components/common/SectionHeading";
 
 interface Benefit {
   icon: LucideIcon;
@@ -35,105 +35,44 @@ export function BusinessResultsSection() {
   return (
     <section
       id="business-results"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-6 lg:py-9"
-      aria-label="What our technology solutions are built to deliver — sales, automation, reporting, cost and engagement improvements"
+      className="bg-white py-16 sm:py-20 lg:py-24"
+      aria-label="What our technology solutions are built to deliver"
     >
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Benefits */}
-        <div className="mb-12">
-          <div className="mb-8 text-center">
-            <motion.span
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
-            >
-              Business Benefits
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
-            >
-              What Solutions{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Are Built To Deliver</span>
-            </motion.h2>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
-            >
-              Every engagement starts with a business problem. These are the outcomes each type of solution is designed for.
-            </motion.p>
-          </div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="What solutions are built to deliver"
+          description="Every engagement starts with a business problem. These are the outcomes each type of solution is designed for."
+        />
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((b, i) => (
-              <motion.div
-                key={b.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="group card-glass rounded-none p-6"
-              >
-                <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110">
-                  <b.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
-                </div>
-                <h3 className="mb-1.5 text-[16px] font-bold text-foreground">{b.title}</h3>
-                <p className="text-[14px] leading-relaxed text-muted-foreground">{b.description}</p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {benefits.map((b) => (
+            <div key={b.title} className="border-t border-border pt-5">
+              <div className="mb-3 flex items-center gap-3">
+                <b.icon className="h-5 w-5 text-primary" strokeWidth={1.7} aria-hidden="true" />
+                <h3 className="text-[15px] font-semibold text-navy">{b.title}</h3>
+              </div>
+              <p className="text-[13.5px] leading-relaxed text-muted-foreground">{b.description}</p>
+            </div>
+          ))}
         </div>
 
-        {/* Results by service */}
-        <div>
-          <div className="mb-10 text-center">
-            <motion.h3
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl"
-            >
-              Typical Scope by{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Service</span>
-            </motion.h3>
-          </div>
-
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {scope.map((r, i) => (
-              <motion.div
-                key={r.service}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="card-glass rounded-none p-5"
-              >
-                <h3 className="mb-3 text-[15px] font-bold text-primary">{r.service}</h3>
+        <div className="mt-16 border-t border-border pt-12 lg:mt-20 lg:pt-14">
+          <h2 className="text-2xl font-bold tracking-[-0.02em] text-navy sm:text-[1.75rem]">
+            Typical scope by service
+          </h2>
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {scope.map((r) => (
+              <div key={r.service} className="border border-border bg-slate-50 p-5">
+                <h3 className="mb-3 text-[14px] font-semibold text-navy">{r.service}</h3>
                 <ul className="space-y-2">
                   {r.outcomes.map((o) => (
-                    <li key={o} className="flex items-start gap-2 text-[13px] text-muted-foreground">
-                      <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-circle bg-[#2563eb]/40" />
+                    <li key={o} className="flex items-start gap-2 text-[13px] leading-relaxed text-muted-foreground">
+                      <span className="mt-[7px] h-1 w-1 shrink-0 bg-primary" aria-hidden="true" />
                       {o}
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

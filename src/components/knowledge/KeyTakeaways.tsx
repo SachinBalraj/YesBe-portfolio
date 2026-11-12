@@ -6,11 +6,10 @@ export function KeyTakeaways({ article }: { article: Article }) {
   return (
     <aside
       aria-label="Key takeaways"
-      className="relative overflow-hidden rounded-2xl border border-primary/15 bg-gradient-to-br from-[#eff6ff] to-white p-6"
+      className="relative overflow-hidden rounded-2xl border border-primary/15 bg-slate-50 p-6"
     >
-      <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-circle bg-[#dbeafe] opacity-40 blur-[60px]" />
       <div className="relative flex items-center gap-2">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
           <Lightbulb className="h-4 w-4" />
         </span>
         <h2 className="text-[15px] font-bold text-foreground">Key Takeaways</h2>

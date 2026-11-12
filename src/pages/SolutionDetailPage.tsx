@@ -32,7 +32,7 @@ import {
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-2xl border border-white/40 bg-white overflow-hidden">
+    <div className="rounded-2xl border border-border bg-white overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between px-6 py-4 text-left"
@@ -57,7 +57,7 @@ function SectionHeading({ children, icon: Icon }: { children: React.ReactNode; i
   return (
     <div className="flex items-center gap-2 mb-4">
       {Icon && <Icon className="h-4 w-4 text-primary" />}
-      <h2 className="text-lg font-bold text-foreground">{children}</h2>
+      <h2 className="text-2xl font-bold tracking-[-0.02em] text-navy">{children}</h2>
     </div>
   );
 }
@@ -129,11 +129,7 @@ export function SolutionDetailPage() {
         })),
       }} />
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-[88px] pb-10 lg:pt-[104px] lg:pb-10">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
-          <div className="absolute top-[10%] left-[5%] h-[350px] w-[350px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
-        </div>
+      <section className="relative overflow-hidden bg-white pt-[104px] pb-12 lg:pt-[124px] lg:pb-14">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
@@ -151,7 +147,7 @@ export function SolutionDetailPage() {
               <span className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-primary/[0.06]">
                 <Icon className="h-5 w-5 text-primary" />
               </span>
-              <span className="rounded-none bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+              <span className="rounded-none bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold tracking-wide text-primary">
                 {solution.category}
               </span>
             </motion.div>
@@ -163,13 +159,6 @@ export function SolutionDetailPage() {
             >
               {solution.title}
             </motion.h1>
-
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
-            />
 
             {/* Description */}
             <motion.p
@@ -184,7 +173,7 @@ export function SolutionDetailPage() {
               <Link
                 to="/contact"
                 onClick={() => { trackConsultationClick("solution_hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="btn-premium inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white"
+                className="btn-primary"
               >
                 Book a Free Consultation
                 <ArrowRight className="h-4 w-4" />
@@ -192,7 +181,7 @@ export function SolutionDetailPage() {
               <Link
                 to="/contact"
                 onClick={() => { trackConsultationClick("solution_hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="btn-glass inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-foreground"
+                className="btn-secondary"
               >
                 Get Free Advice
                 <MessageCircle className="h-4 w-4" />
@@ -209,8 +198,7 @@ export function SolutionDetailPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative overflow-hidden rounded-3xl"
-            style={{ boxShadow: "0 4px 24px rgba(37,99,235,0.08), 0 16px 64px rgba(0,0,0,0.06)" }}
+            className="relative overflow-hidden border border-border"
           >
             <img
               src={solution.heroImage}
@@ -223,15 +211,13 @@ export function SolutionDetailPage() {
               onError={handleImgError}
               className="h-64 w-full object-cover sm:h-80 lg:h-[450px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </motion.div>
         </div>
       </section>
 
       {/* Overview */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[20%] right-[5%] h-[300px] w-[300px] rounded-circle bg-[#dbeafe] opacity-[0.06] blur-[100px]" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -279,7 +265,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Key Features */}
-      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -318,7 +304,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Benefits */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -340,7 +326,7 @@ export function SolutionDetailPage() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex items-start gap-3 rounded-2xl border border-white/40 bg-white p-4"
+                className="flex items-start gap-3 rounded-2xl border border-border bg-white p-4"
               >
                 <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-emerald-100">
                   <Check className="h-3 w-3 text-emerald-600" />
@@ -353,7 +339,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Our Process */}
-      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -372,7 +358,7 @@ export function SolutionDetailPage() {
             className="relative"
           >
             {/* Connecting line */}
-            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/20 via-primary/10 to-transparent hidden sm:block" />
+            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-primary/15 hidden sm:block" />
 
             <div className="space-y-6">
               {solution.process.map((step, i) => (
@@ -384,7 +370,7 @@ export function SolutionDetailPage() {
                   <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-none bg-primary text-[13px] font-bold text-white shadow-md">
                     {i + 1}
                   </span>
-                  <div className="rounded-2xl border border-white/40 bg-white p-5 flex-1">
+                  <div className="rounded-2xl border border-border bg-white p-5 flex-1">
                     <h3 className="text-[15px] font-bold text-foreground mb-1">{step.step}</h3>
                     <p className="text-[14px] leading-relaxed text-muted-foreground">{step.description}</p>
                   </div>
@@ -396,7 +382,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Technologies Used */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -418,7 +404,7 @@ export function SolutionDetailPage() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="rounded-2xl border border-white/40 bg-white p-4"
+                className="rounded-2xl border border-border bg-white p-4"
               >
                 <span className="inline-block rounded-none bg-primary/[0.06] px-3 py-1 text-[12px] font-semibold text-primary mb-2">
                   {tech.name}
@@ -431,7 +417,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Why Choose YESBE */}
-      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -453,7 +439,7 @@ export function SolutionDetailPage() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="rounded-2xl border border-primary/10 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-6"
+                className="rounded-2xl border border-primary/10 bg-slate-50 p-6"
               >
                 <h3 className="text-[15px] font-bold text-foreground mb-1">{adv.title}</h3>
                 <p className="text-[13px] leading-relaxed text-muted-foreground">{adv.description}</p>
@@ -464,7 +450,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* Example project scope */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -473,8 +459,8 @@ export function SolutionDetailPage() {
             transition={{ duration: 0.5 }}
           >
             <SectionHeading icon={Target}>Example Project Scope</SectionHeading>
-            <div className="rounded-none border border-white/40 bg-white p-6 sm:p-8" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}>
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">Portfolio build</p>
+            <div className="rounded-none border border-border bg-white p-6 sm:p-8" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}>
+              <p className="mb-2 text-xs font-bold tracking-wide text-primary">Portfolio build</p>
               <h3 className="text-[17px] font-bold text-foreground mb-2">{solution.exampleProject.title}</h3>
               <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">{solution.exampleProject.scope}</p>
               <div className="inline-flex items-center gap-2 rounded-none bg-primary/[0.06] px-4 py-2">
@@ -497,7 +483,7 @@ export function SolutionDetailPage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -526,7 +512,7 @@ export function SolutionDetailPage() {
 
       {/* Related Solutions */}
       {relatedSolutionsData.length > 0 && (
-        <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9">
+        <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -551,7 +537,7 @@ export function SolutionDetailPage() {
                     <Link
                       to={`/services/${rel.slug}`}
                       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                      className="group block rounded-2xl border border-white/40 bg-white p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
+                      className="group block rounded-2xl border border-border bg-white p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
                     >
                       <div className="flex items-center gap-3 mb-2">
                         <span className="inline-flex items-center justify-center h-8 w-8 rounded-lg bg-primary/[0.06]">
@@ -580,14 +566,14 @@ export function SolutionDetailPage() {
       )}
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden bg-white py-6 lg:py-9">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="rounded-none bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] p-8 sm:p-12 text-center"
+            className="rounded-none bg-primary p-8 sm:p-12 text-center"
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to build your project?</h2>
             <p className="text-[15px] text-white/80 max-w-xl mx-auto mb-6">

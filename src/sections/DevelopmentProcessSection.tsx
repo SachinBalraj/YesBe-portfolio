@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
 import {
   Search, FileText, Palette, Code, TestTube, Rocket, LifeBuoy,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { SectionHeading } from "@/components/common/SectionHeading";
 
 interface Step {
   icon: LucideIcon;
@@ -12,165 +12,44 @@ interface Step {
 }
 
 const steps: Step[] = [
-  {
-    icon: Search,
-    title: "Discovery",
-    description: "Understand business goals, requirements, target audience, and project scope.",
-    duration: "1–2 days",
-  },
-  {
-    icon: FileText,
-    title: "Planning",
-    description: "Prepare project roadmap, architecture, technology stack, milestones, and delivery plan.",
-    duration: "2–3 days",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Design modern interfaces, user experience flows, prototypes, and obtain client approval.",
-    duration: "3–5 days",
-  },
-  {
-    icon: Code,
-    title: "Development",
-    description: "Develop the complete solution including frontend, backend, APIs, database, and core features.",
-    duration: "10–14 days",
-  },
-  {
-    icon: TestTube,
-    title: "Testing & QA",
-    description: "Functional testing, responsive testing, security checks, bug fixes, and performance optimization.",
-    duration: "2–3 days",
-  },
-  {
-    icon: Rocket,
-    title: "Deployment",
-    description: "Deploy the application, configure domain, SSL, hosting, SEO settings, analytics, and production.",
-    duration: "1–2 days",
-  },
-  {
-    icon: LifeBuoy,
-    title: "Support",
-    description: "Post-launch support, performance monitoring, bug resolution, and minor improvements.",
-    duration: "30 days free",
-  },
+  { icon: Search, title: "Discovery", description: "Understand business goals, requirements, target audience and project scope.", duration: "1–2 days" },
+  { icon: FileText, title: "Planning", description: "Prepare the roadmap, architecture, technology stack, milestones and delivery plan.", duration: "2–3 days" },
+  { icon: Palette, title: "UI/UX Design", description: "Design interfaces, user flows and prototypes for client approval.", duration: "3–5 days" },
+  { icon: Code, title: "Development", description: "Build frontend, backend, APIs, database and core features.", duration: "10–14 days" },
+  { icon: TestTube, title: "Testing & QA", description: "Functional, responsive and security testing with performance checks.", duration: "2–3 days" },
+  { icon: Rocket, title: "Deployment", description: "Deploy, configure domain, SSL, hosting, SEO, analytics and go live.", duration: "1–2 days" },
+  { icon: LifeBuoy, title: "Support", description: "Post-launch monitoring, bug resolution and minor improvements.", duration: "30 days free" },
 ];
 
 export function DevelopmentProcessSection() {
   return (
-    <section
-      id="process"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9"
-      aria-label="Development process — Discovery, Planning, Design, Development, Testing, Deployment, Support"
-    >
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
-          >
-            Process
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
-          >
-            Our Development{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Process</span>
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
-          >
-            A clear, structured process — from first call to post-launch support.
-          </motion.p>
-        </div>
+    <section id="process" className="bg-white py-16 sm:py-20 lg:py-24" aria-label="Development process">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="How we work"
+          description="A clear, structured process — from first call to post-launch support."
+        />
 
-        {/* Row 1: Steps 1–4 */}
-        <div className="relative grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.slice(0, 4).map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="relative w-full max-w-[260px] text-center"
-            >
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/[0.06] border border-white/40">
-                <step.icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
+        <ol className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, i) => (
+            <li key={step.title} className="border-t border-border pt-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[12px] font-semibold tabular-nums text-primary">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <step.icon className="h-4 w-4 text-slate-400" strokeWidth={1.7} aria-hidden="true" />
               </div>
-              <div className="mb-1 text-[11px] font-bold uppercase tracking-wider text-primary/60">
-                Step {i + 1}
-              </div>
-              <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{step.title}</h3>
-              <p className="mb-2 text-[13px] leading-relaxed text-muted-foreground">{step.description}</p>
-              <span className="inline-block rounded-none bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-primary">
-                {step.duration}
-              </span>
-            </motion.div>
+              <h3 className="mt-2 text-[15px] font-semibold text-navy">{step.title}</h3>
+              <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted-foreground">{step.description}</p>
+              <p className="mt-2 text-[12px] font-medium text-slate-500">{step.duration}</p>
+            </li>
           ))}
-        </div>
+        </ol>
 
-        {/* Row 2: Steps 5–7 */}
-        <div className="relative mt-8 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:justify-items-center">
-          {steps.slice(4).map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: (i + 4) * 0.08 }}
-              className="relative w-full max-w-[260px] text-center"
-            >
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/[0.06] border border-white/40">
-                <step.icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
-              </div>
-              <div className="mb-1 text-[11px] font-bold uppercase tracking-wider text-primary/60">
-                Step {i + 5}
-              </div>
-              <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{step.title}</h3>
-              <p className="mb-2 text-[13px] leading-relaxed text-muted-foreground">{step.description}</p>
-              <span className="inline-block rounded-none bg-primary/[0.06] px-3 py-0.5 text-[11px] font-semibold text-primary">
-                {step.duration}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 text-center"
-        >
-          <div className="mx-auto max-w-2xl rounded-2xl border border-white/40 bg-gradient-to-br from-[#f8fbff] to-[#eff6ff] p-8">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa] px-5 py-2 text-sm font-bold text-white shadow-sm">
-              ⚡ Typical Project Delivery Time
-            </span>
-            <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-              Most YESBE projects are successfully designed, developed, tested, and deployed within{" "}
-              <span className="font-semibold text-foreground">30 days</span>, depending on project scope and client feedback timelines.
-            </p>
-          </div>
-        </motion.div>
+        <p className="mt-12 border border-border bg-slate-50 px-6 py-5 text-[14px] leading-relaxed text-muted-foreground">
+          Most YESBE projects are designed, developed, tested and deployed within{" "}
+          <span className="font-semibold text-navy">30 days</span>, depending on scope and client feedback timelines.
+        </p>
       </div>
     </section>
   );

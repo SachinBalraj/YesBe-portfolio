@@ -61,7 +61,7 @@ export function ArticleDetailPage() {
         </p>
         <Link
           to="/insights"
-          className="mt-6 inline-flex items-center gap-2 rounded-none bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
+          className="mt-6 inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Insights

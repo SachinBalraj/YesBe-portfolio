@@ -60,15 +60,14 @@ export const ArticleCard = memo(function ArticleCard({ article, highlight }: Art
           />
         ) : (
           <div
-            className="h-full w-full bg-gradient-to-br from-[#eff6ff] via-white to-[#eaf6ff]"
+            className="h-full w-full bg-slate-50"
             aria-hidden="true"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         
         {/* Content Type Pill overlay */}
         <div className="absolute top-3 right-3 z-20">
-          <span className="rounded-none bg-slate-900/70 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold text-white shadow-sm">
+          <span className="rounded-none bg-slate-900/80 px-2.5 py-1 text-[10px] font-bold text-white shadow-sm">
             {article.contentType ?? "Article"}
           </span>
         </div>

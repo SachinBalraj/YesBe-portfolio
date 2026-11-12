@@ -20,7 +20,7 @@ export function TechStackSection() {
   return (
     <section
       id="tech-stack"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-6 lg:py-9"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
       aria-label="Technology stack — React, Node.js, Python, MongoDB, AWS, Power BI, OpenAI, and more"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -30,7 +30,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold tracking-[0.08em] text-primary"
           >
             Technology Stack
           </motion.span>
@@ -42,14 +42,14 @@ export function TechStackSection() {
             className="text-3xl font-extrabold tracking-[-0.02em] text-foreground sm:text-4xl"
           >
             Technologies I{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Work With</span>
+            <span className="text-primary">Work With</span>
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-primary"
           />
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -70,7 +70,7 @@ export function TechStackSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-none border border-white/50 bg-white/80 p-5 transition-all duration-300 hover:border-primary/10 hover:bg-white"
+              className="rounded-none border border-border bg-white/80 p-5 transition-all duration-300 hover:border-primary/10 hover:bg-white"
               style={{ boxShadow: "0 1px 2px rgba(37,99,235,0.02)" }}
             >
               <h3 className="mb-3 text-[13px] font-bold text-primary">{group.category}</h3>

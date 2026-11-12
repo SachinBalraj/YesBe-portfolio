@@ -94,12 +94,8 @@ export function ServicesPage() {
         hideBreadcrumbNav
       />
 
-      <section className="relative bg-white py-6 lg:py-9">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute top-[5%] right-[10%] h-[400px] w-[400px] rounded-circle bg-[#dbeafe] opacity-[0.06] blur-[120px]" />
-          <div className="absolute bottom-[10%] left-[5%] h-[300px] w-[300px] rounded-circle bg-[#ede9fe] opacity-[0.05] blur-[100px]" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="sr-only">Our Services</h2>
           <motion.div
             variants={staggerContainer}
@@ -112,22 +108,20 @@ export function ServicesPage() {
               <motion.div
                 key={service.name}
                 variants={fadeInUp}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="card-glass group flex flex-col rounded-2xl p-6"
+                className="group flex flex-col border border-border bg-white p-6 transition-colors hover:border-slate-300"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#2563eb] to-[#60a5fa] text-white shadow-md shadow-blue-500/20">
-                  <service.icon className="h-6 w-6" />
+                <div className="mb-4 flex h-10 w-10 items-center justify-center bg-primary/[0.06]">
+                  <service.icon className="h-5 w-5 text-primary" strokeWidth={1.7} />
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-foreground">{service.name}</h3>
-                <p className="mb-5 flex-1 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+                <h3 className="mb-2 text-[16px] font-semibold text-navy">{service.name}</h3>
+                <p className="mb-5 flex-1 text-[13.5px] leading-relaxed text-muted-foreground">{service.description}</p>
                 <Link
                   to={`/services/${service.slug}`}
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-[#1d4ed8]"
+                  className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary transition-colors hover:text-[#1d4ed8]"
                 >
-                  Explore {service.name}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Explore
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </motion.div>
             ))}

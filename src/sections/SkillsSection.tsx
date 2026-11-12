@@ -165,7 +165,7 @@ const marqueeItems = [
 /* ─────────────── Sub-components ─────────────── */
 
 const cardBase =
-  "relative flex flex-col rounded-none border border-white/40 bg-white/80 backdrop-blur-sm p-6 transition-all duration-350 ease-out cursor-default";
+  "relative flex flex-col border border-border bg-white p-6 transition-all duration-350 ease-out cursor-default";
 
 const cardShadow = {
   boxShadow: "0 1px 3px rgba(37,99,235,0.04), 0 4px 16px rgba(37,99,235,0.03)",
@@ -180,7 +180,7 @@ function StatCard({ stat, index }: { stat: (typeof stats)[number]; index: number
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
       whileHover={{ y: -8, scale: 1.03 }}
-      className="glass-card relative flex flex-col items-center rounded-none border border-white/40 bg-white/70 p-6 text-center backdrop-blur-sm"
+      className="card-surface flex flex-col items-center border border-border bg-white p-6 text-center"
       style={{ ...cardShadow, transition: "box-shadow 0.35s ease, border-color 0.35s ease" }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = "0 8px 32px rgba(37,99,235,0.12), 0 16px 48px rgba(37,99,235,0.06)";
@@ -191,7 +191,7 @@ function StatCard({ stat, index }: { stat: (typeof stats)[number]; index: number
         e.currentTarget.style.borderColor = "#E5F0FF";
       }}
     >
-      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#dbeafe] to-[#eff6ff]">
+      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.06]">
         <Icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
       </div>
       <div className="text-3xl font-extrabold text-foreground">
@@ -241,7 +241,7 @@ function SkillBentoCard({ skill, index }: { skill: SkillCard; index: number }) {
     >
       {/* Icon + Ring row */}
       <div className="mb-5 flex items-start justify-between">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#dbeafe] to-[#eff6ff] transition-transform duration-350 group-hover:rotate-6">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/[0.06] transition-transform duration-350 group-hover:rotate-6">
           <Icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
         </div>
         <ProgressRing percent={skill.percent} />
@@ -256,7 +256,7 @@ function SkillBentoCard({ skill, index }: { skill: SkillCard; index: number }) {
         {skill.chips.map((c) => (
           <span
             key={c}
-            className="rounded-none border border-white/40 bg-white px-3 py-1 text-[11px] font-semibold text-primary transition-all duration-200 hover:bg-[#2563eb] hover:text-white hover:-translate-y-0.5"
+            className="rounded-none border border-border bg-white px-3 py-1 text-[11px] font-semibold text-primary transition-all duration-200 hover:bg-[#2563eb] hover:text-white "
           >
             {c}
           </span>
@@ -281,35 +281,9 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-white py-6 lg:py-9"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
       aria-label="Skills and Technologies — Full stack, AI, databases, cloud, analytics, and digital growth expertise"
     >
-      {/* ── Background ── */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,#eaf6ff_0%,transparent_60%)]" />
-        <div className="absolute top-[8%] left-[5%] h-[400px] w-[400px] rounded-circle bg-[#dbeafe] opacity-[0.10] blur-[120px]" />
-        <div className="absolute bottom-[15%] right-[8%] h-[350px] w-[350px] rounded-circle bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
-        <div
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage: "radial-gradient(circle, #2563eb 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-        {/* Particles — hidden on mobile for performance */}
-        <div className="hidden sm:block">
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-circle bg-[#2563eb]/[0.03]"
-              style={{ width: 6 + i * 3, height: 6 + i * 3, left: `${12 + i * 16}%`, top: `${18 + (i % 3) * 22}%` }}
-              animate={{ y: [0, -18, 0], opacity: [0.12, 0.3, 0.12] }}
-              transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.6, ease: "easeInOut" }}
-            />
-          ))}
-        </div>
-      </div>
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ── Header ── */}
         <motion.div
@@ -317,20 +291,15 @@ export function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-8"
+          className="mb-8 max-w-2xl"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-            <span className="inline-block h-1.5 w-1.5 rounded-circle bg-[#2563eb]" />
+          <span className="mb-3 block text-[13px] font-semibold text-primary">
             Skills &amp; Technologies
           </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Skills &amp;{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
-              Technologies
-            </span>
+          <h2 className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl">
+            Skills &amp; Technologies
           </h2>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
-          <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
             Modern technologies, AI, cloud platforms, and automation — all under one roof.
           </p>
         </motion.div>
@@ -355,7 +324,7 @@ export function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-6"
+          className="mb-6"
         >
           <h3 className="text-xl font-bold text-foreground">Technologies We Work With</h3>
         </motion.div>
@@ -375,7 +344,7 @@ export function SkillsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.03 }}
               whileHover={{ y: -4, scale: 1.08 }}
-              className="rounded-none border border-white/40 bg-white px-4 py-2 text-[13px] font-semibold text-foreground shadow-sm transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white cursor-default"
+              className="rounded-none border border-border bg-white px-4 py-2 text-[13px] font-semibold text-foreground shadow-sm transition-colors duration-200 hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white cursor-default"
             >
               {c}
             </motion.span>
@@ -384,14 +353,12 @@ export function SkillsSection() {
 
         {/* ── Marquee ── */}
         <div className="relative">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
-          <div className="overflow-hidden rounded-2xl border border-white/40 bg-muted py-4">
+          <div className="overflow-hidden rounded-2xl border border-border bg-muted py-4">
             <div className="flex w-max animate-marquee hover:[animation-play-state:paused]" style={{ gap: "24px" }}>
               {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((tech, i) => (
                 <div
                   key={`${tech.name}-${i}`}
-                  className="group flex shrink-0 items-center gap-2 rounded-none border border-white/50 bg-white/80 px-3.5 py-1.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-white hover:shadow-[0_2px_12px_rgba(37,99,235,0.10)] hover:scale-[1.05]"
+                  className="group flex shrink-0 items-center gap-2 border border-border bg-white px-3.5 py-1.5 transition-colors duration-200 hover:border-primary/30"
                 >
                   <tech.Icon
                     size={18}

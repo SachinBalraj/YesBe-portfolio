@@ -152,7 +152,7 @@ export function SearchPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-1.5 rounded-none border border-primary/15 bg-white/80 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-primary shadow-xs"
+            className="inline-flex items-center gap-1.5 rounded-none border border-primary/15 bg-white px-4 py-1.5 text-xs font-semibold text-primary shadow-xs"
           >
             <Sparkles className="h-3.5 w-3.5" />
             YESBE Intelligent Search
@@ -400,7 +400,7 @@ export function SearchPage() {
 
               {/* Suggestions Box */}
               <div className="mt-6 rounded-2xl bg-slate-50 p-5 text-left dark:bg-slate-800/60">
-                <h3 className="text-xs font-bold text-foreground uppercase tracking-wider flex items-center gap-1.5">
+                <h3 className="text-xs font-bold text-foreground tracking-wide flex items-center gap-1.5">
                   <HelpCircle className="h-4 w-4 text-primary" />
                   Try these helpful suggestions:
                 </h3>
@@ -425,7 +425,7 @@ export function SearchPage() {
                 <button
                   type="button"
                   onClick={clearAllFilters}
-                  className="inline-flex items-center gap-2 rounded-none bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg "
                 >
                   <Grid className="h-4 w-4" />
                   View All Articles

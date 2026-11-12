@@ -42,7 +42,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
       className={cn(
         "relative",
         sticky &&
-          "sticky top-[56px] z-40 border-b border-slate-100 bg-white/85 backdrop-blur-xl",
+          "sticky top-[56px] z-40 border-b border-slate-100 bg-white",
         className,
       )}
     >
@@ -69,7 +69,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
               className={cn(
                 "shrink-0 rounded-none px-4 py-2 text-[13px] font-semibold transition-all duration-200",
                 !activeSlug
-                  ? "bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
+                  ? "bg-primary text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
                   : "border border-slate-200 bg-white text-muted-foreground hover:border-primary/30 hover:text-primary",
               )}
             >
@@ -82,7 +82,7 @@ export function CategoryNav({ activeSlug, className, sticky = true }: CategoryNa
                 className={cn(
                   "shrink-0 rounded-none px-4 py-2 text-[13px] font-semibold transition-all duration-200",
                   activeSlug === cat.slug
-                    ? "bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
+                    ? "bg-primary text-white shadow-[0_4px_16px_rgba(37,99,235,0.25)]"
                     : "border border-slate-200 bg-white text-muted-foreground hover:border-primary/30 hover:text-primary",
                 )}
               >

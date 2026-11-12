@@ -158,7 +158,7 @@ export function CategoryPage() {
         </p>
         <Link
           to="/insights"
-          className="mt-6 inline-flex items-center gap-2 rounded-none bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
+          className="mt-6 inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg "
         >
           <ArrowLeft className="h-4 w-4" />
           Explore Insights
@@ -228,7 +228,7 @@ export function CategoryPage() {
               className="text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl"
             >
               {category.name}{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] bg-clip-text text-transparent">
+              <span className="text-primary">
                 Guides & Insights
               </span>
             </motion.h1>
@@ -252,7 +252,7 @@ export function CategoryPage() {
               >
                 <Link
                   to={category.solutionCtaHref ?? "/services"}
-                  className="inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-xs font-bold text-white shadow-md transition-all hover:bg-primary/90 hover:shadow-lg "
                 >
                   {category.solutionCtaText}
                   <ArrowRight className="h-4 w-4" />
@@ -272,7 +272,7 @@ export function CategoryPage() {
           <div className="mb-10">
             <div className="mb-4 flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-primary" />
-              <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <span className="text-xs font-bold tracking-wide text-muted-foreground">
                 Featured in {category.name}
               </span>
             </div>
@@ -454,9 +454,9 @@ export function CategoryPage() {
         </div>
 
         {/* 10. Conversion CTA Section */}
-        <div className="mt-10 overflow-hidden rounded-3xl bg-gradient-to-br from-[#1e293b] via-[#0f172a] to-[#1e1b4b] p-8 sm:p-12 text-white shadow-2xl relative">
+        <div className="mt-10 overflow-hidden rounded-3xl bg-navy p-8 sm:p-12 text-white shadow-2xl relative">
           <div className="relative z-10 max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-none bg-white/10 px-3.5 py-1 text-xs font-bold text-blue-300 backdrop-blur-md mb-4">
+            <span className="inline-flex items-center gap-1.5 rounded-none bg-white/10 px-3.5 py-1 text-xs font-bold text-blue-200 mb-4">
               <Sparkles className="h-3.5 w-3.5" />
               Technology Transformation
             </span>
@@ -470,14 +470,14 @@ export function CategoryPage() {
               <Link
                 to="/contact"
                 onClick={() => trackConsultationClick("knowledge_category")}
-                className="inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-xs font-bold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-xs font-bold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl "
               >
                 Book a Free Consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-none border border-white/20 bg-white/10 px-6 py-3 text-xs font-bold text-white backdrop-blur-md hover:bg-white/20 transition-all"
+                className="inline-flex items-center gap-2 rounded-none border border-white/30 bg-transparent px-6 py-3 text-xs font-bold text-white hover:bg-white/10 transition-colors"
               >
                 <Mail className="h-4 w-4" />
                 Contact YESBE

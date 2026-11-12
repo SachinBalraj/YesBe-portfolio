@@ -6,7 +6,7 @@ import { articles } from "@/knowledge/articles";
 import { formatDate } from "@/components/knowledge/share";
 import { FOUNDER_AUTHOR_NAME } from "@/constants";
 
-const card = "rounded-none border border-white/40 bg-white p-6";
+const card = "rounded-none border border-border bg-white p-6";
 
 /**
  * Latest writing by the founder, newest first.
@@ -24,7 +24,7 @@ const featured = founderArticles.slice(0, 6);
 export function FounderInsightsSection() {
   return (
     <section
-      className="relative overflow-hidden bg-white py-6 lg:py-9"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
       aria-labelledby="founder-latest-insights"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -40,21 +40,18 @@ export function FounderInsightsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="mx-auto mb-10 max-w-2xl text-center"
+          className="mb-10 max-w-2xl"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-            Insights
-          </span>
+          <span className="mb-3 block text-[13px] font-semibold text-primary">Insights</span>
           <h2
             id="founder-latest-insights"
-            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+            className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl"
           >
             Latest{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
+            <span className="text-primary">
               Insights &amp; Articles
             </span>
           </h2>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
           <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
             Practical writing on AI, ERP, web technologies and search — written
             by {FOUNDER_AUTHOR_NAME} for the YESBE Technologies Knowledge
@@ -73,7 +70,7 @@ export function FounderInsightsSection() {
             <motion.li key={article.slug} variants={fadeInUp}>
               <Link
                 to={`/insights/article/${article.slug}`}
-                className={`${card} group flex h-full flex-col transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]`}
+                className={`${card} group flex h-full flex-col transition-all duration-300  hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]`}
               >
                 <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-none bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
                   <BookOpen className="h-3 w-3" aria-hidden="true" />
@@ -116,7 +113,7 @@ export function FounderInsightsSection() {
         >
           <Link
             to="/insights"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md "
           >
             Browse the Insights
             <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />

@@ -70,12 +70,11 @@ export function NotFound() {
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="flex h-28 w-28 items-center justify-center rounded-none border border-white/40 bg-white/60 backdrop-blur-xl shadow-lg"
+            className="flex h-28 w-28 items-center justify-center rounded-none border border-border bg-white shadow-lg"
             style={{ boxShadow: "0 8px 40px rgba(37,99,235,0.10), inset 0 1px 0 rgba(255,255,255,0.8)" }}
           >
             <Compass className="h-12 w-12 text-primary" strokeWidth={1.5} />
           </motion.div>
-          <div className="absolute -inset-4 -z-10 rounded-circle bg-primary/[0.06] blur-[30px] animate-glow-pulse" />
         </motion.div>
 
         {/* 404 */}
@@ -85,7 +84,7 @@ export function NotFound() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="text-7xl font-extrabold tracking-tight text-foreground sm:text-8xl"
         >
-          <span className="text-gradient">404</span>
+          <span className="text-primary">404</span>
         </motion.div>
 
         {/* Title */}
@@ -123,7 +122,7 @@ export function NotFound() {
               placeholder="Search YESBE..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full rounded-xl border border-white/40 bg-white/60 backdrop-blur-sm py-3 pl-11 pr-4 text-sm text-foreground outline-none shadow-sm transition-all duration-300 focus:border-primary/30 focus:ring-2 focus:ring-primary/10"
+              className="w-full rounded-xl border border-border bg-white py-3 pl-11 pr-4 text-sm text-foreground outline-none shadow-sm transition-all duration-300 focus:border-primary/30 focus:ring-2 focus:ring-primary/10"
               aria-label="Search YESBE website"
             />
           </div>
@@ -173,13 +172,13 @@ export function NotFound() {
           transition={{ duration: 0.5, delay: 0.65 }}
           className="mt-10 w-full"
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Popular Pages</p>
+          <p className="mb-3 text-xs font-semibold tracking-wide text-muted-foreground">Popular Pages</p>
           <div className="flex flex-wrap justify-center gap-2">
             {suggestions.map((s) => (
               <Link
                 key={s.label}
                 to={s.href}
-                className="inline-flex items-center gap-1.5 rounded-none border border-white/40 bg-white/60 backdrop-blur-sm px-3.5 py-1.5 text-[12px] font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
+                className="inline-flex items-center gap-1.5 rounded-none border border-border bg-white px-3.5 py-1.5 text-[12px] font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
               >
                 {s.label}
                 <ArrowRight className="h-3 w-3" />

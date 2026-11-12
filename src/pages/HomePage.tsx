@@ -7,11 +7,12 @@ import { PremiumHero } from "@/components/sections/PremiumHero";
 const TechnologyMarquee = lazy(() =>
   import("@/components/TechnologyMarquee").then((m) => ({ default: m.TechnologyMarquee }))
 );
-const WhyChooseSection = lazy(() => import("@/sections/WhyChooseSection").then(m => ({ default: m.WhyChooseSection })));
+const CompanyIntroSection = lazy(() => import("@/sections/CompanyIntroSection").then(m => ({ default: m.CompanyIntroSection })));
 const SolutionsSection = lazy(() => import("@/sections/SolutionsSection").then(m => ({ default: m.SolutionsSection })));
 const IndustriesSection = lazy(() => import("@/sections/IndustriesSection").then(m => ({ default: m.IndustriesSection })));
 const PortfolioSection = lazy(() => import("@/sections/PortfolioSection").then(m => ({ default: m.PortfolioSection })));
-const BusinessResultsSection = lazy(() => import("@/sections/BusinessResultsSection").then(m => ({ default: m.BusinessResultsSection })));
+const DevelopmentProcessSection = lazy(() => import("@/sections/DevelopmentProcessSection").then(m => ({ default: m.DevelopmentProcessSection })));
+const MiniGuidesSection = lazy(() => import("@/sections/MiniGuidesSection").then(m => ({ default: m.MiniGuidesSection })));
 const ContactSection = lazy(() => import("@/sections/ContactSection").then(m => ({ default: m.ContactSection })));
 
 export function HomePage() {
@@ -32,40 +33,29 @@ export function HomePage() {
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PremiumHero />
-      <Suspense fallback={<div className="h-12" aria-hidden="true" />}>
-        <div className="contain-content-sm">
-          <TechnologyMarquee />
-        </div>
+      <Suspense fallback={<div className="h-40" aria-hidden="true" />}>
+        <TechnologyMarquee />
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <WhyChooseSection />
-        </div>
+        <CompanyIntroSection />
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <SolutionsSection />
-        </div>
+        <SolutionsSection />
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <IndustriesSection />
-        </div>
+        <IndustriesSection />
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <PortfolioSection />
-        </div>
+        <PortfolioSection />
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <BusinessResultsSection />
-        </div>
+        <DevelopmentProcessSection />
       </Suspense>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <ContactSection />
-        </div>
+        <MiniGuidesSection />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+        <ContactSection />
       </Suspense>
     </>
   );

@@ -14,6 +14,9 @@ export default defineConfig({
     host: true,
     port: 5173,
     open: false,
+    proxy: {
+      "/api": "http://localhost:3111",
+    },
   },
   preview: {
     host: true,

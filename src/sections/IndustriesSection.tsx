@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   GraduationCap, HeartPulse, ShoppingBag, UtensilsCrossed,
-  Factory, Landmark, Building, Truck, Home, Rocket, Building2, Globe,
+  Factory, Landmark, Truck, Home, Rocket, Building2, Globe, ArrowRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { SectionHeading } from "@/components/common/SectionHeading";
 
 interface Industry {
   icon: LucideIcon;
@@ -14,91 +14,56 @@ interface Industry {
 }
 
 const industries: Industry[] = [
-  { icon: GraduationCap, name: "Education", description: "School and college ERP, student management, result automation, and e-learning.", slug: "education" },
-  { icon: HeartPulse, name: "Healthcare", description: "Hospital management, patient records, scheduling, and pharmacy tracking.", slug: "healthcare" },
-  { icon: ShoppingBag, name: "Retail", description: "E-commerce, inventory management, POS systems, and loyalty programs.", slug: "retail" },
-  { icon: UtensilsCrossed, name: "Restaurants", description: "QR ordering, AI billing, kitchen displays, and inventory forecasting.", slug: "hospitality" },
-  { icon: Factory, name: "Manufacturing", description: "Production tracking, supply chain management, and quality dashboards.", slug: "manufacturing" },
-  { icon: Landmark, name: "Finance", description: "Financial dashboards, automated reporting, and compliance tools.", slug: "finance" },
-  { icon: Building, name: "Construction", description: "Project management, material tracking, and cost estimation tools.", slug: "manufacturing" },
-  { icon: Truck, name: "Logistics", description: "Fleet management, delivery tracking, and route optimization.", slug: "logistics" },
-  { icon: Home, name: "Real Estate", description: "Property platforms, CRM, lead management, and virtual tours.", slug: "real-estate" },
-  { icon: Rocket, name: "Startups", description: "MVP development, rapid prototyping, and go-to-market strategy.", slug: "startups" },
-  { icon: Building2, name: "SMEs", description: "Affordable websites, automation, dashboards, and tech consulting.", slug: "smes" },
-  { icon: Globe, name: "Enterprises", description: "Large-scale ERP, custom software, cloud, and AI integration.", slug: "large-enterprises" },
-  { icon: Landmark, name: "Government", description: "Portals, citizen services, e-governance, and compliance systems.", slug: "smes" },
+  { icon: GraduationCap, name: "Education", description: "School and college ERP, student management, result automation and e-learning.", slug: "education" },
+  { icon: HeartPulse, name: "Healthcare", description: "Hospital management, patient records, scheduling and pharmacy tracking.", slug: "healthcare" },
+  { icon: ShoppingBag, name: "Retail", description: "E-commerce, inventory management, POS systems and loyalty programs.", slug: "retail" },
+  { icon: UtensilsCrossed, name: "Hospitality", description: "QR ordering, billing, kitchen displays and inventory forecasting.", slug: "hospitality" },
+  { icon: Factory, name: "Manufacturing", description: "Production tracking, supply chain management and quality dashboards.", slug: "manufacturing" },
+  { icon: Landmark, name: "Finance", description: "Financial dashboards, automated reporting and compliance tools.", slug: "finance" },
+  { icon: Truck, name: "Logistics", description: "Fleet management, delivery tracking and route optimization.", slug: "logistics" },
+  { icon: Home, name: "Real Estate", description: "Property platforms, CRM, lead management and virtual tours.", slug: "real-estate" },
+  { icon: Rocket, name: "Startups", description: "MVP development, rapid prototyping and go-to-market support.", slug: "startups" },
+  { icon: Building2, name: "SMEs", description: "Affordable websites, automation, dashboards and tech consulting.", slug: "smes" },
+  { icon: Globe, name: "Large Enterprises", description: "Large-scale ERP, custom software, cloud and AI integration.", slug: "large-enterprises" },
 ];
 
 export function IndustriesSection() {
   return (
     <section
       id="industries"
-      className="relative overflow-hidden bg-white py-6 lg:py-9"
-      aria-label="Industries served — Education, Healthcare, Retail, Manufacturing, Finance, and more"
+      className="bg-white py-16 sm:py-20 lg:py-24"
+      aria-label="Industries served"
     >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,#f0f7ff_0%,transparent_60%)]" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 text-center lg:mb-10">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-none border border-primary/10 bg-primary/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-primary"
-          >
-            Industries
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-[-0.02em] text-foreground sm:text-4xl"
-          >
-            Industries We{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Serve</span>
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-[3px] w-12 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-5 max-w-2xl text-[14px] leading-[1.7] text-muted-foreground"
-          >
-            Custom technology solutions for every industry — from startups to enterprises.
-          </motion.p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {industries.map((industry, i) => (
-            <motion.article
-              key={industry.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Industries we serve"
+          description="We adapt the same engineering discipline to the workflows, compliance needs and constraints of each sector."
+          action={
+            <Link
+              to="/industries"
+              className="inline-flex items-center gap-2 py-1 text-[14px] font-semibold text-primary hover:text-[#1d4ed8]"
             >
-              <Link
-                to={`/industries/${industry.slug}`}
-                className="group card-glass block rounded-none p-5 transition-all duration-300"
-              >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.05] transition-all duration-300 group-hover:bg-primary/[0.1] group-hover:scale-105">
-                  <industry.icon className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
-                </div>
-                <h3 className="mb-1 text-[14px] font-bold text-foreground">{industry.name}</h3>
-                <p className="text-[12px] leading-[1.6] text-muted-foreground">{industry.description}</p>
-              </Link>
-            </motion.article>
+              Explore industries
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          }
+        />
+
+        <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {industries.map((industry) => (
+            <Link
+              key={industry.slug}
+              to={`/industries/${industry.slug}`}
+              className="group flex items-start gap-4 border-t border-border pt-5"
+            >
+              <industry.icon className="mt-0.5 h-5 w-5 shrink-0 text-primary" strokeWidth={1.7} aria-hidden="true" />
+              <div>
+                <h3 className="text-[15px] font-semibold text-navy group-hover:text-primary">{industry.name}</h3>
+                <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted-foreground">
+                  {industry.description}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

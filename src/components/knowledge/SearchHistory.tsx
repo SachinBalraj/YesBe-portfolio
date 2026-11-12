@@ -22,7 +22,7 @@ export function SearchHistory({ onSelect }: SearchHistoryProps) {
   return (
     <div className="rounded-2xl border border-slate-200/80 bg-white p-5">
       <div className="mb-3 flex items-center justify-between">
-        <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+        <p className="text-[11px] font-bold tracking-wide text-muted-foreground">
           Recent searches
         </p>
         <button

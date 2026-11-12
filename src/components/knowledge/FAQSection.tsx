@@ -33,11 +33,11 @@ export function FAQSection({
     <section aria-label="Frequently asked questions" className="mt-10">
       <div className="mb-8 max-w-3xl">
         <div className="mb-4 flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-3xl bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white shadow-lg shadow-[#1d4ed8]/10">
+          <span className="flex h-10 w-10 items-center justify-center bg-primary text-white">
             <MessageCircleQuestion className="h-5 w-5" />
           </span>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+            <p className="text-[13px] font-semibold text-primary">
               Frequently Asked Questions
             </p>
           </div>

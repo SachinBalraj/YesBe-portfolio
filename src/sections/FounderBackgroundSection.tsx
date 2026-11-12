@@ -25,18 +25,15 @@ function SectionHeader({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}
-      className="mx-auto mb-10 max-w-2xl text-center"
+      className="mb-10 max-w-2xl"
     >
-      <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-        {eyebrow}
-      </span>
-      <h2 id={id} className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+      <span className="mb-3 block text-[13px] font-semibold text-primary">{eyebrow}</span>
+      <h2 id={id} className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl">
         {title}{" "}
-        <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
+        <span className="text-primary">
           {highlight}
         </span>
       </h2>
-      <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
       <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
         {description}
       </p>
@@ -45,7 +42,7 @@ function SectionHeader({
 }
 
 const card =
-  "rounded-none border border-white/40 bg-white p-6";
+  "rounded-none border border-border bg-white p-6";
 
 /* ── Content ── */
 
@@ -114,11 +111,10 @@ const experience: {
 export function FounderBackgroundSection() {
   return (
     <section
-      className="relative overflow-hidden bg-white py-6 lg:py-9"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
       aria-labelledby="about-sachin-balraj"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[5%] left-[5%] h-[320px] w-[320px] rounded-circle bg-[#dbeafe] opacity-[0.08] blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -169,9 +165,9 @@ export function FounderBackgroundSection() {
               <motion.div
                 key={title}
                 variants={fadeInUp}
-                className={`${card} transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(37,99,235,0.10)]`}
+                className={`${card} transition-all duration-300  hover:shadow-[0_12px_40px_rgba(37,99,235,0.10)]`}
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#dbeafe] to-[#eff6ff]">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.06]">
                   <Icon className="h-5 w-5 text-primary" strokeWidth={1.8} aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground">{title}</h3>

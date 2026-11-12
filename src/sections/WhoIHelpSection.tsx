@@ -26,17 +26,17 @@ export function WhoIHelpSection() {
   return (
     <section
       id="who-i-help"
-      className="relative overflow-hidden bg-white py-6 lg:py-9"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
       aria-label="Who I help — Small businesses, startups, restaurants, schools, hospitals, retail, corporate, manufacturing"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 text-center">
+        <div className="mb-8">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+            className="mb-3 block text-[13px] font-semibold text-primary"
           >
             Who I Help
           </motion.span>
@@ -45,18 +45,11 @@ export function WhoIHelpSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+            className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl"
           >
             Businesses I{" "}
-            <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">Work With</span>
+            <span className="text-primary">Work With</span>
           </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mt-4 h-1 w-16 origin-left rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
-          />
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -67,10 +60,9 @@ export function WhoIHelpSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-none border border-white/40 bg-white p-5 transition-all duration-300 hover:-translate-y-1"
-              style={{ boxShadow: "0 1px 3px rgba(37,99,235,0.03)" }}
+              className="border border-border bg-white p-5 transition-colors duration-200"
             >
-              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06]">
+              <div className="mb-3 flex h-11 w-11 items-center justify-center bg-primary/[0.06]">
                 <client.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
               </div>
               <h3 className="mb-1.5 text-[15px] font-bold text-foreground">{client.title}</h3>

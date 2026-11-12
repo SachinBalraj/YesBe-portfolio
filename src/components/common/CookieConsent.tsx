@@ -216,7 +216,7 @@ function CookieConsentComponent() {
                   )}
                   <button
                     onClick={handleAcceptAll}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1E40AF] px-5 py-3 text-[13px] font-semibold text-white shadow-[0_1px_4px_rgba(37,99,235,0.2)] transition-all duration-200 hover:shadow-[0_2px_8px_rgba(37,99,235,0.3)]"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-5 py-3 text-[13px] font-semibold text-white shadow-[0_1px_4px_rgba(37,99,235,0.2)] transition-all duration-200 hover:shadow-[0_2px_8px_rgba(37,99,235,0.3)]"
                   >
                     Accept All
                   </button>

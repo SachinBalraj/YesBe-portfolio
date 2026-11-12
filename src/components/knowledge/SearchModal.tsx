@@ -157,7 +157,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-md"
+            className="fixed inset-0 bg-slate-900/60"
           />
 
           {/* Modal Card */}
@@ -216,7 +216,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
             <div className="max-h-[65vh] overflow-y-auto p-4 sm:p-5">
               {query.trim() ? (
                 <div>
-                  <div className="mb-2 flex items-center justify-between text-xs font-semibold text-muted-foreground uppercase tracking-wider px-2">
+                  <div className="mb-2 flex items-center justify-between text-xs font-semibold text-muted-foreground tracking-wide px-2">
                     <span>Articles & Guides ({suggestions.length})</span>
                     <span>Use ↑↓ to navigate</span>
                   </div>
@@ -284,7 +284,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                   {/* Recent Searches */}
                   {recentSearches.length > 0 && (
                     <div>
-                      <div className="mb-2.5 flex items-center justify-between text-xs font-semibold text-muted-foreground uppercase tracking-wider px-2">
+                      <div className="mb-2.5 flex items-center justify-between text-xs font-semibold text-muted-foreground tracking-wide px-2">
                         <span className="flex items-center gap-1.5">
                           <History className="h-3.5 w-3.5 text-primary" />
                           Recent Searches
@@ -322,7 +322,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
 
                   {/* Popular Topics */}
                   <div>
-                    <div className="mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider px-2">
+                    <div className="mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground tracking-wide px-2">
                       <TrendingUp className="h-3.5 w-3.5 text-primary" />
                       Popular Searches
                     </div>
@@ -342,7 +342,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
 
                   {/* Knowledge Categories */}
                   <div>
-                    <div className="mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider px-2">
+                    <div className="mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground tracking-wide px-2">
                       <Layers className="h-3.5 w-3.5 text-primary" />
                       Browse Categories
                     </div>

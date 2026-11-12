@@ -163,11 +163,9 @@ export function MarqueeSection() {
 
   return (
     <section
-      className="relative border-y border-white/20 bg-gradient-to-r from-white via-[#f8fafc] to-white py-5 overflow-hidden"
+      className="relative border-y border-white/20 bg-white py-5 overflow-hidden"
       aria-label="Technology stack showcase — React, Node.js, Python, AWS, Docker, and more"
     >
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 sm:w-24 md:w-32" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 sm:w-24 md:w-32" />
 
       <div
         className="flex w-max animate-marquee hover:[animation-play-state:paused]"
@@ -176,7 +174,7 @@ export function MarqueeSection() {
         {items.map((tech, i) => (
           <div
             key={`${tech.name}-${i}`}
-            className="group flex shrink-0 items-center gap-2.5 rounded-none border border-white/50 bg-white/80 px-4 py-2 shadow-[0_1px_3px_rgba(0,0,0,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-white hover:shadow-[0_2px_12px_rgba(37,99,235,0.10)] hover:scale-[1.05]"
+            className="group flex shrink-0 items-center gap-2.5 border border-border bg-white px-4 py-2 transition-colors duration-200 hover:border-primary/30"
           >
             <tech.Icon
               size={20}

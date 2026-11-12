@@ -19,7 +19,7 @@ import type { LucideIcon } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 import { FOUNDER_SAME_AS, SITE_CONFIG, TECH_STACK } from "@/constants";
 
-const card = "rounded-none border border-white/40 bg-white p-6";
+const card = "rounded-none border border-border bg-white p-6";
 
 /* ── Technical expertise ── */
 
@@ -95,11 +95,10 @@ export function FounderWorkSection() {
     <>
       {/* ── Technical Expertise ── */}
       <section
-        className="relative overflow-hidden bg-gradient-to-b from-white to-[#f8fbff] py-6 lg:py-9"
+        className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
         aria-labelledby="technical-expertise"
       >
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute top-[8%] left-[5%] h-[340px] w-[340px] rounded-circle bg-[#dbeafe] opacity-[0.10] blur-[120px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -108,21 +107,18 @@ export function FounderWorkSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="mx-auto mb-10 max-w-2xl text-center"
+            className="mb-10 max-w-2xl"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-              Capabilities
-            </span>
+            <span className="mb-3 block text-[13px] font-semibold text-primary">Capabilities</span>
             <h2
               id="technical-expertise"
-              className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+              className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl"
             >
               Technical{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
+              <span className="text-primary">
                 Expertise
               </span>
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
               The areas he works in directly, and the technologies those projects
               are built with.
@@ -140,9 +136,9 @@ export function FounderWorkSection() {
               <motion.div
                 key={title}
                 variants={fadeInUp}
-                className={`${card} transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(37,99,235,0.10)]`}
+                className={`${card} transition-all duration-300  hover:shadow-[0_12px_40px_rgba(37,99,235,0.10)]`}
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#dbeafe] to-[#eff6ff]">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.06]">
                   <Icon className="h-5 w-5 text-primary" strokeWidth={1.8} aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground">{title}</h3>
@@ -160,14 +156,14 @@ export function FounderWorkSection() {
             transition={{ duration: 0.5 }}
             className="mt-12 text-center"
           >
-            <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+            <h3 className="text-sm font-bold tracking-wide text-muted-foreground">
               Technologies used across these engagements
             </h3>
             <ul className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-2">
               {TECH_STACK.map((tech) => (
                 <li
                   key={tech}
-                  className="rounded-none border border-white/40 bg-white px-3.5 py-1.5 text-[13px] font-semibold text-foreground shadow-sm"
+                  className="rounded-none border border-border bg-white px-3.5 py-1.5 text-[13px] font-semibold text-foreground shadow-sm"
                 >
                   {tech}
                 </li>
@@ -179,7 +175,7 @@ export function FounderWorkSection() {
 
       {/* ── Projects / Areas of Work ── */}
       <section
-        className="relative overflow-hidden bg-white py-6 lg:py-9"
+        className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
         aria-labelledby="projects-areas-of-work"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -188,21 +184,18 @@ export function FounderWorkSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="mx-auto mb-10 max-w-2xl text-center"
+            className="mb-10 max-w-2xl"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-              Portfolio
-            </span>
+            <span className="mb-3 block text-[13px] font-semibold text-primary">Portfolio</span>
             <h2
               id="projects-areas-of-work"
-              className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+              className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl"
             >
               Projects &amp;{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
+              <span className="text-primary">
                 Areas of Work
               </span>
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
               Delivered work spans education, healthcare, retail, hospitality,
               manufacturing and finance — from ERP systems and AI assistants to
@@ -221,7 +214,7 @@ export function FounderWorkSection() {
               <motion.li key={cs.slug} variants={fadeInUp}>
                 <Link
                   to={`/case-studies/${cs.slug}`}
-                  className={`${card} group flex h-full flex-col transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]`}
+                  className={`${card} group flex h-full flex-col transition-all duration-300  hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]`}
                 >
                   <h3 className="text-base font-bold text-foreground">
                     {cs.title}
@@ -250,7 +243,7 @@ export function FounderWorkSection() {
           >
             <Link
               to="/case-studies"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md "
             >
               View all case studies
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -261,11 +254,10 @@ export function FounderWorkSection() {
 
       {/* ── Connect ── */}
       <section
-        className="relative overflow-hidden bg-gradient-to-b from-[#f8fbff] to-white py-6 lg:py-9"
+        className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
         aria-labelledby="connect-with-sachin-balraj"
       >
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute bottom-[10%] right-[5%] h-[300px] w-[300px] rounded-circle bg-[#ede9fe] opacity-[0.08] blur-[100px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -274,21 +266,18 @@ export function FounderWorkSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="mx-auto mb-10 max-w-2xl text-center"
+            className="mb-10 max-w-2xl"
           >
-            <span className="mb-4 inline-flex items-center gap-2 rounded-none border border-white/40 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-              Contact
-            </span>
+            <span className="mb-3 block text-[13px] font-semibold text-primary">Contact</span>
             <h2
               id="connect-with-sachin-balraj"
-              className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+              className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl"
             >
               Contact &amp;{" "}
-              <span className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] bg-clip-text text-transparent">
+              <span className="text-primary">
                 Book a Consultation
               </span>
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-none bg-gradient-to-r from-[#2563eb] to-[#60a5fa]" />
             <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
               The fastest way to reach him is through the YESBE Technologies
               contact channels, which go directly to the founder.
@@ -309,9 +298,9 @@ export function FounderWorkSection() {
                   {...(c.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="group flex h-full items-center gap-4 rounded-none border border-white/40 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]"
+                  className="group flex h-full items-center gap-4 rounded-none border border-border bg-white p-5 transition-all duration-300  hover:border-primary/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)]"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#dbeafe] to-[#eff6ff]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/[0.06]">
                     <c.Icon className="h-5 w-5 text-primary" aria-hidden="true" />
                   </span>
                   <span className="min-w-0 flex-1">

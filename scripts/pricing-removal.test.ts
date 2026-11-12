@@ -125,6 +125,7 @@ test("no currency amounts are published in the UI", () => {
    */
   const intentional = new Set([
     "src/sections/ContactSection.tsx",
+    "src/constants/enquiry.ts",
     "src/pages/TermsAndConditionsPage.tsx",
     "content/articles/industry-insights-sme-digital.md",
     "content/articles/what-is-erp.md",

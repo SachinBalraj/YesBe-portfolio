@@ -45,11 +45,11 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
     <nav
       aria-label="Table of contents"
       className={cn(
-        "rounded-2xl border border-slate-200/70 bg-white/80 p-5 backdrop-blur-sm",
+        "border border-slate-200 bg-white p-5",
         className,
       )}
     >
-      <p className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+      <p className="mb-3 text-[11px] font-bold tracking-wide text-muted-foreground">
         On this page
       </p>
       <ul className="space-y-0.5">
