@@ -5,9 +5,10 @@ import {
   Menu, X, ArrowRight, Search,
 } from "lucide-react";
 import { cn } from "@/utils/cn";
-import logoImg from "@/assets/images/YBlogo.png";
 import { SearchModal } from "@/components/knowledge/SearchModal";
 import { trackConsultationClick } from "@/utils/analytics";
+
+const brandLogo = "/yesbe-home-logo.png";
 
 /* ─── Navigation Data ─── */
 
@@ -163,17 +164,17 @@ function NavbarComponent() {
           <Link
             to="/"
             aria-label="YESBE Technologies home"
-            className="relative z-10 flex shrink-0 items-center group mr-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:rounded-xl"
+            className="relative z-10 flex shrink-0 items-center group mr-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:rounded-xl"
           >
             <img
-              src={logoImg}
-              alt="YESBE Technologies Logo"
-              width={48}
-              height={48}
+              src={brandLogo}
+              alt="YESBE Technologies brand"
+              width={220}
+              height={68}
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="h-[46px] w-[46px] object-contain rounded-xl transition-all duration-300 ease-out group-hover:scale-105"
+              className="h-[38px] w-auto max-w-[180px] object-contain transition-all duration-300 ease-out group-hover:scale-[1.02] sm:h-[44px]"
             />
           </Link>
 
@@ -257,13 +258,13 @@ function NavbarComponent() {
             >
               <div className="flex h-[56px] items-center justify-between px-6">
                 <img
-                  src={logoImg}
-                alt="YESBE Technologies Logo"
-                width={44}
-                height={44}
+                  src={brandLogo}
+                  alt="YESBE Technologies brand"
+                  width={180}
+                  height={52}
                 loading="eager"
                 decoding="async"
-                className="h-11 w-11 object-contain rounded-xl"
+                  className="h-[34px] w-auto object-contain"
                 />
                 <button
                   className="rounded-lg p-2.5 text-[#64748B] hover:text-[#1E293B] hover:bg-[#f1f5f9] transition-colors"

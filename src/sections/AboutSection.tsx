@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import logoImg from "@/assets/images/YBlogo.png";
 import founderImage from "@/assets/images/founder-portrait.jpeg";
+
+const homeFeatureImage = "/yesbe-home-logo.png";
 
 const focusAreas = [
   { value: "Consulting", label: "IT strategy, requirements and solution architecture" },
@@ -56,18 +57,15 @@ export function AboutSection() {
             >
               <div className="relative rounded-2xl bg-white p-6 shadow-[0_4px_24px_rgba(37,99,235,0.08),0_1px_4px_rgba(0,0,0,0.04)] transition-shadow duration-300 group-hover:shadow-[0_8px_40px_rgba(37,99,235,0.14),0_2px_8px_rgba(0,0,0,0.06)]">
                 <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[#2563eb]/[0.06] to-[#60a5fa]/[0.04] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
-                <picture>
-                  <source srcSet="/YBlogo.webp" type="image/webp" />
-                  <img
-                    src={logoImg}
-                    alt="YESBE Technologies Company Logo"
-                    width={400}
-                    height={400}
-                    loading="lazy"
-                    decoding="async"
-                    className="relative h-[180px] w-[180px] rounded-xl object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
-                  />
-                </picture>
+                <img
+                  src={homeFeatureImage}
+                  alt="YESBE Technologies home logo"
+                  width={400}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                  className="relative h-[180px] w-[180px] rounded-xl object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
+                />
               </div>
             </motion.button>
 
