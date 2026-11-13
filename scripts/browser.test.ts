@@ -193,16 +193,16 @@ test("location row and public newsletter signups are absent", async () => {
   }
 });
 
-test("company intro replaces its fact panel with the collaboration image", async () => {
+test("company intro replaces its fact panel with the architecture illustration", async () => {
   await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
   const section = page.locator("#about-yesbe");
   assert.equal(await section.locator("dt").count(), 0, "fact panel must be removed");
 
-  const image = section.locator('img[alt*="collaborating around a laptop"]');
+  const image = section.locator('img[alt*="Technology architecture diagram"]');
   await section.scrollIntoViewIfNeeded();
   await image.waitFor();
   await page.waitForFunction(() => {
-    const img = document.querySelector<HTMLImageElement>('#about-yesbe img[alt*="collaborating around a laptop"]');
+    const img = document.querySelector<HTMLImageElement>('#about-yesbe img[alt*="Technology architecture diagram"]');
     return Boolean(img?.complete && img.naturalWidth > 0);
   });
 
@@ -215,7 +215,7 @@ test("company intro replaces its fact panel with the collaboration image", async
       naturalWidth: img.naturalWidth,
     };
   });
-  assert.match(rendered.currentSrc, /yesbe-collaboration-\d+\.(avif|webp|jpg)$/);
+  assert.match(rendered.currentSrc, /yesbe-architecture-\d+\.(avif|webp|png)$/);
   assert.ok(rendered.naturalWidth > 0, "image must load");
   assert.ok(Math.abs(rendered.width / rendered.height - 4 / 3) < 0.02, "image must render at 4:3");
 });
