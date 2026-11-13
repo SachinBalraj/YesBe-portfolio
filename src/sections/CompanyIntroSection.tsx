@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/common/SectionHeading";
 
-const facts = [
-  { label: "Founded", value: "2024" },
-  { label: "Focus", value: "Custom software, ERP, web platforms, AI and automation" },
-  { label: "Engagements", value: "Project-based delivery and ongoing IT consulting" },
-];
+const IMAGE_WIDTHS = [480, 720, 960, 1280];
+const IMAGE_SIZES = "(min-width: 1024px) 45vw, 100vw";
+const AVIF_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-collaboration-${w}.avif ${w}w`).join(", ");
+const WEBP_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-collaboration-${w}.webp ${w}w`).join(", ");
+const JPEG_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-collaboration-${w}.jpg ${w}w`).join(", ");
 
 export function CompanyIntroSection() {
   return (
     <section id="about-yesbe" className="bg-white py-16 sm:py-20 lg:py-24" aria-label="About YESBE Technologies">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[55fr_45fr] lg:gap-16">
           <div>
             <SectionHeading
               title="A technology partner, not just a vendor"
@@ -43,16 +43,25 @@ export function CompanyIntroSection() {
             </div>
           </div>
 
-          <dl className="divide-y divide-border border-y border-border">
-            {facts.map((fact) => (
-              <div key={fact.label} className="grid grid-cols-[110px_1fr] gap-4 py-4 sm:grid-cols-[140px_1fr]">
-                <dt className="text-[12px] font-medium tracking-[0.02em] text-slate-500">
-                  {fact.label}
-                </dt>
-                <dd className="text-[13.5px] leading-relaxed text-navy">{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
+          <figure className="w-full lg:self-start">
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-slate-100">
+              <picture>
+                <source type="image/avif" srcSet={AVIF_SRC_SET} sizes={IMAGE_SIZES} />
+                <source type="image/webp" srcSet={WEBP_SRC_SET} sizes={IMAGE_SIZES} />
+                <img
+                  src="/images/company/yesbe-collaboration-960.jpg"
+                  srcSet={JPEG_SRC_SET}
+                  sizes={IMAGE_SIZES}
+                  alt="Three professionals from diverse backgrounds collaborating around a laptop in a bright office"
+                  width={1280}
+                  height={960}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </picture>
+            </div>
+          </figure>
         </div>
       </div>
     </section>

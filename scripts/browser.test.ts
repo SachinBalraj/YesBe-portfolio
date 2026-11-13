@@ -193,6 +193,33 @@ test("location row and public newsletter signups are absent", async () => {
   }
 });
 
+test("company intro replaces its fact panel with the collaboration image", async () => {
+  await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+  const section = page.locator("#about-yesbe");
+  assert.equal(await section.locator("dt").count(), 0, "fact panel must be removed");
+
+  const image = section.locator('img[alt*="collaborating around a laptop"]');
+  await section.scrollIntoViewIfNeeded();
+  await image.waitFor();
+  await page.waitForFunction(() => {
+    const img = document.querySelector<HTMLImageElement>('#about-yesbe img[alt*="collaborating around a laptop"]');
+    return Boolean(img?.complete && img.naturalWidth > 0);
+  });
+
+  const rendered = await image.evaluate((img: HTMLImageElement) => {
+    const box = img.getBoundingClientRect();
+    return {
+      currentSrc: img.currentSrc,
+      width: box.width,
+      height: box.height,
+      naturalWidth: img.naturalWidth,
+    };
+  });
+  assert.match(rendered.currentSrc, /yesbe-collaboration-\d+\.(avif|webp|jpg)$/);
+  assert.ok(rendered.naturalWidth > 0, "image must load");
+  assert.ok(Math.abs(rendered.width / rendered.height - 4 / 3) < 0.02, "image must render at 4:3");
+});
+
 test("honeypot submission is accepted but never stored", async () => {
   await page.goto(`${BASE}/contact`, { waitUntil: "networkidle" });
 
