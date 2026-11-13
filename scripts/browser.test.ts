@@ -185,15 +185,22 @@ test("expired session sends the operator back to sign in", async () => {
   await page.getByText(/session expired/i).waitFor({ timeout: 10000 });
 });
 
-test("location row and public newsletter signups are absent", async () => {
+test("location row, business hours, and public newsletter signups are absent", async () => {
   for (const path of [
     "/",
+    "/about",
+    "/contact",
+    "/founder",
     "/insights",
     "/insights/category/artificial-intelligence",
     "/insights/article/aeo-answer-engines",
   ]) {
     await page.goto(`${BASE}${path}`, { waitUntil: "networkidle" });
     assert.equal(await page.getByText("Based in", { exact: true }).count(), 0, `location row remains on ${path}`);
+    assert.equal(await page.getByText("Business Hours", { exact: true }).count(), 0, `business hours remain on ${path}`);
+    assert.equal(await page.getByText(/Mon\s*[–-]\s*Sat/).count(), 0, `weekday hours remain on ${path}`);
+    assert.equal(await page.getByText(/9:00\s*AM\s*[–-]\s*8:00\s*PM/).count(), 0, `daily hours remain on ${path}`);
+    assert.equal(await page.getByText(/Salem, Tamil Nadu/).count(), 0, `office location remains on ${path}`);
     assert.equal(
       await page.getByText(/subscribe to .*insights/i).count(),
       0,

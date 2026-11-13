@@ -34,12 +34,6 @@ export function ContactPage() {
           email: "hello@yesbe.tech",
           telephone: "+919087795970",
           founder: { "@id": FOUNDER_PERSON_ID },
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Salem",
-            addressRegion: "Tamil Nadu",
-            addressCountry: "IN",
-          },
           // Company-owned accounts only — the founder's personal profiles are
           // declared on his own Person node, not on the organisation.
           sameAs: [

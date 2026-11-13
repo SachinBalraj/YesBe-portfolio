@@ -77,7 +77,6 @@ const experience: {
   role: string;
   organisation: string;
   period: string;
-  location: string;
   points: string[];
   current: boolean;
 }[] = [
@@ -85,7 +84,6 @@ const experience: {
     role: "Founder",
     organisation: "YESBE Technologies",
     period: "2024 — Present",
-    location: "Salem, Tamil Nadu, India",
     current: true,
     points: [
       "Founded and lead YESBE Technologies, delivering AI, ERP, web and analytics work for startups, SMEs and enterprises.",
@@ -97,7 +95,6 @@ const experience: {
     role: "Solution Architect",
     organisation: "Springreen",
     period: "Current",
-    location: "India",
     current: true,
     points: [
       "Designs and reviews solution architecture for enterprise systems, with an emphasis on reliability, integration and maintainability.",
@@ -229,7 +226,7 @@ export function FounderBackgroundSection() {
                   )}
                 </div>
                 <p className="mt-1 text-[13px] font-medium text-primary">
-                  {job.period} · {job.location}
+                  {job.period}
                 </p>
                 <ul className="mt-3 space-y-2">
                   {job.points.map((point) => (

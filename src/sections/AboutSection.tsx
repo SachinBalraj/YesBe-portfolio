@@ -91,7 +91,7 @@ export function AboutSection() {
 
             <motion.div variants={fadeInUp} className="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
               <p>
-                YESBE Technologies is an IT consulting and software development company based in Salem, Tamil Nadu. We design and build custom software, ERP systems, web applications, AI and automation tooling, and analytics dashboards.
+                YESBE Technologies is an IT consulting and software development company. We design and build custom software, ERP systems, web applications, AI and automation tooling, and analytics dashboards.
               </p>
               <p>
                 Our work spans education, healthcare, retail, restaurants, manufacturing and finance. The stack we build with includes React, Node.js, Python, MongoDB, PostgreSQL, AWS, Docker, OpenAI, LangChain, and Power BI.
@@ -206,7 +206,7 @@ export function AboutSection() {
             <div className="mt-5 border border-border bg-white p-5">
               <h3 className="mb-2 text-sm font-bold text-foreground">Business Focus</h3>
               <p className="text-[13px] leading-relaxed text-muted-foreground">
-                Education ERP, hospital management, restaurant ordering, retail e-commerce, corporate analytics dashboards, MVP development, and digital transformation — for businesses in Salem, Tamil Nadu and beyond.
+                Education ERP, hospital management, restaurant ordering, retail e-commerce, corporate analytics dashboards, MVP development, and digital transformation — for businesses across India and beyond.
               </p>
             </div>
           </motion.div>

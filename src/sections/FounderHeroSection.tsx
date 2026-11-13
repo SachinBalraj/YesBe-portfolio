@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import founderImage from "@/assets/images/founder-portrait.jpeg";
 import { SITE_CONFIG } from "@/constants";
 
@@ -79,10 +79,6 @@ export function FounderHeroSection() {
               </p>
 
               <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
-                <li className="flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-                  {SITE_CONFIG.location}
-                </li>
                 <li className="flex items-center gap-1.5">
                   <Mail className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                   <a

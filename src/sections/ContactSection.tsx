@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Send, CheckCircle, AlertCircle, Loader2, Phone, MessageCircle,
-  Mail, MapPin, ArrowRight, ArrowLeft, Check,
+  Mail, ArrowRight, ArrowLeft, Check,
   User, Building2, Briefcase, FileText,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
@@ -43,7 +43,6 @@ const contactCards = [
   { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.phoneHref, color: "bg-blue-50 text-blue-600", onClick: () => trackPhoneClick("contact_section") },
   { icon: MessageCircle, label: "WhatsApp", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.social.whatsapp, color: "bg-green-50 text-green-600", onClick: () => trackWhatsAppClick("contact_section") },
   { icon: Mail, label: "Email", value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}`, color: "bg-orange-50 text-orange-600", onClick: () => trackContactClick("contact_section") },
-  { icon: MapPin, label: "Location", value: SITE_CONFIG.location, href: SITE_CONFIG.mapUrl, color: "bg-rose-50 text-rose-600" },
 ];
 
 const STEPS = [

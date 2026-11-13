@@ -10,7 +10,6 @@ import {
   Globe,
   Layers,
   Mail,
-  MapPin,
   Phone,
   TrendingUp,
   Workflow,
@@ -334,9 +333,8 @@ export function FounderWorkSection() {
             transition={{ duration: 0.5 }}
             className="mt-8 text-center"
           >
-            <p className="flex items-center justify-center gap-2 text-[13px] text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-              Based in {SITE_CONFIG.location} · Working with businesses across India
+            <p className="text-center text-[13px] text-muted-foreground">
+              Working with businesses across India
             </p>
             <Link
               to="/contact"

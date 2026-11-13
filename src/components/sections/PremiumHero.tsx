@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
-import { SITE_CONFIG } from "@/constants";
 import { trackConsultationClick } from "@/utils/analytics";
 
 const heroImage = "/yesbe.homepage.png";
@@ -29,7 +28,7 @@ export function PremiumHero() {
         <div className="grid items-center gap-10 lg:grid-cols-[52fr_48fr] lg:gap-9 xl:gap-10">
           {/* Left content */}
           <div className="max-w-xl">
-            <p className="section-kicker">YESBE Technologies · {SITE_CONFIG.location}</p>
+            <p className="section-kicker">YESBE Technologies</p>
 
             <h1 className="mt-4 text-[2.25rem] font-bold leading-[1.08] tracking-[-0.03em] text-navy sm:text-[2.75rem] lg:text-[3.25rem]">
               Technology Solutions{" "}
@@ -69,10 +68,6 @@ export function PremiumHero() {
                 <ArrowRight className="h-4 w-4 shrink-0 text-primary transition-transform duration-200 group-hover:translate-x-0.5" />
               </Link>
             </div>
-
-            <p className="mt-6 text-[13px] text-muted-foreground">
-              Mon – Sat, 9:00 AM – 8:00 PM IST
-            </p>
           </div>
 
           {/* Right — hero image */}

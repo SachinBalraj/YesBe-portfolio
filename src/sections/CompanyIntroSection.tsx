@@ -16,7 +16,7 @@ export function CompanyIntroSection() {
           <div>
             <SectionHeading
               title="A technology partner, not just a vendor"
-              description="YESBE Technologies is an IT consulting and software development company based in Salem, Tamil Nadu. We design and build custom software, ERP systems, web applications, AI and automation tooling, and analytics dashboards."
+              description="YESBE Technologies is an IT consulting and software development company. We design and build custom software, ERP systems, web applications, AI and automation tooling, and analytics dashboards."
             />
 
             <p className="mt-5 max-w-2xl text-[14.5px] leading-[1.75] text-muted-foreground">

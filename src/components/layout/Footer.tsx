@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import logoImg from "@/assets/images/YBlogo.png";
 import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
@@ -191,20 +191,7 @@ function FooterComponent() {
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" />
                 <a href={SITE_CONFIG.phoneHref} onClick={() => trackPhoneClick("footer")} className="text-[13px] text-slate-400 transition-colors hover:text-white">+91 {SITE_CONFIG.phone}</a>
               </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" />
-                <a href={SITE_CONFIG.mapUrl} target="_blank" rel="noopener noreferrer" className="text-[13px] text-slate-400 transition-colors hover:text-white">{SITE_CONFIG.location}</a>
-              </li>
             </ul>
-
-            <div className="mt-5 border border-white/10 p-4">
-              <div className="mb-1.5 flex items-center gap-2">
-                <Clock className="h-3.5 w-3.5 text-slate-500" />
-                <h3 className="text-[12px] font-medium text-slate-400">Business Hours</h3>
-              </div>
-              <p className="text-[13px] text-slate-400">Mon – Sat</p>
-              <p className="text-[13px] font-medium text-white">9:00 AM – 8:00 PM</p>
-            </div>
           </div>
         </div>
 

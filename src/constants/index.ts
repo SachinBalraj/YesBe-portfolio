@@ -13,9 +13,6 @@ export const SITE_CONFIG = {
   email: "hello@yesbe.tech",
   phone: "9087795970",
   phoneHref: "tel:+919087795970",
-  location: "Salem, Tamil Nadu, India",
-  mapUrl:
-    "https://www.google.com/maps/search/?api=1&query=Salem%2C%20Tamil%20Nadu%2C%20India",
   social: {
     linkedin: "https://www.linkedin.com/in/sachin-balraj-2b7650406",
     whatsapp: "https://wa.me/919087795970",
@@ -98,12 +95,6 @@ export const BUSINESS_INFO = {
     founder: { "@id": FOUNDER_PERSON_ID },
     email: "hello@yesbe.tech",
     telephone: "+919087795970",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Salem",
-      addressRegion: "Tamil Nadu",
-      addressCountry: "IN",
-    },
     // Company-owned accounts only. The founder's personal profiles live on
     // FOUNDER_PERSON.sameAs so the two entities are not conflated.
     sameAs: [
