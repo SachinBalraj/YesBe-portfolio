@@ -190,7 +190,7 @@ test("location row, business hours, and public newsletter signups are absent", a
     "/",
     "/about",
     "/contact",
-    "/founder",
+    "/sachin-balraj",
     "/insights",
     "/insights/category/artificial-intelligence",
     "/insights/article/aeo-answer-engines",
