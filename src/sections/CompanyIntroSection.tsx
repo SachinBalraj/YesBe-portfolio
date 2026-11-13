@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { SITE_CONFIG } from "@/constants";
 import { SectionHeading } from "@/components/common/SectionHeading";
 
 const facts = [
-  { label: "Based in", value: SITE_CONFIG.location },
   { label: "Founded", value: "2024" },
   { label: "Focus", value: "Custom software, ERP, web platforms, AI and automation" },
   { label: "Engagements", value: "Project-based delivery and ongoing IT consulting" },

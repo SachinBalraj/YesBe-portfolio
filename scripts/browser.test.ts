@@ -1,5 +1,5 @@
 /**
- * Browser test for the enquiry form, newsletter forms and admin panel.
+ * Browser test for the enquiry form and admin panel.
  *
  * Runs against `npm run serve` (scripts/serve.ts), which serves the built SPA
  * and mounts the real api/ handlers — so this exercises the same bundle and
@@ -171,18 +171,26 @@ test("signing out clears access", async () => {
   assert.equal(await page.getByText("Browser Test User").count(), 0, "data must be gone after sign out");
 });
 
-test("footer newsletter form posts to the API", async () => {
-  const posts: string[] = [];
-  page.on("request", (r) => {
-    if (r.url().includes("/api/newsletter/subscribe")) posts.push(r.url());
-  });
-
-  await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
-  const footer = page.locator("footer");
-  await footer.getByLabel("Email address for newsletter").fill("footer-browser@test.com");
-  await footer.getByRole("button", { name: /subscribe/i }).click();
-  await footer.getByText(/Subscribed!/i).waitFor({ timeout: 20000 });
-  assert.ok(posts.length > 0, "footer must call the subscribe endpoint");
+test("location row and public newsletter signups are absent", async () => {
+  for (const path of [
+    "/",
+    "/insights",
+    "/insights/category/artificial-intelligence",
+    "/insights/article/aeo-answer-engines",
+  ]) {
+    await page.goto(`${BASE}${path}`, { waitUntil: "networkidle" });
+    assert.equal(await page.getByText("Based in", { exact: true }).count(), 0, `location row remains on ${path}`);
+    assert.equal(
+      await page.getByText(/subscribe to .*insights/i).count(),
+      0,
+      `newsletter signup remains on ${path}`,
+    );
+    assert.equal(
+      await page.locator('form[aria-label="Newsletter subscription"]').count(),
+      0,
+      `footer newsletter form remains on ${path}`,
+    );
+  }
 });
 
 test("honeypot submission is accepted but never stored", async () => {

@@ -19,7 +19,6 @@ import { CategoryNav } from "@/components/knowledge/CategoryNav";
 import { FeaturedArticle } from "@/components/knowledge/FeaturedArticle";
 import { ArticleGrid } from "@/components/knowledge/ArticleGrid";
 import { Pagination } from "@/components/knowledge/Pagination";
-import { NewsletterSignup } from "@/components/knowledge/NewsletterSignup";
 
 const ARTICLES_PER_PAGE = 9;
 
@@ -216,10 +215,6 @@ export function KnowledgeCenterHome() {
               );
             })}
           </div>
-        </div>
-
-        <div className="mt-10">
-          <NewsletterSignup />
         </div>
       </section>
     </div>

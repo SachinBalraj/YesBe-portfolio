@@ -23,7 +23,6 @@ import { KeyTakeaways } from "@/components/knowledge/KeyTakeaways";
 import { FAQSection } from "@/components/knowledge/FAQSection";
 import { AuthorCard } from "@/components/knowledge/AuthorCard";
 import { ContactCTA } from "@/components/knowledge/ContactCTA";
-import { NewsletterSignup } from "@/components/knowledge/NewsletterSignup";
 import { RelatedArticles } from "@/components/knowledge/RelatedArticles";
 import { PrevNextArticle } from "@/components/knowledge/PrevNextArticle";
 import { ArticleHeaderMetadata } from "@/components/knowledge/ArticleHeaderMetadata";
@@ -179,10 +178,6 @@ export function ArticleDetailPage() {
 
           <div className="mt-10">
             <RelatedArticles articles={related} />
-          </div>
-
-          <div className="mt-10">
-            <NewsletterSignup />
           </div>
         </div>
       </article>

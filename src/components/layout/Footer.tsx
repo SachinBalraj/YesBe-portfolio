@@ -1,7 +1,6 @@
-import { useState, memo } from "react";
-import { subscribeNewsletter } from "@/services/newsletter";
+import { memo } from "react";
 import { Link } from "react-router-dom";
-import { Send, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import logoImg from "@/assets/images/YBlogo.png";
 import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
@@ -111,51 +110,11 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 /* ─── Main Footer ─── */
 
 function FooterComponent() {
-  const [email, setEmail] = useState("");
-  const [subscribeStatus, setSubscribeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [emailError, setEmailError] = useState("");
-  const [honeypot, setHoneypot] = useState("");
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setEmailError("");
-
-    const trimmed = email.trim();
-    if (!trimmed) {
-      setEmailError("Please enter your email address");
-      setSubscribeStatus("error");
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-      setEmailError("Please enter a valid email address");
-      setSubscribeStatus("error");
-      return;
-    }
-
-    setSubscribeStatus("loading");
-    const result = await subscribeNewsletter({
-      email: trimmed,
-      source: window.location.pathname,
-      companyWebsite: honeypot,
-    });
-
-    if (!result.success) {
-      setEmailError(result.message);
-      setSubscribeStatus("error");
-      return;
-    }
-
-    setSubscribeStatus("success");
-    setEmail("");
-    setHoneypot("");
-    setTimeout(() => setSubscribeStatus("idle"), 5000);
-  };
-
   return (
     <footer className="bg-navy text-slate-400" role="contentinfo" aria-label="Site footer">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
-          {/* Brand + Newsletter */}
+          {/* Brand */}
           <div>
             <Link to="/" aria-label="YESBE Technologies home" className="flex items-center gap-3 mb-4">
               <img src={logoImg} loading="lazy" alt="YESBE Technologies Logo" width={40} height={40} className="h-10 w-10" />
@@ -170,55 +129,6 @@ function FooterComponent() {
                 Sachin Balraj
               </Link>
             </p>
-
-            <form onSubmit={handleSubscribe} aria-label="Newsletter subscription">
-              <h2 className="mb-3 text-[13px] font-semibold text-white">Subscribe to our newsletter</h2>
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col gap-2 sm:flex-row">
-                  <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-                    <label htmlFor="footer-website">Website</label>
-                    <input
-                      id="footer-website"
-                      type="text"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      value={honeypot}
-                      onChange={(e) => setHoneypot(e.target.value)}
-                    />
-                  </div>
-                  <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
-                    placeholder="you@company.com"
-                    autoComplete="email"
-                    required
-                    aria-label="Email address for newsletter"
-                    aria-invalid={!!emailError}
-                    aria-describedby={emailError ? "footer-newsletter-error" : undefined}
-                    className="min-w-0 flex-1 border border-white/15 bg-white/5 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-500 outline-none transition-colors focus:border-border"
-                  />
-                  <button
-                    type="submit"
-                    disabled={subscribeStatus === "loading" || subscribeStatus === "success"}
-                    className="flex shrink-0 items-center justify-center gap-1.5 border border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {subscribeStatus === "loading" && "Subscribing..."}
-                    {subscribeStatus === "success" && "Subscribed!"}
-                    {(subscribeStatus === "idle" || subscribeStatus === "error") && (
-                      <><Send className="h-3.5 w-3.5" /> Subscribe</>
-                    )}
-                  </button>
-                </div>
-                {emailError && (
-                  <p id="footer-newsletter-error" role="alert" className="text-xs text-red-400">{emailError}</p>
-                )}
-                <p className="sr-only" role="status" aria-live="polite">
-                  {subscribeStatus === "success" ? "Subscribed successfully." : ""}
-                </p>
-              </div>
-            </form>
 
             <div className="mt-6 flex gap-2">
               {socialLinks.map((s) => {

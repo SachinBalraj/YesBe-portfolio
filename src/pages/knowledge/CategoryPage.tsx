@@ -49,7 +49,6 @@ import { CategoryNav } from "@/components/knowledge/CategoryNav";
 import { ArticleGrid } from "@/components/knowledge/ArticleGrid";
 import { Pagination } from "@/components/knowledge/Pagination";
 import { trackConsultationClick } from "@/utils/analytics";
-import { NewsletterSignup } from "@/components/knowledge/NewsletterSignup";
 import { FeaturedArticle } from "@/components/knowledge/FeaturedArticle";
 import { FAQSection } from "@/components/knowledge/FAQSection";
 
@@ -448,12 +447,7 @@ export function CategoryPage() {
           </div>
         </div>
 
-        {/* 9. Newsletter Section */}
-        <div className="mt-10">
-          <NewsletterSignup />
-        </div>
-
-        {/* 10. Conversion CTA Section */}
+        {/* 9. Conversion CTA Section */}
         <div className="mt-10 overflow-hidden rounded-3xl bg-navy p-8 sm:p-12 text-white shadow-2xl relative">
           <div className="relative z-10 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 rounded-none bg-white/10 px-3.5 py-1 text-xs font-bold text-blue-200 mb-4">
