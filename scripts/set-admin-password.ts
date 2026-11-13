@@ -2,6 +2,7 @@ import { chmodSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { stdin, stderr } from "node:process";
 import { createPasswordHash } from "../api/_lib/auth.ts";
+import { readHidden } from "./terminalPrompt.ts";
 
 const ENV_PATH = fileURLToPath(new URL("../.env", import.meta.url));
 const MIN_LENGTH = 12;
@@ -9,47 +10,6 @@ const MIN_LENGTH = 12;
 if (!stdin.isTTY) {
   stderr.write("Run this command directly in an interactive terminal.\n");
   process.exit(1);
-}
-
-function readHidden(prompt: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const wasRaw = stdin.isRaw;
-    let value = "";
-
-    const cleanup = (): void => {
-      stdin.off("data", onData);
-      stdin.setRawMode(wasRaw);
-      stdin.pause();
-    };
-
-    const onData = (chunk: string): void => {
-      for (const char of chunk) {
-        if (char === "\r" || char === "\n") {
-          cleanup();
-          stderr.write("\n");
-          resolve(value);
-          return;
-        }
-        if (char === "\u0003") {
-          cleanup();
-          stderr.write("\n");
-          reject(new Error("Cancelled."));
-          return;
-        }
-        if (char === "\u007f" || char === "\b") {
-          value = value.slice(0, -1);
-        } else if (char >= " ") {
-          value += char;
-        }
-      }
-    };
-
-    stdin.setRawMode(true);
-    stdin.setEncoding("utf8");
-    stdin.resume();
-    stdin.on("data", onData);
-    stderr.write(prompt);
-  });
 }
 
 let password = "";
@@ -110,8 +70,12 @@ try {
       "Local .env updated; ADMIN_USERNAME is yesbe.tech and the plaintext password was discarded.",
       "",
       "Set these in Vercel Production (keep MONGODB_URI, MONGODB_DB_NAME and SESSION_SECRET unchanged):",
-      "  ADMIN_USERNAME=yesbe.tech",
-      `  ADMIN_PASSWORD_HASH=${hash}`,
+      "  Name:  ADMIN_USERNAME",
+      "  Value: yesbe.tech",
+      "",
+      "  Name:  ADMIN_PASSWORD_HASH",
+      "  Value: copy only the hash below, without the variable name:",
+      hash,
       "",
       "Do not commit the hash or paste it into frontend code.",
       "",
