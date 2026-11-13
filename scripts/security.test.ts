@@ -206,3 +206,17 @@ test("password hashes use scrypt with a random salt", async () => {
   assert.equal(await verifyPassword("wrong-password"), false);
   assert.equal(await verifyPassword(""), false);
 });
+
+test("plaintext ADMIN_PASSWORD is never accepted", async () => {
+  const { verifyPassword } = await import("../api/_lib/auth.ts");
+  const previousHash = process.env.ADMIN_PASSWORD_HASH;
+  delete process.env.ADMIN_PASSWORD_HASH;
+  process.env.ADMIN_PASSWORD = "plaintext-must-not-work";
+  try {
+    assert.equal(await verifyPassword("plaintext-must-not-work"), false);
+  } finally {
+    if (previousHash === undefined) delete process.env.ADMIN_PASSWORD_HASH;
+    else process.env.ADMIN_PASSWORD_HASH = previousHash;
+    delete process.env.ADMIN_PASSWORD;
+  }
+});

@@ -16,13 +16,13 @@ import { createHmac } from "node:crypto";
 import test, { before, after } from "node:test";
 import { ObjectId } from "mongodb";
 import { ENQUIRY_STATUSES } from "../api/_lib/db.ts";
+import { createPasswordHash } from "../api/_lib/auth.ts";
 
 process.env.NODE_ENV = "test";
-process.env.ADMIN_EMAIL = "owner@yesbe.tech";
+process.env.ADMIN_EMAIL = "hello@yesbe.tech";
 process.env.ADMIN_USERNAME = "yesbe.tech";
 delete process.env.ADMIN_LOGIN_ID;
-delete process.env.ADMIN_PASSWORD_HASH;
-process.env.ADMIN_PASSWORD = "s3cret-admin-pw";
+delete process.env.ADMIN_PASSWORD;
 process.env.SESSION_SECRET = "test-secret-value-that-is-long-enough-123456";
 
 let server: import("mongodb-memory-server").MongoMemoryServer;
@@ -33,6 +33,8 @@ type Handler = (req: unknown, res: unknown) => unknown | Promise<unknown>;
 let H: Record<string, Handler>;
 
 before(async () => {
+  process.env.ADMIN_PASSWORD_HASH = await createPasswordHash("s3cret-admin-pw");
+
   const { MongoMemoryServer } = await import("mongodb-memory-server");
   const { MongoClient } = await import("mongodb");
   server = await MongoMemoryServer.create();
@@ -101,7 +103,7 @@ async function call(
   return { status: res.statusCode, body: res.body, res };
 }
 
-const ADMIN = { username: "yesbe.tech", password: "s3cret-admin-pw" };
+const ADMIN = { username: "hello@yesbe.tech", password: "s3cret-admin-pw" };
 
 /** Logs in and returns the session cookie header pair. */
 async function authedCookie(): Promise<string> {
@@ -337,12 +339,54 @@ test("login rejects an unknown admin ID with the same message", async () => {
   assert.equal(body.error, "Invalid admin ID or password");
 });
 
-test("login still accepts the legacy email identifier", async () => {
-  const { status } = await call("login", {
+test("login accepts the ADMIN_EMAIL identifier", async () => {
+  const { status, body } = await call("login", {
     method: "POST",
     body: { email: process.env.ADMIN_EMAIL, password: ADMIN.password },
   });
   assert.equal(status, 200);
+  assert.equal(body.username, "hello@yesbe.tech");
+});
+
+test("email-only configuration accepts only ADMIN_EMAIL", async () => {
+  const previousUsername = process.env.ADMIN_USERNAME;
+  delete process.env.ADMIN_USERNAME;
+  delete process.env.ADMIN_LOGIN_ID;
+  try {
+    const login = await call("login", {
+      method: "POST",
+      body: { username: "hello@yesbe.tech", password: ADMIN.password },
+    });
+    assert.equal(login.status, 200);
+    assert.equal(login.body.username, "hello@yesbe.tech");
+
+    assert.equal(
+      (await call("login", {
+        method: "POST",
+        body: { username: "yesbe.tech", password: ADMIN.password },
+      })).status,
+      401,
+      "removed legacy IDs must stop working",
+    );
+  } finally {
+    process.env.ADMIN_USERNAME = previousUsername;
+  }
+});
+
+test("missing session secret fails closed with JSON instead of an unhandled 500", async () => {
+  const previous = process.env.SESSION_SECRET;
+  delete process.env.SESSION_SECRET;
+  try {
+    const { status, body } = await call("login", {
+      method: "POST",
+      body: { username: ADMIN.username, password: ADMIN.password },
+    });
+    assert.equal(status, 503);
+    assert.equal(body.ok, false);
+    assert.equal(body.error, "Admin access is not configured");
+  } finally {
+    process.env.SESSION_SECRET = previous;
+  }
 });
 
 test("username-only configuration signs in and authorises admin APIs", async () => {
@@ -589,7 +633,7 @@ test("admin can sort and invalid sort values are rejected", async () => {
   assert.equal((await call("list", { method: "GET", headers: { cookie }, query: { dir: "sideways" } })).status, 400);
 });
 
-test("admin can sign in with the yesbe.tech admin ID", async () => {
+test("legacy ADMIN_USERNAME still signs in while configured", async () => {
   const { status, body } = await call("login", {
     method: "POST",
     body: { username: "yesbe.tech", password: ADMIN.password },

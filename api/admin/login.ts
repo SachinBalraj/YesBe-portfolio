@@ -43,14 +43,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     return;
   }
 
-  const ok = await checkCredentials(identifier, password);
-  if (!ok) {
-    // Same message for unknown admin ID and wrong password — no enumeration.
-    sendError(res, 401, "Invalid admin ID or password");
-    return;
-  }
+  try {
+    const ok = await checkCredentials(identifier, password);
+    if (!ok) {
+      // Same message for unknown admin ID and wrong password — no enumeration.
+      sendError(res, 401, "Invalid admin ID or password");
+      return;
+    }
 
-  const subject = adminSubject();
-  setSessionCookie(res, subject);
-  sendJson(res, 200, { ok: true, username: subject, email: subject });
+    const subject = adminSubject();
+    setSessionCookie(res, subject);
+    sendJson(res, 200, { ok: true, username: subject, email: subject });
+  } catch {
+    // Return JSON for infrastructure/config failures so the admin UI never
+    // falls back to a generic "Request failed" message after a 500 page.
+    sendError(res, 500, "Authentication service unavailable");
+  }
 }

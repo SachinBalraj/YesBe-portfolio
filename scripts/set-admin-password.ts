@@ -5,7 +5,7 @@ import { createPasswordHash } from "../api/_lib/auth.ts";
 import { readHidden } from "./terminalPrompt.ts";
 
 const ENV_PATH = fileURLToPath(new URL("../.env", import.meta.url));
-const MIN_LENGTH = 12;
+const MIN_LENGTH = 16;
 
 if (!stdin.isTTY) {
   stderr.write("Run this command directly in an interactive terminal.\n");
@@ -34,10 +34,10 @@ try {
   const hash = await createPasswordHash(password);
   const lines = existsSync(ENV_PATH) ? readFileSync(ENV_PATH, "utf8").split(/\r?\n/) : [];
   const updates = new Map([
-    ["ADMIN_USERNAME", "yesbe.tech"],
+    ["ADMIN_EMAIL", "hello@yesbe.tech"],
     ["ADMIN_PASSWORD_HASH", hash],
   ]);
-  const remove = new Set(["ADMIN_PASSWORD", "ADMIN_LOGIN_ID"]);
+  const remove = new Set(["ADMIN_PASSWORD", "ADMIN_LOGIN_ID", "ADMIN_USERNAME"]);
   const written = new Set<string>();
   const output: string[] = [];
 
@@ -67,16 +67,17 @@ try {
   process.stdout.write(
     [
       "",
-      "Local .env updated; ADMIN_USERNAME is yesbe.tech and the plaintext password was discarded.",
+      "Local .env updated; ADMIN_EMAIL is hello@yesbe.tech and the plaintext password was discarded.",
       "",
       "Set these in Vercel Production (keep MONGODB_URI, MONGODB_DB_NAME and SESSION_SECRET unchanged):",
-      "  Name:  ADMIN_USERNAME",
-      "  Value: yesbe.tech",
+      "  Name:  ADMIN_EMAIL",
+      "  Value: hello@yesbe.tech",
       "",
       "  Name:  ADMIN_PASSWORD_HASH",
       "  Value: copy only the hash below, without the variable name:",
       hash,
       "",
+      "Remove legacy ADMIN_USERNAME, ADMIN_LOGIN_ID and ADMIN_PASSWORD variables.",
       "Do not commit the hash or paste it into frontend code.",
       "",
     ].join("\n"),

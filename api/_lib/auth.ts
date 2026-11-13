@@ -20,10 +20,8 @@ const SCRYPT_KEYLEN = 64;
 
 /* ────────────────────────────────────────────────────────────
    Password verification
-   Supports two env formats:
-     ADMIN_PASSWORD_HASH = scrypt$<saltHex>$<hashHex>   (preferred)
-     ADMIN_PASSWORD      = plaintext                     (fallback)
-   Both comparisons are constant-time.
+   ADMIN_PASSWORD_HASH = scrypt$<saltHex>$<hashHex>
+   Comparison is constant-time. Plaintext passwords are never accepted.
 ──────────────────────────────────────────────────────────── */
 
 export async function createPasswordHash(password: string): Promise<string> {
@@ -34,27 +32,18 @@ export async function createPasswordHash(password: string): Promise<string> {
 
 export async function verifyPassword(password: string): Promise<boolean> {
   const hash = process.env.ADMIN_PASSWORD_HASH;
+  if (!hash) return false;
 
-  if (hash) {
-    const parts = hash.split("$");
-    if (parts.length !== 3 || parts[0] !== "scrypt") return false;
-    try {
-      const salt = Buffer.from(parts[1], "hex");
-      const expected = Buffer.from(parts[2], "hex");
-      const derived = await scrypt(password, salt, expected.length);
-      return derived.length === expected.length && timingSafeEqual(derived, expected);
-    } catch {
-      return false;
-    }
+  const parts = hash.split("$");
+  if (parts.length !== 3 || parts[0] !== "scrypt") return false;
+  try {
+    const salt = Buffer.from(parts[1], "hex");
+    const expected = Buffer.from(parts[2], "hex");
+    const derived = await scrypt(password, salt, expected.length);
+    return derived.length === expected.length && timingSafeEqual(derived, expected);
+  } catch {
+    return false;
   }
-
-  const plain = process.env.ADMIN_PASSWORD;
-  if (!plain) return false;
-  return timingSafeEqual(sha256(password), sha256(plain));
-}
-
-function sha256(value: string): Buffer {
-  return createHmac("sha256", "yesbe-constant-time").update(value).digest();
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -68,12 +57,16 @@ interface SessionPayload {
   exp: number;
 }
 
-function secret(): string {
+export function hasSessionSecret(): boolean {
   const s = process.env.SESSION_SECRET;
-  if (!s || s.length < 32) {
+  return Boolean(s && s.length >= 32);
+}
+
+function secret(): string {
+  if (!hasSessionSecret()) {
     throw new Error("SESSION_SECRET missing or shorter than 32 characters");
   }
-  return s;
+  return process.env.SESSION_SECRET!;
 }
 
 function sign(data: string): string {
@@ -147,21 +140,24 @@ export function getSession(req: VercelRequest): SessionPayload | null {
 }
 
 /**
- * Stable session subject. ADMIN_EMAIL remains the preferred subject so
- * existing sessions survive the move to username-based login. Deployments
- * configured with only ADMIN_USERNAME (or legacy ADMIN_LOGIN_ID) also work.
+ * Stable session subject. ADMIN_EMAIL is the canonical administrator ID.
+ * ADMIN_USERNAME and legacy ADMIN_LOGIN_ID remain compatible fallbacks.
  */
 export function adminSubject(): string {
   return (
     process.env.ADMIN_EMAIL ||
     process.env.ADMIN_USERNAME ||
     process.env.ADMIN_LOGIN_ID ||
-    "yesbe.tech"
+    "hello@yesbe.tech"
   ).trim();
 }
 
 export function isAdminConfigured(): boolean {
-  return Boolean(adminSubject() && (process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH));
+  return Boolean(
+    adminSubject() &&
+      process.env.ADMIN_PASSWORD_HASH &&
+      hasSessionSecret(),
+  );
 }
 
 /** Server-side authorisation gate for every admin route. */
@@ -183,19 +179,19 @@ export function requireAdmin(req: VercelRequest, res: VercelResponse): boolean {
 }
 
 /**
- * Login identifiers. ADMIN_USERNAME is preferred; ADMIN_EMAIL and the legacy
- * ADMIN_LOGIN_ID remain valid so existing deployments can migrate without
- * interrupting access. "yesbe.tech" is the default and documented admin ID.
+ * Login identifiers. ADMIN_EMAIL is preferred; ADMIN_USERNAME and the legacy
+ * ADMIN_LOGIN_ID remain valid only while they are still configured. The
+ * documented default applies solely when no identifier is configured.
  */
 function loginIdentifiers(): string[] {
   const ids = new Set<string>();
-  const username = process.env.ADMIN_USERNAME;
-  if (username) ids.add(username.trim().toLowerCase());
   const email = process.env.ADMIN_EMAIL;
   if (email) ids.add(email.trim().toLowerCase());
+  const username = process.env.ADMIN_USERNAME;
+  if (username) ids.add(username.trim().toLowerCase());
   const legacyId = process.env.ADMIN_LOGIN_ID;
   if (legacyId) ids.add(legacyId.trim().toLowerCase());
-  ids.add("yesbe.tech");
+  if (ids.size === 0) ids.add("hello@yesbe.tech");
   return [...ids];
 }
 

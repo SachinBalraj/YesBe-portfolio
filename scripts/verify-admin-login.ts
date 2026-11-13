@@ -3,7 +3,7 @@ import { stdin } from "node:process";
 import { readHidden } from "./terminalPrompt.ts";
 
 const BASE = (process.env.ADMIN_VERIFY_URL ?? "https://www.yesbe.tech").replace(/\/+$/, "");
-const ADMIN_ID = (process.env.ADMIN_USERNAME ?? "yesbe.tech").trim();
+const ADMIN_ID = (process.env.ADMIN_EMAIL ?? process.env.ADMIN_USERNAME ?? "hello@yesbe.tech").trim();
 const ORIGIN = new URL(BASE).origin;
 
 if (!stdin.isTTY) {
@@ -84,7 +84,7 @@ if (results.length > 0 && results.every(Boolean)) {
 } else {
   console.log(
     "\nVerification failed without exposing your password. If sign-in failed, confirm " +
-      "ADMIN_USERNAME and ADMIN_PASSWORD_HASH in Vercel Production, then redeploy.",
+      "ADMIN_EMAIL and ADMIN_PASSWORD_HASH in Vercel Production, then redeploy.",
   );
   process.exitCode = 1;
 }

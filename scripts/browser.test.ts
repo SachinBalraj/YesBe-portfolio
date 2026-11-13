@@ -16,15 +16,16 @@ const BASE = process.env.TEST_BASE_URL ?? "http://localhost:3111";
 
 /**
  * Admin credentials come from the environment — never a literal in this file.
- * Set TEST_ADMIN_USERNAME / TEST_ADMIN_PASSWORD to the same values as
- * ADMIN_USERNAME and the password whose scrypt hash is in ADMIN_PASSWORD_HASH.
+ * Set TEST_ADMIN_PASSWORD to the password whose scrypt hash is in
+ * ADMIN_PASSWORD_HASH. The admin ID is ADMIN_EMAIL (or TEST_ADMIN_EMAIL).
  */
 const ADMIN = {
   username:
+    process.env.TEST_ADMIN_EMAIL ??
+    process.env.ADMIN_EMAIL ??
     process.env.TEST_ADMIN_USERNAME ??
     process.env.ADMIN_USERNAME ??
-    process.env.ADMIN_LOGIN_ID ??
-    "yesbe.tech",
+    "hello@yesbe.tech",
   password: process.env.TEST_ADMIN_PASSWORD ?? "",
 };
 if (!ADMIN.password) {

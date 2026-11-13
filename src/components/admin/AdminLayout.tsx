@@ -56,7 +56,7 @@ export function AdminLayout() {
         <h1 className="mt-3 text-lg font-semibold text-foreground">Admin access is not configured</h1>
         <p className="mt-2 max-w-md text-center text-sm text-muted-foreground">
           Set <code className="rounded-none bg-muted px-1">MONGODB_URI</code>,{" "}
-          <code className="rounded-none bg-muted px-1">ADMIN_USERNAME</code>,{" "}
+          <code className="rounded-none bg-muted px-1">ADMIN_EMAIL</code>,{" "}
           <code className="rounded-none bg-muted px-1">ADMIN_PASSWORD_HASH</code> and{" "}
           <code className="rounded-none bg-muted px-1">SESSION_SECRET</code> in the environment, then redeploy.
         </p>
@@ -162,7 +162,7 @@ function LoginForm({
           spellCheck={false}
           value={adminId}
           onChange={(e) => setAdminId(e.target.value)}
-          placeholder="yesbe.tech"
+          placeholder="hello@yesbe.tech"
           className="mt-1 w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
         />
 
