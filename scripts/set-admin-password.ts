@@ -1,6 +1,4 @@
-import { execFileSync } from "node:child_process";
 import { chmodSync, existsSync, readFileSync, writeFileSync } from "node:fs";
-import { createInterface } from "node:readline/promises";
 import { fileURLToPath } from "node:url";
 import { stdin, stderr } from "node:process";
 import { createPasswordHash } from "../api/_lib/auth.ts";
@@ -13,26 +11,56 @@ if (!stdin.isTTY) {
   process.exit(1);
 }
 
-function setEcho(enabled: boolean): void {
-  try {
-    execFileSync("stty", [enabled ? "echo" : "-echo"], { stdio: [stdin, "ignore", "ignore"] });
-  } catch {
-    // Non-POSIX terminal; the Windows fallback still keeps input out of argv.
-  }
+function readHidden(prompt: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const wasRaw = stdin.isRaw;
+    let value = "";
+
+    const cleanup = (): void => {
+      stdin.off("data", onData);
+      stdin.setRawMode(wasRaw);
+      stdin.pause();
+    };
+
+    const onData = (chunk: string): void => {
+      for (const char of chunk) {
+        if (char === "\r" || char === "\n") {
+          cleanup();
+          stderr.write("\n");
+          resolve(value);
+          return;
+        }
+        if (char === "\u0003") {
+          cleanup();
+          stderr.write("\n");
+          reject(new Error("Cancelled."));
+          return;
+        }
+        if (char === "\u007f" || char === "\b") {
+          value = value.slice(0, -1);
+        } else if (char >= " ") {
+          value += char;
+        }
+      }
+    };
+
+    stdin.setRawMode(true);
+    stdin.setEncoding("utf8");
+    stdin.resume();
+    stdin.on("data", onData);
+    stderr.write(prompt);
+  });
 }
 
-const rl = createInterface({ input: stdin, output: stderr, terminal: true });
 let password = "";
 let confirmation = "";
 
 try {
-  setEcho(false);
-  password = await rl.question("New admin password: ");
-  confirmation = await rl.question("Confirm new admin password: ");
-} finally {
-  setEcho(true);
-  rl.close();
-  stderr.write("\n");
+  password = await readHidden("New admin password: ");
+  confirmation = await readHidden("Confirm new admin password: ");
+} catch (error) {
+  stderr.write(`\n${error instanceof Error ? error.message : "Cancelled."}\n`);
+  process.exit(1);
 }
 
 try {
