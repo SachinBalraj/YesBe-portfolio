@@ -20,7 +20,13 @@ const GLOBAL_KEY = Symbol.for("yesbe.mongo.client");
  * the wrong database.
  */
 function resolveDbName(): string {
-  return process.env.MONGODB_DB_NAME || "yesbe";
+  const name = (process.env.MONGODB_DB_NAME || "yesbe").trim();
+  // Atlas/DB names are simple identifiers. Reject placeholder or malformed
+  // values before they can silently send reads and writes to a wrong database.
+  if (!/^[A-Za-z0-9_-]+$/.test(name)) {
+    throw new ConfigError("MONGODB_DB_NAME is invalid");
+  }
+  return name;
 }
 
 interface GlobalWithMongo {
@@ -36,12 +42,18 @@ export function getMongoClient(): MongoClient {
     throw new ConfigError("MONGODB_URI is not set");
   }
 
-  const client = new MongoClient(uri, {
-    serverSelectionTimeoutMS: 5000,
-    maxPoolSize: 5,
-    retryWrites: true,
-  });
-
+  let client: MongoClient;
+  try {
+    client = new MongoClient(uri, {
+      serverSelectionTimeoutMS: 5000,
+      maxPoolSize: 5,
+      retryWrites: true,
+    });
+  } catch {
+    // Never echo the connection string: it contains credentials.
+    console.error("[db] MONGODB_URI is malformed; check Vercel Production variables");
+    throw new ConfigError("MONGODB_URI is invalid");
+  }
   g[GLOBAL_KEY] = client;
   return client;
 }

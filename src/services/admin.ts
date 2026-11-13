@@ -7,6 +7,8 @@ import { ApiError } from "./enquiries";
  * operator back to the login screen.
  */
 
+export const ADMIN_UNAUTHORIZED_EVENT = "yesbe:admin-unauthorized";
+
 export interface FollowUpNote {
   id: string;
   text: string;
@@ -122,6 +124,13 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const data = (payload ?? {}) as { ok?: boolean; error?: string; fields?: { field: string; message: string }[] };
 
   if (!response.ok || data.ok === false) {
+    if (
+      response.status === 401 &&
+      path !== "/api/admin/login" &&
+      typeof window !== "undefined"
+    ) {
+      window.dispatchEvent(new Event(ADMIN_UNAUTHORIZED_EVENT));
+    }
     throw new ApiError(data.error || "Request failed", response.status, data.fields ?? []);
   }
   return data as T;

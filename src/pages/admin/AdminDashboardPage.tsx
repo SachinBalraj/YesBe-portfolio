@@ -164,7 +164,8 @@ function EnquiriesPanel({ onOpenNewsletter }: { onOpenNewsletter: () => void }) 
   const summary = data?.summary;
 
   const summaryValue = (card: (typeof SUMMARY_CARDS)[number]) => {
-    if (card.kind === "total") return summary?.total ?? data?.total ?? "—";
+    if (!data) return error ? "Error" : "…";
+    if (card.kind === "total") return summary?.total ?? data.total ?? "—";
     if (card.kind === "subscribers") return summary?.subscribers ?? "—";
     return summary?.counts?.[card.status as EnquiryStatus] ?? "—";
   };
@@ -286,17 +287,25 @@ function EnquiriesPanel({ onOpenNewsletter }: { onOpenNewsletter: () => void }) 
       </div>
 
       {error && (
-        <p className="mt-4 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm font-medium text-destructive">
+        <div className="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm font-medium text-destructive">
           <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {error}
-        </p>
+          <span className="flex-1">{error}</span>
+          <button
+            type="button"
+            onClick={() => void load()}
+            disabled={loading}
+            className="rounded-lg border border-destructive/30 px-2.5 py-1 text-xs font-semibold transition-colors hover:bg-destructive/10 disabled:opacity-50"
+          >
+            Retry
+          </button>
+        </div>
       )}
 
       {loading ? (
         <p className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Loading enquiries…
         </p>
-      ) : data && data.items.length === 0 ? (
+      ) : error && !data ? null : data && data.items.length === 0 ? (
         <p className="mt-6 rounded-xl border border-dashed border-border px-4 py-10 text-center text-sm text-muted-foreground">
           No enquiries match these filters.
         </p>
@@ -488,7 +497,9 @@ function NewsletterPanel() {
   return (
     <div>
       <p className="text-sm text-muted-foreground">
-        {total} subscriber{total === 1 ? "" : "s"} stored in MongoDB.
+        {error && items.length === 0
+          ? "Subscriber data is unavailable."
+          : `${total} subscriber${total === 1 ? "" : "s"} stored in MongoDB.`}
       </p>
 
       <div className="relative mt-4">
@@ -507,17 +518,25 @@ function NewsletterPanel() {
       </div>
 
       {error && (
-        <p className="mt-4 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm font-medium text-destructive">
+        <div className="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm font-medium text-destructive">
           <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {error}
-        </p>
+          <span className="flex-1">{error}</span>
+          <button
+            type="button"
+            onClick={() => void load()}
+            disabled={loading}
+            className="rounded-lg border border-destructive/30 px-2.5 py-1 text-xs font-semibold transition-colors hover:bg-destructive/10 disabled:opacity-50"
+          >
+            Retry
+          </button>
+        </div>
       )}
 
       {loading ? (
         <p className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Loading…
         </p>
-      ) : items.length === 0 ? (
+      ) : error && items.length === 0 ? null : items.length === 0 ? (
         <p className="mt-6 rounded-xl border border-dashed border-border px-4 py-10 text-center text-sm text-muted-foreground">
           No subscribers yet.
         </p>

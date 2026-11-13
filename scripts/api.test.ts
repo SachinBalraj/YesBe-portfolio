@@ -618,6 +618,28 @@ test("dashboard summary is global and reconciles", async () => {
   );
 });
 
+test("empty database returns a valid empty dashboard payload", async () => {
+  const cookie = await authedCookie();
+  const previous = process.env.MONGODB_DB_NAME;
+  process.env.MONGODB_DB_NAME = "yesbe_empty_dashboard_test";
+  try {
+    const { status, body } = await call("list", { method: "GET", headers: { cookie } });
+    assert.equal(status, 200);
+    assert.deepEqual(body.items, []);
+    assert.equal(body.total, 0);
+    assert.equal(body.pages, 1);
+    assert.equal(body.summary.total, 0);
+    assert.equal(body.summary.subscribers, 0);
+    assert.deepEqual(Object.values(body.summary.counts), [0, 0, 0, 0]);
+    const newsletter = await call("newsletter", { method: "GET", headers: { cookie } });
+    assert.equal(newsletter.status, 200);
+    assert.deepEqual(newsletter.body.items, []);
+    assert.equal(newsletter.body.total, 0);
+  } finally {
+    process.env.MONGODB_DB_NAME = previous;
+  }
+});
+
 test("admin can sort and invalid sort values are rejected", async () => {
   const cookie = await authedCookie();
   const asc = await call("list", {

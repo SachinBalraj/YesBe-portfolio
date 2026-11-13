@@ -172,6 +172,19 @@ test("signing out clears access", async () => {
   assert.equal(await page.getByText("Browser Test User").count(), 0, "data must be gone after sign out");
 });
 
+test("expired session sends the operator back to sign in", async () => {
+  await page.getByLabel("Admin ID").fill(ADMIN.username);
+  await page.getByLabel("Password").fill(ADMIN.password);
+  await page.getByRole("button", { name: /^sign in$/i }).click();
+  await page.getByRole("link", { name: "Browser Test User" }).first().waitFor({ timeout: 20000 });
+
+  await context.clearCookies();
+  await page.getByRole("button", { name: "Newsletter", exact: true }).click();
+
+  await page.getByText("Admin sign in").waitFor({ timeout: 20000 });
+  await page.getByText(/session expired/i).waitFor({ timeout: 10000 });
+});
+
 test("location row and public newsletter signups are absent", async () => {
   for (const path of [
     "/",

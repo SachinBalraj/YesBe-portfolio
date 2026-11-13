@@ -220,3 +220,31 @@ test("plaintext ADMIN_PASSWORD is never accepted", async () => {
     delete process.env.ADMIN_PASSWORD;
   }
 });
+
+/* ── Database configuration ───────────────────────────────── */
+
+test("malformed MONGODB_URI fails closed as a configuration error", async () => {
+  const { getMongoClient, ConfigError } = await import("../api/_lib/db.ts");
+  const previousUri = process.env.MONGODB_URI;
+  const previousDb = process.env.MONGODB_DB_NAME;
+  const globalKey = Symbol.for("yesbe.mongo.client");
+  delete (globalThis as Record<symbol, unknown | undefined>)[globalKey];
+  process.env.MONGODB_URI = "[SENSITIVE]";
+  process.env.MONGODB_DB_NAME = "yesbe";
+  try {
+    assert.throws(
+      () => getMongoClient(),
+      (error: unknown) =>
+        error instanceof ConfigError &&
+        error.status === 503 &&
+        !error.message.includes("[SENSITIVE]"),
+      "a malformed URI must become a safe 503 configuration error",
+    );
+  } finally {
+    delete (globalThis as Record<symbol, unknown | undefined>)[globalKey];
+    if (previousUri === undefined) delete process.env.MONGODB_URI;
+    else process.env.MONGODB_URI = previousUri;
+    if (previousDb === undefined) delete process.env.MONGODB_DB_NAME;
+    else process.env.MONGODB_DB_NAME = previousDb;
+  }
+});

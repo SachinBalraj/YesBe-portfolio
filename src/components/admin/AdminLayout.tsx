@@ -3,7 +3,12 @@ import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Loader2, LogOut, ShieldAlert } from "lucide-react";
 import { ApiError } from "@/services/enquiries";
-import { checkSession, login, logout } from "@/services/admin";
+import {
+  ADMIN_UNAUTHORIZED_EVENT,
+  checkSession,
+  login,
+  logout,
+} from "@/services/admin";
 import { useSEO } from "@/hooks/useSEO";
 
 /**
@@ -16,6 +21,7 @@ import { useSEO } from "@/hooks/useSEO";
 export function AdminLayout() {
   const [state, setState] = useState<"checking" | "anon" | "authed" | "unconfigured">("checking");
   const [adminId, setAdminId] = useState("");
+  const [notice, setNotice] = useState("");
 
   useSEO({
     title: "Admin",
@@ -39,6 +45,15 @@ export function AdminLayout() {
   useEffect(() => {
     void verify();
   }, [verify]);
+
+  useEffect(() => {
+    const onUnauthorized = () => {
+      setNotice("Your session expired. Please sign in again.");
+      setState("anon");
+    };
+    window.addEventListener(ADMIN_UNAUTHORIZED_EVENT, onUnauthorized);
+    return () => window.removeEventListener(ADMIN_UNAUTHORIZED_EVENT, onUnauthorized);
+  }, []);
 
   if (state === "checking") {
     return (
@@ -65,7 +80,17 @@ export function AdminLayout() {
   }
 
   if (state === "anon") {
-    return <LoginForm onSuccess={() => setState("authed")} adminId={adminId} setAdminId={setAdminId} />;
+    return (
+      <LoginForm
+        notice={notice}
+        onSuccess={() => {
+          setNotice("");
+          setState("authed");
+        }}
+        adminId={adminId}
+        setAdminId={setAdminId}
+      />
+    );
   }
 
   return (
@@ -87,6 +112,7 @@ export function AdminLayout() {
               type="button"
               onClick={async () => {
                 await logout().catch(() => undefined);
+                setNotice("");
                 setState("anon");
               }}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
@@ -113,10 +139,12 @@ function Centered({ children }: { children: React.ReactNode }) {
 }
 
 function LoginForm({
+  notice,
   onSuccess,
   adminId,
   setAdminId,
 }: {
+  notice: string;
   onSuccess: () => void;
   adminId: string;
   setAdminId: (value: string) => void;
@@ -149,6 +177,11 @@ function LoginForm({
         <p className="mt-1 text-sm text-muted-foreground">
           Access is restricted to the site owner.
         </p>
+        {notice && (
+          <p className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-sm text-amber-700">
+            {notice}
+          </p>
+        )}
 
         <label htmlFor="admin-id" className="mt-5 block text-sm font-medium text-foreground">
           Admin ID
