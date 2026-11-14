@@ -13,7 +13,7 @@ const suggestions = [
   { label: "Solutions", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Insights", href: "/insights" },
+  { label: "Articles", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];
 

@@ -20,7 +20,7 @@ export const searchUrl = (q: string) =>
 export function getArticleSeoTitle(article: Article) {
   return article.seoTitle
     ? article.seoTitle
-    : `${article.title} | Insights | YESBE Technologies`;
+    : `${article.title} | Articles | YESBE Technologies`;
 }
 
 export function getArticleSeoDescription(article: Article) {
@@ -30,11 +30,11 @@ export function getArticleSeoDescription(article: Article) {
 }
 
 export function getCategorySeoTitle(category: KnowledgeCategory) {
-  return `${category.name} Guides & Articles | YESBE Insights`;
+  return `${category.name} Guides & Articles | YESBE Articles`;
 }
 
 export function getCategorySeoDescription(category: KnowledgeCategory) {
-  return `${category.description} Read expert ${category.name.toLowerCase()} articles, guides, and insights from YESBE Technologies.`;
+  return `${category.description} Read expert ${category.name.toLowerCase()} articles and guides from YESBE Technologies.`;
 }
 
 export function buildArticleSchema(article: Article) {

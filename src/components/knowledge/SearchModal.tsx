@@ -172,7 +172,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl border border-white/20 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900"
           >
-            <h2 id="search-dialog-title" className="sr-only">Search YESBE insights</h2>
+            <h2 id="search-dialog-title" className="sr-only">Search YESBE articles</h2>
             {/* Top Search Input Bar */}
             <div className="relative flex items-center border-b border-slate-200/80 px-5 py-4 dark:border-slate-800">
               <Search className="h-5 w-5 text-primary/70 shrink-0 mr-3" aria-hidden="true" />
@@ -185,8 +185,8 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                   setSelectedIndex(-1);
                 }}
                 onKeyDown={handleKeyDown}
-                placeholder="Search articles, guides, and insights..."
-                aria-label="Search articles, guides, and insights"
+                placeholder="Search articles and guides..."
+                aria-label="Search articles and guides"
                 className="w-full bg-transparent text-base text-foreground placeholder-muted-foreground/70 outline-none"
               />
               {query && (

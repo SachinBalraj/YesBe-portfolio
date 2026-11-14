@@ -8,10 +8,10 @@ import { PageHeader } from "@/components/common/PageHeader";
 const resources = [
   {
     icon: BookOpen,
-    title: "Written Insights",
+    title: "Written Articles",
     description: "Practical guides on AI, ERP, automation, analytics, and web development.",
     href: "/insights",
-    cta: "Read the insights",
+    cta: "Read the articles",
   },
   {
     icon: Briefcase,
@@ -33,7 +33,7 @@ export function VideoPage() {
   useSEO({
     title: "Video Library | YESBE Technologies",
     description:
-      "YESBE does not currently publish a public video library. Explore our written insights, project breakdowns, and direct consultation instead.",
+      "YESBE does not currently publish a public video library. Explore our written articles, project breakdowns, and direct consultation instead.",
     canonical: "https://www.yesbe.tech/videos",
     noindex: true,
   });
@@ -43,7 +43,7 @@ export function VideoPage() {
       <PageHeader
         badge="Videos"
         title="Video Library"
-        description="A public video library is not available yet. Our written insights and project breakdowns cover the same practical ground."
+        description="A public video library is not available yet. Our written articles and project breakdowns cover the same practical ground."
       />
 
       <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 lg:px-8">

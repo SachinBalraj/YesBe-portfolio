@@ -77,13 +77,13 @@ export function KnowledgeCenterHome() {
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
-        <Breadcrumbs items={[{ label: "Insights" }]} />
+        <Breadcrumbs items={[{ label: "Articles" }]} />
       </div>
 
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="section-kicker">YESBE Insights</p>
+            <p className="section-kicker">YESBE Articles</p>
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -112,7 +112,7 @@ export function KnowledgeCenterHome() {
             transition={{ duration: 0.5, delay: 0.24 }}
             className="mt-8 max-w-2xl"
           >
-            <SearchBar size="lg" placeholder="Search articles, guides, and insights..." />
+            <SearchBar size="lg" placeholder="Search articles and guides..." />
 
             {/* Clickable Popular Searches Chips */}
             <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -150,7 +150,7 @@ export function KnowledgeCenterHome() {
               Latest Articles
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              Fresh insights and expert guides from our team.
+              Fresh articles and expert guides from our team.
             </p>
           </div>
 

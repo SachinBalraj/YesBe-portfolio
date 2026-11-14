@@ -104,7 +104,7 @@ export function MiniGuidesSection() {
               to="/insights"
               className="mt-6 inline-flex items-center gap-2 py-1 text-[14px] font-semibold text-primary hover:text-[#1d4ed8]"
             >
-              Read all insights
+              Read all articles
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

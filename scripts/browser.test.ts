@@ -214,18 +214,21 @@ test("location row, business hours, and public newsletter signups are absent", a
   }
 });
 
-test("company intro replaces its fact panel with the architecture illustration", async () => {
+test("company intro shows the business consultation photograph", async () => {
   await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
   const section = page.locator("#about-yesbe");
   assert.equal(await section.locator("dt").count(), 0, "fact panel must be removed");
 
-  const image = section.locator('img[alt*="Technology architecture diagram"]');
+  const alt = "Business owner collaborating with an IT consultant on digital solutions";
+  const image = section.getByAltText(alt, { exact: true });
   await section.scrollIntoViewIfNeeded();
   await image.waitFor();
-  await page.waitForFunction(() => {
-    const img = document.querySelector<HTMLImageElement>('#about-yesbe img[alt*="Technology architecture diagram"]');
+  await page.waitForFunction((expectedAlt) => {
+    const img = document.querySelector<HTMLImageElement>(
+      `#about-yesbe img[alt="${expectedAlt}"]`,
+    );
     return Boolean(img?.complete && img.naturalWidth > 0);
-  });
+  }, alt);
 
   const rendered = await image.evaluate((img: HTMLImageElement) => {
     const box = img.getBoundingClientRect();
@@ -236,9 +239,24 @@ test("company intro replaces its fact panel with the architecture illustration",
       naturalWidth: img.naturalWidth,
     };
   });
-  assert.match(rendered.currentSrc, /yesbe-architecture-\d+\.(avif|webp|png)$/);
+  assert.match(rendered.currentSrc, /yesbe-consultation-\d+\.(avif|webp|jpe?g)$/);
   assert.ok(rendered.naturalWidth > 0, "image must load");
-  assert.ok(Math.abs(rendered.width / rendered.height - 4 / 3) < 0.02, "image must render at 4:3");
+  assert.ok(Math.abs(rendered.width / rendered.height - 5 / 4) < 0.02, "image must render at 5:4");
+});
+
+test("desktop and mobile navigation label the section Articles", async () => {
+  await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+  const desktopNav = page.getByRole("navigation", { name: "Main navigation" });
+  assert.equal(await desktopNav.getByRole("link", { name: "Articles", exact: true }).getAttribute("href"), "/insights");
+  assert.equal(await desktopNav.getByRole("link", { name: "Insights", exact: true }).count(), 0);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole("button", { name: "Open menu" }).click();
+  const mobileNav = page.getByRole("dialog", { name: "Mobile navigation" });
+  assert.equal(await mobileNav.getByRole("link", { name: "Articles", exact: true }).getAttribute("href"), "/insights");
+  assert.equal(await mobileNav.getByRole("link", { name: "Insights", exact: true }).count(), 0);
+  await page.keyboard.press("Escape");
+  await page.setViewportSize({ width: 1280, height: 900 });
 });
 
 test("honeypot submission is accepted but never stored", async () => {

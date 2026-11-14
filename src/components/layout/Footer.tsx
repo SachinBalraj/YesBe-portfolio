@@ -66,7 +66,7 @@ const companyLinks = [
   { label: "Founder", href: "/sachin-balraj" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Insights", href: "/insights" },
+  { label: "Articles", href: "/insights" },
 ];
 
 const supportLinks = [

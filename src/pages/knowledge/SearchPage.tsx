@@ -92,13 +92,13 @@ export function SearchPage() {
   // SEO metadata optimization
   useSEO({
     title: q
-      ? `Search: ${q} (${results.length} results) | YESBE Insights`
+      ? `Search: ${q} (${results.length} results) | YESBE Articles`
       : category
-      ? `${category.name} Articles | YESBE Insights`
-      : "Search Articles & Guides | YESBE Insights",
+      ? `${category.name} Articles | YESBE Articles`
+      : "Search Articles & Guides | YESBE Articles",
     description: category
       ? `Discover expert ${category.name} articles, tutorials, and case studies at YESBE.`
-      : "Search articles, guides, and insights on AI, ERP, CRM, Websites, Power BI, SEO, and Business Tech.",
+      : "Search articles and guides on AI, ERP, CRM, Websites, Power BI, SEO, and Business Tech.",
     canonical: q
       ? `${SITE_URL}/insights/search?q=${encodeURIComponent(q)}`
       : `${SITE_URL}/insights/search`,
@@ -139,7 +139,7 @@ export function SearchPage() {
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
         <Breadcrumbs
           items={[
-            { label: "Insights", href: "/insights" },
+            { label: "Articles", href: "/insights" },
             { label: "Search" },
           ]}
         />
@@ -163,7 +163,7 @@ export function SearchPage() {
             transition={{ duration: 0.4, delay: 0.05 }}
             className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
           >
-            Discover Articles, Guides & Insights
+            Discover Articles &amp; Guides
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -179,7 +179,7 @@ export function SearchPage() {
             transition={{ duration: 0.4, delay: 0.15 }}
             className="mt-6"
           >
-            <SearchBar defaultValue={q} size="lg" placeholder="Search articles, guides, and insights..." />
+            <SearchBar defaultValue={q} size="lg" placeholder="Search articles and guides..." />
           </motion.div>
         </div>
 
@@ -222,7 +222,7 @@ export function SearchPage() {
                     Search results for <span className="text-primary">“{q}”</span>
                   </>
                 ) : (
-                  "Insights Library"
+                  "Articles Library"
                 )}
               </h2>
               <p className="mt-1 text-xs text-muted-foreground">

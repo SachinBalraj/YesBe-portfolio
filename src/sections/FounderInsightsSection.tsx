@@ -42,14 +42,14 @@ export function FounderInsightsSection() {
           transition={{ duration: 0.5 }}
           className="mb-10 max-w-2xl"
         >
-          <span className="mb-3 block text-[13px] font-semibold text-primary">Insights</span>
+          <span className="mb-3 block text-[13px] font-semibold text-primary">Articles</span>
           <h2
             id="founder-latest-insights"
             className="text-3xl font-bold tracking-[-0.02em] text-navy sm:text-4xl"
           >
             Latest{" "}
             <span className="text-primary">
-              Insights &amp; Articles
+              Articles
             </span>
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
@@ -115,7 +115,7 @@ export function FounderInsightsSection() {
             to="/insights"
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md "
           >
-            Browse the Insights
+            Browse the Articles
             <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />
           </Link>
         </motion.div>

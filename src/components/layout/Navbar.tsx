@@ -22,7 +22,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Solutions", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Insights", href: "/insights" },
+  { label: "Articles", href: "/insights" },
 ];
 
 /* ─── Navigation Helpers ─── */
@@ -200,8 +200,8 @@ function NavbarComponent() {
             <button
               onClick={() => setIsSearchOpen(true)}
               className="inline-flex min-h-10 items-center gap-2 border border-border bg-white px-3 py-2 text-[13px] font-medium text-slate-700 transition-colors duration-200 hover:border-slate-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-              title="Search Insights (⌘ K)"
-              aria-label="Search insights"
+              title="Search Articles (⌘ K)"
+              aria-label="Search articles"
               aria-haspopup="dialog"
             >
               <Search className="h-4 w-4 text-slate-500" />

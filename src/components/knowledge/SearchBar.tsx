@@ -19,7 +19,7 @@ export function SearchBar({
   defaultValue = "",
   size = "lg",
   className,
-  placeholder = "Search articles, guides, and insights...",
+  placeholder = "Search articles and guides...",
   categoryFilter,
   showModalShortcut = true,
 }: SearchBarProps) {
@@ -130,7 +130,7 @@ export function SearchBar({
           }}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          aria-label="Search the Insights"
+          aria-label="Search articles"
           className={cn(
             "w-full rounded-none border border-slate-200/90 bg-white text-foreground shadow-[0_2px_8px_rgba(37,99,235,0.04),0_8px_24px_rgba(37,99,235,0.03)] outline-none transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/15 dark:border-slate-800 dark:bg-slate-900",
             size === "lg" ? "py-4 pl-12 pr-28 text-base" : "py-2.5 pl-10 pr-20 text-sm"

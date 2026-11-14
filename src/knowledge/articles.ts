@@ -124,10 +124,10 @@ function parseArticle(raw: string): Article | null {
     excerpt: meta.excerpt ?? "",
     tags: meta.tags ?? [],
     seoTitle:
-      meta.seoTitle ?? `${title} | Insights | YESBE Technologies`,
+      meta.seoTitle ?? `${title} | Articles | YESBE Technologies`,
     metaDescription:
       meta.metaDescription ??
-      `${title} — an expert guide from the YESBE Insights on ${category.toLowerCase()}.`,
+      `${title} — an expert guide from YESBE on ${category.toLowerCase()}.`,
     keywords: meta.keywords ?? [],
     popular: meta.popular ?? false,
     featured: meta.featured ?? false,

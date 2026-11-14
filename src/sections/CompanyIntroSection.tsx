@@ -4,9 +4,9 @@ import { SectionHeading } from "@/components/common/SectionHeading";
 
 const IMAGE_WIDTHS = [480, 720, 960, 1280, 1600];
 const IMAGE_SIZES = "(min-width: 1024px) 45vw, 100vw";
-const AVIF_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-architecture-${w}.avif ${w}w`).join(", ");
-const WEBP_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-architecture-${w}.webp ${w}w`).join(", ");
-const PNG_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-architecture-${w}.png ${w}w`).join(", ");
+const AVIF_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-consultation-${w}.avif ${w}w`).join(", ");
+const WEBP_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-consultation-${w}.webp ${w}w`).join(", ");
+const JPEG_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-consultation-${w}.jpg ${w}w`).join(", ");
 
 export function CompanyIntroSection() {
   return (
@@ -44,17 +44,17 @@ export function CompanyIntroSection() {
           </div>
 
           <figure className="w-full lg:self-start">
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-slate-100">
+            <div className="aspect-[5/4] w-full overflow-hidden rounded-md bg-slate-100">
               <picture>
                 <source type="image/avif" srcSet={AVIF_SRC_SET} sizes={IMAGE_SIZES} />
                 <source type="image/webp" srcSet={WEBP_SRC_SET} sizes={IMAGE_SIZES} />
                 <img
-                  src="/images/company/yesbe-architecture-960.png"
-                  srcSet={PNG_SRC_SET}
+                  src="/images/company/yesbe-consultation-960.jpg"
+                  srcSet={JPEG_SRC_SET}
                   sizes={IMAGE_SIZES}
-                  alt="Technology architecture diagram: frontend React, Next.js and web applications; backend Node.js, Python and REST APIs; database MongoDB and PostgreSQL; cloud infrastructure AWS, Azure and Google Cloud; business solutions ERP, AI, automation and analytics"
+                  alt="Business owner collaborating with an IT consultant on digital solutions"
                   width={1600}
-                  height={1200}
+                  height={1280}
                   loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover"

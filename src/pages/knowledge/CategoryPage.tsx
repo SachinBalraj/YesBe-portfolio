@@ -153,14 +153,14 @@ export function CategoryPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground">Topic Category Not Found</h1>
         <p className="mt-2 text-muted-foreground">
-          The requested category page “{slug}” could not be found in our Insights library.
+          The requested category page “{slug}” could not be found in our Articles library.
         </p>
         <Link
           to="/insights"
           className="mt-6 inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg "
         >
           <ArrowLeft className="h-4 w-4" />
-          Explore Insights
+          Explore Articles
         </Link>
       </div>
     );
@@ -189,7 +189,7 @@ export function CategoryPage() {
       <div className="mx-auto max-w-7xl px-4 pb-4 pt-10 sm:px-6 lg:px-8">
         <Breadcrumbs
           items={[
-            { label: "Insights", href: "/insights" },
+            { label: "Articles", href: "/insights" },
             { label: category.name },
           ]}
         />
@@ -228,7 +228,7 @@ export function CategoryPage() {
             >
               {category.name}{" "}
               <span className="text-primary">
-                Guides & Insights
+                Guides &amp; Articles
               </span>
             </motion.h1>
 
@@ -417,7 +417,7 @@ export function CategoryPage() {
               You May Also Explore:
             </h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              Discover related technology topics across the YESBE Insights.
+              Discover related technology topics across YESBE Articles.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">

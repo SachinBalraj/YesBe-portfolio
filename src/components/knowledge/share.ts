@@ -14,7 +14,7 @@ export function formatDate(date: string) {
 
 export function buildShareLinks(article: Article) {
   const url = articleUrl(article.slug);
-  const text = `${article.title} — YESBE Insights`;
+  const text = `${article.title} — YESBE Articles`;
   const encoded = encodeURIComponent(text);
   const encodedUrl = encodeURIComponent(url);
   return [

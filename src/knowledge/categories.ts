@@ -11,7 +11,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore AI Solutions",
     solutionCtaHref: "/services/ai-solutions",
     subTopicFilters: ["Machine Learning", "AI Automation", "AI Chatbots", "Generative AI", "Business AI"],
-    seoTitle: "AI Solutions & Artificial Intelligence Articles | YESBE Insights",
+    seoTitle: "AI Solutions & Artificial Intelligence Articles | YESBE Articles",
     metaDescription:
       "Explore practical guides on AI tools, chatbots, LLMs, RAG systems, and machine learning applied to real business problems.",
     faq: [
@@ -37,7 +37,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore ERP Systems",
     solutionCtaHref: "/services/erp-systems",
     subTopicFilters: ["ERP Software", "ERP Implementation", "Manufacturing ERP", "Retail ERP", "Cloud ERP"],
-    seoTitle: "ERP Systems & Enterprise Planning Articles | YESBE Insights",
+    seoTitle: "ERP Systems & Enterprise Planning Articles | YESBE Articles",
     metaDescription:
       "Learn how enterprise resource planning (ERP) unifies inventory, billing, finance, HR, and operations into a single source of truth.",
     faq: [
@@ -58,7 +58,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore CRM Solutions",
     solutionCtaHref: "/services/custom-software",
     subTopicFilters: ["Sales Pipeline", "Customer Management", "CRM Benefits", "Automated Outreach"],
-    seoTitle: "CRM Strategies & Customer Management Articles | YESBE Insights",
+    seoTitle: "CRM Strategies & Customer Management Articles | YESBE Articles",
     metaDescription:
       "Master CRM strategies: organize lead pipelines, automate follow-ups, and convert leads into long-term customer relationships.",
   },
@@ -72,7 +72,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Power BI Dashboards",
     solutionCtaHref: "/services/power-bi-dashboards",
     subTopicFilters: ["Dashboards", "DAX", "Reporting", "Excel vs Power BI", "Data Modeling"],
-    seoTitle: "Power BI Dashboards & Analytics Guides | YESBE Insights",
+    seoTitle: "Power BI Dashboards & Analytics Guides | YESBE Articles",
     metaDescription:
       "Dashboards, DAX calculations, and data modeling guides that turn scattered spreadsheets into real-time reporting.",
   },
@@ -86,7 +86,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore BI Solutions",
     solutionCtaHref: "/services/data-analytics",
     subTopicFilters: ["KPI Design", "Executive Reporting", "Data Strategy", "BI Architecture"],
-    seoTitle: "Business Intelligence & Executive Analytics | YESBE Insights",
+    seoTitle: "Business Intelligence & Executive Analytics | YESBE Articles",
     metaDescription:
       "Build trusted reporting frameworks and executive KPI dashboards that accelerate business decision-making.",
   },
@@ -100,7 +100,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Data Analytics",
     solutionCtaHref: "/services/data-analytics",
     subTopicFilters: ["Data Pipelines", "Predictive Analytics", "Data Warehouse", "Data Cleaning"],
-    seoTitle: "Data Analytics & Data Engineering Articles | YESBE Insights",
+    seoTitle: "Data Analytics & Data Engineering Articles | YESBE Articles",
     metaDescription:
       "Learn data collection, cleaning, warehousing, and predictive modeling techniques for enterprise decision-making.",
   },
@@ -114,7 +114,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Web Development",
     solutionCtaHref: "/services/website-development",
     subTopicFilters: ["Frontend", "Backend", "React & Vite", "Core Web Vitals", "UX Design"],
-    seoTitle: "Web Development & Full-Stack Engineering | YESBE Insights",
+    seoTitle: "Web Development & Full-Stack Engineering | YESBE Articles",
     metaDescription:
       "Complete web development playbooks: framework selection, UI component design, mobile responsiveness, and speed optimization.",
   },
@@ -128,7 +128,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Digital Marketing & SEO",
     solutionCtaHref: "/services",
     subTopicFilters: ["Technical SEO", "Local SEO", "GEO", "AEO", "Link Building"],
-    seoTitle: "SEO Optimization & Search Ranking Articles | YESBE Insights",
+    seoTitle: "SEO Optimization & Search Ranking Articles | YESBE Articles",
     metaDescription:
       "Actionable search engine optimization guides covering technical audits, keyword research, on-page optimization, and rank tracking.",
   },
@@ -142,7 +142,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore AI Search Solutions",
     solutionCtaHref: "/services/ai-solutions",
     subTopicFilters: ["AI Citations", "Perplexity Optimization", "Entity Authority", "Prompt Search"],
-    seoTitle: "Generative Engine Optimization (GEO) Guides | YESBE Insights",
+    seoTitle: "Generative Engine Optimization (GEO) Guides | YESBE Articles",
     metaDescription:
       "Learn how to optimize your business content to be indexed and cited by AI engines like ChatGPT, Gemini, and Perplexity.",
   },
@@ -156,7 +156,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore AI Solutions",
     solutionCtaHref: "/services/ai-solutions",
     subTopicFilters: ["Featured Snippets", "Voice Search", "Direct Answers", "Schema Markup"],
-    seoTitle: "Answer Engine Optimization (AEO) | YESBE Insights",
+    seoTitle: "Answer Engine Optimization (AEO) | YESBE Articles",
     metaDescription:
       "Master Answer Engine Optimization: rank for conversational queries and featured snippet blocks on Google and AI platforms.",
   },
@@ -170,7 +170,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Growth Services",
     solutionCtaHref: "/services",
     subTopicFilters: ["Content Strategy", "Lead Generation", "Funnel Optimization", "Paid Ads"],
-    seoTitle: "Digital Marketing & Growth Playbooks | YESBE Insights",
+    seoTitle: "Digital Marketing & Growth Playbooks | YESBE Articles",
     metaDescription:
       "Master digital marketing funnels, email automation, content marketing, and customer acquisition channels.",
   },
@@ -184,7 +184,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Business Automation",
     solutionCtaHref: "/services/business-automation",
     subTopicFilters: ["Workflow Automation", "RPA", "Process Optimization", "Zapier & n8n"],
-    seoTitle: "Business Automation & Workflow Guides | YESBE Insights",
+    seoTitle: "Business Automation & Workflow Guides | YESBE Articles",
     metaDescription:
       "Learn process auditing, workflow automation, document extraction, and API integrations to streamline daily business tasks.",
   },
@@ -198,7 +198,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Cloud & DevOps",
     solutionCtaHref: "/services/cloud-devops",
     subTopicFilters: ["AWS & Azure", "DevOps", "Cloud Migration", "Infrastructure as Code"],
-    seoTitle: "Cloud Computing & DevOps Articles | YESBE Insights",
+    seoTitle: "Cloud Computing & DevOps Articles | YESBE Articles",
     metaDescription:
       "Cloud architecture, serverless infrastructure, containerization, and security playbooks for high-availability systems.",
   },
@@ -212,7 +212,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Security Solutions",
     solutionCtaHref: "/services/custom-software",
     subTopicFilters: ["Data Protection", "Security Audit", "Threat Prevention", "Compliance"],
-    seoTitle: "Cybersecurity & Business Data Protection | YESBE Insights",
+    seoTitle: "Cybersecurity & Business Data Protection | YESBE Articles",
     metaDescription:
       "Protect your enterprise from data breaches, phishing attacks, and ransomware with practical security frameworks.",
   },
@@ -226,7 +226,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Startup Tech Solutions",
     solutionCtaHref: "/industries/startups",
     subTopicFilters: ["MVP Building", "Fundraising", "Go-To-Market", "Product Validation"],
-    seoTitle: "Startup Guides & Founder Playbooks | YESBE Insights",
+    seoTitle: "Startup Guides & Founder Playbooks | YESBE Articles",
     metaDescription:
       "Actionable startup playbooks: validate your MVP, choose early architecture, and launch fast without technical debt.",
   },
@@ -240,7 +240,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Business Solutions",
     solutionCtaHref: "/services",
     subTopicFilters: ["Growth Strategy", "Scaling Operations", "Cash Flow", "SME Operations"],
-    seoTitle: "Business Growth & Operating Tips | YESBE Insights",
+    seoTitle: "Business Growth & Operating Tips | YESBE Articles",
     metaDescription:
       "Operating strategies for business leaders: scaling workflows, managing profit margins, and driving tech adoption.",
   },
@@ -254,7 +254,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "View Case Studies",
     solutionCtaHref: "/case-studies",
     subTopicFilters: ["AI Projects", "ERP Implementations", "Web Applications", "Analytics"],
-    seoTitle: "Case Studies & Client Results | YESBE Insights",
+    seoTitle: "Case Studies & Client Results | YESBE Articles",
     metaDescription:
       "Real-world case studies detailing how YESBE delivered enterprise software, AI tools, and ERP systems for clients.",
   },
@@ -268,7 +268,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Industry Solutions",
     solutionCtaHref: "/industries",
     subTopicFilters: ["Healthcare", "Retail & POS", "Education ERP", "Manufacturing"],
-    seoTitle: "Industry Insights & Tech Transformation | YESBE Insights",
+    seoTitle: "Industry Insights & Tech Transformation | YESBE Articles",
     metaDescription:
       "Discover sector-specific technology trends and digital transformation playbooks across industries.",
   },
@@ -282,7 +282,7 @@ export const KNOWLEDGE_CATEGORIES: KnowledgeCategory[] = [
     solutionCtaText: "Explore Tech Trends",
     solutionCtaHref: "/services",
     subTopicFilters: ["Next-Gen Tech", "Software Architecture", "AI Trends", "Future of Work"],
-    seoTitle: "Technology Trends & Innovations | YESBE Insights",
+    seoTitle: "Technology Trends & Innovations | YESBE Articles",
     metaDescription:
       "Stay ahead of emerging trends in generative AI, cloud computing, enterprise software, and business automation.",
   },
