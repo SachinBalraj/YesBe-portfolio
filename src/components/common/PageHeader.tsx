@@ -1,4 +1,6 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { ButtonLink } from "@/components/system/ButtonLink";
+import { Eyebrow } from "@/components/system/Eyebrow";
 import { Breadcrumbs } from "./Breadcrumbs";
 
 interface Crumb {
@@ -13,7 +15,7 @@ interface PageHeaderAction {
 }
 
 interface PageHeaderProps {
-  /** Kept for backwards compatibility; the visual badge was retired. */
+  /** Page category, rendered as the editorial eyebrow. */
   badge?: string;
   title: string;
   highlight?: string;
@@ -36,6 +38,7 @@ interface PageHeaderProps {
 }
 
 export function PageHeader({
+  badge,
   title,
   highlight,
   titleAfter,
@@ -51,56 +54,64 @@ export function PageHeader({
 
   return (
     <section
-      className={`border-b border-border/70 bg-white ${
+      className={`relative overflow-hidden border-b border-line bg-paper ${
         compact
-          ? "pt-[104px] pb-10 sm:pt-[116px] sm:pb-12 lg:pt-[124px] lg:pb-14"
-          : "pt-[104px] pb-12 sm:pt-[116px] sm:pb-14 lg:pt-[128px] lg:pb-16"
+          ? "pt-[104px] pb-12 sm:pt-[112px] sm:pb-14 lg:pt-[120px] lg:pb-16"
+          : "pt-[104px] pb-14 sm:pt-[116px] sm:pb-16 lg:pt-[128px] lg:pb-20"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-grid bg-cobalt-glow opacity-70"
+      />
+      <div className="container-page relative">
+        <div className="max-w-4xl">
           {breadcrumbs && breadcrumbs.length > 0 && !showCrumbs && (
             <div className="sr-only">
               <Breadcrumbs items={breadcrumbs} schemaOnly />
             </div>
           )}
           {showCrumbs && (
-            <div className="mb-6">
+            <div className="mb-7">
               <Breadcrumbs items={breadcrumbs!} />
             </div>
           )}
 
-          <h1 className="text-3xl font-bold leading-[1.12] tracking-[-0.02em] text-navy sm:text-4xl lg:text-[2.75rem]">
+          {badge && (
+            <Eyebrow className="mb-5">{badge}</Eyebrow>
+          )}
+
+          <h1 className="display-lg text-ink">
             {title}{" "}
             {highlight && <span className="text-primary">{highlight}</span>}
-            {titleAfter && <span className="text-navy">{titleAfter}</span>}
+            {titleAfter && <span className="text-ink">{titleAfter}</span>}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
-            {description}
-          </p>
+          <p className="lead-editorial mt-6">{description}</p>
 
           {hasActions && (
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
               {primaryAction && (
-                <a
+                <ButtonLink
                   href={primaryAction.href}
                   onClick={primaryAction.onClick}
-                  className="btn-primary group w-full sm:w-auto"
+                  variant="primary"
+                  className="w-full sm:w-auto"
+                  withArrow
                 >
                   {primaryAction.label}
-                  <ArrowRight className="h-[18px] w-[18px] shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </a>
+                </ButtonLink>
               )}
               {secondaryAction && (
-                <a
+                <ButtonLink
                   href={secondaryAction.href}
                   onClick={secondaryAction.onClick}
-                  className="btn-secondary group w-full sm:w-auto"
+                  variant="secondary"
+                  className="w-full sm:w-auto"
+                  icon={<ArrowUpRight className="size-4" aria-hidden="true" />}
                 >
                   {secondaryAction.label}
-                  <ArrowRight className="h-4 w-4 text-primary transition-transform duration-200 group-hover:translate-x-0.5" />
-                </a>
+                </ButtonLink>
               )}
             </div>
           )}

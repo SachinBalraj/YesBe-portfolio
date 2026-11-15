@@ -29,7 +29,7 @@ export function AboutPage() {
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <PageHeader
-        badge="About YESBE"
+        badge="Company profile"
         title="About"
         highlight="YESBE"
         description="Our company, founder, mission, and technology expertise."

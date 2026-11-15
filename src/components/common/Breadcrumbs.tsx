@@ -37,21 +37,34 @@ export function Breadcrumbs({ items, className = "", schemaOnly = false }: Bread
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
       {!schemaOnly && (
-        <nav aria-label="Breadcrumb" className={`mb-6 flex items-center gap-2 text-sm text-muted-foreground ${className}`}>
-          <Link to="/" className="inline-flex items-center gap-1 hover:text-primary transition-colors">
-            <Home className="h-3.5 w-3.5" />
+        <nav
+          aria-label="Breadcrumb"
+          className={`flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-[13px] text-body ${className}`}
+        >
+          <Link
+            to="/"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+          >
+            <Home className="size-3.5" aria-hidden="true" />
             Home
           </Link>
-          {items.map((crumb, i) => (
-            <span key={i} className="flex items-center gap-2">
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50" />
-              {crumb.href ? (
-                <Link to={crumb.href} className="hover:text-primary transition-colors">{crumb.label}</Link>
-              ) : (
-                <span className="text-foreground font-medium">{crumb.label}</span>
-              )}
-            </span>
-          ))}
+          {items.map((crumb, i) => {
+            const isLast = i === items.length - 1;
+            return (
+              <span key={`${crumb.label}-${i}`} className="flex items-center gap-2.5">
+                <ChevronRight className="size-3 text-muted-foreground/60" aria-hidden="true" />
+                {crumb.href && !isLast ? (
+                  <Link to={crumb.href} className="transition-colors hover:text-primary">
+                    {crumb.label}
+                  </Link>
+                ) : (
+                  <span className="font-medium text-ink" aria-current={isLast ? "page" : undefined}>
+                    {crumb.label}
+                  </span>
+                )}
+              </span>
+            );
+          })}
         </nav>
       )}
     </>

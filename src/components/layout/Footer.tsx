@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail } from "lucide-react";
+import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
+import { ButtonLink } from "@/components/system/ButtonLink";
+import { Eyebrow } from "@/components/system/Eyebrow";
+import { trackConsultationClick, trackContactClick, trackPhoneClick } from "@/utils/analytics";
 import logoImg from "@/assets/images/YBlogo.webp";
-import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
-
-/* ─── SVG Icons ─── */
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -39,8 +39,6 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 
-/* ─── Data ─── */
-
 const solutionsLinks = [
   { label: "AI Solutions", href: "/services/ai-solutions" },
   { label: "AI Chatbots", href: "/services/ai-chatbots" },
@@ -50,7 +48,7 @@ const solutionsLinks = [
   { label: "E-Commerce", href: "/services/ecommerce" },
   { label: "Business Automation", href: "/services/business-automation" },
   { label: "Data Analytics", href: "/services/data-analytics" },
-  { label: "Power BI", href: "/services/power-bi-dashboards" },
+  { label: "Power BI Dashboards", href: "/services/power-bi-dashboards" },
   { label: "Cloud & DevOps", href: "/services/cloud-devops" },
   { label: "Database Management", href: "/services/database-management" },
   { label: "API Development", href: "/services/api-development" },
@@ -86,11 +84,9 @@ const socialLinks = [
   { label: "X", href: "https://x.com/yesbe_co", icon: XIcon },
 ];
 
-/* ─── Footer Column Link ─── */
-
 function FooterLink({ href, label }: { href: string; label: string }) {
   const className =
-    "inline-block py-0.5 text-[13px] leading-relaxed text-slate-400 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:text-white focus-visible:underline";
+    "inline-block py-1 text-[12.5px] leading-5 text-white/60 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:text-white focus-visible:underline";
 
   return (
     <li>
@@ -107,103 +103,182 @@ function FooterLink({ href, label }: { href: string; label: string }) {
   );
 }
 
-/* ─── Main Footer ─── */
+function FooterColumn({
+  title,
+  id,
+  links,
+}: {
+  title: string;
+  id: string;
+  links: { label: string; href: string }[];
+}) {
+  return (
+    <nav aria-labelledby={id}>
+      <h2
+        id={id}
+        className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50"
+      >
+        {title}
+      </h2>
+      <ul className="mt-4 space-y-0.5">
+        {links.map((link) => (
+          <FooterLink key={`${link.href}-${link.label}`} {...link} />
+        ))}
+      </ul>
+    </nav>
+  );
+}
 
 function FooterComponent() {
   return (
-    <footer className="bg-navy text-slate-400" role="contentinfo" aria-label="Site footer">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
-          {/* Brand */}
+    <footer
+      className="relative overflow-hidden bg-navy-deep text-white"
+      role="contentinfo"
+      aria-label="Site footer"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-30" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 top-0 size-[38rem] rounded-full bg-primary/10 blur-3xl"
+      />
+
+      <div className="container-page relative">
+        <div className="grid gap-10 border-b border-white/10 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:py-20">
           <div>
-            <Link to="/" aria-label="YESBE Technologies home" className="flex items-center gap-3 mb-4">
-              <img src={logoImg} loading="lazy" alt="YESBE Technologies Logo" width={40} height={40} className="h-10 w-10" />
-              <span className="text-lg font-semibold tracking-tight text-white">YESBE Technologies</span>
-            </Link>
-            <p className="mb-5 max-w-xs text-[13px] leading-relaxed text-slate-400">
-              IT consulting and software development for businesses that need practical technology partners.
+            <Eyebrow tone="dark">Start here</Eyebrow>
+            <h2 className="display-lg mt-5 max-w-3xl text-on-dark">
+              Let&apos;s build what your business needs next.
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-7 text-white/60">
+              Tell us what you are trying to improve. We will help you find the right technology
+              path and the practical next step.
             </p>
-            <p className="mb-6 text-[12px] leading-relaxed text-slate-400">
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+            <ButtonLink
+              to="/contact"
+              onClick={() => trackConsultationClick("footer")}
+              variant="inverted"
+              className="w-full sm:w-auto"
+              withArrow
+            >
+              Book a Free Consultation
+            </ButtonLink>
+            <ButtonLink
+              href={`mailto:${SITE_CONFIG.email}`}
+              onClick={() => trackContactClick("footer_cta")}
+              variant="on-dark"
+              className="w-full sm:w-auto"
+              icon={<ArrowUpRight className="size-4" aria-hidden="true" />}
+            >
+              Email YESBE
+            </ButtonLink>
+          </div>
+        </div>
+
+        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-[1.55fr_1fr_0.75fr_0.75fr_1fr] lg:gap-8">
+          <div>
+            <Link
+              to="/"
+              aria-label="YESBE Technologies home"
+              className="inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-bright"
+            >
+              <img
+                src={logoImg}
+                loading="lazy"
+                alt="YESBE Technologies Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+              />
+              <span className="text-lg font-semibold tracking-[-0.02em] text-white">
+                YESBE Technologies
+              </span>
+            </Link>
+            <p className="mt-5 max-w-xs text-[13px] leading-6 text-white/60">
+              IT consulting and software development for businesses that need a practical
+              technology partner.
+            </p>
+            <p className="mt-3 text-[12px] leading-5 text-white/55">
               Founded by{" "}
-              <Link to="/sachin-balraj" className="font-medium text-slate-300 transition-colors hover:text-white">
+              <Link
+                to="/sachin-balraj"
+                className="font-medium text-white/70 transition-colors hover:text-white"
+              >
                 Sachin Balraj
               </Link>
             </p>
 
             <div className="mt-6 flex gap-2">
-              {socialLinks.map((s) => {
-                const Icon = s.icon;
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
                 return (
                   <a
-                    key={s.label}
-                    href={s.href}
+                    key={social.label}
+                    href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="flex h-9 w-9 items-center justify-center border border-white/15 text-slate-400 transition-colors hover:border-border hover:text-white"
+                    aria-label={social.label}
+                    className="flex size-9 items-center justify-center border border-white/20 text-white/60 transition-colors hover:border-white/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-bright"
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="size-4" />
                   </a>
                 );
               })}
             </div>
           </div>
 
-          {/* Solutions */}
-          <div>
-            <h2 className="mb-4 text-[13px] font-semibold text-white">Solutions</h2>
-            <ul className="space-y-2.5">
-              {solutionsLinks.map((l) => (
-                <FooterLink key={l.label} {...l} />
-              ))}
-            </ul>
-          </div>
+          <FooterColumn id="footer-solutions" title="Solutions" links={solutionsLinks} />
+          <FooterColumn id="footer-company" title="Company" links={companyLinks} />
+          <FooterColumn id="footer-support" title="Support" links={supportLinks} />
 
-          {/* Company */}
-          <div>
-            <h2 className="mb-4 text-[13px] font-semibold text-white">Company</h2>
-            <ul className="space-y-2.5">
-              {companyLinks.map((l) => (
-                <FooterLink key={l.label} {...l} />
-              ))}
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h2 className="mb-4 text-[13px] font-semibold text-white">Support</h2>
-            <ul className="space-y-2.5">
-              {supportLinks.map((l) => (
-                <FooterLink key={l.label} {...l} />
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h2 className="mb-4 text-[13px] font-semibold text-white">Contact</h2>
-            <ul className="space-y-3.5">
+          <nav aria-labelledby="footer-contact">
+            <h2
+              id="footer-contact"
+              className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50"
+            >
+              Contact
+            </h2>
+            <ul className="mt-4 space-y-3">
               <li className="flex items-start gap-2.5">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
-                <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("footer")} className="text-[13px] text-slate-400 transition-colors hover:text-white">{SITE_CONFIG.email}</a>
+                <Mail className="mt-0.5 size-4 shrink-0 text-white/40" aria-hidden="true" />
+                <a
+                  href={`mailto:${SITE_CONFIG.email}`}
+                  onClick={() => trackContactClick("footer")}
+                  className="break-all text-[12.5px] leading-5 text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:text-white focus-visible:underline"
+                >
+                  {SITE_CONFIG.email}
+                </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
-                <a href={SITE_CONFIG.phoneHref} onClick={() => trackPhoneClick("footer")} className="text-[13px] text-slate-400 transition-colors hover:text-white">+91 {SITE_CONFIG.phone}</a>
+                <Phone className="mt-0.5 size-4 shrink-0 text-white/40" aria-hidden="true" />
+                <a
+                  href={SITE_CONFIG.phoneHref}
+                  onClick={() => trackPhoneClick("footer")}
+                  className="text-[12.5px] leading-5 text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:text-white focus-visible:underline"
+                >
+                  +91 {SITE_CONFIG.phone}
+                </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6">
+        <div className="border-t border-white/10 py-6">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-            <p className="text-xs text-slate-400">
+            <p className="text-[11px] text-white/55">
               &copy; {new Date().getFullYear()} YESBE Technologies. All rights reserved.
             </p>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-400">
-              <Link to="/privacy-policy" className="transition-colors hover:text-white">Privacy Policy</Link>
-              <Link to="/terms-and-conditions" className="transition-colors hover:text-white">Terms &amp; Conditions</Link>
-              <Link to="/cookie-policy" className="transition-colors hover:text-white">Cookie Policy</Link>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-white/50">
+              <Link to="/privacy-policy" className="transition-colors hover:text-white">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-and-conditions" className="transition-colors hover:text-white">
+                Terms &amp; Conditions
+              </Link>
+              <Link to="/cookie-policy" className="transition-colors hover:text-white">
+                Cookie Policy
+              </Link>
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@
     "test:browser": "node --test scripts/browser.test.ts",
     "generate:sitemap": "node --import tsx scripts/generate-sitemap.ts",
     "prerender": "node --experimental-strip-types scripts/prerender.ts",
+    "capture:phase1": "node --import tsx scripts/capture-phase1.ts",
     "test:routing": "node --import tsx --test scripts/routing.test.ts",
     "test:seo": "node --import tsx --test scripts/seo.test.ts",
     "test:analytics": "node --import tsx --test scripts/analytics.test.ts",

@@ -6,6 +6,7 @@ import { fadeInUp, staggerContainer } from "@/animations";
 import { SITE_CONFIG } from "@/constants";
 import { trackContactClick } from "@/utils/analytics";
 import { serializeJsonLd } from "@/utils/jsonLd";
+import { Eyebrow } from "@/components/system/Eyebrow";
 
 interface TOCItem {
   id: string;
@@ -73,8 +74,9 @@ export function LegalPageLayout({
       )}
 
       {/* Hero Header */}
-      <section className="relative overflow-hidden bg-white pt-[112px] pb-10 lg:pt-[128px] lg:pb-12">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-b border-line bg-paper pt-[112px] pb-12 lg:pt-[128px] lg:pb-16">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid bg-cobalt-glow opacity-70" />
+        <div className="container-page relative">
           <motion.div
             variants={staggerContainer}
             initial="initial"
@@ -104,18 +106,18 @@ export function LegalPageLayout({
               </ol>
             </motion.nav>
 
-            <motion.p variants={fadeInUp} className="mb-3 text-[13px] font-semibold text-primary">
-              {badge}
-            </motion.p>
-            <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] leading-tight text-navy">
+            <motion.div variants={fadeInUp} className="mb-5">
+              <Eyebrow>{badge}</Eyebrow>
+            </motion.div>
+            <motion.h1 variants={fadeInUp} className="display-lg text-ink">
               {title}{" "}
               <span className="text-primary">{highlight}</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="mt-4 text-base leading-relaxed text-muted-foreground">
+            <motion.p variants={fadeInUp} className="lead-editorial mt-6">
               {description}
             </motion.p>
-            <motion.div variants={fadeInUp} className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-              <Calendar className="h-4 w-4" />
+            <motion.div variants={fadeInUp} className="mt-5 flex items-center gap-2 text-sm text-body">
+              <Calendar className="h-4 w-4" aria-hidden="true" />
               <span>Last Updated: {lastUpdated}</span>
             </motion.div>
           </motion.div>
@@ -123,14 +125,14 @@ export function LegalPageLayout({
       </section>
 
       {/* Content Area */}
-      <section className="relative bg-white py-10 lg:py-14">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-paper py-12 lg:py-20">
+        <div className="container-page">
           <div className="grid gap-10 lg:grid-cols-[260px_1fr] xl:grid-cols-[280px_1fr]">
             {/* Sidebar TOC (Desktop) */}
             <aside className="hidden lg:block" aria-label="Table of contents">
               <div className="sticky top-24">
-                <nav className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <p className="mb-4 text-xs font-bold tracking-wide text-muted-foreground">
+                <nav className="rounded-panel border border-line bg-card p-5 shadow-panel">
+                  <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-body">
                     On This Page
                   </p>
                   <ul className="space-y-1">
@@ -138,10 +140,10 @@ export function LegalPageLayout({
                       <li key={item.id}>
                         <a
                           href={`#${item.id}`}
-                          className={`block rounded-lg px-3 py-2 text-[13px] font-medium transition-all duration-200 ${
+                          className={`block border-l px-3 py-2 text-[13px] font-medium transition-all duration-200 ${
                             activeSection === item.id
-                              ? "bg-primary/[0.06] text-primary"
-                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                              ? "border-primary bg-primary/[0.06] text-primary"
+                              : "border-transparent text-body hover:bg-paper-deep hover:text-ink"
                           }`}
                           onClick={(e) => {
                             e.preventDefault();
@@ -156,8 +158,8 @@ export function LegalPageLayout({
                 </nav>
 
                 {/* Related Legal Pages */}
-                <div className="mt-4 rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <p className="mb-3 text-xs font-bold tracking-wide text-muted-foreground">
+                <div className="mt-4 rounded-panel border border-line bg-card p-5 shadow-panel">
+                  <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-body">
                     Legal Pages
                   </p>
                   <ul className="space-y-1.5">
@@ -205,37 +207,35 @@ export function LegalPageLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative overflow-hidden border-t border-line bg-paper py-16 sm:py-20 lg:py-24">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid bg-cobalt-glow opacity-60" />
+        <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/[0.06]">
+            <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-panel border border-line bg-card shadow-panel">
               <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
               </svg>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            <h2 className="display-sm text-ink">
               Need Clarification?
             </h2>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+            <p className="mt-3 text-base leading-relaxed text-body">
               Contact <span className="font-semibold text-primary">{SITE_CONFIG.name}</span> for any questions about our legal policies. We&apos;re here to help.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                onClick={() => handleNav("/contact")}
-                className="inline-flex items-center gap-2.5 rounded-none bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),0_8px_24px_rgba(37,99,235,0.12)] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.35),0_16px_48px_rgba(37,99,235,0.15)] "
-              >
+              <button onClick={() => handleNav("/contact")} className="btn-primary">
                 Contact YESBE
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="size-4" aria-hidden="true" />
               </button>
               <a
                 href={`mailto:${SITE_CONFIG.email}`}
                 onClick={() => trackContactClick("legal_page")}
-                className="inline-flex items-center gap-2 rounded-none border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground shadow-card transition-all duration-200 hover:shadow-card-hover hover:border-primary/20"
+                className="btn-secondary"
               >
                 {SITE_CONFIG.email}
               </a>

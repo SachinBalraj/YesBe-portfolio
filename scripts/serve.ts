@@ -15,6 +15,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { extname, join, normalize } from "node:path";
+import { constants as zlibConstants, createBrotliCompress, createGzip } from "node:zlib";
 
 const DIST = new URL("../dist/", import.meta.url).pathname;
 const PORT = Number(process.env.PORT ?? 3111);
@@ -27,12 +28,33 @@ const MIME: Record<string, string> = {
   ".svg": "image/svg+xml",
   ".png": "image/png",
   ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
   ".webp": "image/webp",
+  ".avif": "image/avif",
   ".ico": "image/x-icon",
+  ".woff": "font/woff",
   ".woff2": "font/woff2",
   ".xml": "application/xml; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
 };
+
+const COMPRESSIBLE = new Set([
+  ".html",
+  ".js",
+  ".css",
+  ".json",
+  ".svg",
+  ".xml",
+  ".txt",
+  ".webmanifest",
+]);
+
+function preferredEncoding(acceptEncoding: string | undefined): "br" | "gzip" | null {
+  if (!acceptEncoding) return null;
+  if (/\bbr\b/.test(acceptEncoding)) return "br";
+  if (/\bgzip\b/.test(acceptEncoding)) return "gzip";
+  return null;
+}
 
 type Handler = (req: unknown, res: unknown) => unknown | Promise<unknown>;
 
@@ -105,7 +127,7 @@ async function serveApi(url: URL, req: IncomingMessage, res: ServerResponse): Pr
   );
 }
 
-function serveStatic(url: URL, res: ServerResponse): void {
+function serveStatic(url: URL, req: IncomingMessage, res: ServerResponse): void {
   // normalize() collapses ../ so a crafted path cannot escape dist/.
   const clean = normalize(url.pathname).replace(/^(\.\.[/\\])+/, "");
   let filePath = join(DIST, clean);
@@ -116,11 +138,32 @@ function serveStatic(url: URL, res: ServerResponse): void {
 
   const ext = extname(filePath);
   const immutable = filePath.includes("/assets/");
+  const compressible = COMPRESSIBLE.has(ext) && statSync(filePath).size > 1024;
+  const encoding = compressible ? preferredEncoding(req.headers["accept-encoding"]) : null;
+
   res.writeHead(200, {
     "Content-Type": MIME[ext] ?? "application/octet-stream",
     "Cache-Control": immutable ? "public, max-age=31536000, immutable" : "no-cache",
+    ...(compressible ? { Vary: "Accept-Encoding" } : {}),
+    ...(encoding ? { "Content-Encoding": encoding } : {}),
   });
-  createReadStream(filePath).pipe(res);
+
+  const file = createReadStream(filePath);
+  if (!encoding) {
+    file.pipe(res);
+    return;
+  }
+
+  const compressor =
+    encoding === "br"
+      ? createBrotliCompress({
+          params: {
+            [zlibConstants.BROTLI_PARAM_QUALITY]: 5,
+          },
+        })
+      : createGzip({ level: 6 });
+
+  file.pipe(compressor).pipe(res);
 }
 
 createServer((req, res) => {
@@ -140,7 +183,7 @@ createServer((req, res) => {
   if (url.pathname.startsWith("/admin")) {
     res.setHeader("X-Robots-Tag", "noindex, nofollow");
   }
-  serveStatic(url, res);
+  serveStatic(url, req, res);
 }).listen(PORT, () => {
   console.log(`  ➜  Local:   http://localhost:${PORT}/`);
   console.log(`  ➜  Admin:   http://localhost:${PORT}/admin`);
