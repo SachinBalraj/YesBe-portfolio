@@ -1,12 +1,14 @@
-import { useState, useEffect, useRef, useCallback, memo } from "react";
+import { useState, useEffect, useRef, useCallback, memo, lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import {
   Menu, X, ArrowRight, Search,
 } from "lucide-react";
 import { cn } from "@/utils/cn";
-import logoImg from "@/assets/images/YBlogo.png";
-import { SearchModal } from "@/components/knowledge/SearchModal";
+import logoImg from "@/assets/images/YBlogo.webp";
+const SearchModal = lazy(() =>
+  import("@/components/knowledge/SearchModal").then((m) => ({ default: m.SearchModal }))
+);
 import { trackConsultationClick } from "@/utils/analytics";
 
 /* ─── Navigation Data ─── */
@@ -50,8 +52,13 @@ function NavbarComponent() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchMounted, setSearchMounted] = useState(false);
   const lastScrollY = useRef(0);
   const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    if (isSearchOpen) setSearchMounted(true);
+  }, [isSearchOpen]);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -201,12 +208,12 @@ function NavbarComponent() {
               onClick={() => setIsSearchOpen(true)}
               className="inline-flex min-h-10 items-center gap-2 border border-border bg-white px-3 py-2 text-[13px] font-medium text-slate-700 transition-colors duration-200 hover:border-slate-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               title="Search Articles (⌘ K)"
-              aria-label="Search articles"
               aria-haspopup="dialog"
+              aria-keyshortcuts="Meta+K Control+K"
             >
               <Search className="h-4 w-4 text-slate-500" />
               <span className="hidden sm:inline">Search</span>
-              <kbd className="hidden md:inline-block border border-border bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
+              <kbd aria-hidden="true" className="hidden md:inline-block border border-border bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
                 ⌘K
               </kbd>
             </button>
@@ -302,7 +309,11 @@ function NavbarComponent() {
         )}
       </AnimatePresence>
 
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {searchMounted && (
+        <Suspense fallback={null}>
+          <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+        </Suspense>
+      )}
     </>
   );
 }

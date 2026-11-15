@@ -17,7 +17,11 @@
     "test:browser": "node --test scripts/browser.test.ts",
     "generate:sitemap": "node --import tsx scripts/generate-sitemap.ts",
     "prerender": "node --experimental-strip-types scripts/prerender.ts",
-    "test:routing": "node --import tsx --test scripts/routing.test.ts"
+    "test:routing": "node --import tsx --test scripts/routing.test.ts",
+    "test:seo": "node --import tsx --test scripts/seo.test.ts",
+    "test:analytics": "node --import tsx --test scripts/analytics.test.ts",
+    "test:visual": "node --import tsx --test scripts/visual.test.ts",
+    "test:phase0": "npm run lint && npm run test:security && npm run test:routing && npm run test:seo && npm run test:analytics && npm run test:visual"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
@@ -46,13 +50,16 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.2",
     "@types/node": "^24.13.2",
+    "@types/pngjs": "^6.0.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vercel/node": "^17.0.0",
     "@vitejs/plugin-react": "^6.0.3",
     "mongodb-memory-server": "^11.3.0",
     "oxlint": "^1.71.0",
+    "pixelmatch": "^8.0.0",
     "playwright": "^1.63.0",
+    "pngjs": "^7.0.0",
     "tailwindcss": "^4.3.2",
     "tsx": "4.21.0",
     "typescript": "~6.0.2",

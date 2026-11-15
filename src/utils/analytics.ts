@@ -1,17 +1,94 @@
+import { hasAnalyticsConsent, PREFS_KEY, STORAGE_KEY } from "@/components/common/consentStore";
+
 declare global {
   interface Window {
     dataLayer: unknown[];
+    gtag?: (...args: unknown[]) => void;
+    __yesbeGtmLoaded?: boolean;
   }
 }
 
-const fired = new Set<string>();
+/**
+ * Google Tag Manager container. GA4 is configured *inside* this container, so
+ * there is deliberately no direct gtag.js loader anywhere in the app. Loading
+ * gtag.js separately is what produced duplicate page views and double-counted
+ * conversions, and a second GTM bootstrap also inflated every analytics hit.
+ */
+const GTM_ID = "GTM-PZ9KWVFH";
 
-function push(event: string, params?: Record<string, string>) {
+const fired = new Set<string>();
+let listening = false;
+
+function dataLayer(): unknown[] {
+  window.dataLayer = window.dataLayer ?? [];
+  return window.dataLayer;
+}
+
+function updateConsent(granted: boolean): void {
+  dataLayer().push([
+    "consent",
+    "update",
+    {
+      analytics_storage: granted ? "granted" : "denied",
+      ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied",
+    },
+  ]);
+}
+
+/**
+ * Loads the single GTM container, and only ever after analytics consent has
+ * been granted. The `__yesbeGtmLoaded` flag makes the loader idempotent even
+ * under React StrictMode, rapid consent toggles, or multiple tabs.
+ */
+function loadGtm(): void {
+  if (!hasAnalyticsConsent() || window.__yesbeGtmLoaded) return;
+  window.__yesbeGtmLoaded = true;
+
+  const layer = dataLayer();
+  window.gtag = (...args: unknown[]) => {
+    layer.push(args);
+  };
+  updateConsent(true);
+  layer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+  document.head.appendChild(script);
+}
+
+function syncConsent(): void {
+  if (hasAnalyticsConsent()) {
+    loadGtm();
+  } else if (window.__yesbeGtmLoaded) {
+    updateConsent(false);
+  }
+}
+
+/**
+ * Called once at boot. If consent was granted on a previous visit this starts
+ * GTM immediately; otherwise it waits for the banner's consent event.
+ */
+export function initAnalytics(): void {
+  if (listening) return;
+  listening = true;
+
+  loadGtm();
+
+  window.addEventListener("cookie-consent-updated", syncConsent);
+  window.addEventListener("storage", (event) => {
+    if (event.key === STORAGE_KEY || event.key === PREFS_KEY) syncConsent();
+  });
+}
+
+function push(event: string, params?: Record<string, string>): void {
   try {
+    if (!hasAnalyticsConsent()) return;
     if (fired.has(event)) return;
     fired.add(event);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event, ...params });
+    dataLayer().push({ event, ...params });
   } catch { /* tracking failures must never crash the app */ }
 }
 

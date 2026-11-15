@@ -38,7 +38,7 @@ const techStack: TechItem[] = [
 
 function RestApiIcon(props: IconProps) {
   return (
-    <svg role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
       <path d="M8 8h8M8 12h6M8 16h4" />
     </svg>
@@ -47,7 +47,7 @@ function RestApiIcon(props: IconProps) {
 
 function PowerBiIcon(props: IconProps) {
   return (
-    <svg role="img" viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" {...props}>
       <path d="M8.836 15.868a.74.74 0 0 1-.744.742.742.742 0 0 1-.743-.742V9.06a.742.742 0 0 1 .743-.743.74.74 0 0 1 .744.743v6.808zm3.82 2.93a.74.74 0 0 1-.744.742.742.742 0 0 1-.743-.742V6.257a.742.742 0 0 1 .743-.743.74.74 0 0 1 .744.743v12.541zm3.549-2.352a.742.742 0 0 1-1.486 0V8.617a.742.742 0 0 1 .743-.743.742.742 0 0 1 .743.743v7.829zM20.065 24H3.935A3.939 3.939 0 0 1 0 20.065V3.935A3.939 3.939 0 0 1 3.935 0h16.13A3.939 3.939 0 0 1 24 3.935v16.13A3.939 3.939 0 0 1 20.065 24zM3.935 1.487A2.45 2.45 0 0 0 1.487 3.935v16.13a2.45 2.45 0 0 0 2.448 2.448h16.13a2.45 2.45 0 0 0 2.448-2.448V3.935a2.45 2.45 0 0 0-2.448-2.448H3.935z" />
     </svg>
   );

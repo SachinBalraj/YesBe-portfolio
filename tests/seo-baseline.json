@@ -1,0 +1,2920 @@
+{
+  "routes": {
+    "/": {
+      "title": "IT Consulting & Software Development Company | YESBE Technologies",
+      "description": "YESBE Technologies is an IT consulting and software development company. Web development, custom software, ERP, AI, automation and digital transformation.",
+      "canonical": "https://www.yesbe.tech",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "IT Consulting & Software Development Company | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Technology Solutions Built for Business Growth"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "ContactPoint",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services": {
+      "title": "IT Consulting, Web, Software, ERP & AI Services | YESBE Technologies",
+      "description": "Technology services from YESBE Technologies include IT consulting, web development, custom software, ERP systems, AI solutions, business automation, Power BI, cloud and SEO.",
+      "canonical": "https://www.yesbe.tech/services",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "IT Consulting, Web, Software, ERP & AI Services | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Technology Solutions"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ItemList",
+        "ListItem",
+        "Organization",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries": {
+      "title": "Industry Technology Solutions | YESBE Technologies",
+      "description": "Industry technology solutions by YESBE Technologies help healthcare, retail, education, manufacturing, logistics, finance and startups digitize faster.",
+      "canonical": "https://www.yesbe.tech/industries",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Industry Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Industries We Serve"
+      ],
+      "jsonLdCount": 4,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/about": {
+      "title": "About YESBE Technologies | IT Consulting & Software Development",
+      "description": "About YESBE Technologies: an IT consulting and software development company delivering web development, custom software, ERP, AI, automation and digital transformation.",
+      "canonical": "https://www.yesbe.tech/about",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "About YESBE Technologies | IT Consulting & Software Development",
+      "ogUrl": "https://www.yesbe.tech/about",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "About YESBE"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "AboutPage",
+        "ContactPoint",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/sachin-balraj": {
+      "title": "Sachin Balraj | Founder of YESBE Technologies",
+      "description": "Sachin Balraj is the Founder of YESBE Technologies and a Solution Architect at Springreen, working across software architecture, AI, web technologies, automation and practical digital solutions for businesses.",
+      "canonical": "https://www.yesbe.tech/sachin-balraj",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Sachin Balraj | Founder of YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/sachin-balraj",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Sachin Balraj — Founder of YESBE Technologies"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "Person",
+        "ProfilePage",
+        "WebSite"
+      ]
+    },
+    "/insights": {
+      "title": "Technology Articles & AI ERP Web Guides | YESBE Technologies",
+      "description": "Technology articles from YESBE Technologies with practical guides on AI, ERP, web development, SEO, cloud, Power BI and business automation for leaders.",
+      "canonical": "https://www.yesbe.tech/insights",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Technology Articles & AI ERP Web Guides | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/insights",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business technology, explained simply."
+      ],
+      "jsonLdCount": 4,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies": {
+      "title": "Technology Projects & Solutions | YESBE Technologies",
+      "description": "Selected technology projects and solutions designed and built by YESBE Technologies across web, ERP, AI, automation, analytics and SEO.",
+      "canonical": "https://www.yesbe.tech/case-studies",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Technology Projects & Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Selected technology projects"
+      ],
+      "jsonLdCount": 4,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/contact": {
+      "title": "Contact YESBE Technologies | Get a Free Consultation",
+      "description": "Contact YESBE Technologies for a free consultation on IT consulting, web development, custom software, ERP, AI, automation, SEO and digital transformation.",
+      "canonical": "https://www.yesbe.tech/contact",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Contact YESBE Technologies | Get a Free Consultation",
+      "ogUrl": "https://www.yesbe.tech/contact",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Get In Touch"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPage",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebSite"
+      ]
+    },
+    "/privacy-policy": {
+      "title": "Privacy Policy & Data Protection | YESBE Technologies",
+      "description": "Privacy Policy from YESBE Technologies explains how we collect, use, store and protect your personal data when you use our website and services.",
+      "canonical": "https://www.yesbe.tech/privacy-policy",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Privacy Policy & Data Protection | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/privacy-policy",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "ContactPoint",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/terms-and-conditions": {
+      "title": "Terms & Conditions for Services | YESBE Technologies",
+      "description": "Terms and Conditions from YESBE Technologies explain website use, service agreements, payments, intellectual property and client responsibilities.",
+      "canonical": "https://www.yesbe.tech/terms-and-conditions",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Terms & Conditions for Services | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/terms-and-conditions",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Terms & Conditions"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "ContactPoint",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/refund-policy": {
+      "title": "Refund Policy & Cancellation Terms | YESBE Technologies",
+      "description": "Refund Policy from YESBE Technologies explains advance payments, cancellation terms, refund eligibility and project termination for services.",
+      "canonical": "https://www.yesbe.tech/refund-policy",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Refund Policy & Cancellation Terms | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/refund-policy",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Refund Policy"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "ContactPoint",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/cookie-policy": {
+      "title": "Cookie Policy & Tracking Details | YESBE Technologies",
+      "description": "Cookie Policy from YESBE Technologies explains how cookies, analytics and tracking technologies improve website performance and user experience.",
+      "canonical": "https://www.yesbe.tech/cookie-policy",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Cookie Policy & Tracking Details | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/cookie-policy",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Cookie Policy"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "ContactPoint",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/disclaimer": {
+      "title": "Legal Disclaimer & Service Notices | YESBE Technologies",
+      "description": "Legal Disclaimer from YESBE Technologies outlines service notices, quotation guidance, third-party tools, liability limits and content accuracy.",
+      "canonical": "https://www.yesbe.tech/disclaimer",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Legal Disclaimer & Service Notices | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/disclaimer",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Legal Disclaimer"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "ContactPoint",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/ai-solutions": {
+      "title": "AI Development Company in India | YESBE Technologies",
+      "description": "AI development company YESBE Technologies builds intelligent automation, ML models, chatbots and predictive analytics that improve decisions and growth.",
+      "canonical": "https://www.yesbe.tech/services/ai-solutions",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Development Company in India | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/ai-solutions",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI Solutions"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/ai-chatbots": {
+      "title": "AI Chatbot Development Company | YESBE Technologies",
+      "description": "AI chatbot development by YESBE Technologies creates support bots, lead assistants and conversational systems that improve response times and sales.",
+      "canonical": "https://www.yesbe.tech/services/ai-chatbots",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Chatbot Development Company | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/ai-chatbots",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI Chatbots"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/erp-systems": {
+      "title": "ERP Software Development Company | YESBE Technologies",
+      "description": "ERP software development from YESBE Technologies streamlines inventory, finance, HR, sales and operations with scalable business systems for growth.",
+      "canonical": "https://www.yesbe.tech/services/erp-systems",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "ERP Software Development Company | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/erp-systems",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "ERP Systems"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/website-development": {
+      "title": "Custom Website Development Company | YESBE Technologies",
+      "description": "Custom website development by YESBE Technologies creates fast, secure, responsive business websites built for SEO, conversions and growth online.",
+      "canonical": "https://www.yesbe.tech/services/website-development",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Custom Website Development Company | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/website-development",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Website Development"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/web-applications": {
+      "title": "Custom Web Application Development | YESBE Technologies",
+      "description": "Custom web application development from YESBE Technologies builds secure portals, dashboards, SaaS platforms and workflows for business teams online fast.",
+      "canonical": "https://www.yesbe.tech/services/web-applications",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Custom Web Application Development | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/web-applications",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Web Applications"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/ecommerce": {
+      "title": "E-Commerce Website Development | YESBE Technologies",
+      "description": "E-Commerce website development by YESBE Technologies helps brands sell online with catalogs, payments, inventory, orders and scalable stores faster.",
+      "canonical": "https://www.yesbe.tech/services/ecommerce",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "E-Commerce Website Development | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/ecommerce",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "E-Commerce"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/business-automation": {
+      "title": "Business Automation Solutions | YESBE Technologies",
+      "description": "Business automation solutions from YESBE Technologies reduce manual work across approvals, CRM, HR, reports and operations with smart workflows for growth.",
+      "canonical": "https://www.yesbe.tech/services/business-automation",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Automation Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/business-automation",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business Automation"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/data-analytics": {
+      "title": "Data Analytics Consulting Services | YESBE Technologies",
+      "description": "Data analytics consulting by YESBE Technologies turns raw business data into dashboards, KPI reports, forecasts and actionable decisions for growth.",
+      "canonical": "https://www.yesbe.tech/services/data-analytics",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Data Analytics Consulting Services | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/data-analytics",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Data Analytics"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/power-bi-dashboards": {
+      "title": "Power BI Dashboard Development | YESBE Technologies",
+      "description": "Power BI dashboard development by YESBE Technologies transforms data into real-time reports, interactive analytics and business insights for leaders.",
+      "canonical": "https://www.yesbe.tech/services/power-bi-dashboards",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Power BI Dashboard Development | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/power-bi-dashboards",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Power BI Dashboards"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/cloud-devops": {
+      "title": "Cloud & DevOps Consulting Services | YESBE Technologies",
+      "description": "Cloud and DevOps consulting from YESBE Technologies covers migration, CI/CD, Docker, AWS, Azure, monitoring, security and infrastructure support.",
+      "canonical": "https://www.yesbe.tech/services/cloud-devops",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Cloud & DevOps Consulting Services | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/cloud-devops",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Cloud & DevOps"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/database-management": {
+      "title": "Database Management Services India | YESBE Technologies",
+      "description": "Database management services from YESBE Technologies improve data design, migration, performance, backups, security and reliability for business apps.",
+      "canonical": "https://www.yesbe.tech/services/database-management",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Database Management Services India | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/database-management",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Database Management"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/api-development": {
+      "title": "API Development & Integration | YESBE Technologies",
+      "description": "API development and integration by YESBE Technologies connects apps, CRMs, ERPs, payments and data systems with secure scalable APIs for business teams.",
+      "canonical": "https://www.yesbe.tech/services/api-development",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "API Development & Integration | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/api-development",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "API Development"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/seo": {
+      "title": "SEO Services Company for Growth | YESBE Technologies",
+      "description": "SEO services company YESBE Technologies improves Google rankings, technical SEO, content strategy, traffic and lead generation for growing businesses.",
+      "canonical": "https://www.yesbe.tech/services/seo",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "SEO Services Company for Growth | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/seo",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "SEO"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/geo": {
+      "title": "GEO Optimization for AI Search | YESBE Technologies",
+      "description": "GEO optimization from YESBE Technologies helps your content appear in AI search results, answer engines and generative discovery experiences online.",
+      "canonical": "https://www.yesbe.tech/services/geo",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "GEO Optimization for AI Search | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/geo",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "GEO"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/aeo": {
+      "title": "AEO Services for Answer Engines | YESBE Technologies",
+      "description": "AEO services from YESBE Technologies optimize content for featured snippets, voice search and answer engines to capture high-intent users online.",
+      "canonical": "https://www.yesbe.tech/services/aeo",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AEO Services for Answer Engines | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/aeo",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AEO"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/digital-marketing": {
+      "title": "Digital Marketing Services Company | YESBE Technologies",
+      "description": "Digital marketing services from YESBE Technologies combine SEO, social media, paid ads and content strategy to attract qualified leads and sales.",
+      "canonical": "https://www.yesbe.tech/services/digital-marketing",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Digital Marketing Services Company | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/digital-marketing",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Digital Marketing"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/custom-software": {
+      "title": "Custom Software Development Company | YESBE Technologies",
+      "description": "Custom software development by YESBE Technologies builds scalable business platforms, automation tools, portals, integrations and dashboards fast.",
+      "canonical": "https://www.yesbe.tech/services/custom-software",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Custom Software Development Company | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/custom-software",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Custom Software"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/it-consulting": {
+      "title": "IT Consulting Company & Technology Advisory | YESBE Technologies",
+      "description": "IT consulting from YESBE Technologies audits your existing systems and produces a costed technology roadmap, so you invest in what actually moves your business.",
+      "canonical": "https://www.yesbe.tech/services/it-consulting",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "IT Consulting Company & Technology Advisory | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/it-consulting",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "IT Consulting"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/services/digital-transformation": {
+      "title": "Digital Transformation Consulting Services | YESBE Technologies",
+      "description": "Digital transformation by YESBE Technologies digitises manual operations in phased, independently valuable steps that integrate with the systems you already run.",
+      "canonical": "https://www.yesbe.tech/services/digital-transformation",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Digital Transformation Consulting Services | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/services/digital-transformation",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Digital Transformation"
+      ],
+      "jsonLdCount": 6,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/startups": {
+      "title": "Startup Technology Solutions India | YESBE Technologies",
+      "description": "Startup technology solutions from YESBE Technologies help founders build MVPs, cloud architecture, prototypes and scalable products faster with confidence.",
+      "canonical": "https://www.yesbe.tech/industries/startups",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Startup Technology Solutions India | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/startups",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Startups"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/smes": {
+      "title": "SME Digital Transformation Solutions | YESBE Technologies",
+      "description": "SME digital transformation solutions from YESBE Technologies streamline operations with ERP, automation, dashboards, websites and cloud tools for growth.",
+      "canonical": "https://www.yesbe.tech/industries/smes",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "SME Digital Transformation Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/smes",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "SMEs"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/large-enterprises": {
+      "title": "Enterprise Technology Solutions | YESBE Technologies",
+      "description": "Enterprise technology solutions from YESBE Technologies modernize legacy systems, integrate platforms and deploy AI, ERP and cloud securely at scale.",
+      "canonical": "https://www.yesbe.tech/industries/large-enterprises",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Enterprise Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/large-enterprises",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Large Enterprises"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/healthcare": {
+      "title": "Healthcare Technology Solutions | YESBE Technologies",
+      "description": "Healthcare technology solutions from YESBE Technologies support patient systems, telemedicine, records, dashboards, automation and compliance needs.",
+      "canonical": "https://www.yesbe.tech/industries/healthcare",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Healthcare Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/healthcare",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Healthcare"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/education": {
+      "title": "Education Technology Solutions | YESBE Technologies",
+      "description": "Education technology solutions from YESBE Technologies deliver school ERP, e-learning, student portals, exam systems and analytics dashboards for growth.",
+      "canonical": "https://www.yesbe.tech/industries/education",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Education Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/education",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Education"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/retail": {
+      "title": "Retail Business Technology Solutions | YESBE Technologies",
+      "description": "Retail business technology solutions from YESBE Technologies connect POS, ecommerce, inventory, loyalty, analytics and automation for measurable growth.",
+      "canonical": "https://www.yesbe.tech/industries/retail",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Retail Business Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/retail",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Retail"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/manufacturing": {
+      "title": "Manufacturing Technology Solutions | YESBE Technologies",
+      "description": "Manufacturing technology solutions from YESBE Technologies improve production planning, inventory, supply chain, IoT tracking and analytics for teams.",
+      "canonical": "https://www.yesbe.tech/industries/manufacturing",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Manufacturing Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/manufacturing",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Manufacturing"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/logistics": {
+      "title": "Logistics Technology Solutions | YESBE Technologies",
+      "description": "Logistics technology solutions from YESBE Technologies optimize fleet tracking, route planning, warehouse workflows, dashboards and automation at scale.",
+      "canonical": "https://www.yesbe.tech/industries/logistics",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Logistics Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/logistics",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Logistics"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/hospitality": {
+      "title": "Hospitality Technology Solutions | YESBE Technologies",
+      "description": "Hospitality technology solutions from YESBE Technologies improve restaurant, hotel, QR ordering, booking, guest and operations management for growth.",
+      "canonical": "https://www.yesbe.tech/industries/hospitality",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Hospitality Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/hospitality",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Hospitality"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/finance": {
+      "title": "Finance Business Technology Solutions | YESBE Technologies",
+      "description": "Finance business technology solutions from YESBE Technologies support dashboards, compliance workflows, reporting, automation and secure systems at scale.",
+      "canonical": "https://www.yesbe.tech/industries/finance",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Finance Business Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/finance",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Finance"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/industries/real-estate": {
+      "title": "Real Estate Technology Solutions | YESBE Technologies",
+      "description": "Real estate technology solutions from YESBE Technologies manage listings, CRMs, property portals, virtual tours, analytics and lead workflows for growth.",
+      "canonical": "https://www.yesbe.tech/industries/real-estate",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Real Estate Technology Solutions | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/industries/real-estate",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Real Estate"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/fashion-fusion": {
+      "title": "E-Commerce Platform Project | YESBE Technologies",
+      "description": "E-commerce platform project by YESBE Technologies covering product catalogue, cart, checkout, inventory and order management for a retail brand.",
+      "canonical": "https://www.yesbe.tech/case-studies/fashion-fusion",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "E-Commerce Platform Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/fashion-fusion",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Fashion Fusion E-Commerce Platform"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/restaurant-qr-ordering": {
+      "title": "QR Ordering System Project | YESBE Technologies",
+      "description": "QR ordering project by YESBE Technologies covering digital menus, table ordering, a real-time kitchen queue and a sales dashboard for restaurants.",
+      "canonical": "https://www.yesbe.tech/case-studies/restaurant-qr-ordering",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "QR Ordering System Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/restaurant-qr-ordering",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Restaurant QR Ordering System"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/library-management": {
+      "title": "Library Management System Project | YESBE Technologies",
+      "description": "Library management system project by YESBE Technologies covering catalogue search, barcode issue and return, fine calculation and reporting.",
+      "canonical": "https://www.yesbe.tech/case-studies/library-management",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Library Management System Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/library-management",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Library Management System"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/business-portfolio": {
+      "title": "Business Website Project | YESBE Technologies",
+      "description": "Business website project by YESBE Technologies covering responsive pages, service detail pages, lead capture forms and technical SEO foundations.",
+      "canonical": "https://www.yesbe.tech/case-studies/business-portfolio",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Website Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/business-portfolio",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business Portfolio Website"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/ai-business-assistant": {
+      "title": "AI Business Assistant Project | YESBE Technologies",
+      "description": "RAG-based AI assistant project by YESBE Technologies covering document ingestion, a vector index, source-linked answers and an admin panel for managing documents.",
+      "canonical": "https://www.yesbe.tech/case-studies/ai-business-assistant",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Business Assistant Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/ai-business-assistant",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI Business Assistant"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/erp-management": {
+      "title": "ERP Management System Project | YESBE Technologies",
+      "description": "Custom ERP project by YESBE Technologies covering inventory, employee records, billing, purchase orders, role-based access and reporting.",
+      "canonical": "https://www.yesbe.tech/case-studies/erp-management",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "ERP Management System Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/erp-management",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "ERP Management System"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/powerbi-dashboard": {
+      "title": "Power BI Dashboard Project | YESBE Technologies",
+      "description": "Power BI dashboard project by YESBE Technologies covering data modelling, DAX measures, ETL pipelines, scheduled refresh and role-based access.",
+      "canonical": "https://www.yesbe.tech/case-studies/powerbi-dashboard",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Power BI Dashboard Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/powerbi-dashboard",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Power BI Sales Dashboard"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/seo-digital-growth": {
+      "title": "SEO & Digital Growth Project | YESBE Technologies",
+      "description": "SEO project by YESBE Technologies covering technical audits, on-page optimisation, schema markup, content strategy and GEO and AEO structuring.",
+      "canonical": "https://www.yesbe.tech/case-studies/seo-digital-growth",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "SEO & Digital Growth Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/seo-digital-growth",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business SEO & Digital Growth"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/case-studies/business-automation": {
+      "title": "Business Automation Platform Project | YESBE Technologies",
+      "description": "Business automation project by YESBE Technologies covering a visual workflow builder, approval chains, notifications and reporting.",
+      "canonical": "https://www.yesbe.tech/case-studies/business-automation",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Automation Platform Project | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/case-studies/business-automation",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Custom Business Automation Platform"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/category/artificial-intelligence": {
+      "title": "AI Solutions & Artificial Intelligence Articles | YESBE Articles",
+      "description": "Explore practical guides on AI tools, chatbots, LLMs, RAG systems, and machine learning applied to real business problems.",
+      "canonical": "https://www.yesbe.tech/insights/category/artificial-intelligence",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Solutions & Artificial Intelligence Articles | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/artificial-intelligence",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Artificial Intelligence Guides & Articles"
+      ],
+      "jsonLdCount": 4,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebSite"
+      ]
+    },
+    "/insights/category/erp-systems": {
+      "title": "ERP Systems & Enterprise Planning Articles | YESBE Articles",
+      "description": "Learn how enterprise resource planning (ERP) unifies inventory, billing, finance, HR, and operations into a single source of truth.",
+      "canonical": "https://www.yesbe.tech/insights/category/erp-systems",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "ERP Systems & Enterprise Planning Articles | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/erp-systems",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "ERP Systems Guides & Articles"
+      ],
+      "jsonLdCount": 4,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "WebSite"
+      ]
+    },
+    "/insights/category/crm-solutions": {
+      "title": "CRM Strategies & Customer Management Articles | YESBE Articles",
+      "description": "Master CRM strategies: organize lead pipelines, automate follow-ups, and convert leads into long-term customer relationships.",
+      "canonical": "https://www.yesbe.tech/insights/category/crm-solutions",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "CRM Strategies & Customer Management Articles | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/crm-solutions",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "CRM Solutions Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/power-bi": {
+      "title": "Power BI Dashboards & Analytics Guides | YESBE Articles",
+      "description": "Dashboards, DAX calculations, and data modeling guides that turn scattered spreadsheets into real-time reporting.",
+      "canonical": "https://www.yesbe.tech/insights/category/power-bi",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Power BI Dashboards & Analytics Guides | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/power-bi",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Power BI Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/business-intelligence": {
+      "title": "Business Intelligence & Executive Analytics | YESBE Articles",
+      "description": "Build trusted reporting frameworks and executive KPI dashboards that accelerate business decision-making.",
+      "canonical": "https://www.yesbe.tech/insights/category/business-intelligence",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Intelligence & Executive Analytics | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/business-intelligence",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business Intelligence Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/data-analytics": {
+      "title": "Data Analytics & Data Engineering Articles | YESBE Articles",
+      "description": "Learn data collection, cleaning, warehousing, and predictive modeling techniques for enterprise decision-making.",
+      "canonical": "https://www.yesbe.tech/insights/category/data-analytics",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Data Analytics & Data Engineering Articles | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/data-analytics",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Data Analytics Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/web-development": {
+      "title": "Web Development & Full-Stack Engineering | YESBE Articles",
+      "description": "Complete web development playbooks: framework selection, UI component design, mobile responsiveness, and speed optimization.",
+      "canonical": "https://www.yesbe.tech/insights/category/web-development",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Web Development & Full-Stack Engineering | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/web-development",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Web Development Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/seo": {
+      "title": "SEO Optimization & Search Ranking Articles | YESBE Articles",
+      "description": "Actionable search engine optimization guides covering technical audits, keyword research, on-page optimization, and rank tracking.",
+      "canonical": "https://www.yesbe.tech/insights/category/seo",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "SEO Optimization & Search Ranking Articles | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/seo",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "SEO Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/geo": {
+      "title": "Generative Engine Optimization (GEO) Guides | YESBE Articles",
+      "description": "Learn how to optimize your business content to be indexed and cited by AI engines like ChatGPT, Gemini, and Perplexity.",
+      "canonical": "https://www.yesbe.tech/insights/category/geo",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Generative Engine Optimization (GEO) Guides | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/geo",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "GEO Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/aeo": {
+      "title": "Answer Engine Optimization (AEO) | YESBE Articles",
+      "description": "Master Answer Engine Optimization: rank for conversational queries and featured snippet blocks on Google and AI platforms.",
+      "canonical": "https://www.yesbe.tech/insights/category/aeo",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Answer Engine Optimization (AEO) | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/aeo",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AEO Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/digital-marketing": {
+      "title": "Digital Marketing & Growth Playbooks | YESBE Articles",
+      "description": "Master digital marketing funnels, email automation, content marketing, and customer acquisition channels.",
+      "canonical": "https://www.yesbe.tech/insights/category/digital-marketing",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Digital Marketing & Growth Playbooks | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/digital-marketing",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Digital Marketing Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/automation": {
+      "title": "Business Automation & Workflow Guides | YESBE Articles",
+      "description": "Learn process auditing, workflow automation, document extraction, and API integrations to streamline daily business tasks.",
+      "canonical": "https://www.yesbe.tech/insights/category/automation",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Automation & Workflow Guides | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/automation",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Automation Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/cloud-computing": {
+      "title": "Cloud Computing & DevOps Articles | YESBE Articles",
+      "description": "Cloud architecture, serverless infrastructure, containerization, and security playbooks for high-availability systems.",
+      "canonical": "https://www.yesbe.tech/insights/category/cloud-computing",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Cloud Computing & DevOps Articles | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/cloud-computing",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Cloud Computing Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/cybersecurity": {
+      "title": "Cybersecurity & Business Data Protection | YESBE Articles",
+      "description": "Protect your enterprise from data breaches, phishing attacks, and ransomware with practical security frameworks.",
+      "canonical": "https://www.yesbe.tech/insights/category/cybersecurity",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Cybersecurity & Business Data Protection | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/cybersecurity",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Cybersecurity Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/startup-guides": {
+      "title": "Startup Guides & Founder Playbooks | YESBE Articles",
+      "description": "Actionable startup playbooks: validate your MVP, choose early architecture, and launch fast without technical debt.",
+      "canonical": "https://www.yesbe.tech/insights/category/startup-guides",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Startup Guides & Founder Playbooks | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/startup-guides",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Startup Guides Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/business-tips": {
+      "title": "Business Growth & Operating Tips | YESBE Articles",
+      "description": "Operating strategies for business leaders: scaling workflows, managing profit margins, and driving tech adoption.",
+      "canonical": "https://www.yesbe.tech/insights/category/business-tips",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Growth & Operating Tips | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/business-tips",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business Tips Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/case-studies": {
+      "title": "Case Studies & Client Results | YESBE Articles",
+      "description": "Real-world case studies detailing how YESBE delivered enterprise software, AI tools, and ERP systems for clients.",
+      "canonical": "https://www.yesbe.tech/insights/category/case-studies",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Case Studies & Client Results | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/case-studies",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Case Studies Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/industry-insights": {
+      "title": "Industry Insights & Tech Transformation | YESBE Articles",
+      "description": "Discover sector-specific technology trends and digital transformation playbooks across industries.",
+      "canonical": "https://www.yesbe.tech/insights/category/industry-insights",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Industry Insights & Tech Transformation | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/industry-insights",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Industry Insights Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/category/technology-trends": {
+      "title": "Technology Trends & Innovations | YESBE Articles",
+      "description": "Stay ahead of emerging trends in generative AI, cloud computing, enterprise software, and business automation.",
+      "canonical": "https://www.yesbe.tech/insights/category/technology-trends",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Technology Trends & Innovations | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/category/technology-trends",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Technology Trends Guides & Articles"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/insights/article/aeo-answer-engines": {
+      "title": "AEO Guide: Win Featured Snippets & Voice Search | YesBe",
+      "description": "Answer Engine Optimization (AEO) explained — how to structure content for Google Featured Snippets, voice assistants, and AI summaries. Checklist included.",
+      "canonical": "https://www.yesbe.tech/insights/article/aeo-answer-engines",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AEO Guide: Win Featured Snippets & Voice Search | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/aeo-answer-engines",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AEO: Answer Engine Optimization — Win Featured Snippets & Voice Search"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/ai-automation-guide": {
+      "title": "AI Automation Guide: Step-by-Step Business Playbook | YesBe",
+      "description": "Master AI automation: learn how to map manual processes, select the right workflow automation tools, and scale operational velocity.",
+      "canonical": "https://www.yesbe.tech/insights/article/ai-automation-guide",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Automation Guide: Step-by-Step Business Playbook | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/ai-automation-guide",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI Automation Guide"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/ai-automation-small-businesses": {
+      "title": "AI Automation for Small Businesses: Save Time & Cut Costs | YesBe",
+      "description": "Learn how small businesses use AI automation to reduce manual work, cut costs, and improve operations. Practical examples, tools, and a step-by-step guide.",
+      "canonical": "https://www.yesbe.tech/insights/article/ai-automation-small-businesses",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Automation for Small Businesses: Save Time & Cut Costs | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/ai-automation-small-businesses",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI Automation for Small Businesses: Practical Ways to Save Time and Cut Costs"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/ai-chatbot-customer-support-use-cases": {
+      "title": "AI Chatbot Use Cases for Customer Support | YesBe",
+      "description": "Discover practical AI chatbot use cases for customer support — from instant FAQ responses to lead qualification and issue routing. Real applications for real businesses.",
+      "canonical": "https://www.yesbe.tech/insights/article/ai-chatbot-customer-support-use-cases",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Chatbot Use Cases for Customer Support | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/ai-chatbot-customer-support-use-cases",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI Chatbot Use Cases for Customer Support: Practical Applications for Businesses"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/ai-chatbots-explained": {
+      "title": "AI Chatbots Explained: Architecture, Use Cases & ROI | YesBe",
+      "description": "Learn how modern AI chatbots work, how RAG prevents hallucinations, and how businesses automate customer conversations seamlessly.",
+      "canonical": "https://www.yesbe.tech/insights/article/ai-chatbots-explained",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI Chatbots Explained: Architecture, Use Cases & ROI | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/ai-chatbots-explained",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI Chatbots Explained"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/ai-for-business": {
+      "title": "AI for Business Guide: Cut Costs & Scale Smarter | YesBe",
+      "description": "A practical guide to implementing AI in business — chatbots, automation, and analytics that reduce costs by 20–40% and improve decisions. Free consultation available.",
+      "canonical": "https://www.yesbe.tech/insights/article/ai-for-business",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI for Business Guide: Cut Costs & Scale Smarter | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/ai-for-business",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI for Business: A Practical Guide to Cutting Costs and Scaling Smarter"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/ai-for-small-business": {
+      "title": "AI for Small Businesses: Practical Implementation Guide | YesBe",
+      "description": "Explore how small businesses use AI tools to automate support, personalize marketing campaigns, and gain competitive edge without massive budgets.",
+      "canonical": "https://www.yesbe.tech/insights/article/ai-for-small-business",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "AI for Small Businesses: Practical Implementation Guide | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/ai-for-small-business",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "AI for Small Businesses"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/automating-repetitive-office-work": {
+      "title": "Benefits of Automating Repetitive Office Work | YesBe",
+      "description": "Explore the real benefits of automating repetitive office tasks — time savings, fewer errors, faster processes, and scalable operations. Practical guide with examples.",
+      "canonical": "https://www.yesbe.tech/insights/article/automating-repetitive-office-work",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Benefits of Automating Repetitive Office Work | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/automating-repetitive-office-work",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Benefits of Automating Repetitive Office Work: Save Time, Reduce Errors, Scale Faster"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/business-automation": {
+      "title": "Business Automation Guide: Eliminate Repetitive Work | YesBe",
+      "description": "Business automation explained — workflow automation, AI-powered process optimization, ROI, and where to start. Practical guide with examples from YesBe.",
+      "canonical": "https://www.yesbe.tech/insights/article/business-automation",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Automation Guide: Eliminate Repetitive Work | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/business-automation",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business Automation: The Complete Guide to Eliminating Repetitive Work"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/business-intelligence-guide": {
+      "title": "Business Intelligence Strategy Guide: Decisions From Data | YesBe",
+      "description": "A business intelligence strategy guide — designing KPIs, building a data culture, and turning dashboards into decisions that improve performance.",
+      "canonical": "https://www.yesbe.tech/insights/article/business-intelligence-guide",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Business Intelligence Strategy Guide: Decisions From Data | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/business-intelligence-guide",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Business Intelligence Strategy: Turning Data Into Decisions"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/business-tips-scale": {
+      "title": "7 Business Systems Every Growing Company Needs | YesBe",
+      "description": "Seven business systems that keep growing companies scalable — CRM, ERP, finance, marketing, communication, backup, and metrics. Practical checklist.",
+      "canonical": "https://www.yesbe.tech/insights/article/business-tips-scale",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "7 Business Systems Every Growing Company Needs | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/business-tips-scale",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "7 Business Systems Every Growing Company Should Have in Place"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/business-website-lead-generation": {
+      "title": "How a Business Website Generates Leads: Complete Guide | YesBe",
+      "description": "Discover how a business website generates leads through SEO, content, trust signals, clear CTAs, and conversion optimisation. A practical guide for business owners.",
+      "canonical": "https://www.yesbe.tech/insights/article/business-website-lead-generation",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "How a Business Website Generates Leads: Complete Guide | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/business-website-lead-generation",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "How a Business Website Generates Leads: From Visitors to Paying Customers"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/case-studies-measurable-outcomes": {
+      "title": "Case Studies: Framework for Measurable Technology Outcomes | YesBe",
+      "description": "Learn how to evaluate technology case studies for measurable outcomes. Includes a practical template for documenting project results, ROI, and operational improvements.",
+      "canonical": "https://www.yesbe.tech/insights/article/case-studies-measurable-outcomes",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Case Studies: Framework for Measurable Technology Outcomes | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/case-studies-measurable-outcomes",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Case Studies Showing Measurable Outcomes: A Framework for Evaluating Technology Projects"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/cloud-computing": {
+      "title": "Cloud Computing Guide: AWS, Azure & Scaling Infrastructure | YesBe",
+      "description": "Cloud computing explained — IaaS, PaaS, SaaS, choosing AWS vs Azure vs GCP, costs, security, and migration. Practical guide from YesBe Technologies.",
+      "canonical": "https://www.yesbe.tech/insights/article/cloud-computing",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Cloud Computing Guide: AWS, Azure & Scaling Infrastructure | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/cloud-computing",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Cloud Computing for Growing Businesses: AWS, Azure, and Beyond"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/crm-benefits": {
+      "title": "CRM Benefits for Sales & Support Teams | YesBe Knowledge Center",
+      "description": "Discover how implementing a modern CRM increases win rates by 29%, shortens sales cycles, and improves customer retention.",
+      "canonical": "https://www.yesbe.tech/insights/article/crm-benefits",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "CRM Benefits for Sales & Support Teams | YesBe Knowledge Center",
+      "ogUrl": "https://www.yesbe.tech/insights/article/crm-benefits",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "CRM Benefits for Modern Sales & Support Teams"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/cybersecurity-essentials": {
+      "title": "Cybersecurity Essentials for SMEs: Practical Security Guide | YesBe",
+      "description": "Practical cybersecurity for small and mid-size businesses — access control, backups, phishing defense, and security monitoring. A framework you can implement.",
+      "canonical": "https://www.yesbe.tech/insights/article/cybersecurity-essentials",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Cybersecurity Essentials for SMEs: Practical Security Guide | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/cybersecurity-essentials",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Cybersecurity Essentials for Small & Mid-Size Businesses"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/data-analytics-strategy": {
+      "title": "Data Analytics Strategy for Business: Practical Roadmap | YesBe",
+      "description": "A practical data analytics roadmap — collection, cleaning, analysis, and the metrics that matter. Turn scattered data into decisions that improve results.",
+      "canonical": "https://www.yesbe.tech/insights/article/data-analytics-strategy",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Data Analytics Strategy for Business: Practical Roadmap | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/data-analytics-strategy",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Data Analytics for Business: A Practical Strategy That Gets Results"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/digital-marketing-strategy": {
+      "title": "Digital Marketing Strategy: Build a Lead-Generating Funnel | YesBe",
+      "description": "A modern digital marketing playbook — SEO, content, paid media, and email as one system for consistent, predictable lead generation. From YesBe.",
+      "canonical": "https://www.yesbe.tech/insights/article/digital-marketing-strategy",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Digital Marketing Strategy: Build a Lead-Generating Funnel | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/digital-marketing-strategy",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Digital Marketing Strategy: A Funnel That Actually Generates Leads"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/ecommerce-case-study": {
+      "title": "Fashion E-Commerce Case Study: Platform That Drives Growth | YesBe",
+      "description": "Case study: how YesBe built an e-commerce platform for a fashion brand — online catalog, inventory, payments, and order management with measurable results.",
+      "canonical": "https://www.yesbe.tech/insights/article/ecommerce-case-study",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Fashion E-Commerce Case Study: Platform That Drives Growth | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/ecommerce-case-study",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Case Study: Fashion E-Commerce Platform — Sales, Inventory & Growth"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/erp-benefits-small-business": {
+      "title": "ERP Benefits for Small Businesses | YesBe Knowledge Center",
+      "description": "Learn how small businesses leverage ERP software to centralize accounting, inventory, and sales for faster growth and reduced overhead.",
+      "canonical": "https://www.yesbe.tech/insights/article/erp-benefits-small-business",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "ERP Benefits for Small Businesses | YesBe Knowledge Center",
+      "ogUrl": "https://www.yesbe.tech/insights/article/erp-benefits-small-business",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "ERP Benefits for Small Businesses"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/erp-software-growing-businesses": {
+      "title": "ERP Software for Growing Businesses: Guide to Adoption | YesBe",
+      "description": "Learn when growing businesses should adopt ERP software, what modules matter most, and how to plan an implementation that supports real operational growth.",
+      "canonical": "https://www.yesbe.tech/insights/article/erp-software-growing-businesses",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "ERP Software for Growing Businesses: Guide to Adoption | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/erp-software-growing-businesses",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "ERP Software for Growing Businesses: When to Adopt and What to Expect"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/erp-vs-crm": {
+      "title": "ERP vs CRM: Difference, Use Cases & Which to Choose | YesBe",
+      "description": "ERP vs CRM explained clearly — what each system does, when you need one, and how they work together. Practical guide with examples from YesBe.",
+      "canonical": "https://www.yesbe.tech/insights/article/erp-vs-crm",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "ERP vs CRM: Difference, Use Cases & Which to Choose | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/erp-vs-crm",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "ERP vs CRM: What's the Difference and Which Do You Need?"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/geo-optimization": {
+      "title": "GEO Guide: Get Recommended by ChatGPT & AI Search | YesBe",
+      "description": "Generative Engine Optimization (GEO) explained — how to make ChatGPT, Gemini, and Perplexity recommend your business. Strategies, examples, and checklist.",
+      "canonical": "https://www.yesbe.tech/insights/article/geo-optimization",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "GEO Guide: Get Recommended by ChatGPT & AI Search | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/geo-optimization",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "GEO: Generative Engine Optimization — Get Recommended by ChatGPT, Gemini & Perplexity"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/how-to-build-business-website": {
+      "title": "How to Build a Business Website: Step-by-Step Tutorial | YesBe",
+      "description": "Learn how to build a high-performing business website that generates leads, showcases services, and loads under 1 second.",
+      "canonical": "https://www.yesbe.tech/insights/article/how-to-build-business-website",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "How to Build a Business Website: Step-by-Step Tutorial | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/how-to-build-business-website",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "How to Build a Business Website"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/how-to-rank-on-google": {
+      "title": "How to Rank on Google: Proven Framework for 2026 | YesBe",
+      "description": "Discover how to improve Google rankings using search intent alignment, topical authority clustering, and AI-optimized content.",
+      "canonical": "https://www.yesbe.tech/insights/article/how-to-rank-on-google",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "How to Rank on Google: Proven Framework for 2026 | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/how-to-rank-on-google",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "How to Rank on Google"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/industry-insights-sme-digital": {
+      "title": "Industry Insights: How SMEs Digitize in 2026 | YesBe",
+      "description": "How SMEs across retail, manufacturing, healthcare, education, and services are digitizing in 2026 — the patterns, tools, and results that matter.",
+      "canonical": "https://www.yesbe.tech/insights/article/industry-insights-sme-digital",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Industry Insights: How SMEs Digitize in 2026 | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/industry-insights-sme-digital",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Industry Insights: How SMEs Across Sectors Are Digitizing in 2026"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/langchain-intro": {
+      "title": "LangChain Introduction: Build AI Apps Faster | YesBe",
+      "description": "What is LangChain and how does it simplify AI application development? Learn about chains, agents, memory, and RAG integrations in this practical guide.",
+      "canonical": "https://www.yesbe.tech/insights/article/langchain-intro",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "LangChain Introduction: Build AI Apps Faster | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/langchain-intro",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Introduction to LangChain for AI Applications"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/local-business-digital-transformation-checklist": {
+      "title": "Local Business Digital Transformation Checklist | YesBe",
+      "description": "A step-by-step digital transformation checklist for local businesses — covering website, analytics, CRM, automation, and cloud tools with practical guidance.",
+      "canonical": "https://www.yesbe.tech/insights/article/local-business-digital-transformation-checklist",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Local Business Digital Transformation Checklist | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/local-business-digital-transformation-checklist",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Local Business Digital Transformation Checklist: A Step-by-Step Guide"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/power-bi-dashboard-guide": {
+      "title": "Power BI Dashboard Guide: Build Executive Reports | YesBe",
+      "description": "Master Power BI dashboard creation: data transformation with Power Query, DAX measures, mobile layout design, and scheduled refreshes.",
+      "canonical": "https://www.yesbe.tech/insights/article/power-bi-dashboard-guide",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Power BI Dashboard Guide: Build Executive Reports | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/power-bi-dashboard-guide",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Power BI Dashboard Guide"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/power-bi-for-business-analytics": {
+      "title": "Power BI for Business Analytics: Transform Data into Growth | YesBe",
+      "description": "Learn how to use Power BI for business analytics to track KPIs, forecast revenue, and optimize operational performance.",
+      "canonical": "https://www.yesbe.tech/insights/article/power-bi-for-business-analytics",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Power BI for Business Analytics: Transform Data into Growth | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/power-bi-for-business-analytics",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Power BI for Business Analytics"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/power-bi-guide": {
+      "title": "Power BI Guide: Build Real-Time Business Dashboards | YesBe",
+      "description": "Complete Power BI guide — dashboards, DAX, data modeling, and KPIs that transform scattered spreadsheets into real-time executive reporting.",
+      "canonical": "https://www.yesbe.tech/insights/article/power-bi-guide",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Power BI Guide: Build Real-Time Business Dashboards | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/power-bi-guide",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Power BI Guide: From Spreadsheets to Real-Time Executive Dashboards"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/power-bi-vs-excel": {
+      "title": "Power BI vs Excel: When to Upgrade Financial & Business Analytics | YesBe",
+      "description": "Compare Power BI vs Excel: data scaling limits, automated refreshes, interactive visual dashboards, and security controls.",
+      "canonical": "https://www.yesbe.tech/insights/article/power-bi-vs-excel",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Power BI vs Excel: When to Upgrade Financial & Business Analytics | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/power-bi-vs-excel",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Power BI vs Excel"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/rag-implementation": {
+      "title": "RAG Implementation Guide: AI Grounded in Your Data | YesBe",
+      "description": "Learn how Retrieval-Augmented Generation (RAG) builds accurate, source-linked AI assistants over your own knowledge base. Step-by-step implementation guide.",
+      "canonical": "https://www.yesbe.tech/insights/article/rag-implementation",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "RAG Implementation Guide: AI Grounded in Your Data | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/rag-implementation",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "RAG Implementation: How to Ground AI in Your Own Business Data"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/seo-checklist": {
+      "title": "SEO Checklist: 25 Actionable Steps for Better Rankings | YesBe",
+      "description": "Follow this 25-step SEO checklist to fix technical errors, optimize meta tags, and drive organic traffic to your website.",
+      "canonical": "https://www.yesbe.tech/insights/article/seo-checklist",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "SEO Checklist: 25 Actionable Steps for Better Rankings | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/seo-checklist",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "SEO Checklist"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/seo-guide-2026": {
+      "title": "SEO Guide 2026: Rank on Google in the AI Search Era | YesBe",
+      "description": "The modern SEO framework for 2026 — technical SEO, content that earns authority, AI search readiness, and the metrics that matter. Expert guide from YesBe.",
+      "canonical": "https://www.yesbe.tech/insights/article/seo-guide-2026",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "SEO Guide 2026: Rank on Google in the AI Search Era | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/seo-guide-2026",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "SEO Guide 2026: How to Rank on Google in the AI Search Era"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/startup-mvp-guide": {
+      "title": "MVP Guide for Founders: Build a First Product That Validates | YesBe",
+      "description": "How to build a minimum viable product — define the core promise, choose a lean stack, ship fast, and validate demand. Founder's guide from YesBe.",
+      "canonical": "https://www.yesbe.tech/insights/article/startup-mvp-guide",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "MVP Guide for Founders: Build a First Product That Validates | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/startup-mvp-guide",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "From Idea to MVP: A Founder's Guide to Building a First Product"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/technology-trends-2026": {
+      "title": "Technology Trends 2026: What Matters for Business | YesBe",
+      "description": "The technology trends that matter for business in 2026 — AI agents, AI search, composable software, edge AI — and how to separate signal from noise.",
+      "canonical": "https://www.yesbe.tech/insights/article/technology-trends-2026",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Technology Trends 2026: What Matters for Business | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/technology-trends-2026",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Technology Trends 2026: What Businesses Should Actually Care About"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/web-dev-tech-stack": {
+      "title": "How to Choose a Web Development Tech Stack | YesBe",
+      "description": "Web development tech stack guide: WordPress vs React vs Next.js, when to use each, costs, and the mistakes that create technical debt. Expert advice.",
+      "canonical": "https://www.yesbe.tech/insights/article/web-dev-tech-stack",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "How to Choose a Web Development Tech Stack | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/web-dev-tech-stack",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Website Development: Choosing the Right Tech Stack for Your Business"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/website-development-cost-india": {
+      "title": "Website Development Cost in India: What Determines It | YesBe",
+      "description": "Understand what drives website development costs in India — complexity, design, features, and technology — and how to evaluate a quotation before you commit.",
+      "canonical": "https://www.yesbe.tech/insights/article/website-development-cost-india",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Website Development Cost in India: What Determines It | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/website-development-cost-india",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Website Development Cost in India: What Actually Determines It"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/website-development-guide": {
+      "title": "Website Development Guide: From Architecture to Launch | YesBe",
+      "description": "Master modern web development: framework selection, UI design systems, performance optimization, and mobile responsiveness.",
+      "canonical": "https://www.yesbe.tech/insights/article/website-development-guide",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "Website Development Guide: From Architecture to Launch | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/website-development-guide",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Website Development Guide"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/what-is-crm": {
+      "title": "What is CRM? Complete Guide for Growing Businesses | YesBe",
+      "description": "CRM defined: discover how Customer Relationship Management software unifies leads, contacts, deals, and automated sales outreach.",
+      "canonical": "https://www.yesbe.tech/insights/article/what-is-crm",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "What is CRM? Complete Guide for Growing Businesses | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/what-is-crm",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "What is CRM? A Guide for Growing Businesses"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/article/what-is-erp": {
+      "title": "What is ERP? Complete Guide to Enterprise Resource Planning | YesBe",
+      "description": "ERP explained: how enterprise resource planning systems unify inventory, billing, finance, and HR into one source of truth. Includes costs, timelines, and examples.",
+      "canonical": "https://www.yesbe.tech/insights/article/what-is-erp",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ogTitle": "What is ERP? Complete Guide to Enterprise Resource Planning | YesBe",
+      "ogUrl": "https://www.yesbe.tech/insights/article/what-is-erp",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "What is ERP? A Complete Guide to Enterprise Resource Planning"
+      ],
+      "jsonLdCount": 5,
+      "jsonLdTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Question",
+        "TechArticle",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    "/insights/search": {
+      "title": "Search Articles & Guides | YESBE Articles",
+      "description": "Search articles and guides on AI, ERP, CRM, Websites, Power BI, SEO, and Business Tech.",
+      "canonical": "https://www.yesbe.tech/insights/search",
+      "robots": "noindex, follow",
+      "ogTitle": "Search Articles & Guides | YESBE Articles",
+      "ogUrl": "https://www.yesbe.tech/insights/search",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Discover Articles & Guides"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "/videos": {
+      "title": "Video Library | YESBE Technologies",
+      "description": "YESBE does not currently publish a public video library. Explore our written articles, project breakdowns, and direct consultation instead.",
+      "canonical": "https://www.yesbe.tech/videos",
+      "robots": "noindex, follow",
+      "ogTitle": "Video Library | YESBE Technologies",
+      "ogUrl": "https://www.yesbe.tech/videos",
+      "twitterCard": "summary_large_image",
+      "h1": [
+        "Video Library"
+      ],
+      "jsonLdCount": 3,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ]
+    }
+  },
+  "sitemap": [
+    "https://www.yesbe.tech/",
+    "https://www.yesbe.tech/services",
+    "https://www.yesbe.tech/industries",
+    "https://www.yesbe.tech/about",
+    "https://www.yesbe.tech/sachin-balraj",
+    "https://www.yesbe.tech/insights",
+    "https://www.yesbe.tech/case-studies",
+    "https://www.yesbe.tech/contact",
+    "https://www.yesbe.tech/privacy-policy",
+    "https://www.yesbe.tech/terms-and-conditions",
+    "https://www.yesbe.tech/refund-policy",
+    "https://www.yesbe.tech/cookie-policy",
+    "https://www.yesbe.tech/disclaimer",
+    "https://www.yesbe.tech/services/ai-solutions",
+    "https://www.yesbe.tech/services/ai-chatbots",
+    "https://www.yesbe.tech/services/erp-systems",
+    "https://www.yesbe.tech/services/website-development",
+    "https://www.yesbe.tech/services/web-applications",
+    "https://www.yesbe.tech/services/ecommerce",
+    "https://www.yesbe.tech/services/business-automation",
+    "https://www.yesbe.tech/services/data-analytics",
+    "https://www.yesbe.tech/services/power-bi-dashboards",
+    "https://www.yesbe.tech/services/cloud-devops",
+    "https://www.yesbe.tech/services/database-management",
+    "https://www.yesbe.tech/services/api-development",
+    "https://www.yesbe.tech/services/seo",
+    "https://www.yesbe.tech/services/geo",
+    "https://www.yesbe.tech/services/aeo",
+    "https://www.yesbe.tech/services/digital-marketing",
+    "https://www.yesbe.tech/services/custom-software",
+    "https://www.yesbe.tech/services/it-consulting",
+    "https://www.yesbe.tech/services/digital-transformation",
+    "https://www.yesbe.tech/industries/startups",
+    "https://www.yesbe.tech/industries/smes",
+    "https://www.yesbe.tech/industries/large-enterprises",
+    "https://www.yesbe.tech/industries/healthcare",
+    "https://www.yesbe.tech/industries/education",
+    "https://www.yesbe.tech/industries/retail",
+    "https://www.yesbe.tech/industries/manufacturing",
+    "https://www.yesbe.tech/industries/logistics",
+    "https://www.yesbe.tech/industries/hospitality",
+    "https://www.yesbe.tech/industries/finance",
+    "https://www.yesbe.tech/industries/real-estate",
+    "https://www.yesbe.tech/case-studies/fashion-fusion",
+    "https://www.yesbe.tech/case-studies/restaurant-qr-ordering",
+    "https://www.yesbe.tech/case-studies/library-management",
+    "https://www.yesbe.tech/case-studies/business-portfolio",
+    "https://www.yesbe.tech/case-studies/ai-business-assistant",
+    "https://www.yesbe.tech/case-studies/erp-management",
+    "https://www.yesbe.tech/case-studies/powerbi-dashboard",
+    "https://www.yesbe.tech/case-studies/seo-digital-growth",
+    "https://www.yesbe.tech/case-studies/business-automation",
+    "https://www.yesbe.tech/insights/category/artificial-intelligence",
+    "https://www.yesbe.tech/insights/category/erp-systems",
+    "https://www.yesbe.tech/insights/category/crm-solutions",
+    "https://www.yesbe.tech/insights/category/power-bi",
+    "https://www.yesbe.tech/insights/category/business-intelligence",
+    "https://www.yesbe.tech/insights/category/data-analytics",
+    "https://www.yesbe.tech/insights/category/web-development",
+    "https://www.yesbe.tech/insights/category/seo",
+    "https://www.yesbe.tech/insights/category/geo",
+    "https://www.yesbe.tech/insights/category/aeo",
+    "https://www.yesbe.tech/insights/category/digital-marketing",
+    "https://www.yesbe.tech/insights/category/automation",
+    "https://www.yesbe.tech/insights/category/cloud-computing",
+    "https://www.yesbe.tech/insights/category/cybersecurity",
+    "https://www.yesbe.tech/insights/category/startup-guides",
+    "https://www.yesbe.tech/insights/category/business-tips",
+    "https://www.yesbe.tech/insights/category/case-studies",
+    "https://www.yesbe.tech/insights/category/industry-insights",
+    "https://www.yesbe.tech/insights/category/technology-trends",
+    "https://www.yesbe.tech/insights/article/aeo-answer-engines",
+    "https://www.yesbe.tech/insights/article/ai-automation-guide",
+    "https://www.yesbe.tech/insights/article/ai-automation-small-businesses",
+    "https://www.yesbe.tech/insights/article/ai-chatbot-customer-support-use-cases",
+    "https://www.yesbe.tech/insights/article/ai-chatbots-explained",
+    "https://www.yesbe.tech/insights/article/ai-for-business",
+    "https://www.yesbe.tech/insights/article/ai-for-small-business",
+    "https://www.yesbe.tech/insights/article/automating-repetitive-office-work",
+    "https://www.yesbe.tech/insights/article/business-automation",
+    "https://www.yesbe.tech/insights/article/business-intelligence-guide",
+    "https://www.yesbe.tech/insights/article/business-tips-scale",
+    "https://www.yesbe.tech/insights/article/business-website-lead-generation",
+    "https://www.yesbe.tech/insights/article/case-studies-measurable-outcomes",
+    "https://www.yesbe.tech/insights/article/cloud-computing",
+    "https://www.yesbe.tech/insights/article/crm-benefits",
+    "https://www.yesbe.tech/insights/article/cybersecurity-essentials",
+    "https://www.yesbe.tech/insights/article/data-analytics-strategy",
+    "https://www.yesbe.tech/insights/article/digital-marketing-strategy",
+    "https://www.yesbe.tech/insights/article/ecommerce-case-study",
+    "https://www.yesbe.tech/insights/article/erp-benefits-small-business",
+    "https://www.yesbe.tech/insights/article/erp-software-growing-businesses",
+    "https://www.yesbe.tech/insights/article/erp-vs-crm",
+    "https://www.yesbe.tech/insights/article/geo-optimization",
+    "https://www.yesbe.tech/insights/article/how-to-build-business-website",
+    "https://www.yesbe.tech/insights/article/how-to-rank-on-google",
+    "https://www.yesbe.tech/insights/article/industry-insights-sme-digital",
+    "https://www.yesbe.tech/insights/article/langchain-intro",
+    "https://www.yesbe.tech/insights/article/local-business-digital-transformation-checklist",
+    "https://www.yesbe.tech/insights/article/power-bi-dashboard-guide",
+    "https://www.yesbe.tech/insights/article/power-bi-for-business-analytics",
+    "https://www.yesbe.tech/insights/article/power-bi-guide",
+    "https://www.yesbe.tech/insights/article/power-bi-vs-excel",
+    "https://www.yesbe.tech/insights/article/rag-implementation",
+    "https://www.yesbe.tech/insights/article/seo-checklist",
+    "https://www.yesbe.tech/insights/article/seo-guide-2026",
+    "https://www.yesbe.tech/insights/article/startup-mvp-guide",
+    "https://www.yesbe.tech/insights/article/technology-trends-2026",
+    "https://www.yesbe.tech/insights/article/web-dev-tech-stack",
+    "https://www.yesbe.tech/insights/article/website-development-cost-india",
+    "https://www.yesbe.tech/insights/article/website-development-guide",
+    "https://www.yesbe.tech/insights/article/what-is-crm",
+    "https://www.yesbe.tech/insights/article/what-is-erp"
+  ],
+  "redirects": [
+    {
+      "source": "/pricing",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/:slug",
+      "destination": "/services/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/search",
+      "destination": "/insights/search",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/article/:slug",
+      "destination": "/insights/article/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/category/:slug",
+      "destination": "/insights/category/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-center/:slug",
+      "destination": "/insights/category/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/search",
+      "destination": "/insights/search",
+      "permanent": true
+    },
+    {
+      "source": "/insights/:slug((?!search$)[a-z0-9-]+)",
+      "destination": "/insights/category/:slug",
+      "permanent": true
+    }
+  ]
+}

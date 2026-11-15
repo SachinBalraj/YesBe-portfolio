@@ -6,6 +6,7 @@ import { BusinessSchema } from "@/components/common/BusinessSchema";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { HomePage } from "@/pages/HomePage";
 
 const CookieConsent = lazy(() =>
   import("@/components/common/CookieConsent").then((m) => ({ default: m.CookieConsent }))
@@ -14,9 +15,6 @@ const ScrollToTopButton = lazy(() =>
   import("@/components/common/ScrollToTopButton").then((m) => ({ default: m.ScrollToTopButton }))
 );
 
-const HomePage = lazy(() =>
-  import("@/pages/HomePage").then((m) => ({ default: m.HomePage }))
-);
 const AboutPage = lazy(() =>
   import("@/pages/AboutPage").then((m) => ({ default: m.AboutPage }))
 );
@@ -96,7 +94,9 @@ function PublicLayout() {
       <BusinessSchema />
       <Navbar />
       <main id="main-content">
-        <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+        {/* The fallback reserves a viewport so the footer never paints inside
+            the first screen and then jumps down when a lazy route resolves. */}
+        <Suspense fallback={<div className="min-h-[100svh]" aria-hidden="true" />}>
           <Outlet />
         </Suspense>
       </main>

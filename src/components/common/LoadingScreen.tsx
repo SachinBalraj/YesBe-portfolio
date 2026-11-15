@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import logoImg from "@/assets/images/YBlogo.png";
+import logoImg from "@/assets/images/YBlogo.webp";
 
 export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0);

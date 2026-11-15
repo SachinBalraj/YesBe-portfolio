@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/animations";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import logoImg from "@/assets/images/YBlogo.png";
+import logoImg from "@/assets/images/YBlogo.webp";
 import founderImage from "@/assets/images/founder-portrait.jpeg";
 
 const focusAreas = [
@@ -52,18 +52,15 @@ export function AboutSection() {
               aria-label="YESBE Technologies Company Logo — Go to homepage"
             >
               <div className="border border-border bg-white p-4 sm:p-6">
-                <picture>
-                  <source srcSet="/YBlogo.webp" type="image/webp" />
-                  <img
-                    src={logoImg}
-                    alt="YESBE Technologies Company Logo"
-                    width={400}
-                    height={400}
-                    loading="lazy"
-                    decoding="async"
-                    className="relative h-[180px] w-[180px] object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
-                  />
-                </picture>
+                <img
+                  src={logoImg}
+                  alt="YESBE Technologies Company Logo"
+                  width={400}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                  className="relative h-[180px] w-[180px] object-contain sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] lg:h-[320px] lg:w-[320px] xl:h-[360px] xl:w-[360px]"
+                />
               </div>
             </motion.button>
 

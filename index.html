@@ -43,20 +43,27 @@
     <meta name="msapplication-TileColor" content="#2563EB" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PZ9KWVFH');</script>
-    <!-- End Google Tag Manager -->
+    <!--
+      Analytics is not loaded here. Google Tag Manager is injected at runtime by
+      src/utils/analytics.ts, and only after the visitor grants analytics
+      consent. Loading GTM (or a second gtag.js) in the document head both
+      bypassed consent and duplicated every tag.
+    -->
+
+    <!-- Hero LCP image: start the request before the JS bundle is parsed.
+         Mirrors the <picture>/<source> in PremiumHero so the browser chooses
+         the same AVIF candidate instead of downloading it twice. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      imagesrcset="/images/hero/yesbe-homepage-640-v2.avif 640w, /images/hero/yesbe-homepage-960-v2.avif 960w, /images/hero/yesbe-homepage-1280-v2.avif 1280w, /images/hero/yesbe-homepage-1536-v2.avif 1536w"
+      imagesizes="(min-width: 768px) 620px, 100vw"
+      fetchpriority="high"
+    />
 
     <!-- Preconnect critical origins -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-
-    <!-- DNS prefetch for remaining origins -->
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
     <!-- Inline critical CSS for fast initial paint -->
@@ -71,10 +78,6 @@
     </style>
   </head>
   <body class="min-h-screen bg-background antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ9KWVFH"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div id="root">
       <!-- Fast initial loading indicator while JS loads -->
       <div id="app-loader" style="position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff">

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import { trackConsultationClick } from "@/utils/analytics";
 
-const heroImage = "/yesbe.homepage.png";
+const heroImage = "/images/hero/yesbe-homepage-960.jpg";
 const heroAvifSet =
   "/images/hero/yesbe-homepage-640-v2.avif 640w, /images/hero/yesbe-homepage-960-v2.avif 960w, /images/hero/yesbe-homepage-1280-v2.avif 1280w, /images/hero/yesbe-homepage-1536-v2.avif 1536w";
 const heroJpgSet =

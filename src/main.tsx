@@ -6,7 +6,10 @@ import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import "@fontsource/inter/800.css";
 import App from "./App";
+import { initAnalytics } from "./utils/analytics";
 import "@/styles/globals.css";
+
+initAnalytics();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

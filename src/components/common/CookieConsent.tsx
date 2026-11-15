@@ -2,13 +2,11 @@ import { useState, useEffect, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, Settings, X, Check, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getStoredConsent, getStoredPreferences, type ConsentLevel, type CookiePreferences } from "./consentStore";
+import { getStoredConsent, getStoredPreferences, PREFS_KEY, STORAGE_KEY, type ConsentLevel, type CookiePreferences } from "./consentStore";
 
 export { getStoredConsent, getStoredPreferences };
 export type { ConsentLevel, CookiePreferences };
 
-const STORAGE_KEY = "yesbe-cookie-consent";
-const PREFS_KEY = "yesbe-cookie-preferences";
 
 function Toggle({ checked, onToggle, label }: { checked: boolean; onToggle: () => void; label: string }) {
   return (
@@ -48,7 +46,7 @@ function CookieConsentComponent() {
 
   const saveConsent = useCallback((level: ConsentLevel, preferences?: CookiePreferences) => {
     try {
-      localStorage.setItem(STORAGE_KEY, level || "");
+      localStorage.setItem(STORAGE_KEY, level ?? "essential");
       if (preferences) {
         localStorage.setItem(PREFS_KEY, JSON.stringify(preferences));
       }
@@ -108,9 +106,11 @@ function CookieConsentComponent() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            role="region"
+            aria-label="Cookie consent"
             className="fixed bottom-0 left-0 right-0 z-[151] p-3 sm:p-4 lg:bottom-6 lg:left-6 lg:right-auto lg:max-w-lg"
           >
-            <div className="rounded-2xl border border-white/60 bg-white/95 p-5 shadow-[0_8px_40px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] backdrop-blur-2xl sm:p-6">
+            <div className="rounded-2xl border border-white/60 bg-white p-5 shadow-[0_8px_40px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] backdrop-blur-2xl sm:p-6">
               {/* Header */}
               <div className="mb-3 flex items-start gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/[0.08]">

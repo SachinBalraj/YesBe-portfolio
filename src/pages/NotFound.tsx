@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
-import logoImg from "@/assets/images/YBlogo.png";
+import logoImg from "@/assets/images/YBlogo.webp";
 
 const suggestions = [
   { label: "Home", href: "/" },

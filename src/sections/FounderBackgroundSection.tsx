@@ -220,7 +220,7 @@ export function FounderBackgroundSection() {
                     {job.role} — {job.organisation}
                   </h3>
                   {job.current && (
-                    <span className="rounded-none bg-[#16a34a]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#16a34a]">
+                    <span className="rounded-none bg-[#16a34a]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#15803d]">
                       Current
                     </span>
                   )}

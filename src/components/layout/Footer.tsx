@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
-import logoImg from "@/assets/images/YBlogo.png";
+import logoImg from "@/assets/images/YBlogo.webp";
 import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
 
 /* ─── SVG Icons ─── */
@@ -123,7 +123,7 @@ function FooterComponent() {
             <p className="mb-5 max-w-xs text-[13px] leading-relaxed text-slate-400">
               IT consulting and software development for businesses that need practical technology partners.
             </p>
-            <p className="mb-6 text-[12px] leading-relaxed text-slate-500">
+            <p className="mb-6 text-[12px] leading-relaxed text-slate-400">
               Founded by{" "}
               <Link to="/sachin-balraj" className="font-medium text-slate-300 transition-colors hover:text-white">
                 Sachin Balraj
@@ -184,11 +184,11 @@ function FooterComponent() {
             <h2 className="mb-4 text-[13px] font-semibold text-white">Contact</h2>
             <ul className="space-y-3.5">
               <li className="flex items-start gap-2.5">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
                 <a href={`mailto:${SITE_CONFIG.email}`} onClick={() => trackContactClick("footer")} className="text-[13px] text-slate-400 transition-colors hover:text-white">{SITE_CONFIG.email}</a>
               </li>
               <li className="flex items-start gap-2.5">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" />
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
                 <a href={SITE_CONFIG.phoneHref} onClick={() => trackPhoneClick("footer")} className="text-[13px] text-slate-400 transition-colors hover:text-white">+91 {SITE_CONFIG.phone}</a>
               </li>
             </ul>
@@ -197,10 +197,10 @@ function FooterComponent() {
 
         <div className="mt-10 border-t border-white/10 pt-6">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-400">
               &copy; {new Date().getFullYear()} YESBE Technologies. All rights reserved.
             </p>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-500">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-400">
               <Link to="/privacy-policy" className="transition-colors hover:text-white">Privacy Policy</Link>
               <Link to="/terms-and-conditions" className="transition-colors hover:text-white">Terms &amp; Conditions</Link>
               <Link to="/cookie-policy" className="transition-colors hover:text-white">Cookie Policy</Link>

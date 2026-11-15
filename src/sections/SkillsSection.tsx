@@ -362,11 +362,13 @@ export function SkillsSection() {
                 >
                   <tech.Icon
                     size={18}
+                    aria-hidden="true"
                     className="shrink-0 transition-colors duration-300 sm:hidden"
                     style={{ color: tech.color }}
                   />
                   <tech.Icon
                     size={20}
+                    aria-hidden="true"
                     className="hidden shrink-0 transition-colors duration-300 sm:block"
                     style={{ color: tech.color }}
                   />

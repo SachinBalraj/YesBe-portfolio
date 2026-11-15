@@ -7,7 +7,8 @@ import { SectionHeading } from "@/components/common/SectionHeading";
 const PLACEHOLDER_IMG =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='450' viewBox='0 0 700 450'%3E%3Crect width='700' height='450' fill='%23f8fafc'/%3E%3Cpath d='M280 200h140v60a10 10 0 01-10 10H290a10 10 0 01-10-10v-60z' fill='%23e2e8f0'/%3E%3Cpath d='M260 190a12 12 0 0112-12h156a12 12 0 0112 12v10H260v-10z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 
-function ProjectCard({ project }: { project: CaseStudy }) {
+function ProjectCard({ project, titleTag }: { project: CaseStudy; titleTag: "h2" | "h3" }) {
+  const Title = titleTag;
   const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     e.currentTarget.src = PLACEHOLDER_IMG;
   }, []);
@@ -34,11 +35,11 @@ function ProjectCard({ project }: { project: CaseStudy }) {
           <span>{project.label}</span>
         </div>
 
-        <h3 className="mt-2 text-[17px] font-semibold leading-snug text-navy">
+        <Title className="mt-2 text-[17px] font-semibold leading-snug text-navy">
           <Link to={`/case-studies/${project.slug}`} className="hover:text-primary">
             {project.title}
           </Link>
-        </h3>
+        </Title>
 
         <p className="mt-2 flex-1 text-[13.5px] leading-relaxed text-muted-foreground">
           {project.shortOverview}
@@ -51,7 +52,7 @@ function ProjectCard({ project }: { project: CaseStudy }) {
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="px-1 py-0.5 text-[11px] font-medium text-slate-400">
+            <span className="px-1 py-0.5 text-[11px] font-medium text-slate-600">
               +{project.technologies.length - 4}
             </span>
           )}
@@ -110,7 +111,7 @@ export function PortfolioSection({
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {caseStudies.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard key={project.slug} project={project} titleTag={asH1 ? "h2" : "h3"} />
           ))}
         </div>
       </div>

@@ -185,7 +185,6 @@ export function FAQSection() {
           style={{
             boxShadow: "0 1px 2px rgba(37,99,235,0.02), 0 4px 16px rgba(37,99,235,0.02)",
           }}
-          role="list"
         >
           <div className="px-6 sm:px-8">
             {faqData.map((item, i) => (
