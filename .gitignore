@@ -50,3 +50,6 @@ coverage/
 # Misc
 *.local
 .env*
+
+# Visual regression failure artifacts
+tests/visual-diff/

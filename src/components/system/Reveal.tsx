@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
+import { isHydrationTargetPath } from "@/utils/hydration";
 
 type RevealTag = "div" | "section" | "article" | "li" | "figure";
 
@@ -21,9 +22,11 @@ export function Reveal({
   threshold = 0.15,
 }: RevealProps) {
   const elementRef = useRef<HTMLElement | null>(null);
-  const [state, setState] = useState<RevealState>("idle");
+  const hydratedRoute = isHydrationTargetPath(window.location.pathname);
+  const [state, setState] = useState<RevealState>(hydratedRoute ? "visible" : "idle");
 
   useEffect(() => {
+    if (hydratedRoute) return;
     const element = elementRef.current;
     if (!element) return;
 
@@ -55,13 +58,13 @@ export function Reveal({
 
     observer.observe(element);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, hydratedRoute]);
 
   return (
     <Tag
       ref={elementRef as React.RefObject<never>}
       className={cn(state === "hidden" && "reveal-init", state === "visible" && "reveal-in", className)}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      style={delay && !hydratedRoute ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
     </Tag>

@@ -1,94 +1,36 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  CheckCircle2, ArrowRight, ArrowLeft,
-  ChevronDown, Layers, Lightbulb, Target,
-  ListChecks, MessageCircle,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  ChevronDown,
+  Layers,
+  Mail,
+  Target,
 } from "lucide-react";
-import { useState, useCallback } from "react";
 import { useSEO } from "@/hooks/useSEO";
-import { getCaseStudySeoDescription, getCaseStudySeoTitle, SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
+import {
+  getCaseStudySeoDescription,
+  getCaseStudySeoTitle,
+  SEO_DESCRIPTIONS,
+  SEO_TITLES,
+} from "@/constants/seoTitles";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { JsonLd } from "@/components/common/JsonLd";
-import { getCaseStudyBySlug, caseStudies } from "@/data/caseStudies";
-import { fadeInUp, staggerContainer } from "@/animations";
+import { SectionHeading } from "@/components/common/SectionHeading";
+import { ButtonLink } from "@/components/system/ButtonLink";
+import { Eyebrow } from "@/components/system/Eyebrow";
+import { Reveal } from "@/components/system/Reveal";
+import { ClosingCta } from "@/components/phase2/ClosingCta";
+import { ProjectArchitecture } from "@/components/phase3/ArchitectureDiagram";
+import { localSrcSet } from "@/utils/images";
+import { caseStudies, getCaseStudyBySlug } from "@/data/caseStudies";
+import { trackConsultationClick, trackContactClick } from "@/utils/analytics";
 
 const HERO_FALLBACK =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23f8fafc'/%3E%3Cpath d='M500 270h200v50a10 10 0 01-10 10H510a10 10 0 01-10-10v-50z' fill='%23e2e8f0'/%3E%3Cpath d='M480 258a14 14 0 0114-14h212a14 14 0 0114 14v12H480v-12z' fill='%23cbd5e1'/%3E%3C/svg%3E";
-import { ContactSection } from "@/sections/ContactSection";
-
-/* ─── FAQ Accordion ─── */
-
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="rounded-2xl border border-border bg-white overflow-hidden">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between px-6 py-4 text-left"
-      >
-        <span className="text-[15px] font-semibold text-foreground pr-4">{question}</span>
-        <ChevronDown
-          className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-        />
-      </button>
-      {open && (
-        <div className="px-6 pb-5">
-          <p className="text-[14px] leading-relaxed text-muted-foreground">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ─── Section Heading ─── */
-
-function SectionHeading({ children, icon: Icon }: { children: React.ReactNode; icon?: typeof Target }) {
-  return (
-    <div className="flex items-center gap-2 mb-4">
-      {Icon && <Icon className="h-4 w-4 text-primary" />}
-      <h2 className="text-2xl font-bold tracking-[-0.02em] text-navy">{children}</h2>
-    </div>
-  );
-}
-
-/* ─── Related Projects ─── */
-
-function RelatedProjects({ currentSlug }: { currentSlug: string }) {
-  const related = caseStudies
-    .filter((cs) => cs.slug !== currentSlug)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
-  const navigate = useNavigate();
-
-  return (
-    <div className="rounded-none border border-border bg-slate-50 p-8">
-      <SectionHeading icon={Layers}>Related Projects</SectionHeading>
-      <div className="grid gap-4 sm:grid-cols-3">
-        {related.map((cs) => (
-          <button
-            key={cs.slug}
-            onClick={() => {
-              navigate(`/case-studies/${cs.slug}`);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="group rounded-2xl border border-border bg-white p-5 text-left transition-all duration-300 hover:border-primary/30 hover:shadow-md"
-          >
-            <span className="mb-2 inline-block rounded-none bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold text-primary">
-              {cs.category}
-            </span>
-            <h3 className="text-[14px] font-bold text-foreground group-hover:text-primary transition-colors">
-              {cs.title}
-            </h3>
-            <p className="mt-1 text-[12px] text-muted-foreground line-clamp-2">
-              {cs.shortOverview}
-            </p>
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='760' viewBox='0 0 1200 760'%3E%3Crect width='1200' height='760' fill='%23f8fafc'/%3E%3Cpath d='M500 360h200v50a10 10 0 01-10 10H510a10 10 0 01-10-10v-50z' fill='%23e2e8f0'/%3E%3Cpath d='M480 348a14 14 0 0114-14h212a14 14 0 0114 14v12H480v-12z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 
 const serviceNameToSlug: Record<string, string> = {
   "AI Solutions": "ai-solutions",
@@ -122,34 +64,124 @@ const serviceNameToSlug: Record<string, string> = {
   "React Development": "web-applications",
 };
 
-/* ─── Main Page ─── */
+function FAQItem({
+  question,
+  answer,
+  index,
+}: {
+  question: string;
+  answer: string;
+  index: number;
+}) {
+  const [open, setOpen] = useState(index === 0);
+  const panelId = `case-faq-panel-${index}`;
+  const buttonId = `case-faq-button-${index}`;
+
+  return (
+    <div className="border-b border-line">
+      <h3>
+        <button
+          id={buttonId}
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((value) => !value)}
+          className="group flex w-full items-start justify-between gap-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:py-6"
+        >
+          <span className="text-[14.5px] font-semibold leading-6 tracking-[-0.01em] text-ink transition-colors group-hover:text-primary sm:text-[15.5px]">
+            {question}
+          </span>
+          <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center border border-line text-body transition-colors group-hover:border-primary/30 group-hover:text-primary">
+            <ChevronDown
+              className={`size-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            />
+          </span>
+        </button>
+      </h3>
+      <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!open} className="pb-6 pr-8">
+        <p className="max-w-2xl text-[13.5px] leading-6 text-body">{answer}</p>
+      </div>
+    </div>
+  );
+}
+
+function RelatedProjects({ currentSlug }: { currentSlug: string }) {
+  const related = caseStudies.filter((study) => study.slug !== currentSlug).slice(0, 3);
+
+  return (
+    <div className="grid gap-4 sm:grid-cols-3">
+      {related.map((study) => (
+        <Link
+          key={study.slug}
+          to={`/case-studies/${study.slug}`}
+          className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-colors hover:border-line-strong"
+        >
+          <div className="overflow-hidden bg-paper-deep">
+            <img
+              src={study.image}
+              alt={`${study.title} — illustrative interface preview`}
+              width={1200}
+              height={760}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+            />
+          </div>
+          <div className="flex flex-1 flex-col p-5">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-primary">
+              {study.category}
+            </span>
+            <h3 className="mt-2 text-[15px] font-semibold leading-[1.3] tracking-[-0.02em] text-ink transition-colors group-hover:text-primary">
+              {study.title}
+            </h3>
+            <span className="mt-auto flex items-center gap-1.5 pt-5 text-[11px] font-semibold text-body/85">
+              Review the project
+              <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </span>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+function DetailRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-t border-line py-4 first:border-t-0 first:pt-0 last:pb-0">
+      <dt className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-body/70">{label}</dt>
+      <dd className="mt-1.5 text-[13px] font-medium leading-5 text-ink">{value}</dd>
+    </div>
+  );
+}
 
 export function CaseStudyDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const study = slug ? getCaseStudyBySlug(slug) : undefined;
-  const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src = HERO_FALLBACK;
-  }, []);
 
   useSEO({
     title: study ? getCaseStudySeoTitle(study.slug, study.title) : SEO_TITLES.caseStudyNotFound,
-    description: study ? getCaseStudySeoDescription(study.slug, study.title) : SEO_DESCRIPTIONS.caseStudyNotFound,
-    canonical: study ? `https://www.yesbe.tech/case-studies/${study.slug}` : "https://www.yesbe.tech/case-studies",
+    description: study
+      ? getCaseStudySeoDescription(study.slug, study.title)
+      : SEO_DESCRIPTIONS.caseStudyNotFound,
+    canonical: study
+      ? `https://www.yesbe.tech/case-studies/${study.slug}`
+      : "https://www.yesbe.tech/case-studies",
   });
 
   if (!study) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground">Project Not Found</h1>
-          <p className="mt-2 text-muted-foreground">The project you're looking for doesn't exist.</p>
-          <button
-            onClick={() => navigate("/case-studies")}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Projects
+      <div className="flex min-h-[70vh] items-center justify-center bg-paper px-6 pt-24">
+        <div className="max-w-md text-center">
+          <p className="eyebrow justify-center">404</p>
+          <h1 className="mt-5 text-3xl font-semibold tracking-[-0.03em] text-ink">Project not found</h1>
+          <p className="mt-3 text-sm leading-6 text-body">
+            The project you are looking for does not exist or has moved.
+          </p>
+          <button type="button" onClick={() => navigate("/case-studies")} className="btn-primary mt-7">
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            Back to projects
           </button>
         </div>
       </div>
@@ -169,173 +201,350 @@ export function CaseStudyDetailPage() {
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: study.faqs.map((f) => ({
+        mainEntity: study.faqs.map((faq) => ({
           "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
         })),
       }} />
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-[104px] pb-12 lg:pt-[124px] lg:pb-14">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-            className="max-w-4xl"
-          >
-            <motion.div variants={fadeInUp}>
-              <Breadcrumbs items={[{ label: "Projects", href: "/case-studies" }, { label: study.title }]} />
-            </motion.div>
 
-            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="rounded-none bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold tracking-wide text-primary">
-                {study.category}
-              </span>
-              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <span className="inline-block h-2 w-2 rounded-circle bg-[#2563eb]" />
-                Built for {study.builtFor.toLowerCase()}
-              </span>
-              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
-                {study.label}
-              </span>
-            </motion.div>
+      <section className="relative isolate overflow-hidden bg-[#05132e] pt-[76px] text-white">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-25" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-48 top-8 size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(31,78,216,0.26),transparent_66%)]"
+        />
+        <div className="container-page relative py-12 sm:py-16 lg:py-20">
+          <Breadcrumbs
+            items={[{ label: "Projects", href: "/case-studies" }, { label: study.title }]}
+            className="text-white/50 [&_[aria-current=page]]:text-white"
+          />
 
-            <motion.h1
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
-            >
-              {study.title}
-            </motion.h1>
+          <div className="mt-10 grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-14">
+            <div>
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="border border-white/15 bg-white/[0.06] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#8eb5ff]">
+                  {study.category}
+                </span>
+                <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-white/58">
+                  {study.label}
+                </span>
+                <span className="h-px w-6 bg-white/20" aria-hidden="true" />
+                <span className="text-[10px] font-medium text-white/58">
+                  Designed for {study.builtFor.toLowerCase()}
+                </span>
+              </div>
 
-            <motion.p
-              variants={fadeInUp}
-              className="mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground"
-            >
-              {study.shortOverview}
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+              <h1 className="mt-6 max-w-3xl text-[clamp(2.45rem,5.2vw,4.55rem)] font-semibold leading-[1] tracking-[-0.052em] text-white">
+                {study.title}
+              </h1>
+              <p className="mt-6 max-w-2xl text-[15px] leading-7 text-white/65 sm:text-[17px] sm:leading-8">
+                {study.shortOverview}
+              </p>
 
-      {/* Hero Image */}
-      <section className="bg-white pb-6 lg:pb-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative overflow-hidden border border-border"
-          >
-            <img
-              src={study.image}
-              alt={`${study.title} — illustrative image for a ${study.category} project`}
-              width={1200}
-              height={600}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              onError={handleImgError}
-              className="h-64 w-full object-cover sm:h-80 lg:h-[450px]"
-            />
-          </motion.div>
-        </div>
-      </section>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink
+                  to="/contact"
+                  onClick={() => trackConsultationClick("case_study_hero")}
+                  variant="inverted"
+                  withArrow
+                  className="w-full sm:w-auto"
+                >
+                  Discuss a similar brief
+                </ButtonLink>
+                <a href="#project-detail" className="btn-on-dark group w-full sm:w-auto">
+                  Read the project detail
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </a>
+              </div>
 
-      {/* Content */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="absolute inset-0 pointer-events-none">
-        </div>
+              <p className="mt-7 max-w-xl border-l border-white/15 pl-4 text-[11px] leading-5 text-white/58">
+                Project preview is illustrative. It documents the scope and architecture described
+                on this page; it is not a client screenshot or a measured outcome.
+              </p>
+            </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-8 lg:grid-cols-3"
-          >
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-10">
-              {/* Project Overview */}
-              <motion.div variants={fadeInUp}>
-                <SectionHeading icon={Target}>Project Overview</SectionHeading>
-                <p className="text-[15px] leading-relaxed text-muted-foreground">
-                  {study.solution}
-                </p>
-              </motion.div>
-
-              {/* Business Challenge */}
-              <motion.div variants={fadeInUp}>
-                <SectionHeading icon={Lightbulb}>Business Challenge</SectionHeading>
-                <p className="text-[15px] leading-relaxed text-muted-foreground">
-                  {study.problem}
-                </p>
-              </motion.div>
-
-              {/* Proposed Solution */}
-              <motion.div variants={fadeInUp}>
-                <SectionHeading icon={Target}>Proposed Solution</SectionHeading>
-                <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">
-                  {study.solution}
-                </p>
-                <div className="rounded-2xl border border-border bg-muted/50 p-5">
-                  <p className="text-[13px] font-semibold text-foreground mb-2">Technical Challenge</p>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground">{study.challenge}</p>
+            <div className="relative border border-white/12 bg-white/[0.045] p-2">
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#071a3a]">
+                <img
+                  src={study.image}
+                  srcSet={localSrcSet(study.image, [480, 800])}
+                  sizes="(min-width: 1024px) 52vw, 100vw"
+                  alt={`${study.title} — illustrative interface preview`}
+                  width={1200}
+                  height={760}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  onError={(event) => {
+                    event.currentTarget.src = HERO_FALLBACK;
+                  }}
+                  className="size-full object-cover"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(5,19,46,0.08)_48%,rgba(5,19,46,0.9))]"
+                />
+                <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-4 border-t border-white/15 pt-4">
+                  <div>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/60">
+                      Illustrative interface preview
+                    </p>
+                    <p className="mt-1 text-[12.5px] font-medium text-white/90">{study.builtFor}</p>
+                  </div>
+                  <span className="flex size-8 items-center justify-center border border-white/15 text-[#8eb5ff]">
+                    <Layers className="size-4" strokeWidth={1.7} aria-hidden="true" />
+                  </span>
                 </div>
-              </motion.div>
+              </div>
+            </div>
+          </div>
 
-              {/* Key Features */}
-              <motion.div variants={fadeInUp}>
-                <SectionHeading icon={Layers}>Key Features</SectionHeading>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {study.features.map((f) => (
-                    <div key={f} className="flex items-start gap-2">
-                      <span className="mt-0.5 text-primary">✓</span>
-                      <span className="text-[14px] text-muted-foreground">{f}</span>
+          <dl className="mt-12 grid grid-cols-2 gap-y-6 border-t border-white/10 pt-7 sm:grid-cols-4 sm:gap-0">
+            <div className="sm:border-r sm:border-white/10 sm:pr-6">
+              <dt className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/62">Category</dt>
+              <dd className="mt-1.5 text-[12.5px] font-medium text-white/80">{study.category}</dd>
+            </div>
+            <div className="sm:border-r sm:border-white/10 sm:px-6">
+              <dt className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/62">Designed for</dt>
+              <dd className="mt-1.5 text-[12.5px] font-medium text-white/80">{study.builtFor}</dd>
+            </div>
+            <div className="sm:border-r sm:border-white/10 sm:px-6">
+              <dt className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/62">Project status</dt>
+              <dd className="mt-1.5 text-[12.5px] font-medium text-white/80">{study.label}</dd>
+            </div>
+            <div className="sm:pl-6">
+              <dt className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/62">Stack</dt>
+              <dd className="mt-1.5 text-[12.5px] font-medium text-white/80">
+                {`${study.technologies.length} technologies`}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="project-detail" className="section-py bg-white">
+        <div className="container-page">
+          <div className="grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16 xl:grid-cols-[1fr_22rem]">
+            <div className="space-y-12 sm:space-y-14">
+              <Reveal>
+                <Eyebrow>The brief</Eyebrow>
+                <h2 className="mt-5 text-[clamp(2rem,3.7vw,3.1rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-ink">
+                  What the system needed to change.
+                </h2>
+                <div className="mt-7 grid gap-8 border-t border-line pt-7 sm:grid-cols-2 sm:gap-10">
+                  <div>
+                    <h3 className="flex items-center gap-2.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-primary">
+                      <Target className="size-3.5" aria-hidden="true" />
+                      The context
+                    </h3>
+                    <p className="mt-4 text-[14.5px] leading-7 text-body">{study.problem}</p>
+                  </div>
+                  <div>
+                    <h3 className="flex items-center gap-2.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-primary">
+                      <Layers className="size-3.5" aria-hidden="true" />
+                      The response
+                    </h3>
+                    <p className="mt-4 text-[14.5px] leading-7 text-body">{study.solution}</p>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal>
+                <div className="relative overflow-hidden border border-line bg-paper p-6 sm:p-8">
+                  <div aria-hidden="true" className="absolute right-0 top-0 size-32 bg-[radial-gradient(circle_at_top_right,rgba(49,108,255,0.12),transparent_70%)]" />
+                  <div className="relative">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                      Technical constraint
+                    </p>
+                    <h2 className="mt-3 text-[1.35rem] font-semibold tracking-[-0.03em] text-ink">
+                      The part that had to be solved correctly.
+                    </h2>
+                    <p className="mt-4 max-w-2xl text-[14px] leading-7 text-body">{study.challenge}</p>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal>
+                <SectionHeading
+                  eyebrow="Solution architecture"
+                  title="How the implementation is layered."
+                  description="The recorded stack, grouped by the role each layer plays in the system."
+                  className="mb-6"
+                />
+                <ProjectArchitecture study={study} />
+              </Reveal>
+
+              <Reveal>
+                <SectionHeading
+                  eyebrow="Application surface"
+                  title="What the interface has to make clear."
+                  description="The preview is illustrative. Authentic application screenshots are not attached to this portfolio record."
+                  className="mb-6"
+                />
+                <div className="overflow-hidden border border-line bg-[#071a3a]">
+                  <div className="flex items-center justify-between gap-4 border-b border-white/10 bg-[#05132e] px-4 py-2.5">
+                    <div className="flex items-center gap-1.5" aria-hidden="true">
+                      <span className="size-1.5 rounded-full bg-white/25" />
+                      <span className="size-1.5 rounded-full bg-white/25" />
+                      <span className="size-1.5 rounded-full bg-white/25" />
                     </div>
-                  ))}
+                    <p className="text-[9px] font-medium uppercase tracking-[0.13em] text-white/62">
+                      Illustrative interface preview
+                    </p>
+                  </div>
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img
+                      src={study.image}
+                      srcSet={localSrcSet(study.image, [480, 800])}
+                      sizes="100vw"
+                      alt={`${study.title} — illustrative interface preview`}
+                      width={1200}
+                      height={760}
+                      loading="lazy"
+                      decoding="async"
+                      className="size-full object-cover"
+                    />
+                  </div>
+                  <div className="grid gap-px bg-white/10 sm:grid-cols-3">
+                    {study.features.slice(0, 3).map((feature, index) => (
+                      <div key={feature} className="bg-[#071833] p-4">
+                        <p className="font-mono text-[9px] tracking-[0.12em] text-[#8eb5ff]">
+                          {String(index + 1).padStart(2, "0")}
+                        </p>
+                        <p className="mt-2 text-[11px] leading-5 text-white/65">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </motion.div>
+              </Reveal>
 
-              {/* Development Process */}
-              <motion.div variants={fadeInUp}>
-                <SectionHeading icon={Target}>Development Process</SectionHeading>
-                <ol className="space-y-3">
-                  {study.developmentProcess.map((step, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary/[0.06] text-[11px] font-bold text-primary">
-                        {i + 1}
+              <Reveal>
+                <div className="border border-line bg-white p-5 sm:p-6">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center border border-line bg-paper text-primary">
+                      <Check className="size-3.5" strokeWidth={2.2} aria-hidden="true" />
+                    </span>
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                        Evidence status
+                      </p>
+                      <h2 className="mt-2 text-[15px] font-semibold tracking-[-0.02em] text-ink">
+                        No measured client outcome is attached to this record.
+                      </h2>
+                      <p className="mt-2 max-w-2xl text-[12px] leading-6 text-body">
+                        This is a {study.label.toLowerCase()} / demonstration system. Any future
+                        result should be supported by written permission, a defined baseline and
+                        measured evidence before it is published as a business outcome.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal>
+                <SectionHeading
+                  eyebrow="Scope"
+                  title="What the build includes."
+                  description="A concrete view of the system surface described in this record."
+                  className="mb-7"
+                />
+                <ul className="grid gap-x-8 gap-y-3 border-t border-line pt-6 sm:grid-cols-2">
+                  {study.features.map((feature, index) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center border border-primary/15 bg-primary/[0.06] font-mono text-[9px] font-semibold text-primary">
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-[14px] text-muted-foreground pt-0.5">{step}</span>
+                      <span className="text-[13.5px] leading-6 text-body">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+
+              <Reveal>
+                <SectionHeading
+                  eyebrow="Delivery"
+                  title="How the work was sequenced."
+                  description="The process follows dependency order: define the boundary, design the interaction, build the system, then verify it under real conditions."
+                  className="mb-7"
+                />
+                <ol className="border-t border-line">
+                  {study.developmentProcess.map((step, index) => (
+                    <li
+                      key={step}
+                      className="grid grid-cols-[2.9rem_1fr] gap-4 border-b border-line py-5 sm:grid-cols-[5rem_1fr] sm:gap-6 sm:py-6"
+                    >
+                      <span className="font-mono text-[10px] font-semibold tracking-[0.1em] text-primary">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <p className="text-[13.5px] leading-6 text-body sm:text-[14px]">{step}</p>
                     </li>
                   ))}
                 </ol>
-              </motion.div>
+              </Reveal>
+
+              <Reveal>
+                <div className="grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
+                  <div>
+                    <Eyebrow>What it does</Eyebrow>
+                    <ul className="mt-5 space-y-3">
+                      {study.capabilities.map((capability) => (
+                        <li key={capability} className="flex items-start gap-3">
+                          <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center bg-primary/10 text-primary">
+                            <Check className="size-2.5" strokeWidth={2.8} aria-hidden="true" />
+                          </span>
+                          <span className="text-[12.5px] leading-5 text-body">{capability}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <Eyebrow>Problems addressed</Eyebrow>
+                    <ul className="mt-5 space-y-3">
+                      {study.businessValue.map((value) => (
+                        <li key={value} className="flex items-start gap-3">
+                          <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center bg-primary/10 text-primary">
+                            <Check className="size-2.5" strokeWidth={2.8} aria-hidden="true" />
+                          </span>
+                          <span className="text-[12.5px] leading-5 text-body">{value}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal>
+                <SectionHeading
+                  eyebrow="Extending the system"
+                  title="Possible next increments."
+                  description="These are not commitments. They are the kind of extensions the current architecture could support if the need becomes real."
+                  className="mb-6"
+                />
+                <ul className="flex flex-wrap gap-2">
+                  {study.futureEnhancements.map((enhancement) => (
+                    <li key={enhancement} className="border border-line bg-paper px-3 py-2 text-[11.5px] font-medium text-body">
+                      {enhancement}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             </div>
 
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Tech Stack */}
-              <motion.div
-                variants={fadeInUp}
-                className="rounded-none border border-border bg-white p-6"
-                style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
-              >
-                <h3 className="mb-4 text-sm font-bold tracking-wide text-foreground">Technologies Used</h3>
-                <div className="space-y-4">
+            <aside className="space-y-4">
+              <Reveal className="border border-line bg-paper p-5 sm:p-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                  Technologies used
+                </p>
+                <div className="mt-5">
                   {study.techGroups.map((group) => (
-                    <div key={group.label}>
-                      <p className="text-[11px] font-bold tracking-wide text-primary mb-2">
+                    <div key={group.label} className="border-t border-line py-4 first:border-t-0 first:pt-0 last:pb-0">
+                      <p className="text-[9.5px] font-semibold uppercase tracking-[0.12em] text-body/70">
                         {group.label}
                       </p>
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="mt-2.5 flex flex-wrap gap-1.5">
                         {group.items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-md border border-border bg-muted px-2.5 py-1 text-[12px] font-medium text-primary"
-                          >
+                          <span key={item} className="border border-line bg-white px-2 py-1 text-[10.5px] font-medium text-body">
                             {item}
                           </span>
                         ))}
@@ -343,162 +552,132 @@ export function CaseStudyDetailPage() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </Reveal>
 
-              {/* Business Results */}
-              <motion.div
-                variants={fadeInUp}
-                className="rounded-none border border-emerald-100 bg-emerald-50/50 p-6"
-              >
-                <SectionHeading icon={ListChecks}>What It Does</SectionHeading>
-                <ul className="space-y-2">
-                  {study.capabilities.map((r) => (
-                    <li key={r} className="flex items-start gap-2">
-                      <span className="mt-0.5 text-emerald-500">▸</span>
-                      <span className="text-[13px] text-muted-foreground">{r}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Client Benefits */}
-              <motion.div
-                variants={fadeInUp}
-                className="rounded-none border border-border bg-white p-6"
-                style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}
-              >
-                <h3 className="mb-3 text-sm font-bold tracking-wide text-foreground">Business Problems It Addresses</h3>
-                <ul className="space-y-2">
-                  {study.businessValue.map((b) => (
-                    <li key={b} className="flex items-start gap-2">
-                      <span className="mt-0.5 text-primary">✓</span>
-                      <span className="text-[13px] text-muted-foreground">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* CTA */}
-              <motion.div
-                variants={fadeInUp}
-                className="rounded-none bg-primary p-6 text-white"
-              >
-                <h3 className="text-lg font-bold mb-2">Need a Similar Solution?</h3>
-                <p className="text-[13px] text-white/80 mb-4">
-                  Let's discuss your project and build something great together.
+              <Reveal delay={50} className="border border-line bg-white p-5 sm:p-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                  Project detail
                 </p>
-                <button
-                  onClick={() => {
-                    navigate("/contact");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-[13px] font-semibold text-[#2563eb] transition-all hover:bg-white/90 hover:shadow-md"
-                >
-                  Book Similar Project
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </motion.div>
-            </div>
-          </motion.div>
+                <dl className="mt-4">
+                  <DetailRow label="Project status" value={study.label} />
+                  <DetailRow label="Designed for" value={study.builtFor} />
+                  <DetailRow label="Category" value={study.category} />
+                  <DetailRow label="Scope" value={`${study.features.length} defined capabilities`} />
+                  <DetailRow label="Outcome evidence" value="Not published" />
+                </dl>
+              </Reveal>
 
-          {/* Future Enhancements */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mt-10"
-          >
-            <SectionHeading icon={Lightbulb}>Future Enhancements</SectionHeading>
-            <div className="flex flex-wrap gap-2">
-              {study.futureEnhancements.map((e) => (
-                <span
-                  key={e}
-                  className="rounded-none border border-border bg-white px-4 py-2 text-[13px] font-medium text-primary"
-                >
-                  {e}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Related Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mt-10"
-          >
-            <SectionHeading icon={Layers}>Related Services</SectionHeading>
-            <div className="flex flex-wrap gap-2">
-              {study.relatedServices.map((s) => {
-                const slug = serviceNameToSlug[s];
-                return slug ? (
-                  <Link
-                    key={s}
-                    to={`/services/${slug}`}
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                    className="rounded-none bg-primary/[0.06] px-4 py-2 text-[13px] font-medium text-primary hover:bg-primary/[0.12] transition-colors"
+              <Reveal delay={80} className="relative overflow-hidden bg-[#05132e] p-5 text-white shadow-dark-panel sm:p-6">
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-35" />
+                <div className="relative">
+                  <Eyebrow tone="dark">Similar problem?</Eyebrow>
+                  <h3 className="mt-4 text-[1.15rem] font-semibold leading-[1.15] tracking-[-0.03em] text-white">
+                    Bring the constraint, not a finished brief.
+                  </h3>
+                  <p className="mt-3 text-[12.5px] leading-6 text-white/65">
+                    We will separate the symptom from the system issue and propose the smallest
+                    useful first release.
+                  </p>
+                  <ButtonLink
+                    to="/contact"
+                    onClick={() => trackConsultationClick("case_study_sidebar")}
+                    variant="on-dark"
+                    withArrow
+                    className="mt-5 w-full"
                   >
-                    {s}
-                  </Link>
-                ) : (
-                  <span
-                    key={s}
-                    className="rounded-none bg-primary/[0.06] px-4 py-2 text-[13px] font-medium text-primary"
-                  >
-                    {s}
-                  </span>
-                );
-              })}
-            </div>
-          </motion.div>
+                    Discuss Your Project
+                  </ButtonLink>
+                </div>
+              </Reveal>
 
-          {/* FAQs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mt-10"
-          >
-            <SectionHeading icon={MessageCircle}>Frequently Asked Questions</SectionHeading>
-            <div className="space-y-3">
-              {study.faqs.map((faq, i) => (
-                <FAQItem key={i} question={faq.question} answer={faq.answer} />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Related Projects */}
-          <div className="mt-10">
-            <RelatedProjects currentSlug={study.slug} />
+              <Reveal delay={100} className="border border-line bg-white p-5 sm:p-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                  Related services
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {study.relatedServices.map((service) => {
+                    const serviceSlug = serviceNameToSlug[service];
+                    return (
+                      <li key={service}>
+                        {serviceSlug ? (
+                          <Link
+                            to={`/services/${serviceSlug}`}
+                            className="inline-flex border border-line bg-paper px-2.5 py-1.5 text-[10.5px] font-medium text-body transition-colors hover:border-primary/30 hover:text-primary"
+                          >
+                            {service}
+                          </Link>
+                        ) : (
+                          <span className="inline-flex border border-line bg-paper px-2.5 py-1.5 text-[10.5px] font-medium text-body">
+                            {service}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Reveal>
+            </aside>
           </div>
-
-          {/* Back button */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-8 text-center"
-          >
-            <button
-              onClick={() => {
-                navigate("/case-studies");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              View All Projects
-            </button>
-          </motion.div>
         </div>
       </section>
 
-      {/* Contact */}
-      <ContactSection />
+      <section className="section-py border-y border-line bg-paper">
+        <div className="container-page">
+          <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:gap-16">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Questions"
+                title="What is worth clarifying."
+                description="These answers describe the documented system, not a promised commercial result."
+                action={
+                  <Link
+                    to="/contact"
+                    onClick={() => trackContactClick("case_study_faq")}
+                    className="link-arrow"
+                  >
+                    Ask a question
+                    <Mail className="size-4" aria-hidden="true" />
+                  </Link>
+                }
+              />
+            </Reveal>
+            <Reveal delay={60}>
+              <div className="border-t border-line">
+                {study.faqs.map((faq, index) => (
+                  <FAQItem key={faq.question} question={faq.question} answer={faq.answer} index={index} />
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-py bg-white">
+        <div className="container-page">
+          <Reveal>
+            <SectionHeading
+              eyebrow="More projects"
+              title="Other systems in the record."
+              action={
+                <Link to="/case-studies" className="link-arrow">
+                  View all projects
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              }
+              className="mb-8 lg:mb-10"
+            />
+          </Reveal>
+          <Reveal delay={50}>
+            <RelatedProjects currentSlug={study.slug} />
+          </Reveal>
+        </div>
+      </section>
+
+      <ClosingCta
+        eyebrow="Project enquiry"
+        title="Have a similar constraint to solve?"
+        description={`Bring the context behind ${study.title.toLowerCase()}. We will review the requirement and recommend a practical place to start.`}
+      />
     </>
   );
 }

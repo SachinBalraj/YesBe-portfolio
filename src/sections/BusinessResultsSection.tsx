@@ -35,7 +35,7 @@ export function BusinessResultsSection() {
   return (
     <section
       id="business-results"
-      className="bg-white py-16 sm:py-20 lg:py-24"
+      className="bg-white py-12 sm:py-16 lg:py-20"
       aria-label="What our technology solutions are built to deliver"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

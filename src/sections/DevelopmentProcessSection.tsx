@@ -23,7 +23,7 @@ const steps: Step[] = [
 
 export function DevelopmentProcessSection() {
   return (
-    <section id="process" className="bg-white py-16 sm:py-20 lg:py-24" aria-label="Development process">
+    <section id="process" className="bg-white py-12 sm:py-16 lg:py-20" aria-label="Development process">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="How we work"

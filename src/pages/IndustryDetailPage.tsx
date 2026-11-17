@@ -1,77 +1,114 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useState, useCallback } from "react";
-import { useSEO } from "@/hooks/useSEO";
-import { getIndustrySeoDescription, getIndustrySeoTitle, SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
-import { getIndustryBySlug } from "@/data/industries";
-import { getSolutionBySlug, type SolutionDetail } from "@/data/solutions";
-import { fadeInUp, staggerContainer } from "@/animations";
-import { ContactSection } from "@/sections/ContactSection";
-import { Breadcrumbs } from "@/components/common/Breadcrumbs";
-import { JsonLd } from "@/components/common/JsonLd";
-import { trackConsultationClick } from "@/utils/analytics";
-
-const HERO_FALLBACK =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23f8fafc'/%3E%3Cpath d='M500 270h200v50a10 10 0 01-10 10H510a10 10 0 01-10-10v-50z' fill='%23e2e8f0'/%3E%3Cpath d='M480 258a14 14 0 0114-14h212a14 14 0 0114 14v12H480v-12z' fill='%23cbd5e1'/%3E%3C/svg%3E";
+import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  ChevronDown,
-  ArrowRight,
   ArrowLeft,
-  Check,
-  Phone,
-  MessageCircle,
+  ArrowRight,
+  ArrowUpRight,
+  ChevronDown,
   Layers,
   Target,
-  Lightbulb,
-  Rocket,
-  Award,
-  TrendingUp,
+  Waypoints,
 } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
+import {
+  getIndustrySeoDescription,
+  getIndustrySeoTitle,
+  SEO_DESCRIPTIONS,
+  SEO_TITLES,
+} from "@/constants/seoTitles";
+import { getIndustryBySlug } from "@/data/industries";
+import { getSolutionBySlug, type SolutionDetail } from "@/data/solutions";
+import { caseStudies } from "@/data/caseStudies";
+import { getIndustryProfile, getProjectMeta } from "@/data/phase3";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import { JsonLd } from "@/components/common/JsonLd";
+import { SectionHeading } from "@/components/common/SectionHeading";
+import { ClosingCta } from "@/components/phase2/ClosingCta";
+import { Reveal } from "@/components/system/Reveal";
+import { IndustryArchitecture } from "@/components/phase3/ArchitectureDiagram";
+import { trackConsultationClick } from "@/utils/analytics";
+import { localSrcSet } from "@/utils/images";
+import { cn } from "@/utils/cn";
 
-/* ─── FAQ Accordion ─── */
+function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+  const [open, setOpen] = useState(index === 0);
+  const panelId = `industry-faq-panel-${index}`;
+  const buttonId = `industry-faq-button-${index}`;
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-2xl border border-border bg-white overflow-hidden">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between px-6 py-4 text-left"
-      >
-        <span className="text-[15px] font-semibold text-foreground pr-4">{question}</span>
-        <ChevronDown
-          className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+    <div className="border-t border-line">
+      <h3>
+        <button
+          id={buttonId}
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((value) => !value)}
+          className="group flex w-full items-start justify-between gap-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
+        >
+          <span className="text-[14px] font-semibold leading-6 tracking-[-0.01em] text-ink transition-colors group-hover:text-primary sm:text-[15px]">
+            {question}
+          </span>
+          <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center border border-line text-body transition-colors group-hover:border-primary/30 group-hover:text-primary">
+            <ChevronDown className={cn("size-3.5 transition-transform duration-300", open && "rotate-180")} aria-hidden="true" />
+          </span>
+        </button>
+      </h3>
+      <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!open} className="pb-6 pr-8">
+        <p className="max-w-2xl text-[13px] leading-6 text-body">{answer}</p>
+      </div>
+    </div>
+  );
+}
+
+function RelatedProjectCard({ slug }: { slug: string }) {
+  const study = caseStudies.find((item) => item.slug === slug);
+  if (!study) return null;
+  const accent = getProjectMeta(study.slug).accent;
+
+  return (
+    <Link
+      to={`/case-studies/${study.slug}`}
+      className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-colors hover:border-line-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#071a3a]">
+        <img
+          src={study.image}
+          srcSet={localSrcSet(study.image, [480, 800])}
+          sizes="(min-width: 1024px) 30vw, 100vw"
+          alt={`${study.title} — illustrative interface preview`}
+          width={1200}
+          height={760}
+          loading="lazy"
+          decoding="async"
+          className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
         />
-      </button>
-      {open && (
-        <div className="px-6 pb-5">
-          <p className="text-[14px] leading-relaxed text-muted-foreground">{answer}</p>
-        </div>
-      )}
-    </div>
+        <span className="absolute bottom-3 left-3 border border-white/20 bg-[#05132e]/60 px-2 py-1 text-[8.5px] font-semibold uppercase tracking-[0.12em] text-white/75 backdrop-blur-sm">
+          {study.label}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <p className="flex items-center gap-2 text-[9.5px] font-semibold uppercase tracking-[0.13em] text-primary">
+          <span className="h-1.5 w-1.5" style={{ backgroundColor: accent }} aria-hidden="true" />
+          {study.category}
+        </p>
+        <h3 className="mt-2 text-[15px] font-semibold leading-[1.25] tracking-[-0.02em] text-ink transition-colors group-hover:text-primary">
+          {study.title}
+        </h3>
+        <p className="mt-2 flex-1 text-[12px] leading-5 text-body">{study.shortOverview}</p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[10.5px] font-semibold text-primary">
+          Review the project
+          <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+        </span>
+      </div>
+    </Link>
   );
 }
-
-/* ─── Section Heading ─── */
-
-function SectionHeading({ children, icon: Icon }: { children: React.ReactNode; icon?: typeof Target }) {
-  return (
-    <div className="flex items-center gap-2 mb-4">
-      {Icon && <Icon className="h-4 w-4 text-primary" />}
-      <h2 className="text-2xl font-bold tracking-[-0.02em] text-navy">{children}</h2>
-    </div>
-  );
-}
-
-/* ─── Main Page ─── */
 
 export function IndustryDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const industry = slug ? getIndustryBySlug(slug) : undefined;
-  const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src = HERO_FALLBACK;
-  }, []);
 
   useSEO({
     title: industry ? getIndustrySeoTitle(industry.slug, industry.title) : SEO_TITLES.industryNotFound,
@@ -81,26 +118,30 @@ export function IndustryDetailPage() {
 
   if (!industry) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground">Industry Not Found</h1>
-          <p className="mt-2 text-muted-foreground">The industry page you're looking for doesn't exist.</p>
-          <button
-            onClick={() => navigate("/industries")}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Industries
+      <div className="flex min-h-[70vh] items-center justify-center bg-paper px-6 pt-24">
+        <div className="max-w-md text-center">
+          <p className="eyebrow justify-center">404</p>
+          <h1 className="mt-5 text-3xl font-semibold tracking-[-0.03em] text-ink">Industry not found</h1>
+          <p className="mt-3 text-sm leading-6 text-body">
+            The industry page you are looking for does not exist or has moved.
+          </p>
+          <button type="button" onClick={() => navigate("/industries")} className="btn-primary mt-7">
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            Back to industries
           </button>
         </div>
       </div>
     );
   }
 
+  const profile = getIndustryProfile(industry);
   const Icon = industry.icon;
-  const relatedSolutionsData = industry.relatedSolutions
-    .map((s) => getSolutionBySlug(s))
-    .filter(Boolean) as SolutionDetail[];
+  const relatedServices = profile.relatedServiceSlugs
+    .map((serviceSlug) => getSolutionBySlug(serviceSlug))
+    .filter((service): service is SolutionDetail => Boolean(service));
+  const relatedProjects = profile.relatedProjectSlugs
+    .map((projectSlug) => caseStudies.find((study) => study.slug === projectSlug))
+    .filter((study): study is NonNullable<typeof study> => Boolean(study));
 
   return (
     <>
@@ -115,484 +156,284 @@ export function IndustryDetailPage() {
       <JsonLd schema={{
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: industry.faq.map((f) => ({
+        mainEntity: industry.faq.map((faq) => ({
           "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
         })),
       }} />
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-[104px] pb-12 lg:pt-[124px] lg:pb-14">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-            className="max-w-4xl"
-          >
-            {/* Breadcrumb */}
-            <motion.div variants={fadeInUp}>
-              <Breadcrumbs items={[{ label: "Industries", href: "/industries" }, { label: industry.title }]} />
-            </motion.div>
 
-            {/* Icon + Category */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-primary/[0.06]">
-                <Icon className="h-5 w-5 text-primary" />
-              </span>
-              <span className="rounded-none bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold tracking-wide text-primary">
-                {industry.category}
-              </span>
-            </motion.div>
+      <section className="relative isolate overflow-hidden bg-[#05132e] pt-[76px] text-white">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-30" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-32 top-0 size-[38rem] rounded-full"
+          style={{ background: `radial-gradient(circle, ${profile.visual.accent}2e, transparent 66%)` }}
+        />
+        <div className="container-page relative py-10 sm:py-14 lg:py-16">
+          <Breadcrumbs
+            items={[{ label: "Industries", href: "/industries" }, { label: industry.title }]}
+            className="text-white/62 [&_[aria-current=page]]:text-white"
+          />
 
-            {/* Title */}
-            <motion.h1
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
-            >
-              {industry.title}
-            </motion.h1>
+          <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.82fr] lg:items-center lg:gap-16">
+            <div>
+              <div className="flex flex-wrap items-center gap-3">
+                <span
+                  className="flex size-10 items-center justify-center border border-white/20 bg-white/[0.05]"
+                  style={{ color: profile.visual.accent }}
+                >
+                  <Icon className="size-4.5" strokeWidth={1.7} aria-hidden="true" />
+                </span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#9fc0ff]">
+                  {industry.category}
+                </span>
+                <span className="h-px w-6 bg-white/20" aria-hidden="true" />
+                <span className="text-[10px] font-medium text-white/60">Industry view</span>
+              </div>
 
-            {/* Description */}
-            <motion.p
-              variants={fadeInUp}
-              className="mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground"
-            >
-              {industry.description}
-            </motion.p>
+              <h1 className="mt-6 max-w-4xl text-[clamp(2.65rem,5.9vw,5.2rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
+                {industry.title}
+              </h1>
+              <p className="mt-6 max-w-2xl text-[15px] leading-7 text-white/68 sm:text-[17px] sm:leading-8">
+                {profile.summary}
+              </p>
 
-            {/* CTAs */}
-            <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                onClick={() => { trackConsultationClick("industry_hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="btn-primary"
-              >
-                Book a Free Consultation
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => { trackConsultationClick("industry_hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="btn-secondary"
-              >
-                Get Free Advice
-                <MessageCircle className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          </motion.div>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  to="/contact"
+                  onClick={() => trackConsultationClick("industry_hero")}
+                  className="group inline-flex min-h-[3.25rem] items-center justify-between gap-8 bg-white px-5 py-3 text-sm font-semibold text-[#05132e] transition-colors hover:bg-[#dce8ff] sm:min-w-56"
+                >
+                  Discuss your context
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                </Link>
+                <a href="#industry-challenges" className="btn-on-dark group w-full sm:w-auto">
+                  See the working view
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="border border-white/14 bg-white/[0.035] p-2">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#071a3a]">
+                  <img
+                    src={profile.visual.src}
+                    srcSet={localSrcSet(profile.visual.src, [640, 960])}
+                    sizes="(min-width: 1024px) 38vw, 100vw"
+                    alt={profile.visual.alt}
+                    width={1200}
+                    height={900}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="size-full object-cover"
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(5,19,46,0.76))]" />
+                  <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-4 border-t border-white/15 pt-3">
+                    <div>
+                      <p className="font-mono text-[8.5px] uppercase tracking-[0.15em] text-white/50">
+                        Industry operating view
+                      </p>
+                      <p className="mt-1 text-[11.5px] font-medium text-white/85">{industry.category}</p>
+                    </div>
+                    <Waypoints className="size-4" style={{ color: profile.visual.accent }} aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+              <p className="mt-3 border-l border-white/15 pl-3 text-[10px] leading-5 text-white/60">
+                Industry context and reference architecture, not a client deployment record.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Hero Image */}
-      <section className="bg-white pb-6 lg:pb-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative overflow-hidden border border-border"
-          >
-            <img
-              src={industry.heroImage}
-              alt={`${industry.title} — ${industry.category} industry solutions by YESBE Technologies`}
-              width={1200}
-              height={600}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              onError={handleImgError}
-              className="h-64 w-full object-cover sm:h-80 lg:h-[450px]"
-            />
-          </motion.div>
-        </div>
-      </section>
+      <section id="industry-challenges" className="section-py scroll-mt-24 bg-white">
+        <div className="container-page">
+          <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Operating context"
+                title="Where the work usually breaks down."
+                description={profile.context}
+              />
+              <div className="mt-6 border border-line bg-paper p-4">
+                <div className="flex items-center gap-3">
+                  <Target className="size-4 text-primary" strokeWidth={1.7} aria-hidden="true" />
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                    Typical constraints, not client claims
+                  </p>
+                </div>
+                <p className="mt-3 text-[11.5px] leading-5 text-body">
+                  These are recurring patterns in the industry. A real engagement starts by testing
+                  which of them actually apply to your operation.
+                </p>
+              </div>
+            </Reveal>
 
-      {/* Overview */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="absolute inset-0 pointer-events-none">
-        </div>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-10 lg:grid-cols-2"
-          >
-            <motion.div variants={fadeInUp}>
-              <SectionHeading icon={Target}>Industry Overview</SectionHeading>
-              <p className="text-[15px] leading-relaxed text-muted-foreground">
-                {industry.overview}
-              </p>
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <SectionHeading icon={Lightbulb}>Why This Industry Needs Technology</SectionHeading>
-              <p className="text-[15px] leading-relaxed text-muted-foreground">
-                {industry.whyNeeded}
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Challenges */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mt-10"
-          >
-            <SectionHeading icon={Target}>Key Challenges We Address</SectionHeading>
-            <ol className="space-y-3">
-              {industry.challenges.map((challenge, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary/[0.06] text-[11px] font-bold text-primary">
-                    {i + 1}
+            <div className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+              {profile.constraints.map((constraint, index) => (
+                <Reveal key={constraint} delay={index * 35} className="bg-white p-5 sm:p-6">
+                  <span className="font-mono text-[10px] font-semibold tracking-[0.12em] text-primary">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-[14px] text-muted-foreground pt-0.5">{challenge}</span>
-                </li>
+                  <p className="mt-4 text-[13px] leading-6 text-body">{constraint}</p>
+                </Reveal>
               ))}
-            </ol>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <SectionHeading icon={Layers}>Key Features & Capabilities</SectionHeading>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {industry.features.map((feature, i) => {
+      <section className="section-py border-y border-line bg-paper">
+        <div className="container-page">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Connected capabilities"
+              title="What the system can cover."
+              description="Capabilities are combined against the constraint, not sold as a fixed package. Select the services that fit the problem."
+              className="mb-8 lg:mb-10"
+            />
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {industry.features.slice(0, 6).map((feature, index) => {
               const FeatureIcon = feature.icon;
               return (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="card-glass rounded-2xl p-6"
-                >
-                  <span className="mb-3 inline-flex items-center justify-center h-9 w-9 rounded-lg bg-primary/[0.06]">
-                    <FeatureIcon className="h-4.5 w-4.5 text-primary" />
+                <Reveal key={feature.title} delay={index * 35} className="border border-line bg-white p-5 sm:p-6">
+                  <span className="flex size-9 items-center justify-center border border-line bg-paper text-primary">
+                    <FeatureIcon className="size-4" strokeWidth={1.7} aria-hidden="true" />
                   </span>
-                  <h3 className="text-[15px] font-bold text-foreground mb-1">{feature.title}</h3>
-                  <p className="text-[13px] leading-relaxed text-muted-foreground">{feature.description}</p>
-                </motion.div>
+                  <h2 className="mt-5 text-[14px] font-semibold leading-5 text-ink">{feature.title}</h2>
+                  <p className="mt-2 text-[12px] leading-5 text-body">{feature.description}</p>
+                </Reveal>
               );
             })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <SectionHeading icon={TrendingUp}>Business Benefits</SectionHeading>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {industry.benefits.map((benefit, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className="flex items-start gap-3 rounded-2xl border border-border bg-white p-4"
-              >
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-emerald-100">
-                  <Check className="h-3 w-3 text-emerald-600" />
-                </span>
-                <span className="text-[14px] text-muted-foreground">{benefit}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Process */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <SectionHeading icon={Rocket}>Our Process</SectionHeading>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="relative"
-          >
-            {/* Connecting line */}
-            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-primary/15 hidden sm:block" />
-
-            <div className="space-y-6">
-              {industry.process.map((step, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex items-start gap-4"
-                >
-                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-none bg-primary text-[13px] font-bold text-white shadow-md">
-                    {i + 1}
-                  </span>
-                  <div className="rounded-2xl border border-border bg-white p-5 flex-1">
-                    <h3 className="text-[15px] font-bold text-foreground mb-1">{step.step}</h3>
-                    <p className="text-[14px] leading-relaxed text-muted-foreground">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Technologies Used */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <SectionHeading icon={Layers}>Technologies We Use</SectionHeading>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {industry.technologies.map((tech, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className="rounded-2xl border border-border bg-white p-4"
-              >
-                <span className="inline-block rounded-none bg-primary/[0.06] px-3 py-1 text-[12px] font-semibold text-primary mb-2">
-                  {tech.name}
-                </span>
-                <p className="text-[13px] leading-relaxed text-muted-foreground">{tech.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Choose YESBE */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <SectionHeading icon={Award}>Why Choose YESBE</SectionHeading>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {industry.whyYESBE.map((adv, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className="rounded-2xl border border-primary/10 bg-slate-50 p-6"
-              >
-                <h3 className="text-[15px] font-bold text-foreground mb-1">{adv.title}</h3>
-                <p className="text-[13px] leading-relaxed text-muted-foreground">{adv.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Example project scope */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <SectionHeading icon={Target}>Example Project Scope</SectionHeading>
-            <div className="rounded-none border border-border bg-white p-6 sm:p-8" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(37,99,235,0.03)" }}>
-              <p className="mb-2 text-xs font-bold tracking-wide text-primary">Portfolio build</p>
-              <h3 className="text-[17px] font-bold text-foreground mb-2">{industry.exampleProject.title}</h3>
-              <p className="text-[15px] leading-relaxed text-muted-foreground mb-4">{industry.exampleProject.scope}</p>
-              <div className="inline-flex items-center gap-2 rounded-none bg-primary/[0.06] px-4 py-2">
-                <TrendingUp className="h-4 w-4 text-primary" />
-                <span className="text-[14px] font-semibold text-primary">{industry.exampleProject.focus}</span>
-              </div>
-              <div className="mt-5">
-                <Link
-                  to="/case-studies"
-                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-                >
-                  View Full Projects
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <SectionHeading icon={MessageCircle}>Frequently Asked Questions</SectionHeading>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-80px" }}
-            className="space-y-3"
-          >
-            {industry.faq.map((faq, i) => (
-              <motion.div key={i} variants={fadeInUp}>
-                <FAQItem question={faq.question} answer={faq.answer} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Related Solutions */}
-      {relatedSolutionsData.length > 0 && (
-        <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <SectionHeading icon={Layers}>Related Solutions</SectionHeading>
-            </motion.div>
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, margin: "-80px" }}
-              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {relatedSolutionsData.map((rel: { slug: string; icon: typeof Rocket; category: string; title: string; description: string }) => (
-                <motion.div key={rel.slug} variants={fadeInUp}>
-                  <Link
-                    to={`/services/${rel.slug}`}
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                    className="group block rounded-2xl border border-border bg-white p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="inline-flex items-center justify-center h-8 w-8 rounded-lg bg-primary/[0.06]">
-                        <rel.icon className="h-4 w-4 text-primary" />
-                      </span>
-                      <span className="rounded-none bg-primary/[0.06] px-2.5 py-0.5 text-[11px] font-semibold text-primary">
-                        {rel.category}
-                      </span>
-                    </div>
-                    <h3 className="text-[14px] font-bold text-foreground group-hover:text-primary transition-colors">
-                      {rel.title}
-                    </h3>
-                    <p className="mt-1 text-[12px] text-muted-foreground line-clamp-2">
-                      {rel.description}
-                    </p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-[12px] font-medium text-primary">
-                      Explore Solution <ArrowRight className="h-3 w-3" />
-                    </span>
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
-        </section>
-      )}
-
-      {/* Final CTA */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="rounded-none bg-primary p-8 sm:p-12 text-center"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to build your project?</h2>
-            <p className="text-[15px] text-white/80 max-w-xl mx-auto mb-6">
-              Let's discuss your goals and create a tailored solution for the {industry.title} industry.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
-                to="/contact"
-                onClick={() => { trackConsultationClick("industry_final"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#2563eb] transition-all hover:bg-white/90 hover:shadow-md"
-              >
-                Book a Free Consultation
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => { trackConsultationClick("industry_final"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/20"
-              >
-                <Phone className="h-4 w-4" />
-                Contact YESBE
-              </Link>
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      {/* Contact */}
-      <ContactSection />
+      <section className="section-py bg-white">
+        <div className="container-page">
+          <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-16">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Technology applications"
+                title="Where the system earns its place."
+                description="Practical areas where technology can remove a handoff, shorten a lookup or make an exception visible."
+              />
+            </Reveal>
+            <div className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+              {profile.applications.map((application, index) => (
+                <Reveal key={application.title} delay={index * 35} className="bg-white p-5 sm:p-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <Layers className="size-4 text-primary" strokeWidth={1.7} aria-hidden="true" />
+                    <span className="font-mono text-[10px] text-body/65">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h2 className="mt-5 text-[14px] font-semibold leading-5 text-ink">{application.title}</h2>
+                  <p className="mt-2 text-[12px] leading-5 text-body">{application.description}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          <Reveal className="mt-10">
+            <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <SectionHeading
+                eyebrow="Reference architecture"
+                title="How the pieces connect."
+                description="A starting model for the industry workflow. The final boundary is agreed after reviewing existing systems, access rules and data quality."
+              />
+            </div>
+            <IndustryArchitecture steps={profile.architecture} accent={profile.visual.accent} />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section-py border-y border-line bg-paper">
+        <div className="container-page">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Related work"
+              title="Existing project records that apply."
+              description="These are portfolio builds rather than industry client references. They show relevant system patterns, not a claimed sector history."
+              action={
+                <Link to="/case-studies" className="link-arrow">
+                  View all projects
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              }
+              className="mb-8"
+            />
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {relatedProjects.map((study) => (
+              <RelatedProjectCard key={study.slug} slug={study.slug} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-py bg-white">
+        <div className="container-page">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Related services"
+              title="Capabilities that carry the work."
+              action={
+                <Link to="/services" className="link-arrow">
+                  All services
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              }
+              className="mb-8"
+            />
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {relatedServices.map((service, index) => {
+              const ServiceIcon = service.icon;
+              return (
+                <Reveal key={service.slug} delay={index * 35} className="border border-line bg-paper p-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <ServiceIcon className="size-4 text-primary" strokeWidth={1.7} aria-hidden="true" />
+                    <ArrowUpRight className="size-3.5 text-body/55" aria-hidden="true" />
+                  </div>
+                  <h2 className="mt-5 text-[14px] font-semibold leading-5 text-ink">
+                    <Link to={`/services/${service.slug}`} className="transition-colors hover:text-primary">
+                      {service.title}
+                    </Link>
+                  </h2>
+                  <p className="mt-2 line-clamp-2 text-[11.5px] leading-5 text-body">{service.description}</p>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:gap-16">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Questions"
+                title="What is worth clarifying."
+                description="These answers describe the working model. They are not a promise of a specific result or commercial outcome."
+              />
+            </Reveal>
+            <Reveal delay={50}>
+              <div className="border-b border-line">
+                {industry.faq.map((faq, index) => (
+                  <FAQItem key={faq.question} question={faq.question} answer={faq.answer} index={index} />
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <ClosingCta
+        eyebrow="Industry enquiry"
+        title="Bring the operating problem into the conversation."
+        description={`Tell us how ${industry.title.toLowerCase()} work moves today, which systems are already in place and what the next decision needs to support.`}
+      />
     </>
   );
 }

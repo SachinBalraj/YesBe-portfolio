@@ -290,7 +290,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                     className="flex items-center gap-2.5 text-[13px] text-ink-soft transition-colors hover:text-primary"
                   >
                     <Phone className="size-4" aria-hidden="true" />
-                    +91 {SITE_CONFIG.phone}
+                    {`+91 ${SITE_CONFIG.phone}`}
                   </a>
                 </div>
               </div>

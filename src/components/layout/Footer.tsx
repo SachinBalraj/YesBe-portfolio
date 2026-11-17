@@ -200,7 +200,7 @@ function FooterComponent() {
               technology partner.
             </p>
             <p className="mt-3 text-[12px] leading-5 text-white/55">
-              Founded by{" "}
+              {"Founded by "}
               <Link
                 to="/sachin-balraj"
                 className="font-medium text-white/70 transition-colors hover:text-white"
@@ -257,7 +257,7 @@ function FooterComponent() {
                   onClick={() => trackPhoneClick("footer")}
                   className="text-[12.5px] leading-5 text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:text-white focus-visible:underline"
                 >
-                  +91 {SITE_CONFIG.phone}
+                  {`+91 ${SITE_CONFIG.phone}`}
                 </a>
               </li>
             </ul>
@@ -267,7 +267,7 @@ function FooterComponent() {
         <div className="border-t border-white/10 py-6">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <p className="text-[11px] text-white/55">
-              &copy; {new Date().getFullYear()} YESBE Technologies. All rights reserved.
+              {`© ${new Date().getFullYear()} YESBE Technologies. All rights reserved.`}
             </p>
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-white/50">
               <Link to="/privacy-policy" className="transition-colors hover:text-white">

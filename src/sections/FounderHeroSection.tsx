@@ -28,7 +28,7 @@ export function FounderHeroSection() {
   return (
     <section
       id="founder-hero"
-      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20"
       aria-label="Sachin Balraj — Founder of YESBE Technologies and Solution Architect at Springreen"
     >
       <div className="pointer-events-none absolute inset-0">

@@ -13,9 +13,9 @@
  * Then open http://localhost:3111 (UI) and http://localhost:3111/admin.
  */
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
-import { createReadStream, existsSync, statSync } from "node:fs";
+import { createReadStream, existsSync, readFileSync, statSync } from "node:fs";
 import { extname, join, normalize } from "node:path";
-import { constants as zlibConstants, createBrotliCompress, createGzip } from "node:zlib";
+import { constants as zlibConstants, brotliCompressSync, gzipSync } from "node:zlib";
 
 const DIST = new URL("../dist/", import.meta.url).pathname;
 const PORT = Number(process.env.PORT ?? 3111);
@@ -32,6 +32,8 @@ const MIME: Record<string, string> = {
   ".webp": "image/webp",
   ".avif": "image/avif",
   ".ico": "image/x-icon",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
   ".woff": "font/woff",
   ".woff2": "font/woff2",
   ".xml": "application/xml; charset=utf-8",
@@ -132,7 +134,10 @@ function serveStatic(url: URL, req: IncomingMessage, res: ServerResponse): void 
   const clean = normalize(url.pathname).replace(/^(\.\.[/\\])+/, "");
   let filePath = join(DIST, clean);
 
-  if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
+  if (existsSync(filePath) && statSync(filePath).isDirectory()) {
+    const indexFile = join(filePath, "index.html");
+    filePath = existsSync(indexFile) ? indexFile : join(DIST, "index.html");
+  } else if (!existsSync(filePath)) {
     filePath = join(DIST, "index.html");
   }
 
@@ -141,29 +146,35 @@ function serveStatic(url: URL, req: IncomingMessage, res: ServerResponse): void 
   const compressible = COMPRESSIBLE.has(ext) && statSync(filePath).size > 1024;
   const encoding = compressible ? preferredEncoding(req.headers["accept-encoding"]) : null;
 
-  res.writeHead(200, {
-    "Content-Type": MIME[ext] ?? "application/octet-stream",
-    "Cache-Control": immutable ? "public, max-age=31536000, immutable" : "no-cache",
-    ...(compressible ? { Vary: "Accept-Encoding" } : {}),
-    ...(encoding ? { "Content-Encoding": encoding } : {}),
-  });
+  if (encoding) {
+    const source = readFileSync(filePath);
+    const body =
+      encoding === "br"
+        ? brotliCompressSync(source, {
+            params: {
+              [zlibConstants.BROTLI_PARAM_QUALITY]: 5,
+            },
+          })
+        : gzipSync(source, { level: 6 });
 
-  const file = createReadStream(filePath);
-  if (!encoding) {
-    file.pipe(res);
+    res.writeHead(200, {
+      "Content-Type": MIME[ext] ?? "application/octet-stream",
+      "Cache-Control": immutable ? "public, max-age=31536000, immutable" : "no-cache",
+      Vary: "Accept-Encoding",
+      "Content-Encoding": encoding,
+      "Content-Length": body.byteLength,
+    });
+    res.end(body);
     return;
   }
 
-  const compressor =
-    encoding === "br"
-      ? createBrotliCompress({
-          params: {
-            [zlibConstants.BROTLI_PARAM_QUALITY]: 5,
-          },
-        })
-      : createGzip({ level: 6 });
-
-  file.pipe(compressor).pipe(res);
+  res.writeHead(200, {
+    "Content-Type": MIME[ext] ?? "application/octet-stream",
+    "Cache-Control": immutable ? "public, max-age=31536000, immutable" : "no-cache",
+    "Content-Length": statSync(filePath).size,
+    ...(compressible ? { Vary: "Accept-Encoding" } : {}),
+  });
+  createReadStream(filePath).pipe(res);
 }
 
 createServer((req, res) => {

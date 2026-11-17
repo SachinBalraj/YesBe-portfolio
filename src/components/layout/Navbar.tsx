@@ -8,7 +8,6 @@ import {
   Suspense,
   type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
-import { AnimatePresence } from "framer-motion";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { cn } from "@/utils/cn";
@@ -16,8 +15,10 @@ import { ButtonLink } from "@/components/system/ButtonLink";
 import { PRIMARY_NAV } from "@/constants/navigation";
 import { trackConsultationClick } from "@/utils/analytics";
 import logoImg from "@/assets/images/YBlogo.webp";
-import { MegaMenu, type MegaMenuKey } from "./MegaMenu";
-import { MobileNav } from "./MobileNav";
+import type { MegaMenuKey } from "./MegaMenu";
+
+const MegaMenu = lazy(() => import("./MegaMenu").then((m) => ({ default: m.MegaMenu })));
+const MobileNav = lazy(() => import("./MobileNav").then((m) => ({ default: m.MobileNav })));
 
 const SearchModal = lazy(() =>
   import("@/components/knowledge/SearchModal").then((m) => ({ default: m.SearchModal })),
@@ -38,6 +39,7 @@ function NavbarComponent() {
   const [hidden, setHidden] = useState(false);
   const [openMenu, setOpenMenu] = useState<MegaMenuKey | null>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [mobileMounted, setMobileMounted] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchMounted, setSearchMounted] = useState(false);
 
@@ -61,6 +63,10 @@ function NavbarComponent() {
     if (isSearchOpen) setSearchMounted(true);
   }, [isSearchOpen]);
 
+  useEffect(() => {
+    if (isMobileOpen) setMobileMounted(true);
+  }, [isMobileOpen]);
+
   const clearCloseTimer = useCallback(() => {
     if (closeTimerRef.current) {
       clearTimeout(closeTimerRef.current);
@@ -69,6 +75,8 @@ function NavbarComponent() {
   }, []);
 
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).has("prerender")) return;
+
     const handleScroll = () => {
       const currentY = window.scrollY;
       setIsScrolled(currentY > 10);
@@ -323,14 +331,18 @@ function NavbarComponent() {
           </nav>
         </div>
 
-        <AnimatePresence>
-          {openMenu && (
+        {openMenu && (
+          <Suspense fallback={null}>
             <MegaMenu menu={openMenu} panelRef={megaPanelRef} onNavigate={handleNavigate} />
-          )}
-        </AnimatePresence>
+          </Suspense>
+        )}
       </header>
 
-      <MobileNav open={isMobileOpen} onClose={closeMobileNav} />
+      {mobileMounted && (
+        <Suspense fallback={null}>
+          <MobileNav open={isMobileOpen} onClose={closeMobileNav} />
+        </Suspense>
+      )}
 
       {searchMounted && (
         <Suspense fallback={null}>

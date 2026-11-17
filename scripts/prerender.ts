@@ -118,7 +118,18 @@ const SETTLE = async (page: Page): Promise<void> => {
       window.scrollTo(0, total);
       await sleep(350);
     }
-    window.scrollTo(0, 0);
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    for (let i = 0; i < 20 && window.scrollY > 0; i++) await sleep(50);
+    window.dispatchEvent(new Event("scroll"));
+    for (
+      let i = 0;
+      i < 20 &&
+      !document.querySelector("header")?.className.includes("border-transparent");
+      i++
+    ) {
+      await sleep(50);
+    }
     await sleep(250);
     await (document as Document & { fonts?: FontFaceSet }).fonts?.ready;
   });
@@ -128,7 +139,7 @@ const SETTLE = async (page: Page): Promise<void> => {
 };
 
 async function capture(page: Page, routePath: string): Promise<string> {
-  await page.goto(`${ORIGIN}${routePath}`, {
+  await page.goto(`${ORIGIN}${routePath}?prerender=1`, {
     waitUntil: "domcontentloaded",
     timeout: 45_000,
   });
@@ -146,7 +157,43 @@ async function capture(page: Page, routePath: string): Promise<string> {
   const doc = html.startsWith("<!DOCTYPE") || html.startsWith("<!doctype")
     ? html
     : `<!DOCTYPE html>\n${html}`;
-  return makeOriginAgnostic(doc);
+  const routeDoc = routePath === "/" ? doc : stripHomepagePreload(doc);
+  return makeOriginAgnostic(addCriticalImagePreload(routeDoc, routePath));
+}
+
+/**
+ * Prerendered HTML already contains the route's above-the-fold image, but the
+ * browser only discovers it after the module scripts in <head> start loading.
+ * On a throttled connection that shared bandwidth pushes the image finish past
+ * the lazily mounted route tree, which is the difference between a 97 and an 85
+ * mobile score. A matching preload in the static head starts the request first.
+ */
+function addCriticalImagePreload(html: string, routePath: string): string {
+  if (routePath === "/" || /data-lcp-preload/i.test(html)) return html;
+
+  const img = [...html.matchAll(/<img\b[^>]*>/gi)].find((match) => {
+    const tag = match[0];
+    const src = /\bsrc="([^"]+)"/i.exec(tag)?.[1] ?? "";
+    return /fetchpriority="high"/i.test(tag) && src.startsWith("/images/");
+  });
+  if (!img) return html;
+
+  const tag = img[0];
+  const src = /\bsrc="([^"]+)"/i.exec(tag)?.[1] ?? "";
+  const srcset = /\bsrcset="([^"]+)"/i.exec(tag)?.[1] ?? "";
+  const sizes = /\bsizes="([^"]+)"/i.exec(tag)?.[1] ?? "";
+  const link = `<link rel="preload" as="image" href="${src}"${srcset ? ` imagesrcset="${srcset}"` : ""}${sizes ? ` imagesizes="${sizes}"` : ""} fetchpriority="high" data-lcp-preload>`;
+
+  return html.replace(/<head([^>]*)>/i, (head) => `${head}\n    ${link}`);
+}
+
+/**
+ * The homepage hero image is preloaded in the shell. On every other route that
+ * preload competes with the route's own critical resources and delays LCP, so
+ * remove it from prerendered non-home documents.
+ */
+function stripHomepagePreload(html: string): string {
+  return html.replace(/\s*<link[^>]*data-home-preload[^>]*>/gi, "");
 }
 
 /**

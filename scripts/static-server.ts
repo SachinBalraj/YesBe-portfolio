@@ -28,6 +28,8 @@ const MIME: Record<string, string> = {
   ".webp": "image/webp",
   ".avif": "image/avif",
   ".ico": "image/x-icon",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
   ".woff": "font/woff",
   ".woff2": "font/woff2",
 };

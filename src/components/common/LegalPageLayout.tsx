@@ -207,7 +207,7 @@ export function LegalPageLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden border-t border-line bg-paper py-16 sm:py-20 lg:py-24">
+      <section className="relative overflow-hidden border-t border-line bg-paper py-12 sm:py-16 lg:py-20">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid bg-cobalt-glow opacity-60" />
         <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-7">
           <motion.div

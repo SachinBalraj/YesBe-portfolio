@@ -26,9 +26,9 @@ const tones: Record<SectionTone, string> = {
 };
 
 const paddings: Record<SectionSize, string> = {
-  sm: "py-12 lg:py-16",
-  md: "py-16 lg:py-24",
-  lg: "py-20 lg:py-32",
+  sm: "py-10 lg:py-14",
+  md: "py-12 lg:py-[4.5rem]",
+  lg: "py-14 lg:py-[5.5rem]",
   none: "",
 };
 

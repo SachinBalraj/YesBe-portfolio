@@ -3,56 +3,105 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { caseStudies, type CaseStudy } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { cn } from "@/utils/cn";
 
 const PLACEHOLDER_IMG =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='450' viewBox='0 0 700 450'%3E%3Crect width='700' height='450' fill='%23f8fafc'/%3E%3Cpath d='M280 200h140v60a10 10 0 01-10 10H290a10 10 0 01-10-10v-60z' fill='%23e2e8f0'/%3E%3Cpath d='M260 190a12 12 0 0112-12h156a12 12 0 0112 12v10H260v-10z' fill='%23cbd5e1'/%3E%3C/svg%3E";
 
-function ProjectCard({ project, titleTag }: { project: CaseStudy; titleTag: "h2" | "h3" }) {
+function ProjectCard({
+  project,
+  titleTag,
+  feature = false,
+  dark = false,
+}: {
+  project: CaseStudy;
+  titleTag: "h2" | "h3";
+  feature?: boolean;
+  dark?: boolean;
+}) {
   const Title = titleTag;
   const handleImgError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     e.currentTarget.src = PLACEHOLDER_IMG;
   }, []);
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden border border-border bg-white transition-colors hover:border-slate-300">
+    <article
+      className={cn(
+        "group flex h-full flex-col overflow-hidden border transition-colors",
+        dark
+          ? "border-white/10 bg-[#05132e] text-white hover:border-white/25"
+          : "border-line bg-white hover:border-line-strong",
+      )}
+    >
       <Link to={`/case-studies/${project.slug}`} className="block overflow-hidden">
         <img
           src={project.image}
-          alt={`${project.title} — illustrative image for a ${project.category} project`}
+          alt={`${project.title} — illustrative interface preview`}
           loading="lazy"
           decoding="async"
-          width={700}
-          height={450}
+          width={1200}
+          height={760}
           onError={handleImgError}
-          className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className={cn(
+            "w-full object-cover transition-transform duration-700 ease-[var(--ease-premium)] group-hover:scale-[1.025]",
+            feature ? "aspect-[16/9]" : "aspect-[4/3]",
+          )}
         />
       </Link>
 
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-center gap-3 text-[11px] font-medium text-muted-foreground">
-          <span className="text-primary">{project.category}</span>
+      <div className={cn("flex flex-1 flex-col p-5 sm:p-6", feature && "sm:p-7")}>
+        <div
+          className={cn(
+            "flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-semibold uppercase tracking-[0.12em]",
+            dark ? "text-white/50" : "text-body/80",
+          )}
+        >
+          <span className={dark ? "text-[#8eb5ff]" : "text-primary"}>{project.category}</span>
           <span aria-hidden="true">·</span>
           <span>{project.label}</span>
         </div>
 
-        <Title className="mt-2 text-[17px] font-semibold leading-snug text-navy">
-          <Link to={`/case-studies/${project.slug}`} className="hover:text-primary">
+        <Title
+          className={cn(
+            "mt-3 font-semibold leading-[1.2] tracking-[-0.025em]",
+            feature ? "text-[1.35rem] sm:text-[1.6rem]" : "text-[1.05rem]",
+            dark ? "text-white" : "text-ink",
+          )}
+        >
+          <Link
+            to={`/case-studies/${project.slug}`}
+            className={cn("transition-colors", dark ? "hover:text-[#9fc0ff]" : "hover:text-primary")}
+          >
             {project.title}
           </Link>
         </Title>
 
-        <p className="mt-2 flex-1 text-[13.5px] leading-relaxed text-muted-foreground">
+        <p
+          className={cn(
+            "mt-2.5 flex-1 leading-6",
+            feature ? "text-[13.5px]" : "text-[12.5px]",
+            dark ? "text-white/58" : "text-body",
+          )}
+        >
           {project.shortOverview}
         </p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.technologies.slice(0, 4).map((tech) => (
-            <span key={tech} className="border border-border bg-slate-50 px-2 py-0.5 text-[11px] font-medium text-slate-600">
+            <span
+              key={tech}
+              className={cn(
+                "border px-2 py-0.5 text-[10px] font-medium",
+                dark
+                  ? "border-white/15 bg-white/[0.04] text-white/60"
+                  : "border-line bg-paper text-body",
+              )}
+            >
               {tech}
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="px-1 py-0.5 text-[11px] font-medium text-slate-600">
+            <span className={cn("px-1 py-0.5 text-[10px] font-medium", dark ? "text-white/55" : "text-body/80")}>
               +{project.technologies.length - 4}
             </span>
           )}
@@ -60,10 +109,13 @@ function ProjectCard({ project, titleTag }: { project: CaseStudy; titleTag: "h2"
 
         <Link
           to={`/case-studies/${project.slug}`}
-          className="mt-5 inline-flex items-center gap-1.5 py-1 text-[13px] font-semibold text-primary hover:text-[#1d4ed8]"
+          className={cn(
+            "mt-5 inline-flex items-center gap-1.5 py-1 text-[12px] font-semibold",
+            dark ? "text-[#9fc0ff] hover:text-white" : "text-primary hover:text-[#173eb5]",
+          )}
         >
-          View project
-          <ArrowUpRight className="h-3.5 w-3.5" />
+          Review the project
+          <ArrowUpRight className="size-3.5" aria-hidden="true" />
         </Link>
       </div>
     </article>
@@ -89,7 +141,7 @@ export function PortfolioSection({
     <section
       id="projects"
       className={`border-y border-border/70 bg-slate-50 ${
-        clearNavbar ? "pt-[112px] pb-16 sm:pt-[124px] lg:pt-[132px] lg:pb-20" : "py-16 sm:py-20 lg:py-24"
+        clearNavbar ? "pt-[112px] pb-16 sm:pt-[124px] lg:pt-[132px] lg:pb-20" : "py-12 sm:py-16 lg:py-20"
       }`}
       aria-label="Selected technology projects built by YESBE"
     >
@@ -109,10 +161,27 @@ export function PortfolioSection({
           }
         />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {caseStudies.map((project) => (
-            <ProjectCard key={project.slug} project={project} titleTag={asH1 ? "h2" : "h3"} />
-          ))}
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+          {caseStudies.map((project, index) => {
+            const span =
+              index === 0
+                ? "sm:col-span-2 lg:col-span-7"
+                : index === 1
+                  ? "lg:col-span-5"
+                  : index < 5
+                    ? "lg:col-span-4"
+                    : "lg:col-span-3";
+            return (
+              <div key={project.slug} className={span}>
+                <ProjectCard
+                  project={project}
+                  titleTag={asH1 ? "h2" : "h3"}
+                  feature={index === 0}
+                  dark={index === 1}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -108,7 +108,7 @@ const experience: {
 export function FounderBackgroundSection() {
   return (
     <section
-      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20"
       aria-labelledby="about-sachin-balraj"
     >
       <div className="pointer-events-none absolute inset-0">

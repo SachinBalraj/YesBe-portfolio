@@ -125,7 +125,7 @@ export function FAQSection() {
       }} />
       <section
       id="faq"
-      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20"
       aria-label="Frequently Asked Questions — Services, quotations, technologies, and development process"
     >
       <div className="pointer-events-none absolute inset-0">

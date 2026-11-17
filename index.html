@@ -50,17 +50,19 @@
       bypassed consent and duplicated every tag.
     -->
 
-    <!-- Hero LCP image: start the request before the JS bundle is parsed.
-         Mirrors the <picture>/<source> in PremiumHero so the browser chooses
-         the same AVIF candidate instead of downloading it twice. -->
+    <!-- Hero LCP image: start the request before the JS bundle is parsed. -->
     <link
       rel="preload"
       as="image"
-      type="image/avif"
-      imagesrcset="/images/hero/yesbe-homepage-640-v2.avif 640w, /images/hero/yesbe-homepage-960-v2.avif 960w, /images/hero/yesbe-homepage-1280-v2.avif 1280w, /images/hero/yesbe-homepage-1536-v2.avif 1536w"
-      imagesizes="(min-width: 768px) 620px, 100vw"
+      href="/images/visuals/hero-film-poster.webp"
+      type="image/webp"
       fetchpriority="high"
+      data-home-preload
     />
+
+    <!-- Self-hosted Inter latin faces: preload only the weights used above the fold. -->
+    <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Preconnect critical origins -->
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />

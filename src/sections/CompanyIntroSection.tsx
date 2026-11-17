@@ -10,7 +10,7 @@ const JPEG_SRC_SET = IMAGE_WIDTHS.map((w) => `/images/company/yesbe-consultation
 
 export function CompanyIntroSection() {
   return (
-    <section id="about-yesbe" className="bg-white py-16 sm:py-20 lg:py-24" aria-label="About YESBE Technologies">
+    <section id="about-yesbe" className="bg-white py-12 sm:py-16 lg:py-20" aria-label="About YESBE Technologies">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[55fr_45fr] lg:gap-16">
           <div>

@@ -1,0 +1,56 @@
+{
+  "home-mobile": {
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0",
+    "tbt": "40 ms"
+  },
+  "home-desktop": {
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "0.2 s",
+    "cls": "0",
+    "tbt": "0 ms"
+  },
+  "services-mobile": {
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0",
+    "tbt": "10 ms"
+  },
+  "services-desktop": {
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "0.2 s",
+    "cls": "0",
+    "tbt": "0 ms"
+  },
+  "ai-mobile": {
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0",
+    "tbt": "10 ms"
+  },
+  "ai-desktop": {
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "0.2 s",
+    "cls": "0",
+    "tbt": "0 ms"
+  }
+}

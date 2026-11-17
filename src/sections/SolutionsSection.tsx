@@ -92,7 +92,7 @@ export function SolutionsSection() {
   return (
     <section
       id="solutions"
-      className="border-y border-border/70 bg-slate-50 py-16 sm:py-20 lg:py-24"
+      className="border-y border-border/70 bg-slate-50 py-12 sm:py-16 lg:py-20"
       aria-label="Business solutions"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

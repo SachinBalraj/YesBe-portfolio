@@ -24,7 +24,7 @@ export function MegaMenu({ menu, panelRef, onNavigate }: MegaMenuProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -6 }}
       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-x-0 top-full hidden border-b border-line bg-paper/95 shadow-[0_30px_60px_-30px_rgba(10,18,32,0.28)] backdrop-blur-xl lg:block"
+      className="absolute inset-x-0 top-full z-[60] hidden border-b border-line bg-[#fbfaf7] shadow-[0_30px_60px_-30px_rgba(10,18,32,0.28)] lg:block"
     >
       <div className="container-page py-9">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_2.35fr] lg:gap-14">

@@ -94,7 +94,7 @@ export function FounderWorkSection() {
     <>
       {/* ── Technical Expertise ── */}
       <section
-        className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20"
         aria-labelledby="technical-expertise"
       >
         <div className="pointer-events-none absolute inset-0">
@@ -174,7 +174,7 @@ export function FounderWorkSection() {
 
       {/* ── Projects / Areas of Work ── */}
       <section
-        className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20"
         aria-labelledby="projects-areas-of-work"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -253,7 +253,7 @@ export function FounderWorkSection() {
 
       {/* ── Connect ── */}
       <section
-        className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20"
         aria-labelledby="connect-with-sachin-balraj"
       >
         <div className="pointer-events-none absolute inset-0">

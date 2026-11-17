@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, memo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, Settings, X, Check, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { getStoredConsent, getStoredPreferences, PREFS_KEY, STORAGE_KEY, type ConsentLevel, type CookiePreferences } from "./consentStore";
@@ -88,28 +87,20 @@ function CookieConsentComponent() {
   if (consent !== null) return null;
 
   return (
-    <AnimatePresence>
-      {showBanner && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[150] bg-black/20 backdrop-blur-sm xl:hidden"
-            onClick={handleEssentialOnly}
-          />
+    showBanner ? (
+      <>
+        {/* Backdrop */}
+        <div
+          className="fixed inset-0 z-[150] bg-black/20 backdrop-blur-sm xl:hidden"
+          onClick={handleEssentialOnly}
+        />
 
-          {/* Banner */}
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            role="region"
-            aria-label="Cookie consent"
-            className="fixed bottom-0 left-0 right-0 z-[151] p-3 sm:p-4 lg:bottom-6 lg:left-6 lg:right-auto lg:max-w-lg"
-          >
+        {/* Banner */}
+        <div
+          role="region"
+          aria-label="Cookie consent"
+          className="fixed bottom-0 left-0 right-0 z-[151] p-3 sm:p-4 lg:bottom-6 lg:left-6 lg:right-auto lg:max-w-lg"
+        >
             <div className="rounded-2xl border border-white/60 bg-white p-5 shadow-[0_8px_40px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] backdrop-blur-2xl sm:p-6">
               {/* Header */}
               <div className="mb-3 flex items-start gap-3">
@@ -134,15 +125,8 @@ function CookieConsentComponent() {
               </div>
 
               {/* Customize Panel */}
-              <AnimatePresence>
-                {showCustomize && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="overflow-hidden"
-                  >
+              {showCustomize && (
+                  <div className="overflow-hidden">
                     <div className="mb-4 space-y-3 rounded-xl border border-border/60 bg-muted/30 p-4">
                       <div className="flex items-center justify-between gap-3">
                         <div>
@@ -178,9 +162,8 @@ function CookieConsentComponent() {
                         />
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
 
               {/* Actions */}
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -240,10 +223,9 @@ function CookieConsentComponent() {
                 </button>
               </div>
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+        </div>
+      </>
+    ) : null
   );
 }
 

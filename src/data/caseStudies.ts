@@ -40,11 +40,10 @@ export const caseStudies: CaseStudy[] = [
     title: "Fashion Fusion E-Commerce Platform",
     label: "Portfolio build",
     shortOverview:
-      "A full-stack e-commerce platform for a clothing brand — product catalogue, cart, checkout, inventory and order management in one system.",
+      "A full-stack e-commerce platform for a clothing retail scenario — product catalogue, cart, checkout, inventory and order management in one system.",
     category: "E-Commerce",
     builtFor: "Retail / Fashion Brand",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&h=450&fit=crop",
+    image: "/images/projects/fashion-fusion.webp",
     technologies: ["React", "Node.js", "MongoDB", "Express.js", "Stripe", "Tailwind CSS"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
@@ -88,7 +87,7 @@ export const caseStudies: CaseStudy[] = [
       "Backend API development with Node.js and Express",
       "Payment integration with Stripe",
       "Testing across devices and browsers",
-      "Deployment to Vercel and Render",
+      "Release configuration for Vercel and Render",
     ],
     businessValue: [
       "A professional web presence that customers can browse without contacting anyone first",
@@ -128,8 +127,7 @@ export const caseStudies: CaseStudy[] = [
       "QR-based ordering — customers browse the menu and place their order from their own phone, and it appears in the kitchen queue.",
     category: "Restaurant Automation",
     builtFor: "Restaurant / F&B",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&h=450&fit=crop",
+    image: "/images/projects/restaurant-qr-ordering.webp",
     technologies: ["React", "Node.js", "QR Technology", "MongoDB", "Socket.io"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "Tailwind CSS", "Socket.io Client"] },
@@ -172,8 +170,8 @@ export const caseStudies: CaseStudy[] = [
       "QR code generation and scanning flow",
       "Real-time kitchen notification system",
       "Admin dashboard for sales tracking",
-      "Testing with live restaurant operations",
-      "Deployment and staff training",
+      "Testing against simulated restaurant service scenarios",
+      "Release runbook and operator guidance",
     ],
     businessValue: [
       "Removes the ordering bottleneck between table and kitchen during busy periods",
@@ -213,8 +211,7 @@ export const caseStudies: CaseStudy[] = [
       "A digital library system — catalogue search, member management, issue and return tracking, automated fines and reporting.",
     category: "Education ERP",
     builtFor: "Educational Institution",
-    image:
-      "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=700&h=450&fit=crop",
+    image: "/images/projects/library-management.webp",
     technologies: ["React", "Express", "MongoDB", "Barcode API"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
@@ -257,8 +254,8 @@ export const caseStudies: CaseStudy[] = [
       "Bulk data migration tool development",
       "Frontend catalog and management interfaces",
       "Barcode integration and scanning flow",
-      "Testing with library staff and students",
-      "Deployment and training sessions",
+      "Scenario testing with library staff and student profiles",
+      "Release runbook and operator guidance",
     ],
     businessValue: [
       "Replaces manual record-keeping with a system that can be searched and reported on",
@@ -298,19 +295,18 @@ export const caseStudies: CaseStudy[] = [
       "A responsive, SEO-optimised corporate website with service detail pages and lead capture forms.",
     category: "Corporate Website",
     builtFor: "Corporate / SME",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=450&fit=crop",
+    image: "/images/projects/business-portfolio.webp",
     technologies: ["React", "Tailwind CSS"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
       { label: "SEO", items: ["Meta Tags", "Schema Markup", "Sitemap"] },
       { label: "Performance", items: ["Lazy Loading", "Code Splitting", "Image Optimization"] },
-      { label: "Deployment", items: ["Vercel", "Custom Domain", "SSL"] },
+      { label: "Runtime", items: ["Vercel", "Custom Domain", "SSL"] },
     ],
     problem:
       "A business without a website depends entirely on referrals and word of mouth, cannot be found by people already searching for what it sells, and has nowhere to send an enquiry that reaches the owner directly.",
     solution:
-      "Created a responsive, SEO-optimised corporate website with service pages and lead capture. Built with modern React architecture, fast loading and a mobile-first design.",
+      "Built a responsive, SEO-optimised corporate website with service pages and lead capture. Built with modern React architecture, fast loading and a mobile-first design.",
     features: [
       "Responsive design across all devices",
       "Service pages with detailed offerings",
@@ -332,8 +328,8 @@ export const caseStudies: CaseStudy[] = [
       "Brand assets and written content usually have to be produced as part of the build, not handed over. This project included a content structure, image selection and a basic set of brand guidelines.",
     futureEnhancements: [
       "Blog section for content marketing",
-      "Live chat integration",
-      "Client portal for project updates",
+      "Chat integration",
+      "Customer portal for project updates",
       "Multi-language support",
     ],
     developmentProcess: [
@@ -343,7 +339,7 @@ export const caseStudies: CaseStudy[] = [
       "SEO implementation and meta tag optimization",
       "Performance optimization and testing",
       "Domain and hosting setup",
-      "Launch and analytics configuration",
+      "Release and analytics configuration",
     ],
     businessValue: [
       "A professional online presence to send prospects to instead of a phone number",
@@ -383,8 +379,7 @@ export const caseStudies: CaseStudy[] = [
       "A retrieval-augmented assistant that answers questions from a business's own documents, with links back to the source.",
     category: "Artificial Intelligence",
     builtFor: "Internal Tool",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&h=450&fit=crop",
+    image: "/images/projects/ai-business-assistant.webp",
     technologies: ["Python", "OpenAI API", "LangChain", "FastAPI", "React"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "Tailwind CSS"] },
@@ -428,7 +423,7 @@ export const caseStudies: CaseStudy[] = [
       "LangChain integration with OpenAI",
       "Frontend chat interface development",
       "Confidence threshold tuning and testing",
-      "Deployment and team training",
+      "Release runbook and team guidance",
     ],
     businessValue: [
       "Removes the need for one person to be the answer to every internal question",
@@ -468,8 +463,7 @@ export const caseStudies: CaseStudy[] = [
       "A custom ERP integrating inventory, employee management, billing and reporting into a single platform.",
     category: "ERP",
     builtFor: "SME / Manufacturing",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=450&fit=crop",
+    image: "/images/projects/erp-management.webp",
     technologies: ["React", "Node.js", "MongoDB", "Express.js"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
@@ -513,7 +507,7 @@ export const caseStudies: CaseStudy[] = [
       "Data migration from legacy systems",
       "Integration testing across all modules",
       "User acceptance testing with department heads",
-      "Phased rollout and staff training",
+      "Phased rollout and operator guidance",
     ],
     businessValue: [
       "One record per entity, instead of a version per spreadsheet and per department",
@@ -553,19 +547,18 @@ export const caseStudies: CaseStudy[] = [
       "Interactive Power BI dashboards presenting KPIs, revenue trends and sales performance from several source systems.",
     category: "Business Analytics",
     builtFor: "Corporate / SME",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=450&fit=crop",
+    image: "/images/projects/powerbi-dashboard.webp",
     technologies: ["Power BI", "SQL", "DAX", "Excel"],
     techGroups: [
       { label: "Analytics", items: ["Power BI", "DAX", "Power Query"] },
       { label: "Data Layer", items: ["SQL Server", "Azure Data Factory"] },
       { label: "Sources", items: ["Excel", "CRM Export", "ERP Database"] },
-      { label: "Deployment", items: ["Power BI Service", "Scheduled Refresh"] },
+      { label: "Delivery", items: ["Power BI Service", "Scheduled Refresh"] },
     ],
     problem:
       "Performance reporting assembled by hand in Excel from several systems. Every report has to be rebuilt and re-checked, so by the time it reaches management the numbers describe a past period and nobody can drill into why.",
     solution:
-      "Created interactive dashboards presenting KPIs, revenue trends and sales performance. Connected multiple data sources through Azure Data Factory with executive, sales, operations and finance views, plus drill-down, anomaly flags and scheduled email delivery.",
+      "Built interactive dashboards presenting KPIs, revenue trends and sales performance. Connected multiple data sources through Azure Data Factory with executive, sales, operations and finance views, plus drill-down, anomaly flags and scheduled email delivery.",
     features: [
       "Executive KPI dashboard with drill-down capability",
       "Sales performance by region, product & team",
@@ -597,8 +590,8 @@ export const caseStudies: CaseStudy[] = [
       "Data model creation and DAX measure development",
       "Dashboard design with stakeholder input",
       "Report development and visual formatting",
-      "Testing with real business scenarios",
-      "Deployment and training for end users",
+      "Testing against representative business scenarios",
+      "Release runbook and user guidance",
     ],
     businessValue: [
       "Reporting produced by the system rather than retyped by hand each cycle",
@@ -638,8 +631,7 @@ export const caseStudies: CaseStudy[] = [
       "Technical SEO, content optimisation, schema markup, and GEO and AEO structuring for search and AI-answer visibility.",
     category: "SEO / GEO / AEO",
     builtFor: "SME / Professional Services",
-    image:
-      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=700&h=450&fit=crop",
+    image: "/images/projects/seo-digital-growth.webp",
     technologies: ["Google Search Console", "Analytics", "SEO Tools"],
     techGroups: [
       { label: "SEO", items: ["Technical SEO", "On-Page SEO", "Schema Markup"] },
@@ -723,8 +715,7 @@ export const caseStudies: CaseStudy[] = [
       "An automation platform covering workflow configuration, approvals, notifications and reporting.",
     category: "Business Automation",
     builtFor: "SME / Operations",
-    image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&h=450&fit=crop",
+    image: "/images/projects/business-automation.webp",
     technologies: ["React", "Node.js", "MongoDB"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },

@@ -1,12 +1,19 @@
-import { lazy, Suspense, useState, useEffect, useTransition } from "react";
-import { BrowserRouter, Routes, Route, Outlet, Navigate, useParams } from "react-router-dom";
+import { lazy, Suspense, useState, useEffect, useTransition, type ReactNode } from "react";
+import { BrowserRouter, Routes, Route, Outlet, Navigate, useParams, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { BusinessSchema } from "@/components/common/BusinessSchema";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { isHydrationTargetPath } from "@/utils/hydration";
 import { HomePage } from "@/pages/HomePage";
+import { ServicesPage } from "@/pages/ServicesPage";
+import { SolutionDetailPage } from "@/pages/SolutionDetailPage";
+import { AboutPage } from "@/pages/AboutPage";
+import { CaseStudiesPage } from "@/pages/CaseStudiesPage";
+import { IndustriesPage } from "@/pages/IndustriesPage";
+import { IndustryDetailPage } from "@/pages/IndustryDetailPage";
 
 const CookieConsent = lazy(() =>
   import("@/components/common/CookieConsent").then((m) => ({ default: m.CookieConsent }))
@@ -15,23 +22,11 @@ const ScrollToTopButton = lazy(() =>
   import("@/components/common/ScrollToTopButton").then((m) => ({ default: m.ScrollToTopButton }))
 );
 
-const AboutPage = lazy(() =>
-  import("@/pages/AboutPage").then((m) => ({ default: m.AboutPage }))
+const CaseStudyDetailPage = lazy(() =>
+  import("@/pages/CaseStudyDetailPage").then((m) => ({ default: m.CaseStudyDetailPage }))
 );
 const FounderPage = lazy(() =>
   import("@/pages/FounderPage").then((m) => ({ default: m.FounderPage }))
-);
-const ServicesPage = lazy(() =>
-  import("@/pages/ServicesPage").then((m) => ({ default: m.ServicesPage }))
-);
-const IndustriesPage = lazy(() =>
-  import("@/pages/IndustriesPage").then((m) => ({ default: m.IndustriesPage }))
-);
-const CaseStudiesPage = lazy(() =>
-  import("@/pages/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage }))
-);
-const CaseStudyDetailPage = lazy(() =>
-  import("@/pages/CaseStudyDetailPage").then((m) => ({ default: m.CaseStudyDetailPage }))
 );
 const KnowledgeCenterPage = lazy(() =>
   import("@/pages/knowledge/KnowledgeCenterHome").then((m) => ({ default: m.KnowledgeCenterHome }))
@@ -66,12 +61,6 @@ const CookiePolicyPage = lazy(() =>
 const DisclaimerPage = lazy(() =>
   import("@/pages/DisclaimerPage").then((m) => ({ default: m.DisclaimerPage }))
 );
-const SolutionDetailPage = lazy(() =>
-  import("@/pages/SolutionDetailPage").then((m) => ({ default: m.SolutionDetailPage }))
-);
-const IndustryDetailPage = lazy(() =>
-  import("@/pages/IndustryDetailPage").then((m) => ({ default: m.IndustryDetailPage }))
-);
 const NotFound = lazy(() =>
   import("@/pages/NotFound").then((m) => ({ default: m.NotFound }))
 );
@@ -88,6 +77,10 @@ const AdminEnquiryPage = lazy(() =>
 );
 
 function PublicLayout() {
+  const location = useLocation();
+  const hydrateTarget = isHydrationTargetPath(location.pathname);
+  const outlet = <Outlet />;
+
   return (
     <>
       <ScrollToTop />
@@ -95,10 +88,15 @@ function PublicLayout() {
       <Navbar />
       <main id="main-content">
         {/* The fallback reserves a viewport so the footer never paints inside
-            the first screen and then jumps down when a lazy route resolves. */}
-        <Suspense fallback={<div className="min-h-[100svh]" aria-hidden="true" />}>
-          <Outlet />
-        </Suspense>
+            the first screen and then jumps down when a lazy route resolves.
+            Hydration targets are eager and must not introduce a boundary. */}
+        {hydrateTarget ? (
+          outlet
+        ) : (
+          <Suspense fallback={<div className="min-h-[100svh]" aria-hidden="true" />}>
+            {outlet}
+          </Suspense>
+        )}
       </main>
       <Footer />
     </>
@@ -129,11 +127,19 @@ function LegacyCategoryRedirect() {
   return <Navigate to={`/insights/category/${slug}`} replace />;
 }
 
+function AppRoutes({ children }: { children: ReactNode }) {
+  const location = useLocation();
+  if (isHydrationTargetPath(location.pathname)) return <>{children}</>;
+
+  return <Suspense fallback={<div className="h-96" aria-hidden="true" />}>{children}</Suspense>;
+}
+
 function App() {
   const [ready, setReady] = useState(false);
   const [, startTransition] = useTransition();
 
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).has("prerender")) return;
     let cancelled = false;
     const cb = () => {
       if (!cancelled) startTransition(() => setReady(true));
@@ -173,7 +179,7 @@ function App() {
       <ErrorBoundary>
         <ThemeProvider>
 
-          <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+          <AppRoutes>
             <Routes>
               <Route element={<PublicLayout />}>
                 <Route path="/" element={<HomePage />} />
@@ -228,7 +234,7 @@ function App() {
                 <Route path="enquiries/:id" element={<AdminEnquiryPage />} />
               </Route>
             </Routes>
-          </Suspense>
+          </AppRoutes>
           {ready && (
             <Suspense fallback={null}>
               <CookieConsent />

@@ -31,7 +31,7 @@ export function IndustriesSection() {
   return (
     <section
       id="industries"
-      className="bg-white py-16 sm:py-20 lg:py-24"
+      className="bg-white py-12 sm:py-16 lg:py-20"
       aria-label="Industries served"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
