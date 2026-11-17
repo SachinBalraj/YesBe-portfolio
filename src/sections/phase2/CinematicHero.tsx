@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowRight, Asterisk } from "lucide-react";
-import { CAPABILITY_INDEX } from "@/data/phase2";
-import { HERO_FALLBACK, HERO_FILM_PLAN } from "@/data/media";
+import { HERO_FILM_PLAN } from "@/data/media";
 import { FilmPlayer } from "@/components/phase2/FilmPlayer";
 import { trackConsultationClick } from "@/utils/analytics";
 
@@ -27,18 +26,19 @@ export function CinematicHero() {
       showScrim={false}
     />
   ) : (
-    <img
-      src={HERO_FALLBACK.poster}
-      srcSet={HERO_FALLBACK.srcSet}
-      sizes="100vw"
-      alt=""
-      width={1600}
-      height={1000}
-      loading="eager"
-      fetchPriority="high"
-      decoding="sync"
-      className="absolute inset-0 size-full object-cover object-[68%_50%]"
-    />
+    <picture className="absolute inset-0">
+      <source srcSet="/background.webp" type="image/webp" />
+      <img
+        src="/background.png"
+        alt=""
+        width={1744}
+        height={902}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 size-full object-cover object-[66%_50%] max-md:object-[18%_50%]"
+      />
+    </picture>
   );
 
   return (
@@ -49,16 +49,14 @@ export function CinematicHero() {
     >
       <div className="absolute inset-0">
         {heroMedia}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(3,10,24,0.08),rgba(3,10,24,0.3))]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,19,46,0.98)_0%,rgba(5,19,46,0.93)_40%,rgba(5,19,46,0.52)_74%,rgba(5,19,46,0.72)_100%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,46,0.38)_0%,rgba(5,19,46,0.06)_34%,rgba(5,19,46,0.78)_100%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-grid-dark opacity-35" />
-        <div className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-white/10 lg:block" />
-        <div className="pointer-events-none absolute right-[8%] top-0 hidden h-28 w-px bg-[#8eb5ff]/60 lg:block" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,19,46,0.24)_0%,rgba(5,19,46,0.1)_38%,transparent_70%)]"
+        />
       </div>
 
       <div className="container-page relative flex min-h-[40rem] flex-col justify-between py-8 sm:min-h-[42rem] sm:py-10 lg:min-h-[44rem] lg:py-12">
-        <div className="grid flex-1 items-center gap-10 py-2 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:py-6">
+        <div className="grid flex-1 items-center gap-10 py-2 lg:grid-cols-1 lg:py-6">
           <div className="max-w-[46rem]">
             <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#a9c1ed]">
               <Asterisk className="size-3.5 text-[#8eb5ff]" aria-hidden="true" />
@@ -68,13 +66,15 @@ export function CinematicHero() {
             </div>
 
             <h1 className="mt-6 max-w-[44rem] text-[clamp(2.65rem,6.4vw,5.4rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-white">
-              {"Technology That Moves Business "}
-              <span className="text-[#8eb5ff]">Forward.</span>
+              {"Empowering Businesses with "}
+              <span className="bg-gradient-to-r from-[#8eb5ff] to-[#35c9ff] bg-clip-text text-transparent">
+                Technology.
+              </span>
             </h1>
 
             <p className="mt-6 max-w-[38rem] text-[15px] leading-7 text-white/70 sm:text-[17px] sm:leading-8">
-              IT consulting, custom software, AI, ERP, and automation designed around real business
-              needs.
+              We build smart, scalable, and secure digital solutions that help businesses grow,
+              automate operations, and move forward with confidence.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -114,41 +114,6 @@ export function CinematicHero() {
             </ul>
           </div>
 
-          <div className="hidden lg:block lg:justify-self-end">
-            <div className="w-full max-w-[20rem] border border-white/14 bg-[#05132e]/55 p-1 backdrop-blur-md">
-              <div className="border border-white/10">
-                <p className="border-b border-white/10 px-5 py-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">
-                  How we create value
-                </p>
-                <ol className="divide-y divide-white/10">
-                  {CAPABILITY_INDEX.map((item, index) => {
-                    const Icon = item.icon;
-                    return (
-                      <li
-                        key={item.label}
-                        className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-white/[0.035]"
-                      >
-                        <span className="font-mono text-[10px] tracking-[0.1em] text-white/32">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="flex size-8 items-center justify-center border border-white/12 text-[#8eb5ff] transition-colors group-hover:border-[#8eb5ff]/40">
-                          <Icon className="size-3.5" strokeWidth={1.7} aria-hidden="true" />
-                        </span>
-                        <span className="min-w-0">
-                          <span className="block text-[13px] font-semibold text-white">
-                            {item.label}
-                          </span>
-                          <span className="mt-0.5 block text-[11px] text-white/45">
-                            {item.detail}
-                          </span>
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="flex items-end justify-between gap-6 border-t border-white/10 pt-5">
