@@ -104,6 +104,8 @@ async function parse<T>(response: Response): Promise<T> {
 export interface SubmitResult {
   ok: true;
   message: string;
+  /** False for honeypot/duplicate responses, where nothing was persisted. */
+  stored?: boolean;
 }
 
 export function submitEnquiry(

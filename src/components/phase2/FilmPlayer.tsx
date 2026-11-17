@@ -11,6 +11,7 @@ interface FilmPlayerProps {
   className?: string;
   videoClassName?: string;
   showFrame?: boolean;
+  showScrim?: boolean;
   controlClassName?: string;
 }
 
@@ -23,6 +24,7 @@ export function FilmPlayer({
   className,
   videoClassName,
   showFrame = false,
+  showScrim = true,
   controlClassName,
 }: FilmPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -42,8 +44,8 @@ export function FilmPlayer({
     if (new URLSearchParams(window.location.search).has("prerender")) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const desktop = window.matchMedia("(min-width: 1024px)");
-    if (reducedMotion.matches || !desktop.matches) return;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (reducedMotion.matches || connection?.saveData) return;
 
     let cancelled = false;
     const start = () => {
@@ -51,6 +53,10 @@ export function FilmPlayer({
       video.muted = true;
       video.play().catch(() => setIsPlaying(false));
     };
+    const stopForReducedMotion = () => {
+      if (reducedMotion.matches) video.pause();
+    };
+    reducedMotion.addEventListener("change", stopForReducedMotion);
     if (video.readyState >= 2) start();
     else {
       video.preload = "metadata";
@@ -60,6 +66,7 @@ export function FilmPlayer({
 
     return () => {
       cancelled = true;
+      reducedMotion.removeEventListener("change", stopForReducedMotion);
       video.removeEventListener("canplay", start);
       video.pause();
     };
@@ -93,6 +100,7 @@ export function FilmPlayer({
         suppressHydrationWarning
         loop
         playsInline
+        poster={poster}
         preload="none"
         disablePictureInPicture
         aria-label={`${label}. Muted looping visual.`}
@@ -108,7 +116,9 @@ export function FilmPlayer({
         <source src={webm} type="video/webm" />
       </video>
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(3,10,24,0.08),rgba(3,10,24,0.3))]" />
+      {showScrim && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(3,10,24,0.08),rgba(3,10,24,0.3))]" />
+      )}
 
       {!isPlaying && !autoPlay && (
         <button

@@ -11,7 +11,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import test, { after, before } from "node:test";
-import { chromium, type Browser, type Page } from "playwright";
+import { chromium, type Browser, type BrowserContext, type Page } from "playwright";
 import { DIST, ROOT, startStaticServer, type TestServer } from "./static-server.ts";
 
 const GTM_URL = /googletagmanager\.com\/gtm\.js/;
@@ -144,5 +144,118 @@ test("a stored grant loads GTM once on the next visit", async () => {
     0,
     "the banner must not reappear after a stored choice",
   );
+  await context.close();
+});
+
+
+async function seedConsent(context: BrowserContext, analytics: boolean, marketing: boolean) {
+  await context.addInitScript(
+    (prefs) => {
+      localStorage.setItem("yesbe-cookie-consent", "all");
+      localStorage.setItem("yesbe-cookie-preferences", JSON.stringify(prefs));
+    },
+    { essential: true, analytics, marketing },
+  );
+}
+
+function dataLayer(page: Page): Promise<unknown[]> {
+  return page.evaluate(
+    () => (window as unknown as { dataLayer?: unknown[] }).dataLayer ?? [],
+  );
+}
+
+function consentUpdates(entries: unknown[]): Array<Record<string, string>> {
+  return entries
+    .filter((entry): entry is unknown[] => Array.isArray(entry) && entry[0] === "consent" && entry[1] === "update")
+    .map((entry) => entry[2] as Record<string, string>);
+}
+
+function analyticsEvents(entries: unknown[]): Array<Record<string, unknown>> {
+  return entries.filter(
+    (entry): entry is Record<string, unknown> =>
+      Boolean(entry) && typeof entry === "object" && !Array.isArray(entry),
+  );
+}
+
+test("analytics consent emits page views and repeated CTA clicks", async () => {
+  const context = await browser.newContext();
+  await seedConsent(context, true, true);
+  const page = await context.newPage();
+
+  await page.goto(`${server.origin}/`, { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => window.__yesbeGtmLoaded === true, undefined, { timeout: 15_000 });
+  await settle(page);
+
+  await page.evaluate(() => {
+    const link = document.querySelector<HTMLAnchorElement>('a[href="/contact"]');
+    for (let i = 0; i < 2; i++) {
+      link?.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+    }
+  });
+
+  const entries = await dataLayer(page);
+  const events = analyticsEvents(entries);
+  assert.equal(
+    events.filter((event) => event.event === "page_view").length,
+    1,
+    "exactly one page view should be emitted for the route",
+  );
+  assert.ok(
+    events.filter((event) => event.event === "consultation_click").length >= 2,
+    "repeat CTA clicks must not be suppressed",
+  );
+  const updates = consentUpdates(entries);
+  assert.ok(updates.length > 0, "consent mode must be updated before GTM starts");
+  assert.equal(updates.at(-1)?.analytics_storage, "granted");
+  assert.equal(updates.at(-1)?.ad_storage, "granted");
+
+  await context.close();
+});
+
+test("marketing-only consent loads GTM but does not emit analytics events", async () => {
+  const context = await browser.newContext();
+  await seedConsent(context, false, true);
+  const page = await context.newPage();
+
+  await page.goto(`${server.origin}/`, { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => window.__yesbeGtmLoaded === true, undefined, { timeout: 15_000 });
+  await settle(page);
+
+  await page.evaluate(() => {
+    const link = document.querySelector<HTMLAnchorElement>('a[href="/contact"]');
+    link?.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+  });
+
+  const entries = await dataLayer(page);
+  const events = analyticsEvents(entries);
+  const tracked = events.filter((event) =>
+    ["page_view", "generate_lead", "consultation_click", "contact_click", "phone_click", "whatsapp_click"].includes(
+      String(event.event),
+    ),
+  );
+  assert.deepEqual(tracked, [], "analytics events require analytics consent");
+  const updates = consentUpdates(entries);
+  assert.equal(updates.at(-1)?.analytics_storage, "denied");
+  assert.equal(updates.at(-1)?.ad_storage, "granted");
+
+  await context.close();
+});
+
+test("cookie settings can be reopened from the cookie policy", async () => {
+  const context = await browser.newContext();
+  await seedConsent(context, true, true);
+  const page = await context.newPage();
+
+  await page.goto(`${server.origin}/cookie-policy`, { waitUntil: "networkidle" });
+  assert.equal(await page.getByRole("region", { name: "Cookie consent" }).count(), 0);
+
+  await page.getByRole("button", { name: /cookie settings panel/i }).click();
+  const banner = page.getByRole("region", { name: "Cookie consent" });
+  await banner.waitFor({ state: "visible" });
+  assert.ok(
+    await banner.getByRole("switch", { name: "Toggle analytics cookies" }).isVisible(),
+    "the saved preferences must be reopened for editing",
+  );
+
   await context.close();
 });

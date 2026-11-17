@@ -105,6 +105,38 @@ test("enquiry form posts to the API and never opens WhatsApp", async () => {
   assert.deepEqual(popups, [], "no window.open / popup may occur");
 });
 
+test("server field errors route the wizard to the offending step", async () => {
+  await page.route("**/api/enquiries", (route) =>
+    route.fulfill({
+      status: 400,
+      contentType: "application/json",
+      body: JSON.stringify({
+        ok: false,
+        error: "Please check the highlighted fields.",
+        fields: [{ field: "email", message: "Please enter a valid email" }],
+      }),
+    }),
+  );
+
+  try {
+    await page.goto(`${BASE}/contact`, { waitUntil: "networkidle" });
+    await fillEnquiry(page, "route");
+    await page.waitForFunction(() => document.activeElement?.id === "c-email", undefined, {
+      timeout: 10000,
+    });
+    assert.ok(
+      await wizard(page).getByText("Please enter a valid email").first().isVisible(),
+      "the server field error must be shown next to the field",
+    );
+    assert.ok(
+      await wizard(page).getByText(/please check the highlighted fields/i).first().isVisible(),
+      "the server summary error must be shown",
+    );
+  } finally {
+    await page.unroute("**/api/enquiries");
+  }
+});
+
 test("stored enquiry is visible in the admin dashboard", async () => {
   await page.goto(`${BASE}/admin`, { waitUntil: "networkidle" });
 
@@ -216,16 +248,16 @@ test("location row, business hours, and public newsletter signups are absent", a
 
 test("company intro shows the business consultation photograph", async () => {
   await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
-  const section = page.locator("#about-yesbe");
+  const section = page.locator('section[aria-label="The YESBE partnership"]');
   assert.equal(await section.locator("dt").count(), 0, "fact panel must be removed");
 
-  const alt = "Business owner collaborating with an IT consultant on digital solutions";
+  const alt = "Two professionals reviewing project requirements on a laptop";
   const image = section.getByAltText(alt, { exact: true });
   await section.scrollIntoViewIfNeeded();
   await image.waitFor();
   await page.waitForFunction((expectedAlt) => {
     const img = document.querySelector<HTMLImageElement>(
-      `#about-yesbe img[alt="${expectedAlt}"]`,
+      `section[aria-label="The YESBE partnership"] img[alt="${expectedAlt}"]`,
     );
     return Boolean(img?.complete && img.naturalWidth > 0);
   }, alt);

@@ -1,0 +1,65 @@
+[
+  {
+    "file": "about.json",
+    "performance": 96,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "1.9 s",
+    "cls": "0"
+  },
+  {
+    "file": "case-studies.json",
+    "performance": 96,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "1.9 s",
+    "cls": "0"
+  },
+  {
+    "file": "contact.json",
+    "performance": 92,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "1.8 s",
+    "cls": "0"
+  },
+  {
+    "file": "custom-software.json",
+    "performance": 92,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "2.9 s",
+    "cls": "0"
+  },
+  {
+    "file": "home.json",
+    "performance": 95,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "2.0 s",
+    "cls": "0"
+  },
+  {
+    "file": "industry-healthcare.json",
+    "performance": 97,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "2.0 s",
+    "cls": "0"
+  },
+  {
+    "file": "services.json",
+    "performance": 96,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcp": "1.9 s",
+    "cls": "0"
+  }
+]

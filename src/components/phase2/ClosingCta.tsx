@@ -20,6 +20,11 @@ const steps = [
   ["03", "Choose the next move", "Leave with a clear recommendation for scope, sequence and the people involved."],
 ] as const;
 
+function ctaLocation(): string {
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, "").replace(/\//g, "_");
+  return path ? `phase2_cta_${path}` : "phase2_cta_home";
+}
+
 export function ClosingCta({
   eyebrow = "Start a conversation",
   title = "Bring us the problem. We will map the path.",
@@ -27,7 +32,7 @@ export function ClosingCta({
   className,
 }: ClosingCtaProps) {
   return (
-    <section className={cn("bg-paper py-12 sm:py-16 lg:py-20", className)} aria-label="Consultation">
+    <section className={cn("bg-paper py-10 sm:py-12 lg:py-14", className)} aria-label="Consultation">
       <div className="container-page">
         <Reveal className="relative overflow-hidden bg-[#05132e] text-white shadow-dark-panel">
           <div
@@ -43,7 +48,7 @@ export function ClosingCta({
             className="pointer-events-none absolute -bottom-48 left-1/3 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(31,78,216,0.2),transparent_68%)]"
           />
 
-          <div className="relative grid gap-12 p-6 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:p-14 xl:p-16">
+          <div className="relative grid gap-10 p-6 sm:p-9 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:p-12 xl:p-14">
             <div>
               <Eyebrow tone="dark">{eyebrow}</Eyebrow>
               <h2 className="mt-5 max-w-2xl text-[2.1rem] font-semibold leading-[1.04] tracking-[-0.04em] text-white sm:text-[2.8rem] lg:text-[3.4rem]">
@@ -56,7 +61,7 @@ export function ClosingCta({
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink
                   to="/contact"
-                  onClick={() => trackConsultationClick("phase2_cta")}
+                  onClick={() => trackConsultationClick(ctaLocation())}
                   variant="inverted"
                   withArrow
                   className="w-full sm:w-auto"
@@ -65,7 +70,7 @@ export function ClosingCta({
                 </ButtonLink>
                 <ButtonLink
                   href={`mailto:${SITE_CONFIG.email}`}
-                  onClick={() => trackContactClick("phase2_cta")}
+                  onClick={() => trackContactClick(ctaLocation())}
                   variant="on-dark"
                   icon={<Mail className="size-4" aria-hidden="true" />}
                   iconPosition="start"
@@ -78,7 +83,7 @@ export function ClosingCta({
               <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-white/10 pt-6 text-[13px] text-white/55">
                 <a
                   href={SITE_CONFIG.phoneHref}
-                  onClick={() => trackPhoneClick("phase2_cta")}
+                  onClick={() => trackPhoneClick(ctaLocation())}
                   className="inline-flex items-center gap-2 transition-colors hover:text-white"
                 >
                   <Phone className="size-3.5" aria-hidden="true" />
@@ -86,7 +91,7 @@ export function ClosingCta({
                 </a>
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
-                  onClick={() => trackContactClick("phase2_cta_email")}
+                  onClick={() => trackContactClick(`${ctaLocation()}_email`)}
                   className="inline-flex items-center gap-2 transition-colors hover:text-white"
                 >
                   <Mail className="size-3.5" aria-hidden="true" />

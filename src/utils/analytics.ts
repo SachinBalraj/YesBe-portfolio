@@ -1,4 +1,10 @@
-import { hasAnalyticsConsent, PREFS_KEY, STORAGE_KEY } from "@/components/common/consentStore";
+import {
+  getStoredPreferences,
+  hasAnalyticsConsent,
+  hasMarketingConsent,
+  PREFS_KEY,
+  STORAGE_KEY,
+} from "@/components/common/consentStore";
 
 declare global {
   interface Window {
@@ -16,7 +22,6 @@ declare global {
  */
 const GTM_ID = "GTM-PZ9KWVFH";
 
-const fired = new Set<string>();
 let listening = false;
 
 function dataLayer(): unknown[] {
@@ -24,15 +29,16 @@ function dataLayer(): unknown[] {
   return window.dataLayer;
 }
 
-function updateConsent(granted: boolean): void {
+function updateConsent(): void {
+  const prefs = getStoredPreferences();
   dataLayer().push([
     "consent",
     "update",
     {
-      analytics_storage: granted ? "granted" : "denied",
-      ad_storage: granted ? "granted" : "denied",
-      ad_user_data: granted ? "granted" : "denied",
-      ad_personalization: granted ? "granted" : "denied",
+      analytics_storage: prefs.analytics ? "granted" : "denied",
+      ad_storage: prefs.marketing ? "granted" : "denied",
+      ad_user_data: prefs.marketing ? "granted" : "denied",
+      ad_personalization: prefs.marketing ? "granted" : "denied",
     },
   ]);
 }
@@ -43,14 +49,14 @@ function updateConsent(granted: boolean): void {
  * under React StrictMode, rapid consent toggles, or multiple tabs.
  */
 function loadGtm(): void {
-  if (!hasAnalyticsConsent() || window.__yesbeGtmLoaded) return;
+  if ((!hasAnalyticsConsent() && !hasMarketingConsent()) || window.__yesbeGtmLoaded) return;
   window.__yesbeGtmLoaded = true;
 
   const layer = dataLayer();
   window.gtag = (...args: unknown[]) => {
     layer.push(args);
   };
-  updateConsent(true);
+  updateConsent();
   layer.push({ "gtm.start": Date.now(), event: "gtm.js" });
 
   const script = document.createElement("script");
@@ -60,10 +66,10 @@ function loadGtm(): void {
 }
 
 function syncConsent(): void {
-  if (hasAnalyticsConsent()) {
+  if (hasAnalyticsConsent() || hasMarketingConsent()) {
     loadGtm();
   } else if (window.__yesbeGtmLoaded) {
-    updateConsent(false);
+    updateConsent();
   }
 }
 
@@ -86,14 +92,19 @@ export function initAnalytics(): void {
 function push(event: string, params?: Record<string, string>): void {
   try {
     if (!hasAnalyticsConsent()) return;
-    if (fired.has(event)) return;
-    fired.add(event);
     dataLayer().push({ event, ...params });
   } catch { /* tracking failures must never crash the app */ }
 }
 
-export function trackGenerateLead(location = "contact_form") {
-  push("generate_lead", { location });
+export function trackPageView(pagePath: string, pageTitle?: string) {
+  push("page_view", { page_path: pagePath, page_title: pageTitle ?? document.title });
+}
+
+export function trackGenerateLead(
+  location = "contact_form",
+  params?: Record<string, string>,
+) {
+  push("generate_lead", { location, ...params });
 }
 
 export function trackContactClick(location = "link") {

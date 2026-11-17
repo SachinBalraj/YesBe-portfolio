@@ -137,9 +137,19 @@ sends `X-Robots-Tag: noindex, nofollow`.
 - **Honeypot.** Both forms carry a hidden field; a bot that fills it gets a
   success response so it learns nothing, but nothing is stored.
 - **No fake success.** The UI only reports success after the API confirms the
-  write; database errors surface as real error messages.
+  write; database errors surface as real error messages. Duplicate and
+  honeypot responses include `stored: false`, so analytics records a lead only
+  when an enquiry was actually persisted.
 - **`/admin` is noindex** via meta robots and the `X-Robots-Tag` header, and is
   `Disallow`ed in `robots.txt`.
+
+### Known limitation: stateless sessions
+
+Sessions are signed HMAC cookies, not server-side records. Signing out clears
+the cookie in that browser, and changing `ADMIN_PASSWORD_HASH` does not
+invalidate cookies issued before the change. To revoke all active sessions
+immediately, rotate `SESSION_SECRET` and redeploy. Cookies still expire after
+8 hours.
 
 ### Known limitation: rate limiting
 
@@ -176,8 +186,8 @@ Then open http://localhost:3111 and http://localhost:3111/admin.
 ## Tests
 
 ```bash
-npm run test:api      # 37 tests: validation, auth, MongoDB writes, authorisation
-npm run test:browser  # 9 tests: real Chromium against the built app
+npm run test:api      # 51 tests: validation, auth, MongoDB writes, authorisation
+npm run test:browser  # 13 tests: real Chromium against the built app
 ```
 
 `test:api` boots a real MongoDB via `mongodb-memory-server` and drives the

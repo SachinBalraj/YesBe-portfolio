@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowRight, Asterisk } from "lucide-react";
 import { CAPABILITY_INDEX } from "@/data/phase2";
-import { HERO_FILM } from "@/data/media";
+import { HERO_FALLBACK, HERO_FILM_PLAN } from "@/data/media";
 import { FilmPlayer } from "@/components/phase2/FilmPlayer";
 import { trackConsultationClick } from "@/utils/analytics";
 
@@ -14,6 +14,33 @@ const capabilities = [
 ];
 
 export function CinematicHero() {
+  const heroMedia = HERO_FILM_PLAN.approved ? (
+    <FilmPlayer
+      webm={HERO_FILM_PLAN.webm}
+      mp4={HERO_FILM_PLAN.mp4}
+      poster={HERO_FILM_PLAN.poster}
+      label={HERO_FILM_PLAN.label}
+      autoPlay
+      className="h-full w-full"
+      videoClassName="object-cover object-[68%_50%]"
+      controlClassName="bottom-20 right-5 sm:right-8"
+      showScrim={false}
+    />
+  ) : (
+    <img
+      src={HERO_FALLBACK.poster}
+      srcSet={HERO_FALLBACK.srcSet}
+      sizes="100vw"
+      alt=""
+      width={1600}
+      height={1000}
+      loading="eager"
+      fetchPriority="high"
+      decoding="sync"
+      className="absolute inset-0 size-full object-cover object-[68%_50%]"
+    />
+  );
+
   return (
     <section
       id="hero"
@@ -21,13 +48,8 @@ export function CinematicHero() {
       className="relative isolate overflow-hidden bg-[#05132e] pt-[76px] text-white"
     >
       <div className="absolute inset-0">
-        <FilmPlayer
-          {...HERO_FILM}
-          autoPlay
-          className="h-full w-full"
-          videoClassName="object-cover object-[68%_50%]"
-          controlClassName="bottom-20 right-5 sm:right-8"
-        />
+        {heroMedia}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(3,10,24,0.08),rgba(3,10,24,0.3))]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,19,46,0.98)_0%,rgba(5,19,46,0.93)_40%,rgba(5,19,46,0.52)_74%,rgba(5,19,46,0.72)_100%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,46,0.38)_0%,rgba(5,19,46,0.06)_34%,rgba(5,19,46,0.78)_100%)]" />
         <div className="pointer-events-none absolute inset-0 bg-grid-dark opacity-35" />

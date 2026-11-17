@@ -12,6 +12,15 @@ export function slugify(value: string) {
     .replace(/^-+|-+$/g, "");
 }
 
+function escapeAttribute(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 const renderer = new marked.Renderer();
 
 renderer.heading = function ({ tokens, depth }) {
@@ -22,16 +31,16 @@ renderer.heading = function ({ tokens, depth }) {
   // deeper level shifts with it. Keeps one logical primary heading per page
   // while preserving the author's intended nesting below the title.
   const level = Math.min(Math.max(depth, 1) + 1, 6);
-  return `<h${level} id="${id}">${text}</h${level}>`;
+  return `<h${level} id="${escapeAttribute(id)}">${text}</h${level}>`;
 };
 
 renderer.link = function ({ href, title, tokens }) {
   const text = this.parser.parseInline(tokens);
   const isExternal = /^https?:\/\//.test(href);
   if (isExternal) {
-    return `<a href="${href}" title="${title ?? ""}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    return `<a href="${escapeAttribute(href)}" title="${escapeAttribute(title ?? "")}" target="_blank" rel="noopener noreferrer">${text}</a>`;
   }
-  return `<a href="${href}" title="${title ?? ""}">${text}</a>`;
+  return `<a href="${escapeAttribute(href)}" title="${escapeAttribute(title ?? "")}">${text}</a>`;
 };
 
 marked.use({ renderer, gfm: true, breaks: true });

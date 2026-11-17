@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-11-17T14:29:08.921Z",
+  "origin": "http://127.0.0.1:62108",
+  "screenshots": [
+    "docs/phase5/screenshots/home-desktop.png",
+    "docs/phase5/screenshots/about-desktop.png",
+    "docs/phase5/screenshots/services-desktop.png",
+    "docs/phase5/screenshots/case-studies-desktop.png",
+    "docs/phase5/screenshots/case-study-detail-desktop.png",
+    "docs/phase5/screenshots/industries-desktop.png",
+    "docs/phase5/screenshots/industry-detail-desktop.png",
+    "docs/phase5/screenshots/custom-software-desktop.png",
+    "docs/phase5/screenshots/erp-desktop.png",
+    "docs/phase5/screenshots/ai-desktop.png",
+    "docs/phase5/screenshots/contact-desktop.png",
+    "docs/phase5/screenshots/founder-desktop.png",
+    "docs/phase5/screenshots/home-mobile.png",
+    "docs/phase5/screenshots/about-mobile.png",
+    "docs/phase5/screenshots/services-mobile.png",
+    "docs/phase5/screenshots/case-studies-mobile.png",
+    "docs/phase5/screenshots/case-study-detail-mobile.png",
+    "docs/phase5/screenshots/industries-mobile.png",
+    "docs/phase5/screenshots/industry-detail-mobile.png",
+    "docs/phase5/screenshots/custom-software-mobile.png",
+    "docs/phase5/screenshots/erp-mobile.png",
+    "docs/phase5/screenshots/ai-mobile.png",
+    "docs/phase5/screenshots/contact-mobile.png",
+    "docs/phase5/screenshots/founder-mobile.png"
+  ],
+  "checks": [
+    {
+      "name": "about_founder_content_removed",
+      "status": "PASS",
+      "detail": "0 founder/portrait images on /about"
+    },
+    {
+      "name": "about_capability_card_count",
+      "status": "PASS",
+      "detail": "6 interactive capability cards"
+    },
+    {
+      "name": "responsive_visual_variants",
+      "status": "PASS",
+      "detail": "6 images with local responsive variants"
+    },
+    {
+      "name": "single_project_filter_group",
+      "status": "PASS",
+      "detail": "1 \"All projects\" filter buttons"
+    },
+    {
+      "name": "founder_route_seo_preserved",
+      "status": "PASS",
+      "detail": "https://www.yesbe.tech/sachin-balraj"
+    },
+    {
+      "name": "no_horizontal_overflow_desktop",
+      "status": "PASS",
+      "detail": "all 12 routes within viewport width"
+    },
+    {
+      "name": "no_unapproved_hero_media_refs",
+      "status": "PASS",
+      "detail": "no planned or procedural hero video references in production markup"
+    },
+    {
+      "name": "no_horizontal_overflow_mobile",
+      "status": "PASS",
+      "detail": "all 12 routes within viewport width"
+    },
+    {
+      "name": "hero_static_fallback_visible",
+      "status": "PASS",
+      "detail": "eager, high-priority static hero image with fixed dimensions"
+    },
+    {
+      "name": "hero_has_no_video_element",
+      "status": "PASS",
+      "detail": "no video or source elements in production hero markup"
+    },
+    {
+      "name": "hero_fallback_responsive",
+      "status": "PASS",
+      "detail": "static fallback uses 640/960/1600 responsive variants"
+    },
+    {
+      "name": "mobile_static_fallback_visible",
+      "status": "PASS",
+      "detail": "static hero image visible with no video on mobile reduced motion"
+    }
+  ]
+}

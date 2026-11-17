@@ -17,6 +17,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 import { FOUNDER_SAME_AS, SITE_CONFIG, TECH_STACK } from "@/constants";
+import { trackConsultationClick } from "@/utils/analytics";
 
 const card = "rounded-none border border-border bg-white p-6";
 
@@ -338,6 +339,7 @@ export function FounderWorkSection() {
             </p>
             <Link
               to="/contact"
+              onClick={() => trackConsultationClick("founder_work")}
               className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
             >
               Book a consultation

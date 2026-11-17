@@ -1,6 +1,7 @@
 import { cn } from "@/utils/cn";
 import { SERVICE_VISUALS } from "@/data/media";
 import type { ServiceVisualVariant } from "@/data/phase2";
+import { localSrcSet } from "@/utils/images";
 
 interface ServiceVisualProps {
   variant: ServiceVisualVariant;
@@ -17,6 +18,7 @@ export function ServiceVisual({
 }: ServiceVisualProps) {
   const visual = SERVICE_VISUALS[variant];
   const dark = tone === "dark";
+  const srcSet = localSrcSet(visual.src, [640, 960, 1600]);
 
   return (
     <div
@@ -29,6 +31,12 @@ export function ServiceVisual({
     >
       <img
         src={visual.src}
+        srcSet={srcSet}
+        sizes={
+          compact
+            ? "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            : "(min-width: 1024px) 50vw, 100vw"
+        }
         alt=""
         loading="lazy"
         decoding="async"

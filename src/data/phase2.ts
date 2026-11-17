@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { ServiceVisualKey } from "./media";
 import {
   BarChart3,
   Boxes,
@@ -30,14 +31,7 @@ import {
   Workflow,
 } from "lucide-react";
 
-export type ServiceVisualVariant =
-  | "intelligence"
-  | "enterprise"
-  | "web"
-  | "cloud"
-  | "transformation"
-  | "product"
-  | "company";
+export type ServiceVisualVariant = ServiceVisualKey;
 
 export interface CoreService {
   title: string;
@@ -108,16 +102,17 @@ export const CORE_SERVICES: CoreService[] = [
 export const SERVICE_PILLAR_BY_SLUG: Record<string, ServiceVisualVariant> = {
   "ai-solutions": "intelligence",
   "ai-chatbots": "intelligence",
-  "business-automation": "intelligence",
+  "business-automation": "automation",
   "erp-systems": "enterprise",
   "website-development": "web",
   "web-applications": "web",
   ecommerce: "web",
   "cloud-devops": "cloud",
   "database-management": "cloud",
-  "data-analytics": "cloud",
-  "power-bi-dashboards": "cloud",
-  "api-development": "cloud",
+  "data-analytics": "analytics",
+  "power-bi-dashboards": "analytics",
+  "api-development": "integration",
+  "system-integration": "integration",
   "it-consulting": "transformation",
   "digital-transformation": "transformation",
   "custom-software": "product",

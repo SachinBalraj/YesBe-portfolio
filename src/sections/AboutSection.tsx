@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import logoImg from "@/assets/images/YBlogo.webp";
 import founderImage from "@/assets/images/founder-portrait.jpeg";
+import { trackConsultationClick } from "@/utils/analytics";
 
 const focusAreas = [
   { value: "Consulting", label: "IT strategy, requirements and solution architecture" },
@@ -148,6 +149,7 @@ export function AboutSection() {
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/contact"
+                onClick={() => trackConsultationClick("about_section")}
                 className="btn-primary inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold"
               >
                 Discuss Your Project

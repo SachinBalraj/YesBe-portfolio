@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import founderImage from "@/assets/images/founder-portrait.jpeg";
 import { SITE_CONFIG } from "@/constants";
+import { trackConsultationClick } from "@/utils/analytics";
 
 function FounderPortrait() {
   return (
@@ -94,6 +95,7 @@ export function FounderHeroSection() {
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/contact"
+                onClick={() => trackConsultationClick("founder_hero")}
                 className="inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#2563eb]/90 hover:shadow-md"
               >
                 Discuss Your Project

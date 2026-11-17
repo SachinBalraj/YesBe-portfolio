@@ -5,7 +5,10 @@ export type ServiceVisualKey =
   | "cloud"
   | "transformation"
   | "product"
-  | "company";
+  | "company"
+  | "automation"
+  | "analytics"
+  | "integration";
 
 export const SERVICE_VISUALS: Record<
   ServiceVisualKey,
@@ -45,6 +48,21 @@ export const SERVICE_VISUALS: Record<
     src: "/images/visuals/company.webp",
     alt: "Connected YESBE systems arranged as a unified operating structure",
     accent: "#8fb6ff",
+  },
+  automation: {
+    src: "/images/visuals/automation.webp",
+    alt: "Glass workflow stations linked by illuminated automation paths",
+    accent: "#8ec5ff",
+  },
+  analytics: {
+    src: "/images/visuals/analytics.webp",
+    alt: "Glass analytics bars and a trend line rendered as connected modules",
+    accent: "#8fb6ff",
+  },
+  integration: {
+    src: "/images/visuals/integration.webp",
+    alt: "Separate glass system islands connected through a single illuminated integration hub",
+    accent: "#9fc0ff",
   },
 };
 
@@ -87,11 +105,25 @@ export const PROJECT_PREVIEWS: Record<string, string> = {
   "business-automation": "/images/projects/business-automation.webp",
 };
 
-export const HERO_FILM = {
-  webm: "/videos/yesbe-hero-film.webm",
-  mp4: "/videos/yesbe-hero-film.mp4",
+export const HERO_FALLBACK = {
   poster: "/images/visuals/hero-film-poster.webp",
+  srcSet:
+    "/images/visuals/hero-film-poster-640.webp 640w, /images/visuals/hero-film-poster-960.webp 960w, /images/visuals/hero-film-poster.webp 1600w",
+  label: "YESBE connected systems still",
+};
+
+export const HERO_FILM_PLAN: {
+  webm: string;
+  mp4: string;
+  poster: string;
+  label: string;
+  approved: boolean;
+} = {
+  webm: "/media/yesbe-hero.webm",
+  mp4: "/media/yesbe-hero.mp4",
+  poster: "/media/yesbe-hero-poster.webp",
   label: "YESBE connected systems film",
+  approved: false,
 };
 
 export const SYSTEMS_FILM = {

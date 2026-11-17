@@ -338,11 +338,6 @@ export function CaseStudiesPage() {
     canonical: "https://www.yesbe.tech/case-studies",
   });
 
-  const selectFilter = (next: ProjectFilter) => {
-    setFilter(next);
-    document.getElementById("project-record")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <>
       <JsonLd schema={{
@@ -429,22 +424,18 @@ export function CaseStudiesPage() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-2 border-t border-white/10 pt-6" aria-label="Project categories">
+          <div className="mt-10 flex flex-wrap items-center gap-2 border-t border-white/10 pt-6" aria-label="Project category shortcuts">
+            <span className="mr-1 text-[9px] font-semibold uppercase tracking-[0.13em] text-white/45">
+              Filter index
+            </span>
             {PROJECT_FILTERS.map((category) => (
-              <button
+              <a
                 key={category}
-                type="button"
-                onClick={() => selectFilter(category)}
-                aria-pressed={filter === category}
-                className={cn(
-                  "border px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.11em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
-                  filter === category
-                    ? "border-white bg-white text-[#05132e]"
-                    : "border-white/18 bg-white/[0.035] text-white/65 hover:border-white/40 hover:text-white",
-                )}
+                href="#project-record"
+                className="border border-white/18 bg-white/[0.035] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.11em] text-white/65 transition-colors hover:border-white/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 {category}
-              </button>
+              </a>
             ))}
           </div>
         </div>

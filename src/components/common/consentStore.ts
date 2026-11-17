@@ -8,6 +8,7 @@ export interface CookiePreferences {
 
 export const STORAGE_KEY = "yesbe-cookie-consent";
 export const PREFS_KEY = "yesbe-cookie-preferences";
+export const OPEN_COOKIE_SETTINGS_EVENT = "yesbe:open-cookie-settings";
 
 export function getStoredConsent(): ConsentLevel {
   try {
@@ -49,6 +50,16 @@ export function hasAnalyticsConsent(): boolean {
     if (!raw) return true;
     return getStoredPreferences().analytics === true;
   } catch {
-    return true;
+    return false;
+  }
+}
+
+export function hasMarketingConsent(): boolean {
+  const level = getStoredConsent();
+  if (level === null || level === "essential") return false;
+  try {
+    return getStoredPreferences().marketing === true;
+  } catch {
+    return false;
   }
 }

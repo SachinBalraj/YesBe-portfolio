@@ -6,6 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import logoImg from "@/assets/images/YBlogo.webp";
+import { trackConsultationClick } from "@/utils/analytics";
 
 const suggestions = [
   { label: "Home", href: "/" },
@@ -151,6 +152,7 @@ export function NotFound() {
           </Link>
           <Link
             to="/contact"
+            onClick={() => trackConsultationClick("not_found")}
             className="inline-flex items-center gap-2 rounded-xl btn-glass px-6 py-3 text-sm font-semibold text-foreground"
           >
             <MessageCircle className="h-4 w-4 text-primary" />

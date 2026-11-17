@@ -1,11 +1,11 @@
 import { lazy, Suspense } from "react";
+import { ContactSection } from "@/sections/ContactSection";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import { PageHeader } from "@/components/common/PageHeader";
 import { ORGANIZATION_ID, FOUNDER_PERSON_ID } from "@/constants";
 
-const ContactSection = lazy(() => import("@/sections/ContactSection").then(m => ({ default: m.ContactSection })));
 const FAQSection = lazy(() => import("@/sections/FAQSection").then(m => ({ default: m.FAQSection })));
 
 export function ContactPage() {
@@ -50,11 +50,9 @@ export function ContactPage() {
         description="Ready to transform your business? Let's discuss your project and find the right solution together."
         breadcrumbs={[{ label: "Contact" }]}
       />
-      <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
-        <div className="contain-content">
-          <ContactSection />
-        </div>
-      </Suspense>
+      <div>
+        <ContactSection />
+      </div>
       <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
         <div className="contain-content">
           <FAQSection />

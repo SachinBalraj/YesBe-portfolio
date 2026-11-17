@@ -1,7 +1,15 @@
 import { useState, useEffect, useCallback, memo } from "react";
 import { Cookie, Settings, X, Check, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getStoredConsent, getStoredPreferences, PREFS_KEY, STORAGE_KEY, type ConsentLevel, type CookiePreferences } from "./consentStore";
+import {
+  getStoredConsent,
+  getStoredPreferences,
+  OPEN_COOKIE_SETTINGS_EVENT,
+  PREFS_KEY,
+  STORAGE_KEY,
+  type ConsentLevel,
+  type CookiePreferences,
+} from "./consentStore";
 
 export { getStoredConsent, getStoredPreferences };
 export type { ConsentLevel, CookiePreferences };
@@ -33,6 +41,7 @@ function CookieConsentComponent() {
   const [consent, setConsent] = useState<ConsentLevel>(getStoredConsent);
   const [showBanner, setShowBanner] = useState(false);
   const [showCustomize, setShowCustomize] = useState(false);
+  const [forceOpen, setForceOpen] = useState(false);
   const [prefs, setPrefs] = useState<CookiePreferences>(getStoredPreferences);
   const navigate = useNavigate();
 
@@ -42,6 +51,17 @@ function CookieConsentComponent() {
       return () => clearTimeout(t);
     }
   }, [consent]);
+
+  useEffect(() => {
+    const openSettings = () => {
+      setPrefs(getStoredPreferences());
+      setForceOpen(true);
+      setShowBanner(true);
+      setShowCustomize(true);
+    };
+    window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
+  }, []);
 
   const saveConsent = useCallback((level: ConsentLevel, preferences?: CookiePreferences) => {
     try {
@@ -53,6 +73,7 @@ function CookieConsentComponent() {
     setConsent(level);
     setShowBanner(false);
     setShowCustomize(false);
+    setForceOpen(false);
 
     window.dispatchEvent(
       new CustomEvent("cookie-consent-updated", {
@@ -84,7 +105,17 @@ function CookieConsentComponent() {
     setPrefs((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  if (consent !== null) return null;
+  const handleDismiss = () => {
+    if (forceOpen) {
+      setForceOpen(false);
+      setShowBanner(false);
+      setShowCustomize(false);
+      return;
+    }
+    handleEssentialOnly();
+  };
+
+  if (consent !== null && !forceOpen) return null;
 
   return (
     showBanner ? (
@@ -92,7 +123,7 @@ function CookieConsentComponent() {
         {/* Backdrop */}
         <div
           className="fixed inset-0 z-[150] bg-black/20 backdrop-blur-sm xl:hidden"
-          onClick={handleEssentialOnly}
+          onClick={handleDismiss}
         />
 
         {/* Banner */}
@@ -116,7 +147,7 @@ function CookieConsentComponent() {
                   </p>
                 </div>
                 <button
-                  onClick={handleEssentialOnly}
+                  onClick={handleDismiss}
                   className="shrink-0 rounded-lg p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                   aria-label="Dismiss cookie banner"
                 >

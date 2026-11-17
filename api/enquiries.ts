@@ -62,6 +62,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   if (validated.honeypotTripped) {
     sendJson(res, 202, {
       ok: true,
+      stored: false,
       message: "Thank you! Your enquiry has been submitted successfully. Our team will contact you shortly.",
     });
     return;
@@ -86,6 +87,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     if (duplicate) {
       sendJson(res, 201, {
         ok: true,
+        stored: false,
         message:
           "Thank you! Your enquiry has already been received. Our team will contact you shortly.",
       });
@@ -112,6 +114,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
 
   sendJson(res, 201, {
     ok: true,
+    stored: true,
     message: "Thank you! Your enquiry has been submitted successfully. Our team will contact you shortly.",
   });
 }

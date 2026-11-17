@@ -202,7 +202,11 @@ export function ServicesPage() {
               title="Every capability, in one place."
               description={`${solutions.length} services across strategy, enterprise platforms, AI, data, web, cloud and growth. Every link below is an existing YESBE service page.`}
               action={
-                <Link to="/contact" className="link-arrow">
+                <Link
+                  to="/contact"
+                  onClick={() => trackConsultationClick("services_directory_help")}
+                  className="link-arrow"
+                >
                   Not sure where to start?
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>

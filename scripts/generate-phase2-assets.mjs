@@ -39,6 +39,9 @@ await page.evaluate(() => {
     transformation: { a: "#93c5fd", b: "#f0abfc", c: "#67e8f9", bg1: "#0a1634", bg2: "#030814" },
     product: { a: "#a7b8ff", b: "#7dd3fc", c: "#f0abfc", bg1: "#081733", bg2: "#020814" },
     company: { a: "#9dbcff", b: "#6ee7f9", c: "#a5b4fc", bg1: "#071a37", bg2: "#020812" },
+    automation: { a: "#8ec5ff", b: "#5eead4", c: "#a5b4fc", bg1: "#071a35", bg2: "#020a16" },
+    analytics: { a: "#8fb6ff", b: "#67e8f9", c: "#c4b5fd", bg1: "#081a38", bg2: "#020912" },
+    integration: { a: "#9fc0ff", b: "#67e8f9", c: "#a7b8ff", bg1: "#071b3a", bg2: "#020813" },
     healthcare: { a: "#7dd3fc", b: "#5eead4", c: "#93c5fd", bg1: "#061b33", bg2: "#020b16" },
     education: { a: "#c4b5fd", b: "#7dd3fc", c: "#f0abfc", bg1: "#0a1735", bg2: "#030914" },
     retail: { a: "#f9a8d4", b: "#93c5fd", c: "#fcd34d", bg1: "#101a39", bg2: "#040914" },
@@ -86,7 +89,6 @@ await page.evaluate(() => {
   let cam = null;
   let palette = palettes.company;
   let time = 0;
-  let rng = mulberry32(1);
 
   const P = (x, y, z) => {
     const cyaw = Math.cos(cam.yaw);
@@ -570,6 +572,76 @@ await page.evaluate(() => {
     }
   };
 
+  const sceneAutomation = () => {
+    box({ x: -5.4, y: -0.64, z: -4.4, w: 10.8, h: 0.5, d: 8.8, top: palette.a, side: palette.c, topAlpha: 0.08, sideAlpha: 0.06, strokeAlpha: 0.2, grid: true });
+    const stations = [-4.1, -2.1, 0, 2.1, 4.1];
+    for (let i = 0; i < stations.length; i += 1) {
+      box({ x: stations[i] - 0.65, y: 0, z: -1.5, w: 1.3, h: 0.55 + (i % 3) * 0.18, d: 1.5, top: palette.a, side: palette.b, topAlpha: 0.2, sideAlpha: 0.09, glow: i === 2 ? 0.35 : 0 });
+    }
+    const route = stations.map((x, i) => [x, 1.05 + (i % 2) * 0.2, -1.5]);
+    for (let i = 0; i < route.length - 1; i += 1) edge(route[i], route[i + 1], palette.b, 0.42);
+    const branches = [
+      [stations[1], 1.05, -1.5],
+      [-2.8, 1.9, 1.2],
+      [-1.4, 1.75, 1.6],
+    ];
+    for (let i = 0; i < branches.length - 1; i += 1) edge(branches[i], branches[i + 1], palette.a, 0.3);
+    const returnPath = [
+      [stations[3], 1.25, -1.5],
+      [3.1, 1.95, 1.1],
+      [1.6, 1.8, 1.7],
+    ];
+    for (let i = 0; i < returnPath.length - 1; i += 1) edge(returnPath[i], returnPath[i + 1], palette.c, 0.28);
+    for (const point of [...route, ...branches.slice(1), ...returnPath.slice(1)]) node(point[0], point[1], point[2], 0.11, palette.b, 0.9);
+  };
+
+  const sceneAnalytics = () => {
+    box({ x: -5.4, y: -0.64, z: -4.4, w: 10.8, h: 0.5, d: 8.8, top: palette.a, side: palette.c, topAlpha: 0.08, sideAlpha: 0.06, strokeAlpha: 0.2, grid: true });
+    const bars = [-3.8, -2.5, -1.2, 0.1, 1.4, 2.7, 4.0];
+    const heights = [0.85, 1.45, 1.1, 2.35, 1.85, 2.7, 2.1];
+    for (let i = 0; i < bars.length; i += 1) {
+      box({ x: bars[i] - 0.42, y: 0, z: -1.8, w: 0.84, h: heights[i], d: 0.9, top: i === 5 ? palette.b : palette.a, side: palette.b, topAlpha: 0.24, sideAlpha: 0.1, glow: i === 5 ? 0.45 : 0 });
+    }
+    const trend = [
+      [-3.9, 1.6, -1.6],
+      [-2.5, 2.15, -1.3],
+      [-1.1, 1.85, -1.5],
+      [0.2, 2.85, -1.1],
+      [1.5, 2.4, -1.4],
+      [2.8, 3.3, -0.9],
+      [4.0, 2.85, -1.2],
+    ];
+    for (let i = 0; i < trend.length - 1; i += 1) edge(trend[i], trend[i + 1], palette.b, 0.5);
+    for (const point of trend) node(point[0], point[1], point[2], 0.1, palette.b, 0.92);
+    box({ x: -4.6, y: 1.2, z: 1.6, w: 9.2, h: 0.24, d: 0.65, top: palette.c, side: palette.c, topAlpha: 0.16, sideAlpha: 0.06, grid: false });
+  };
+
+  const sceneIntegration = () => {
+    box({ x: -5.5, y: -0.64, z: -4.5, w: 11, h: 0.5, d: 9, top: palette.a, side: palette.c, topAlpha: 0.08, sideAlpha: 0.06, strokeAlpha: 0.2, grid: true });
+    const islands = [
+      [-3.9, -2.3, 1.4, 1.3, 1.2],
+      [-1.8, 1.5, 1.25, 1.25, 1.85],
+      [0.4, -1.8, 1.7, 1.4, 1.05],
+      [2.6, 1.3, 1.3, 1.3, 2.2],
+      [4.3, -2.1, 1.15, 1.15, 1.45],
+    ];
+    for (const [x, z, w, d, h] of islands) {
+      box({ x, y: 0, z, w, h, d, top: palette.a, side: palette.b, topAlpha: 0.22, sideAlpha: 0.1, glow: h > 2 ? 0.35 : 0 });
+    }
+    const hub = [0.3, 3.2, 0.1];
+    for (const [x, z, , , h] of islands) edge(hub, [x + 0.6, h + 0.25, z + 0.6], palette.b, 0.34);
+    const ring = [
+      [-4.2, 1.6, -0.4],
+      [-2.2, 2.2, 0.9],
+      [0.6, 2.5, 1.4],
+      [3.2, 2.0, 0.6],
+      [4.5, 1.5, -0.8],
+    ];
+    for (let i = 0; i < ring.length - 1; i += 1) edge(ring[i], ring[i + 1], palette.c, 0.28);
+    node(hub[0], hub[1], hub[2], 0.19, palette.b, 0.98);
+    for (const point of ring) node(point[0], point[1], point[2], 0.1, palette.a, 0.82);
+  };
+
   const sceneIndustry = (kind) => {
     box({ x: -5.4, y: -0.64, z: -4.2, w: 10.8, h: 0.5, d: 8.4, top: palette.a, side: palette.c, topAlpha: 0.08, sideAlpha: 0.06, strokeAlpha: 0.2, grid: true });
     if (kind === "healthcare") {
@@ -629,7 +701,6 @@ await page.evaluate(() => {
     H = height;
     time = seconds;
     palette = palettes[type] || palettes.company;
-    rng = mulberry32(type.length * 31 + 7);
 
     const canvas = document.createElement("canvas");
     canvas.width = W;
@@ -659,6 +730,9 @@ await page.evaluate(() => {
     else if (type === "cloud" || type === "systems-film") sceneCloud();
     else if (type === "transformation") sceneTransformation();
     else if (type === "product") sceneProduct();
+    else if (type === "automation") sceneAutomation();
+    else if (type === "analytics") sceneAnalytics();
+    else if (type === "integration") sceneIntegration();
     else if (type === "healthcare" || type === "education" || type === "retail" || type === "manufacturing" || type === "logistics" || type === "finance") sceneIndustry(type);
     else sceneCompany();
 
@@ -1243,6 +1317,7 @@ await page.evaluate(() => {
   };
 });
 
+const phase5Only = process.env.PHASE5_ONLY;
 const visuals = [
   ["intelligence", 1600, 1000],
   ["enterprise", 1600, 1000],
@@ -1251,18 +1326,26 @@ const visuals = [
   ["transformation", 1600, 1000],
   ["product", 1600, 1000],
   ["company", 1600, 1000],
+  ["automation", 1600, 1000],
+  ["analytics", 1600, 1000],
+  ["integration", 1600, 1000],
 ];
 
 for (const [name, width, height] of visuals) {
-  const dataUrl = await page.evaluate(
-    ({ name, width, height }) => window.__drawAsset(name, width, height),
-    { name, width, height }
-  );
-  const file = path.join(out.visuals, `${name}.webp`);
-  fs.writeFileSync(file, Buffer.from(dataUrl.split(",")[1], "base64"));
-  console.log(`saved public/images/visuals/${name}.webp`);
+  if (phase5Only && name !== phase5Only) continue;
+  for (const [variantWidth, variantHeight] of [[width, height], [960, 600], [640, 400]]) {
+    const dataUrl = await page.evaluate(
+      ({ name, variantWidth, variantHeight }) => window.__drawAsset(name, variantWidth, variantHeight),
+      { name, variantWidth, variantHeight }
+    );
+    const suffix = variantWidth === width ? "" : `-${variantWidth}`;
+    const file = path.join(out.visuals, `${name}${suffix}.webp`);
+    fs.writeFileSync(file, Buffer.from(dataUrl.split(",")[1], "base64"));
+    console.log(`saved public/images/visuals/${name}${suffix}.webp`);
+  }
 }
 
+if (!phase5Only) {
 const industries = ["healthcare", "education", "retail", "manufacturing", "logistics", "finance"];
 for (const name of industries) {
   const dataUrl = await page.evaluate(
@@ -1302,5 +1385,6 @@ console.log("saved public/images/visuals/hero-film-poster.webp");
 const systemsPoster = await page.evaluate(() => window.__drawAsset("systems-film", 1400, 900, 0.78));
 fs.writeFileSync(path.join(out.visuals, "systems-film-poster.webp"), Buffer.from(systemsPoster.split(",")[1], "base64"));
 console.log("saved public/images/visuals/systems-film-poster.webp");
+}
 
 await browser.close();

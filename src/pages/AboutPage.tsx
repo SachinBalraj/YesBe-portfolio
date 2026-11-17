@@ -53,7 +53,7 @@ import { FilmPlayer } from "@/components/phase2/FilmPlayer";
 import { ClosingCta } from "@/components/phase2/ClosingCta";
 import { Reveal } from "@/components/system/Reveal";
 import { ServiceVisual } from "@/components/phase2/ServiceVisual";
-import { HERO_FILM, SYSTEMS_FILM, INDUSTRY_VISUALS, SERVICE_VISUALS, type ServiceVisualKey } from "@/data/media";
+import { HERO_FALLBACK, SYSTEMS_FILM, INDUSTRY_VISUALS, SERVICE_VISUALS, type ServiceVisualKey } from "@/data/media";
 import { getIndustryBySlug } from "@/data/industries";
 import { trackConsultationClick } from "@/utils/analytics";
 import { localSrcSet } from "@/utils/images";
@@ -79,7 +79,7 @@ const deliverables: Array<{
     description:
       "Grounded AI, document intelligence and workflow automation that remove repeat work and make information easier to act on.",
     to: "/services/ai-solutions",
-    visual: "intelligence",
+    visual: "automation",
     icon: Brain,
   },
   {
@@ -111,7 +111,7 @@ const deliverables: Array<{
     description:
       "Infrastructure, APIs and data connections that keep systems available, current and maintainable.",
     to: "/services/cloud-devops",
-    visual: "cloud",
+    visual: "integration",
     icon: Cloud,
   },
 ];
@@ -369,6 +369,8 @@ function AboutHero() {
             <div className="border border-white/14 bg-white/[0.035] p-2 backdrop-blur-sm">
               <img
                 src={SERVICE_VISUALS.company.src}
+                srcSet={localSrcSet(SERVICE_VISUALS.company.src, [640, 960, 1600])}
+                sizes="(min-width: 1024px) 42vw, 100vw"
                 alt="Glass-like operating system architecture connecting modules, data and interfaces"
                 width={1600}
                 height={1000}
@@ -421,10 +423,10 @@ function DeliverablesSection() {
               >
                 <Link
                   to={deliverable.to}
-                  className={cn(
-                    "group flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary",
-                    large && "sm:grid sm:grid-cols-[0.95fr_1.05fr] lg:grid-cols-1",
-                  )}
+                    className={cn(
+                      "group flex h-full flex-col transition-transform duration-500 ease-[var(--ease-premium)] hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary motion-reduce:transform-none",
+                      large && "sm:grid sm:grid-cols-[0.95fr_1.05fr] lg:grid-cols-1",
+                    )}
                 >
                   <ServiceVisual
                     variant={deliverable.visual}
@@ -481,7 +483,9 @@ function ReasonsSection() {
           <Reveal className="lg:col-span-7 lg:row-span-2">
             <div className="relative h-full min-h-[26rem] overflow-hidden bg-[#05132e] p-6 text-white sm:p-8">
               <img
-                src={HERO_FILM.poster}
+                src={HERO_FALLBACK.poster}
+                srcSet={localSrcSet(HERO_FALLBACK.poster, [640, 960, 1600])}
+                sizes="(min-width: 1024px) 58vw, 100vw"
                 alt=""
                 width={1600}
                 height={1000}
@@ -786,7 +790,11 @@ function ProcessSection() {
                     Next stage
                     <ArrowRight className="size-3.5" aria-hidden="true" />
                   </button>
-                  <Link to="/contact" className="link-arrow self-center">
+                  <Link
+                    to="/contact"
+                    onClick={() => trackConsultationClick("about_roadmap")}
+                    className="link-arrow self-center"
+                  >
                     Discuss the sequence
                     <ArrowRight className="size-3.5" aria-hidden="true" />
                   </Link>

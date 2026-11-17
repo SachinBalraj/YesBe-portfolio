@@ -23,6 +23,7 @@ import {
 import { KNOWLEDGE_CATEGORIES, categoryBySlug } from "@/knowledge/categories";
 import { SITE_URL } from "@/knowledge/seo";
 import { SearchBar } from "@/components/knowledge/SearchBar";
+import { trackConsultationClick } from "@/utils/analytics";
 import { ArticleGrid } from "@/components/knowledge/ArticleGrid";
 import { Pagination } from "@/components/knowledge/Pagination";
 import { SearchHistory } from "@/components/knowledge/SearchHistory";
@@ -432,6 +433,7 @@ export function SearchPage() {
                 </button>
                 <Link
                   to="/contact"
+                  onClick={() => trackConsultationClick("knowledge_search")}
                   className="inline-flex items-center gap-2 rounded-none border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-xs hover:border-primary/30 hover:text-primary transition-all dark:border-slate-800 dark:bg-slate-800"
                 >
                   <Mail className="h-4 w-4 text-primary" />

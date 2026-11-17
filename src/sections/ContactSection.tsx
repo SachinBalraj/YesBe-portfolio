@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Send, CheckCircle, AlertCircle, Loader2, Phone, MessageCircle,
@@ -12,7 +12,7 @@ import {
   TIMELINE_LABELS as timelineLabels,
 } from "@/constants/enquiry";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/animations";
+import { fadeInUp, fadeInLeft, fadeInRight } from "@/animations";
 import { trackGenerateLead, trackContactClick, trackPhoneClick, trackWhatsAppClick } from "@/utils/analytics";
 import { ApiError, submitEnquiry } from "@/services/enquiries";
 
@@ -38,6 +38,30 @@ const initialData: FormData = {
 
 const inputClass =
   "w-full max-w-full box-border rounded-xl border border-border bg-card px-4 py-3.5 text-base sm:text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+const FIELD_STEPS: Record<string, number> = {
+  name: 0,
+  email: 0,
+  service: 1,
+  budget: 1,
+  timeline: 1,
+  projectDescription: 2,
+  businessChallenges: 2,
+  goals: 2,
+};
+
+const FIELD_IDS: Record<string, string> = {
+  name: "c-name",
+  email: "c-email",
+  service: "c-service",
+  budget: "c-budget",
+  timeline: "c-timeline",
+  projectDescription: "c-desc",
+  businessChallenges: "c-challenges",
+  goals: "c-goals",
+};
 
 const contactCards = [
   { icon: Phone, label: "Phone", value: `+91 ${SITE_CONFIG.phone}`, href: SITE_CONFIG.phoneHref, color: "bg-blue-50 text-blue-600", onClick: () => trackPhoneClick("contact_section") },
@@ -80,19 +104,23 @@ export function ContactSection() {
   const [successMsg, setSuccessMsg] = useState("");
   const [currentStep, setCurrentStep] = useState(0);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const submittingRef = useRef(false);
+  const abortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => () => abortRef.current?.abort(), []);
 
   const serviceOptions = Object.entries(serviceLabels);
   const budgetOptions = Object.entries(budgetLabels);
   const timelineOptions = Object.entries(timelineLabels);
 
 
-  const validateStep = (step: number): boolean => {
+  const getStepErrors = (step: number): Record<string, string> => {
     const errors: Record<string, string> = {};
 
     if (step === 0) {
       if (!formData.name.trim()) errors.name = "Full name is required";
       if (!formData.email.trim()) errors.email = "Email is required";
-      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errors.email = "Please enter a valid email";
+      else if (!EMAIL_PATTERN.test(formData.email)) errors.email = "Please enter a valid email";
     } else if (step === 1) {
       if (!formData.service) errors.service = "Please select a service";
     } else if (step === 2) {
@@ -101,8 +129,18 @@ export function ContactSection() {
       else if (description.length < 10) errors.projectDescription = "Please describe your project in at least 10 characters";
     }
 
+    return errors;
+  };
+
+  const validateStep = (step: number): boolean => {
+    const errors = getStepErrors(step);
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
+  };
+
+  const focusField = (field: string) => {
+    const id = FIELD_IDS[field];
+    if (id) window.setTimeout(() => document.getElementById(id)?.focus(), 320);
   };
 
   const handleNext = () => {
@@ -123,11 +161,20 @@ export function ContactSection() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!validateStep(0) || !validateStep(1) || !validateStep(2)) {
-      setCurrentStep(0);
+    if (submittingRef.current || status === "sending" || status === "sent") return;
+
+    const stepErrors = [0, 1, 2].map(getStepErrors);
+    const invalidStep = stepErrors.findIndex((errors) => Object.keys(errors).length > 0);
+    if (invalidStep !== -1) {
+      setFieldErrors(stepErrors[invalidStep]);
+      setCurrentStep(invalidStep);
+      focusField(Object.keys(stepErrors[invalidStep])[0]);
       return;
     }
 
+    submittingRef.current = true;
+    const controller = new AbortController();
+    abortRef.current = controller;
     setStatus("sending");
     setErrorMsg("");
     setSuccessMsg("");
@@ -138,12 +185,26 @@ export function ContactSection() {
         formType: "consultation",
         pageSource: window.location.pathname,
         company_website: honeypot,
-      });
+      }, controller.signal);
       // Show the server's own confirmation rather than a hardcoded string.
       setSuccessMsg(result.message);
+      if (result.stored !== false) {
+        trackGenerateLead("contact_form", {
+          form_type: "consultation",
+          service: formData.service,
+          page_path: window.location.pathname,
+        });
+      }
     } catch (err) {
+      if (err instanceof DOMException && err.name === "AbortError") return;
       if (err instanceof ApiError) {
-        if (err.fields.length > 0) setFieldErrors(err.fieldMap);
+        if (err.fields.length > 0) {
+          const fieldMap = err.fieldMap;
+          const firstField = err.fields[0]?.field ?? "";
+          setFieldErrors(fieldMap);
+          setCurrentStep(FIELD_STEPS[firstField] ?? 0);
+          focusField(firstField);
+        }
         setErrorMsg(err.message);
       } else {
         setErrorMsg("Something went wrong. Please try again.");
@@ -151,10 +212,12 @@ export function ContactSection() {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 6000);
       return;
+    } finally {
+      submittingRef.current = false;
+      abortRef.current = null;
     }
 
     setStatus("sent");
-    trackGenerateLead("contact_form");
     setFormData(initialData);
     setHoneypot("");
     setCurrentStep(0);
@@ -198,21 +261,15 @@ export function ContactSection() {
     <section id="contact" className="border-t border-border/70 bg-slate-50 py-12 sm:py-16 lg:py-20" aria-label="Contact YESBE">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* CTA Banner */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
-          className="max-w-2xl mb-10"
-        >
-          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] leading-tight text-navy">
+        <div className="max-w-2xl mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] leading-tight text-navy">
             Let&apos;s build your next{" "}
             <span className="text-primary">digital solution</span>
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="mt-4 text-[16px] text-muted-foreground leading-relaxed">
+          </h2>
+          <p className="mt-4 text-[16px] text-muted-foreground leading-relaxed">
             Tell us about your project. We&apos;ll review your requirements and respond with clear next steps.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           {/* Wizard Form */}
@@ -289,13 +346,13 @@ export function ContactSection() {
 
                 {/* Mobile: name the active step explicitly. Desktop: keep the
                     existing compact "Step N of M" line only. */}
-                <div className="mt-3 sm:hidden">
+                <div className="mt-3 sm:hidden" aria-live="polite">
                   <p className="text-sm font-semibold text-foreground">{STEPS[currentStep].fullLabel}</p>
                   <p className="text-xs text-muted-foreground">
                     Step {currentStep + 1} of {STEPS.length}
                   </p>
                 </div>
-                <p className="mt-2 hidden text-xs text-muted-foreground sm:block">
+                <p className="mt-2 hidden text-xs text-muted-foreground sm:block" aria-live="polite">
                   Step {currentStep + 1} of {STEPS.length}
                 </p>
               </div>
@@ -303,7 +360,7 @@ export function ContactSection() {
               {/* Form Body */}
               <form onSubmit={handleSubmit} className="relative overflow-hidden">
               {/* Honeypot: hidden from users, catches naive bots */}
-              <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
+              <div aria-hidden="true" className="sr-only">
                 <label htmlFor="company-website">Company website</label>
                 <input
                   id="company-website"

@@ -3,6 +3,7 @@ import { LegalPageLayout } from "@/components/common/LegalPageLayout";
 import { SITE_CONFIG } from "@/constants";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { trackContactClick, trackPhoneClick } from "@/utils/analytics";
+import { OPEN_COOKIE_SETTINGS_EVENT } from "@/components/common/consentStore";
 
 const LAST_UPDATED = "July 21, 2026";
 
@@ -174,6 +175,17 @@ export function CookiePolicyPage() {
               <li><strong>Browser Controls:</strong> Most web browsers allow you to control cookies through their settings. You can set your browser to block or delete cookies</li>
               <li><strong>Opt-out Links:</strong> Use opt-out mechanisms provided by analytics services (e.g., Google Analytics Opt-out)</li>
               <li><strong>Incognito/Private Mode:</strong> Browse in incognito or private mode to prevent cookies from being stored</li>
+              <li>
+                <strong>On-site controls:</strong> Use the{" "}
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS_EVENT))}
+                  className="text-primary font-medium hover:underline"
+                >
+                  cookie settings panel
+                </button>{" "}
+                to review or change analytics and marketing preferences at any time.
+              </li>
             </ul>
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 mt-4">
               <p className="text-sm text-amber-800">

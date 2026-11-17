@@ -133,6 +133,7 @@ test("stores a valid enquiry in MongoDB", async () => {
   const { status, body } = await call("submit", { method: "POST", body: validEnquiry });
   assert.equal(status, 201);
   assert.equal(body.ok, true);
+  assert.equal(body.stored, true, "a stored lead must be reported to analytics");
 
   const doc = await db.collection("enquiries").findOne({ email: "priya@example.com" });
   assert.ok(doc, "document should be in MongoDB");
@@ -191,6 +192,7 @@ test("honeypot returns success but stores nothing", async () => {
   });
   assert.equal(status, 202);
   assert.equal(body.ok, true, "must look successful so the bot learns nothing");
+  assert.equal(body.stored, false, "honeypot hits must not trigger lead analytics");
   assert.equal(await db.collection("enquiries").countDocuments(), before, "nothing may be stored");
 });
 
@@ -225,6 +227,7 @@ test("repeated identical submission is idempotent", async () => {
   const { status, body } = await call("submit", { method: "POST", body: validEnquiry });
   assert.equal(status, 201);
   assert.equal(body.ok, true);
+  assert.equal(body.stored, false, "duplicate responses must not trigger lead analytics");
   assert.equal(
     await db.collection("enquiries").countDocuments(),
     before,

@@ -7,6 +7,7 @@ import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { isHydrationTargetPath } from "@/utils/hydration";
+import { trackPageView } from "@/utils/analytics";
 import { HomePage } from "@/pages/HomePage";
 import { ServicesPage } from "@/pages/ServicesPage";
 import { SolutionDetailPage } from "@/pages/SolutionDetailPage";
@@ -75,6 +76,19 @@ const AdminDashboardPage = lazy(() =>
 const AdminEnquiryPage = lazy(() =>
   import("@/pages/admin/AdminEnquiryPage").then((m) => ({ default: m.AdminEnquiryPage }))
 );
+
+function RouteAnalytics() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      trackPageView(`${location.pathname}${location.search}`, document.title);
+    }, 150);
+    return () => window.clearTimeout(id);
+  }, [location.pathname, location.search]);
+
+  return null;
+}
 
 function PublicLayout() {
   const location = useLocation();
@@ -170,6 +184,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <RouteAnalytics />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:rounded-xl focus:bg-primary focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:outline-none"

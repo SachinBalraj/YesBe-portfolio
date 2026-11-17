@@ -471,6 +471,7 @@ export function CategoryPage() {
               </Link>
               <Link
                 to="/contact"
+                onClick={() => trackConsultationClick("knowledge_category_email")}
                 className="inline-flex items-center gap-2 rounded-none border border-white/30 bg-transparent px-6 py-3 text-xs font-bold text-white hover:bg-white/10 transition-colors"
               >
                 <Mail className="h-4 w-4" />

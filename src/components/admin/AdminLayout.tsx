@@ -22,6 +22,7 @@ export function AdminLayout() {
   const [state, setState] = useState<"checking" | "anon" | "authed" | "unconfigured">("checking");
   const [adminId, setAdminId] = useState("");
   const [notice, setNotice] = useState("");
+  const [signOutError, setSignOutError] = useState("");
 
   useSEO({
     title: "Admin",
@@ -31,7 +32,8 @@ export function AdminLayout() {
 
   const verify = useCallback(async () => {
     try {
-      await checkSession();
+      const session = await checkSession();
+      setAdminId(session.username);
       setState("authed");
     } catch (err) {
       if (err instanceof ApiError && err.status === 503) {
@@ -45,6 +47,18 @@ export function AdminLayout() {
   useEffect(() => {
     void verify();
   }, [verify]);
+
+  useEffect(() => {
+    const revalidate = () => {
+      if (state === "authed") void verify();
+    };
+    window.addEventListener("focus", revalidate);
+    document.addEventListener("visibilitychange", revalidate);
+    return () => {
+      window.removeEventListener("focus", revalidate);
+      document.removeEventListener("visibilitychange", revalidate);
+    };
+  }, [state, verify]);
 
   useEffect(() => {
     const onUnauthorized = () => {
@@ -102,6 +116,7 @@ export function AdminLayout() {
             <span className="text-sm font-semibold text-foreground">{adminId || "Signed in"}</span>
           </div>
           <div className="flex items-center gap-3">
+            {signOutError && <span className="text-xs text-destructive">{signOutError}</span>}
             <Link
               to="/admin"
               className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
@@ -111,9 +126,14 @@ export function AdminLayout() {
             <button
               type="button"
               onClick={async () => {
-                await logout().catch(() => undefined);
+                setSignOutError("");
                 setNotice("");
-                setState("anon");
+                try {
+                  await logout();
+                  setState("anon");
+                } catch {
+                  setSignOutError("Could not sign out. Please try again.");
+                }
               }}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
             >
