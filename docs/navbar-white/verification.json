@@ -1,0 +1,310 @@
+{
+  "checks": [
+    {
+      "name": "desktop header background",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "desktop header bottom border",
+      "actual": "rgb(232, 234, 240)",
+      "expected": "rgb(232, 234, 240)",
+      "pass": true
+    },
+    {
+      "name": "desktop header height",
+      "actual": 76,
+      "expected": 76,
+      "pass": true
+    },
+    {
+      "name": "desktop active nav color",
+      "actual": "rgb(36, 84, 230)",
+      "expected": "rgb(36, 84, 230)",
+      "pass": true
+    },
+    {
+      "name": "desktop active underline color",
+      "actual": "rgb(36, 84, 230)",
+      "expected": "rgb(36, 84, 230)",
+      "pass": true
+    },
+    {
+      "name": "desktop active underline height",
+      "actual": "1px",
+      "expected": "1px",
+      "pass": true
+    },
+    {
+      "name": "desktop inactive nav colors",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "desktop search background",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "desktop search border",
+      "actual": "rgb(229, 231, 235)",
+      "expected": "rgb(229, 231, 235)",
+      "pass": true
+    },
+    {
+      "name": "desktop search text color",
+      "actual": "rgb(23, 23, 23)",
+      "expected": "rgb(23, 23, 23)",
+      "pass": true
+    },
+    {
+      "name": "desktop search icon color",
+      "actual": "rgb(23, 23, 23)",
+      "expected": "rgb(23, 23, 23)",
+      "pass": true
+    },
+    {
+      "name": "desktop consultation button background",
+      "actual": "rgb(36, 84, 230)",
+      "expected": "rgb(36, 84, 230)",
+      "pass": true
+    },
+    {
+      "name": "desktop consultation button border",
+      "actual": "rgb(36, 84, 230)",
+      "expected": "rgb(36, 84, 230)",
+      "pass": true
+    },
+    {
+      "name": "desktop consultation button text",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "desktop horizontal overflow",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "desktop dropdown background",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "desktop dropdown bottom border",
+      "actual": "rgb(232, 234, 240)",
+      "expected": "rgb(232, 234, 240)",
+      "pass": true
+    },
+    {
+      "name": "desktop dropdown has shadow",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "desktop dropdown link colors",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "tablet header background",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "tablet header bottom border",
+      "actual": "rgb(232, 234, 240)",
+      "expected": "rgb(232, 234, 240)",
+      "pass": true
+    },
+    {
+      "name": "tablet header height",
+      "actual": 76,
+      "expected": 76,
+      "pass": true
+    },
+    {
+      "name": "tablet horizontal overflow",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "mobile header background",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "mobile header bottom border",
+      "actual": "rgb(232, 234, 240)",
+      "expected": "rgb(232, 234, 240)",
+      "pass": true
+    },
+    {
+      "name": "mobile header height",
+      "actual": 76,
+      "expected": 76,
+      "pass": true
+    },
+    {
+      "name": "mobile toggle color",
+      "actual": "rgb(23, 23, 23)",
+      "expected": "rgb(23, 23, 23)",
+      "pass": true
+    },
+    {
+      "name": "mobile horizontal overflow",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "mobile drawer background",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer left border",
+      "actual": "rgb(232, 234, 240)",
+      "expected": "rgb(232, 234, 240)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer header border",
+      "actual": "rgb(232, 234, 240)",
+      "expected": "rgb(232, 234, 240)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer footer background",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer footer border",
+      "actual": "rgb(232, 234, 240)",
+      "expected": "rgb(232, 234, 240)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer active link color",
+      "actual": "rgb(36, 84, 230)",
+      "expected": "rgb(36, 84, 230)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer inactive link colors",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "mobile drawer consultation background",
+      "actual": "rgb(36, 84, 230)",
+      "expected": "rgb(36, 84, 230)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer consultation border",
+      "actual": "rgb(36, 84, 230)",
+      "expected": "rgb(36, 84, 230)",
+      "pass": true
+    },
+    {
+      "name": "mobile drawer consultation text",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "desktop.png",
+    "desktop-solutions-dropdown.png",
+    "tablet.png",
+    "mobile.png",
+    "mobile-menu.png"
+  ],
+  "desktopNavItems": [
+    {
+      "label": "Home",
+      "color": "rgb(36, 84, 230)",
+      "underline": "rgb(36, 84, 230)",
+      "underlineHeight": "1px"
+    },
+    {
+      "label": "About Us",
+      "color": "rgb(23, 23, 23)",
+      "underline": "rgb(36, 84, 230)",
+      "underlineHeight": "1px"
+    },
+    {
+      "label": "Solutions",
+      "color": "rgb(23, 23, 23)",
+      "underline": "rgb(36, 84, 230)",
+      "underlineHeight": "1px"
+    },
+    {
+      "label": "Industries",
+      "color": "rgb(23, 23, 23)",
+      "underline": "rgb(36, 84, 230)",
+      "underlineHeight": "1px"
+    },
+    {
+      "label": "Case Studies",
+      "color": "rgb(23, 23, 23)",
+      "underline": "rgb(36, 84, 230)",
+      "underlineHeight": "1px"
+    },
+    {
+      "label": "Articles",
+      "color": "rgb(23, 23, 23)",
+      "underline": "rgb(36, 84, 230)",
+      "underlineHeight": "1px"
+    },
+    {
+      "label": "Open menu",
+      "color": "rgb(23, 23, 23)",
+      "underline": "rgba(0, 0, 0, 0)",
+      "underlineHeight": "auto"
+    }
+  ],
+  "mobileNavItems": [
+    {
+      "label": "Home",
+      "color": "rgb(36, 84, 230)"
+    },
+    {
+      "label": "About Us",
+      "color": "rgb(23, 23, 23)"
+    },
+    {
+      "label": "Solutions",
+      "color": "rgb(23, 23, 23)"
+    },
+    {
+      "label": "Industries",
+      "color": "rgb(23, 23, 23)"
+    },
+    {
+      "label": "Case Studies",
+      "color": "rgb(23, 23, 23)"
+    },
+    {
+      "label": "Articles",
+      "color": "rgb(23, 23, 23)"
+    }
+  ],
+  "pass": true
+}

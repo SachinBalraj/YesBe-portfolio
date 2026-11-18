@@ -1,0 +1,102 @@
+[
+  {
+    "name": "desktop: six cards and heading hierarchy",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: initial viewport shows cards 1-4",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: final viewport shows cards 3-6",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: translation derived from measured width",
+    "status": "PASS",
+    "detail": "maxTranslate 624px, end -623.704px"
+  },
+  {
+    "name": "desktop: reverse scrolling restores progress",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: no autoplay at pinned start",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: sticky releases after final card",
+    "status": "PASS",
+    "detail": "sticky bottom -102.0px after 842px pin"
+  },
+  {
+    "name": "desktop: no horizontal page overflow",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "all images loaded with requested alt text",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "all six card routes are present",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "keyboard focus stays visible and is not trapped",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "all six service links resolve to real routes",
+    "status": "PASS",
+    "detail": "/services/it-consulting -> IT Consulting; /services/custom-software -> Custom Software; /services/ai-solutions -> AI Solutions; /services/erp-systems -> ERP Systems; /services/website-development -> Website Development; /services/cloud-devops -> Cloud & DevOps"
+  },
+  {
+    "name": "tablet: native horizontal scroll available",
+    "status": "PASS",
+    "detail": "2864px track, scrollLeft 480px"
+  },
+  {
+    "name": "tablet: approximate card width",
+    "status": "PASS",
+    "detail": "464px / 944px"
+  },
+  {
+    "name": "tablet: no horizontal page overflow",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: native horizontal scroll available",
+    "status": "PASS",
+    "detail": "1763px track, scrollLeft 297px"
+  },
+  {
+    "name": "mobile: approximate card width",
+    "status": "PASS",
+    "detail": "281px / 350px"
+  },
+  {
+    "name": "mobile: no horizontal page overflow",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "reduced motion: pinned animation disabled",
+    "status": "PASS",
+    "detail": "static, transform none"
+  },
+  {
+    "name": "no page or console errors",
+    "status": "PASS",
+    "detail": "ok"
+  }
+]

@@ -16,8 +16,10 @@ interface MobileNavProps {
 
 function mobileLinkClass(isActive: boolean) {
   return cn(
-    "flex w-full items-center justify-between border-b border-line py-3.5 text-left text-[15px] font-medium transition-colors",
-    isActive ? "text-primary" : "text-ink hover:text-primary",
+    "flex w-full items-center justify-between border-b border-[#E8EAF0]! py-3.5 text-left text-[15px] font-medium transition-colors",
+    isActive
+      ? "text-[#2454E6] hover:text-[#2454E6]"
+      : "text-[#171717] hover:text-[#171717]",
   );
 }
 
@@ -120,12 +122,12 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: reduceMotion ? 0 : 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-y-0 right-0 z-[60] flex w-[min(92vw,26rem)] flex-col border-l border-line bg-paper shadow-2xl lg:hidden"
+            className="fixed inset-y-0 right-0 z-[60] flex w-[min(92vw,26rem)] flex-col border-l border-[#E8EAF0]! bg-white shadow-2xl lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
           >
-            <div className="flex h-[72px] shrink-0 items-center justify-between border-b border-line px-5">
+            <div className="flex h-[72px] shrink-0 items-center justify-between border-b border-[#E8EAF0]! px-5">
               <Link
                 to="/"
                 onClick={onClose}
@@ -141,12 +143,12 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   decoding="async"
                   className="h-10 w-10 object-contain"
                 />
-                <span className="text-sm font-semibold tracking-[-0.01em] text-ink">YESBE</span>
+                <span className="text-sm font-semibold tracking-[-0.01em] text-[#171717]">YESBE</span>
               </Link>
               <button
                 ref={closeButtonRef}
                 type="button"
-                className="inline-flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-ink hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="inline-flex size-10 items-center justify-center border border-[#E5E7EB]! text-[#171717] transition-colors hover:border-[#CBD5E1]! hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2454E6]"
                 onClick={onClose}
                 aria-label="Close menu"
               >
@@ -197,7 +199,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                                     <Link
                                       to="/services"
                                       onClick={() => handleNavigate("/services")}
-                                      className="link-arrow text-[13px]"
+                                      className="link-arrow text-[13px] text-[#171717]! hover:text-[#171717]!"
                                     >
                                       View all solutions
                                       <ArrowRight className="size-4" aria-hidden="true" />
@@ -213,7 +215,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                                               <Link
                                                 to={link.href}
                                                 onClick={() => handleNavigate(link.href)}
-                                                className="block py-1.5 text-[14px] text-ink-soft transition-colors hover:text-primary"
+                                                className="block py-1.5 text-[14px] text-[#171717] transition-colors hover:text-[#171717]"
                                               >
                                                 {link.label}
                                               </Link>
@@ -228,7 +230,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                                     <Link
                                       to="/industries"
                                       onClick={() => handleNavigate("/industries")}
-                                      className="link-arrow text-[13px]"
+                                      className="link-arrow text-[13px] text-[#171717]! hover:text-[#171717]!"
                                     >
                                       View all industries
                                       <ArrowRight className="size-4" aria-hidden="true" />
@@ -239,7 +241,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                                           <Link
                                             to={link.href}
                                             onClick={() => handleNavigate(link.href)}
-                                            className="block py-1.5 text-[14px] text-ink-soft transition-colors hover:text-primary"
+                                            className="block py-1.5 text-[14px] text-[#171717] transition-colors hover:text-[#171717]"
                                           >
                                             {link.label}
                                           </Link>
@@ -271,7 +273,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 </ul>
               </nav>
 
-              <div className="mt-6 border-t border-line pt-5">
+              <div className="mt-6 border-t border-[#E8EAF0]! pt-5">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-body">
                   Start a conversation
                 </p>
@@ -279,7 +281,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   <a
                     href={`mailto:${SITE_CONFIG.email}`}
                     onClick={() => trackContactClick("navbar_mobile")}
-                    className="flex items-center gap-2.5 text-[13px] text-ink-soft transition-colors hover:text-primary"
+                    className="flex items-center gap-2.5 text-[13px] text-[#171717] transition-colors hover:text-[#171717]"
                   >
                     <Mail className="size-4" aria-hidden="true" />
                     {SITE_CONFIG.email}
@@ -287,7 +289,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   <a
                     href={SITE_CONFIG.phoneHref}
                     onClick={() => trackPhoneClick("navbar_mobile")}
-                    className="flex items-center gap-2.5 text-[13px] text-ink-soft transition-colors hover:text-primary"
+                    className="flex items-center gap-2.5 text-[13px] text-[#171717] transition-colors hover:text-[#171717]"
                   >
                     <Phone className="size-4" aria-hidden="true" />
                     {`+91 ${SITE_CONFIG.phone}`}
@@ -296,14 +298,14 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               </div>
             </div>
 
-            <div className="shrink-0 border-t border-line bg-paper px-5 py-4">
+            <div className="shrink-0 border-t border-[#E8EAF0]! bg-white px-5 py-4">
               <button
                 type="button"
                 onClick={() => {
                   trackConsultationClick("navbar_mobile");
                   handleNavigate("/contact");
                 }}
-                className="btn-primary w-full"
+                className="btn-primary w-full border-[#2454E6]! bg-[#2454E6]! text-white! shadow-[0_12px_28px_-20px_rgba(36,84,230,0.9)]! hover:border-[#1D43C5]! hover:bg-[#1D43C5]! hover:shadow-[0_18px_38px_-20px_rgba(29,67,197,0.9)]!"
               >
                 Book a Free Consultation
                 <ArrowRight className="size-4" aria-hidden="true" />

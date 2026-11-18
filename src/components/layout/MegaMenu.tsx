@@ -24,7 +24,7 @@ export function MegaMenu({ menu, panelRef, onNavigate }: MegaMenuProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -6 }}
       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-x-0 top-full z-[60] hidden border-b border-line bg-[#fbfaf7] shadow-[0_30px_60px_-30px_rgba(10,18,32,0.28)] lg:block"
+      className="absolute inset-x-0 top-full z-[60] hidden border-b border-[#E8EAF0]! bg-white shadow-[0_18px_40px_-30px_rgba(10,18,32,0.25)] lg:block"
     >
       <div className="container-page py-9">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_2.35fr] lg:gap-14">
@@ -41,7 +41,7 @@ export function MegaMenu({ menu, panelRef, onNavigate }: MegaMenuProps) {
             <Link
               to={isSolutions ? "/services" : "/industries"}
               onClick={onNavigate}
-              className="link-arrow mt-6"
+              className="link-arrow mt-6 text-[#171717]! hover:text-[#171717]!"
             >
               {isSolutions ? "View all solutions" : "View all industries"}
               <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -52,7 +52,7 @@ export function MegaMenu({ menu, panelRef, onNavigate }: MegaMenuProps) {
             <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 xl:grid-cols-4">
               {SOLUTION_GROUPS.map((group) => (
                 <nav key={group.title} aria-label={`${group.title} solutions`}>
-                  <h3 className="border-b border-line pb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink">
+                  <h3 className="border-b border-[#E8EAF0]! pb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#171717]">
                     {group.title}
                   </h3>
                   <ul className="mt-3 space-y-1">
@@ -61,7 +61,7 @@ export function MegaMenu({ menu, panelRef, onNavigate }: MegaMenuProps) {
                         <Link
                           to={link.href}
                           onClick={onNavigate}
-                          className="group flex items-center justify-between gap-3 py-1.5 text-[13px] font-medium text-ink-soft transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary focus-visible:underline"
+                          className="group flex items-center justify-between gap-3 py-1.5 text-[13px] font-medium text-[#171717] transition-colors hover:text-[#2454E6] focus-visible:outline-none focus-visible:text-[#2454E6] focus-visible:underline"
                         >
                           {link.label}
                           <ArrowUpRight
@@ -77,7 +77,7 @@ export function MegaMenu({ menu, panelRef, onNavigate }: MegaMenuProps) {
             </div>
           ) : (
             <div>
-              <h3 className="border-b border-line pb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink">
+              <h3 className="border-b border-[#E8EAF0]! pb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#171717]">
                 Industry experience
               </h3>
               <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-1 sm:grid-cols-3 xl:grid-cols-4">
@@ -86,7 +86,7 @@ export function MegaMenu({ menu, panelRef, onNavigate }: MegaMenuProps) {
                     <Link
                       to={link.href}
                       onClick={onNavigate}
-                      className="group flex items-center justify-between gap-3 py-2 text-[13px] font-medium text-ink-soft transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary focus-visible:underline"
+                      className="group flex items-center justify-between gap-3 py-2 text-[13px] font-medium text-[#171717] transition-colors hover:text-[#2454E6] focus-visible:outline-none focus-visible:text-[#2454E6] focus-visible:underline"
                     >
                       {link.label}
                       <ArrowUpRight

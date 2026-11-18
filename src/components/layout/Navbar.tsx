@@ -26,11 +26,11 @@ const SearchModal = lazy(() =>
 
 function navLinkClass(isActive: boolean) {
   return cn(
-    "relative inline-flex items-center gap-1 px-3 py-2 text-[13.5px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:text-primary",
-    "after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-primary after:transition-transform after:duration-300",
+    "relative inline-flex items-center gap-1 px-3 py-2 text-[13.5px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:text-[#2454E6]",
+    "after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-[#2454E6] after:transition-transform after:duration-300",
     isActive
-      ? "text-primary after:scale-x-100"
-      : "text-ink-soft after:scale-x-0 hover:text-ink hover:after:scale-x-100",
+      ? "text-[#2454E6] hover:text-[#2454E6] after:scale-x-100"
+      : "text-[#171717] after:scale-x-0 hover:text-[#171717] hover:after:scale-x-100",
   );
 }
 
@@ -200,10 +200,10 @@ function NavbarComponent() {
         onMouseLeave={scheduleClose}
         onBlur={handleHeaderBlur}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-out",
+          "fixed inset-x-0 top-0 z-50 border-b border-[#E8EAF0]! bg-white transition-all duration-300 ease-out",
           isScrolled
-            ? "border-line/80 bg-paper/90 shadow-[0_10px_30px_-24px_rgba(10,18,32,0.45)] backdrop-blur-xl"
-            : "border-transparent bg-paper/80 backdrop-blur-md",
+            ? "shadow-[0_10px_30px_-24px_rgba(10,18,32,0.45)]"
+            : "",
           hidden ? "-translate-y-full" : "translate-y-0",
         )}
       >
@@ -288,16 +288,16 @@ function NavbarComponent() {
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(true)}
-                className="inline-flex min-h-10 items-center gap-2 border border-line bg-card/60 px-3 py-2 text-[13px] font-medium text-ink-soft transition-colors duration-200 hover:border-line-strong hover:bg-card hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex min-h-10 items-center gap-2 border border-[#E5E7EB]! bg-white px-3 py-2 text-[13px] font-medium text-[#171717] transition-colors duration-200 hover:border-[#CBD5E1]! hover:bg-white hover:text-[#171717] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2454E6] focus-visible:ring-offset-2"
                 title="Search Articles (⌘ K)"
                 aria-haspopup="dialog"
                 aria-keyshortcuts="Meta+K Control+K"
               >
-                <Search className="size-4 text-body" aria-hidden="true" />
+                <Search className="size-4 text-[#171717]" aria-hidden="true" />
                 <span className="hidden sm:inline">Search</span>
                 <kbd
                   aria-hidden="true"
-                  className="hidden border border-line bg-paper px-1.5 py-0.5 text-[10px] font-medium text-body md:inline-block"
+                  className="hidden border border-[#E5E7EB]! bg-white px-1.5 py-0.5 text-[10px] font-medium text-[#171717] md:inline-block"
                 >
                   ⌘K
                 </kbd>
@@ -310,7 +310,7 @@ function NavbarComponent() {
                     navigate("/contact");
                   }}
                   variant="primary"
-                  className="btn-compact whitespace-nowrap"
+                  className="btn-compact whitespace-nowrap border-[#2454E6]! bg-[#2454E6]! text-white! shadow-[0_12px_28px_-20px_rgba(36,84,230,0.9)]! hover:border-[#1D43C5]! hover:bg-[#1D43C5]! hover:shadow-[0_18px_38px_-20px_rgba(29,67,197,0.9)]! focus-visible:shadow-[0_0_0_2px_#FFFFFF,0_0_0_4px_rgba(36,84,230,0.55)]!"
                   withArrow
                 >
                   Book a Free Consultation

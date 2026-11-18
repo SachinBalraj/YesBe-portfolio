@@ -1,0 +1,127 @@
+[
+  {
+    "name": "desktop: exactly one homepage h1",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: exact h1 text",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: h1 bold white",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: tagline text and line breaks",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: yes lowercase regular white",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: YesBe bold cyan",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: vertical white tagline rule",
+    "status": "PASS",
+    "detail": "1px × 83.1875px, oklab(0.999994 0.0000455677 0.0000200868 / 0.8)"
+  },
+  {
+    "name": "desktop: CTA label and contact route",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: CTA pill styling",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: supplied blue-wave asset loaded",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: no horizontal overflow",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: old hero copy removed",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "desktop: CTA navigates to contact",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: exactly one homepage h1",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: exact h1 text",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: h1 bold white",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: tagline text and line breaks",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: yes lowercase regular white",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: YesBe bold cyan",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: vertical white tagline rule",
+    "status": "PASS",
+    "detail": "1px × 64px, oklab(0.999994 0.0000455677 0.0000200868 / 0.8)"
+  },
+  {
+    "name": "mobile: CTA label and contact route",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: CTA pill styling",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: supplied blue-wave asset loaded",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: no horizontal overflow",
+    "status": "PASS",
+    "detail": "ok"
+  },
+  {
+    "name": "mobile: old hero copy removed",
+    "status": "PASS",
+    "detail": "ok"
+  }
+]
