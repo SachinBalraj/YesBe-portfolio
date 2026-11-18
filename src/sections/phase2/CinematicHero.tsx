@@ -27,9 +27,9 @@ export function CinematicHero() {
     />
   ) : (
     <picture className="absolute inset-0">
-      <source srcSet="/background.webp" type="image/webp" />
+      <source srcSet="/ybbackground.webp" type="image/webp" />
       <img
-        src="/background.png"
+        src="/ybbackground.png"
         alt=""
         width={1744}
         height={902}
