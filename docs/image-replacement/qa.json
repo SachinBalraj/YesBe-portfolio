@@ -1,0 +1,221 @@
+{
+  "status": "PASS",
+  "routes": [
+    {
+      "route": "/",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 8,
+      "brokenTargeted": [],
+      "responsive": 7
+    },
+    {
+      "route": "/about",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 15,
+      "brokenTargeted": [],
+      "responsive": 14
+    },
+    {
+      "route": "/services",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 6,
+      "brokenTargeted": [],
+      "responsive": 6
+    },
+    {
+      "route": "/case-studies",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    },
+    {
+      "route": "/case-studies/fashion-fusion",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    },
+    {
+      "route": "/industries",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 17,
+      "brokenTargeted": [],
+      "responsive": 17
+    },
+    {
+      "route": "/industries/healthcare",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/services/custom-software",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/services/erp-systems",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/services/ai-solutions",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/contact",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    },
+    {
+      "route": "/sachin-balraj",
+      "mode": "desktop",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    },
+    {
+      "route": "/",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 8,
+      "brokenTargeted": [],
+      "responsive": 7
+    },
+    {
+      "route": "/about",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 15,
+      "brokenTargeted": [],
+      "responsive": 14
+    },
+    {
+      "route": "/services",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 6,
+      "brokenTargeted": [],
+      "responsive": 6
+    },
+    {
+      "route": "/case-studies",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    },
+    {
+      "route": "/case-studies/fashion-fusion",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    },
+    {
+      "route": "/industries",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 17,
+      "brokenTargeted": [],
+      "responsive": 17
+    },
+    {
+      "route": "/industries/healthcare",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/services/custom-software",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/services/erp-systems",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/services/ai-solutions",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 1,
+      "brokenTargeted": [],
+      "responsive": 1
+    },
+    {
+      "route": "/contact",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    },
+    {
+      "route": "/sachin-balraj",
+      "mode": "mobile",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "targeted": 0,
+      "brokenTargeted": [],
+      "responsive": 0
+    }
+  ]
+}

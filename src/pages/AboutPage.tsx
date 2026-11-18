@@ -371,7 +371,7 @@ function AboutHero() {
                 src={SERVICE_VISUALS.company.src}
                 srcSet={localSrcSet(SERVICE_VISUALS.company.src, [640, 960, 1600])}
                 sizes="(min-width: 1024px) 42vw, 100vw"
-                alt="Glass-like operating system architecture connecting modules, data and interfaces"
+                alt="YESBE team collaborating around a table"
                 width={1600}
                 height={1000}
                 loading="eager"

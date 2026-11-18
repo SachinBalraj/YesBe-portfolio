@@ -126,7 +126,7 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
     relatedServiceSlugs: ["custom-software", "api-development", "data-analytics", "erp-systems"],
     visual: {
       src: "/images/industries/healthcare.webp",
-      alt: "Glass-like healthcare operations modules connected around a central record",
+      alt: "Clinical healthcare setting supporting connected operations",
       accent: "#7dd3fc",
     },
   },
@@ -174,7 +174,7 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
     relatedServiceSlugs: ["erp-systems", "custom-software", "web-applications", "data-analytics"],
     visual: {
       src: "/images/industries/education.webp",
-      alt: "Layered education systems visual with connected modules and records",
+      alt: "Modern learning environment supporting education systems",
       accent: "#a5b4fc",
     },
   },
@@ -222,7 +222,7 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
     relatedServiceSlugs: ["ecommerce", "custom-software", "api-development", "data-analytics"],
     visual: {
       src: "/images/industries/retail.webp",
-      alt: "Retail catalogue, inventory and order modules rendered as connected glass surfaces",
+      alt: "Retail store environment supporting connected commerce",
       accent: "#f0abfc",
     },
   },
@@ -270,7 +270,7 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
     relatedServiceSlugs: ["erp-systems", "custom-software", "api-development", "data-analytics"],
     visual: {
       src: "/images/industries/manufacturing.webp",
-      alt: "Manufacturing production, inventory and quality pathways visual",
+      alt: "Factory production machinery supporting connected manufacturing",
       accent: "#fbbf24",
     },
   },
@@ -318,7 +318,7 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
     relatedServiceSlugs: ["custom-software", "api-development", "data-analytics", "web-applications"],
     visual: {
       src: "/images/industries/logistics.webp",
-      alt: "Logistics network, dispatch and delivery visibility visual",
+      alt: "Warehouse operations supporting connected logistics",
       accent: "#67e8f9",
     },
   },
@@ -366,7 +366,7 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
     relatedServiceSlugs: ["data-analytics", "power-bi-dashboards", "custom-software", "ai-solutions"],
     visual: {
       src: "/images/industries/finance.webp",
-      alt: "Finance reporting, controls and reconciliation visual",
+      alt: "Office desk with financial reports supporting connected finance",
       accent: "#86efac",
     },
   },
@@ -374,28 +374,28 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
 
 const FALLBACK_VISUALS: Record<string, { src: string; alt: string; accent: string }> = {
   startups: {
-    src: "/images/visuals/product.webp",
-    alt: "Stacked product architecture layers built from glass modules",
+    src: "/images/industries/startups.webp",
+    alt: "Startup team working together",
     accent: "#c4b5fd",
   },
   smes: {
-    src: "/images/visuals/enterprise.webp",
-    alt: "Interconnected enterprise modules arranged around a central system",
+    src: "/images/industries/smes.webp",
+    alt: "Small business team meeting",
     accent: "#93c5fd",
   },
   "large-enterprises": {
-    src: "/images/visuals/company.webp",
-    alt: "Connected systems arranged as a unified operating structure",
+    src: "/images/industries/large-enterprises.webp",
+    alt: "Corporate office architecture",
     accent: "#8eb5ff",
   },
   hospitality: {
-    src: "/images/projects/restaurant-qr-ordering.webp",
-    alt: "Illustrative restaurant ordering and kitchen workflow interface",
+    src: "/images/industries/hospitality.webp",
+    alt: "Hospitality interior used for restaurant operations",
     accent: "#fca5a5",
   },
   "real-estate": {
-    src: "/images/projects/business-portfolio.webp",
-    alt: "Illustrative property services website and enquiry workflow",
+    src: "/images/industries/real-estate.webp",
+    alt: "Residential property exterior",
     accent: "#fcd34d",
   },
 };

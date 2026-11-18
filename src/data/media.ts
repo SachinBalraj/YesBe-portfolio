@@ -16,52 +16,52 @@ export const SERVICE_VISUALS: Record<
 > = {
   intelligence: {
     src: "/images/visuals/intelligence.webp",
-    alt: "Glass-like data modules connected by illuminated pathways",
+    alt: "Support professional working with AI-assisted customer technology",
     accent: "#7aa7ff",
   },
   enterprise: {
     src: "/images/visuals/enterprise.webp",
-    alt: "Interconnected enterprise modules arranged around a central system",
+    alt: "Business dashboards and reports on a workstation",
     accent: "#8fb6ff",
   },
   web: {
     src: "/images/visuals/web.webp",
-    alt: "Layered web interface panels rendered as glass structures",
+    alt: "Developer building a web application at a laptop",
     accent: "#a5b4fc",
   },
   cloud: {
     src: "/images/visuals/cloud.webp",
-    alt: "Floating cloud infrastructure layers connected by data paths",
+    alt: "Data centre infrastructure supporting cloud services",
     accent: "#7dd3fc",
   },
   transformation: {
     src: "/images/visuals/transformation.webp",
-    alt: "Fragmented systems resolving into a connected operating platform",
+    alt: "Business team planning a digital transformation",
     accent: "#93c5fd",
   },
   product: {
     src: "/images/visuals/product.webp",
-    alt: "Stacked product architecture layers built from glass modules",
+    alt: "Electronic components used in product engineering",
     accent: "#a7b8ff",
   },
   company: {
     src: "/images/visuals/company.webp",
-    alt: "Connected YESBE systems arranged as a unified operating structure",
+    alt: "YESBE team collaborating around a table",
     accent: "#8fb6ff",
   },
   automation: {
     src: "/images/visuals/automation.webp",
-    alt: "Glass workflow stations linked by illuminated automation paths",
+    alt: "Organised office workflow with operational figures",
     accent: "#8ec5ff",
   },
   analytics: {
     src: "/images/visuals/analytics.webp",
-    alt: "Glass analytics bars and a trend line rendered as connected modules",
+    alt: "Analytics dashboards displayed on a workstation",
     accent: "#8fb6ff",
   },
   integration: {
     src: "/images/visuals/integration.webp",
-    alt: "Separate glass system islands connected through a single illuminated integration hub",
+    alt: "Cross-functional team discussing system integration",
     accent: "#9fc0ff",
   },
 };
@@ -69,27 +69,27 @@ export const SERVICE_VISUALS: Record<
 export const INDUSTRY_VISUALS: Record<string, { src: string; alt: string }> = {
   healthcare: {
     src: "/images/industries/healthcare.webp",
-    alt: "Connected healthcare operations visual",
+    alt: "Clinical healthcare setting supporting connected operations",
   },
   education: {
     src: "/images/industries/education.webp",
-    alt: "Layered education systems visual",
+    alt: "Modern learning environment supporting education systems",
   },
   retail: {
     src: "/images/industries/retail.webp",
-    alt: "Retail catalogue and inventory modules visual",
+    alt: "Retail store environment supporting connected commerce",
   },
   manufacturing: {
     src: "/images/industries/manufacturing.webp",
-    alt: "Manufacturing production and quality pathways visual",
+    alt: "Factory production machinery supporting connected manufacturing",
   },
   logistics: {
     src: "/images/industries/logistics.webp",
-    alt: "Logistics network and delivery visibility visual",
+    alt: "Warehouse operations supporting connected logistics",
   },
   finance: {
     src: "/images/industries/finance.webp",
-    alt: "Finance reporting and controls visual",
+    alt: "Office desk with financial reports supporting connected finance",
   },
 };
 
