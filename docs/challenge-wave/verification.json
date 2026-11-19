@@ -1,0 +1,1829 @@
+{
+  "passed": 279,
+  "total": 279,
+  "failures": [],
+  "consoleErrors": [],
+  "checks": [
+    {
+      "name": "desktop: section background white",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "desktop: eyebrow label preserved",
+      "passed": true,
+      "detail": "The starting point"
+    },
+    {
+      "name": "desktop: eyebrow rendered uppercase",
+      "passed": true,
+      "detail": "uppercase"
+    },
+    {
+      "name": "desktop: heading preserved",
+      "passed": true,
+      "detail": "The work is rarely the problem. The system around it is."
+    },
+    {
+      "name": "desktop: description preserved",
+      "passed": true,
+      "detail": "Most technology projects begin with a request for a tool. The useful starting point is the constraint underneath it: where work stalls, where data disagrees, and where people compensate for the system."
+    },
+    {
+      "name": "desktop: wave stroke color",
+      "passed": true,
+      "detail": "#07156F"
+    },
+    {
+      "name": "desktop: wave has no fill",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop: exactly five dots",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "desktop: dots have no arrows or extra markup",
+      "passed": true,
+      "detail": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "desktop: dots not clipped by wave",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop: dot targets do not overlap",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "desktop: old vertical selector removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop: View More button exists",
+      "passed": true,
+      "detail": "View More"
+    },
+    {
+      "name": "desktop: View More navy",
+      "passed": true,
+      "detail": "rgb(7, 21, 111)"
+    },
+    {
+      "name": "desktop: View More pill",
+      "passed": true,
+      "detail": "3.35544e+07px"
+    },
+    {
+      "name": "desktop: five detail layers",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "desktop: five aria labels",
+      "passed": true,
+      "detail": [
+        "Select challenge 1: Growth is outrunning the operating model",
+        "Select challenge 2: Systems do not speak to each other",
+        "Select challenge 3: The website is credible, but not useful",
+        "Select challenge 4: The data exists, but decisions still wait",
+        "Select challenge 5: AI feels urgent, but the use case is unclear"
+      ]
+    },
+    {
+      "name": "desktop: touch targets >= 44px",
+      "passed": true,
+      "detail": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "desktop: dot controls mapped",
+      "passed": true,
+      "detail": [
+        "challenge-detail-1",
+        "challenge-detail-2",
+        "challenge-detail-3",
+        "challenge-detail-4",
+        "challenge-detail-5"
+      ]
+    },
+    {
+      "name": "desktop: three upper and two lower dots",
+      "passed": true,
+      "detail": [
+        "32.1429%",
+        "67.8571%",
+        "32.1429%",
+        "67.8571%",
+        "32.1429%"
+      ]
+    },
+    {
+      "name": "desktop: dot navy",
+      "passed": true,
+      "detail": "rgb(7, 21, 111)"
+    },
+    {
+      "name": "desktop: active ring visible",
+      "passed": true,
+      "detail": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 4px, oklab(0.272142 -0.0100718 -0.150883 / 0.35) 0px 0px 0px 6px, rgba(0, 0, 0, 0) 0px 0px 0px 0px"
+    },
+    {
+      "name": "desktop: inactive dots unringed",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop: dot 1 aria-pressed",
+      "passed": true,
+      "detail": [
+        "true",
+        "false",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "desktop: dot 1 aria-label",
+      "passed": true,
+      "detail": "Select challenge 1: Growth is outrunning the operating model"
+    },
+    {
+      "name": "desktop: dot 1 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-1"
+    },
+    {
+      "name": "desktop: dot 1 title",
+      "passed": true,
+      "detail": "Growth is outrunning the operating model"
+    },
+    {
+      "name": "desktop: dot 1 description",
+      "passed": true,
+      "detail": "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory."
+    },
+    {
+      "name": "desktop: dot 1 change",
+      "passed": true,
+      "detail": "Map the real workflow, remove duplicate handoffs and give each step a clear owner and visible status."
+    },
+    {
+      "name": "desktop: dot 1 tags",
+      "passed": true,
+      "detail": [
+        "Manual re-entry",
+        "Approval delays",
+        "Work held by individuals"
+      ]
+    },
+    {
+      "name": "desktop: dot 1 service link label",
+      "passed": true,
+      "detail": "Explore business automation"
+    },
+    {
+      "name": "desktop: dot 1 service link destination",
+      "passed": true,
+      "detail": "/services/business-automation"
+    },
+    {
+      "name": "desktop: dot 1 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 1 of 5: Growth is outrunning the operating model"
+    },
+    {
+      "name": "desktop: dot 1 no card height shift",
+      "passed": true,
+      "detail": [
+        554.40625,
+        554.40625
+      ]
+    },
+    {
+      "name": "desktop: dot 1 no section height shift",
+      "passed": true,
+      "detail": [
+        1348.578125,
+        1348.578125
+      ]
+    },
+    {
+      "name": "desktop: dot 1 no page height shift",
+      "passed": true,
+      "detail": [
+        13804,
+        13804
+      ]
+    },
+    {
+      "name": "desktop: dot 2 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "true",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "desktop: dot 2 aria-label",
+      "passed": true,
+      "detail": "Select challenge 2: Systems do not speak to each other"
+    },
+    {
+      "name": "desktop: dot 2 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-2"
+    },
+    {
+      "name": "desktop: dot 2 title",
+      "passed": true,
+      "detail": "Systems do not speak to each other"
+    },
+    {
+      "name": "desktop: dot 2 description",
+      "passed": true,
+      "detail": "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made."
+    },
+    {
+      "name": "desktop: dot 2 change",
+      "passed": true,
+      "detail": "Connect the systems you already run, define a shared data model and remove the reconciliation layer."
+    },
+    {
+      "name": "desktop: dot 2 tags",
+      "passed": true,
+      "detail": [
+        "Duplicate records",
+        "Reconciliation work",
+        "No shared status"
+      ]
+    },
+    {
+      "name": "desktop: dot 2 service link label",
+      "passed": true,
+      "detail": "Explore ERP and integrations"
+    },
+    {
+      "name": "desktop: dot 2 service link destination",
+      "passed": true,
+      "detail": "/services/erp-systems"
+    },
+    {
+      "name": "desktop: dot 2 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 2 of 5: Systems do not speak to each other"
+    },
+    {
+      "name": "desktop: dot 2 no card height shift",
+      "passed": true,
+      "detail": [
+        554.40625,
+        554.40625
+      ]
+    },
+    {
+      "name": "desktop: dot 2 no section height shift",
+      "passed": true,
+      "detail": [
+        1348.578125,
+        1348.578125
+      ]
+    },
+    {
+      "name": "desktop: dot 2 no page height shift",
+      "passed": true,
+      "detail": [
+        13804,
+        13804
+      ]
+    },
+    {
+      "name": "desktop: dot 3 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "true",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "desktop: dot 3 aria-label",
+      "passed": true,
+      "detail": "Select challenge 3: The website is credible, but not useful"
+    },
+    {
+      "name": "desktop: dot 3 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-3"
+    },
+    {
+      "name": "desktop: dot 3 title",
+      "passed": true,
+      "detail": "The website is credible, but not useful"
+    },
+    {
+      "name": "desktop: dot 3 description",
+      "passed": true,
+      "detail": "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation."
+    },
+    {
+      "name": "desktop: dot 3 change",
+      "passed": true,
+      "detail": "Rebuild the content and interaction around buyer questions, clear service paths and a measurable next action."
+    },
+    {
+      "name": "desktop: dot 3 tags",
+      "passed": true,
+      "detail": [
+        "Unclear journeys",
+        "Weak differentiation",
+        "Low enquiry quality"
+      ]
+    },
+    {
+      "name": "desktop: dot 3 service link label",
+      "passed": true,
+      "detail": "Explore website development"
+    },
+    {
+      "name": "desktop: dot 3 service link destination",
+      "passed": true,
+      "detail": "/services/website-development"
+    },
+    {
+      "name": "desktop: dot 3 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 3 of 5: The website is credible, but not useful"
+    },
+    {
+      "name": "desktop: dot 3 no card height shift",
+      "passed": true,
+      "detail": [
+        554.40625,
+        554.40625
+      ]
+    },
+    {
+      "name": "desktop: dot 3 no section height shift",
+      "passed": true,
+      "detail": [
+        1348.578125,
+        1348.578125
+      ]
+    },
+    {
+      "name": "desktop: dot 3 no page height shift",
+      "passed": true,
+      "detail": [
+        13804,
+        13804
+      ]
+    },
+    {
+      "name": "desktop: dot 4 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "desktop: dot 4 aria-label",
+      "passed": true,
+      "detail": "Select challenge 4: The data exists, but decisions still wait"
+    },
+    {
+      "name": "desktop: dot 4 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-4"
+    },
+    {
+      "name": "desktop: dot 4 title",
+      "passed": true,
+      "detail": "The data exists, but decisions still wait"
+    },
+    {
+      "name": "desktop: dot 4 description",
+      "passed": true,
+      "detail": "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them."
+    },
+    {
+      "name": "desktop: dot 4 change",
+      "passed": true,
+      "detail": "Create a dependable reporting layer with current data, agreed definitions and access for the people who act on it."
+    },
+    {
+      "name": "desktop: dot 4 tags",
+      "passed": true,
+      "detail": [
+        "Monthly reporting lag",
+        "Conflicting numbers",
+        "Spreadsheet dependency"
+      ]
+    },
+    {
+      "name": "desktop: dot 4 service link label",
+      "passed": true,
+      "detail": "Explore data and Power BI"
+    },
+    {
+      "name": "desktop: dot 4 service link destination",
+      "passed": true,
+      "detail": "/services/data-analytics"
+    },
+    {
+      "name": "desktop: dot 4 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 4 of 5: The data exists, but decisions still wait"
+    },
+    {
+      "name": "desktop: dot 4 no card height shift",
+      "passed": true,
+      "detail": [
+        554.40625,
+        554.40625
+      ]
+    },
+    {
+      "name": "desktop: dot 4 no section height shift",
+      "passed": true,
+      "detail": [
+        1348.578125,
+        1348.578125
+      ]
+    },
+    {
+      "name": "desktop: dot 4 no page height shift",
+      "passed": true,
+      "detail": [
+        13804,
+        13804
+      ]
+    },
+    {
+      "name": "desktop: dot 5 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "false",
+        "true"
+      ]
+    },
+    {
+      "name": "desktop: dot 5 aria-label",
+      "passed": true,
+      "detail": "Select challenge 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "desktop: dot 5 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-5"
+    },
+    {
+      "name": "desktop: dot 5 title",
+      "passed": true,
+      "detail": "AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "desktop: dot 5 description",
+      "passed": true,
+      "detail": "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+    },
+    {
+      "name": "desktop: dot 5 change",
+      "passed": true,
+      "detail": "Start with one contained workflow, define the evidence of success and build a grounded system before expanding."
+    },
+    {
+      "name": "desktop: dot 5 tags",
+      "passed": true,
+      "detail": [
+        "Tool-led experiments",
+        "Unclear ownership",
+        "No evaluation plan"
+      ]
+    },
+    {
+      "name": "desktop: dot 5 service link label",
+      "passed": true,
+      "detail": "Explore AI solutions"
+    },
+    {
+      "name": "desktop: dot 5 service link destination",
+      "passed": true,
+      "detail": "/services/ai-solutions"
+    },
+    {
+      "name": "desktop: dot 5 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 5 of 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "desktop: dot 5 no card height shift",
+      "passed": true,
+      "detail": [
+        554.40625,
+        554.40625
+      ]
+    },
+    {
+      "name": "desktop: dot 5 no section height shift",
+      "passed": true,
+      "detail": [
+        1348.578125,
+        1348.578125
+      ]
+    },
+    {
+      "name": "desktop: dot 5 no page height shift",
+      "passed": true,
+      "detail": [
+        13804,
+        13804
+      ]
+    },
+    {
+      "name": "desktop: View More scrolls to card",
+      "passed": true,
+      "detail": 87.734375
+    },
+    {
+      "name": "desktop: View More does not reload",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop: View More preserves URL",
+      "passed": true,
+      "detail": [
+        "http://127.0.0.1:4174/",
+        "http://127.0.0.1:4174/"
+      ]
+    },
+    {
+      "name": "desktop: ArrowRight selects next dot",
+      "passed": true,
+      "detail": "challenge-dot-2"
+    },
+    {
+      "name": "desktop: ArrowRight moves focus",
+      "passed": true,
+      "detail": "challenge-dot-2"
+    },
+    {
+      "name": "desktop: visible focus indicator",
+      "passed": true,
+      "detail": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 2px, rgb(7, 21, 111) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px"
+    },
+    {
+      "name": "desktop: End selects last dot",
+      "passed": true,
+      "detail": "challenge-dot-5"
+    },
+    {
+      "name": "desktop: Home selects first dot",
+      "passed": true,
+      "detail": "challenge-dot-1"
+    },
+    {
+      "name": "desktop: Enter activates focused dot",
+      "passed": true,
+      "detail": "challenge-dot-3"
+    },
+    {
+      "name": "tablet: section background white",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "tablet: eyebrow label preserved",
+      "passed": true,
+      "detail": "The starting point"
+    },
+    {
+      "name": "tablet: eyebrow rendered uppercase",
+      "passed": true,
+      "detail": "uppercase"
+    },
+    {
+      "name": "tablet: heading preserved",
+      "passed": true,
+      "detail": "The work is rarely the problem. The system around it is."
+    },
+    {
+      "name": "tablet: description preserved",
+      "passed": true,
+      "detail": "Most technology projects begin with a request for a tool. The useful starting point is the constraint underneath it: where work stalls, where data disagrees, and where people compensate for the system."
+    },
+    {
+      "name": "tablet: wave stroke color",
+      "passed": true,
+      "detail": "#07156F"
+    },
+    {
+      "name": "tablet: wave has no fill",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "tablet: exactly five dots",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "tablet: dots have no arrows or extra markup",
+      "passed": true,
+      "detail": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "tablet: dots not clipped by wave",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "tablet: dot targets do not overlap",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "tablet: old vertical selector removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "tablet: View More button exists",
+      "passed": true,
+      "detail": "View More"
+    },
+    {
+      "name": "tablet: View More navy",
+      "passed": true,
+      "detail": "rgb(7, 21, 111)"
+    },
+    {
+      "name": "tablet: View More pill",
+      "passed": true,
+      "detail": "3.35544e+07px"
+    },
+    {
+      "name": "tablet: five detail layers",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "tablet: five aria labels",
+      "passed": true,
+      "detail": [
+        "Select challenge 1: Growth is outrunning the operating model",
+        "Select challenge 2: Systems do not speak to each other",
+        "Select challenge 3: The website is credible, but not useful",
+        "Select challenge 4: The data exists, but decisions still wait",
+        "Select challenge 5: AI feels urgent, but the use case is unclear"
+      ]
+    },
+    {
+      "name": "tablet: touch targets >= 44px",
+      "passed": true,
+      "detail": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "tablet: dot controls mapped",
+      "passed": true,
+      "detail": [
+        "challenge-detail-1",
+        "challenge-detail-2",
+        "challenge-detail-3",
+        "challenge-detail-4",
+        "challenge-detail-5"
+      ]
+    },
+    {
+      "name": "tablet: three upper and two lower dots",
+      "passed": true,
+      "detail": [
+        "32.1429%",
+        "67.8571%",
+        "32.1429%",
+        "67.8571%",
+        "32.1429%"
+      ]
+    },
+    {
+      "name": "tablet: dot navy",
+      "passed": true,
+      "detail": "rgb(7, 21, 111)"
+    },
+    {
+      "name": "tablet: active ring visible",
+      "passed": true,
+      "detail": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 4px, oklab(0.272142 -0.0100718 -0.150883 / 0.35) 0px 0px 0px 6px, rgba(0, 0, 0, 0) 0px 0px 0px 0px"
+    },
+    {
+      "name": "tablet: inactive dots unringed",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "tablet: dot 1 aria-pressed",
+      "passed": true,
+      "detail": [
+        "true",
+        "false",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "tablet: dot 1 aria-label",
+      "passed": true,
+      "detail": "Select challenge 1: Growth is outrunning the operating model"
+    },
+    {
+      "name": "tablet: dot 1 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-1"
+    },
+    {
+      "name": "tablet: dot 1 title",
+      "passed": true,
+      "detail": "Growth is outrunning the operating model"
+    },
+    {
+      "name": "tablet: dot 1 description",
+      "passed": true,
+      "detail": "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory."
+    },
+    {
+      "name": "tablet: dot 1 change",
+      "passed": true,
+      "detail": "Map the real workflow, remove duplicate handoffs and give each step a clear owner and visible status."
+    },
+    {
+      "name": "tablet: dot 1 tags",
+      "passed": true,
+      "detail": [
+        "Manual re-entry",
+        "Approval delays",
+        "Work held by individuals"
+      ]
+    },
+    {
+      "name": "tablet: dot 1 service link label",
+      "passed": true,
+      "detail": "Explore business automation"
+    },
+    {
+      "name": "tablet: dot 1 service link destination",
+      "passed": true,
+      "detail": "/services/business-automation"
+    },
+    {
+      "name": "tablet: dot 1 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 1 of 5: Growth is outrunning the operating model"
+    },
+    {
+      "name": "tablet: dot 1 no card height shift",
+      "passed": true,
+      "detail": [
+        546.40625,
+        546.40625
+      ]
+    },
+    {
+      "name": "tablet: dot 1 no section height shift",
+      "passed": true,
+      "detail": [
+        1122.109375,
+        1122.109375
+      ]
+    },
+    {
+      "name": "tablet: dot 1 no page height shift",
+      "passed": true,
+      "detail": [
+        13411,
+        13411
+      ]
+    },
+    {
+      "name": "tablet: dot 2 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "true",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "tablet: dot 2 aria-label",
+      "passed": true,
+      "detail": "Select challenge 2: Systems do not speak to each other"
+    },
+    {
+      "name": "tablet: dot 2 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-2"
+    },
+    {
+      "name": "tablet: dot 2 title",
+      "passed": true,
+      "detail": "Systems do not speak to each other"
+    },
+    {
+      "name": "tablet: dot 2 description",
+      "passed": true,
+      "detail": "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made."
+    },
+    {
+      "name": "tablet: dot 2 change",
+      "passed": true,
+      "detail": "Connect the systems you already run, define a shared data model and remove the reconciliation layer."
+    },
+    {
+      "name": "tablet: dot 2 tags",
+      "passed": true,
+      "detail": [
+        "Duplicate records",
+        "Reconciliation work",
+        "No shared status"
+      ]
+    },
+    {
+      "name": "tablet: dot 2 service link label",
+      "passed": true,
+      "detail": "Explore ERP and integrations"
+    },
+    {
+      "name": "tablet: dot 2 service link destination",
+      "passed": true,
+      "detail": "/services/erp-systems"
+    },
+    {
+      "name": "tablet: dot 2 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 2 of 5: Systems do not speak to each other"
+    },
+    {
+      "name": "tablet: dot 2 no card height shift",
+      "passed": true,
+      "detail": [
+        546.40625,
+        546.40625
+      ]
+    },
+    {
+      "name": "tablet: dot 2 no section height shift",
+      "passed": true,
+      "detail": [
+        1122.109375,
+        1122.109375
+      ]
+    },
+    {
+      "name": "tablet: dot 2 no page height shift",
+      "passed": true,
+      "detail": [
+        13411,
+        13411
+      ]
+    },
+    {
+      "name": "tablet: dot 3 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "true",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "tablet: dot 3 aria-label",
+      "passed": true,
+      "detail": "Select challenge 3: The website is credible, but not useful"
+    },
+    {
+      "name": "tablet: dot 3 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-3"
+    },
+    {
+      "name": "tablet: dot 3 title",
+      "passed": true,
+      "detail": "The website is credible, but not useful"
+    },
+    {
+      "name": "tablet: dot 3 description",
+      "passed": true,
+      "detail": "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation."
+    },
+    {
+      "name": "tablet: dot 3 change",
+      "passed": true,
+      "detail": "Rebuild the content and interaction around buyer questions, clear service paths and a measurable next action."
+    },
+    {
+      "name": "tablet: dot 3 tags",
+      "passed": true,
+      "detail": [
+        "Unclear journeys",
+        "Weak differentiation",
+        "Low enquiry quality"
+      ]
+    },
+    {
+      "name": "tablet: dot 3 service link label",
+      "passed": true,
+      "detail": "Explore website development"
+    },
+    {
+      "name": "tablet: dot 3 service link destination",
+      "passed": true,
+      "detail": "/services/website-development"
+    },
+    {
+      "name": "tablet: dot 3 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 3 of 5: The website is credible, but not useful"
+    },
+    {
+      "name": "tablet: dot 3 no card height shift",
+      "passed": true,
+      "detail": [
+        546.40625,
+        546.40625
+      ]
+    },
+    {
+      "name": "tablet: dot 3 no section height shift",
+      "passed": true,
+      "detail": [
+        1122.109375,
+        1122.109375
+      ]
+    },
+    {
+      "name": "tablet: dot 3 no page height shift",
+      "passed": true,
+      "detail": [
+        13411,
+        13411
+      ]
+    },
+    {
+      "name": "tablet: dot 4 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "tablet: dot 4 aria-label",
+      "passed": true,
+      "detail": "Select challenge 4: The data exists, but decisions still wait"
+    },
+    {
+      "name": "tablet: dot 4 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-4"
+    },
+    {
+      "name": "tablet: dot 4 title",
+      "passed": true,
+      "detail": "The data exists, but decisions still wait"
+    },
+    {
+      "name": "tablet: dot 4 description",
+      "passed": true,
+      "detail": "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them."
+    },
+    {
+      "name": "tablet: dot 4 change",
+      "passed": true,
+      "detail": "Create a dependable reporting layer with current data, agreed definitions and access for the people who act on it."
+    },
+    {
+      "name": "tablet: dot 4 tags",
+      "passed": true,
+      "detail": [
+        "Monthly reporting lag",
+        "Conflicting numbers",
+        "Spreadsheet dependency"
+      ]
+    },
+    {
+      "name": "tablet: dot 4 service link label",
+      "passed": true,
+      "detail": "Explore data and Power BI"
+    },
+    {
+      "name": "tablet: dot 4 service link destination",
+      "passed": true,
+      "detail": "/services/data-analytics"
+    },
+    {
+      "name": "tablet: dot 4 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 4 of 5: The data exists, but decisions still wait"
+    },
+    {
+      "name": "tablet: dot 4 no card height shift",
+      "passed": true,
+      "detail": [
+        546.40625,
+        546.40625
+      ]
+    },
+    {
+      "name": "tablet: dot 4 no section height shift",
+      "passed": true,
+      "detail": [
+        1122.109375,
+        1122.109375
+      ]
+    },
+    {
+      "name": "tablet: dot 4 no page height shift",
+      "passed": true,
+      "detail": [
+        13411,
+        13411
+      ]
+    },
+    {
+      "name": "tablet: dot 5 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "false",
+        "true"
+      ]
+    },
+    {
+      "name": "tablet: dot 5 aria-label",
+      "passed": true,
+      "detail": "Select challenge 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "tablet: dot 5 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-5"
+    },
+    {
+      "name": "tablet: dot 5 title",
+      "passed": true,
+      "detail": "AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "tablet: dot 5 description",
+      "passed": true,
+      "detail": "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+    },
+    {
+      "name": "tablet: dot 5 change",
+      "passed": true,
+      "detail": "Start with one contained workflow, define the evidence of success and build a grounded system before expanding."
+    },
+    {
+      "name": "tablet: dot 5 tags",
+      "passed": true,
+      "detail": [
+        "Tool-led experiments",
+        "Unclear ownership",
+        "No evaluation plan"
+      ]
+    },
+    {
+      "name": "tablet: dot 5 service link label",
+      "passed": true,
+      "detail": "Explore AI solutions"
+    },
+    {
+      "name": "tablet: dot 5 service link destination",
+      "passed": true,
+      "detail": "/services/ai-solutions"
+    },
+    {
+      "name": "tablet: dot 5 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 5 of 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "tablet: dot 5 no card height shift",
+      "passed": true,
+      "detail": [
+        546.40625,
+        546.40625
+      ]
+    },
+    {
+      "name": "tablet: dot 5 no section height shift",
+      "passed": true,
+      "detail": [
+        1122.109375,
+        1122.109375
+      ]
+    },
+    {
+      "name": "tablet: dot 5 no page height shift",
+      "passed": true,
+      "detail": [
+        13411,
+        13411
+      ]
+    },
+    {
+      "name": "mobile: section background white",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile: eyebrow label preserved",
+      "passed": true,
+      "detail": "The starting point"
+    },
+    {
+      "name": "mobile: eyebrow rendered uppercase",
+      "passed": true,
+      "detail": "uppercase"
+    },
+    {
+      "name": "mobile: heading preserved",
+      "passed": true,
+      "detail": "The work is rarely the problem. The system around it is."
+    },
+    {
+      "name": "mobile: description preserved",
+      "passed": true,
+      "detail": "Most technology projects begin with a request for a tool. The useful starting point is the constraint underneath it: where work stalls, where data disagrees, and where people compensate for the system."
+    },
+    {
+      "name": "mobile: wave stroke color",
+      "passed": true,
+      "detail": "#07156F"
+    },
+    {
+      "name": "mobile: wave has no fill",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile: exactly five dots",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "mobile: dots have no arrows or extra markup",
+      "passed": true,
+      "detail": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "mobile: dots not clipped by wave",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile: dot targets do not overlap",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "mobile: old vertical selector removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "mobile: View More button exists",
+      "passed": true,
+      "detail": "View More"
+    },
+    {
+      "name": "mobile: View More navy",
+      "passed": true,
+      "detail": "rgb(7, 21, 111)"
+    },
+    {
+      "name": "mobile: View More pill",
+      "passed": true,
+      "detail": "3.35544e+07px"
+    },
+    {
+      "name": "mobile: five detail layers",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "mobile: five aria labels",
+      "passed": true,
+      "detail": [
+        "Select challenge 1: Growth is outrunning the operating model",
+        "Select challenge 2: Systems do not speak to each other",
+        "Select challenge 3: The website is credible, but not useful",
+        "Select challenge 4: The data exists, but decisions still wait",
+        "Select challenge 5: AI feels urgent, but the use case is unclear"
+      ]
+    },
+    {
+      "name": "mobile: touch targets >= 44px",
+      "passed": true,
+      "detail": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "mobile: dot controls mapped",
+      "passed": true,
+      "detail": [
+        "challenge-detail-1",
+        "challenge-detail-2",
+        "challenge-detail-3",
+        "challenge-detail-4",
+        "challenge-detail-5"
+      ]
+    },
+    {
+      "name": "mobile: three upper and two lower dots",
+      "passed": true,
+      "detail": [
+        "32.1429%",
+        "67.8571%",
+        "32.1429%",
+        "67.8571%",
+        "32.1429%"
+      ]
+    },
+    {
+      "name": "mobile: dot navy",
+      "passed": true,
+      "detail": "rgb(7, 21, 111)"
+    },
+    {
+      "name": "mobile: active ring visible",
+      "passed": true,
+      "detail": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 4px, oklab(0.272142 -0.0100718 -0.150883 / 0.35) 0px 0px 0px 6px, rgba(0, 0, 0, 0) 0px 0px 0px 0px"
+    },
+    {
+      "name": "mobile: inactive dots unringed",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile: dot 1 aria-pressed",
+      "passed": true,
+      "detail": [
+        "true",
+        "false",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "mobile: dot 1 aria-label",
+      "passed": true,
+      "detail": "Select challenge 1: Growth is outrunning the operating model"
+    },
+    {
+      "name": "mobile: dot 1 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-1"
+    },
+    {
+      "name": "mobile: dot 1 title",
+      "passed": true,
+      "detail": "Growth is outrunning the operating model"
+    },
+    {
+      "name": "mobile: dot 1 description",
+      "passed": true,
+      "detail": "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory."
+    },
+    {
+      "name": "mobile: dot 1 change",
+      "passed": true,
+      "detail": "Map the real workflow, remove duplicate handoffs and give each step a clear owner and visible status."
+    },
+    {
+      "name": "mobile: dot 1 tags",
+      "passed": true,
+      "detail": [
+        "Manual re-entry",
+        "Approval delays",
+        "Work held by individuals"
+      ]
+    },
+    {
+      "name": "mobile: dot 1 service link label",
+      "passed": true,
+      "detail": "Explore business automation"
+    },
+    {
+      "name": "mobile: dot 1 service link destination",
+      "passed": true,
+      "detail": "/services/business-automation"
+    },
+    {
+      "name": "mobile: dot 1 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 1 of 5: Growth is outrunning the operating model"
+    },
+    {
+      "name": "mobile: dot 1 no card height shift",
+      "passed": true,
+      "detail": [
+        629.625,
+        629.625
+      ]
+    },
+    {
+      "name": "mobile: dot 1 no section height shift",
+      "passed": true,
+      "detail": [
+        1230.609375,
+        1230.609375
+      ]
+    },
+    {
+      "name": "mobile: dot 1 no page height shift",
+      "passed": true,
+      "detail": [
+        17326,
+        17326
+      ]
+    },
+    {
+      "name": "mobile: dot 2 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "true",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "mobile: dot 2 aria-label",
+      "passed": true,
+      "detail": "Select challenge 2: Systems do not speak to each other"
+    },
+    {
+      "name": "mobile: dot 2 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-2"
+    },
+    {
+      "name": "mobile: dot 2 title",
+      "passed": true,
+      "detail": "Systems do not speak to each other"
+    },
+    {
+      "name": "mobile: dot 2 description",
+      "passed": true,
+      "detail": "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made."
+    },
+    {
+      "name": "mobile: dot 2 change",
+      "passed": true,
+      "detail": "Connect the systems you already run, define a shared data model and remove the reconciliation layer."
+    },
+    {
+      "name": "mobile: dot 2 tags",
+      "passed": true,
+      "detail": [
+        "Duplicate records",
+        "Reconciliation work",
+        "No shared status"
+      ]
+    },
+    {
+      "name": "mobile: dot 2 service link label",
+      "passed": true,
+      "detail": "Explore ERP and integrations"
+    },
+    {
+      "name": "mobile: dot 2 service link destination",
+      "passed": true,
+      "detail": "/services/erp-systems"
+    },
+    {
+      "name": "mobile: dot 2 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 2 of 5: Systems do not speak to each other"
+    },
+    {
+      "name": "mobile: dot 2 no card height shift",
+      "passed": true,
+      "detail": [
+        629.625,
+        629.625
+      ]
+    },
+    {
+      "name": "mobile: dot 2 no section height shift",
+      "passed": true,
+      "detail": [
+        1230.609375,
+        1230.609375
+      ]
+    },
+    {
+      "name": "mobile: dot 2 no page height shift",
+      "passed": true,
+      "detail": [
+        17326,
+        17326
+      ]
+    },
+    {
+      "name": "mobile: dot 3 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "true",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "mobile: dot 3 aria-label",
+      "passed": true,
+      "detail": "Select challenge 3: The website is credible, but not useful"
+    },
+    {
+      "name": "mobile: dot 3 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-3"
+    },
+    {
+      "name": "mobile: dot 3 title",
+      "passed": true,
+      "detail": "The website is credible, but not useful"
+    },
+    {
+      "name": "mobile: dot 3 description",
+      "passed": true,
+      "detail": "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation."
+    },
+    {
+      "name": "mobile: dot 3 change",
+      "passed": true,
+      "detail": "Rebuild the content and interaction around buyer questions, clear service paths and a measurable next action."
+    },
+    {
+      "name": "mobile: dot 3 tags",
+      "passed": true,
+      "detail": [
+        "Unclear journeys",
+        "Weak differentiation",
+        "Low enquiry quality"
+      ]
+    },
+    {
+      "name": "mobile: dot 3 service link label",
+      "passed": true,
+      "detail": "Explore website development"
+    },
+    {
+      "name": "mobile: dot 3 service link destination",
+      "passed": true,
+      "detail": "/services/website-development"
+    },
+    {
+      "name": "mobile: dot 3 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 3 of 5: The website is credible, but not useful"
+    },
+    {
+      "name": "mobile: dot 3 no card height shift",
+      "passed": true,
+      "detail": [
+        629.625,
+        629.625
+      ]
+    },
+    {
+      "name": "mobile: dot 3 no section height shift",
+      "passed": true,
+      "detail": [
+        1230.609375,
+        1230.609375
+      ]
+    },
+    {
+      "name": "mobile: dot 3 no page height shift",
+      "passed": true,
+      "detail": [
+        17326,
+        17326
+      ]
+    },
+    {
+      "name": "mobile: dot 4 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "mobile: dot 4 aria-label",
+      "passed": true,
+      "detail": "Select challenge 4: The data exists, but decisions still wait"
+    },
+    {
+      "name": "mobile: dot 4 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-4"
+    },
+    {
+      "name": "mobile: dot 4 title",
+      "passed": true,
+      "detail": "The data exists, but decisions still wait"
+    },
+    {
+      "name": "mobile: dot 4 description",
+      "passed": true,
+      "detail": "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them."
+    },
+    {
+      "name": "mobile: dot 4 change",
+      "passed": true,
+      "detail": "Create a dependable reporting layer with current data, agreed definitions and access for the people who act on it."
+    },
+    {
+      "name": "mobile: dot 4 tags",
+      "passed": true,
+      "detail": [
+        "Monthly reporting lag",
+        "Conflicting numbers",
+        "Spreadsheet dependency"
+      ]
+    },
+    {
+      "name": "mobile: dot 4 service link label",
+      "passed": true,
+      "detail": "Explore data and Power BI"
+    },
+    {
+      "name": "mobile: dot 4 service link destination",
+      "passed": true,
+      "detail": "/services/data-analytics"
+    },
+    {
+      "name": "mobile: dot 4 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 4 of 5: The data exists, but decisions still wait"
+    },
+    {
+      "name": "mobile: dot 4 no card height shift",
+      "passed": true,
+      "detail": [
+        629.625,
+        629.625
+      ]
+    },
+    {
+      "name": "mobile: dot 4 no section height shift",
+      "passed": true,
+      "detail": [
+        1230.609375,
+        1230.609375
+      ]
+    },
+    {
+      "name": "mobile: dot 4 no page height shift",
+      "passed": true,
+      "detail": [
+        17326,
+        17326
+      ]
+    },
+    {
+      "name": "mobile: dot 5 aria-pressed",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "false",
+        "true"
+      ]
+    },
+    {
+      "name": "mobile: dot 5 aria-label",
+      "passed": true,
+      "detail": "Select challenge 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "mobile: dot 5 visible layer",
+      "passed": true,
+      "detail": "challenge-detail-5"
+    },
+    {
+      "name": "mobile: dot 5 title",
+      "passed": true,
+      "detail": "AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "mobile: dot 5 description",
+      "passed": true,
+      "detail": "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+    },
+    {
+      "name": "mobile: dot 5 change",
+      "passed": true,
+      "detail": "Start with one contained workflow, define the evidence of success and build a grounded system before expanding."
+    },
+    {
+      "name": "mobile: dot 5 tags",
+      "passed": true,
+      "detail": [
+        "Tool-led experiments",
+        "Unclear ownership",
+        "No evaluation plan"
+      ]
+    },
+    {
+      "name": "mobile: dot 5 service link label",
+      "passed": true,
+      "detail": "Explore AI solutions"
+    },
+    {
+      "name": "mobile: dot 5 service link destination",
+      "passed": true,
+      "detail": "/services/ai-solutions"
+    },
+    {
+      "name": "mobile: dot 5 live announcement",
+      "passed": true,
+      "detail": "Selected challenge 5 of 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "mobile: dot 5 no card height shift",
+      "passed": true,
+      "detail": [
+        629.625,
+        629.625
+      ]
+    },
+    {
+      "name": "mobile: dot 5 no section height shift",
+      "passed": true,
+      "detail": [
+        1230.609375,
+        1230.609375
+      ]
+    },
+    {
+      "name": "mobile: dot 5 no page height shift",
+      "passed": true,
+      "detail": [
+        17326,
+        17326
+      ]
+    },
+    {
+      "name": "mobile: touch tap selects dot",
+      "passed": true,
+      "detail": "challenge-dot-3"
+    },
+    {
+      "name": "mobile: View More scrolls to card",
+      "passed": true,
+      "detail": 88.28125
+    },
+    {
+      "name": "mobile: View More does not reload",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile: View More preserves URL",
+      "passed": true,
+      "detail": [
+        "http://127.0.0.1:4174/",
+        "http://127.0.0.1:4174/"
+      ]
+    },
+    {
+      "name": "reduced motion: dot transitions disabled",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "reduced motion: card transitions disabled",
+      "passed": true,
+      "detail": "none"
+    }
+  ]
+}

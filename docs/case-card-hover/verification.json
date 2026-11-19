@@ -1,0 +1,204 @@
+{
+  "checks": [
+    {
+      "name": "first four cards use reveal mode",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "last two cards unchanged",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "default images visible",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "default reveal content hidden",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "default CTA hidden from tab order",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "last two cards keep visible descriptions",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "card heights unchanged",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "media heights unchanged",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "hovered image fades out",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "hovered image moves down 12px",
+      "actual": 12,
+      "expected": 12,
+      "pass": true
+    },
+    {
+      "name": "hovered content fades in",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "hovered content becomes visible",
+      "actual": "visible",
+      "expected": "visible",
+      "pass": true
+    },
+    {
+      "name": "hovered content rises to origin",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "hovered CTA is visible",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "hovered CTA becomes interactive",
+      "actual": "auto",
+      "expected": "auto",
+      "pass": true
+    },
+    {
+      "name": "hovered card geometry does not move",
+      "actual": 496,
+      "expected": 496,
+      "pass": true
+    },
+    {
+      "name": "hovered title position does not move",
+      "actual": 611.5,
+      "expected": 611.5,
+      "pass": true
+    },
+    {
+      "name": "other reveal cards stay closed",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "last two cards unaffected by hover",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "mouse leave reverses image fade",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "mouse leave reverses content fade",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "mouse leave keeps geometry stable",
+      "actual": 496,
+      "expected": 496,
+      "pass": true
+    },
+    {
+      "name": "keyboard focus reveals content",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "keyboard focus reveals CTA in tab order",
+      "actual": null,
+      "expected": null,
+      "pass": true
+    },
+    {
+      "name": "Tab reaches revealed CTA",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "touch reveal control is visible",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "touch content starts hidden",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "touch control reveals content",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "touch control does not navigate",
+      "actual": "http://127.0.0.1:4174/",
+      "expected": "http://127.0.0.1:4174/",
+      "pass": true
+    },
+    {
+      "name": "reduced motion removes image transition",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "reduced motion still reveals content",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "reduced motion keeps geometry stable",
+      "actual": 496,
+      "expected": 496,
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "after-default.png",
+    "after-hover.png",
+    "after-keyboard.png",
+    "after-mobile-revealed.png",
+    "after-reduced-motion.png"
+  ],
+  "video": "hover-transition.webm"
+}

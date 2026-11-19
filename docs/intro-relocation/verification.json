@@ -1,0 +1,599 @@
+{
+  "passed": 66,
+  "total": 66,
+  "failures": [],
+  "consoleErrors": [],
+  "desktopSnap": {
+    "exactTextOccurrences": 1,
+    "oldHeadingCount": 0,
+    "oldDescriptionCount": 0,
+    "darkIntroExists": false,
+    "heroBeforeRail": true,
+    "mainOrder": [
+      "SCRIPT",
+      "hero",
+      "selected-work",
+      "challenges",
+      "capabilities"
+    ],
+    "introParagraphCount": 1,
+    "introText": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions.",
+    "introColor": "rgb(7, 20, 75)",
+    "introFontSize": "36px",
+    "introFontWeight": "400",
+    "introLineHeight": "50.4px",
+    "introTextAlign": "left",
+    "introMaxWidth": "1120px",
+    "introMarginTop": "28px",
+    "introGapFromCards": 28,
+    "sectionBackgroundImage": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 124px, rgb(255, 255, 255) 124px, rgb(255, 255, 255) 100%)",
+    "sectionLabel": "Selected work",
+    "sectionHasDanglingLabelReference": false,
+    "highlights": [
+      {
+        "text": "technology",
+        "color": "rgb(36, 119, 212)",
+        "fontWeight": "600"
+      },
+      {
+        "text": "operations",
+        "color": "rgb(36, 119, 212)",
+        "fontWeight": "600"
+      },
+      {
+        "text": "digital experiences",
+        "color": "rgb(36, 119, 212)",
+        "fontWeight": "600"
+      }
+    ],
+    "cardCount": 6,
+    "cardData": [
+      {
+        "title": "Fashion Fusion E-Commerce Platform",
+        "href": "/case-studies/fashion-fusion",
+        "image": "/images/case-rail/fashion-fusion-card.webp",
+        "reveal": true,
+        "revealControl": true,
+        "srcSet": true
+      },
+      {
+        "title": "ERP Management System",
+        "href": "/case-studies/erp-management",
+        "image": "/images/case-rail/erp-management-card.webp",
+        "reveal": true,
+        "revealControl": true,
+        "srcSet": true
+      },
+      {
+        "title": "AI Business Assistant",
+        "href": "/case-studies/ai-business-assistant",
+        "image": "/images/case-rail/ai-business-assistant-card.webp",
+        "reveal": true,
+        "revealControl": true,
+        "srcSet": true
+      },
+      {
+        "title": "Restaurant QR Ordering System",
+        "href": "/case-studies/restaurant-qr-ordering",
+        "image": "/images/case-rail/restaurant-qr-ordering-card.webp",
+        "reveal": true,
+        "revealControl": true,
+        "srcSet": true
+      }
+    ],
+    "viewportOverflowX": "hidden",
+    "trackTransform": "matrix(1, 0, 0, 1, 0, 0)",
+    "horizontalOverflow": 0
+  },
+  "samples": {
+    "desktopIntro": "rgb(255, 255, 255)",
+    "mobileIntro": "rgb(255, 255, 255)"
+  },
+  "checks": [
+    {
+      "name": "desktop: exact paragraph appears once",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop: old heading removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop: old description removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop: dark duplicate section removed",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "desktop: hero directly precedes case rail",
+      "passed": true,
+      "detail": [
+        "SCRIPT",
+        "hero",
+        "selected-work",
+        "challenges"
+      ]
+    },
+    {
+      "name": "desktop: intro has only one paragraph",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop: intro copy exact",
+      "passed": true,
+      "detail": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions."
+    },
+    {
+      "name": "desktop: intro text deep navy",
+      "passed": true,
+      "detail": "rgb(7, 20, 75)"
+    },
+    {
+      "name": "desktop: intro font size",
+      "passed": true,
+      "detail": "36px"
+    },
+    {
+      "name": "desktop: intro regular weight",
+      "passed": true,
+      "detail": "400"
+    },
+    {
+      "name": "desktop: intro line height",
+      "passed": true,
+      "detail": [
+        "50.4px",
+        "36px"
+      ]
+    },
+    {
+      "name": "desktop: intro left aligned",
+      "passed": true,
+      "detail": "left"
+    },
+    {
+      "name": "desktop: intro max width 1120px",
+      "passed": true,
+      "detail": "1120px"
+    },
+    {
+      "name": "desktop: no excessive gap",
+      "passed": true,
+      "detail": 28
+    },
+    {
+      "name": "desktop: no dangling label reference",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "desktop: section label preserved",
+      "passed": true,
+      "detail": "Selected work"
+    },
+    {
+      "name": "desktop: highlights exact",
+      "passed": true,
+      "detail": [
+        {
+          "text": "technology",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "text": "operations",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "text": "digital experiences",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "name": "desktop: six rail cards retained",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "desktop: first four cards unchanged",
+      "passed": true,
+      "detail": [
+        {
+          "title": "Fashion Fusion E-Commerce Platform",
+          "href": "/case-studies/fashion-fusion",
+          "image": "/images/case-rail/fashion-fusion-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "ERP Management System",
+          "href": "/case-studies/erp-management",
+          "image": "/images/case-rail/erp-management-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "AI Business Assistant",
+          "href": "/case-studies/ai-business-assistant",
+          "image": "/images/case-rail/ai-business-assistant-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "Restaurant QR Ordering System",
+          "href": "/case-studies/restaurant-qr-ordering",
+          "image": "/images/case-rail/restaurant-qr-ordering-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        }
+      ]
+    },
+    {
+      "name": "desktop: viewport overflow mode",
+      "passed": true,
+      "detail": "hidden"
+    },
+    {
+      "name": "desktop: no page horizontal overflow",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop: first card hover reveal retained",
+      "passed": true,
+      "detail": {
+        "imageOpacity": "0",
+        "revealOpacity": "1",
+        "ctaOpacity": "1"
+      }
+    },
+    {
+      "name": "tablet: exact paragraph appears once",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "tablet: old heading removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "tablet: old description removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "tablet: dark duplicate section removed",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "tablet: hero directly precedes case rail",
+      "passed": true,
+      "detail": [
+        "SCRIPT",
+        "hero",
+        "selected-work",
+        "challenges"
+      ]
+    },
+    {
+      "name": "tablet: intro has only one paragraph",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "tablet: intro copy exact",
+      "passed": true,
+      "detail": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions."
+    },
+    {
+      "name": "tablet: intro text deep navy",
+      "passed": true,
+      "detail": "rgb(7, 20, 75)"
+    },
+    {
+      "name": "tablet: intro font size",
+      "passed": true,
+      "detail": "28px"
+    },
+    {
+      "name": "tablet: intro regular weight",
+      "passed": true,
+      "detail": "400"
+    },
+    {
+      "name": "tablet: intro line height",
+      "passed": true,
+      "detail": [
+        "39.2px",
+        "28px"
+      ]
+    },
+    {
+      "name": "tablet: intro left aligned",
+      "passed": true,
+      "detail": "left"
+    },
+    {
+      "name": "tablet: intro max width 1120px",
+      "passed": true,
+      "detail": "1120px"
+    },
+    {
+      "name": "tablet: no excessive gap",
+      "passed": true,
+      "detail": 40
+    },
+    {
+      "name": "tablet: no dangling label reference",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "tablet: section label preserved",
+      "passed": true,
+      "detail": "Selected work"
+    },
+    {
+      "name": "tablet: highlights exact",
+      "passed": true,
+      "detail": [
+        {
+          "text": "technology",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "text": "operations",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "text": "digital experiences",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "name": "tablet: six rail cards retained",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "tablet: first four cards unchanged",
+      "passed": true,
+      "detail": [
+        {
+          "title": "Fashion Fusion E-Commerce Platform",
+          "href": "/case-studies/fashion-fusion",
+          "image": "/images/case-rail/fashion-fusion-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "ERP Management System",
+          "href": "/case-studies/erp-management",
+          "image": "/images/case-rail/erp-management-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "AI Business Assistant",
+          "href": "/case-studies/ai-business-assistant",
+          "image": "/images/case-rail/ai-business-assistant-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "Restaurant QR Ordering System",
+          "href": "/case-studies/restaurant-qr-ordering",
+          "image": "/images/case-rail/restaurant-qr-ordering-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        }
+      ]
+    },
+    {
+      "name": "tablet: viewport overflow mode",
+      "passed": true,
+      "detail": "auto"
+    },
+    {
+      "name": "tablet: no page horizontal overflow",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "mobile: exact paragraph appears once",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "mobile: old heading removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "mobile: old description removed",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "mobile: dark duplicate section removed",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "mobile: hero directly precedes case rail",
+      "passed": true,
+      "detail": [
+        "SCRIPT",
+        "hero",
+        "selected-work",
+        "challenges"
+      ]
+    },
+    {
+      "name": "mobile: intro has only one paragraph",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "mobile: intro copy exact",
+      "passed": true,
+      "detail": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions."
+    },
+    {
+      "name": "mobile: intro text deep navy",
+      "passed": true,
+      "detail": "rgb(7, 20, 75)"
+    },
+    {
+      "name": "mobile: intro font size",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "mobile: intro regular weight",
+      "passed": true,
+      "detail": "400"
+    },
+    {
+      "name": "mobile: intro line height",
+      "passed": true,
+      "detail": [
+        "30.8px",
+        "22px"
+      ]
+    },
+    {
+      "name": "mobile: intro left aligned",
+      "passed": true,
+      "detail": "left"
+    },
+    {
+      "name": "mobile: intro max width 1120px",
+      "passed": true,
+      "detail": "1120px"
+    },
+    {
+      "name": "mobile: no excessive gap",
+      "passed": true,
+      "detail": 36
+    },
+    {
+      "name": "mobile: no dangling label reference",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "mobile: section label preserved",
+      "passed": true,
+      "detail": "Selected work"
+    },
+    {
+      "name": "mobile: highlights exact",
+      "passed": true,
+      "detail": [
+        {
+          "text": "technology",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "text": "operations",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "text": "digital experiences",
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "name": "mobile: six rail cards retained",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "mobile: first four cards unchanged",
+      "passed": true,
+      "detail": [
+        {
+          "title": "Fashion Fusion E-Commerce Platform",
+          "href": "/case-studies/fashion-fusion",
+          "image": "/images/case-rail/fashion-fusion-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "ERP Management System",
+          "href": "/case-studies/erp-management",
+          "image": "/images/case-rail/erp-management-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "AI Business Assistant",
+          "href": "/case-studies/ai-business-assistant",
+          "image": "/images/case-rail/ai-business-assistant-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        },
+        {
+          "title": "Restaurant QR Ordering System",
+          "href": "/case-studies/restaurant-qr-ordering",
+          "image": "/images/case-rail/restaurant-qr-ordering-card.webp",
+          "reveal": true,
+          "revealControl": true,
+          "srcSet": true
+        }
+      ]
+    },
+    {
+      "name": "mobile: viewport overflow mode",
+      "passed": true,
+      "detail": "auto"
+    },
+    {
+      "name": "mobile: no page horizontal overflow",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop: intro background white",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile: intro background white",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    }
+  ]
+}

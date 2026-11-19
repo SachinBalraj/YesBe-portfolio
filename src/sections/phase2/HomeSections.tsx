@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -49,6 +49,18 @@ const journalArticles = HOME_ARTICLE_SLUGS.map((slug) => articleBySlug(slug)).fi
   (article): article is NonNullable<typeof article> => Boolean(article),
 );
 
+const CHALLENGE_WAVE_WIDTH = 1200;
+const CHALLENGE_WAVE_HEIGHT = 280;
+const CHALLENGE_DOTS = [
+  { x: 120, y: 90 },
+  { x: 360, y: 190 },
+  { x: 600, y: 90 },
+  { x: 840, y: 190 },
+  { x: 1080, y: 90 },
+] as const;
+const CHALLENGE_WAVE_PATH =
+  "M 40 140 C 80 140 80 90 120 90 C 240 90 240 190 360 190 C 480 190 480 90 600 90 C 720 90 720 190 840 190 C 960 190 960 90 1080 90 C 1120 90 1120 140 1160 140";
+
 function HomeSectionHeading({
   eyebrow,
   title,
@@ -76,12 +88,49 @@ function HomeSectionHeading({
 
 function BusinessChallengesSection() {
   const [active, setActive] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
   const challenge = BUSINESS_CHALLENGES[active] ?? BUSINESS_CHALLENGES[0];
   if (!challenge) return null;
-  const ActiveIcon = challenge.icon;
+
+  const handleWaveKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const count = BUSINESS_CHALLENGES.length;
+    const focusedDot = (event.target as HTMLElement).closest<HTMLButtonElement>(
+      '[id^="challenge-dot-"]',
+    );
+    const current = focusedDot
+      ? Number(focusedDot.id.replace("challenge-dot-", "")) - 1
+      : active;
+    let next = current;
+
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      next = (current + 1) % count;
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      next = (current - 1 + count) % count;
+    } else if (event.key === "Home") {
+      next = 0;
+    } else if (event.key === "End") {
+      next = count - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    setActive(next);
+    window.requestAnimationFrame(() => {
+      document.getElementById(`challenge-dot-${next + 1}`)?.focus();
+    });
+  };
+
+  const scrollToCard = () => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    cardRef.current?.scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  };
 
   return (
-    <section id="challenges" className="section-py bg-paper" aria-label="Business challenges">
+    <section id="challenges" className="section-py bg-white" aria-label="Business challenges">
       <div className="container-page">
         <Reveal>
           <HomeSectionHeading
@@ -91,133 +140,163 @@ function BusinessChallengesSection() {
           />
         </Reveal>
 
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-12">
-          <Reveal className="border-t border-line">
-            <div className="divide-y divide-line" role="group" aria-label="Choose a business challenge">
-              {BUSINESS_CHALLENGES.map((item, index) => {
-                const Icon = item.icon;
-                const selected = index === active;
-                return (
-                  <button
-                    key={item.title}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => setActive(index)}
+        <div className="mx-auto w-full max-w-[1120px]">
+          <div
+            className="relative"
+            role="group"
+            aria-label="Choose a business challenge"
+            onKeyDown={handleWaveKeyDown}
+          >
+            <svg
+              viewBox={`0 0 ${CHALLENGE_WAVE_WIDTH} ${CHALLENGE_WAVE_HEIGHT}`}
+              className="block h-auto w-full"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d={CHALLENGE_WAVE_PATH}
+                fill="none"
+                stroke="#07156F"
+                strokeWidth={7}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+
+            {BUSINESS_CHALLENGES.map((item, index) => {
+              const dot = CHALLENGE_DOTS[index];
+              if (!dot) return null;
+              const selected = index === active;
+
+              return (
+                <button
+                  key={item.title}
+                  id={`challenge-dot-${index + 1}`}
+                  type="button"
+                  aria-label={`Select challenge ${index + 1}: ${item.title}`}
+                  aria-pressed={selected}
+                  aria-controls={`challenge-detail-${index + 1}`}
+                  onClick={() => setActive(index)}
+                  style={{
+                    left: `${(dot.x / CHALLENGE_WAVE_WIDTH) * 100}%`,
+                    top: `${(dot.y / CHALLENGE_WAVE_HEIGHT) * 100}%`,
+                  }}
+                  className="group absolute z-10 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07156F] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  <span
                     className={cn(
-                      "group relative flex w-full items-start gap-4 py-5 pr-4 text-left transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary",
-                      selected ? "bg-white pl-4" : "hover:bg-white/55 hover:pl-2",
+                      "block size-5 rounded-full bg-[#07156F] transition-shadow duration-300 motion-reduce:transition-none sm:size-6",
+                      selected
+                        ? "ring-2 ring-[#07156F]/35 ring-offset-4 ring-offset-white"
+                        : "group-hover:ring-2 group-hover:ring-[#07156F]/20 group-hover:ring-offset-4 group-hover:ring-offset-white",
+                    )}
+                    aria-hidden="true"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          <button
+            type="button"
+            onClick={scrollToCard}
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#07156F] px-7 text-[13px] font-semibold text-white transition-colors duration-300 hover:bg-[#0a247f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07156F] focus-visible:ring-offset-2 motion-reduce:transition-none"
+          >
+            View More
+          </button>
+        </div>
+
+        <div
+          ref={cardRef}
+          id="challenge-detail-card"
+          className="mx-auto mt-8 w-full max-w-[940px]"
+        >
+          <div className="relative overflow-hidden border border-line bg-white shadow-panel">
+            <div className="grid">
+              {BUSINESS_CHALLENGES.map((item, index) => {
+                const selected = index === active;
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.title}
+                    id={`challenge-detail-${index + 1}`}
+                    aria-hidden={!selected}
+                    inert={!selected}
+                    className={cn(
+                      "col-start-1 row-start-1 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none",
+                      selected
+                        ? "z-10 translate-y-0 opacity-100"
+                        : "pointer-events-none translate-y-1 opacity-0",
                     )}
                   >
-                    <span
-                      className={cn(
-                        "absolute inset-y-0 left-0 w-0.5 bg-primary transition-transform duration-300",
-                        selected ? "scale-y-100" : "scale-y-0",
-                      )}
-                      aria-hidden="true"
-                    />
-                    <span
-                      className={cn(
-                        "mt-0.5 font-mono text-[10px] font-semibold tracking-[0.12em]",
-                        selected ? "text-primary" : "text-body/85",
-                      )}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span
-                        className={cn(
-                          "block text-[15px] font-semibold leading-6 tracking-[-0.015em]",
-                          selected ? "text-ink" : "text-ink-soft",
-                        )}
-                      >
-                        {item.title}
+                    <div className="flex items-start justify-between gap-6 border-b border-line px-6 py-5 sm:px-8">
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
+                          Common pattern
+                        </p>
+                        <p className="mt-1.5 text-[13px] uppercase text-body">
+                          {`${String(index + 1).padStart(2, "0")} of ${String(BUSINESS_CHALLENGES.length).padStart(2, "0")}`}
+                        </p>
+                      </div>
+                      <span className="flex size-11 items-center justify-center border border-line bg-paper text-primary">
+                        <Icon className="size-5" strokeWidth={1.7} aria-hidden="true" />
                       </span>
+                    </div>
+
+                    <div className="relative p-6 sm:p-8 lg:p-9">
                       <span
-                        className={cn(
-                          "mt-1 block text-[12.5px] leading-5 transition-colors",
-                          selected ? "text-body" : "text-body/85",
-                        )}
+                        className="pointer-events-none absolute right-4 top-2 text-[7rem] font-semibold leading-none tracking-[-0.08em] text-paper-deep sm:text-[9rem]"
+                        aria-hidden="true"
                       >
-                        {`${item.signals[0]} · ${item.signals[1]}`}
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                    </span>
-                    <Icon
-                      className={cn(
-                        "mt-0.5 size-4 shrink-0 transition-colors",
-                        selected ? "text-primary" : "text-body/30",
-                      )}
-                      strokeWidth={1.7}
-                      aria-hidden="true"
-                    />
-                  </button>
+                      <div className="relative">
+                        <h3 className="max-w-md text-[1.65rem] font-semibold leading-[1.12] tracking-[-0.035em] text-ink sm:text-[2rem]">
+                          {item.title}
+                        </h3>
+                        <p className="mt-5 max-w-xl text-[14.5px] leading-7 text-body">
+                          {item.description}
+                        </p>
+
+                        <div className="mt-7 border-t border-line pt-6">
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink">
+                            What changes
+                          </p>
+                          <p className="mt-2.5 max-w-xl text-[14px] leading-6 text-body">
+                            {item.change}
+                          </p>
+                        </div>
+
+                        <ul className="mt-6 flex flex-wrap gap-2">
+                          {item.signals.map((signal) => (
+                            <li
+                              key={signal}
+                              className="border border-line bg-paper px-2.5 py-1 text-[10.5px] font-medium text-body"
+                            >
+                              {signal}
+                            </li>
+                          ))}
+                        </ul>
+
+                        <Link to={item.link.to} className="link-arrow mt-7">
+                          {item.link.label}
+                          <ArrowRight className="size-4" aria-hidden="true" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 );
               })}
             </div>
-          </Reveal>
-
-          <Reveal delay={80} className="lg:sticky lg:top-28">
-            <div className="relative overflow-hidden border border-line bg-white shadow-panel">
-              <div className="flex items-start justify-between gap-6 border-b border-line px-6 py-5 sm:px-8">
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                    Common pattern
-                  </p>
-                  <p className="mt-1.5 text-[13px] text-body">
-                    {`${String(active + 1).padStart(2, "0")} of ${String(BUSINESS_CHALLENGES.length).padStart(2, "0")}`}
-                  </p>
-                </div>
-                <span className="flex size-11 items-center justify-center border border-line bg-paper text-primary">
-                  <ActiveIcon className="size-5" strokeWidth={1.7} aria-hidden="true" />
-                </span>
-              </div>
-
-              <div className="relative p-6 sm:p-8 lg:p-9">
-                <span
-                  className="pointer-events-none absolute right-4 top-2 text-[7rem] font-semibold leading-none tracking-[-0.08em] text-paper-deep sm:text-[9rem]"
-                  aria-hidden="true"
-                >
-                  {String(active + 1).padStart(2, "0")}
-                </span>
-                <div className="relative">
-                  <h3 className="max-w-md text-[1.65rem] font-semibold leading-[1.12] tracking-[-0.035em] text-ink sm:text-[2rem]">
-                    {challenge.title}
-                  </h3>
-                  <p className="mt-5 max-w-xl text-[14.5px] leading-7 text-body">
-                    {challenge.description}
-                  </p>
-
-                  <div className="mt-7 border-t border-line pt-6">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink">
-                      What changes
-                    </p>
-                    <p className="mt-2.5 max-w-xl text-[14px] leading-6 text-body">
-                      {challenge.change}
-                    </p>
-                  </div>
-
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {challenge.signals.map((signal) => (
-                      <li
-                        key={signal}
-                        className="border border-line bg-paper px-2.5 py-1 text-[10.5px] font-medium text-body"
-                      >
-                        {signal}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    to={challenge.link.to}
-                    className="link-arrow mt-7"
-                  >
-                    {challenge.link.label}
-                    <ArrowRight className="size-4" aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+          </div>
         </div>
+
+        <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+          {`Selected challenge ${active + 1} of ${BUSINESS_CHALLENGES.length}: ${challenge.title}`}
+        </p>
       </div>
     </section>
   );

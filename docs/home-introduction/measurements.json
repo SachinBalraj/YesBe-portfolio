@@ -1,0 +1,116 @@
+{
+  "desktop": {
+    "text": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions.",
+    "sectionBackground": "rgb(6, 26, 64)",
+    "sectionColor": "rgb(255, 255, 255)",
+    "sectionPaddingTop": "80px",
+    "sectionPaddingBottom": "80px",
+    "sectionMarginBottom": "124px",
+    "containerWidth": 1120,
+    "containerMaxWidth": "1120px",
+    "paragraphTextAlign": "left",
+    "paragraphFontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "paragraphFontSize": "36px",
+    "paragraphFontWeight": "400",
+    "paragraphLineHeight": "50.4px",
+    "highlights": [
+      {
+        "text": "technology",
+        "color": "rgb(99, 182, 255)",
+        "fontWeight": "600"
+      },
+      {
+        "text": "operations",
+        "color": "rgb(99, 182, 255)",
+        "fontWeight": "600"
+      },
+      {
+        "text": "digital experiences",
+        "color": "rgb(99, 182, 255)",
+        "fontWeight": "600"
+      }
+    ],
+    "sectionRect": {
+      "top": 1100,
+      "bottom": 1461.5625,
+      "left": 0,
+      "right": 1440,
+      "width": 1440,
+      "height": 361.5625
+    },
+    "caseRailRect": {
+      "top": 1461.5625,
+      "bottom": 3265.5625,
+      "left": 0,
+      "right": 1440,
+      "width": 1440,
+      "height": 1804
+    },
+    "firstCardRect": {
+      "top": 1461.5625,
+      "bottom": 1957.5625,
+      "left": 104,
+      "right": 400,
+      "width": 296,
+      "height": 496
+    },
+    "scrollY": 687
+  },
+  "mobile": {
+    "text": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions.",
+    "sectionBackground": "rgb(6, 26, 64)",
+    "sectionColor": "rgb(255, 255, 255)",
+    "sectionPaddingTop": "48px",
+    "sectionPaddingBottom": "48px",
+    "sectionMarginBottom": "100px",
+    "containerWidth": 390,
+    "containerMaxWidth": "1120px",
+    "paragraphTextAlign": "left",
+    "paragraphFontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "paragraphFontSize": "22px",
+    "paragraphFontWeight": "400",
+    "paragraphLineHeight": "30.8px",
+    "highlights": [
+      {
+        "text": "technology",
+        "color": "rgb(99, 182, 255)",
+        "fontWeight": "600"
+      },
+      {
+        "text": "operations",
+        "color": "rgb(99, 182, 255)",
+        "fontWeight": "600"
+      },
+      {
+        "text": "digital experiences",
+        "color": "rgb(99, 182, 255)",
+        "fontWeight": "600"
+      }
+    ],
+    "sectionRect": {
+      "top": 780,
+      "bottom": 1091.578125,
+      "left": 0,
+      "right": 390,
+      "width": 390,
+      "height": 311.578125
+    },
+    "caseRailRect": {
+      "top": 1091.578125,
+      "bottom": 1721.296875,
+      "left": 0,
+      "right": 390,
+      "width": 390,
+      "height": 629.71875
+    },
+    "firstCardRect": {
+      "top": 1091.578125,
+      "bottom": 1491.578125,
+      "left": 20,
+      "right": 314,
+      "width": 294,
+      "height": 400
+    },
+    "scrollY": 248
+  }
+}

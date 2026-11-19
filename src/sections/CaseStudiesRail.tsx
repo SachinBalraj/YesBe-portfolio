@@ -6,6 +6,12 @@ import { localSrcSet } from "@/utils/images";
 import "@/styles/case-studies-rail.css";
 
 const CASE_STUDIES = orderedCaseStudies.slice(0, 6);
+const HOVER_REVEAL_SLUGS = [
+  "fashion-fusion",
+  "erp-management",
+  "ai-business-assistant",
+  "restaurant-qr-ordering",
+];
 const CARD_IMAGE_WIDTHS = [480, 640, 960];
 const CARD_IMAGES: Record<string, { src: string; alt: string }> = {
   "fashion-fusion": {
@@ -33,6 +39,15 @@ const CARD_IMAGES: Record<string, { src: string; alt: string }> = {
     alt: "Futuristic cyan energy waves glowing against a deep navy background",
   },
 };
+const INTRODUCTION_CONTENT = [
+  "YESBE Technologies empowers businesses to modernize ",
+  <span key="technology" className="case-rail__intro-highlight">technology</span>,
+  ", simplify ",
+  <span key="operations" className="case-rail__intro-highlight">operations</span>,
+  ", and reimagine ",
+  <span key="experiences" className="case-rail__intro-highlight">digital experiences</span>,
+  "—turning complex business challenges into smarter, scalable solutions.",
+];
 const HEADER_OFFSET = 76;
 const PIN_MULTIPLIER = 1.25;
 const MIN_PIN_DISTANCE = 520;
@@ -40,6 +55,138 @@ const MAX_PIN_DISTANCE = 1100;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
+}
+
+type CardStudy = (typeof CASE_STUDIES)[number];
+type CardImage = { src: string; alt: string };
+
+function CaseStudyCard({
+  study,
+  cardImage,
+  revealOnHover,
+}: {
+  study: CardStudy;
+  cardImage: CardImage;
+  revealOnHover: boolean;
+}) {
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [pinned, setPinned] = useState(false);
+  const srcSet = localSrcSet(cardImage.src, CARD_IMAGE_WIDTHS);
+  const revealed = revealOnHover && (hovered || focused || pinned);
+  const href = `/case-studies/${study.slug}`;
+  const detailsId = `case-card-details-${study.slug}`;
+  const cardClassName = [
+    "case-rail__card",
+    revealOnHover ? "case-rail__card--reveal" : "",
+    revealed ? "case-rail__card--revealed" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const imageElement = (
+    <img
+      src={cardImage.src}
+      srcSet={srcSet ? `${srcSet}, ${cardImage.src} 1600w` : undefined}
+      sizes="(min-width: 1200px) 23vw, (min-width: 768px) 46vw, 82vw"
+      alt={cardImage.alt}
+      width={1600}
+      height={900}
+      loading="lazy"
+      decoding="async"
+      className="case-rail__image"
+    />
+  );
+
+  return (
+    <article
+      className={cardClassName}
+      onPointerEnter={(event) => {
+        if (event.pointerType === "mouse") setHovered(true);
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse") setHovered(false);
+      }}
+      onFocus={(event) => {
+        const target = event.target;
+        if (
+          target instanceof Element &&
+          target.matches(":focus-visible") &&
+          target.matches(".case-rail__title-link, .case-rail__cta")
+        ) {
+          setFocused(true);
+        }
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
+      }}
+    >
+      <div className="case-rail__panel">
+        <div className="case-rail__media">{imageElement}</div>
+        {revealOnHover ? (
+          <button
+            type="button"
+            className="case-rail__reveal-control"
+            aria-label={`${pinned ? "Hide" : "Show"} details for ${study.title}`}
+            aria-expanded={revealed}
+            aria-controls={detailsId}
+            onClick={() => setPinned((value) => !value)}
+          >
+            {pinned ? "Hide" : "Details"}
+          </button>
+        ) : null}
+        <div className="case-rail__body">
+          <div className="case-rail__meta">
+            <span>{study.category}</span>
+            <span>{study.label}</span>
+          </div>
+          <h3 className="case-rail__title">
+            <Link to={href} className="case-rail__title-link">
+              {study.title}
+            </Link>
+          </h3>
+          {revealOnHover ? (
+            <>
+              <div
+                className="case-rail__reveal-content"
+                id={detailsId}
+                aria-hidden={!revealed}
+              >
+                <p className="case-rail__description">{study.shortOverview}</p>
+                <ul className="case-rail__tags" aria-label="Technologies">
+                  {study.technologies.slice(0, 3).map((technology) => (
+                    <li key={technology}>{technology}</li>
+                  ))}
+                </ul>
+              </div>
+              <Link
+                to={href}
+                className="case-rail__cta"
+                tabIndex={revealed ? undefined : -1}
+                aria-hidden={!revealed}
+              >
+                Explore Case Study
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </>
+          ) : (
+            <>
+              <p className="case-rail__description">{study.shortOverview}</p>
+              <ul className="case-rail__tags" aria-label="Technologies">
+                {study.technologies.slice(0, 3).map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+              <Link to={href} className="case-rail__cta">
+                Explore Case Study
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
+    </article>
+  );
 }
 
 export function CaseStudiesRail() {
@@ -127,64 +274,26 @@ export function CaseStudiesRail() {
     <section
       ref={sectionRef}
       id="selected-work"
-      aria-labelledby="case-studies-heading"
+      aria-label="Selected work"
       className="case-rail"
       style={sectionStyle}
     >
       <div className="case-rail__sticky">
         <div className="container-page case-rail__inner">
           <div className="case-rail__intro">
-            <p className="eyebrow">Selected work</p>
-            <h2 id="case-studies-heading">Technology in Action.</h2>
-            <p>
-              Explore how thoughtful technology solutions can simplify operations, connect systems,
-              and create better digital experiences.
-            </p>
+            <p>{INTRODUCTION_CONTENT}</p>
           </div>
           <div ref={viewportRef} className="case-rail__viewport">
             <div ref={trackRef} className="case-rail__track">
               {CASE_STUDIES.map((study) => {
                 const cardImage = CARD_IMAGES[study.slug];
-                const srcSet = localSrcSet(cardImage.src, CARD_IMAGE_WIDTHS);
                 return (
-                  <article key={study.slug} className="case-rail__card">
-                    <div className="case-rail__panel">
-                      <div className="case-rail__media">
-                        <img
-                          src={cardImage.src}
-                          srcSet={srcSet ? `${srcSet}, ${cardImage.src} 1600w` : undefined}
-                          sizes="(min-width: 1200px) 23vw, (min-width: 768px) 46vw, 82vw"
-                          alt={cardImage.alt}
-                          width={1600}
-                          height={900}
-                          loading="lazy"
-                          decoding="async"
-                          className="case-rail__image"
-                        />
-                      </div>
-                      <div className="case-rail__body">
-                        <div className="case-rail__meta">
-                          <span>{study.category}</span>
-                          <span>{study.label}</span>
-                        </div>
-                        <h3 className="case-rail__title">
-                          <Link to={`/case-studies/${study.slug}`} className="case-rail__title-link">
-                            {study.title}
-                          </Link>
-                        </h3>
-                        <p className="case-rail__description">{study.shortOverview}</p>
-                        <ul className="case-rail__tags" aria-label="Technologies">
-                          {study.technologies.slice(0, 3).map((technology) => (
-                            <li key={technology}>{technology}</li>
-                          ))}
-                        </ul>
-                        <Link to={`/case-studies/${study.slug}`} className="case-rail__cta">
-                          Explore Case Study
-                          <ArrowRight className="size-4" aria-hidden="true" />
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
+                  <CaseStudyCard
+                    key={study.slug}
+                    study={study}
+                    cardImage={cardImage}
+                    revealOnHover={HOVER_REVEAL_SLUGS.includes(study.slug)}
+                  />
                 );
               })}
             </div>

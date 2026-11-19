@@ -1,0 +1,344 @@
+{
+  "passed": 54,
+  "total": 54,
+  "failures": [],
+  "results": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "expectedFontSize": "36px",
+      "expectedPadding": "80px",
+      "data": {
+        "text": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions.",
+        "background": "rgb(6, 26, 64)",
+        "backgroundImage": "none",
+        "borderTopWidth": "0px",
+        "borderBottomWidth": "0px",
+        "borderTopColor": "rgb(15, 23, 42)",
+        "borderBottomColor": "rgb(15, 23, 42)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "textColor": "rgb(255, 255, 255)",
+        "textAlign": "left",
+        "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "36px",
+        "fontWeight": "400",
+        "lineHeight": "50.4px",
+        "paddingTop": "80px",
+        "paddingBottom": "80px",
+        "containerWidth": 1120,
+        "containerMaxWidth": "1120px",
+        "highlights": [
+          {
+            "text": "technology",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          },
+          {
+            "text": "operations",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          },
+          {
+            "text": "digital experiences",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          }
+        ],
+        "sectionRect": {
+          "top": 1100,
+          "bottom": 1461.5625,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 361.5625
+        },
+        "paragraphRect": {
+          "top": 1180,
+          "bottom": 1381.5625,
+          "left": 200,
+          "right": 1240,
+          "width": 1040,
+          "height": 201.5625
+        },
+        "railRect": {
+          "top": 1461.5625,
+          "bottom": 3265.5625,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 1804
+        },
+        "cardRect": {
+          "top": 1461.5625,
+          "bottom": 1957.5625,
+          "left": 104,
+          "right": 400,
+          "width": 296,
+          "height": 496
+        },
+        "heroBeforeIntro": true,
+        "introBeforeRail": true,
+        "introIndex": 2,
+        "heroIndex": 1,
+        "railIndex": 3,
+        "horizontalOverflow": 0
+      },
+      "checks": {
+        "exactCopy": true,
+        "solidNavyBackground": true,
+        "noBackgroundImage": true,
+        "whiteBodyText": true,
+        "leftAligned": true,
+        "interTypography": true,
+        "fontSizeInRange": true,
+        "lineHeightInRange": true,
+        "paddingInRange": true,
+        "highlightCopyAndStyle": true,
+        "noVisibleBorders": true,
+        "noRounding": true,
+        "noShadow": true,
+        "centeredContainer": true,
+        "correctOrder": true,
+        "noCardOverlap": true,
+        "textNotCovered": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "expectedFontSize": "28px",
+      "expectedPadding": "56px",
+      "data": {
+        "text": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions.",
+        "background": "rgb(6, 26, 64)",
+        "backgroundImage": "none",
+        "borderTopWidth": "0px",
+        "borderBottomWidth": "0px",
+        "borderTopColor": "rgb(15, 23, 42)",
+        "borderBottomColor": "rgb(15, 23, 42)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "textColor": "rgb(255, 255, 255)",
+        "textAlign": "left",
+        "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "28px",
+        "fontWeight": "400",
+        "lineHeight": "39.2px",
+        "paddingTop": "56px",
+        "paddingBottom": "56px",
+        "containerWidth": 834,
+        "containerMaxWidth": "1120px",
+        "highlights": [
+          {
+            "text": "technology",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          },
+          {
+            "text": "operations",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          },
+          {
+            "text": "digital experiences",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          }
+        ],
+        "sectionRect": {
+          "top": 812,
+          "bottom": 1080.75,
+          "left": 0,
+          "right": 834,
+          "width": 834,
+          "height": 268.75
+        },
+        "paragraphRect": {
+          "top": 868,
+          "bottom": 1024.75,
+          "left": 28,
+          "right": 806,
+          "width": 778,
+          "height": 156.75
+        },
+        "railRect": {
+          "top": 1080.75,
+          "bottom": 1738.15625,
+          "left": 0,
+          "right": 834,
+          "width": 834,
+          "height": 657.40625
+        },
+        "cardRect": {
+          "top": 1080.75,
+          "bottom": 1528.75,
+          "left": 28,
+          "right": 409,
+          "width": 381,
+          "height": 448
+        },
+        "heroBeforeIntro": true,
+        "introBeforeRail": true,
+        "introIndex": 2,
+        "heroIndex": 1,
+        "railIndex": 3,
+        "horizontalOverflow": 0
+      },
+      "checks": {
+        "exactCopy": true,
+        "solidNavyBackground": true,
+        "noBackgroundImage": true,
+        "whiteBodyText": true,
+        "leftAligned": true,
+        "interTypography": true,
+        "fontSizeInRange": true,
+        "lineHeightInRange": true,
+        "paddingInRange": true,
+        "highlightCopyAndStyle": true,
+        "noVisibleBorders": true,
+        "noRounding": true,
+        "noShadow": true,
+        "centeredContainer": true,
+        "correctOrder": true,
+        "noCardOverlap": true,
+        "textNotCovered": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "expectedFontSize": "22px",
+      "expectedPadding": "48px",
+      "data": {
+        "text": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions.",
+        "background": "rgb(6, 26, 64)",
+        "backgroundImage": "none",
+        "borderTopWidth": "0px",
+        "borderBottomWidth": "0px",
+        "borderTopColor": "rgb(15, 23, 42)",
+        "borderBottomColor": "rgb(15, 23, 42)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "textColor": "rgb(255, 255, 255)",
+        "textAlign": "left",
+        "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "22px",
+        "fontWeight": "400",
+        "lineHeight": "30.8px",
+        "paddingTop": "48px",
+        "paddingBottom": "48px",
+        "containerWidth": 390,
+        "containerMaxWidth": "1120px",
+        "highlights": [
+          {
+            "text": "technology",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          },
+          {
+            "text": "operations",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          },
+          {
+            "text": "digital experiences",
+            "color": "rgb(99, 182, 255)",
+            "fontWeight": "600"
+          }
+        ],
+        "sectionRect": {
+          "top": 780,
+          "bottom": 1091.578125,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 311.578125
+        },
+        "paragraphRect": {
+          "top": 828,
+          "bottom": 1043.578125,
+          "left": 20,
+          "right": 370,
+          "width": 350,
+          "height": 215.578125
+        },
+        "railRect": {
+          "top": 1091.578125,
+          "bottom": 1721.296875,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 629.71875
+        },
+        "cardRect": {
+          "top": 1091.578125,
+          "bottom": 1491.578125,
+          "left": 20,
+          "right": 314,
+          "width": 294,
+          "height": 400
+        },
+        "heroBeforeIntro": true,
+        "introBeforeRail": true,
+        "introIndex": 2,
+        "heroIndex": 1,
+        "railIndex": 3,
+        "horizontalOverflow": 0
+      },
+      "checks": {
+        "exactCopy": true,
+        "solidNavyBackground": true,
+        "noBackgroundImage": true,
+        "whiteBodyText": true,
+        "leftAligned": true,
+        "interTypography": true,
+        "fontSizeInRange": true,
+        "lineHeightInRange": true,
+        "paddingInRange": true,
+        "highlightCopyAndStyle": true,
+        "noVisibleBorders": true,
+        "noRounding": true,
+        "noShadow": true,
+        "centeredContainer": true,
+        "correctOrder": true,
+        "noCardOverlap": true,
+        "textNotCovered": true,
+        "noHorizontalOverflow": true
+      }
+    }
+  ],
+  "screenshots": {
+    "desktopSection": {
+      "width": 1440,
+      "height": 362,
+      "corner": "rgb(6, 26, 64)"
+    },
+    "desktopContext": {
+      "width": 1440,
+      "height": 1100,
+      "corner": "rgb(1, 23, 65)"
+    },
+    "mobileSection": {
+      "width": 390,
+      "height": 312,
+      "corner": "rgb(6, 26, 64)"
+    },
+    "mobileContext": {
+      "width": 390,
+      "height": 844,
+      "corner": "rgb(1, 18, 53)"
+    }
+  }
+}
