@@ -6,6 +6,33 @@ import { localSrcSet } from "@/utils/images";
 import "@/styles/case-studies-rail.css";
 
 const CASE_STUDIES = orderedCaseStudies.slice(0, 6);
+const CARD_IMAGE_WIDTHS = [480, 640, 960];
+const CARD_IMAGES: Record<string, { src: string; alt: string }> = {
+  "fashion-fusion": {
+    src: "/images/case-rail/fashion-fusion-card.webp",
+    alt: "Radiating electric blue fiber-optic strands on a deep navy background",
+  },
+  "erp-management": {
+    src: "/images/case-rail/erp-management-card.webp",
+    alt: "Flowing luminous fiber-optic data lines across a dark blue field",
+  },
+  "ai-business-assistant": {
+    src: "/images/case-rail/ai-business-assistant-card.webp",
+    alt: "Cyan and electric blue light waves forming an abstract digital wave",
+  },
+  "restaurant-qr-ordering": {
+    src: "/images/case-rail/restaurant-qr-ordering-card.webp",
+    alt: "Interconnected white and blue optical fibers glowing in darkness",
+  },
+  "library-management": {
+    src: "/images/case-rail/library-management-card.webp",
+    alt: "Crisp blue light streaks flowing through a black background",
+  },
+  "business-automation": {
+    src: "/images/case-rail/business-automation-card.webp",
+    alt: "Futuristic cyan energy waves glowing against a deep navy background",
+  },
+};
 const HEADER_OFFSET = 76;
 const PIN_MULTIPLIER = 1.25;
 const MIN_PIN_DISTANCE = 520;
@@ -117,18 +144,19 @@ export function CaseStudiesRail() {
           <div ref={viewportRef} className="case-rail__viewport">
             <div ref={trackRef} className="case-rail__track">
               {CASE_STUDIES.map((study) => {
-                const srcSet = localSrcSet(study.image, [480, 800]);
+                const cardImage = CARD_IMAGES[study.slug];
+                const srcSet = localSrcSet(cardImage.src, CARD_IMAGE_WIDTHS);
                 return (
                   <article key={study.slug} className="case-rail__card">
                     <div className="case-rail__panel">
                       <div className="case-rail__media">
                         <img
-                          src={study.image}
-                          srcSet={srcSet ? `${srcSet}, ${study.image} 1200w` : undefined}
+                          src={cardImage.src}
+                          srcSet={srcSet ? `${srcSet}, ${cardImage.src} 1600w` : undefined}
                           sizes="(min-width: 1200px) 23vw, (min-width: 768px) 46vw, 82vw"
-                          alt={`${study.title} — illustrative interface preview`}
-                          width={1200}
-                          height={760}
+                          alt={cardImage.alt}
+                          width={1600}
+                          height={900}
                           loading="lazy"
                           decoding="async"
                           className="case-rail__image"

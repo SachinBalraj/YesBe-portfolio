@@ -72,7 +72,7 @@ body:has(.case-rail) {
   height: 12rem;
   flex: 0 0 12rem;
   overflow: hidden;
-  background: #edf1f7;
+  background: #0a1730;
 }
 
 .case-rail__image {
@@ -84,7 +84,7 @@ body:has(.case-rail) {
 }
 
 .case-rail__card:hover .case-rail__image {
-  transform: scale(1.04);
+  transform: scale(1.025);
 }
 
 .case-rail__body {

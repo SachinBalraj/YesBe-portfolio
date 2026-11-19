@@ -85,6 +85,30 @@
       "pass": true
     },
     {
+      "name": "case-study images loaded",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "case-study image intrinsic ratio",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "case-study image srcset",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "case-study image alt text",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
       "name": "consistent card heights",
       "actual": 1,
       "expected": 1,
@@ -100,6 +124,12 @@
       "name": "CTA bottom alignment",
       "actual": 1,
       "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "hover zoom scale",
+      "actual": 1.025,
+      "expected": 1.025,
       "pass": true
     },
     {
