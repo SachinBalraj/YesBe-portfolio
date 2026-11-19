@@ -2,7 +2,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import { CinematicHero } from "@/sections/phase2/CinematicHero";
-import { ScrollDrivenServices } from "@/sections/ScrollDrivenServices";
+import { CaseStudiesRail } from "@/sections/CaseStudiesRail";
 import { Phase2HomeSections } from "@/sections/phase2/HomeSections";
 
 export function HomePage() {
@@ -23,7 +23,7 @@ export function HomePage() {
         publisher: { "@type": "Organization", "@id": "https://www.yesbe.tech/#organization" },
       }} />
       <CinematicHero />
-      <ScrollDrivenServices />
+      <CaseStudiesRail />
       <Phase2HomeSections />
     </>
   );

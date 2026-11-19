@@ -1,0 +1,324 @@
+{
+  "checks": [
+    {
+      "name": "section label",
+      "actual": "Selected work",
+      "expected": "Selected work",
+      "pass": true
+    },
+    {
+      "name": "section heading",
+      "actual": "Technology in Action.",
+      "expected": "Technology in Action.",
+      "pass": true
+    },
+    {
+      "name": "section description",
+      "actual": "Explore how thoughtful technology solutions can simplify operations, connect systems, and create better digital experiences.",
+      "expected": "Explore how thoughtful technology solutions can simplify operations, connect systems, and create better digital experiences.",
+      "pass": true
+    },
+    {
+      "name": "old service label removed",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "old service heading removed",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "old service paragraph removed",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "desktop page overflow",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "six case-study cards",
+      "actual": 6,
+      "expected": 6,
+      "pass": true
+    },
+    {
+      "name": "case-study routes",
+      "actual": "[\"/case-studies/fashion-fusion\",\"/case-studies/erp-management\",\"/case-studies/ai-business-assistant\",\"/case-studies/restaurant-qr-ordering\",\"/case-studies/library-management\",\"/case-studies/business-automation\"]",
+      "expected": "[\"/case-studies/fashion-fusion\",\"/case-studies/erp-management\",\"/case-studies/ai-business-assistant\",\"/case-studies/restaurant-qr-ordering\",\"/case-studies/library-management\",\"/case-studies/business-automation\"]",
+      "pass": true
+    },
+    {
+      "name": "case-study CTA labels",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "case-study categories",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "case-study status labels",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "case-study tag counts",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "case-study image paths",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "consistent card heights",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "consistent image heights",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "CTA bottom alignment",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "card overlap over hero",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "card extension into white",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "start transform",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "first card aligned at start",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "fourth card aligned at start",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "sticky engaged at start",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "sticky engaged at midpoint",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "sticky engaged at end",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "downward movement at midpoint",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "downward movement at end",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "end transform from track dimensions",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "third card aligned at end",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "sixth card aligned at end",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "reverse movement at midpoint",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "reverse movement at start",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "sticky released after animation",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "no overflow after release",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "tablet horizontally swipeable",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "tablet card ratio",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "tablet card overlap",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "tablet not sticky",
+      "actual": "static",
+      "expected": "static",
+      "pass": true
+    },
+    {
+      "name": "tablet page overflow",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "mobile horizontally swipeable",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "mobile card ratio with next preview",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "mobile card overlap",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "mobile not sticky",
+      "actual": "static",
+      "expected": "static",
+      "pass": true
+    },
+    {
+      "name": "mobile page overflow",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "reduced motion non-sticky",
+      "actual": "static",
+      "expected": "static",
+      "pass": true
+    },
+    {
+      "name": "reduced motion grid layout",
+      "actual": "grid",
+      "expected": "grid",
+      "pass": true
+    },
+    {
+      "name": "reduced motion transform",
+      "actual": "none",
+      "expected": "none",
+      "pass": true
+    },
+    {
+      "name": "reduced motion card count",
+      "actual": 6,
+      "expected": 6,
+      "pass": true
+    },
+    {
+      "name": "reduced motion page overflow",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "name": "keyboard focus reaches CTA",
+      "actual": "/case-studies/fashion-fusion",
+      "expected": "/case-studies/fashion-fusion",
+      "pass": true
+    },
+    {
+      "name": "CTA focus outline visible",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "desktop-begin.png",
+    "desktop-50.png",
+    "desktop-end.png",
+    "tablet.png",
+    "mobile.png",
+    "reduced-motion-desktop.png"
+  ],
+  "release": {
+    "stickyBottom": 660,
+    "sectionBottom": 660,
+    "pageOverflow": 0
+  },
+  "pass": true
+}
