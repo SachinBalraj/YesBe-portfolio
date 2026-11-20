@@ -5,33 +5,12 @@ import {
   useState,
   type KeyboardEvent,
   type PointerEvent,
-  type ReactNode,
   type TransitionEvent,
 } from "react";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  Clock3,
-  MoveUpRight,
-} from "lucide-react";
-import { SectionHeading } from "@/components/common/SectionHeading";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "@/components/system/Reveal";
-import { DeliveryRail } from "@/components/phase2/DeliveryRail";
-import { ClosingCta } from "@/components/phase2/ClosingCta";
-import {
-  BUSINESS_CHALLENGES,
-  DELIVERY_STAGES,
-  HOME_ARTICLE_SLUGS,
-  INDUSTRY_SPOTLIGHTS,
-  PARTNERSHIP_POINTS,
-} from "@/data/phase2";
-import { getIndustryBySlug } from "@/data/industries";
-import { articleBySlug } from "@/knowledge/articles";
-import { imageAt, imageSrcSet } from "@/utils/images";
+import { BUSINESS_CHALLENGES, PARTNERSHIP_POINTS } from "@/data/phase2";
 import { cn } from "@/utils/cn";
 
 const companyAvifSet =
@@ -40,15 +19,6 @@ const companyWebpSet =
   "/images/company/yesbe-consultation-480.webp 480w, /images/company/yesbe-consultation-720.webp 720w, /images/company/yesbe-consultation-960.webp 960w, /images/company/yesbe-consultation-1280.webp 1280w";
 const companyJpgSet =
   "/images/company/yesbe-consultation-480.jpg 480w, /images/company/yesbe-consultation-720.jpg 720w, /images/company/yesbe-consultation-960.jpg 960w, /images/company/yesbe-consultation-1280.jpg 1280w";
-
-const industryItems = INDUSTRY_SPOTLIGHTS.map((spotlight) => {
-  const industry = getIndustryBySlug(spotlight.slug);
-  return industry ? { ...spotlight, ...industry } : null;
-}).filter((industry): industry is NonNullable<typeof industry> => Boolean(industry));
-
-const journalArticles = HOME_ARTICLE_SLUGS.map((slug) => articleBySlug(slug)).filter(
-  (article): article is NonNullable<typeof article> => Boolean(article),
-);
 
 const CHALLENGE_WAVE_WIDTH = 1200;
 const CHALLENGE_WAVE_HEIGHT = 280;
@@ -62,30 +32,6 @@ const CHALLENGE_DOTS = [
 const CHALLENGE_WAVE_PATH =
   "M 40 140 C 80 140 80 90 120 90 C 240 90 240 190 360 190 C 480 190 480 90 600 90 C 720 90 720 190 840 190 C 960 190 960 90 1080 90 C 1120 90 1120 140 1160 140";
 
-function HomeSectionHeading({
-  eyebrow,
-  title,
-  description,
-  action,
-  tone = "light",
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-  action?: ReactNode;
-  tone?: "light" | "dark";
-}) {
-  return (
-    <SectionHeading
-      eyebrow={eyebrow}
-      title={title}
-      description={description}
-      action={action}
-      tone={tone}
-      className="mb-8 lg:mb-10"
-    />
-  );
-}
 
 function BusinessChallengesSection() {
   const count = BUSINESS_CHALLENGES.length;
@@ -506,281 +452,76 @@ function HowWeThinkSection() {
   );
 }
 
-
-
-function IndustrySolutionsSection() {
-  return (
-    <section className="relative overflow-hidden bg-[#05132e] py-12 text-white sm:py-16 lg:py-20" aria-label="Industry solutions">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-25" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-0 size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(31,78,216,0.22),transparent_66%)]"
-      />
-      <div className="container-page relative">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <Reveal className="lg:sticky lg:top-28 lg:self-start">
-            <span className="eyebrow text-[#8eb5ff]">Industry context</span>
-            <h2 className="mt-5 max-w-lg text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-[2.7rem] lg:text-[3rem]">
-              Technology shaped by the operating context.
-            </h2>
-            <p className="mt-5 max-w-md text-[15px] leading-7 text-white/58">
-              The same engineering discipline does not produce the same system in a hospital, a
-              factory and a retail business. Constraints, compliance and daily workflows change
-              what good looks like.
-            </p>
-            <Link
-              to="/industries"
-              className="mt-8 inline-flex items-center gap-2 text-[13px] font-semibold text-[#9fc0ff] transition-colors hover:text-white"
-            >
-              View all 11 industries
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <div className="border-t border-white/15">
-              {industryItems.map((industry, index) => {
-                const Icon = industry.icon;
-                return (
-                  <Link
-                    key={industry.slug}
-                    to={`/industries/${industry.slug}`}
-                    className="group grid grid-cols-[2rem_2.5rem_1fr_auto] items-start gap-3 border-b border-white/12 py-5 transition-colors hover:bg-white/[0.035] sm:grid-cols-[2.5rem_2.75rem_1fr_auto] sm:gap-4 sm:py-6"
-                  >
-                    <span className="pt-1 font-mono text-[10px] tracking-[0.12em] text-white/32">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="flex size-9 items-center justify-center border border-white/15 text-[#8eb5ff] transition-colors group-hover:border-[#8eb5ff]/45">
-                      <Icon className="size-4" strokeWidth={1.7} aria-hidden="true" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-[15px] font-semibold text-white">{industry.title}</span>
-                      <span className="mt-1 block max-w-xl text-[12.5px] leading-5 text-white/50">
-                        {industry.description}
-                      </span>
-                      <span className="mt-2.5 inline-block text-[9.5px] font-semibold uppercase tracking-[0.13em] text-[#8eb5ff]/80">
-                        {industry.focus}
-                      </span>
-                    </span>
-                    <ArrowUpRight
-                      className="mt-2 size-4 text-white/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#8eb5ff]"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                );
-              })}
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function PartnershipSection() {
   return (
-    <section className="section-py bg-white" aria-label="The YESBE partnership">
+    <section className="bg-white py-12 sm:py-14 lg:py-16" aria-label="The YESBE partnership">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:gap-16">
-          <Reveal className="lg:sticky lg:top-28">
-            <div className="relative border border-line bg-paper p-2">
-              <div className="overflow-hidden">
-                <picture>
-                  <source type="image/avif" srcSet={companyAvifSet} sizes="(min-width: 1024px) 44vw, 100vw" />
-                  <source type="image/webp" srcSet={companyWebpSet} sizes="(min-width: 1024px) 44vw, 100vw" />
-                  <img
-                    src="/images/company/yesbe-consultation-960.jpg"
-                    srcSet={companyJpgSet}
-                    sizes="(min-width: 1024px) 44vw, 100vw"
-                    alt="Two professionals reviewing project requirements on a laptop"
-                    width={1600}
-                    height={1280}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[5/4] w-full object-cover"
-                  />
-                </picture>
-              </div>
-              <div className="absolute bottom-6 left-6 right-6 border border-white/20 bg-[#05132e]/88 p-4 text-white backdrop-blur-sm sm:bottom-8 sm:left-8 sm:right-auto sm:max-w-xs sm:p-5">
-                <p className="text-[9.5px] font-semibold uppercase tracking-[0.16em] text-[#8eb5ff]">
-                  Before the proposal
-                </p>
-                <p className="mt-2 text-[13px] font-medium leading-5 text-white/85">
-                  We map the current workflow, constraints and decision points first.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <span className="eyebrow">The partnership</span>
-            <h2 className="mt-5 max-w-2xl text-[2.15rem] font-semibold leading-[1.03] tracking-[-0.045em] text-ink sm:text-[2.8rem] lg:text-[3.25rem]">
+        <div className="mx-auto max-w-[960px]">
+          <Reveal>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#155EEF]">
+              THE PARTNERSHIP
+            </span>
+            <h2 className="mt-4 max-w-3xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#071B40] sm:text-[2.6rem] lg:text-[3rem]">
               A Technology Partner, Not Just a Vendor.
             </h2>
-            <p className="mt-5 max-w-xl text-[15px] leading-7 text-body">
+            <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#243047] sm:text-[16px]">
               The useful difference is not a larger team or a longer list of tools. It is how
               decisions are made, how scope is controlled and what happens when the project leaves
               the proposal stage.
             </p>
+          </Reveal>
 
-            <ol className="mt-9 border-t border-line">
-              {PARTNERSHIP_POINTS.map((point, index) => {
-                const Icon = point.icon;
-                return (
-                  <li
-                    key={point.title}
-                    className="grid grid-cols-[2rem_2.4rem_1fr] gap-3 border-b border-line py-5 sm:grid-cols-[2.5rem_2.75rem_1fr] sm:gap-4 sm:py-6"
+          <Reveal delay={60} className="mt-5 sm:mt-6">
+            <div className="mx-auto w-full max-w-[750px] overflow-hidden rounded-lg md:w-[65%]">
+              <picture>
+                <source type="image/avif" srcSet={companyAvifSet} sizes="(min-width: 1024px) 750px, (min-width: 768px) 65vw, 100vw" />
+                <source type="image/webp" srcSet={companyWebpSet} sizes="(min-width: 1024px) 750px, (min-width: 768px) 65vw, 100vw" />
+                <img
+                  src="/images/company/yesbe-consultation-960.jpg"
+                  srcSet={companyJpgSet}
+                  sizes="(min-width: 1024px) 750px, (min-width: 768px) 65vw, 100vw"
+                  alt="Two professionals reviewing project requirements on a laptop"
+                  width={1600}
+                  height={1280}
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-auto w-full"
+                />
+              </picture>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100} className="mt-5 sm:mt-6">
+            <ol className="divide-y divide-[#D6DCE7] border-y border-[#D6DCE7]">
+              {PARTNERSHIP_POINTS.map((point, index) => (
+                <li key={point.title}>
+                  <div
+                    tabIndex={0}
+                    className={cn(
+                      "group/row grid grid-cols-[auto_auto_1fr_auto] items-start gap-3 bg-[#FDFBF7] px-4 py-5 transition-colors duration-300 ease-out hover:bg-[#E8EEFF] focus-visible:bg-[#E8EEFF] focus-visible:outline-none motion-reduce:transition-none sm:gap-4 sm:px-5 sm:py-6",
+                    )}
                   >
-                    <span className="pt-1 font-mono text-[10px] font-semibold tracking-[0.12em] text-primary">
+                    <span className="pt-0.5 font-mono text-[13px] font-semibold tracking-[0.08em] text-[#155EEF] sm:text-[14px]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="flex size-9 items-center justify-center border border-line bg-paper text-primary">
-                      <Icon className="size-4" strokeWidth={1.7} aria-hidden="true" />
-                    </span>
-                    <span>
-                      <span className="block text-[15px] font-semibold tracking-[-0.01em] text-ink">
+                    <span aria-hidden="true" className="w-px self-stretch bg-[#D6DCE7]" />
+                    <span className="min-w-0">
+                      <span className="block text-[15px] font-semibold leading-snug text-[#071B40] sm:text-[16px]">
                         {point.title}
                       </span>
-                      <span className="mt-1.5 block max-w-xl text-[13.5px] leading-6 text-body">
+                      <span className="mt-1.5 block text-[13px] leading-6 text-[#243047] sm:text-[14px]">
                         {point.description}
                       </span>
                     </span>
-                  </li>
-                );
-              })}
+                    <ArrowUpRight
+                      className="mt-0.5 size-4 shrink-0 text-[#155EEF]/55 transition-all duration-300 ease-out group-hover/row:-translate-y-0.5 group-hover/row:translate-x-0.5 group-hover/row:text-[#155EEF] group-focus-visible/row:-translate-y-0.5 group-focus-visible/row:translate-x-0.5 group-focus-visible/row:text-[#155EEF] motion-reduce:transition-none sm:size-[18px]"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </li>
+              ))}
             </ol>
-
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link to="/about" className="link-arrow">
-                More about YESBE
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-              <Link to="/sachin-balraj" className="link-arrow">
-                Meet the founder
-                <MoveUpRight className="size-4" aria-hidden="true" />
-              </Link>
-            </div>
           </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function DeliveryApproachSection() {
-  return (
-    <section id="process" className="section-py border-y border-line bg-white" aria-label="Delivery approach">
-      <div className="container-page">
-        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
-          <Reveal>
-            <span className="eyebrow">How we deliver</span>
-            <h2 className="mt-5 max-w-xl text-[2.1rem] font-semibold leading-[1.04] tracking-[-0.04em] text-ink sm:text-[2.7rem] lg:text-[3rem]">
-              A delivery model built for decisions, not theatre.
-            </h2>
-          </Reveal>
-          <Reveal delay={60}>
-            <p className="max-w-2xl text-[15px] leading-7 text-body">
-              Every stage produces something you can inspect and decide on: a documented problem, a
-              bounded scope, working software, a launch plan, or evidence for the next move. Select a
-              stage to see what the work contains.
-            </p>
-          </Reveal>
-        </div>
-
-        <Reveal delay={100} className="mt-10 lg:mt-14">
-          <DeliveryRail stages={DELIVERY_STAGES} />
-        </Reveal>
-
-        <Reveal delay={120} className="mt-6 grid gap-4 border border-line bg-paper p-5 sm:grid-cols-3 sm:p-6">
-          {[
-            ["01", "Scope in writing"],
-            ["02", "Visible progress"],
-            ["03", "Controlled launch"],
-          ].map(([number, label]) => (
-            <div key={number} className="flex items-center gap-3">
-              <span className="font-mono text-[10px] font-semibold tracking-[0.12em] text-primary">
-                {number}
-              </span>
-              <span className="text-[12.5px] font-medium text-ink-soft">{label}</span>
-              <Check className="ml-auto size-3.5 text-primary" strokeWidth={2} aria-hidden="true" />
-            </div>
-          ))}
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function JournalSection() {
-  return (
-    <section className="section-py bg-paper" aria-label="Featured articles">
-      <div className="container-page">
-        <Reveal>
-          <HomeSectionHeading
-            eyebrow="From the journal"
-            title="Useful reading before the next decision."
-            description="Plain-language guides on the technology, trade-offs and operating questions that sit behind most projects."
-            action={
-              <Link to="/insights" className="link-arrow">
-                Read all articles
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            }
-          />
-        </Reveal>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {journalArticles.map((article, index) => (
-            <Reveal
-              key={article.slug}
-              as="article"
-              delay={index * 55}
-              className="group flex h-full flex-col border border-line bg-white"
-            >
-              <Link
-                to={`/insights/article/${article.slug}`}
-                className="block overflow-hidden"
-                aria-label={`Read ${article.title}`}
-              >
-                <img
-                  src={imageAt(article.featuredImage, 720, 405)}
-                  srcSet={imageSrcSet(article.featuredImage, [480, 720, 960], 1.77)}
-                  sizes="(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 100vw"
-                  alt=""
-                  width={720}
-                  height={405}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-[var(--ease-premium)] group-hover:scale-[1.03]"
-                />
-              </Link>
-              <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <div className="flex items-center justify-between gap-3 text-[10px] font-semibold uppercase tracking-[0.12em]">
-                  <span className="text-primary">{article.category}</span>
-                  <span className="inline-flex items-center gap-1.5 text-body/85">
-                    <Clock3 className="size-3" aria-hidden="true" />
-                    {article.readingTimeText}
-                  </span>
-                </div>
-                <h3 className="mt-4 text-[1.12rem] font-semibold leading-[1.3] tracking-[-0.025em] text-ink">
-                  <Link
-                    to={`/insights/article/${article.slug}`}
-                    className="transition-colors hover:text-primary"
-                  >
-                    {article.title}
-                  </Link>
-                </h3>
-                <p className="mt-3 line-clamp-3 text-[13px] leading-6 text-body">{article.excerpt}</p>
-                <Link
-                  to={`/insights/article/${article.slug}`}
-                  className="link-arrow mt-auto pt-6"
-                >
-                  Read the guide
-                  <ArrowRight className="size-3.5" aria-hidden="true" />
-                </Link>
-              </div>
-            </Reveal>
-          ))}
         </div>
       </div>
     </section>
@@ -792,11 +533,7 @@ export function Phase2HomeSections() {
     <>
       <BusinessChallengesSection />
       <HowWeThinkSection />
-      <IndustrySolutionsSection />
       <PartnershipSection />
-      <DeliveryApproachSection />
-      <JournalSection />
-      <ClosingCta />
     </>
   );
 }

@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { ArrowRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { orderedCaseStudies } from "@/data/phase3";
 import { localSrcSet } from "@/utils/images";
@@ -7,6 +7,14 @@ import "@/styles/case-studies-rail.css";
 
 const CASE_STUDIES = orderedCaseStudies.slice(0, 6);
 const HOVER_REVEAL_SLUGS = [
+  "fashion-fusion",
+  "erp-management",
+  "ai-business-assistant",
+  "restaurant-qr-ordering",
+  "library-management",
+  "business-automation",
+];
+const LIGHT_SWEEP_SLUGS = [
   "fashion-fusion",
   "erp-management",
   "ai-business-assistant",
@@ -50,14 +58,6 @@ const INTRODUCTION_CONTENT = [
   <span key="experiences" className="case-rail__intro-highlight">digital experiences</span>,
   "—turning complex business challenges into smarter, scalable solutions.",
 ];
-const HEADER_OFFSET = 76;
-const PIN_MULTIPLIER = 1.25;
-const MIN_PIN_DISTANCE = 520;
-const MAX_PIN_DISTANCE = 1100;
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
-}
 
 type CardStudy = (typeof CASE_STUDIES)[number];
 type CardImage = { src: string; alt: string };
@@ -78,10 +78,12 @@ function CaseStudyCard({
   const revealed = revealOnHover && (hovered || focused || pinned);
   const href = `/case-studies/${study.slug}`;
   const detailsId = `case-card-details-${study.slug}`;
+  const lightSweep = LIGHT_SWEEP_SLUGS.includes(study.slug);
   const cardClassName = [
     "case-rail__card",
     revealOnHover ? "case-rail__card--reveal" : "",
     revealed ? "case-rail__card--revealed" : "",
+    lightSweep ? "case-rail__card--light-sweep" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -90,7 +92,7 @@ function CaseStudyCard({
     <img
       src={cardImage.src}
       srcSet={srcSet ? `${srcSet}, ${cardImage.src} 1600w` : undefined}
-      sizes="(min-width: 1200px) 23vw, (min-width: 768px) 46vw, 82vw"
+      sizes="(min-width: 1200px) 30vw, (min-width: 768px) 46vw, 92vw"
       alt={cardImage.alt}
       width={1600}
       height={900}
@@ -192,101 +194,64 @@ function CaseStudyCard({
 }
 
 export function CaseStudiesRail() {
-  const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [pinDistance, setPinDistance] = useState(0);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
 
-  useEffect(() => {
-    const media = window.matchMedia("(min-width: 1200px) and (prefers-reduced-motion: no-preference)");
-    const trackElement = trackRef.current;
-    let frame = 0;
-    let maxTranslate = 0;
-    let distance = 0;
-
-    const applyTransform = () => {
-      frame = 0;
-      const track = trackRef.current;
-      const section = sectionRef.current;
-      if (!track || !section || !media.matches) return;
-
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      const progress = clamp((window.scrollY - sectionTop) / Math.max(distance, 1), 0, 1);
-      track.style.transform = `translate3d(${-progress * maxTranslate}px, 0, 0)`;
-    };
-
-    const requestTransform = () => {
-      if (!frame) frame = requestAnimationFrame(applyTransform);
-    };
-
-    const measure = () => {
-      const track = trackRef.current;
-      const viewport = viewportRef.current;
-      if (!track || !viewport) return;
-
-      maxTranslate = Math.max(track.scrollWidth - viewport.clientWidth, 0);
-      distance = clamp(maxTranslate * PIN_MULTIPLIER, MIN_PIN_DISTANCE, MAX_PIN_DISTANCE);
-      setPinDistance(media.matches ? distance : 0);
-      track.style.willChange = media.matches ? "transform" : "";
-      requestTransform();
-    };
-
-    const sync = () => {
-      const track = trackRef.current;
-      if (!media.matches) {
-        if (track) {
-          track.style.transform = "";
-          track.style.willChange = "";
-        }
-        setPinDistance(0);
-        return;
-      }
-      measure();
-    };
-
-    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(() => measure());
-
-    sync();
-    if (observer) {
-      if (viewportRef.current) observer.observe(viewportRef.current);
-      if (trackRef.current) observer.observe(trackRef.current);
-    }
-    media.addEventListener("change", sync);
-    window.addEventListener("scroll", requestTransform, { passive: true });
-    window.addEventListener("resize", measure);
-
-    return () => {
-      if (frame) cancelAnimationFrame(frame);
-      observer?.disconnect();
-      media.removeEventListener("change", sync);
-      window.removeEventListener("scroll", requestTransform);
-      window.removeEventListener("resize", measure);
-      if (trackElement) {
-        trackElement.style.transform = "";
-        trackElement.style.willChange = "";
-      }
-    };
+  const updateNav = useCallback(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    setCanPrev(viewport.scrollLeft > 4);
+    setCanNext(viewport.scrollLeft < maxScroll - 4);
   }, []);
 
-  const sectionStyle = {
-    "--case-pin-distance": pinDistance ? `${pinDistance}px` : undefined,
-  } as CSSProperties;
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    updateNav();
+    viewport.addEventListener("scroll", updateNav, { passive: true });
+    const observer =
+      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(() => updateNav());
+    observer?.observe(viewport);
+    if (viewport.firstElementChild) observer?.observe(viewport.firstElementChild);
+    return () => {
+      viewport.removeEventListener("scroll", updateNav);
+      observer?.disconnect();
+    };
+  }, [updateNav]);
+
+  const scrollByCard = useCallback((direction: 1 | -1) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const firstCard = viewport.querySelector<HTMLElement>(".case-rail__card");
+    const gap = 24;
+    const amount = firstCard ? firstCard.offsetWidth + gap : viewport.clientWidth;
+    viewport.scrollBy({ left: direction * amount, behavior: "smooth" });
+  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="selected-work"
       aria-label="Selected work"
       className="case-rail"
-      style={sectionStyle}
     >
-      <div className="case-rail__sticky">
-        <div className="container-page case-rail__inner">
-          <div className="case-rail__intro">
-            <p>{INTRODUCTION_CONTENT}</p>
-          </div>
+      <div className="container-page case-rail__inner">
+        <div className="case-rail__intro">
+          <p>{INTRODUCTION_CONTENT}</p>
+        </div>
+        <div className="case-rail__carousel">
+          <button
+            type="button"
+            className="case-rail__nav case-rail__nav--prev"
+            aria-label="Previous projects"
+            onClick={() => scrollByCard(-1)}
+            disabled={!canPrev}
+          >
+            <ChevronLeft className="size-5" aria-hidden="true" />
+          </button>
           <div ref={viewportRef} className="case-rail__viewport">
-            <div ref={trackRef} className="case-rail__track">
+            <div className="case-rail__track">
               {CASE_STUDIES.map((study) => {
                 const cardImage = CARD_IMAGES[study.slug];
                 return (
@@ -300,6 +265,15 @@ export function CaseStudiesRail() {
               })}
             </div>
           </div>
+          <button
+            type="button"
+            className="case-rail__nav case-rail__nav--next"
+            aria-label="Next projects"
+            onClick={() => scrollByCard(1)}
+            disabled={!canNext}
+          >
+            <ChevronRight className="size-5" aria-hidden="true" />
+          </button>
         </div>
       </div>
     </section>
