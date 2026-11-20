@@ -18,7 +18,6 @@ import {
   Layers,
   Map,
   Megaphone,
-  Network,
   RefreshCw,
   Rocket,
   Search,
@@ -158,64 +157,59 @@ export const SERVICE_DIRECTORY_GROUPS: ServiceDirectoryGroup[] = [
 ];
 
 export interface BusinessChallenge {
-  title: string;
+  badge: string;
+  headline: string;
   description: string;
-  change: string;
-  signals: [string, string, string];
-  icon: LucideIcon;
-  link: { label: string; to: string };
+  ctaLabel: string;
+  to: string;
+  image: string;
 }
 
 export const BUSINESS_CHALLENGES: BusinessChallenge[] = [
   {
-    title: "Growth is outrunning the operating model",
+    badge: "Business Automation",
+    headline: "Growth is Outrunning the Operating Model.",
     description:
-      "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory.",
-    change:
-      "Map the real workflow, remove duplicate handoffs and give each step a clear owner and visible status.",
-    signals: ["Manual re-entry", "Approval delays", "Work held by individuals"],
-    icon: Workflow,
-    link: { label: "Explore business automation", to: "/services/business-automation" },
+      "Eliminate manual work, streamline approvals, and connect disconnected workflows so your business can scale without operational bottlenecks.",
+    ctaLabel: "Explore Business Automation ↗",
+    to: "/services/business-automation",
+    image: "/images/challenges/business-automation-glass.webp",
   },
   {
-    title: "Systems do not speak to each other",
+    badge: "ERP & Integrations",
+    headline: "Disconnected Systems. Connected Possibilities.",
     description:
-      "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made.",
-    change:
-      "Connect the systems you already run, define a shared data model and remove the reconciliation layer.",
-    signals: ["Duplicate records", "Reconciliation work", "No shared status"],
-    icon: Network,
-    link: { label: "Explore ERP and integrations", to: "/services/erp-systems" },
+      "Bring business applications, data, and teams together through integrated systems that improve visibility, coordination, and control.",
+    ctaLabel: "Explore ERP & Integrations ↗",
+    to: "/services/erp-systems",
+    image: "/images/challenges/erp-crm-glass.webp",
   },
   {
-    title: "The website is credible, but not useful",
+    badge: "Digital Transformation",
+    headline: "Modernize Technology. Accelerate Growth.",
     description:
-      "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation.",
-    change:
-      "Rebuild the content and interaction around buyer questions, clear service paths and a measurable next action.",
-    signals: ["Unclear journeys", "Weak differentiation", "Low enquiry quality"],
-    icon: Globe,
-    link: { label: "Explore website development", to: "/services/website-development" },
+      "Replace outdated processes and fragmented tools with scalable digital solutions designed around the way your business operates.",
+    ctaLabel: "Explore Digital Transformation ↗",
+    to: "/services/website-development",
+    image: "/images/challenges/web-experience-glass.webp",
   },
   {
-    title: "The data exists, but decisions still wait",
+    badge: "Data & Analytics",
+    headline: "Turn Business Data Into Better Decisions.",
     description:
-      "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them.",
-    change:
-      "Create a dependable reporting layer with current data, agreed definitions and access for the people who act on it.",
-    signals: ["Monthly reporting lag", "Conflicting numbers", "Spreadsheet dependency"],
-    icon: BarChart3,
-    link: { label: "Explore data and Power BI", to: "/services/data-analytics" },
+      "Connect scattered information, simplify reporting, and transform business data into actionable insights through modern analytics and dashboards.",
+    ctaLabel: "Explore Data & Power BI ↗",
+    to: "/services/data-analytics",
+    image: "/images/challenges/data-intelligence-glass.webp",
   },
   {
-    title: "AI feels urgent, but the use case is unclear",
+    badge: "AI & Intelligent Automation",
+    headline: "Move Beyond AI Hype. Build Real Value.",
     description:
-      "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated.",
-    change:
-      "Start with one contained workflow, define the evidence of success and build a grounded system before expanding.",
-    signals: ["Tool-led experiments", "Unclear ownership", "No evaluation plan"],
-    icon: Brain,
-    link: { label: "Explore AI solutions", to: "/services/ai-solutions" },
+      "Identify meaningful AI opportunities, automate high-value workflows, and create intelligent solutions that address real business challenges.",
+    ctaLabel: "Explore AI Solutions ↗",
+    to: "/services/ai-solutions",
+    image: "/images/challenges/ai-automation-glass.webp",
   },
 ];
 
