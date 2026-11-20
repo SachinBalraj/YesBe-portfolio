@@ -1,0 +1,1945 @@
+{
+  "passed": 260,
+  "total": 260,
+  "failures": [],
+  "consoleErrors": [],
+  "results": [
+    {
+      "name": "desktop: all slugs and titles preserved",
+      "passed": true,
+      "detail": [
+        [
+          "fashion-fusion",
+          "Fashion Fusion E-Commerce Platform"
+        ],
+        [
+          "erp-management",
+          "ERP Management System"
+        ],
+        [
+          "ai-business-assistant",
+          "AI Business Assistant"
+        ],
+        [
+          "restaurant-qr-ordering",
+          "Restaurant QR Ordering System"
+        ],
+        [
+          "library-management",
+          "Library Management System"
+        ],
+        [
+          "business-automation",
+          "Custom Business Automation Platform"
+        ]
+      ]
+    },
+    {
+      "name": "desktop: all six use shared reveal component",
+      "passed": true,
+      "detail": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "name": "desktop: all descriptions and tags preserved",
+      "passed": true,
+      "detail": [
+        [
+          146,
+          3
+        ],
+        [
+          102,
+          3
+        ],
+        [
+          118,
+          3
+        ],
+        [
+          126,
+          3
+        ],
+        [
+          121,
+          3
+        ],
+        [
+          95,
+          3
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) mouse leave: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) hover: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) hover: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) hover: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) hover: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) hover: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) hover: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion) hover: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/fashion-fusion"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): image 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): description 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s, 0s"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): action 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0s"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): shared easing",
+      "passed": true,
+      "detail": {
+        "image": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1)",
+        "content": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), linear",
+        "cta": "cubic-bezier(0.22, 1, 0.36, 1), linear"
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): card dimensions fixed",
+      "passed": true,
+      "detail": {
+        "before": [
+          104,
+          76,
+          296,
+          496
+        ],
+        "hovered": [
+          104,
+          76,
+          296,
+          496
+        ],
+        "after": [
+          104,
+          76,
+          296,
+          496
+        ]
+      }
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): no neighboring card shift",
+      "passed": true,
+      "detail": "all six rects compared"
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): hover affects only this card",
+      "passed": true,
+      "detail": [
+        [
+          "erp-management",
+          false,
+          1
+        ],
+        [
+          "ai-business-assistant",
+          false,
+          1
+        ],
+        [
+          "restaurant-qr-ordering",
+          false,
+          1
+        ],
+        [
+          "library-management",
+          false,
+          1
+        ],
+        [
+          "business-automation",
+          false,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 1 (fashion-fusion): scroll position stable",
+      "passed": true,
+      "detail": [
+        700,
+        700,
+        700
+      ]
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 2 (erp-management) default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 2 (erp-management) mouse leave: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) hover: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 2 (erp-management) hover: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop card 2 (erp-management) hover: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "desktop card 2 (erp-management) hover: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) hover: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "desktop card 2 (erp-management) hover: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management) hover: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/erp-management"
+    },
+    {
+      "name": "desktop card 2 (erp-management): image 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s"
+    },
+    {
+      "name": "desktop card 2 (erp-management): description 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s, 0s"
+    },
+    {
+      "name": "desktop card 2 (erp-management): action 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0s"
+    },
+    {
+      "name": "desktop card 2 (erp-management): shared easing",
+      "passed": true,
+      "detail": {
+        "image": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1)",
+        "content": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), linear",
+        "cta": "cubic-bezier(0.22, 1, 0.36, 1), linear"
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management): card dimensions fixed",
+      "passed": true,
+      "detail": {
+        "before": [
+          416,
+          76,
+          296,
+          496
+        ],
+        "hovered": [
+          416,
+          76,
+          296,
+          496
+        ],
+        "after": [
+          416,
+          76,
+          296,
+          496
+        ]
+      }
+    },
+    {
+      "name": "desktop card 2 (erp-management): no neighboring card shift",
+      "passed": true,
+      "detail": "all six rects compared"
+    },
+    {
+      "name": "desktop card 2 (erp-management): hover affects only this card",
+      "passed": true,
+      "detail": [
+        [
+          "fashion-fusion",
+          false,
+          1
+        ],
+        [
+          "ai-business-assistant",
+          false,
+          1
+        ],
+        [
+          "restaurant-qr-ordering",
+          false,
+          1
+        ],
+        [
+          "library-management",
+          false,
+          1
+        ],
+        [
+          "business-automation",
+          false,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 2 (erp-management): scroll position stable",
+      "passed": true,
+      "detail": [
+        700,
+        700,
+        700
+      ]
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) mouse leave: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) hover: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) hover: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) hover: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) hover: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) hover: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) hover: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant) hover: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/ai-business-assistant"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): image 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): description 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s, 0s"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): action 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0s"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): shared easing",
+      "passed": true,
+      "detail": {
+        "image": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1)",
+        "content": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), linear",
+        "cta": "cubic-bezier(0.22, 1, 0.36, 1), linear"
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): card dimensions fixed",
+      "passed": true,
+      "detail": {
+        "before": [
+          728,
+          76,
+          296,
+          496
+        ],
+        "hovered": [
+          728,
+          76,
+          296,
+          496
+        ],
+        "after": [
+          728,
+          76,
+          296,
+          496
+        ]
+      }
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): no neighboring card shift",
+      "passed": true,
+      "detail": "all six rects compared"
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): hover affects only this card",
+      "passed": true,
+      "detail": [
+        [
+          "fashion-fusion",
+          false,
+          1
+        ],
+        [
+          "erp-management",
+          false,
+          1
+        ],
+        [
+          "restaurant-qr-ordering",
+          false,
+          1
+        ],
+        [
+          "library-management",
+          false,
+          1
+        ],
+        [
+          "business-automation",
+          false,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 3 (ai-business-assistant): scroll position stable",
+      "passed": true,
+      "detail": [
+        700,
+        700,
+        700
+      ]
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) mouse leave: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) hover: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) hover: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) hover: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) hover: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) hover: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) hover: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering) hover: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/restaurant-qr-ordering"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): image 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): description 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s, 0s"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): action 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0s"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): shared easing",
+      "passed": true,
+      "detail": {
+        "image": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1)",
+        "content": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), linear",
+        "cta": "cubic-bezier(0.22, 1, 0.36, 1), linear"
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): card dimensions fixed",
+      "passed": true,
+      "detail": {
+        "before": [
+          1040,
+          76,
+          296,
+          496
+        ],
+        "hovered": [
+          1040,
+          76,
+          296,
+          496
+        ],
+        "after": [
+          1040,
+          76,
+          296,
+          496
+        ]
+      }
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): no neighboring card shift",
+      "passed": true,
+      "detail": "all six rects compared"
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): hover affects only this card",
+      "passed": true,
+      "detail": [
+        [
+          "fashion-fusion",
+          false,
+          1
+        ],
+        [
+          "erp-management",
+          false,
+          1
+        ],
+        [
+          "ai-business-assistant",
+          false,
+          1
+        ],
+        [
+          "library-management",
+          false,
+          1
+        ],
+        [
+          "business-automation",
+          false,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 4 (restaurant-qr-ordering): scroll position stable",
+      "passed": true,
+      "detail": [
+        700,
+        700,
+        700
+      ]
+    },
+    {
+      "name": "desktop card 5 (library-management) default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 (library-management) default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 (library-management) default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 5 (library-management) default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 5 (library-management) default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 5 (library-management) default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 5 (library-management) mouse leave: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) hover: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 (library-management) hover: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop card 5 (library-management) hover: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "desktop card 5 (library-management) hover: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) hover: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "desktop card 5 (library-management) hover: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management) hover: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/library-management"
+    },
+    {
+      "name": "desktop card 5 (library-management): image 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s"
+    },
+    {
+      "name": "desktop card 5 (library-management): description 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s, 0s"
+    },
+    {
+      "name": "desktop card 5 (library-management): action 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0s"
+    },
+    {
+      "name": "desktop card 5 (library-management): shared easing",
+      "passed": true,
+      "detail": {
+        "image": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1)",
+        "content": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), linear",
+        "cta": "cubic-bezier(0.22, 1, 0.36, 1), linear"
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management): card dimensions fixed",
+      "passed": true,
+      "detail": {
+        "before": [
+          728,
+          76,
+          296,
+          496
+        ],
+        "hovered": [
+          728,
+          76,
+          296,
+          496
+        ],
+        "after": [
+          728,
+          76,
+          296,
+          496
+        ]
+      }
+    },
+    {
+      "name": "desktop card 5 (library-management): no neighboring card shift",
+      "passed": true,
+      "detail": "all six rects compared"
+    },
+    {
+      "name": "desktop card 5 (library-management): hover affects only this card",
+      "passed": true,
+      "detail": [
+        [
+          "fashion-fusion",
+          false,
+          1
+        ],
+        [
+          "erp-management",
+          false,
+          1
+        ],
+        [
+          "ai-business-assistant",
+          false,
+          1
+        ],
+        [
+          "restaurant-qr-ordering",
+          false,
+          1
+        ],
+        [
+          "business-automation",
+          false,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 5 (library-management): scroll position stable",
+      "passed": true,
+      "detail": [
+        1480,
+        1480,
+        1480
+      ]
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 6 (business-automation) default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 6 (business-automation) mouse leave: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) hover: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 6 (business-automation) hover: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop card 6 (business-automation) hover: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "desktop card 6 (business-automation) hover: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) hover: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "desktop card 6 (business-automation) hover: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation) hover: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/business-automation"
+    },
+    {
+      "name": "desktop card 6 (business-automation): image 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s"
+    },
+    {
+      "name": "desktop card 6 (business-automation): description 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0.5s, 0s"
+    },
+    {
+      "name": "desktop card 6 (business-automation): action 500ms timing",
+      "passed": true,
+      "detail": "0.5s, 0s"
+    },
+    {
+      "name": "desktop card 6 (business-automation): shared easing",
+      "passed": true,
+      "detail": {
+        "image": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1)",
+        "content": "cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), linear",
+        "cta": "cubic-bezier(0.22, 1, 0.36, 1), linear"
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation): card dimensions fixed",
+      "passed": true,
+      "detail": {
+        "before": [
+          1040,
+          76,
+          296,
+          496
+        ],
+        "hovered": [
+          1040,
+          76,
+          296,
+          496
+        ],
+        "after": [
+          1040,
+          76,
+          296,
+          496
+        ]
+      }
+    },
+    {
+      "name": "desktop card 6 (business-automation): no neighboring card shift",
+      "passed": true,
+      "detail": "all six rects compared"
+    },
+    {
+      "name": "desktop card 6 (business-automation): hover affects only this card",
+      "passed": true,
+      "detail": [
+        [
+          "fashion-fusion",
+          false,
+          1
+        ],
+        [
+          "erp-management",
+          false,
+          1
+        ],
+        [
+          "ai-business-assistant",
+          false,
+          1
+        ],
+        [
+          "restaurant-qr-ordering",
+          false,
+          1
+        ],
+        [
+          "library-management",
+          false,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 6 (business-automation): scroll position stable",
+      "passed": true,
+      "detail": [
+        1480,
+        1480,
+        1480
+      ]
+    },
+    {
+      "name": "desktop: cards 5 and 6 visible after horizontal scroll",
+      "passed": true,
+      "detail": {
+        "viewport": [
+          104,
+          76,
+          1232,
+          496
+        ],
+        "cards": [
+          {
+            "x": 728,
+            "y": 76,
+            "width": 296,
+            "height": 496
+          },
+          {
+            "x": 1040,
+            "y": 76,
+            "width": 296,
+            "height": 496
+          }
+        ]
+      }
+    },
+    {
+      "name": "desktop card 5 keyboard focus: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 keyboard focus: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop card 5 keyboard focus: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "desktop card 5 keyboard focus: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "desktop card 5 keyboard focus: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "desktop card 5 keyboard focus: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "desktop card 5 keyboard focus: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/library-management"
+    },
+    {
+      "name": "desktop card 5 keyboard blur: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 keyboard blur: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop card 5 keyboard blur: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 331
+      }
+    },
+    {
+      "name": "desktop card 5 keyboard blur: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "desktop card 5 keyboard blur: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 5 keyboard blur: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "desktop card 5 keyboard blur: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "desktop card 5 keyboard blur: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "mobile card 5: tap control visible",
+      "passed": true,
+      "detail": "flex"
+    },
+    {
+      "name": "mobile card 5 default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 5 default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 5 default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 319
+      }
+    },
+    {
+      "name": "mobile card 5 default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "mobile card 5 default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 5 default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "mobile card 5 default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "mobile card 5 default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "mobile card 5 tap: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 5 tap: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "mobile card 5 tap: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "mobile card 5 tap: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "mobile card 5 tap: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "mobile card 5 tap: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "mobile card 5 tap: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/library-management"
+    },
+    {
+      "name": "mobile card 5 second tap: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 5 second tap: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 5 second tap: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 319
+      }
+    },
+    {
+      "name": "mobile card 5 second tap: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "mobile card 5 second tap: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 5 second tap: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "mobile card 5 second tap: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "mobile card 5 second tap: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "mobile card 6: tap control visible",
+      "passed": true,
+      "detail": "flex"
+    },
+    {
+      "name": "mobile card 6 default: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 6 default: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 6 default: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 319
+      }
+    },
+    {
+      "name": "mobile card 6 default: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "mobile card 6 default: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 6 default: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "mobile card 6 default: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "mobile card 6 default: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "mobile card 6 tap: revealed class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 6 tap: image faded out",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "mobile card 6 tap: image shifted down 12px",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 12)"
+    },
+    {
+      "name": "mobile card 6 tap: description visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible"
+      }
+    },
+    {
+      "name": "mobile card 6 tap: description moved up",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "name": "mobile card 6 tap: action visible",
+      "passed": true,
+      "detail": {
+        "opacity": 1,
+        "visibility": "visible",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "mobile card 6 tap: action link preserved",
+      "passed": true,
+      "detail": "/case-studies/business-automation"
+    },
+    {
+      "name": "mobile card 6 second tap: reveal class present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 6 second tap: tap control present",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile card 6 second tap: image loaded",
+      "passed": true,
+      "detail": {
+        "complete": true,
+        "naturalWidth": 319
+      }
+    },
+    {
+      "name": "mobile card 6 second tap: image visible",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "mobile card 6 second tap: image not shifted",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 6 second tap: description hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden"
+      }
+    },
+    {
+      "name": "mobile card 6 second tap: description shifted down",
+      "passed": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 15)"
+    },
+    {
+      "name": "mobile card 6 second tap: action hidden",
+      "passed": true,
+      "detail": {
+        "opacity": 0,
+        "visibility": "hidden",
+        "pointerEvents": "none"
+      }
+    },
+    {
+      "name": "reduced motion card 5: transitions disabled",
+      "passed": true,
+      "detail": {
+        "image": "1e-05s",
+        "content": "1e-05s",
+        "cta": "1e-05s"
+      }
+    },
+    {
+      "name": "reduced motion card 5: reveal still works",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "reduced motion card 5: leave still restores",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "reduced motion card 6: transitions disabled",
+      "passed": true,
+      "detail": {
+        "image": "1e-05s",
+        "content": "1e-05s",
+        "cta": "1e-05s"
+      }
+    },
+    {
+      "name": "reduced motion card 6: reveal still works",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "reduced motion card 6: leave still restores",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "no console errors",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

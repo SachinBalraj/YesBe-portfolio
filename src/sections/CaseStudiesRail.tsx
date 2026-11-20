@@ -11,6 +11,8 @@ const HOVER_REVEAL_SLUGS = [
   "erp-management",
   "ai-business-assistant",
   "restaurant-qr-ordering",
+  "library-management",
+  "business-automation",
 ];
 const CARD_IMAGE_WIDTHS = [480, 640, 960];
 const CARD_IMAGES: Record<string, { src: string; alt: string }> = {

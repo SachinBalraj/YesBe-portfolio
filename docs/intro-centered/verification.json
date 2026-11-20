@@ -1,0 +1,475 @@
+{
+  "passed": 61,
+  "total": 61,
+  "failures": [],
+  "consoleErrors": [],
+  "results": [
+    {
+      "name": "desktop: exact paragraph text",
+      "passed": true,
+      "detail": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions."
+    },
+    {
+      "name": "desktop: only three highlights",
+      "passed": true,
+      "detail": [
+        "technology",
+        "operations",
+        "digital experiences"
+      ]
+    },
+    {
+      "name": "desktop: highlight colors and weights",
+      "passed": true,
+      "detail": [
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "name": "desktop: main text color",
+      "passed": true,
+      "detail": "rgb(7, 20, 75)"
+    },
+    {
+      "name": "desktop: main font weight",
+      "passed": true,
+      "detail": "400"
+    },
+    {
+      "name": "desktop: paragraph font size",
+      "passed": true,
+      "detail": "28px"
+    },
+    {
+      "name": "desktop: line height",
+      "passed": true,
+      "detail": "42px"
+    },
+    {
+      "name": "desktop: text align center",
+      "passed": true,
+      "detail": "center"
+    },
+    {
+      "name": "desktop: max text width",
+      "passed": true,
+      "detail": "1000px"
+    },
+    {
+      "name": "desktop: auto horizontal margins balanced",
+      "passed": true,
+      "detail": [
+        "116px",
+        "116px"
+      ]
+    },
+    {
+      "name": "desktop: top padding",
+      "passed": true,
+      "detail": "60px"
+    },
+    {
+      "name": "desktop: bottom padding",
+      "passed": true,
+      "detail": "60px"
+    },
+    {
+      "name": "desktop: paragraph centered in viewport",
+      "passed": true,
+      "detail": {
+        "centerX": 720,
+        "viewportWidth": 1440
+      }
+    },
+    {
+      "name": "desktop: intro centered in viewport",
+      "passed": true,
+      "detail": {
+        "centerX": 720,
+        "viewportWidth": 1440
+      }
+    },
+    {
+      "name": "desktop: no extra intro elements",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "desktop: card count unchanged",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "desktop: first four cards unchanged",
+      "passed": true,
+      "detail": [
+        {
+          "title": "Fashion Fusion E-Commerce Platform",
+          "href": "/case-studies/fashion-fusion",
+          "image": "/images/case-rail/fashion-fusion-card.webp"
+        },
+        {
+          "title": "ERP Management System",
+          "href": "/case-studies/erp-management",
+          "image": "/images/case-rail/erp-management-card.webp"
+        },
+        {
+          "title": "AI Business Assistant",
+          "href": "/case-studies/ai-business-assistant",
+          "image": "/images/case-rail/ai-business-assistant-card.webp"
+        },
+        {
+          "title": "Restaurant QR Ordering System",
+          "href": "/case-studies/restaurant-qr-ordering",
+          "image": "/images/case-rail/restaurant-qr-ordering-card.webp"
+        }
+      ]
+    },
+    {
+      "name": "desktop: hero and header present",
+      "passed": true,
+      "detail": {
+        "hero": true,
+        "header": true
+      }
+    },
+    {
+      "name": "desktop: white section background",
+      "passed": true,
+      "detail": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 124px, rgb(255, 255, 255) 124px, rgb(255, 255, 255) 100%)"
+    },
+    {
+      "name": "desktop: rendered intro background is pure white",
+      "passed": true,
+      "detail": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "tablet: exact paragraph text",
+      "passed": true,
+      "detail": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions."
+    },
+    {
+      "name": "tablet: only three highlights",
+      "passed": true,
+      "detail": [
+        "technology",
+        "operations",
+        "digital experiences"
+      ]
+    },
+    {
+      "name": "tablet: highlight colors and weights",
+      "passed": true,
+      "detail": [
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "name": "tablet: main text color",
+      "passed": true,
+      "detail": "rgb(7, 20, 75)"
+    },
+    {
+      "name": "tablet: main font weight",
+      "passed": true,
+      "detail": "400"
+    },
+    {
+      "name": "tablet: paragraph font size",
+      "passed": true,
+      "detail": "24px"
+    },
+    {
+      "name": "tablet: line height",
+      "passed": true,
+      "detail": "36px"
+    },
+    {
+      "name": "tablet: text align center",
+      "passed": true,
+      "detail": "center"
+    },
+    {
+      "name": "tablet: max text width",
+      "passed": true,
+      "detail": "1000px"
+    },
+    {
+      "name": "tablet: auto horizontal margins balanced",
+      "passed": true,
+      "detail": [
+        "0px",
+        "0px"
+      ]
+    },
+    {
+      "name": "tablet: top padding",
+      "passed": true,
+      "detail": "48px"
+    },
+    {
+      "name": "tablet: bottom padding",
+      "passed": true,
+      "detail": "48px"
+    },
+    {
+      "name": "tablet: paragraph centered in viewport",
+      "passed": true,
+      "detail": {
+        "centerX": 417,
+        "viewportWidth": 834
+      }
+    },
+    {
+      "name": "tablet: intro centered in viewport",
+      "passed": true,
+      "detail": {
+        "centerX": 417,
+        "viewportWidth": 834
+      }
+    },
+    {
+      "name": "tablet: no extra intro elements",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "tablet: card count unchanged",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "tablet: first four cards unchanged",
+      "passed": true,
+      "detail": [
+        {
+          "title": "Fashion Fusion E-Commerce Platform",
+          "href": "/case-studies/fashion-fusion",
+          "image": "/images/case-rail/fashion-fusion-card.webp"
+        },
+        {
+          "title": "ERP Management System",
+          "href": "/case-studies/erp-management",
+          "image": "/images/case-rail/erp-management-card.webp"
+        },
+        {
+          "title": "AI Business Assistant",
+          "href": "/case-studies/ai-business-assistant",
+          "image": "/images/case-rail/ai-business-assistant-card.webp"
+        },
+        {
+          "title": "Restaurant QR Ordering System",
+          "href": "/case-studies/restaurant-qr-ordering",
+          "image": "/images/case-rail/restaurant-qr-ordering-card.webp"
+        }
+      ]
+    },
+    {
+      "name": "tablet: hero and header present",
+      "passed": true,
+      "detail": {
+        "hero": true,
+        "header": true
+      }
+    },
+    {
+      "name": "tablet: white section background",
+      "passed": true,
+      "detail": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 112px, rgb(255, 255, 255) 112px, rgb(255, 255, 255) 100%)"
+    },
+    {
+      "name": "tablet: rendered intro background is pure white",
+      "passed": true,
+      "detail": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "mobile: exact paragraph text",
+      "passed": true,
+      "detail": "YESBE Technologies empowers businesses to modernize technology, simplify operations, and reimagine digital experiences—turning complex business challenges into smarter, scalable solutions."
+    },
+    {
+      "name": "mobile: only three highlights",
+      "passed": true,
+      "detail": [
+        "technology",
+        "operations",
+        "digital experiences"
+      ]
+    },
+    {
+      "name": "mobile: highlight colors and weights",
+      "passed": true,
+      "detail": [
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        },
+        {
+          "color": "rgb(36, 119, 212)",
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "name": "mobile: main text color",
+      "passed": true,
+      "detail": "rgb(7, 20, 75)"
+    },
+    {
+      "name": "mobile: main font weight",
+      "passed": true,
+      "detail": "400"
+    },
+    {
+      "name": "mobile: paragraph font size",
+      "passed": true,
+      "detail": "20px"
+    },
+    {
+      "name": "mobile: line height",
+      "passed": true,
+      "detail": "30px"
+    },
+    {
+      "name": "mobile: text align center",
+      "passed": true,
+      "detail": "center"
+    },
+    {
+      "name": "mobile: max text width",
+      "passed": true,
+      "detail": "1000px"
+    },
+    {
+      "name": "mobile: auto horizontal margins balanced",
+      "passed": true,
+      "detail": [
+        "0px",
+        "0px"
+      ]
+    },
+    {
+      "name": "mobile: top padding",
+      "passed": true,
+      "detail": "40px"
+    },
+    {
+      "name": "mobile: bottom padding",
+      "passed": true,
+      "detail": "40px"
+    },
+    {
+      "name": "mobile: paragraph centered in viewport",
+      "passed": true,
+      "detail": {
+        "centerX": 195,
+        "viewportWidth": 390
+      }
+    },
+    {
+      "name": "mobile: intro centered in viewport",
+      "passed": true,
+      "detail": {
+        "centerX": 195,
+        "viewportWidth": 390
+      }
+    },
+    {
+      "name": "mobile: no extra intro elements",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "mobile: card count unchanged",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "mobile: first four cards unchanged",
+      "passed": true,
+      "detail": [
+        {
+          "title": "Fashion Fusion E-Commerce Platform",
+          "href": "/case-studies/fashion-fusion",
+          "image": "/images/case-rail/fashion-fusion-card.webp"
+        },
+        {
+          "title": "ERP Management System",
+          "href": "/case-studies/erp-management",
+          "image": "/images/case-rail/erp-management-card.webp"
+        },
+        {
+          "title": "AI Business Assistant",
+          "href": "/case-studies/ai-business-assistant",
+          "image": "/images/case-rail/ai-business-assistant-card.webp"
+        },
+        {
+          "title": "Restaurant QR Ordering System",
+          "href": "/case-studies/restaurant-qr-ordering",
+          "image": "/images/case-rail/restaurant-qr-ordering-card.webp"
+        }
+      ]
+    },
+    {
+      "name": "mobile: hero and header present",
+      "passed": true,
+      "detail": {
+        "hero": true,
+        "header": true
+      }
+    },
+    {
+      "name": "mobile: white section background",
+      "passed": true,
+      "detail": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 100px, rgb(255, 255, 255) 100px, rgb(255, 255, 255) 100%)"
+    },
+    {
+      "name": "mobile: rendered intro background is pure white",
+      "passed": true,
+      "detail": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "no console errors",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

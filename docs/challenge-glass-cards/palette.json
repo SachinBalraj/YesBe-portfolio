@@ -1,0 +1,77 @@
+{
+  "aggregate_percent": {
+    "orange": 18.23,
+    "yellow": 3.02,
+    "cyan": 2.93,
+    "blue": 29.48,
+    "violet": 12.2
+  },
+  "collection_has_rainbow_highlights": true,
+  "images": {
+    "business-automation-glass.webp": {
+      "size": [
+        1200,
+        1200
+      ],
+      "percent": {
+        "orange": 18.39,
+        "yellow": 1.24,
+        "cyan": 7.8,
+        "blue": 31.58,
+        "violet": 12.49
+      }
+    },
+    "erp-crm-glass.webp": {
+      "size": [
+        1200,
+        1200
+      ],
+      "percent": {
+        "orange": 12.41,
+        "yellow": 3.28,
+        "cyan": 3.64,
+        "blue": 36.01,
+        "violet": 4.69
+      }
+    },
+    "web-experience-glass.webp": {
+      "size": [
+        1200,
+        1200
+      ],
+      "percent": {
+        "orange": 0.44,
+        "yellow": 0.09,
+        "cyan": 0.7,
+        "blue": 33.35,
+        "violet": 16.8
+      }
+    },
+    "data-intelligence-glass.webp": {
+      "size": [
+        1200,
+        1200
+      ],
+      "percent": {
+        "orange": 6.95,
+        "yellow": 3.39,
+        "cyan": 2.25,
+        "blue": 46.36,
+        "violet": 25.41
+      }
+    },
+    "ai-automation-glass.webp": {
+      "size": [
+        1200,
+        1200
+      ],
+      "percent": {
+        "orange": 52.96,
+        "yellow": 7.09,
+        "cyan": 0.24,
+        "blue": 0.1,
+        "violet": 1.62
+      }
+    }
+  }
+}

@@ -1,0 +1,3519 @@
+{
+  "passed": 407,
+  "total": 407,
+  "failures": [],
+  "consoleErrors": [],
+  "results": [
+    {
+      "name": "five image assets are unique",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "five image assets are optimized",
+      "passed": true,
+      "detail": [
+        194490,
+        179602,
+        134432,
+        156868,
+        96944
+      ]
+    },
+    {
+      "name": "desktop card 1: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "desktop card 1: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/business-automation-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "eager"
+      }
+    },
+    {
+      "name": "desktop card 1: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 1: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "desktop card 1: category",
+      "passed": true,
+      "detail": "business automation"
+    },
+    {
+      "name": "desktop card 1: number",
+      "passed": true,
+      "detail": "01 of 05"
+    },
+    {
+      "name": "desktop card 1: title",
+      "passed": true,
+      "detail": "Growth is outrunning the operating model"
+    },
+    {
+      "name": "desktop card 1: problem",
+      "passed": true,
+      "detail": "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory."
+    },
+    {
+      "name": "desktop card 1: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "desktop card 1: solution",
+      "passed": true,
+      "detail": "Map the real workflow, remove duplicate handoffs and give each step a clear owner and visible status."
+    },
+    {
+      "name": "desktop card 1: CTA",
+      "passed": true,
+      "detail": [
+        "Explore business automation",
+        "/services/business-automation"
+      ]
+    },
+    {
+      "name": "desktop card 1: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "desktop card 1: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "desktop card 1: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "desktop card 1: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "desktop card 1: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "desktop card 1: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "desktop card 1: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 1: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "desktop card 1: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "desktop card 1: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ],
+        "current": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ]
+      }
+    },
+    {
+      "name": "desktop card 1: equal card heights",
+      "passed": true,
+      "detail": [
+        560,
+        560,
+        560,
+        560,
+        560
+      ]
+    },
+    {
+      "name": "desktop card 1: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ],
+        "current": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 1: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 1: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          161,
+          2954.640625,
+          536.625,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 1: column proportions",
+      "passed": true,
+      "detail": 0.4799932914983718
+    },
+    {
+      "name": "desktop card 1: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "desktop card 2: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "desktop card 2: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/erp-crm-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "desktop card 2: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 2: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "desktop card 2: category",
+      "passed": true,
+      "detail": "ERP and integrations"
+    },
+    {
+      "name": "desktop card 2: number",
+      "passed": true,
+      "detail": "02 of 05"
+    },
+    {
+      "name": "desktop card 2: title",
+      "passed": true,
+      "detail": "Systems do not speak to each other"
+    },
+    {
+      "name": "desktop card 2: problem",
+      "passed": true,
+      "detail": "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made."
+    },
+    {
+      "name": "desktop card 2: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "desktop card 2: solution",
+      "passed": true,
+      "detail": "Connect the systems you already run, define a shared data model and remove the reconciliation layer."
+    },
+    {
+      "name": "desktop card 2: CTA",
+      "passed": true,
+      "detail": [
+        "Explore ERP and integrations",
+        "/services/erp-systems"
+      ]
+    },
+    {
+      "name": "desktop card 2: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "desktop card 2: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "desktop card 2: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "desktop card 2: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "desktop card 2: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "desktop card 2: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "desktop card 2: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 2: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "desktop card 2: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "desktop card 2: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ],
+        "current": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ]
+      }
+    },
+    {
+      "name": "desktop card 2: equal card heights",
+      "passed": true,
+      "detail": [
+        560,
+        560,
+        560,
+        560,
+        560
+      ]
+    },
+    {
+      "name": "desktop card 2: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ],
+        "current": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 2: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 2: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          161,
+          2954.640625,
+          536.625,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 2: column proportions",
+      "passed": true,
+      "detail": 0.4799932914983718
+    },
+    {
+      "name": "desktop card 2: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "desktop card 3: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "desktop card 3: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/web-experience-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "desktop card 3: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 3: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "desktop card 3: category",
+      "passed": true,
+      "detail": "website development"
+    },
+    {
+      "name": "desktop card 3: number",
+      "passed": true,
+      "detail": "03 of 05"
+    },
+    {
+      "name": "desktop card 3: title",
+      "passed": true,
+      "detail": "The website is credible, but not useful"
+    },
+    {
+      "name": "desktop card 3: problem",
+      "passed": true,
+      "detail": "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation."
+    },
+    {
+      "name": "desktop card 3: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "desktop card 3: solution",
+      "passed": true,
+      "detail": "Rebuild the content and interaction around buyer questions, clear service paths and a measurable next action."
+    },
+    {
+      "name": "desktop card 3: CTA",
+      "passed": true,
+      "detail": [
+        "Explore website development",
+        "/services/website-development"
+      ]
+    },
+    {
+      "name": "desktop card 3: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "desktop card 3: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "desktop card 3: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "desktop card 3: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "desktop card 3: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "desktop card 3: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "desktop card 3: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 3: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "desktop card 3: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "desktop card 3: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ],
+        "current": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ]
+      }
+    },
+    {
+      "name": "desktop card 3: equal card heights",
+      "passed": true,
+      "detail": [
+        560,
+        560,
+        560,
+        560,
+        560
+      ]
+    },
+    {
+      "name": "desktop card 3: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ],
+        "current": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 3: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 3: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          161,
+          2954.640625,
+          536.625,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 3: column proportions",
+      "passed": true,
+      "detail": 0.4799932914983718
+    },
+    {
+      "name": "desktop card 3: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "desktop card 4: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "desktop card 4: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/data-intelligence-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "desktop card 4: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 4: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "desktop card 4: category",
+      "passed": true,
+      "detail": "data and Power BI"
+    },
+    {
+      "name": "desktop card 4: number",
+      "passed": true,
+      "detail": "04 of 05"
+    },
+    {
+      "name": "desktop card 4: title",
+      "passed": true,
+      "detail": "The data exists, but decisions still wait"
+    },
+    {
+      "name": "desktop card 4: problem",
+      "passed": true,
+      "detail": "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them."
+    },
+    {
+      "name": "desktop card 4: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "desktop card 4: solution",
+      "passed": true,
+      "detail": "Create a dependable reporting layer with current data, agreed definitions and access for the people who act on it."
+    },
+    {
+      "name": "desktop card 4: CTA",
+      "passed": true,
+      "detail": [
+        "Explore data and Power BI",
+        "/services/data-analytics"
+      ]
+    },
+    {
+      "name": "desktop card 4: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "desktop card 4: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "desktop card 4: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "desktop card 4: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "desktop card 4: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "desktop card 4: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "desktop card 4: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 4: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "desktop card 4: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "desktop card 4: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ],
+        "current": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ]
+      }
+    },
+    {
+      "name": "desktop card 4: equal card heights",
+      "passed": true,
+      "detail": [
+        560,
+        560,
+        560,
+        560,
+        560
+      ]
+    },
+    {
+      "name": "desktop card 4: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ],
+        "current": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 4: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 4: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          161,
+          2954.640625,
+          536.625,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 4: column proportions",
+      "passed": true,
+      "detail": 0.4799932914983718
+    },
+    {
+      "name": "desktop card 4: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "desktop card 5: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "desktop card 5: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/ai-automation-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "desktop card 5: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 5: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "desktop card 5: category",
+      "passed": true,
+      "detail": "AI solutions"
+    },
+    {
+      "name": "desktop card 5: number",
+      "passed": true,
+      "detail": "05 of 05"
+    },
+    {
+      "name": "desktop card 5: title",
+      "passed": true,
+      "detail": "AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "desktop card 5: problem",
+      "passed": true,
+      "detail": "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+    },
+    {
+      "name": "desktop card 5: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "desktop card 5: solution",
+      "passed": true,
+      "detail": "Start with one contained workflow, define the evidence of success and build a grounded system before expanding."
+    },
+    {
+      "name": "desktop card 5: CTA",
+      "passed": true,
+      "detail": [
+        "Explore AI solutions",
+        "/services/ai-solutions"
+      ]
+    },
+    {
+      "name": "desktop card 5: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "desktop card 5: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "desktop card 5: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "desktop card 5: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "desktop card 5: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "desktop card 5: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "desktop card 5: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "desktop card 5: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "desktop card 5: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "desktop card 5: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ],
+        "current": [
+          160,
+          2953.640625,
+          1120,
+          562
+        ]
+      }
+    },
+    {
+      "name": "desktop card 5: equal card heights",
+      "passed": true,
+      "detail": [
+        560,
+        560,
+        560,
+        560,
+        560
+      ]
+    },
+    {
+      "name": "desktop card 5: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ],
+        "current": [
+          560,
+          560,
+          560,
+          560,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 5: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "desktop card 5: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          161,
+          2954.640625,
+          536.625,
+          560
+        ],
+        "visual": [
+          697.625,
+          2954.640625,
+          581.359375,
+          560
+        ]
+      }
+    },
+    {
+      "name": "desktop card 5: column proportions",
+      "passed": true,
+      "detail": 0.4799932914983718
+    },
+    {
+      "name": "desktop card 5: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "tablet card 1: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "tablet card 1: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/business-automation-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "eager"
+      }
+    },
+    {
+      "name": "tablet card 1: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          455.796875,
+          1827.25,
+          349.1875,
+          573.40625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          573.40625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 1: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "tablet card 1: category",
+      "passed": true,
+      "detail": "business automation"
+    },
+    {
+      "name": "tablet card 1: number",
+      "passed": true,
+      "detail": "01 of 05"
+    },
+    {
+      "name": "tablet card 1: title",
+      "passed": true,
+      "detail": "Growth is outrunning the operating model"
+    },
+    {
+      "name": "tablet card 1: problem",
+      "passed": true,
+      "detail": "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory."
+    },
+    {
+      "name": "tablet card 1: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "tablet card 1: solution",
+      "passed": true,
+      "detail": "Map the real workflow, remove duplicate handoffs and give each step a clear owner and visible status."
+    },
+    {
+      "name": "tablet card 1: CTA",
+      "passed": true,
+      "detail": [
+        "Explore business automation",
+        "/services/business-automation"
+      ]
+    },
+    {
+      "name": "tablet card 1: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "tablet card 1: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "tablet card 1: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "tablet card 1: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "tablet card 1: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "tablet card 1: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "tablet card 1: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "tablet card 1: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "tablet card 1: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "tablet card 1: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ],
+        "current": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 1: equal card heights",
+      "passed": true,
+      "detail": [
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625
+      ]
+    },
+    {
+      "name": "tablet card 1: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ],
+        "current": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 1: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "tablet card 1: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          29,
+          1827.25,
+          426.796875,
+          573.40625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          573.40625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 1: column proportions",
+      "passed": true,
+      "detail": 0.5500070475001511
+    },
+    {
+      "name": "tablet card 1: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "tablet card 2: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "tablet card 2: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/erp-crm-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "tablet card 2: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          455.796875,
+          1827.25,
+          349.1875,
+          545.40625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          545.40625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 2: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "tablet card 2: category",
+      "passed": true,
+      "detail": "ERP and integrations"
+    },
+    {
+      "name": "tablet card 2: number",
+      "passed": true,
+      "detail": "02 of 05"
+    },
+    {
+      "name": "tablet card 2: title",
+      "passed": true,
+      "detail": "Systems do not speak to each other"
+    },
+    {
+      "name": "tablet card 2: problem",
+      "passed": true,
+      "detail": "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made."
+    },
+    {
+      "name": "tablet card 2: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "tablet card 2: solution",
+      "passed": true,
+      "detail": "Connect the systems you already run, define a shared data model and remove the reconciliation layer."
+    },
+    {
+      "name": "tablet card 2: CTA",
+      "passed": true,
+      "detail": [
+        "Explore ERP and integrations",
+        "/services/erp-systems"
+      ]
+    },
+    {
+      "name": "tablet card 2: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "tablet card 2: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "tablet card 2: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "tablet card 2: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "tablet card 2: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "tablet card 2: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "tablet card 2: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "tablet card 2: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "tablet card 2: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "tablet card 2: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ],
+        "current": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 2: equal card heights",
+      "passed": true,
+      "detail": [
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625
+      ]
+    },
+    {
+      "name": "tablet card 2: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ],
+        "current": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 2: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "tablet card 2: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          29,
+          1827.25,
+          426.796875,
+          545.40625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          545.40625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 2: column proportions",
+      "passed": true,
+      "detail": 0.5500070475001511
+    },
+    {
+      "name": "tablet card 2: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "tablet card 3: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "tablet card 3: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/web-experience-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "tablet card 3: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          455.796875,
+          1827.25,
+          349.1875,
+          569.40625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          569.40625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 3: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "tablet card 3: category",
+      "passed": true,
+      "detail": "website development"
+    },
+    {
+      "name": "tablet card 3: number",
+      "passed": true,
+      "detail": "03 of 05"
+    },
+    {
+      "name": "tablet card 3: title",
+      "passed": true,
+      "detail": "The website is credible, but not useful"
+    },
+    {
+      "name": "tablet card 3: problem",
+      "passed": true,
+      "detail": "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation."
+    },
+    {
+      "name": "tablet card 3: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "tablet card 3: solution",
+      "passed": true,
+      "detail": "Rebuild the content and interaction around buyer questions, clear service paths and a measurable next action."
+    },
+    {
+      "name": "tablet card 3: CTA",
+      "passed": true,
+      "detail": [
+        "Explore website development",
+        "/services/website-development"
+      ]
+    },
+    {
+      "name": "tablet card 3: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "tablet card 3: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "tablet card 3: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "tablet card 3: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "tablet card 3: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "tablet card 3: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "tablet card 3: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "tablet card 3: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "tablet card 3: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "tablet card 3: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ],
+        "current": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 3: equal card heights",
+      "passed": true,
+      "detail": [
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625
+      ]
+    },
+    {
+      "name": "tablet card 3: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ],
+        "current": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 3: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "tablet card 3: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          29,
+          1827.25,
+          426.796875,
+          569.40625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          569.40625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 3: column proportions",
+      "passed": true,
+      "detail": 0.5500070475001511
+    },
+    {
+      "name": "tablet card 3: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "tablet card 4: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "tablet card 4: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/data-intelligence-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "tablet card 4: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          455.796875,
+          1827.25,
+          349.1875,
+          629.15625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          629.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 4: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "tablet card 4: category",
+      "passed": true,
+      "detail": "data and Power BI"
+    },
+    {
+      "name": "tablet card 4: number",
+      "passed": true,
+      "detail": "04 of 05"
+    },
+    {
+      "name": "tablet card 4: title",
+      "passed": true,
+      "detail": "The data exists, but decisions still wait"
+    },
+    {
+      "name": "tablet card 4: problem",
+      "passed": true,
+      "detail": "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them."
+    },
+    {
+      "name": "tablet card 4: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "tablet card 4: solution",
+      "passed": true,
+      "detail": "Create a dependable reporting layer with current data, agreed definitions and access for the people who act on it."
+    },
+    {
+      "name": "tablet card 4: CTA",
+      "passed": true,
+      "detail": [
+        "Explore data and Power BI",
+        "/services/data-analytics"
+      ]
+    },
+    {
+      "name": "tablet card 4: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "tablet card 4: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "tablet card 4: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "tablet card 4: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "tablet card 4: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "tablet card 4: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "tablet card 4: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "tablet card 4: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "tablet card 4: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "tablet card 4: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ],
+        "current": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 4: equal card heights",
+      "passed": true,
+      "detail": [
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625
+      ]
+    },
+    {
+      "name": "tablet card 4: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ],
+        "current": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 4: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "tablet card 4: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          29,
+          1827.25,
+          426.796875,
+          629.15625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          629.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 4: column proportions",
+      "passed": true,
+      "detail": 0.5500070475001511
+    },
+    {
+      "name": "tablet card 4: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "tablet card 5: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "tablet card 5: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/ai-automation-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "tablet card 5: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          455.796875,
+          1827.25,
+          349.1875,
+          601.15625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          601.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 5: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "tablet card 5: category",
+      "passed": true,
+      "detail": "AI solutions"
+    },
+    {
+      "name": "tablet card 5: number",
+      "passed": true,
+      "detail": "05 of 05"
+    },
+    {
+      "name": "tablet card 5: title",
+      "passed": true,
+      "detail": "AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "tablet card 5: problem",
+      "passed": true,
+      "detail": "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+    },
+    {
+      "name": "tablet card 5: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "tablet card 5: solution",
+      "passed": true,
+      "detail": "Start with one contained workflow, define the evidence of success and build a grounded system before expanding."
+    },
+    {
+      "name": "tablet card 5: CTA",
+      "passed": true,
+      "detail": [
+        "Explore AI solutions",
+        "/services/ai-solutions"
+      ]
+    },
+    {
+      "name": "tablet card 5: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "tablet card 5: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "tablet card 5: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "tablet card 5: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "tablet card 5: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "tablet card 5: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "tablet card 5: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "tablet card 5: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "tablet card 5: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "tablet card 5: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ],
+        "current": [
+          28,
+          1826.25,
+          778,
+          631.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 5: equal card heights",
+      "passed": true,
+      "detail": [
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625,
+        629.15625
+      ]
+    },
+    {
+      "name": "tablet card 5: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ],
+        "current": [
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625,
+          629.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 5: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "tablet card 5: side-by-side layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          29,
+          1827.25,
+          426.796875,
+          601.15625
+        ],
+        "visual": [
+          455.796875,
+          1827.25,
+          349.1875,
+          601.15625
+        ]
+      }
+    },
+    {
+      "name": "tablet card 5: column proportions",
+      "passed": true,
+      "detail": 0.5500070475001511
+    },
+    {
+      "name": "tablet card 5: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "mobile card 1: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "mobile card 1: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/business-automation-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "eager"
+      }
+    },
+    {
+      "name": "mobile card 1: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          21,
+          2370.375,
+          348,
+          280
+        ],
+        "visual": [
+          21,
+          2370.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 1: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "mobile card 1: category",
+      "passed": true,
+      "detail": "business automation"
+    },
+    {
+      "name": "mobile card 1: number",
+      "passed": true,
+      "detail": "01 of 05"
+    },
+    {
+      "name": "mobile card 1: title",
+      "passed": true,
+      "detail": "Growth is outrunning the operating model"
+    },
+    {
+      "name": "mobile card 1: problem",
+      "passed": true,
+      "detail": "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory."
+    },
+    {
+      "name": "mobile card 1: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "mobile card 1: solution",
+      "passed": true,
+      "detail": "Map the real workflow, remove duplicate handoffs and give each step a clear owner and visible status."
+    },
+    {
+      "name": "mobile card 1: CTA",
+      "passed": true,
+      "detail": [
+        "Explore business automation",
+        "/services/business-automation"
+      ]
+    },
+    {
+      "name": "mobile card 1: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "mobile card 1: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "mobile card 1: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "mobile card 1: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile card 1: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "mobile card 1: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "mobile card 1: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 1: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "mobile card 1: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "mobile card 1: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ],
+        "current": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 1: equal card heights",
+      "passed": true,
+      "detail": [
+        908.625,
+        908.625,
+        908.625,
+        908.625,
+        908.625
+      ]
+    },
+    {
+      "name": "mobile card 1: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ],
+        "current": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 1: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "mobile card 1: mobile stacked layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          21,
+          1741.75,
+          348,
+          628.625
+        ],
+        "visual": [
+          21,
+          2370.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 1: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "mobile card 2: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "mobile card 2: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/erp-crm-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "mobile card 2: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          21,
+          2342.375,
+          348,
+          280
+        ],
+        "visual": [
+          21,
+          2342.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 2: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "mobile card 2: category",
+      "passed": true,
+      "detail": "ERP and integrations"
+    },
+    {
+      "name": "mobile card 2: number",
+      "passed": true,
+      "detail": "02 of 05"
+    },
+    {
+      "name": "mobile card 2: title",
+      "passed": true,
+      "detail": "Systems do not speak to each other"
+    },
+    {
+      "name": "mobile card 2: problem",
+      "passed": true,
+      "detail": "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made."
+    },
+    {
+      "name": "mobile card 2: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "mobile card 2: solution",
+      "passed": true,
+      "detail": "Connect the systems you already run, define a shared data model and remove the reconciliation layer."
+    },
+    {
+      "name": "mobile card 2: CTA",
+      "passed": true,
+      "detail": [
+        "Explore ERP and integrations",
+        "/services/erp-systems"
+      ]
+    },
+    {
+      "name": "mobile card 2: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "mobile card 2: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "mobile card 2: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "mobile card 2: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile card 2: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "mobile card 2: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "mobile card 2: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 2: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "mobile card 2: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "mobile card 2: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ],
+        "current": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 2: equal card heights",
+      "passed": true,
+      "detail": [
+        908.625,
+        908.625,
+        908.625,
+        908.625,
+        908.625
+      ]
+    },
+    {
+      "name": "mobile card 2: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ],
+        "current": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 2: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "mobile card 2: mobile stacked layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          21,
+          1741.75,
+          348,
+          600.625
+        ],
+        "visual": [
+          21,
+          2342.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 2: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "mobile card 3: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "mobile card 3: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/web-experience-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "mobile card 3: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          21,
+          2342.375,
+          348,
+          280
+        ],
+        "visual": [
+          21,
+          2342.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 3: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "mobile card 3: category",
+      "passed": true,
+      "detail": "website development"
+    },
+    {
+      "name": "mobile card 3: number",
+      "passed": true,
+      "detail": "03 of 05"
+    },
+    {
+      "name": "mobile card 3: title",
+      "passed": true,
+      "detail": "The website is credible, but not useful"
+    },
+    {
+      "name": "mobile card 3: problem",
+      "passed": true,
+      "detail": "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation."
+    },
+    {
+      "name": "mobile card 3: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "mobile card 3: solution",
+      "passed": true,
+      "detail": "Rebuild the content and interaction around buyer questions, clear service paths and a measurable next action."
+    },
+    {
+      "name": "mobile card 3: CTA",
+      "passed": true,
+      "detail": [
+        "Explore website development",
+        "/services/website-development"
+      ]
+    },
+    {
+      "name": "mobile card 3: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "mobile card 3: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "mobile card 3: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "mobile card 3: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile card 3: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "mobile card 3: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "mobile card 3: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 3: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "mobile card 3: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "mobile card 3: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ],
+        "current": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 3: equal card heights",
+      "passed": true,
+      "detail": [
+        908.625,
+        908.625,
+        908.625,
+        908.625,
+        908.625
+      ]
+    },
+    {
+      "name": "mobile card 3: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ],
+        "current": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 3: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "mobile card 3: mobile stacked layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          21,
+          1741.75,
+          348,
+          600.625
+        ],
+        "visual": [
+          21,
+          2342.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 3: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "mobile card 4: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "mobile card 4: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/data-intelligence-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "mobile card 4: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          21,
+          2370.375,
+          348,
+          280
+        ],
+        "visual": [
+          21,
+          2370.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 4: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "mobile card 4: category",
+      "passed": true,
+      "detail": "data and Power BI"
+    },
+    {
+      "name": "mobile card 4: number",
+      "passed": true,
+      "detail": "04 of 05"
+    },
+    {
+      "name": "mobile card 4: title",
+      "passed": true,
+      "detail": "The data exists, but decisions still wait"
+    },
+    {
+      "name": "mobile card 4: problem",
+      "passed": true,
+      "detail": "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them."
+    },
+    {
+      "name": "mobile card 4: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "mobile card 4: solution",
+      "passed": true,
+      "detail": "Create a dependable reporting layer with current data, agreed definitions and access for the people who act on it."
+    },
+    {
+      "name": "mobile card 4: CTA",
+      "passed": true,
+      "detail": [
+        "Explore data and Power BI",
+        "/services/data-analytics"
+      ]
+    },
+    {
+      "name": "mobile card 4: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "mobile card 4: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "mobile card 4: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "mobile card 4: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile card 4: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "mobile card 4: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "mobile card 4: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 4: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "mobile card 4: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "mobile card 4: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ],
+        "current": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 4: equal card heights",
+      "passed": true,
+      "detail": [
+        908.625,
+        908.625,
+        908.625,
+        908.625,
+        908.625
+      ]
+    },
+    {
+      "name": "mobile card 4: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ],
+        "current": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 4: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "AI feels urgent, but the use case is unclear",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "mobile card 4: mobile stacked layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          21,
+          1741.75,
+          348,
+          628.625
+        ],
+        "visual": [
+          21,
+          2370.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 4: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "mobile card 5: selected",
+      "passed": true,
+      "detail": {
+        "hidden": "false",
+        "inert": false,
+        "opacity": 1
+      }
+    },
+    {
+      "name": "mobile card 5: unique image loaded",
+      "passed": true,
+      "detail": {
+        "src": "/images/challenges/ai-automation-glass.webp",
+        "complete": true,
+        "naturalWidth": 1200,
+        "naturalHeight": 1200,
+        "objectFit": "cover",
+        "loading": "lazy"
+      }
+    },
+    {
+      "name": "mobile card 5: image fills visual area",
+      "passed": true,
+      "detail": {
+        "img": [
+          21,
+          2342.375,
+          348,
+          280
+        ],
+        "visual": [
+          21,
+          2342.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 5: image cover fit",
+      "passed": true,
+      "detail": "cover"
+    },
+    {
+      "name": "mobile card 5: category",
+      "passed": true,
+      "detail": "AI solutions"
+    },
+    {
+      "name": "mobile card 5: number",
+      "passed": true,
+      "detail": "05 of 05"
+    },
+    {
+      "name": "mobile card 5: title",
+      "passed": true,
+      "detail": "AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "mobile card 5: problem",
+      "passed": true,
+      "detail": "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+    },
+    {
+      "name": "mobile card 5: help label",
+      "passed": true,
+      "detail": "How YESBE helps"
+    },
+    {
+      "name": "mobile card 5: solution",
+      "passed": true,
+      "detail": "Start with one contained workflow, define the evidence of success and build a grounded system before expanding."
+    },
+    {
+      "name": "mobile card 5: CTA",
+      "passed": true,
+      "detail": [
+        "Explore AI solutions",
+        "/services/ai-solutions"
+      ]
+    },
+    {
+      "name": "mobile card 5: heading color and weight",
+      "passed": true,
+      "detail": [
+        "rgb(8, 11, 18)",
+        "700"
+      ]
+    },
+    {
+      "name": "mobile card 5: secondary text color",
+      "passed": true,
+      "detail": "rgb(48, 52, 59)"
+    },
+    {
+      "name": "mobile card 5: CTA color",
+      "passed": true,
+      "detail": "rgb(22, 77, 229)"
+    },
+    {
+      "name": "mobile card 5: white card",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile card 5: border color",
+      "passed": true,
+      "detail": "rgb(229, 231, 235)"
+    },
+    {
+      "name": "mobile card 5: 22px radius",
+      "passed": true,
+      "detail": "22px"
+    },
+    {
+      "name": "mobile card 5: no heavy shadow",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "mobile card 5: 500ms transition",
+      "passed": true,
+      "detail": "0.5s"
+    },
+    {
+      "name": "mobile card 5: premium easing",
+      "passed": true,
+      "detail": "cubic-bezier(0.22, 1, 0.36, 1)"
+    },
+    {
+      "name": "mobile card 5: container position stable",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ],
+        "current": [
+          20,
+          1740.75,
+          350,
+          910.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 5: equal card heights",
+      "passed": true,
+      "detail": [
+        908.625,
+        908.625,
+        908.625,
+        908.625,
+        908.625
+      ]
+    },
+    {
+      "name": "mobile card 5: heights stable across selection",
+      "passed": true,
+      "detail": {
+        "baseline": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ],
+        "current": [
+          908.625,
+          908.625,
+          908.625,
+          908.625,
+          908.625
+        ]
+      }
+    },
+    {
+      "name": "mobile card 5: only selected card visible",
+      "passed": true,
+      "detail": [
+        [
+          "Growth is outrunning the operating model",
+          "true",
+          0
+        ],
+        [
+          "Systems do not speak to each other",
+          "true",
+          0
+        ],
+        [
+          "The website is credible, but not useful",
+          "true",
+          0
+        ],
+        [
+          "The data exists, but decisions still wait",
+          "true",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "mobile card 5: mobile stacked layout",
+      "passed": true,
+      "detail": {
+        "text": [
+          21,
+          1741.75,
+          348,
+          600.625
+        ],
+        "visual": [
+          21,
+          2342.375,
+          348,
+          280
+        ]
+      }
+    },
+    {
+      "name": "mobile card 5: CTA route resolves",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "name": "reduced motion card 1: transition disabled",
+      "passed": true,
+      "detail": "1e-05s"
+    },
+    {
+      "name": "reduced motion card 1: instant reveal",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "reduced motion card 5: transition disabled",
+      "passed": true,
+      "detail": "1e-05s"
+    },
+    {
+      "name": "reduced motion card 5: instant reveal",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "no console errors",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

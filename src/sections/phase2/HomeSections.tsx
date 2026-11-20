@@ -60,6 +60,13 @@ const CHALLENGE_DOTS = [
 ] as const;
 const CHALLENGE_WAVE_PATH =
   "M 40 140 C 80 140 80 90 120 90 C 240 90 240 190 360 190 C 480 190 480 90 600 90 C 720 90 720 190 840 190 C 960 190 960 90 1080 90 C 1120 90 1120 140 1160 140";
+const CHALLENGE_IMAGES = [
+  "/images/challenges/business-automation-glass.webp",
+  "/images/challenges/erp-crm-glass.webp",
+  "/images/challenges/web-experience-glass.webp",
+  "/images/challenges/data-intelligence-glass.webp",
+  "/images/challenges/ai-automation-glass.webp",
+] as const;
 
 function HomeSectionHeading({
   eyebrow,
@@ -133,11 +140,9 @@ function BusinessChallengesSection() {
     <section id="challenges" className="section-py bg-white" aria-label="Business challenges">
       <div className="container-page">
         <Reveal>
-          <HomeSectionHeading
-            eyebrow="The starting point"
-            title="The work is rarely the problem. The system around it is."
-            description="Most technology projects begin with a request for a tool. The useful starting point is the constraint underneath it: where work stalls, where data disagrees, and where people compensate for the system."
-          />
+          <h2 className="mb-6 max-w-3xl text-[2rem] font-bold leading-[1.08] tracking-[-0.035em] text-[#080B12] sm:text-[2.125rem] lg:mb-8 lg:text-[3.25rem]">
+            Complex Challenges. Smarter Solutions.
+          </h2>
         </Reveal>
 
         <div className="mx-auto w-full max-w-[1120px]">
@@ -211,13 +216,14 @@ function BusinessChallengesSection() {
         <div
           ref={cardRef}
           id="challenge-detail-card"
-          className="mx-auto mt-8 w-full max-w-[940px]"
+          className="mx-auto mt-8 w-full max-w-[1120px]"
         >
-          <div className="relative overflow-hidden border border-line bg-white shadow-panel">
+          <div className="challenge-glass-shell relative overflow-hidden rounded-[22px] border border-[#E5E7EB] bg-white">
             <div className="grid">
               {BUSINESS_CHALLENGES.map((item, index) => {
                 const selected = index === active;
                 const Icon = item.icon;
+                const category = item.link.label.replace(/^Explore\s+/i, "");
 
                 return (
                   <div
@@ -226,65 +232,74 @@ function BusinessChallengesSection() {
                     aria-hidden={!selected}
                     inert={!selected}
                     className={cn(
-                      "col-start-1 row-start-1 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none",
+                      "col-start-1 row-start-1 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
                       selected
                         ? "z-10 translate-y-0 opacity-100"
-                        : "pointer-events-none translate-y-1 opacity-0",
+                        : "pointer-events-none translate-y-3 opacity-0",
                     )}
                   >
-                    <div className="flex items-start justify-between gap-6 border-b border-line px-6 py-5 sm:px-8">
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                          Common pattern
-                        </p>
-                        <p className="mt-1.5 text-[13px] uppercase text-body">
-                          {`${String(index + 1).padStart(2, "0")} of ${String(BUSINESS_CHALLENGES.length).padStart(2, "0")}`}
-                        </p>
-                      </div>
-                      <span className="flex size-11 items-center justify-center border border-line bg-paper text-primary">
-                        <Icon className="size-5" strokeWidth={1.7} aria-hidden="true" />
-                      </span>
-                    </div>
-
-                    <div className="relative p-6 sm:p-8 lg:p-9">
-                      <span
-                        className="pointer-events-none absolute right-4 top-2 text-[7rem] font-semibold leading-none tracking-[-0.08em] text-paper-deep sm:text-[9rem]"
-                        aria-hidden="true"
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="relative">
-                        <h3 className="max-w-md text-[1.65rem] font-semibold leading-[1.12] tracking-[-0.035em] text-ink sm:text-[2rem]">
-                          {item.title}
-                        </h3>
-                        <p className="mt-5 max-w-xl text-[14.5px] leading-7 text-body">
-                          {item.description}
-                        </p>
-
-                        <div className="mt-7 border-t border-line pt-6">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink">
-                            What changes
-                          </p>
-                          <p className="mt-2.5 max-w-xl text-[14px] leading-6 text-body">
-                            {item.change}
-                          </p>
+                    <div className="grid min-h-[520px] grid-cols-1 md:grid-cols-[55%_45%] lg:min-h-[560px] lg:grid-cols-[48%_52%]">
+                      <div className="flex flex-col">
+                        <div className="flex items-start justify-between gap-6 border-b border-[#E5E7EB] px-6 py-5 sm:px-8">
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#164DE5]">
+                              {category}
+                            </p>
+                            <p className="mt-1.5 text-[13px] uppercase text-[#30343B]">
+                              {`${String(index + 1).padStart(2, "0")} of ${String(BUSINESS_CHALLENGES.length).padStart(2, "0")}`}
+                            </p>
+                          </div>
+                          <span className="flex size-11 items-center justify-center border border-[#E5E7EB] bg-white text-[#164DE5]">
+                            <Icon className="size-5" strokeWidth={1.7} aria-hidden="true" />
+                          </span>
                         </div>
 
-                        <ul className="mt-6 flex flex-wrap gap-2">
-                          {item.signals.map((signal) => (
-                            <li
-                              key={signal}
-                              className="border border-line bg-paper px-2.5 py-1 text-[10.5px] font-medium text-body"
-                            >
-                              {signal}
-                            </li>
-                          ))}
-                        </ul>
+                        <div className="flex flex-1 flex-col p-6 sm:p-8">
+                          <h3 className="max-w-md text-[1.65rem] font-bold leading-[1.12] tracking-[-0.035em] text-[#080B12] sm:text-[2rem]">
+                            {item.title}
+                          </h3>
+                          <p className="mt-5 max-w-xl text-[14.5px] leading-7 text-[#30343B]">
+                            {item.description}
+                          </p>
 
-                        <Link to={item.link.to} className="link-arrow mt-7">
-                          {item.link.label}
-                          <ArrowRight className="size-4" aria-hidden="true" />
-                        </Link>
+                          <div className="mt-7 border-t border-[#E5E7EB] pt-6">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#080B12]">
+                              How YESBE helps
+                            </p>
+                            <p className="mt-2.5 max-w-xl text-[14px] leading-6 text-[#30343B]">
+                              {item.change}
+                            </p>
+                          </div>
+
+                          <ul className="mt-6 flex flex-wrap gap-2">
+                            {item.signals.map((signal) => (
+                              <li
+                                key={signal}
+                                className="border border-[#E5E7EB] bg-[#FBFAF7] px-2.5 py-1 text-[10.5px] font-medium text-[#30343B]"
+                              >
+                                {signal}
+                              </li>
+                            ))}
+                          </ul>
+
+                          <Link to={item.link.to} className="link-arrow challenge-glass-cta mt-auto pt-7">
+                            {item.link.label}
+                            <ArrowRight className="size-4" aria-hidden="true" />
+                          </Link>
+                        </div>
+                      </div>
+
+                      <div className="relative min-h-[280px] overflow-hidden bg-[#FBFAF7] md:min-h-full md:rounded-r-[21px]">
+                        <img
+                          src={CHALLENGE_IMAGES[index]}
+                          alt=""
+                          aria-hidden="true"
+                          width={1200}
+                          height={1200}
+                          loading={index === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
                       </div>
                     </div>
                   </div>

@@ -482,6 +482,11 @@
     color: #173eb5;
   }
 
+  .challenge-glass-cta,
+  .challenge-glass-cta:hover {
+    color: #164de5;
+  }
+
   .bg-grid {
     background-image:
       linear-gradient(to right, rgb(10 18 32 / 0.045) 1px, transparent 1px),
@@ -1151,4 +1156,8 @@ img {
   .contain-paint {
     contain: layout style !important;
   }
+}
+
+.challenge-glass-shell {
+  border: 1px solid #e5e7eb;
 }

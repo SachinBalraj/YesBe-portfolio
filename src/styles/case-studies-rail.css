@@ -261,17 +261,19 @@ body:has(.case-rail) {
 .case-rail__intro {
   order: 2;
   width: 100%;
-  max-width: 70rem;
-  margin-top: 1.75rem;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-block: 40px;
 }
 
 .case-rail__intro p {
   margin: 0;
   color: #07144b;
-  font-size: 1.375rem;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 1.4;
-  text-align: left;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .case-rail__intro-highlight {
@@ -280,20 +282,22 @@ body:has(.case-rail) {
 }
 
 @media (min-width: 640px) {
-  .case-rail__intro p {
-    font-size: 1.625rem;
+  .case-rail__intro {
+    padding-block: 48px;
   }
-}
 
-@media (min-width: 768px) {
   .case-rail__intro p {
-    font-size: 1.75rem;
+    font-size: 24px;
   }
 }
 
 @media (min-width: 1024px) {
+  .case-rail__intro {
+    padding-block: 60px;
+  }
+
   .case-rail__intro p {
-    font-size: 2.25rem;
+    font-size: 28px;
   }
 }
 
@@ -383,10 +387,6 @@ body:has(.case-rail) {
 
   .case-rail__body {
     padding: 1rem;
-  }
-
-  .case-rail__intro {
-    margin-top: 1.5rem;
   }
 }
 

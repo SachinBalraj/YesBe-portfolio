@@ -1,0 +1,377 @@
+{
+  "passed": 43,
+  "total": 43,
+  "failures": [],
+  "consoleErrors": [],
+  "results": [
+    {
+      "name": "desktop: exact new heading",
+      "passed": true,
+      "detail": "Complex Challenges. Smarter Solutions."
+    },
+    {
+      "name": "desktop: old heading content removed",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop: heading font size",
+      "passed": true,
+      "detail": "52px"
+    },
+    {
+      "name": "desktop: heading bold",
+      "passed": true,
+      "detail": "700"
+    },
+    {
+      "name": "desktop: heading color",
+      "passed": true,
+      "detail": "rgb(8, 11, 18)"
+    },
+    {
+      "name": "desktop: heading left aligned",
+      "passed": true,
+      "detail": "start"
+    },
+    {
+      "name": "desktop: reduced bottom spacing",
+      "passed": true,
+      "detail": "32px"
+    },
+    {
+      "name": "desktop: heading gap compact",
+      "passed": true,
+      "detail": 32
+    },
+    {
+      "name": "desktop: white background",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "desktop: heading directly precedes diagram",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "desktop: heading not centered",
+      "passed": true,
+      "detail": {
+        "x": 104,
+        "width": 768
+      }
+    },
+    {
+      "name": "desktop: wave path unchanged",
+      "passed": true,
+      "detail": "M 40 140 C 80 140 80 90 120 90 C 240 90 240 190 360 190 C 480 190 480 90 600 90 C 720 90 720 190 840 190 C 960 190 960 90 1080 90 C 1120 90 1120 140 1160 140"
+    },
+    {
+      "name": "desktop: five interactive dots unchanged",
+      "passed": true,
+      "detail": [
+        "challenge-dot-1",
+        "challenge-dot-2",
+        "challenge-dot-3",
+        "challenge-dot-4",
+        "challenge-dot-5"
+      ]
+    },
+    {
+      "name": "desktop: five detail cards unchanged",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "desktop: challenge titles unchanged",
+      "passed": true,
+      "detail": [
+        "Growth is outrunning the operating model",
+        "Systems do not speak to each other",
+        "The website is credible, but not useful",
+        "The data exists, but decisions still wait",
+        "AI feels urgent, but the use case is unclear"
+      ]
+    },
+    {
+      "name": "desktop: challenge descriptions preserved",
+      "passed": true,
+      "detail": [
+        "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory.",
+        "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made.",
+        "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation.",
+        "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them.",
+        "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+      ]
+    },
+    {
+      "name": "desktop: service links unchanged",
+      "passed": true,
+      "detail": [
+        [
+          "Explore business automation",
+          "/services/business-automation"
+        ],
+        [
+          "Explore ERP and integrations",
+          "/services/erp-systems"
+        ],
+        [
+          "Explore website development",
+          "/services/website-development"
+        ],
+        [
+          "Explore data and Power BI",
+          "/services/data-analytics"
+        ],
+        [
+          "Explore AI solutions",
+          "/services/ai-solutions"
+        ]
+      ]
+    },
+    {
+      "name": "desktop: dot 5 activates only itself",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "false",
+        "true"
+      ]
+    },
+    {
+      "name": "desktop: detail 5 visible only",
+      "passed": true,
+      "detail": {
+        "pressed": [
+          "false",
+          "false",
+          "false",
+          "false",
+          "true"
+        ],
+        "opacities": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "inert": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "liveText": "Selected challenge 5 of 5: AI feels urgent, but the use case is unclear"
+      }
+    },
+    {
+      "name": "desktop: live region updated",
+      "passed": true,
+      "detail": "Selected challenge 5 of 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "desktop: keyboard navigation preserved",
+      "passed": true,
+      "detail": [
+        "false",
+        "true",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "mobile: exact new heading",
+      "passed": true,
+      "detail": "Complex Challenges. Smarter Solutions."
+    },
+    {
+      "name": "mobile: old heading content removed",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile: heading font size",
+      "passed": true,
+      "detail": "32px"
+    },
+    {
+      "name": "mobile: heading bold",
+      "passed": true,
+      "detail": "700"
+    },
+    {
+      "name": "mobile: heading color",
+      "passed": true,
+      "detail": "rgb(8, 11, 18)"
+    },
+    {
+      "name": "mobile: heading left aligned",
+      "passed": true,
+      "detail": "start"
+    },
+    {
+      "name": "mobile: reduced bottom spacing",
+      "passed": true,
+      "detail": "24px"
+    },
+    {
+      "name": "mobile: heading gap compact",
+      "passed": true,
+      "detail": 24
+    },
+    {
+      "name": "mobile: white background",
+      "passed": true,
+      "detail": "rgb(255, 255, 255)"
+    },
+    {
+      "name": "mobile: heading directly precedes diagram",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "mobile: heading not centered",
+      "passed": true,
+      "detail": {
+        "x": 20,
+        "width": 350
+      }
+    },
+    {
+      "name": "mobile: wave path unchanged",
+      "passed": true,
+      "detail": "M 40 140 C 80 140 80 90 120 90 C 240 90 240 190 360 190 C 480 190 480 90 600 90 C 720 90 720 190 840 190 C 960 190 960 90 1080 90 C 1120 90 1120 140 1160 140"
+    },
+    {
+      "name": "mobile: five interactive dots unchanged",
+      "passed": true,
+      "detail": [
+        "challenge-dot-1",
+        "challenge-dot-2",
+        "challenge-dot-3",
+        "challenge-dot-4",
+        "challenge-dot-5"
+      ]
+    },
+    {
+      "name": "mobile: five detail cards unchanged",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "mobile: challenge titles unchanged",
+      "passed": true,
+      "detail": [
+        "Growth is outrunning the operating model",
+        "Systems do not speak to each other",
+        "The website is credible, but not useful",
+        "The data exists, but decisions still wait",
+        "AI feels urgent, but the use case is unclear"
+      ]
+    },
+    {
+      "name": "mobile: challenge descriptions preserved",
+      "passed": true,
+      "detail": [
+        "Work is increasing, but the systems around it were designed for a smaller company. Orders, approvals and reports still move through spreadsheets, inboxes and individual memory.",
+        "Finance, sales, operations and support each hold a partial version of the truth. Someone has to reconcile them before a decision can be made.",
+        "The site explains what the business does, yet makes it difficult for a buyer to understand the next step, compare capabilities or start a useful conversation.",
+        "Reports are assembled manually from several sources and arrive after the moment they were needed. Teams spend time formatting numbers instead of interpreting them.",
+        "There is pressure to adopt AI, but no shared view of where it would improve a real process, what data it needs or how the result will be evaluated."
+      ]
+    },
+    {
+      "name": "mobile: service links unchanged",
+      "passed": true,
+      "detail": [
+        [
+          "Explore business automation",
+          "/services/business-automation"
+        ],
+        [
+          "Explore ERP and integrations",
+          "/services/erp-systems"
+        ],
+        [
+          "Explore website development",
+          "/services/website-development"
+        ],
+        [
+          "Explore data and Power BI",
+          "/services/data-analytics"
+        ],
+        [
+          "Explore AI solutions",
+          "/services/ai-solutions"
+        ]
+      ]
+    },
+    {
+      "name": "mobile: dot 5 activates only itself",
+      "passed": true,
+      "detail": [
+        "false",
+        "false",
+        "false",
+        "false",
+        "true"
+      ]
+    },
+    {
+      "name": "mobile: detail 5 visible only",
+      "passed": true,
+      "detail": {
+        "pressed": [
+          "false",
+          "false",
+          "false",
+          "false",
+          "true"
+        ],
+        "opacities": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "inert": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "liveText": "Selected challenge 5 of 5: AI feels urgent, but the use case is unclear"
+      }
+    },
+    {
+      "name": "mobile: live region updated",
+      "passed": true,
+      "detail": "Selected challenge 5 of 5: AI feels urgent, but the use case is unclear"
+    },
+    {
+      "name": "mobile: keyboard navigation preserved",
+      "passed": true,
+      "detail": [
+        "false",
+        "true",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    {
+      "name": "no console errors",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}
