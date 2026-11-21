@@ -458,20 +458,17 @@ function PartnershipSection() {
       <div className="container-page">
         <div className="mx-auto max-w-[960px]">
           <Reveal>
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#155EEF]">
-              THE PARTNERSHIP
-            </span>
-            <h2 className="mt-4 max-w-3xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#071B40] sm:text-[2.6rem] lg:text-[3rem]">
+            <h2 className="max-w-3xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#071B40] sm:text-[2.6rem] lg:text-[3rem]">
               A Technology Partner, Not Just a Vendor.
             </h2>
-            <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#243047] sm:text-[16px]">
+            <p className="mt-5 max-w-2xl text-[17px] font-normal leading-[1.6] text-[#0B1F46] sm:text-[19px] lg:text-[21px]">
               The useful difference is not a larger team or a longer list of tools. It is how
               decisions are made, how scope is controlled and what happens when the project leaves
               the proposal stage.
             </p>
           </Reveal>
 
-          <Reveal delay={60} className="mt-5 sm:mt-6">
+          <Reveal delay={60} className="mt-7">
             <div className="mx-auto w-full max-w-[750px] overflow-hidden rounded-lg md:w-[65%]">
               <picture>
                 <source type="image/avif" srcSet={companyAvifSet} sizes="(min-width: 1024px) 750px, (min-width: 768px) 65vw, 100vw" />
