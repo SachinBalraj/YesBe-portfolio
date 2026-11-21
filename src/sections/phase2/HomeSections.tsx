@@ -190,7 +190,7 @@ function BusinessChallengesSection() {
   };
 
   return (
-    <section id="challenges" className="section-py bg-white" aria-label="Business challenges">
+    <section id="challenges" className="bg-white pt-0 pb-11 lg:pt-0 lg:pb-[4.75rem]" aria-label="Business challenges">
       <div className="container-page">
         <Reveal>
           <h2 className="mb-6 max-w-3xl text-[2rem] font-bold leading-[1.08] tracking-[-0.035em] text-[#080B12] sm:text-[2.125rem] lg:mb-8 lg:text-[3.25rem]">

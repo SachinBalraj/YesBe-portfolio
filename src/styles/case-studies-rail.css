@@ -25,7 +25,7 @@ body:has(.case-rail) {
 .case-rail__inner {
   display: flex;
   flex-direction: column;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0;
 }
 
 .case-rail__carousel {
@@ -458,7 +458,8 @@ body:has(.case-rail) {
   width: 100%;
   max-width: 1000px;
   margin-inline: auto;
-  padding-block: 32px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .case-rail__intro p {
@@ -487,7 +488,7 @@ body:has(.case-rail) {
     --case-card-height: 28rem;
     height: auto;
     margin-top: calc(-1 * var(--case-overlap));
-    padding-bottom: 2rem;
+    padding-bottom: 0;
   }
 
   .case-rail__sticky {
@@ -546,7 +547,8 @@ body:has(.case-rail) {
 
 @media (min-width: 1024px) {
   .case-rail__intro {
-    padding-block: 64px;
+    padding-top: 64px;
+    padding-bottom: 60px;
   }
 
   .case-rail__intro p {
