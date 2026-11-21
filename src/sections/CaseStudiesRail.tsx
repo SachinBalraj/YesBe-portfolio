@@ -247,36 +247,42 @@ export function CaseStudiesRail() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="selected-work"
-      aria-label="Selected work"
-      className="case-rail"
-    >
-      <div ref={stickyRef} className="case-rail__sticky">
-        <div className="container-page case-rail__inner">
-          <div className="case-rail__intro">
-            <p>{INTRODUCTION_CONTENT}</p>
-          </div>
-          <div className="case-rail__carousel">
-            <div ref={viewportRef} className="case-rail__viewport">
-              <div ref={trackRef} className="case-rail__track">
-                {CASE_STUDIES.map((study) => {
-                  const cardImage = CARD_IMAGES[study.slug];
-                  return (
-                    <CaseStudyCard
-                      key={study.slug}
-                      study={study}
-                      cardImage={cardImage}
-                      revealOnHover={HOVER_REVEAL_SLUGS.includes(study.slug)}
-                    />
-                  );
-                })}
+    <>
+      <section
+        ref={sectionRef}
+        id="selected-work"
+        aria-label="Selected work"
+        className="case-rail"
+      >
+        <div ref={stickyRef} className="case-rail__sticky">
+          <div className="container-page case-rail__inner">
+            <div className="case-rail__carousel">
+              <div ref={viewportRef} className="case-rail__viewport">
+                <div ref={trackRef} className="case-rail__track">
+                  {CASE_STUDIES.map((study) => {
+                    const cardImage = CARD_IMAGES[study.slug];
+                    return (
+                      <CaseStudyCard
+                        key={study.slug}
+                        study={study}
+                        cardImage={cardImage}
+                        revealOnHover={HOVER_REVEAL_SLUGS.includes(study.slug)}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+      <div className="case-rail__intro-wrap bg-white">
+        <div className="container-page">
+          <div className="case-rail__intro">
+            <p>{INTRODUCTION_CONTENT}</p>
+          </div>
+        </div>
       </div>
-    </section>
+    </>
   );
 }

@@ -25,12 +25,12 @@ body:has(.case-rail) {
 .case-rail__inner {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-bottom: 0;
 }
 
 .case-rail__carousel {
   position: relative;
-  order: 1;
 }
 
 .case-rail__viewport {
@@ -453,8 +453,11 @@ body:has(.case-rail) {
   outline-offset: 3px;
 }
 
+.case-rail__intro-wrap {
+  background: #ffffff;
+}
+
 .case-rail__intro {
-  order: 2;
   width: 100%;
   max-width: 1000px;
   margin-inline: auto;
@@ -537,6 +540,10 @@ body:has(.case-rail) {
     height: 11rem;
     flex-basis: 11rem;
   }
+
+  .case-rail__intro {
+    padding-bottom: 40px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -547,8 +554,8 @@ body:has(.case-rail) {
 
 @media (min-width: 1024px) {
   .case-rail__intro {
-    padding-top: 64px;
-    padding-bottom: 60px;
+    padding-top: 48px;
+    padding-bottom: 56px;
   }
 
   .case-rail__intro p {
