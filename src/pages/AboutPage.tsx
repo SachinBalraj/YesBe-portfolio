@@ -15,7 +15,9 @@ import {
   Compass,
   Database,
   Globe,
+  Hourglass,
   Layers,
+  Mail,
   Map,
   Network,
   RefreshCw,
@@ -27,6 +29,7 @@ import {
   Users,
   Waypoints,
   Workflow,
+  Zap,
 } from "lucide-react";
 import {
   SiDocker,
@@ -59,101 +62,64 @@ import { trackConsultationClick } from "@/utils/analytics";
 import { localSrcSet } from "@/utils/images";
 import { cn } from "@/utils/cn";
 
-const deliverables: Array<{
+const horizontals: Array<{
+  number: string;
   title: string;
   description: string;
   to: string;
-  visual: ServiceVisualKey;
   icon: typeof Code2;
 }> = [
   {
-    title: "Custom software",
+    number: "01",
+    title: "Custom Software",
     description:
       "Purpose-built platforms and internal tools for processes that generic software cannot fit without compromise.",
     to: "/services/custom-software",
-    visual: "product",
     icon: Code2,
   },
   {
-    title: "AI & automation",
+    number: "02",
+    title: "AI & Automation",
     description:
       "Grounded AI, document intelligence and workflow automation that remove repeat work and make information easier to act on.",
     to: "/services/ai-solutions",
-    visual: "automation",
     icon: Brain,
   },
   {
-    title: "ERP & CRM systems",
+    number: "03",
+    title: "ERP & CRM Systems",
     description:
       "One operational system for finance, inventory, sales and customer records, shaped around how teams actually work.",
     to: "/services/erp-systems",
-    visual: "enterprise",
-    icon: Boxes,
+    icon: Layers,
   },
   {
-    title: "Digital transformation",
+    number: "04",
+    title: "Digital Transformation",
     description:
       "A costed sequence for changing systems, process and ownership without creating a larger operational gap.",
     to: "/services/digital-transformation",
-    visual: "transformation",
     icon: Compass,
   },
   {
-    title: "Web applications",
+    number: "05",
+    title: "Web Applications",
     description:
       "Corporate sites, commerce and customer-facing applications built around clarity, speed and a useful next action.",
     to: "/services/web-applications",
-    visual: "web",
     icon: Globe,
   },
   {
-    title: "Cloud & integrations",
+    number: "06",
+    title: "Cloud & Integrations",
     description:
       "Infrastructure, APIs and data connections that keep systems available, current and maintainable.",
     to: "/services/cloud-devops",
-    visual: "integration",
     icon: Cloud,
   },
 ];
 
-const reasons = [
-  {
-    title: "Business first, technology second",
-    description:
-      "We start with the operating constraint, the people affected and the decision that needs to improve. The stack follows the requirement, not the other way around.",
-    icon: Target,
-  },
-  {
-    title: "Senior people in the work",
-    description:
-      "The people shaping the solution stay involved through delivery. You are not handed from a senior conversation into an unconnected build team.",
-    icon: Users,
-  },
-  {
-    title: "Scope before spend",
-    description:
-      "The problem, boundaries, dependencies and first useful release are agreed before a larger programme is committed.",
-    icon: Search,
-  },
-  {
-    title: "Systems designed to be maintained",
-    description:
-      "Clear architecture, documented decisions and code another team can understand, operate and extend.",
-    icon: Layers,
-  },
-  {
-    title: "An honest handover",
-    description:
-      "Access, credentials, documentation and open decisions are transferred clearly. The system should not depend on our continued presence.",
-    icon: Shield,
-  },
-  {
-    title: "Support beyond launch",
-    description:
-      "Launch is a monitored transition. We plan for fixes, adoption, performance and the next iteration.",
-    icon: Rocket,
-  },
-];
+
 
 const transformation = {
   before: [
@@ -170,68 +136,8 @@ const transformation = {
   ],
 };
 
-const technologyGroups = [
-  {
-    label: "Frontend",
-    icon: Globe,
-    items: [
-      ["React", SiReact],
-      ["TypeScript", SiTypescript],
-      ["Tailwind CSS", SiTailwindcss],
-      ["Vite", SiVite],
-    ],
-  },
-  {
-    label: "Backend",
-    icon: Code2,
-    items: [
-      ["Node.js", SiNodedotjs],
-      ["Express", SiExpress],
-      ["Python", SiPython],
-      ["REST APIs", Network],
-    ],
-  },
-  {
-    label: "Data",
-    icon: Database,
-    items: [
-      ["MongoDB", SiMongodb],
-      ["PostgreSQL", SiPostgresql],
-      ["MySQL", SiMysql],
-      ["Power BI", BarChart3],
-    ],
-  },
-  {
-    label: "AI & automation",
-    icon: Brain,
-    items: [
-      ["OpenAI", TbBrandOpenai],
-      ["LangChain", SiLangchain],
-      ["RAG", Layers],
-      ["Workflow automation", Workflow],
-    ],
-  },
-  {
-    label: "Cloud & delivery",
-    icon: Cloud,
-    items: [
-      ["AWS", TbBrandAws],
-      ["Docker", SiDocker],
-      ["Vercel", SiVercel],
-      ["GitHub Actions", SiGithubactions],
-    ],
-  },
-  {
-    label: "Enterprise",
-    icon: Boxes,
-    items: [
-      ["ERP", Boxes],
-      ["CRM", Users],
-      ["Integrations", Waypoints],
-      ["Business intelligence", BarChart3],
-    ],
-  },
-] as const;
+
+
 
 const stages = [
   {
@@ -292,105 +198,78 @@ const stages = [
   },
 ];
 
-const industrySlugs = ["healthcare", "education", "retail", "manufacturing", "logistics", "finance"];
-
-const aboutIndustries = industrySlugs
-  .map((slug) => {
-    const industry = getIndustryBySlug(slug);
-    const visual = INDUSTRY_VISUALS[slug];
-    return industry && visual ? { ...industry, visual } : null;
-  })
-  .filter((industry): industry is NonNullable<typeof industry> => Boolean(industry));
 
 function AboutHero() {
   return (
     <section
-      className="relative isolate overflow-hidden bg-[#05132e] pt-[76px] text-white"
+      className="relative isolate flex min-h-[calc(100svh-76px)] overflow-hidden bg-[#050c23] pt-[76px] text-white sm:min-h-[88vh] lg:min-h-[calc(100vh-76px)]"
       aria-label="About YESBE Technologies"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-30" />
-      <div
+      <video
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center motion-reduce:hidden"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/videoabout-poster.png"
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-8 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(31,78,216,0.3),transparent_66%)]"
+      >
+        <source src="/videoabout.mp4" type="video/mp4" />
+      </video>
+      <img
+        src="/videoabout-poster.png"
+        alt=""
+        aria-hidden="true"
+        width={1280}
+        height={720}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 -z-20 hidden h-full w-full object-cover object-center motion-reduce:block"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-0 h-full w-[42%] bg-[linear-gradient(118deg,transparent,rgba(122,167,255,0.07))]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,12,35,0.88)_0%,rgba(5,12,35,0.60)_55%,rgba(5,12,35,0.25)_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(5,12,35,0.18)_0%,rgba(5,12,35,0.04)_35%,rgba(5,12,35,0.28)_100%)]"
       />
 
-      <div className="container-page relative py-10 sm:py-14 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-14">
-          <div>
-            <span className="eyebrow text-[#8eb5ff]">Company profile</span>
-            <h1 className="mt-5 max-w-[47rem] text-[clamp(2.65rem,6vw,5.2rem)] font-semibold leading-[0.97] tracking-[-0.055em] text-white">
-              Technology Built Around <span className="text-[#8eb5ff]">Your Business.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-[15px] leading-7 text-white/68 sm:text-[17px] sm:leading-8">
-              YESBE Technologies is an IT consulting and software development company. We design
-              custom software, ERP systems, web applications, AI and automation, and analytics around
-              the way a business actually operates.
-            </p>
+      <div className="container-page relative z-10 flex w-full items-center justify-center py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto w-full max-w-4xl text-center">
+          <h1 className="text-[clamp(2.75rem,7vw,5.5rem)] font-bold leading-[1.14] tracking-[-0.04em]">
+            <span className="block text-white">We Imagine.</span>
+            <span className="mt-1 block text-white sm:mt-2">We Engineer.</span>
+            <span className="mt-1 block text-[#91B6FF] sm:mt-2">We Deliver.</span>
+          </h1>
+          <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-[1.6] text-white/80 sm:text-[18px]">
+            Building future-ready technology for ambitious businesses.
+          </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                to="/contact"
-                onClick={() => trackConsultationClick("about_hero")}
-                className="group inline-flex min-h-[3.25rem] items-center justify-between gap-8 bg-white px-5 py-3 text-sm font-semibold text-[#05132e] transition-colors hover:bg-[#dce8ff] sm:min-w-56"
-              >
-                Discuss Your Project
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
-              </Link>
-              <Link
-                to="/services"
-                className="group inline-flex min-h-[3.25rem] items-center justify-between gap-8 border border-white/25 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-white/55 hover:bg-white/[0.06] sm:min-w-56"
-              >
-                Explore capabilities
-                <ArrowRight className="size-4 text-[#8eb5ff] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
-              </Link>
-            </div>
-
-            <dl className="mt-8 grid max-w-xl grid-cols-3 border-t border-white/10 pt-5">
-              {[
-                ["Consult", "Diagnose the constraint"],
-                ["Engineer", "Build the useful release"],
-                ["Support", "Operate and improve"],
-              ].map(([term, detail]) => (
-                <div key={term} className="border-r border-white/10 pr-4 last:border-r-0 last:pl-4 first:pl-0">
-                  <dt className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#8eb5ff]">
-                    {term}
-                  </dt>
-                  <dd className="mt-1.5 text-[11px] leading-5 text-white/60">{detail}</dd>
-                </div>
-              ))}
-            </dl>
+          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+            <Link
+              to="/contact"
+              onClick={() => trackConsultationClick("about_hero")}
+              className="group inline-flex h-14 w-full items-center justify-center gap-2.5 bg-white px-8 text-sm font-semibold text-[#05132E] shadow-[0_10px_30px_rgba(5,19,46,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#f4f8ff] hover:shadow-[0_14px_34px_rgba(5,19,46,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#05132e] sm:w-auto sm:min-w-[220px]"
+            >
+              Discuss Your Project
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+            </Link>
+            <Link
+              to="/services"
+              className="group inline-flex h-14 w-full items-center justify-center gap-2.5 border border-white/35 bg-[#05132E]/20 px-8 text-sm font-semibold text-white backdrop-blur-[2px] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#05132e] sm:w-auto sm:min-w-[220px]"
+            >
+              Explore Capabilities
+              <ArrowRight className="size-4 text-[#91B6FF] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+            </Link>
           </div>
 
-          <div className="relative">
-            <div className="border border-white/14 bg-white/[0.035] p-2 backdrop-blur-sm">
-              <img
-                src={SERVICE_VISUALS.company.src}
-                srcSet={localSrcSet(SERVICE_VISUALS.company.src, [640, 960, 1600])}
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                alt="YESBE team collaborating around a table"
-                width={1600}
-                height={1000}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="aspect-[4/3] w-full object-cover"
-              />
-              <div className="grid grid-cols-[1fr_auto] items-end gap-4 border-t border-white/10 px-3 py-3">
-                <p className="max-w-xs text-[11px] leading-5 text-white/62">
-                  Systems, interfaces and data designed as one operating model.
-                </p>
-                <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#8eb5ff]/75">
-                  YESBE / 01
-                </span>
-              </div>
-            </div>
-            <div aria-hidden="true" className="absolute -right-3 -top-3 hidden size-16 border-r border-t border-[#8eb5ff]/35 lg:block" />
-            <div aria-hidden="true" className="absolute -bottom-3 -left-3 hidden size-16 border-b border-l border-white/15 lg:block" />
-          </div>
+          <div className="mx-auto mt-11 h-px w-full max-w-[720px] bg-white/15" aria-hidden="true" />
+          <p className="mt-6 text-[11px] font-semibold tracking-[0.22em] text-white/65 sm:text-[12px] sm:whitespace-nowrap">
+            CONSULTING &middot; SOFTWARE &middot; ERP &amp; CRM &middot; AI &middot; AUTOMATION &middot; CLOUD
+          </p>
         </div>
       </div>
     </section>
@@ -399,62 +278,65 @@ function AboutHero() {
 
 function DeliverablesSection() {
   return (
-    <section className="section-py border-b border-line bg-white" aria-label="What YESBE delivers">
-      <div className="container-page">
+    <section
+      className="bg-[#FFF9F4] py-14 sm:py-16 lg:py-20"
+      aria-label="Our Horizontals"
+    >
+      <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <SectionHeading
-            eyebrow="What we deliver"
-            title="Six capabilities that connect strategy to operation."
-            description="Most engagements combine more than one. A website needs an integration, an ERP needs reporting, and an AI workflow usually needs a process redesign underneath it."
-            className="mb-8 lg:mb-10"
-          />
+          <div className="mb-10">
+            <h2 className="text-left text-[2.5rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-[#17154C] sm:text-[3rem] lg:text-[4rem]">
+              Our Horizontals
+            </h2>
+          </div>
         </Reveal>
 
-        <div className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-          {deliverables.map((deliverable, index) => {
-            const Icon = deliverable.icon;
-            const large = index === 0;
+        <div className="flex flex-col gap-5 sm:gap-6">
+          {horizontals.map((item, index) => {
+            const Icon = item.icon;
+            const reverse = index % 2 === 1;
             return (
-              <Reveal
-                key={deliverable.title}
-                as="article"
-                delay={index * 35}
-                className={cn("h-full bg-white", large && "lg:col-span-2 lg:row-span-2")}
-              >
+              <Reveal key={item.title} delay={index * 40}>
                 <Link
-                  to={deliverable.to}
-                    className={cn(
-                      "group flex h-full flex-col transition-transform duration-500 ease-[var(--ease-premium)] hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary motion-reduce:transform-none",
-                      large && "sm:grid sm:grid-cols-[0.95fr_1.05fr] lg:grid-cols-1",
-                    )}
+                  to={item.to}
+                  className={cn(
+                    "group flex min-h-[115px] w-full items-stretch border border-[#171717] bg-[#FFF9F4] text-left text-[#080808] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-[3px] hover:shadow-[0_12px_30px_rgba(11,31,68,0.12)] focus-visible:-translate-y-[3px] focus-visible:shadow-[0_12px_30px_rgba(11,31,68,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4DB8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFF9F4] motion-reduce:transform-none motion-reduce:transition-none lg:min-h-[122px]",
+                    reverse ? "lg:ml-auto lg:w-[calc(100%-48px)]" : "lg:w-[calc(100%-48px)]",
+                  )}
                 >
-                  <ServiceVisual
-                    variant={deliverable.visual}
-                    compact
-                    className={cn(
-                      "border-b border-line sm:border-b-0",
-                      large ? "h-48 sm:h-full sm:border-r lg:h-64 lg:border-b lg:border-r-0" : "h-40",
-                    )}
-                  />
-                  <div className={cn("flex flex-1 flex-col p-5 sm:p-6", large && "sm:justify-center sm:p-8 lg:justify-start")}>
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="flex size-8 items-center justify-center border border-line bg-paper text-primary">
-                        <Icon className="size-4" strokeWidth={1.7} aria-hidden="true" />
-                      </span>
-                      <span className="font-mono text-[10px] font-semibold tracking-[0.12em] text-body/80">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
+                  {reverse ? (
+                    <>
+                      <div className="flex w-[72px] shrink-0 items-center justify-center border-r border-[#171717]/15 px-3 sm:w-[88px] sm:px-4 lg:w-[96px]">
+                        <Icon className="size-7 stroke-[1.5] text-[#080808] sm:size-8" aria-hidden="true" />
+                      </div>
+                      <div className="flex w-[72px] shrink-0 items-center justify-center bg-[#1D4DB8] text-[1.75rem] font-semibold leading-none text-white transition-colors duration-300 group-hover:bg-[#163E96] group-focus-visible:bg-[#163E96] sm:w-[84px] sm:text-[2rem] lg:w-[90px]">
+                        {item.number}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex w-[72px] shrink-0 items-center justify-center bg-[#1D4DB8] text-[1.75rem] font-semibold leading-none text-white transition-colors duration-300 group-hover:bg-[#163E96] group-focus-visible:bg-[#163E96] sm:w-[84px] sm:text-[2rem] lg:w-[90px]">
+                        {item.number}
+                      </div>
+                      <div className="flex w-[72px] shrink-0 items-center justify-center border-r border-[#171717]/15 px-3 sm:w-[88px] sm:px-4 lg:w-[96px]">
+                        <Icon className="size-7 stroke-[1.5] text-[#080808] sm:size-8" aria-hidden="true" />
+                      </div>
+                    </>
+                  )}
+
+                  <div className="flex min-w-0 flex-1 items-center gap-4 px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-[1.2rem] font-bold leading-[1.2] tracking-[-0.02em] text-[#080808] sm:text-[1.5rem] lg:text-[1.75rem]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 max-w-3xl text-[14px] leading-6 text-[#252525] sm:text-[15px] sm:leading-7">
+                        {item.description}
+                      </p>
                     </div>
-                    <h2 className={cn("mt-4 font-semibold leading-[1.24] tracking-[-0.025em] text-ink transition-colors group-hover:text-primary", large ? "text-[1.35rem] sm:text-[1.5rem]" : "text-[1.12rem]")}>
-                      {deliverable.title}
-                    </h2>
-                    <p className={cn("mt-2.5 leading-6 text-body", large ? "max-w-md text-[13.5px]" : "text-[12.5px]")}>
-                      {deliverable.description}
-                    </p>
-                    <span className="mt-auto flex items-center justify-between gap-4 pt-5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-primary">
-                      Explore
-                      <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-                    </span>
+                    <ArrowRight
+                      className="size-5 shrink-0 text-[#080808] transition-transform duration-300 ease-out group-hover:translate-x-[5px] group-focus-visible:translate-x-[5px] motion-reduce:transform-none motion-reduce:transition-none sm:size-6"
+                      aria-hidden="true"
+                    />
                   </div>
                 </Link>
               </Reveal>
@@ -466,439 +348,216 @@ function DeliverablesSection() {
   );
 }
 
-function ReasonsSection() {
-  return (
-    <section className="section-py bg-paper" aria-label="Why businesses choose YESBE">
-      <div className="container-page">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Why YESBE"
-            title="A partner chosen for judgement, not just capacity."
-            description="The difference is how decisions are made, how scope is controlled and what remains usable after the project leaves the proposal stage."
-            className="mb-8 lg:mb-10"
-          />
-        </Reveal>
-
-        <div className="grid gap-4 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7 lg:row-span-2">
-            <div className="relative h-full min-h-[26rem] overflow-hidden bg-[#05132e] p-6 text-white sm:p-8">
-              <img
-                src={HERO_FALLBACK.poster}
-                srcSet={localSrcSet(HERO_FALLBACK.poster, [640, 960, 1600])}
-                sizes="(min-width: 1024px) 58vw, 100vw"
-                alt=""
-                width={1600}
-                height={1000}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 size-full object-cover opacity-45"
-              />
-              <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(160deg,rgba(5,19,46,0.72),rgba(5,19,46,0.95))]" />
-              <div aria-hidden="true" className="absolute inset-0 bg-grid-dark opacity-30" />
-              <div className="relative flex h-full flex-col justify-between">
-                <div className="flex items-start justify-between gap-4">
-                  <span className="flex size-11 items-center justify-center border border-white/20 text-[#8eb5ff]">
-                    <Target className="size-5" strokeWidth={1.7} aria-hidden="true" />
-                  </span>
-                  <span className="font-mono text-[10px] tracking-[0.14em] text-white/50">01</span>
-                </div>
-                <div className="mt-16">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8eb5ff]">
-                    Working principle
-                  </p>
-                  <h3 className="mt-4 max-w-md text-[1.8rem] font-semibold leading-[1.08] tracking-[-0.035em] text-white sm:text-[2.2rem]">
-                    {reasons[0].title}
-                  </h3>
-                  <p className="mt-4 max-w-md text-[14px] leading-7 text-white/70">
-                    {reasons[0].description}
-                  </p>
-                  <Link to="/services" className="mt-7 inline-flex items-center gap-2 text-[12px] font-semibold text-[#9fc0ff] transition-colors hover:text-white">
-                    See how the work starts
-                    <ArrowRight className="size-4" aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {reasons.slice(1, 3).map((reason, index) => {
-            const Icon = reason.icon;
-            return (
-              <Reveal key={reason.title} delay={40 + index * 40} className="lg:col-span-5">
-                <div className="flex h-full min-h-48 flex-col border border-line bg-white p-5 sm:p-6">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="flex size-9 items-center justify-center border border-line bg-paper text-primary">
-                      <Icon className="size-4" strokeWidth={1.7} aria-hidden="true" />
-                    </span>
-                    <span className="font-mono text-[10px] font-semibold tracking-[0.12em] text-body/75">
-                      {String(index + 2).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-[1.05rem] font-semibold tracking-[-0.02em] text-ink">{reason.title}</h3>
-                  <p className="mt-2 text-[13px] leading-6 text-body">{reason.description}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-
-          {reasons.slice(3).map((reason, index) => {
-            const Icon = reason.icon;
-            return (
-              <Reveal key={reason.title} delay={100 + index * 35} className="lg:col-span-4">
-                <div className="flex h-full min-h-44 flex-col border border-line bg-white p-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <Icon className="size-4 text-primary" strokeWidth={1.7} aria-hidden="true" />
-                    <span className="font-mono text-[10px] font-semibold tracking-[0.12em] text-body/75">
-                      {String(index + 4).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-[14px] font-semibold tracking-[-0.015em] text-ink">{reason.title}</h3>
-                  <p className="mt-2 text-[12.5px] leading-5 text-body">{reason.description}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function TransformationSection() {
+  const beforeItems = [
+    { text: "Requests arrive through inboxes, calls and individual memory.", icon: Mail },
+    { text: "The same information is re-entered in more than one system.", icon: RefreshCw },
+    { text: "Approvals wait for someone to notice the next handoff.", icon: Hourglass },
+    { text: "Reporting is assembled manually after the decision was needed.", icon: BarChart3 },
+  ] as const;
+  const afterItems = [
+    { text: "A defined intake path makes ownership and status visible.", icon: Check },
+    { text: "A shared data model replaces re-entry and reconciliation.", icon: Layers },
+    { text: "Approvals move through a known sequence with an audit trail.", icon: Zap },
+    { text: "Reporting reads from current operational data.", icon: BarChart3 },
+  ] as const;
+
   return (
-    <section className="section-py border-y border-line bg-paper-deep" aria-label="Business transformation">
-      <div className="container-page">
+    <section className="bg-white py-16 sm:py-20 lg:py-20" aria-label="Business transformation">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <SectionHeading
-            eyebrow="Business transformation"
-            title="What changes is the path the work takes."
-            description="Transformation is not a new logo on the same process. It is a different sequence of ownership, data and decisions — with fewer places for work to stall."
-            className="mb-8 lg:mb-10"
-          />
+          <h2 className="max-w-4xl text-left text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.1] tracking-[-0.03em] text-black">
+            What changes is the path <span className="text-[#17154C]">the work takes.</span>
+          </h2>
+          <p className="mt-4 w-full max-w-full text-left text-[18px] leading-[1.6] text-[#4B5563] sm:text-[19px] lg:text-[20px]">
+            Transformation is more than introducing new technology or changing existing processes. It is about connecting people, systems, data, and decisions into a seamless workflow that improves efficiency, strengthens accountability, and reduces operational complexity. By eliminating unnecessary steps and simplifying collaboration, businesses can operate smarter, respond faster, and achieve sustainable growth.
+          </p>
         </Reveal>
 
-        <div className="grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">
-          <Reveal className="border border-line bg-white p-5 sm:p-6">
-            <div className="flex items-center justify-between gap-4 border-b border-line pb-4">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-body/75">Before</p>
-                <h3 className="mt-1 text-[1.1rem] font-semibold text-ink">Fragmented handoffs</h3>
-              </div>
-              <span className="flex size-9 items-center justify-center border border-line bg-paper text-body/60">
-                <Layers className="size-4" strokeWidth={1.7} aria-hidden="true" />
+        <div className="mt-10 grid items-stretch gap-5 lg:mt-12 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
+          <Reveal className="h-full">
+            <div className="flex h-full flex-col rounded-[20px] border border-[#D9DEE7] bg-white p-8 sm:p-10">
+              <span className="inline-flex w-fit rounded-full bg-[#F3F4F6] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4B5563]">
+                BEFORE
               </span>
+              <h3 className="mt-5 text-[1.75rem] font-bold leading-[1.15] tracking-[-0.02em] text-[#111827] sm:text-[2rem]">
+                Fragmented handoffs
+              </h3>
+              <ul className="mt-6 divide-y divide-[#E5E7EB]">
+                {beforeItems.map(({ text, icon: Icon }) => (
+                  <li key={text} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
+                    <Icon className="mt-0.5 size-5 shrink-0 text-[#6B7280]" strokeWidth={1.7} aria-hidden="true" />
+                    <span className="text-[15px] leading-6 text-[#374151] sm:text-[16px]">{text}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="mt-3 divide-y divide-line">
-              {transformation.before.map((item, index) => (
-                <li key={item} className="flex gap-3 py-3.5">
-                  <span className="pt-0.5 font-mono text-[10px] tracking-[0.1em] text-body/60">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-[12.5px] leading-5 text-body">{item}</span>
-                </li>
-              ))}
-            </ul>
           </Reveal>
 
-          <Reveal delay={60} className="flex items-center justify-center">
-            <span className="flex size-11 items-center justify-center rounded-full border border-line bg-white text-primary">
-              <ArrowDown className="size-4 lg:hidden" aria-hidden="true" />
-              <ArrowRight className="hidden size-4 lg:block" aria-hidden="true" />
+          <Reveal delay={60} className="flex items-center justify-center py-1 lg:py-0">
+            <span className="flex size-12 items-center justify-center rounded-full bg-[#17154C] text-white shadow-[0_8px_24px_rgba(23,21,76,0.18)] sm:size-14" aria-hidden="true">
+              <ArrowDown className="size-5 sm:size-6 lg:hidden" strokeWidth={2} />
+              <ArrowRight className="hidden size-5 sm:size-6 lg:block" strokeWidth={2} />
             </span>
           </Reveal>
 
-          <Reveal delay={80} className="border border-line bg-[#05132e] p-5 text-white sm:p-6">
-            <div className="flex items-center justify-between gap-4 border-b border-white/12 pb-4">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#8eb5ff]">After</p>
-                <h3 className="mt-1 text-[1.1rem] font-semibold text-white">Connected workflow</h3>
-              </div>
-              <span className="flex size-9 items-center justify-center border border-white/15 text-[#8eb5ff]">
-                <Waypoints className="size-4" strokeWidth={1.7} aria-hidden="true" />
+          <Reveal delay={120} className="h-full">
+            <div className="flex h-full flex-col rounded-[20px] bg-[#17154C] p-8 text-white sm:p-10">
+              <span className="inline-flex w-fit rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#17154C]">
+                AFTER
               </span>
-            </div>
-            <ul className="mt-3 divide-y divide-white/10">
-              {transformation.after.map((item, index) => (
-                <li key={item} className="flex gap-3 py-3.5">
-                  <Check className="mt-0.5 size-3.5 shrink-0 text-[#8eb5ff]" strokeWidth={2} aria-hidden="true" />
-                  <span className="text-[12.5px] leading-5 text-white/78">{item}</span>
-                  <span className="ml-auto hidden font-mono text-[10px] tracking-[0.1em] text-white/30 sm:block">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-        <Reveal delay={100}>
-          <p className="mt-4 text-[10.5px] leading-5 text-body/75">
-            A working model for the change, not a maturity score. Each transformation is scoped against the systems and constraints already in place.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function TechnologySection() {
-  return (
-    <section className="relative overflow-hidden bg-[#05132e] py-12 text-white sm:py-16 lg:py-20" aria-label="Technology capabilities">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-25" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-0 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(31,78,216,0.24),transparent_66%)]"
-      />
-      <div className="container-page relative">
-        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-12">
-          <Reveal>
-            <span className="eyebrow text-[#8eb5ff]">Technology capabilities</span>
-            <h2 className="mt-5 max-w-lg text-[2.05rem] font-semibold leading-[1.04] tracking-[-0.04em] text-white sm:text-[2.65rem] lg:text-[2.95rem]">
-              The stack follows the requirement.
-            </h2>
-            <p className="mt-5 max-w-md text-[14.5px] leading-7 text-white/70">
-              We work with established tools where they fit and introduce something new only when the
-              constraint justifies it. These are the technologies currently used across YESBE
-              engagements.
-            </p>
-            <div className="mt-7 border border-white/12 bg-white/[0.035] p-3">
-              <FilmPlayer
-                {...SYSTEMS_FILM}
-                className="aspect-[16/9] w-full"
-                videoClassName="object-cover"
-              />
-              <p className="mt-2.5 px-1 text-[9.5px] font-medium uppercase tracking-[0.13em] text-white/60">
-                Systems visual study / original YESBE composition
-              </p>
+              <h3 className="mt-5 text-[1.75rem] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:text-[2rem]">
+                Connected workflow
+              </h3>
+              <ul className="mt-6 divide-y divide-white/15">
+                {afterItems.map(({ text, icon: Icon }) => (
+                  <li key={text} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
+                    <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-md border border-white/35 text-white">
+                      <Icon className="size-4" strokeWidth={1.8} aria-hidden="true" />
+                    </span>
+                    <span className="text-[15px] leading-6 text-white/92 sm:text-[16px]">{text}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Reveal>
-
-          <div className="grid gap-px border border-white/12 bg-white/12 sm:grid-cols-2">
-            {technologyGroups.map((group) => {
-              const GroupIcon = group.icon;
-              return (
-                <div key={group.label} className="bg-[#071833] p-5">
-                  <div className="flex items-center gap-2.5">
-                    <GroupIcon className="size-4 text-[#8eb5ff]" strokeWidth={1.7} aria-hidden="true" />
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/70">
-                      {group.label}
-                    </p>
-                  </div>
-                  <ul className="mt-4 space-y-2">
-                    {group.items.map(([name, Icon]) => (
-                      <li key={name} className="flex items-center gap-2.5 text-[12.5px] text-white/85">
-                        <Icon className="size-3.5 shrink-0 text-[#9fc0ff]" aria-hidden="true" />
-                        {name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function ProcessSection() {
-  const [activeStage, setActiveStage] = useState(0);
-  const stage = stages[activeStage] ?? stages[0];
-  const StageIcon = stage.icon;
+  const milestones = [
+    {
+      number: "01",
+      title: "Discover",
+      description: "Understand business requirements, identify challenges and define project objectives.",
+      x: 9.5,
+      y: 28,
+      labelClass: "left-[9.5%] top-[2%] w-[14%] -translate-x-1/2 text-center",
+    },
+    {
+      number: "02",
+      title: "Plan",
+      description: "Establish the project scope, priorities, resources and delivery roadmap.",
+      x: 34.8,
+      y: 66,
+      labelClass: "left-[34.8%] top-[75%] w-[13%] -translate-x-1/2 text-center",
+    },
+    {
+      number: "03",
+      title: "Architect",
+      description: "Design scalable system architecture, workflows, databases and integrations.",
+      x: 64.5,
+      y: 67.5,
+      labelClass: "left-[64.5%] top-[76.5%] w-[14%] -translate-x-1/2 text-center",
+    },
+    {
+      number: "04",
+      title: "Develop",
+      description: "Build custom software, implement features and connect business systems.",
+      x: 32.4,
+      y: 30,
+      labelClass: "left-[32.4%] top-[39%] w-[13%] -translate-x-1/2 text-center",
+    },
+    {
+      number: "05",
+      title: "Test",
+      description: "Verify functionality, security, performance and reliability before release.",
+      x: 63.1,
+      y: 33.5,
+      labelClass: "left-[63.1%] top-[42.5%] w-[13%] -translate-x-1/2 text-center",
+    },
+    {
+      number: "06",
+      title: "Deploy",
+      description: "Launch the solution, configure production systems and complete the handover.",
+      x: 86.2,
+      y: 30,
+      labelClass: "left-[86.2%] top-[3%] w-[13%] -translate-x-1/2 text-center",
+    },
+    {
+      number: "07",
+      title: "Support",
+      description: "Provide maintenance, monitoring, issue resolution and continuous improvements.",
+      x: 84.6,
+      y: 71.5,
+      labelClass: "left-[84.6%] top-[80.5%] w-[14%] -translate-x-1/2 text-center",
+    },
+  ] as const;
 
   return (
-    <section className="section-py bg-white" aria-label="How YESBE works">
-      <div className="container-page">
+    <section className="bg-white py-14 sm:py-16 lg:py-20" aria-label="How We Work">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <SectionHeading
-            eyebrow="How we work"
-            title="A visible path from first conversation to operating system."
-            description="Each stage produces something you can inspect, question and decide on. Select a stage to see the work and the artefacts it creates."
-            className="mb-8 lg:mb-10"
-          />
+          <div className="mb-8 text-center lg:mb-10">
+            <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-[#17154C]">
+              How We Work
+            </h2>
+            <p className="mt-3 text-[16px] font-medium text-[#30343B] sm:text-[18px]">
+              From Discovery to Continuous Support
+            </p>
+          </div>
         </Reveal>
 
-        <Reveal>
-          <div className="border border-line bg-white">
-            <div className="overflow-x-auto scrollbar-none border-b border-line">
-              <div className="flex min-w-max" role="tablist" aria-label="Delivery stages">
-                {stages.map((item, index) => (
-                  <button
-                    key={item.title}
-                    id={`about-stage-tab-${index}`}
-                    type="button"
-                    role="tab"
-                    aria-selected={index === activeStage}
-                    aria-controls={`about-stage-panel-${index}`}
-                    tabIndex={index === activeStage ? 0 : -1}
-                    onClick={() => setActiveStage(index)}
-                    className={cn(
-                      "group relative flex min-w-[9.5rem] flex-1 items-center gap-3 border-r border-line px-4 py-4 text-left transition-colors last:border-r-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:min-w-[10.5rem]",
-                      index === activeStage ? "bg-paper" : "bg-white hover:bg-paper/60",
-                    )}
+        <Reveal className="hidden lg:block">
+          <div className="relative mx-auto w-full max-w-[1400px] aspect-[1754/897]">
+            <img
+              src="/pathimage.png"
+              alt="How We Work roadmap showing seven stages from Discovery to Support"
+              width={1754}
+              height={897}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full select-none object-contain"
+              draggable={false}
+            />
+            <div className="absolute inset-0">
+              {milestones.map((item) => (
+                <div key={item.number} className="group contents">
+                  <div
+                    className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
+                    style={{ left: `${item.x}%`, top: `${item.y}%` }}
                   >
-                    <span
-                      className={cn(
-                        "font-mono text-[10px] font-semibold tracking-[0.11em]",
-                        index === activeStage ? "text-primary" : "text-body/65",
-                      )}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className={cn("text-[12.5px] font-semibold", index === activeStage ? "text-ink" : "text-body")}>
+                    <div className="flex size-[clamp(3rem,4.4vw,4.75rem)] items-center justify-center rounded-full text-[clamp(1.05rem,1.45vw,1.8rem)] font-bold text-white transition-[transform,box-shadow] duration-300 ease-out group-hover:scale-110 group-hover:shadow-[0_10px_24px_rgba(23,21,76,0.28)] motion-reduce:transform-none motion-reduce:transition-none">
+                      {item.number}
+                    </div>
+                  </div>
+                  <div className={`absolute z-20 ${item.labelClass}`}>
+                    <p className="text-[clamp(0.95rem,1.15vw,1.2rem)] font-bold leading-tight text-[#17154C] transition-colors duration-300 group-hover:text-[#2A277A]">
                       {item.title}
-                    </span>
-                    <span
-                      className={cn(
-                        "absolute inset-x-0 bottom-0 h-0.5 bg-primary transition-transform",
-                        index === activeStage ? "scale-x-100" : "scale-x-0",
-                      )}
-                      aria-hidden="true"
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div
-              key={stage.title}
-              id={`about-stage-panel-${activeStage}`}
-              role="tabpanel"
-              aria-labelledby={`about-stage-tab-${activeStage}`}
-              className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 lg:p-9"
-            >
-              <div>
-                <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center border border-line bg-paper text-primary">
-                    <StageIcon className="size-4.5" strokeWidth={1.7} aria-hidden="true" />
-                  </span>
-                  <span className="font-mono text-[10px] font-semibold tracking-[0.13em] text-body/70">
-                    {`Stage ${String(activeStage + 1).padStart(2, "0")} / ${String(stages.length).padStart(2, "0")}`}
-                  </span>
+                    </p>
+                    <p className="mt-1.5 text-[clamp(0.72rem,0.82vw,0.875rem)] leading-[1.45] text-[#30343B]">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="mt-5 text-[1.75rem] font-semibold leading-[1.1] tracking-[-0.035em] text-ink sm:text-[2.1rem]">
-                  {stage.title}
-                </h3>
-                <p className="mt-3 max-w-md text-[14px] leading-6 text-body">{stage.summary}</p>
-                <p className="mt-4 max-w-lg text-[14px] leading-7 text-body">{stage.detail}</p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setActiveStage((current) => (current + 1) % stages.length)}
-                    className="btn-secondary btn-compact"
-                  >
-                    Next stage
-                    <ArrowRight className="size-3.5" aria-hidden="true" />
-                  </button>
-                  <Link
-                    to="/contact"
-                    onClick={() => trackConsultationClick("about_roadmap")}
-                    className="link-arrow self-center"
-                  >
-                    Discuss the sequence
-                    <ArrowRight className="size-3.5" aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-
-              <div className="border-t border-line pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-primary">
-                  What this stage produces
-                </p>
-                <ul className="mt-4 divide-y divide-line">
-                  {stage.outputs.map((output, index) => (
-                    <li key={output} className="flex items-center gap-3 py-3.5">
-                      <span className="flex size-6 items-center justify-center border border-line bg-paper font-mono text-[9px] text-primary">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-[13px] font-medium text-ink-soft">{output}</span>
-                      <Check className="ml-auto size-3.5 text-primary" strokeWidth={2} aria-hidden="true" />
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 text-[11px] leading-5 text-body/75">
-                  The exact artefacts change with the service. The principle does not: each stage ends with evidence for the next decision.
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </Reveal>
-      </div>
-    </section>
-  );
-}
 
-function IndustriesSection() {
-  return (
-    <section className="section-py bg-paper" aria-label="Industries served">
-      <div className="container-page">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Industry context"
-            title="Technology shaped by the operating environment."
-            description="A hospital, a factory and a retail business do not need the same system. Constraints, compliance and daily workflows change what good looks like."
-            action={
-              <Link to="/industries" className="link-arrow">
-                View all industries
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            }
-            className="mb-8 lg:mb-10"
-          />
-        </Reveal>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-12">
-          {aboutIndustries.map((industry, index) => {
-            const Icon = industry.icon;
-            const feature = index < 2;
-            return (
-              <Reveal
-                key={industry.slug}
-                delay={index * 35}
-                className={cn(feature ? "lg:col-span-6" : "lg:col-span-3")}
-              >
-                <Link
-                  to={`/industries/${industry.slug}`}
-                  className={cn(
-                    "group relative flex h-full flex-col justify-end overflow-hidden bg-[#05132e] p-5 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white",
-                    feature ? "min-h-[19rem] sm:min-h-[21rem]" : "min-h-[15rem]",
-                  )}
-                >
-                  <img
-                    src={industry.visual.src}
-                    srcSet={localSrcSet(industry.visual.src, [640, 960])}
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    alt={industry.visual.alt}
-                    width={1200}
-                    height={900}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 size-full object-cover opacity-75 transition-transform duration-700 ease-out group-hover:scale-[1.035]"
-                  />
-                  <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,46,0.12)_10%,rgba(5,19,46,0.86)_78%,rgba(5,19,46,0.96))]" />
-                  <div className="relative">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="flex size-9 items-center justify-center border border-white/20 bg-[#05132e]/45 text-[#9fc0ff] backdrop-blur-sm">
-                        <Icon className="size-4" strokeWidth={1.7} aria-hidden="true" />
-                      </span>
-                      <ArrowUpRight className="size-4 text-white/50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" aria-hidden="true" />
-                    </div>
-                    <h3 className={cn("mt-5 font-semibold leading-[1.12] tracking-[-0.025em] text-white", feature ? "text-[1.45rem] sm:text-[1.7rem]" : "text-[1.15rem]")}>
-                      {industry.title}
-                    </h3>
-                    <p className={cn("mt-2 line-clamp-2 max-w-sm leading-5 text-white/70", feature ? "text-[12.5px]" : "text-[11.5px]")}>
-                      {industry.description}
-                    </p>
-                  </div>
-                </Link>
+        <div className="lg:hidden">
+          <ol className="relative mx-auto max-w-xl border-l border-[#17154C]/20 pl-6">
+            {milestones.map((item, index) => (
+              <Reveal key={item.number} as="li" delay={index * 40} className="relative pb-8 last:pb-0">
+                <span className="absolute -left-[calc(1.5rem+1.125rem)] top-0 flex size-9 items-center justify-center rounded-full bg-[#1D4DB8] text-sm font-bold text-white shadow-[0_6px_16px_rgba(23,21,76,0.18)]">
+                  {item.number}
+                </span>
+                <h3 className="text-[1.05rem] font-bold leading-tight text-[#17154C]">{item.title}</h3>
+                <p className="mt-1.5 text-[14px] leading-6 text-[#30343B]">{item.description}</p>
               </Reveal>
-            );
-          })}
+            ))}
+          </ol>
         </div>
       </div>
     </section>
   );
 }
+
 
 export function AboutPage() {
   useSEO({
@@ -920,11 +579,8 @@ export function AboutPage() {
       }} />
       <AboutHero />
       <DeliverablesSection />
-      <ReasonsSection />
       <TransformationSection />
-      <TechnologySection />
       <ProcessSection />
-      <IndustriesSection />
       <ClosingCta
         eyebrow="Start a conversation"
         title="Bring us the operating problem."

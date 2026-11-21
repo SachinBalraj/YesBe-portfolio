@@ -1,28 +1,42 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ClipboardList } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { Reveal } from "@/components/system/Reveal";
 import { SectionHeading } from "@/components/common/SectionHeading";
-import { ServiceVisual } from "@/components/phase2/ServiceVisual";
 import { DeliveryRail } from "@/components/phase2/DeliveryRail";
 import { ClosingCta } from "@/components/phase2/ClosingCta";
-import {
-  CORE_SERVICES,
-  DELIVERY_STAGES,
-  SERVICE_DIRECTORY_GROUPS,
-} from "@/data/phase2";
+import { CORE_SERVICES, DELIVERY_STAGES } from "@/data/phase2";
 import { getSolutionBySlug, solutions } from "@/data/solutions";
 import { trackConsultationClick } from "@/utils/analytics";
 
-const directory = SERVICE_DIRECTORY_GROUPS.map((group) => ({
-  ...group,
-  services: group.slugs
-    .map((slug) => getSolutionBySlug(slug))
-    .filter((service): service is NonNullable<typeof service> => Boolean(service)),
-}));
+const DIRECTORY_SERVICE_SLUGS = [
+  "it-consulting",
+  "digital-transformation",
+  "business-automation",
+  "ai-solutions",
+  "ai-chatbots",
+  "data-analytics",
+  "power-bi-dashboards",
+  "erp-systems",
+  "custom-software",
+  "web-applications",
+  "api-development",
+  "database-management",
+  "website-development",
+  "ecommerce",
+  "cloud-devops",
+  "seo",
+  "geo",
+  "aeo",
+  "digital-marketing",
+] as const;
+
+const directoryServices = DIRECTORY_SERVICE_SLUGS.map((slug) =>
+  getSolutionBySlug(slug),
+).filter((service): service is NonNullable<typeof service> => Boolean(service));
 
 export function ServicesPage() {
   useSEO({
@@ -139,166 +153,64 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-py border-b border-line bg-paper" aria-label="Practice areas">
-        <div className="container-page">
+            <section id="directory" className="bg-[#F5F5FA] py-16 sm:py-20 lg:py-24" aria-label="Service directory">
+        <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <SectionHeading
-              eyebrow="Where we work"
-              title="Six practice areas, connected by the same delivery discipline."
-              description="These are the primary ways engagements begin. Most projects combine at least two: a website with an integration, an ERP with reporting, or an AI workflow with a process redesign."
-              className="mb-10 lg:mb-14"
-            />
-          </Reveal>
-
-          <div className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-            {CORE_SERVICES.map((service, index) => (
-              <Reveal key={service.slug} as="article" delay={index * 40} className="h-full bg-white">
-                <Link
-                  to={`/services/${service.slug}`}
-                  className="group flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
-                >
-                  <ServiceVisual
-                    variant={service.visual}
-                    compact
-                    className="h-36 border-b border-line"
-                  />
-                  <div className="flex flex-1 flex-col p-5 sm:p-6">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="flex size-8 items-center justify-center border border-line bg-paper text-primary">
-                        <service.icon className="size-4" strokeWidth={1.7} aria-hidden="true" />
-                      </span>
-                      <span className="font-mono text-[10px] font-semibold tracking-[0.12em] text-body/85">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <h2 className="mt-5 text-[1.1rem] font-semibold leading-[1.28] tracking-[-0.025em] text-ink transition-colors group-hover:text-primary">
-                      {service.title}
-                    </h2>
-                    <p className="mt-3 text-[13px] leading-6 text-body">{service.description}</p>
-                    <ul className="mt-5 flex flex-wrap gap-x-3 gap-y-1.5 border-t border-line pt-4">
-                      {service.tags.map((tag) => (
-                        <li key={tag} className="text-[10.5px] font-medium text-body/85">
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
-                    <span className="mt-auto flex items-center justify-between gap-4 pt-6 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-primary">
-                      Explore
-                      <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="directory" className="section-py bg-white" aria-label="Full service directory">
-        <div className="container-page">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Service directory"
-              title="Every capability, in one place."
-              description={`${solutions.length} services across strategy, enterprise platforms, AI, data, web, cloud and growth. Every link below is an existing YESBE service page.`}
-              action={
-                <Link
-                  to="/contact"
-                  onClick={() => trackConsultationClick("services_directory_help")}
-                  className="link-arrow"
-                >
-                  Not sure where to start?
-                  <ArrowRight className="size-4" aria-hidden="true" />
-                </Link>
-              }
-              className="mb-10 lg:mb-12"
-            />
-          </Reveal>
-
-          <div className="border-t border-line">
-            {directory.map((group, groupIndex) => (
-              <Reveal
-                key={group.title}
-                delay={groupIndex * 30}
-                className="grid gap-6 border-b border-line py-8 lg:grid-cols-[0.3fr_0.7fr] lg:gap-12 lg:py-10"
-              >
-                <div className="lg:sticky lg:top-28 lg:self-start">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-[10px] font-semibold tracking-[0.12em] text-primary">
-                      {String(groupIndex + 1).padStart(2, "0")}
-                    </span>
-                    <span className="h-px w-8 bg-line-strong" aria-hidden="true" />
-                  </div>
-                  <h2 className="mt-4 text-[1.28rem] font-semibold tracking-[-0.025em] text-ink">
-                    {group.title}
-                  </h2>
-                  <p className="mt-2 max-w-xs text-[12.5px] leading-5 text-body">{group.description}</p>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {group.services.map((service) => {
-                    const Icon = service.icon;
-                    return (
-                      <Link
-                        key={service.slug}
-                        to={`/services/${service.slug}`}
-                              className="group flex min-h-32 flex-col border border-line bg-paper p-5 transition-all duration-300 hover:border-line-strong hover:bg-white hover:shadow-panel"
-                      >
-                        <div className="flex items-start justify-between gap-4">
-                          <span className="flex size-8 items-center justify-center border border-line bg-white text-primary">
-                            <Icon className="size-4" strokeWidth={1.7} aria-hidden="true" />
-                          </span>
-                          <ArrowUpRight className="size-4 text-body/30 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" aria-hidden="true" />
-                        </div>
-                        <h3 className="mt-4 text-[14px] font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-primary">
-                          {service.title}
-                        </h3>
-                        <p className="mt-1.5 line-clamp-2 text-[12px] leading-5 text-body">
-                          {service.description}
-                        </p>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-8 flex flex-col justify-between gap-5 border border-line bg-paper p-5 sm:flex-row sm:items-center sm:p-6">
-            <div className="flex items-start gap-4">
-              <span className="flex size-10 shrink-0 items-center justify-center border border-line bg-white text-primary">
-                <ClipboardList className="size-4.5" strokeWidth={1.7} aria-hidden="true" />
-              </span>
-              <div>
-                <p className="text-[13.5px] font-semibold text-ink">Not sure which service fits?</p>
-                <p className="mt-1 text-[12.5px] leading-5 text-body">
-                  Describe the problem and we will suggest the smallest useful starting point.
-                </p>
-              </div>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-[2rem] font-bold leading-[1.1] tracking-[-0.03em] text-[#17154C] sm:text-[2.75rem] lg:text-[3.25rem]">
+                Our Solutions
+              </h2>
+              <p className="mt-4 text-[15px] leading-7 text-[#171717] sm:text-[17px]">
+                Explore our technology services designed to help businesses modernize operations, develop scalable software, automate processes, and accelerate digital growth.
+              </p>
             </div>
-            <Link
-              to="/contact"
-              onClick={() => trackConsultationClick("services_directory")}
-              className="btn-primary shrink-0"
-            >
-              Ask YESBE
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
           </Reveal>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
+            {directoryServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <Reveal key={service.slug} as="article" delay={index * 30} className="h-full">
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="group flex h-full min-h-[280px] flex-col rounded-xl border border-[#E5E5EB] bg-white p-7 shadow-[0_1px_2px_rgba(23,21,76,0.04)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#17154C] hover:shadow-[0_12px_28px_rgba(23,21,76,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#17154C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5FA] motion-reduce:transform-none motion-reduce:transition-none"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="flex size-11 items-center justify-center rounded-lg bg-[#17154C]/[0.06] text-[#17154C]">
+                        <Icon className="size-5" strokeWidth={1.8} aria-hidden="true" />
+                      </span>
+                      <ArrowUpRight
+                        className="size-5 shrink-0 text-[#17154C] transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <h3 className="mt-6 text-[1.25rem] font-bold leading-[1.25] tracking-[-0.02em] text-[#17154C]">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-[14px] leading-7 text-[#171717] sm:text-[15px]">
+                      {service.description}
+                    </p>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      <section className="section-py border-y border-line bg-white" aria-label="Service delivery approach">
-        <div className="container-page">
+      <section className="bg-white py-16 sm:py-20 lg:py-16" aria-label="Service delivery approach">
+        <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <SectionHeading
-              eyebrow="How engagements run"
-              title="A clear path from first conversation to operating system."
-              description="The sequence is adapted to the service, but the principle does not change: each stage produces evidence for the next decision."
-              className="mb-10 lg:mb-12"
-            />
+            <div className="max-w-4xl">
+              <h2 className="text-[2rem] font-bold leading-[1.1] tracking-[-0.03em] text-[#17154C] sm:text-[2.75rem] lg:text-[3.25rem]">
+                A clear path from first conversation to operating system.
+              </h2>
+              <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#171717] sm:text-[17px]">
+                The sequence is adapted to the service, but the principle does not change: each stage produces evidence for the next decision.
+              </p>
+            </div>
           </Reveal>
-          <Reveal delay={60}>
+          <Reveal delay={60} className="mt-9">
             <DeliveryRail stages={DELIVERY_STAGES} />
           </Reveal>
         </div>

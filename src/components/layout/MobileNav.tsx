@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useLocation, useNavigate, Link, NavLink } from "react-router-dom";
-import { ArrowRight, ChevronDown, Mail, Phone, X } from "lucide-react";
+import { ArrowRight, Mail, Phone, X } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { SITE_CONFIG } from "@/constants";
-import { INDUSTRY_LINKS, PRIMARY_NAV, SOLUTION_GROUPS } from "@/constants/navigation";
+import { PRIMARY_NAV } from "@/constants/navigation";
 import { trackConsultationClick, trackContactClick, trackPhoneClick } from "@/utils/analytics";
 import logoImg from "@/assets/images/YBlogo.webp";
-import type { MegaMenuKey } from "./MegaMenu";
 
 interface MobileNavProps {
   open: boolean;
@@ -24,21 +23,12 @@ function mobileLinkClass(isActive: boolean) {
 }
 
 export function MobileNav({ open, onClose }: MobileNavProps) {
-  const [expanded, setExpanded] = useState<MegaMenuKey | null>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const reduceMotion = useReducedMotion();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const solutionsActive = location.pathname === "/services" || location.pathname.startsWith("/services/");
-  const industriesActive =
-    location.pathname === "/industries" || location.pathname.startsWith("/industries/");
-
-  useEffect(() => {
-    if (!open) setExpanded(null);
-  }, [open]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -95,10 +85,6 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   const handleNavigate = (href: string) => {
     onClose();
     navigate(href);
-  };
-
-  const toggleAccordion = (menu: MegaMenuKey) => {
-    setExpanded((current) => (current === menu ? null : menu));
   };
 
   return (
@@ -159,117 +145,18 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4">
               <nav aria-label="Mobile navigation">
                 <ul>
-                  {PRIMARY_NAV.map((item) => {
-                    if (item.label === "Solutions" || item.label === "Industries") {
-                      const menu: MegaMenuKey = item.label === "Solutions" ? "solutions" : "industries";
-                      const isActive = menu === "solutions" ? solutionsActive : industriesActive;
-                      const isExpanded = expanded === menu;
-
-                      return (
-                        <li key={item.label}>
-                          <button
-                            type="button"
-                            onClick={() => toggleAccordion(menu)}
-                            aria-expanded={isExpanded}
-                            aria-controls={`mobile-menu-${menu}`}
-                            className={mobileLinkClass(isActive)}
-                          >
-                            {item.label}
-                            <ChevronDown
-                              className={cn(
-                                "size-4 transition-transform duration-300",
-                                isExpanded && "rotate-180",
-                              )}
-                              aria-hidden="true"
-                            />
-                          </button>
-
-                          <AnimatePresence initial={false}>
-                            {isExpanded && (
-                              <motion.div
-                                id={`mobile-menu-${menu}`}
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: reduceMotion ? 0 : 0.25 }}
-                                className="overflow-hidden"
-                              >
-                                {menu === "solutions" ? (
-                                  <div className="space-y-5 pb-5 pt-4">
-                                    <Link
-                                      to="/services"
-                                      onClick={() => handleNavigate("/services")}
-                                      className="link-arrow text-[13px] text-[#171717]! hover:text-[#171717]!"
-                                    >
-                                      View all solutions
-                                      <ArrowRight className="size-4" aria-hidden="true" />
-                                    </Link>
-                                    {SOLUTION_GROUPS.map((group) => (
-                                      <div key={group.title}>
-                                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-body">
-                                          {group.title}
-                                        </p>
-                                        <ul className="mt-2 space-y-0.5">
-                                          {group.links.map((link) => (
-                                            <li key={link.href}>
-                                              <Link
-                                                to={link.href}
-                                                onClick={() => handleNavigate(link.href)}
-                                                className="block py-1.5 text-[14px] text-[#171717] transition-colors hover:text-[#171717]"
-                                              >
-                                                {link.label}
-                                              </Link>
-                                            </li>
-                                          ))}
-                                        </ul>
-                                      </div>
-                                    ))}
-                                  </div>
-                                ) : (
-                                  <div className="pb-5 pt-4">
-                                    <Link
-                                      to="/industries"
-                                      onClick={() => handleNavigate("/industries")}
-                                      className="link-arrow text-[13px] text-[#171717]! hover:text-[#171717]!"
-                                    >
-                                      View all industries
-                                      <ArrowRight className="size-4" aria-hidden="true" />
-                                    </Link>
-                                    <ul className="mt-4 grid grid-cols-2 gap-x-4">
-                                      {INDUSTRY_LINKS.map((link) => (
-                                        <li key={link.href}>
-                                          <Link
-                                            to={link.href}
-                                            onClick={() => handleNavigate(link.href)}
-                                            className="block py-1.5 text-[14px] text-[#171717] transition-colors hover:text-[#171717]"
-                                          >
-                                            {link.label}
-                                          </Link>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </li>
-                      );
-                    }
-
-                    return (
-                      <li key={item.label}>
-                        <NavLink
-                          to={item.href}
-                          end={item.href === "/"}
-                          className={({ isActive }) => mobileLinkClass(isActive)}
-                          onClick={onClose}
-                        >
-                          {item.label}
-                        </NavLink>
-                      </li>
-                    );
-                  })}
+                  {PRIMARY_NAV.map((item) => (
+                    <li key={item.label}>
+                      <NavLink
+                        to={item.href}
+                        end={item.href === "/"}
+                        className={({ isActive }) => mobileLinkClass(isActive)}
+                        onClick={onClose}
+                      >
+                        {item.label}
+                      </NavLink>
+                    </li>
+                  ))}
                 </ul>
               </nav>
 

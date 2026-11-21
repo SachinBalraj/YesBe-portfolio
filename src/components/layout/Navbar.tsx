@@ -6,18 +6,15 @@ import {
   memo,
   lazy,
   Suspense,
-  type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, Search, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { ButtonLink } from "@/components/system/ButtonLink";
 import { PRIMARY_NAV } from "@/constants/navigation";
 import { trackConsultationClick } from "@/utils/analytics";
 import logoImg from "@/assets/images/YBlogo.webp";
-import type { MegaMenuKey } from "./MegaMenu";
 
-const MegaMenu = lazy(() => import("./MegaMenu").then((m) => ({ default: m.MegaMenu })));
 const MobileNav = lazy(() => import("./MobileNav").then((m) => ({ default: m.MobileNav })));
 
 const SearchModal = lazy(() =>
@@ -37,27 +34,17 @@ function navLinkClass(isActive: boolean) {
 function NavbarComponent() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [openMenu, setOpenMenu] = useState<MegaMenuKey | null>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [mobileMounted, setMobileMounted] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchMounted, setSearchMounted] = useState(false);
 
   const headerRef = useRef<HTMLElement>(null);
-  const megaPanelRef = useRef<HTMLDivElement>(null);
-  const solutionsButtonRef = useRef<HTMLButtonElement>(null);
-  const industriesButtonRef = useRef<HTMLButtonElement>(null);
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const shouldFocusPanelRef = useRef(false);
   const lastScrollY = useRef(0);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isSolutionsActive =
-    location.pathname === "/services" || location.pathname.startsWith("/services/");
-  const isIndustriesActive =
-    location.pathname === "/industries" || location.pathname.startsWith("/industries/");
 
   useEffect(() => {
     if (isSearchOpen) setSearchMounted(true);
@@ -67,20 +54,12 @@ function NavbarComponent() {
     if (isMobileOpen) setMobileMounted(true);
   }, [isMobileOpen]);
 
-  const clearCloseTimer = useCallback(() => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
-  }, []);
-
   useEffect(() => {
     if (new URLSearchParams(window.location.search).has("prerender")) return;
 
     const handleScroll = () => {
       const currentY = window.scrollY;
       setIsScrolled(currentY > 10);
-      setOpenMenu(null);
 
       if (currentY > 200) {
         setHidden(currentY > lastScrollY.current && currentY - lastScrollY.current > 5);
@@ -96,7 +75,6 @@ function NavbarComponent() {
 
   useEffect(() => {
     setIsMobileOpen(false);
-    setOpenMenu(null);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -111,83 +89,9 @@ function NavbarComponent() {
     return () => window.removeEventListener("keydown", handleSearchShortcut);
   }, []);
 
-  useEffect(() => {
-    if (!openMenu) return;
-
-    const handlePointerDown = (event: PointerEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setOpenMenu(null);
-      }
-    };
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      setOpenMenu(null);
-      const trigger =
-        openMenu === "solutions" ? solutionsButtonRef.current : industriesButtonRef.current;
-      trigger?.focus();
-    };
-
-    document.addEventListener("pointerdown", handlePointerDown);
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [openMenu]);
-
-  useEffect(() => {
-    if (!openMenu || !shouldFocusPanelRef.current) return;
-    shouldFocusPanelRef.current = false;
-    megaPanelRef.current?.querySelector<HTMLElement>("a")?.focus();
-  }, [openMenu]);
-
-  useEffect(
-    () => () => {
-      clearCloseTimer();
-    },
-    [clearCloseTimer],
-  );
-
-  const openOnHover = (menu: MegaMenuKey) => {
-    clearCloseTimer();
-    setOpenMenu(menu);
-  };
-
-  const scheduleClose = () => {
-    clearCloseTimer();
-    closeTimerRef.current = setTimeout(() => setOpenMenu(null), 160);
-  };
-
-  const toggleMenu = (menu: MegaMenuKey) => {
-    clearCloseTimer();
-    const next = openMenu === menu ? null : menu;
-    shouldFocusPanelRef.current = next !== null;
-    setOpenMenu(next);
-  };
-
-  const handleMenuKeyDown = (
-    event: ReactKeyboardEvent<HTMLButtonElement>,
-    menu: MegaMenuKey,
-  ) => {
-    if (event.key === "ArrowDown") {
-      event.preventDefault();
-      shouldFocusPanelRef.current = true;
-      setOpenMenu(menu);
-    }
-  };
-
-  const handleHeaderBlur = (event: React.FocusEvent<HTMLElement>) => {
-    const nextFocus = event.relatedTarget as Node | null;
-    if (!nextFocus || !event.currentTarget.contains(nextFocus)) {
-      setOpenMenu(null);
-    }
-  };
-
   const closeMobileNav = useCallback(() => setIsMobileOpen(false), []);
 
   const handleNavigate = () => {
-    setOpenMenu(null);
     setIsMobileOpen(false);
   };
 
@@ -196,9 +100,6 @@ function NavbarComponent() {
       <header
         ref={headerRef}
         role="banner"
-        onMouseEnter={clearCloseTimer}
-        onMouseLeave={scheduleClose}
-        onBlur={handleHeaderBlur}
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b border-[#E8EAF0]! bg-white transition-all duration-300 ease-out",
           isScrolled
@@ -232,54 +133,17 @@ function NavbarComponent() {
             </Link>
 
             <div className="hidden items-center gap-0.5 lg:flex">
-              {PRIMARY_NAV.map((item) => {
-                if (item.label === "Solutions" || item.label === "Industries") {
-                  const menu: MegaMenuKey =
-                    item.label === "Solutions" ? "solutions" : "industries";
-                  const isOpen = openMenu === menu;
-                  const isActive = menu === "solutions" ? isSolutionsActive : isIndustriesActive;
-
-                  return (
-                    <button
-                      key={item.label}
-                      ref={menu === "solutions" ? solutionsButtonRef : industriesButtonRef}
-                      type="button"
-                      aria-expanded={isOpen}
-                      aria-controls={`desktop-menu-${menu}`}
-                      aria-haspopup="true"
-                      onClick={() => toggleMenu(menu)}
-                      onMouseEnter={() => openOnHover(menu)}
-                      onKeyDown={(event) => handleMenuKeyDown(event, menu)}
-                      className={navLinkClass(isActive || isOpen)}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        className={cn(
-                          "size-3.5 transition-transform duration-300",
-                          isOpen && "rotate-180",
-                        )}
-                        aria-hidden="true"
-                      />
-                    </button>
-                  );
-                }
-
-                return (
-                  <NavLink
-                    key={item.label}
-                    to={item.href}
-                    end={item.href === "/"}
-                    className={({ isActive }) => navLinkClass(isActive)}
-                    onClick={handleNavigate}
-                    onMouseEnter={() => {
-                      clearCloseTimer();
-                      setOpenMenu(null);
-                    }}
-                  >
-                    {item.label}
-                  </NavLink>
-                );
-              })}
+              {PRIMARY_NAV.map((item) => (
+                <NavLink
+                  key={item.label}
+                  to={item.href}
+                  end={item.href === "/"}
+                  className={({ isActive }) => navLinkClass(isActive)}
+                  onClick={handleNavigate}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
             </div>
 
             <div className="flex-1" aria-hidden="true" />
@@ -331,11 +195,6 @@ function NavbarComponent() {
           </nav>
         </div>
 
-        {openMenu && (
-          <Suspense fallback={null}>
-            <MegaMenu menu={openMenu} panelRef={megaPanelRef} onNavigate={handleNavigate} />
-          </Suspense>
-        )}
       </header>
 
       {mobileMounted && (

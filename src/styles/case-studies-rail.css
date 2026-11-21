@@ -460,7 +460,8 @@ body:has(.case-rail) {
 .case-rail__intro {
   width: 100%;
   max-width: 1000px;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 32px;
   padding-bottom: 32px;
 }
@@ -542,6 +543,7 @@ body:has(.case-rail) {
   }
 
   .case-rail__intro {
+    padding-top: 40px;
     padding-bottom: 40px;
   }
 }
@@ -555,7 +557,7 @@ body:has(.case-rail) {
 @media (min-width: 1024px) {
   .case-rail__intro {
     padding-top: 48px;
-    padding-bottom: 56px;
+    padding-bottom: 48px;
   }
 
   .case-rail__intro p {
