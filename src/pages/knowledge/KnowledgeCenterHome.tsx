@@ -83,26 +83,14 @@ export function KnowledgeCenterHome() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="section-kicker">YESBE Articles</p>
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.08 }}
-              className="mt-3 text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-navy sm:text-4xl lg:text-[2.75rem]"
+              className="text-[32px] font-bold leading-[1.1] tracking-[-0.02em] text-[#17154C] sm:text-[40px] lg:text-[52px]"
             >
-              Business technology,{" "}
-              <br />
-              <span className="text-primary">explained simply.</span>
+              Articles
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.16 }}
-              className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-[16px]"
-            >
-              Practical guides on AI, ERP, Power BI, web development, SEO and growth —
-              written for business leaders who need answers, not jargon.
-            </motion.p>
           </div>
 
           {/* Homepage Main Search Component */}

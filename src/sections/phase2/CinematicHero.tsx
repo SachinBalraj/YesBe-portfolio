@@ -9,19 +9,29 @@ export function CinematicHero() {
       className="relative isolate overflow-hidden bg-[#05132e] pt-[76px] text-white"
     >
       <div className="absolute inset-0">
-        <picture className="absolute inset-0">
-          <source srcSet="/ybbackground.webp" type="image/webp" />
-          <img
-            src="/ybbackground.png"
-            alt=""
-            width={1744}
-            height={902}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 size-full object-cover object-[66%_50%] max-md:object-[18%_50%]"
-          />
-        </picture>
+        <video
+          className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/videoabout-poster.png"
+          aria-hidden="true"
+        >
+          <source src="/videoabout.mp4" type="video/mp4" />
+        </video>
+        <img
+          src="/videoabout-poster.png"
+          alt=""
+          aria-hidden="true"
+          width={1280}
+          height={720}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 hidden h-full w-full object-cover object-center motion-reduce:block"
+        />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(3,10,24,0.28)_0%,rgba(3,10,24,0.12)_42%,transparent_72%)]"

@@ -205,29 +205,20 @@ function AboutHero() {
       className="relative isolate flex min-h-[calc(100svh-76px)] overflow-hidden bg-[#050c23] pt-[76px] text-white sm:min-h-[88vh] lg:min-h-[calc(100vh-76px)]"
       aria-label="About YESBE Technologies"
     >
-      <video
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-center motion-reduce:hidden"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/videoabout-poster.png"
-        aria-hidden="true"
-      >
-        <source src="/videoabout.mp4" type="video/mp4" />
-      </video>
-      <img
-        src="/videoabout-poster.png"
-        alt=""
-        aria-hidden="true"
-        width={1280}
-        height={720}
-        loading="eager"
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 -z-20 hidden h-full w-full object-cover object-center motion-reduce:block"
-      />
+      <picture className="absolute inset-0 -z-20 motion-reduce:block">
+        <source srcSet="/ybbackground.webp" type="image/webp" />
+        <img
+          src="/ybbackground.png"
+          alt=""
+          aria-hidden="true"
+          width={1744}
+          height={902}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-[66%_50%] max-md:object-[18%_50%]"
+        />
+      </picture>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,12,35,0.88)_0%,rgba(5,12,35,0.60)_55%,rgba(5,12,35,0.25)_100%)]"
@@ -244,11 +235,8 @@ function AboutHero() {
             <span className="mt-1 block text-white sm:mt-2">We Engineer.</span>
             <span className="mt-1 block text-[#91B6FF] sm:mt-2">We Deliver.</span>
           </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-[1.6] text-white/80 sm:text-[18px]">
-            Building future-ready technology for ambitious businesses.
-          </p>
 
-          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 sm:mt-9">
             <Link
               to="/contact"
               onClick={() => trackConsultationClick("about_hero")}

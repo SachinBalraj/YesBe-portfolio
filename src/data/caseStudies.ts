@@ -43,7 +43,7 @@ export const caseStudies: CaseStudy[] = [
       "A full-stack e-commerce platform for a clothing retail scenario — product catalogue, cart, checkout, inventory and order management in one system.",
     category: "E-Commerce",
     builtFor: "Retail / Fashion Brand",
-    image: "/images/projects/fashion-fusion.webp",
+    image: "/images/case-studies/fashion-fusion.webp",
     technologies: ["React", "Node.js", "MongoDB", "Express.js", "Stripe", "Tailwind CSS"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
@@ -127,7 +127,7 @@ export const caseStudies: CaseStudy[] = [
       "QR-based ordering — customers browse the menu and place their order from their own phone, and it appears in the kitchen queue.",
     category: "Restaurant Automation",
     builtFor: "Restaurant / F&B",
-    image: "/images/projects/restaurant-qr-ordering.webp",
+    image: "/images/case-studies/restaurant-qr-ordering.webp",
     technologies: ["React", "Node.js", "QR Technology", "MongoDB", "Socket.io"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "Tailwind CSS", "Socket.io Client"] },
@@ -211,7 +211,7 @@ export const caseStudies: CaseStudy[] = [
       "A digital library system — catalogue search, member management, issue and return tracking, automated fines and reporting.",
     category: "Education ERP",
     builtFor: "Educational Institution",
-    image: "/images/projects/library-management.webp",
+    image: "/images/case-studies/library-management.webp",
     technologies: ["React", "Express", "MongoDB", "Barcode API"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
@@ -295,7 +295,7 @@ export const caseStudies: CaseStudy[] = [
       "A responsive, SEO-optimised corporate website with service detail pages and lead capture forms.",
     category: "Corporate Website",
     builtFor: "Corporate / SME",
-    image: "/images/projects/business-portfolio.webp",
+    image: "/images/case-studies/business-portfolio.webp",
     technologies: ["React", "Tailwind CSS"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
@@ -379,7 +379,7 @@ export const caseStudies: CaseStudy[] = [
       "A retrieval-augmented assistant that answers questions from a business's own documents, with links back to the source.",
     category: "Artificial Intelligence",
     builtFor: "Internal Tool",
-    image: "/images/projects/ai-business-assistant.webp",
+    image: "/images/case-studies/ai-business-assistant.webp",
     technologies: ["Python", "OpenAI API", "LangChain", "FastAPI", "React"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "Tailwind CSS"] },
@@ -463,7 +463,7 @@ export const caseStudies: CaseStudy[] = [
       "A custom ERP integrating inventory, employee management, billing and reporting into a single platform.",
     category: "ERP",
     builtFor: "SME / Manufacturing",
-    image: "/images/projects/erp-management.webp",
+    image: "/images/case-studies/erp-management.webp",
     technologies: ["React", "Node.js", "MongoDB", "Express.js"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },
@@ -547,7 +547,7 @@ export const caseStudies: CaseStudy[] = [
       "Interactive Power BI dashboards presenting KPIs, revenue trends and sales performance from several source systems.",
     category: "Business Analytics",
     builtFor: "Corporate / SME",
-    image: "/images/projects/powerbi-dashboard.webp",
+    image: "/images/case-studies/powerbi-dashboard.webp",
     technologies: ["Power BI", "SQL", "DAX", "Excel"],
     techGroups: [
       { label: "Analytics", items: ["Power BI", "DAX", "Power Query"] },
@@ -631,7 +631,7 @@ export const caseStudies: CaseStudy[] = [
       "Technical SEO, content optimisation, schema markup, and GEO and AEO structuring for search and AI-answer visibility.",
     category: "SEO / GEO / AEO",
     builtFor: "SME / Professional Services",
-    image: "/images/projects/seo-digital-growth.webp",
+    image: "/images/case-studies/seo-digital-growth.webp",
     technologies: ["Google Search Console", "Analytics", "SEO Tools"],
     techGroups: [
       { label: "SEO", items: ["Technical SEO", "On-Page SEO", "Schema Markup"] },
@@ -715,7 +715,7 @@ export const caseStudies: CaseStudy[] = [
       "An automation platform covering workflow configuration, approvals, notifications and reporting.",
     category: "Business Automation",
     builtFor: "SME / Operations",
-    image: "/images/projects/business-automation.webp",
+    image: "/images/case-studies/business-automation.webp",
     technologies: ["React", "Node.js", "MongoDB"],
     techGroups: [
       { label: "Frontend", items: ["React.js", "TypeScript", "Tailwind CSS"] },

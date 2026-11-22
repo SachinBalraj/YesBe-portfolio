@@ -75,79 +75,53 @@ export function ServicesPage() {
         })),
       }} />
 
-      <section className="relative isolate overflow-hidden bg-[#05132e] pt-[76px] text-white">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-grid-dark opacity-30" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-40 top-10 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(31,78,216,0.24),transparent_66%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-0 h-full w-[38%] bg-[linear-gradient(110deg,transparent,rgba(122,167,255,0.06))]"
-        />
-        <div className="container-page relative py-12 sm:py-16 lg:py-20">
-          <Breadcrumbs
-            items={[{ label: "Services" }]}
-            className="text-white/50 [&_[aria-current=page]]:text-white"
+      <section className="relative isolate flex min-h-[680px] overflow-hidden bg-[#05132e] pt-[76px] text-white lg:min-h-[720px]">
+        <picture className="absolute inset-0 -z-20">
+          <source srcSet="/solutionsherosection.webp" type="image/webp" />
+          <img
+            src="/solutionsherosection.png"
+            alt=""
+            aria-hidden="true"
+            width={1774}
+            height={887}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="h-full w-full object-cover object-[72%_center] max-md:object-[68%_center]"
           />
-          <div className="mt-10 grid gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:items-end lg:gap-16">
-            <div>
-              <span className="eyebrow text-[#8eb5ff]">Capabilities</span>
-              <h1 className="mt-5 text-[clamp(2.9rem,6vw,5.1rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
-                Technology Solutions
-              </h1>
-              <p className="mt-6 max-w-2xl text-[15px] leading-7 text-white/65 sm:text-[17px] sm:leading-8">
-                AI tools, ERP systems, web development and analytics — built for startups, SMEs and
-                enterprises. Explore the full capability set below, or start with the problem you
-                need to solve.
-              </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  to="/contact"
-                  onClick={() => trackConsultationClick("services_hero")}
-                  className="group inline-flex min-h-[3.25rem] items-center justify-between gap-8 bg-white px-5 py-3 text-sm font-semibold text-[#05132e] transition-colors hover:bg-[#dce8ff] sm:min-w-52"
-                >
-                  Discuss Your Project
-                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
-                </Link>
-                <a
-                  href="#directory"
-                  className="group inline-flex min-h-[3.25rem] items-center justify-between gap-8 border border-white/25 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-white/55 hover:bg-white/[0.06] sm:min-w-52"
-                >
-                  {`Browse ${solutions.length} services`}
-                  <ArrowRight className="size-4 text-[#8eb5ff] transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden="true" />
-                </a>
-              </div>
-            </div>
+        </picture>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,19,46,0.88)_0%,rgba(5,19,46,0.72)_34%,rgba(5,19,46,0.30)_58%,rgba(5,19,46,0.08)_76%,rgba(5,19,46,0.18)_100%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(5,19,46,0.10)_0%,rgba(5,19,46,0.00)_35%,rgba(5,19,46,0.16)_100%)]"
+        />
 
-            <div className="border border-white/14 bg-[#05132e]/50 p-1 backdrop-blur-sm">
-              <div className="border border-white/10">
-                <p className="border-b border-white/10 px-5 py-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">
-                  Six practice areas
-                </p>
-                <ul className="divide-y divide-white/10">
-                  {CORE_SERVICES.map((service, index) => {
-                    const Icon = service.icon;
-                    return (
-                      <li key={service.slug}>
-                        <Link
-                          to={`/services/${service.slug}`}
-                          className="group flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-white/[0.035]"
-                        >
-                          <span className="font-mono text-[10px] tracking-[0.1em] text-white/30">
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
-                          <Icon className="size-4 text-[#8eb5ff]" strokeWidth={1.7} aria-hidden="true" />
-                          <span className="min-w-0 flex-1 text-[12.5px] font-medium text-white/80 group-hover:text-white">
-                            {service.title}
-                          </span>
-                          <ArrowUpRight className="size-3.5 text-white/25 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#8eb5ff]" aria-hidden="true" />
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+        <div className="mx-auto flex w-full max-w-[1280px] items-center px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+          <div className="max-w-[650px]">
+            <h1 className="text-left text-[34px] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[42px] lg:text-[56px]">
+              <span className="block">OUR</span>
+              <span className="block">SOLUTIONS</span>
+            </h1>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+              <Link
+                to="/contact"
+                onClick={() => trackConsultationClick("services_hero")}
+                className="group inline-flex min-h-[56px] items-center justify-center gap-2.5 bg-white px-7 text-[15px] font-semibold text-[#05132E] shadow-[0_10px_30px_rgba(5,19,46,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#F4F8FF] hover:shadow-[0_14px_34px_rgba(5,19,46,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#05132E]"
+              >
+                Discuss Your Project
+                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+              </Link>
+              <a
+                href="#directory"
+                className="group inline-flex min-h-[56px] items-center justify-center gap-2.5 border border-white/45 bg-[#05132E]/25 px-7 text-[15px] font-semibold text-white backdrop-blur-[2px] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/75 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#05132E]"
+              >
+                Explore Our Solutions
+                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </div>

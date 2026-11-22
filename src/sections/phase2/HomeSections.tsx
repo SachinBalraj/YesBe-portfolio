@@ -193,7 +193,7 @@ function BusinessChallengesSection() {
     <section id="challenges" className="bg-white pt-0 pb-11 lg:pt-0 lg:pb-[4.75rem]" aria-label="Business challenges">
       <div className="container-page">
         <Reveal>
-          <h2 className="mb-6 max-w-3xl text-[2rem] font-bold leading-[1.08] tracking-[-0.035em] text-[#080B12] sm:text-[2.125rem] lg:mb-8 lg:text-[3.25rem]">
+          <h2 className="mb-6 max-w-3xl text-[2rem] font-bold leading-[1.08] tracking-[-0.035em] text-[#17154C] sm:text-[2.125rem] lg:mb-8 lg:text-[3.25rem]">
             Complex Challenges. Smarter Solutions.
           </h2>
         </Reveal>
@@ -404,7 +404,7 @@ function HowWeThinkSection() {
     <section className="bg-white py-14 sm:py-16 lg:py-20" aria-label="How we think">
       <div className="container-page">
         <div className="mx-auto max-w-[1040px]">
-          <h2 className="text-[2rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#11113F] sm:text-[2.35rem] lg:text-[2.75rem]">
+          <h2 className="text-[2rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#17154C] sm:text-[2.35rem] lg:text-[2.75rem]">
             How We Think
           </h2>
           <div className="how-we-think-content mt-6 space-y-5 text-[#101A40] sm:mt-7 sm:space-y-6">
@@ -458,7 +458,7 @@ function PartnershipSection() {
       <div className="container-page">
         <div className="mx-auto max-w-[960px]">
           <Reveal>
-            <h2 className="max-w-3xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#071B40] sm:text-[2.6rem] lg:text-[3rem]">
+            <h2 className="max-w-3xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#17154C] sm:text-[2.6rem] lg:text-[3rem]">
               A Technology Partner, Not Just a Vendor.
             </h2>
             <p className="mt-5 max-w-2xl text-[17px] font-normal leading-[1.6] text-[#0B1F46] sm:text-[19px] lg:text-[21px]">
@@ -498,7 +498,7 @@ function PartnershipSection() {
                       "group/row grid grid-cols-[auto_auto_1fr_auto] items-start gap-3 bg-[#FDFBF7] px-4 py-5 transition-colors duration-300 ease-out hover:bg-[#E8EEFF] focus-visible:bg-[#E8EEFF] focus-visible:outline-none motion-reduce:transition-none sm:gap-4 sm:px-5 sm:py-6",
                     )}
                   >
-                    <span className="pt-0.5 font-mono text-[13px] font-semibold tracking-[0.08em] text-[#155EEF] sm:text-[14px]">
+                    <span className="pt-0.5 font-mono text-[13px] font-semibold tracking-[0.08em] text-[#17154C] sm:text-[14px]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span aria-hidden="true" className="w-px self-stretch bg-[#D6DCE7]" />
