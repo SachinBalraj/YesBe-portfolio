@@ -129,18 +129,7 @@ export function ServicesPage() {
 
             <section id="directory" className="bg-[#F5F5FA] py-16 sm:py-20 lg:py-24" aria-label="Service directory">
         <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-[2rem] font-bold leading-[1.1] tracking-[-0.03em] text-[#17154C] sm:text-[2.75rem] lg:text-[3.25rem]">
-                Our Solutions
-              </h2>
-              <p className="mt-4 text-[15px] leading-7 text-[#171717] sm:text-[17px]">
-                Explore our technology services designed to help businesses modernize operations, develop scalable software, automate processes, and accelerate digital growth.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {directoryServices.map((service, index) => {
               const Icon = service.icon;
               return (

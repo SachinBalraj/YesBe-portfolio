@@ -1,7 +1,6 @@
 import { useMemo } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { TrendingUp } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { JsonLd } from "@/components/common/JsonLd";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
@@ -22,18 +21,7 @@ import { Pagination } from "@/components/knowledge/Pagination";
 
 const ARTICLES_PER_PAGE = 9;
 
-const POPULAR_SEARCH_TOPICS = [
-  { label: "AI", query: "AI" },
-  { label: "ERP", query: "ERP" },
-  { label: "CRM", query: "CRM" },
-  { label: "Website Development", query: "Website" },
-  { label: "SEO", query: "SEO" },
-  { label: "Power BI", query: "Power BI" },
-  { label: "Automation", query: "Automation" },
-];
-
 export function KnowledgeCenterHome() {
-  const navigate = useNavigate();
   useSEO({
     title: SEO_TITLES.insights,
     description: SEO_DESCRIPTIONS.insights,
@@ -60,10 +48,6 @@ export function KnowledgeCenterHome() {
     else next.set("page", String(p));
     setSearchParams(next, { replace: true });
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleTopicClick = (query: string) => {
-    navigate(`/insights/search?q=${encodeURIComponent(query)}`);
   };
 
   return (
@@ -93,32 +77,13 @@ export function KnowledgeCenterHome() {
             </motion.h1>
           </div>
 
-          {/* Homepage Main Search Component */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.24 }}
-            className="mt-8 max-w-2xl"
+            className="mt-8 w-full"
           >
             <SearchBar size="lg" placeholder="Search articles and guides..." />
-
-            {/* Clickable Popular Searches Chips */}
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
-                <TrendingUp className="h-3.5 w-3.5 text-primary" />
-                Popular:
-              </span>
-              {POPULAR_SEARCH_TOPICS.map((topic) => (
-                <button
-                  key={topic.label}
-                  type="button"
-                  onClick={() => handleTopicClick(topic.query)}
-                  className="rounded-none border border-slate-200/80 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 shadow-2xs transition-all duration-200 hover:border-primary/40 hover:text-primary hover:shadow-xs"
-                >
-                  {topic.label}
-                </button>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>

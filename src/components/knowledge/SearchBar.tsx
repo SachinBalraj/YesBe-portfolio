@@ -112,9 +112,9 @@ export function SearchBar({
       >
         <Search
           className={cn(
-            "absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground/70 transition-colors pointer-events-none",
-            isFocused ? "text-primary" : "text-muted-foreground/70",
-            size === "lg" ? "h-5 w-5" : "h-4 w-4"
+            "absolute left-6 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-200",
+            isFocused ? "text-[#17154C]" : "text-[#17154C]/70",
+            size === "lg" ? "h-[22px] w-[22px]" : "h-4 w-4"
           )}
           aria-hidden="true"
         />
@@ -132,12 +132,14 @@ export function SearchBar({
           placeholder={placeholder}
           aria-label="Search articles"
           className={cn(
-            "w-full rounded-none border border-slate-200/90 bg-white text-foreground shadow-[0_2px_8px_rgba(37,99,235,0.04),0_8px_24px_rgba(37,99,235,0.03)] outline-none transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/15 dark:border-slate-800 dark:bg-slate-900",
-            size === "lg" ? "py-4 pl-12 pr-28 text-base" : "py-2.5 pl-10 pr-20 text-sm"
+            "w-full border border-[#D9D9E2] bg-white text-[#202124] shadow-[0_2px_12px_rgba(23,21,76,0.04)] outline-none transition-all duration-200 placeholder:text-[#6B7280] focus:border-[#17154C] focus:ring-4 focus:ring-[#17154C]/10",
+            size === "lg"
+              ? "h-16 rounded-xl pl-[60px] pr-[152px] text-base sm:h-[76px] sm:text-[18px]"
+              : "rounded-xl py-2.5 pl-10 pr-20 text-sm"
           )}
         />
 
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 sm:right-6">
           {query && (
             <button
               type="button"
@@ -145,7 +147,7 @@ export function SearchBar({
                 setQuery("");
                 setSelectedIndex(-1);
               }}
-              className="rounded-none p-1 text-muted-foreground hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="rounded-md p-1.5 text-[#6B7280] transition-colors hover:bg-[#17154C]/6 hover:text-[#17154C]"
               aria-label="Clear query"
             >
               <X className="h-4 w-4" />
@@ -156,7 +158,7 @@ export function SearchBar({
             <button
               type="button"
               onClick={() => setIsModalOpen(true)}
-              className="hidden sm:inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-[11px] font-semibold text-muted-foreground shadow-2xs hover:bg-slate-100 hover:text-primary transition-all dark:border-slate-800 dark:bg-slate-800"
+              className="hidden items-center gap-1 rounded-lg border border-[#D9D9E2] bg-[#F7F7FA] px-2.5 py-1.5 text-[11px] font-semibold text-[#454550] transition-colors hover:border-[#17154C]/25 hover:text-[#17154C] md:inline-flex"
               title="Open Command Palette"
             >
               <Command className="h-3 w-3" />
