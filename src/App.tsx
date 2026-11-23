@@ -222,6 +222,7 @@ function App() {
                     vercel.json answers the equivalent permanent redirect. */}
                 <Route path="/solutions" element={<Navigate to="/services" replace />} />
                 <Route path="/solutions/:slug" element={<LegacySolutionRedirect />} />
+                <Route path="/services/blockchain-data-privacy" element={<Navigate to="/services/blockchain" replace />} />
                 {/* The insights hub was renamed from /knowledge-center to
                     /insights. Kept as client-side forwards so no indexed link
                     can 404; vercel.json serves the permanent redirect. */}

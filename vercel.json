@@ -6,6 +6,11 @@
       "permanent": true
     },
     {
+      "source": "/services/blockchain-data-privacy",
+      "destination": "/services/blockchain",
+      "permanent": true
+    },
+    {
       "source": "/solutions",
       "destination": "/services",
       "permanent": true

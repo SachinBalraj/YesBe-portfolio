@@ -3,8 +3,8 @@ import {
   useEffect,
   useRef,
   useState,
-  type KeyboardEvent,
-  type PointerEvent,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
   type TransitionEvent,
 } from "react";
 import { Link } from "react-router-dom";
@@ -31,6 +31,14 @@ const CHALLENGE_DOTS = [
 ] as const;
 const CHALLENGE_WAVE_PATH =
   "M 40 140 C 80 140 80 90 120 90 C 240 90 240 190 360 190 C 480 190 480 90 600 90 C 720 90 720 190 840 190 C 960 190 960 90 1080 90 C 1120 90 1120 140 1160 140";
+
+const CHALLENGE_TOOLTIPS = [
+  { title: "Diagnose", description: "We understand your business challenges, existing processes, and technology requirements." },
+  { title: "Architect", description: "We design the right technology architecture, workflows, and implementation roadmap." },
+  { title: "Build", description: "We develop and integrate reliable software solutions tailored to your business." },
+  { title: "Launch", description: "We test, deploy, and introduce your solution with a focus on smooth operations." },
+  { title: "Improve", description: "We monitor performance, refine functionality, and support continuous improvement." },
+] as const;
 
 
 function BusinessChallengesSection() {
@@ -126,7 +134,29 @@ function BusinessChallengesSection() {
     }
   };
 
-  const handleWaveKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const [hoveredDot, setHoveredDot] = useState<number | null>(null);
+  const waveRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (hoveredDot === null) return;
+    const close = (event: MouseEvent | TouchEvent) => {
+      if (waveRef.current?.contains(event.target as Node)) return;
+      setHoveredDot(null);
+    };
+    const onEsc = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setHoveredDot(null);
+    };
+    document.addEventListener("mousedown", close);
+    document.addEventListener("touchstart", close);
+    document.addEventListener("keydown", onEsc);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("touchstart", close);
+      document.removeEventListener("keydown", onEsc);
+    };
+  }, [hoveredDot]);
+
+  const handleWaveKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     const focusedDot = (event.target as HTMLElement).closest<HTMLButtonElement>(
       '[id^="challenge-dot-"]',
     );
@@ -143,18 +173,23 @@ function BusinessChallengesSection() {
       next = 0;
     } else if (event.key === "End") {
       next = count - 1;
+    } else if (event.key === "Escape") {
+      setHoveredDot(null);
+      (event.target as HTMLElement).blur();
+      return;
     } else {
       return;
     }
 
     event.preventDefault();
     goTo(next);
+    setHoveredDot(next);
     window.requestAnimationFrame(() => {
       document.getElementById(`challenge-dot-${next + 1}`)?.focus();
     });
   };
 
-  const handleCarouselKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleCarouselKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
       move(1);
@@ -164,14 +199,14 @@ function BusinessChallengesSection() {
     }
   };
 
-  const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+  const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
     const target = event.target as HTMLElement;
     if (target.closest("a,button,input,textarea,select")) return;
     swipeStart.current = { x: event.clientX, y: event.clientY };
   };
 
-  const onPointerUp = (event: PointerEvent<HTMLDivElement>) => {
+  const onPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (!swipeStart.current) return;
     const dx = event.clientX - swipeStart.current.x;
     const dy = event.clientY - swipeStart.current.y;
@@ -200,9 +235,10 @@ function BusinessChallengesSection() {
 
         <div className="mx-auto w-full max-w-[1120px]">
           <div
-            className="relative"
+            ref={waveRef}
+            className="relative overflow-visible"
             role="group"
-            aria-label="Choose a business challenge"
+            aria-label="Delivery process timeline"
             onKeyDown={handleWaveKeyDown}
           >
             <svg
@@ -214,43 +250,78 @@ function BusinessChallengesSection() {
               <path
                 d={CHALLENGE_WAVE_PATH}
                 fill="none"
-                stroke="#07156F"
+                stroke="#10145C"
                 strokeWidth={7}
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
 
-            {BUSINESS_CHALLENGES.map((item, index) => {
-              const dot = CHALLENGE_DOTS[index];
-              if (!dot) return null;
+            {CHALLENGE_DOTS.map((dot, index) => {
+              const tip = CHALLENGE_TOOLTIPS[index];
+              if (!tip) return null;
               const selected = index === active;
+              const open = hoveredDot === index;
+              const tipId = `challenge-tooltip-${index + 1}`;
 
               return (
-                <button
-                  key={item.badge}
-                  id={`challenge-dot-${index + 1}`}
-                  type="button"
-                  aria-label={`Select challenge ${index + 1}: ${item.badge}`}
-                  aria-pressed={selected}
-                  aria-controls={`challenge-detail-${index + 1}`}
-                  onClick={() => goTo(index)}
+                <div
+                  key={tip.title}
+                  className="absolute z-20"
                   style={{
                     left: `${(dot.x / CHALLENGE_WAVE_WIDTH) * 100}%`,
                     top: `${(dot.y / CHALLENGE_WAVE_HEIGHT) * 100}%`,
                   }}
-                  className="group absolute z-10 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07156F] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  onMouseEnter={() => setHoveredDot(index)}
+                  onMouseLeave={() => setHoveredDot(null)}
                 >
-                  <span
+                  <button
+                    id={`challenge-dot-${index + 1}`}
+                    type="button"
+                    aria-label={`Step ${index + 1}: ${tip.title}`}
+                    aria-describedby={open ? tipId : undefined}
+                    aria-pressed={selected}
+                    aria-controls={`challenge-detail-${index + 1}`}
+                    onClick={() => {
+                      goTo(index);
+                      setHoveredDot((current) => (current === index ? null : index));
+                    }}
+                    onFocus={() => setHoveredDot(index)}
+                    onBlur={(e) => {
+                      if (!e.currentTarget.parentElement?.contains(e.relatedTarget as Node)) setHoveredDot(null);
+                    }}
+                    className="group flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10145C] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    <span
+                      className={cn(
+                        "block size-5 rounded-full bg-[#10145C] transition-[transform,box-shadow] duration-200 ease-out motion-reduce:transition-none sm:size-6",
+                        open || selected ? "scale-[1.15] ring-[3px] ring-[#10145C]/20" : "group-hover:scale-[1.15] group-hover:ring-[3px] group-hover:ring-[#10145C]/20",
+                      )}
+                      aria-hidden="true"
+                    />
+                  </button>
+
+                  <div
+                    id={tipId}
+                    role="tooltip"
+                    aria-hidden={!open}
                     className={cn(
-                      "block size-5 rounded-full bg-[#07156F] transition-shadow duration-300 motion-reduce:transition-none sm:size-6",
-                      selected
-                        ? "ring-2 ring-[#07156F]/35 ring-offset-4 ring-offset-white"
-                        : "group-hover:ring-2 group-hover:ring-[#07156F]/20 group-hover:ring-offset-4 group-hover:ring-offset-white",
+                      "pointer-events-none absolute bottom-full z-30 mb-5 w-[min(260px,calc(100vw-2rem))] rounded-xl bg-[#10145C] px-4 py-3.5 text-left text-white shadow-[0_12px_28px_rgba(16,20,92,0.28)] transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none",
+                      index === 0 ? "left-0 -translate-x-[12%]" : index === CHALLENGE_DOTS.length - 1 ? "right-0 left-auto translate-x-[12%]" : "left-1/2 -translate-x-1/2",
+                      open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
                     )}
-                    aria-hidden="true"
-                  />
-                </button>
+                  >
+                    <p className="text-[13px] font-semibold leading-5 text-white">{String(index + 1).padStart(2, "0")} — {tip.title}</p>
+                    <p className="mt-1.5 text-[12px] leading-5 text-white/90">{tip.description}</p>
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "absolute top-full border-[7px] border-transparent border-t-[#10145C]",
+                        index === 0 ? "left-[18%]" : index === CHALLENGE_DOTS.length - 1 ? "right-[18%]" : "left-1/2 -translate-x-1/2",
+                      )}
+                    />
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -454,29 +525,29 @@ function HowWeThinkSection() {
 
 function PartnershipSection() {
   return (
-    <section className="bg-white py-12 sm:py-14 lg:py-16" aria-label="The YESBE partnership">
+    <section className="bg-white py-10 sm:py-12 lg:py-16" aria-label="The YESBE partnership">
       <div className="container-page">
-        <div className="mx-auto max-w-[960px]">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 xl:gap-16">
           <Reveal>
-            <h2 className="max-w-3xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#17154C] sm:text-[2.6rem] lg:text-[3rem]">
+            <h2 className="max-w-xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#10145C] sm:text-[2.6rem] lg:text-[3rem]">
               A Technology Partner, Not Just a Vendor.
             </h2>
-            <p className="mt-5 max-w-2xl text-[17px] font-normal leading-[1.6] text-[#0B1F46] sm:text-[19px] lg:text-[21px]">
+            <p className="mt-5 max-w-xl text-[17px] font-normal leading-[1.6] text-[#0B1F46] sm:text-[19px] lg:text-[21px]">
               The useful difference is not a larger team or a longer list of tools. It is how
               decisions are made, how scope is controlled and what happens when the project leaves
-              the proposal stage.
+              the proposal stage. For secure, verifiable digital workflows, explore our <Link to="/services/blockchain" className="font-semibold text-[#10145C] underline decoration-[#10145C]/30 underline-offset-4 transition-colors hover:decoration-[#10145C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10145C] focus-visible:ring-offset-2">Blockchain &amp; Data Privacy</Link> capabilities.
             </p>
           </Reveal>
 
-          <Reveal delay={60} className="mt-7">
-            <div className="mx-auto w-full max-w-[750px] overflow-hidden rounded-lg md:w-[65%]">
+          <Reveal delay={60}>
+            <div className="overflow-hidden rounded-lg">
               <picture>
-                <source type="image/avif" srcSet={companyAvifSet} sizes="(min-width: 1024px) 750px, (min-width: 768px) 65vw, 100vw" />
-                <source type="image/webp" srcSet={companyWebpSet} sizes="(min-width: 1024px) 750px, (min-width: 768px) 65vw, 100vw" />
+                <source type="image/avif" srcSet={companyAvifSet} sizes="(min-width: 1024px) 42vw, 100vw" />
+                <source type="image/webp" srcSet={companyWebpSet} sizes="(min-width: 1024px) 42vw, 100vw" />
                 <img
                   src="/images/company/yesbe-consultation-960.jpg"
                   srcSet={companyJpgSet}
-                  sizes="(min-width: 1024px) 750px, (min-width: 768px) 65vw, 100vw"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
                   alt="Two professionals reviewing project requirements on a laptop"
                   width={1600}
                   height={1280}
@@ -487,39 +558,39 @@ function PartnershipSection() {
               </picture>
             </div>
           </Reveal>
-
-          <Reveal delay={100} className="mt-5 sm:mt-6">
-            <ol className="divide-y divide-[#D6DCE7] border-y border-[#D6DCE7]">
-              {PARTNERSHIP_POINTS.map((point, index) => (
-                <li key={point.title}>
-                  <div
-                    tabIndex={0}
-                    className={cn(
-                      "group/row grid grid-cols-[auto_auto_1fr_auto] items-start gap-3 bg-[#FDFBF7] px-4 py-5 transition-colors duration-300 ease-out hover:bg-[#E8EEFF] focus-visible:bg-[#E8EEFF] focus-visible:outline-none motion-reduce:transition-none sm:gap-4 sm:px-5 sm:py-6",
-                    )}
-                  >
-                    <span className="pt-0.5 font-mono text-[13px] font-semibold tracking-[0.08em] text-[#17154C] sm:text-[14px]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span aria-hidden="true" className="w-px self-stretch bg-[#D6DCE7]" />
-                    <span className="min-w-0">
-                      <span className="block text-[15px] font-semibold leading-snug text-[#071B40] sm:text-[16px]">
-                        {point.title}
-                      </span>
-                      <span className="mt-1.5 block text-[13px] leading-6 text-[#243047] sm:text-[14px]">
-                        {point.description}
-                      </span>
-                    </span>
-                    <ArrowUpRight
-                      className="mt-0.5 size-4 shrink-0 text-[#155EEF]/55 transition-all duration-300 ease-out group-hover/row:-translate-y-0.5 group-hover/row:translate-x-0.5 group-hover/row:text-[#155EEF] group-focus-visible/row:-translate-y-0.5 group-focus-visible/row:translate-x-0.5 group-focus-visible/row:text-[#155EEF] motion-reduce:transition-none sm:size-[18px]"
-                      aria-hidden="true"
-                    />
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
         </div>
+
+        <Reveal delay={100} className="mx-auto mt-10 max-w-[960px] lg:mt-12">
+          <ol className="divide-y divide-[#D6DCE7] border-y border-[#D6DCE7]">
+            {PARTNERSHIP_POINTS.map((point, index) => (
+              <li key={point.title}>
+                <div
+                  tabIndex={0}
+                  className={cn(
+                    "group/row grid grid-cols-[auto_auto_1fr_auto] items-start gap-3 bg-[#FDFBF7] px-4 py-5 transition-colors duration-300 ease-out hover:bg-[#E8EEFF] focus-visible:bg-[#E8EEFF] focus-visible:outline-none motion-reduce:transition-none sm:gap-4 sm:px-5 sm:py-6",
+                  )}
+                >
+                  <span className="pt-0.5 font-mono text-[13px] font-semibold tracking-[0.08em] text-[#17154C] sm:text-[14px]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span aria-hidden="true" className="w-px self-stretch bg-[#D6DCE7]" />
+                  <span className="min-w-0">
+                    <span className="block text-[15px] font-semibold leading-snug text-[#071B40] sm:text-[16px]">
+                      {point.title}
+                    </span>
+                    <span className="mt-1.5 block text-[13px] leading-6 text-[#243047] sm:text-[14px]">
+                      {point.description}
+                    </span>
+                  </span>
+                  <ArrowUpRight
+                    className="mt-0.5 size-4 shrink-0 text-[#155EEF]/55 transition-all duration-300 ease-out group-hover/row:-translate-y-0.5 group-hover/row:translate-x-0.5 group-hover/row:text-[#155EEF] group-focus-visible/row:-translate-y-0.5 group-focus-visible/row:translate-x-0.5 group-focus-visible/row:text-[#155EEF] motion-reduce:transition-none sm:size-[18px]"
+                    aria-hidden="true"
+                  />
+                </div>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
       </div>
     </section>
   );

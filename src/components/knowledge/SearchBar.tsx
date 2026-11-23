@@ -158,11 +158,10 @@ export function SearchBar({
             <button
               type="button"
               onClick={() => setIsModalOpen(true)}
-              className="hidden items-center gap-1 rounded-lg border border-[#D9D9E2] bg-[#F7F7FA] px-2.5 py-1.5 text-[11px] font-semibold text-[#454550] transition-colors hover:border-[#17154C]/25 hover:text-[#17154C] md:inline-flex"
-              title="Open Command Palette"
+              className="inline-flex items-center rounded-lg border border-[#D9D9E2] bg-[#F7F7FA] px-3 py-1.5 text-[12px] font-semibold text-[#454550] transition-colors hover:border-[#17154C]/25 hover:text-[#17154C]"
+              title="Open search"
             >
-              <Command className="h-3 w-3" />
-              <span>{isMac ? "⌘ K" : "Ctrl K"}</span>
+              Search
             </button>
           )}
         </div>

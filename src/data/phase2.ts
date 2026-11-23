@@ -112,6 +112,7 @@ export const SERVICE_PILLAR_BY_SLUG: Record<string, ServiceVisualVariant> = {
   "power-bi-dashboards": "analytics",
   "api-development": "integration",
   "system-integration": "integration",
+  "blockchain": "enterprise",
   "it-consulting": "transformation",
   "digital-transformation": "transformation",
   "custom-software": "product",

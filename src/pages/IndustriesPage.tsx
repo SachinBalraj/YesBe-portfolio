@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { ClosingCta } from "@/components/phase2/ClosingCta";
 import { Eyebrow } from "@/components/system/Eyebrow";
 import { Reveal } from "@/components/system/Reveal";
+import { EditorialHeading } from "@/components/common/EditorialHeading";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { industries, type IndustryDetail } from "@/data/industries";
 import { getIndustryProfile } from "@/data/phase3";
@@ -107,9 +108,9 @@ export function IndustriesPage() {
         <div className="container-page relative py-10 sm:py-14 lg:py-16">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-16">
             <div>
-              <h1 className="max-w-4xl text-[32px] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[40px] lg:text-[52px]">
-                Industry Context
-              </h1>
+              <div className="max-w-4xl">
+                <EditorialHeading line1="INDUSTRY" line2="Context" className="text-white" />
+              </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a href="#priority-industries" className="btn-on-dark group w-full sm:w-auto">
@@ -126,18 +127,7 @@ export function IndustriesPage() {
                 </Link>
               </div>
 
-              <div className="mt-8 grid max-w-xl grid-cols-3 border-t border-white/10 pt-5">
-                {[
-                  ["Context", "Map the workflow"],
-                  ["Architecture", "Design the system"],
-                  ["Delivery", "Ship the useful release"],
-                ].map(([term, detail], index) => (
-                  <div key={term} className={cn("pr-4", index > 0 && "border-l border-white/10 pl-4")}>
-                    <p className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#9fc0ff]">{term}</p>
-                    <p className="mt-1.5 text-[10.5px] leading-5 text-white/65">{detail}</p>
-                  </div>
-                ))}
-              </div>
+
             </div>
 
             <div className="grid grid-cols-2 gap-2">
@@ -285,6 +275,44 @@ export function IndustriesPage() {
               <IndustryCard key={industry.slug} industry={industry} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-py border-b border-line bg-paper">
+        <div className="container-page">
+          <Reveal>
+            <div className="grid gap-8 border border-line bg-white p-6 sm:p-8 lg:grid-cols-[1fr_1fr] lg:gap-12 lg:p-10">
+              <div>
+                <Eyebrow>Technology capability</Eyebrow>
+                <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-ink">
+                  Blockchain &amp; Data Privacy across industries
+                </h2>
+                <p className="mt-4 max-w-2xl text-[14px] leading-7 text-body sm:text-[15px]">
+                  Blockchain is not an industry by itself; it is a technology capability that can support trusted records, controlled data sharing, and verifiable workflows across multiple sectors. We apply it where transparency, data integrity, and privacy-aware architecture create practical value.
+                </p>
+                <Link
+                  to="/services/blockchain"
+                  className="mt-6 inline-flex items-center gap-2 text-[13px] font-semibold text-primary transition-colors hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  Blockchain &amp; Data Privacy
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  { title: "Financial services", text: "Support secure transaction records, audit trails, and controlled data sharing for sensitive financial workflows." },
+                  { title: "Supply chain traceability", text: "Improve visibility across multi-party supply chains with verifiable records for provenance, handoffs, and status events." },
+                  { title: "Digital identity", text: "Enable privacy-aware identity and access workflows where verification and controlled disclosure are important." },
+                  { title: "Secure record verification", text: "Create tamper-evident records for approvals, certificates, and business events that require trusted verification." },
+                ].map((item) => (
+                  <div key={item.title} className="border border-line bg-[#F7FAFF] p-4">
+                    <p className="text-[13px] font-semibold text-ink">{item.title}</p>
+                    <p className="mt-2 text-[12.5px] leading-6 text-body">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

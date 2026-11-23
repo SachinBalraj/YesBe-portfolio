@@ -464,7 +464,7 @@ export function CategoryPage() {
               <Link
                 to="/contact"
                 onClick={() => trackConsultationClick("knowledge_category")}
-                className="inline-flex items-center gap-2 rounded-none bg-primary px-6 py-3 text-xs font-bold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl "
+                className="inline-flex items-center gap-2 rounded-none bg-[#10145C] px-6 py-3 text-xs font-bold text-white shadow-lg transition-colors duration-200 hover:bg-[#0B0F45]"
               >
                 Book a Free Consultation
                 <ArrowRight className="h-4 w-4" />

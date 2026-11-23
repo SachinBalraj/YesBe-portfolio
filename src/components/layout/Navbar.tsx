@@ -23,11 +23,11 @@ const SearchModal = lazy(() =>
 
 function navLinkClass(isActive: boolean) {
   return cn(
-    "relative inline-flex items-center gap-1 px-3 py-2 text-[13.5px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:text-[#2454E6]",
-    "after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-[#2454E6] after:transition-transform after:duration-300",
+    "relative inline-flex items-center gap-1 px-3 py-2 text-[13.5px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:text-[#11124D]",
+    "after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-[#11124D] after:transition-transform after:duration-[250ms]",
     isActive
-      ? "text-[#2454E6] hover:text-[#2454E6] after:scale-x-100"
-      : "text-[#171717] after:scale-x-0 hover:text-[#171717] hover:after:scale-x-100",
+      ? "text-[#11124D] after:scale-x-100"
+      : "text-[#171717] after:scale-x-0 hover:text-[#11124D] hover:after:scale-x-100",
   );
 }
 
@@ -174,7 +174,7 @@ function NavbarComponent() {
                     navigate("/contact");
                   }}
                   variant="primary"
-                  className="btn-compact whitespace-nowrap border-[#2454E6]! bg-[#2454E6]! text-white! shadow-[0_12px_28px_-20px_rgba(36,84,230,0.9)]! hover:border-[#1D43C5]! hover:bg-[#1D43C5]! hover:shadow-[0_18px_38px_-20px_rgba(29,67,197,0.9)]! focus-visible:shadow-[0_0_0_2px_#FFFFFF,0_0_0_4px_rgba(36,84,230,0.55)]!"
+                  className="btn-compact whitespace-nowrap border-[#11124D]! bg-[#11124D]! text-white! shadow-[0_12px_28px_-20px_rgba(17,18,77,0.45)]! transition-colors duration-200 hover:border-[#1D246B]! hover:bg-[#1D246B]! hover:shadow-[0_18px_38px_-20px_rgba(29,36,107,0.5)]! focus-visible:shadow-[0_0_0_2px_#FFFFFF,0_0_0_4px_rgba(17,18,77,0.45)]!"
                   withArrow
                 >
                   Book a Free Consultation

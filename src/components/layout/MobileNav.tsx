@@ -15,10 +15,10 @@ interface MobileNavProps {
 
 function mobileLinkClass(isActive: boolean) {
   return cn(
-    "flex w-full items-center justify-between border-b border-[#E8EAF0]! py-3.5 text-left text-[15px] font-medium transition-colors",
+    "flex w-full items-center justify-between border-b border-[#E8EAF0]! py-3.5 text-left text-[15px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:text-[#11124D]",
     isActive
-      ? "text-[#2454E6] hover:text-[#2454E6]"
-      : "text-[#171717] hover:text-[#171717]",
+      ? "text-[#11124D]"
+      : "text-[#171717] hover:text-[#11124D]",
   );
 }
 
@@ -134,7 +134,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               <button
                 ref={closeButtonRef}
                 type="button"
-                className="inline-flex size-10 items-center justify-center border border-[#E5E7EB]! text-[#171717] transition-colors hover:border-[#CBD5E1]! hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2454E6]"
+                className="inline-flex size-10 items-center justify-center border border-[#E5E7EB]! text-[#171717] transition-colors hover:border-[#CBD5E1]! hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#11124D]"
                 onClick={onClose}
                 aria-label="Close menu"
               >
@@ -192,7 +192,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   trackConsultationClick("navbar_mobile");
                   handleNavigate("/contact");
                 }}
-                className="btn-primary w-full border-[#2454E6]! bg-[#2454E6]! text-white! shadow-[0_12px_28px_-20px_rgba(36,84,230,0.9)]! hover:border-[#1D43C5]! hover:bg-[#1D43C5]! hover:shadow-[0_18px_38px_-20px_rgba(29,67,197,0.9)]!"
+                className="btn-primary w-full border-[#11124D]! bg-[#11124D]! text-white! shadow-[0_12px_28px_-20px_rgba(17,18,77,0.45)]! transition-colors duration-200 hover:border-[#1D246B]! hover:bg-[#1D246B]! hover:shadow-[0_18px_38px_-20px_rgba(29,36,107,0.5)]!"
               >
                 Book a Free Consultation
                 <ArrowRight className="size-4" aria-hidden="true" />

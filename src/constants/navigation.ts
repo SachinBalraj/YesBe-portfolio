@@ -39,6 +39,7 @@ export const SOLUTION_GROUPS: NavigationGroup[] = [
       { label: "Web Applications", href: "/services/web-applications" },
       { label: "E-Commerce", href: "/services/ecommerce" },
       { label: "API Development", href: "/services/api-development" },
+      { label: "Blockchain & Data Privacy", href: "/services/blockchain" },
     ],
   },
   {

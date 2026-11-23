@@ -17,6 +17,10 @@ import {
   Megaphone,
   Smartphone,
   Shield,
+  FileCheck,
+  FileCode,
+  Blocks,
+  Compass,
   Zap,
   Target,
   TrendingUp,
@@ -81,6 +85,159 @@ export interface SolutionDetail {
 }
 
 export const solutions: SolutionDetail[] = [
+  // 0. Blockchain & Data Privacy
+  {
+    slug: "blockchain",
+    title: "Blockchain & Data Privacy Solutions",
+    shortTitle: "Blockchain",
+    icon: Shield,
+    category: "Blockchain & Security",
+    description:
+      "Explore blockchain consulting, smart contracts, secure digital records, data integrity, and privacy-focused blockchain solutions from YESBE Technologies.",
+    heroImage: "/images/visuals/integration.webp",
+    overview:
+      "Our Blockchain & Data Privacy service helps organizations evaluate where distributed ledger technology and privacy-focused architecture can strengthen trust in digital processes. We design solutions for verifiable records, controlled data sharing, and transparent transaction workflows, with careful attention to governance, integration, and operational fit. The goal is not to apply blockchain everywhere, but to use it where immutable records, auditability, or multi-party trust create practical business value.",
+    whyNeeded:
+      "As businesses share data across partners, platforms, and internal systems, maintaining trust becomes harder. Traditional centralized records can be difficult to audit, vulnerable to unauthorized changes, or fragmented across stakeholders. Blockchain-based approaches can support verifiable transaction histories, stronger data integrity controls, and clearer accountability when implemented for the right use case and governed responsibly.",
+    challenges: [
+      "Identifying blockchain use cases that provide real business value rather than unnecessary complexity",
+      "Protecting sensitive data while still enabling verification, auditability, and collaboration",
+      "Integrating blockchain components with existing business applications and data systems",
+      "Designing governance, access control, and compliance processes around distributed workflows",
+    ],
+    features: [
+      {
+        title: "Blockchain Consulting",
+        description:
+          "Assess business processes, data flows, and trust requirements to determine where blockchain or distributed ledger capabilities are appropriate.",
+        icon: Compass,
+      },
+      {
+        title: "Blockchain Application Development",
+        description:
+          "Build blockchain-enabled applications and workflows for secure digital records, approvals, and multi-party business processes.",
+        icon: Blocks,
+      },
+      {
+        title: "Smart Contract Development",
+        description:
+          "Develop and test smart contract logic for rule-based workflows, approvals, and transaction conditions where automation adds value.",
+        icon: FileCode,
+      },
+      {
+        title: "Blockchain Data Integrity",
+        description:
+          "Design verifiable record models and tamper-evident audit trails that help organizations validate important business data and events.",
+        icon: FileCheck,
+      },
+      {
+        title: "Privacy-Focused System Architecture",
+        description:
+          "Plan permission models, encryption strategies, and data-sharing controls that support privacy-aware system design.",
+        icon: Lock,
+      },
+      {
+        title: "Blockchain Integration with Enterprise Systems",
+        description:
+          "Connect blockchain components with web apps, enterprise systems, APIs, and reporting workflows without disrupting existing operations.",
+        icon: Link2,
+      },
+    ],
+    benefits: [
+      "Improve transparency for processes that require verifiable records",
+      "Strengthen data integrity controls with tamper-evident audit trails",
+      "Support privacy-aware information sharing across teams or partners",
+      "Reduce reconciliation effort in multi-party transaction workflows",
+      "Create clearer accountability through traceable digital records",
+      "Integrate trusted recordkeeping into existing business systems",
+    ],
+    process: [
+      {
+        step: "Use Case Assessment",
+        description:
+          "We review your business process, stakeholders, and data sensitivity to determine whether blockchain is the right fit.",
+      },
+      {
+        step: "Architecture & Governance Design",
+        description:
+          "We define the ledger model, privacy controls, permissions, and integration boundaries aligned with your operational requirements.",
+      },
+      {
+        step: "Solution Development",
+        description:
+          "Our team builds smart contracts, APIs, and application components with security and maintainability in mind.",
+      },
+      {
+        step: "Testing & Validation",
+        description:
+          "We test workflows, permissions, transaction handling, and failure scenarios before deployment.",
+      },
+      {
+        step: "Deployment & Integration",
+        description:
+          "We integrate the solution with your business applications and establish monitoring, documentation, and operational handover.",
+      },
+    ],
+    technologies: [
+      { name: "Ethereum / EVM", description: "Smart contract platforms for programmable transaction workflows" },
+      { name: "Hyperledger Fabric", description: "Permissioned distributed ledger framework for enterprise use cases" },
+      { name: "Solidity", description: "Smart contract language for EVM-compatible blockchain applications" },
+      { name: "Node.js & APIs", description: "Application services and integrations connecting blockchain and business systems" },
+      { name: "IPFS / Secure Storage", description: "Patterns for managing off-chain data with verifiable references" },
+      { name: "Identity & Access Controls", description: "Authentication, permissions, and key management practices for trusted access" },
+    ],
+    whyYESBE: [
+      {
+        title: "Practical Use-Case Focus",
+        description:
+          "We evaluate blockchain through business value, operational fit, and governance needs before recommending implementation.",
+      },
+      {
+        title: "Privacy-Aware Design",
+        description:
+          "Our solutions prioritize data minimization, access control, and responsible handling of sensitive information.",
+      },
+      {
+        title: "Integration-Ready Delivery",
+        description:
+          "We design blockchain components to work with your existing applications, APIs, and reporting processes.",
+      },
+      {
+        title: "Clear Technical Governance",
+        description:
+          "We document architecture, permissions, and operational responsibilities so teams can manage the system confidently.",
+      },
+    ],
+    exampleProject: {
+      title: "Verifiable records workflow for a multi-party business process",
+      scope:
+        "A blockchain-enabled record system for tracking approvals and transaction events across stakeholders, with role-based access, audit visibility, and integration into existing business applications.",
+      focus: "Designed for data integrity, traceability, and controlled information sharing",
+    },
+    faq: [
+      {
+        question: "When is blockchain a good fit for a business?",
+        answer:
+          "Blockchain can be useful when multiple parties need a shared, verifiable record, or when auditability and tamper-evident history are important. We assess your process first to confirm whether blockchain adds value over a conventional database.",
+      },
+      {
+        question: "Does blockchain make data completely private or secure?",
+        answer:
+          "No technology can guarantee absolute security or privacy. Blockchain can improve integrity and traceability, but privacy depends on architecture choices, access controls, encryption, operational practices, and governance.",
+      },
+      {
+        question: "Can blockchain integrate with our existing systems?",
+        answer:
+          "Yes. Blockchain solutions are typically integrated through APIs and application services so they work alongside ERP, CRM, web applications, and reporting tools.",
+      },
+      {
+        question: "Do you store sensitive business data directly on the blockchain?",
+        answer:
+          "Usually not. Sensitive data is often stored off-chain with appropriate security controls, while the blockchain stores hashes, proofs, or transaction records needed for verification and auditability.",
+      },
+    ],
+    relatedSolutions: ["it-consulting", "custom-software", "api-development"],
+  },
   // 1. IT Consulting — advisory-led, diagnosis before build
   itConsulting,
   // 2. Digital Transformation — phased, integration-first

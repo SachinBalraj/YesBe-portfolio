@@ -5,10 +5,10 @@ import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import { EditorialHeading } from "@/components/common/EditorialHeading";
 import { ClosingCta } from "@/components/phase2/ClosingCta";
 import { Eyebrow } from "@/components/system/Eyebrow";
 import { Reveal } from "@/components/system/Reveal";
-import { SectionHeading } from "@/components/common/SectionHeading";
 import type { CaseStudy } from "@/data/caseStudies";
 import {
   getProjectMeta,
@@ -164,7 +164,6 @@ function ProjectRow({
 
 export function CaseStudiesPage() {
   const [filter, setFilter] = useState<ProjectFilter>("All projects");
-  const featured = orderedCaseStudies.slice(0, 5);
   const filtered = useMemo(
     () =>
       filter === "All projects"
@@ -191,49 +190,37 @@ export function CaseStudiesPage() {
       }} />
       <Breadcrumbs items={[{ label: "Projects" }]} schemaOnly />
 
-      <section className="bg-white pt-[76px]">
-        <div className="container-page py-10 sm:py-12 lg:py-14">
-          <h1 className="text-[32px] font-bold leading-[1.1] tracking-[-0.02em] text-[#17154C] sm:text-[40px] lg:text-[52px]">
-            Project Record
-          </h1>
-        </div>
-      </section>
-
-      <section id="featured-projects" className="section-py bg-[#F7F7FA] scroll-mt-24">
+      <section id="project-record" className="scroll-mt-24 border-y border-[#E5E5EB] bg-white pb-12 pt-[calc(76px+2.5rem)] sm:pb-14 sm:pt-[calc(76px+3rem)] lg:pb-[72px] lg:pt-[calc(76px+3.5rem)]">
         <div className="container-page">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Featured work"
-              title="Systems built around an operating constraint."
-              description="The record shows what was designed, how it was structured and what the system can do. It does not attach a client name or a commercial result where none has been verified."
-              className="mb-8 lg:mb-10"
-            />
-          </Reveal>
+          <div className="mb-10 flex flex-col gap-8 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+            <Reveal className="min-w-0 lg:w-[60%]">
+              <EditorialHeading line1="FEATURED" line2="Work" variant="hero" />
+            </Reveal>
 
-          <div className="space-y-6 lg:space-y-8">
-            {featured.map((study, index) => (
-              <ProjectRow key={study.slug} study={study} reverse={index % 2 === 1} priority={index === 0} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="project-record" className="section-py scroll-mt-24 border-y border-[#E5E5EB] bg-white">
-        <div className="container-page">
-          <Reveal>
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeading
-                eyebrow="Project index"
-                title={filter === "All projects" ? "The full project record." : filter}
-                description="Filter by the kind of system involved. Every entry remains a portfolio or demonstration record unless its status says otherwise."
-              />
-              <p className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#454550]/80" aria-live="polite">
-                {`${filtered.length} ${filtered.length === 1 ? "record" : "records"}`}
-              </p>
+            <div className="flex w-full flex-col gap-4 lg:w-[40%] lg:max-w-[520px]">
+              <Reveal delay={60}>
+                <a
+                  href="#project-record-grid"
+                  className="group inline-flex h-[68px] w-full items-center justify-between rounded-[22px] bg-[#17154C] px-7 text-[17px] font-semibold text-white transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_14px_32px_rgba(23,21,76,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#17154C] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
+                >
+                  <span>View All Projects</span>
+                  <ArrowRight className="size-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none" aria-hidden="true" />
+                </a>
+              </Reveal>
+              <Reveal delay={120}>
+                <Link
+                  to="/contact"
+                  onClick={() => trackConsultationClick("case_studies_featured_cta")}
+                  className="group inline-flex h-[68px] w-full items-center justify-between rounded-[22px] border-2 border-[#17154C] bg-white px-7 text-[17px] font-semibold text-[#17154C] transition-all duration-300 hover:-translate-y-[3px] hover:bg-[#17154C] hover:text-white hover:shadow-[0_14px_32px_rgba(23,21,76,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#17154C] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
+                >
+                  <span>Contact Us</span>
+                  <ArrowRight className="size-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none" aria-hidden="true" />
+                </Link>
+              </Reveal>
             </div>
-          </Reveal>
+          </div>
 
-          <div className="mt-7 flex flex-wrap gap-2" aria-label="Filter projects">
+          <div className="flex flex-wrap gap-2" aria-label="Filter projects">
             {PROJECT_FILTERS.map((category) => (
               <button
                 key={category}
@@ -253,7 +240,7 @@ export function CaseStudiesPage() {
           </div>
 
           {filtered.length > 0 ? (
-            <div className="mt-8 space-y-6 lg:space-y-8">
+            <div id="project-record-grid" className="mt-8 scroll-mt-28 space-y-6 lg:space-y-8">
               {filtered.map((study, index) => (
                 <ProjectRow key={study.slug} study={study} reverse={index % 2 === 1} />
               ))}

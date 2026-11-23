@@ -40,6 +40,7 @@ function XIcon({ className }: { className?: string }) {
 }
 
 const solutionsLinks = [
+  { label: "Blockchain & Data Privacy", href: "/services/blockchain" },
   { label: "AI Solutions", href: "/services/ai-solutions" },
   { label: "AI Chatbots", href: "/services/ai-chatbots" },
   { label: "ERP Systems", href: "/services/erp-systems" },

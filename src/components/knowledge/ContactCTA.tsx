@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CalendarCheck, MessageSquareText } from "lucide-react";
+import { ArrowRight, MessageSquareText } from "lucide-react";
 import { trackConsultationClick } from "@/utils/analytics";
 
 export function ContactCTA() {
@@ -23,10 +23,10 @@ export function ContactCTA() {
           <Link
             to="/contact"
             onClick={() => trackConsultationClick("knowledge_article")}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-white px-8 py-3.5 text-sm font-bold text-[#1d4ed8] shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-all duration-200 hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-[#10145C] px-8 py-3.5 text-sm font-bold text-white shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-colors duration-200 hover:bg-[#0B0F45] sm:w-auto"
           >
-            <CalendarCheck className="h-4 w-4" />
             Book a Free Consultation
+            <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             to="/contact"

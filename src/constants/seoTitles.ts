@@ -36,6 +36,8 @@ export const SOLUTION_SEO_TITLES: Record<string, string> = {
   aeo: "AEO Services for Answer Engines | YESBE Technologies",
   "digital-marketing": "Digital Marketing Services Company | YESBE Technologies",
   "custom-software": "Custom Software Development Company | YESBE Technologies",
+  "blockchain": "Blockchain Development & Data Privacy Services | YESBE Technologies",
+  "blockchain-data-privacy": "Blockchain Development & Data Privacy Services | YESBE Technologies",
   "it-consulting": "IT Consulting Company & Technology Advisory | YESBE Technologies",
   "digital-transformation": "Digital Transformation Consulting Services | YESBE Technologies",
 };
@@ -116,6 +118,8 @@ export const SOLUTION_SEO_DESCRIPTIONS: Record<string, string> = {
   aeo: "AEO services from YESBE Technologies optimize content for featured snippets, voice search and answer engines to capture high-intent users online.",
   "digital-marketing": "Digital marketing services from YESBE Technologies combine SEO, social media, paid ads and content strategy to attract qualified leads and sales.",
   "custom-software": "Custom software development by YESBE Technologies builds scalable business platforms, automation tools, portals, integrations and dashboards fast.",
+  "blockchain": "Explore blockchain consulting, smart contracts, secure digital records, data integrity, and privacy-focused blockchain solutions from YESBE Technologies.",
+  "blockchain-data-privacy": "Explore blockchain consulting, smart contracts, secure digital records, data integrity, and privacy-focused blockchain solutions from YESBE Technologies.",
   "it-consulting": "IT consulting from YESBE Technologies audits your existing systems and produces a costed technology roadmap, so you invest in what actually moves your business.",
   "digital-transformation": "Digital transformation by YESBE Technologies digitises manual operations in phased, independently valuable steps that integrate with the systems you already run.",
 };
