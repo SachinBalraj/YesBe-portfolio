@@ -1358,7 +1358,7 @@ for (const name of industries) {
 }
 
 const projects = [
-  { slug: "fashion-fusion", title: "Fashion Fusion", category: "E-commerce platform", layout: "commerce", accent: "#1f4ed8" },
+  { slug: "fashion-fusion", title: "E-Commerce Platform", category: "E-commerce platform", layout: "commerce", accent: "#1f4ed8" },
   { slug: "restaurant-qr-ordering", title: "Restaurant QR Ordering", category: "Ordering system", layout: "ordering", accent: "#0f8f83" },
   { slug: "library-management", title: "Library Management", category: "Education ERP", layout: "records", accent: "#4f46b8" },
   { slug: "business-portfolio", title: "Business Portfolio", category: "Corporate website", layout: "editorial", accent: "#1f4ed8" },

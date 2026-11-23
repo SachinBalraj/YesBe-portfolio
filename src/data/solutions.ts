@@ -3328,12 +3328,14 @@ export const solutions: SolutionDetail[] = [
   },
 ];
 
-export function getSolutionBySlug(slug: string): SolutionDetail | undefined {
-  return solutions.find((s) => s.slug === slug);
-}
-
 export { itConsulting, digitalTransformation };
 
+const allSolutions: SolutionDetail[] = Array.from(new Map([...solutions, itConsulting, digitalTransformation].map((s) => [s.slug, s])).values());
+
+export function getSolutionBySlug(slug: string): SolutionDetail | undefined {
+  return allSolutions.find((s) => s.slug === slug);
+}
+
 export function getAllSolutionSlugs(): string[] {
-  return solutions.map((s) => s.slug);
+  return allSolutions.map((s) => s.slug);
 }

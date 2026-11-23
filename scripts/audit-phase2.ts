@@ -42,7 +42,7 @@ async function layoutAudit(browser: Browser, origin: string) {
     ["/services/it-consulting", "IT Consulting"],
     ["/about", "Technology Built Around Your Business."],
     ["/case-studies", "Selected technology projects"],
-    ["/case-studies/fashion-fusion", "Fashion Fusion E-Commerce Platform"],
+    ["/case-studies/fashion-fusion", "E-Commerce Platform"],
   ] as const;
 
   for (const width of VIEWPORTS) {

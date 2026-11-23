@@ -1,0 +1,86 @@
+{
+  "failed": [],
+  "cards": [
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/fashion-fusion-480.webp",
+      "raw": "/images/case-studies/fashion-fusion.webp",
+      "alt": "E-commerce platform interface preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/restaurant-qr-ordering-480.webp",
+      "raw": "/images/case-studies/restaurant-qr-ordering.webp",
+      "alt": "Restaurant QR ordering system interface preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/library-management-480.webp",
+      "raw": "/images/case-studies/library-management.webp",
+      "alt": "Library management system dashboard preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/business-portfolio-480.webp",
+      "raw": "/images/case-studies/business-portfolio.webp",
+      "alt": "Business portfolio website interface preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/ai-business-assistant-480.webp",
+      "raw": "/images/case-studies/ai-business-assistant.webp",
+      "alt": "AI business assistant interface preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/erp-management-480.webp",
+      "raw": "/images/case-studies/erp-management.webp",
+      "alt": "ERP management system dashboard preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/powerbi-dashboard-480.webp",
+      "raw": "/images/case-studies/powerbi-dashboard.webp",
+      "alt": "Power BI analytics dashboard preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/seo-digital-growth-480.webp",
+      "raw": "/images/case-studies/seo-digital-growth.webp",
+      "alt": "SEO and digital growth analytics preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    },
+    {
+      "src": "http://127.0.0.1:4177/images/case-studies/business-automation-480.webp",
+      "raw": "/images/case-studies/business-automation.webp",
+      "alt": "Business workflow automation dashboard preview",
+      "complete": true,
+      "natW": 422,
+      "natH": 264,
+      "vis": true
+    }
+  ]
+}

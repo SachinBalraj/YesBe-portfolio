@@ -2045,6 +2045,73 @@ export const industries: IndustryDetail[] = [
     ],
     relatedSolutions: ["web-applications", "mobile-apps", "data-analytics"],
   },
+  {
+    slug: "professional-services",
+    title: "Professional Services",
+    icon: Briefcase,
+    category: "Business Services",
+    description:
+      "Client management, project workflows, billing systems, and operational automation for consultancies, agencies, and service firms.",
+    heroImage: "/images/visuals/transformation.webp",
+    overview:
+      "Professional services firms depend on clear client communication, accurate project tracking, and efficient internal operations. When information is spread across email, spreadsheets, documents, and billing tools, teams lose time and visibility. YESBE Technologies helps consultancies, agencies, and service businesses build practical digital systems that support client delivery, documentation, billing, and reporting.",
+    whyNeeded:
+      "As service teams grow, disconnected tools create delays, missed handoffs, and limited visibility into project and client status. Purpose-built systems help teams coordinate work, manage information, and deliver a more consistent client experience while keeping day-to-day operations manageable.",
+    challenges: [
+      "Client, project, and billing information spread across disconnected tools",
+      "Manual document and approval workflows slowing delivery",
+      "Limited visibility into project status, utilization, and deadlines",
+      "Difficulty scaling operations while maintaining service quality",
+    ],
+    features: [
+      { title: "Client & Project Management", description: "Centralized systems for tracking clients, engagements, milestones, and delivery responsibilities.", icon: Users },
+      { title: "CRM Systems", description: "Tools for managing leads, proposals, follow-ups, and long-term client relationships.", icon: Briefcase },
+      { title: "Document & Approval Workflows", description: "Structured workflows for proposals, contracts, reviews, and internal approvals.", icon: FileText },
+      { title: "Billing & Invoicing", description: "Systems that support time tracking, invoicing, payment status, and financial visibility.", icon: CreditCard },
+      { title: "Resource & Task Management", description: "Tools for assigning work, tracking capacity, and coordinating team responsibilities.", icon: CheckCircle },
+      { title: "Reporting & Business Automation", description: "Dashboards and automation that reduce manual reporting and improve operational visibility.", icon: BarChart3 },
+    ],
+    benefits: [
+      "Clearer visibility into client and project status",
+      "Reduced manual administrative work",
+      "More consistent document and approval processes",
+      "Improved billing and operational tracking",
+      "Better coordination across delivery teams",
+      "Scalable systems that support firm growth",
+    ],
+    process: [
+      { step: "Discovery", description: "We review your service workflows, client touchpoints, and operational challenges." },
+      { step: "Solution Planning", description: "We define the right system scope, integrations, and delivery priorities." },
+      { step: "Design", description: "We design practical interfaces and workflows for your team and clients." },
+      { step: "Development", description: "We build and integrate the required modules and business logic." },
+      { step: "Testing", description: "We validate workflows, permissions, and reporting before launch." },
+      { step: "Launch & Support", description: "We deploy the system and provide ongoing support as needed." },
+    ],
+    technologies: [
+      { name: "React & Next.js", description: "Modern web frameworks for client portals, dashboards, and internal systems." },
+      { name: "Node.js & PostgreSQL", description: "Reliable backend and data foundations for business workflows and reporting." },
+      { name: "API Integrations", description: "Connections with CRM, accounting, document, and communication tools where feasible." },
+      { name: "Cloud Infrastructure", description: "Secure, scalable deployment environments with monitoring and backups." },
+    ],
+    whyYESBE: [
+      { title: "Practical Business Focus", description: "We design systems around real service operations, not generic software templates." },
+      { title: "Integration Experience", description: "We can connect new systems with the tools your team already uses where feasible." },
+      { title: "Scalable Delivery", description: "We build solutions that can start with core workflows and expand over time." },
+      { title: "Clear Communication", description: "We keep scope, priorities, and technical decisions transparent throughout the project." },
+    ],
+    exampleProject: {
+      title: "Client delivery and operations workspace",
+      scope: "A centralized workspace for client records, project tasks, document approvals, and invoicing status with role-based access and reporting.",
+      focus: "Client delivery visibility",
+    },
+    faq: [
+      { question: "Can you integrate with our existing CRM or accounting tools?", answer: "Yes, where technically feasible. We review your current tools, APIs, and data flows before recommending an integration approach." },
+      { question: "Can you build a client portal for our firm?", answer: "Yes. We can build secure client portals for project updates, documents, approvals, and communication based on your workflow needs." },
+      { question: "Is the software customized for our service process?", answer: "Yes. We design systems around your specific delivery model, team structure, and reporting requirements." },
+      { question: "Do you provide support after launch?", answer: "Yes. We can provide ongoing maintenance and technical support based on the agreed support scope." },
+    ],
+    relatedSolutions: ["custom-software", "business-automation", "web-applications", "api-development"],
+  },
 ];
 
 export function getIndustryBySlug(slug: string): IndustryDetail | undefined {

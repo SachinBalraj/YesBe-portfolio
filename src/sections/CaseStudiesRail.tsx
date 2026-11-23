@@ -4,13 +4,13 @@ import "@/styles/case-studies-rail.css";
 
 const services = [
   {
-    category: "SOFTWARE ENGINEERING",
-    title: "Custom Software & Web Development",
+    category: "BLOCKCHAIN TECHNOLOGY",
+    title: "Blockchain & Data Privacy",
     description:
-      "We build scalable websites, web applications, and custom software tailored to your business needs, helping you streamline operations and accelerate growth.",
-    href: "/services/custom-software",
+      "Build trust in digital operations with blockchain solutions designed for secure record-keeping, data integrity, transparency, and privacy-focused information sharing.",
+    href: "/services/blockchain",
     image: "/images/challenges/web-experience-glass.webp",
-    alt: "Custom software and web development visual",
+    alt: "Blockchain and data privacy visual",
   },
   {
     category: "ENTERPRISE SOLUTIONS",

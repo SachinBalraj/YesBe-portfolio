@@ -21,38 +21,14 @@ export interface ProjectMeta {
 
 export const PROJECT_META: Record<string, ProjectMeta> = {
   "fashion-fusion": { filters: ["E-commerce", "Web Applications"], accent: "#7dd3fc", featured: 1 },
-  "erp-management": {
-    filters: ["Business Management Systems", "Enterprise Applications"],
-    accent: "#8eb5ff",
-    featured: 2,
-  },
-  "ai-business-assistant": {
-    filters: ["AI & Analytics", "Enterprise Applications"],
-    accent: "#a5b4fc",
-    featured: 3,
-  },
-  "restaurant-qr-ordering": {
-    filters: ["Automation", "Enterprise Applications"],
-    accent: "#fbbf24",
-    featured: 4,
-  },
-  "library-management": {
-    filters: ["Enterprise Applications", "Business Management Systems"],
-    accent: "#86efac",
-    featured: 5,
-  },
-  "business-automation": {
-    filters: ["Automation", "Enterprise Applications"],
-    accent: "#67e8f9",
-    featured: 6,
-  },
+  "erp-management": { filters: ["Business Management Systems", "Enterprise Applications"], accent: "#8eb5ff", featured: 2 },
+  "ai-business-assistant": { filters: ["AI & Analytics", "Enterprise Applications"], accent: "#a5b4fc", featured: 3 },
+  "restaurant-qr-ordering": { filters: ["Automation", "Enterprise Applications"], accent: "#fbbf24", featured: 4 },
+  "library-management": { filters: ["Enterprise Applications", "Business Management Systems"], accent: "#86efac", featured: 5 },
+  "business-automation": { filters: ["Automation", "Enterprise Applications"], accent: "#67e8f9", featured: 6 },
   "powerbi-dashboard": { filters: ["AI & Analytics"], accent: "#c4b5fd", featured: 7 },
   "business-portfolio": { filters: ["Web Applications"], accent: "#f0abfc", featured: 8 },
-  "seo-digital-growth": {
-    filters: ["Web Applications", "AI & Analytics"],
-    accent: "#fca5a5",
-    featured: 9,
-  },
+  "seo-digital-growth": { filters: ["Web Applications", "AI & Analytics"], accent: "#fca5a5", featured: 9 },
 };
 
 export const orderedCaseStudies: CaseStudy[] = [...caseStudies].sort(
@@ -60,13 +36,7 @@ export const orderedCaseStudies: CaseStudy[] = [...caseStudies].sort(
 );
 
 export function getProjectMeta(slug: string): ProjectMeta {
-  return (
-    PROJECT_META[slug] ?? {
-      filters: ["Web Applications"],
-      accent: "#8eb5ff",
-      featured: 99,
-    }
-  );
+  return PROJECT_META[slug] ?? { filters: ["Web Applications"], accent: "#8eb5ff", featured: 99 };
 }
 
 export interface IndustryProfile {
@@ -370,6 +340,54 @@ export const INDUSTRY_PROFILES: Record<string, IndustryProfile> = {
       accent: "#86efac",
     },
   },
+  "professional-services": {
+    slug: "professional-services",
+    summary:
+      "Client, project, and billing workflows connected into practical systems that improve visibility and reduce administrative handoffs.",
+    context:
+      "Consultancies, agencies, and service firms often manage clients, proposals, project delivery, documents, and billing across separate tools. Teams spend time chasing status updates, reconciling information, and handling approvals manually.",
+    constraints: [
+      "Client, project, and billing information is stored in disconnected systems",
+      "Document and approval workflows depend on manual follow-up",
+      "Project status and team workload are difficult to see in one place",
+      "Reporting requires manual effort across multiple tools",
+    ],
+    applications: [
+      {
+        title: "Client and project workspace",
+        description:
+          "A central place for client records, engagements, milestones, tasks, and ownership across delivery teams.",
+      },
+      {
+        title: "Document and approval flow",
+        description:
+          "Structured workflows for proposals, contracts, reviews, and internal approvals with clear status visibility.",
+      },
+      {
+        title: "Billing and invoicing visibility",
+        description:
+          "Connected records for time, deliverables, invoices, and payment status to reduce manual reconciliation.",
+      },
+      {
+        title: "Operational reporting",
+        description:
+          "Dashboards for project progress, workload, deadlines, and business performance based on current records.",
+      },
+    ],
+    architecture: [
+      { label: "Client intake", detail: "Leads, proposals, and engagement setup" },
+      { label: "Delivery workflow", detail: "Projects, tasks, documents, and approvals" },
+      { label: "Business systems", detail: "CRM, billing, and communication integrations" },
+      { label: "Reporting & oversight", detail: "Status, utilization, and operational visibility" },
+    ],
+    relatedProjectSlugs: ["business-automation", "erp-management", "business-portfolio"],
+    relatedServiceSlugs: ["custom-software", "business-automation", "web-applications", "api-development"],
+    visual: {
+      src: "/images/visuals/transformation.webp",
+      alt: "Professional services team collaborating in a modern office",
+      accent: "#93c5fd",
+    },
+  },
 };
 
 const FALLBACK_VISUALS: Record<string, { src: string; alt: string; accent: string }> = {
@@ -398,6 +416,11 @@ const FALLBACK_VISUALS: Record<string, { src: string; alt: string; accent: strin
     alt: "Residential property exterior",
     accent: "#fcd34d",
   },
+  "professional-services": {
+    src: "/images/visuals/transformation.webp",
+    alt: "Professional services team collaborating in a modern office",
+    accent: "#93c5fd",
+  },
 };
 
 const FALLBACK_PROJECTS: Record<string, string[]> = {
@@ -406,6 +429,7 @@ const FALLBACK_PROJECTS: Record<string, string[]> = {
   "large-enterprises": ["erp-management", "ai-business-assistant", "business-automation"],
   hospitality: ["restaurant-qr-ordering", "business-automation", "powerbi-dashboard"],
   "real-estate": ["business-portfolio", "business-automation", "powerbi-dashboard"],
+  "professional-services": ["business-automation", "erp-management", "business-portfolio"],
 };
 
 export function getIndustryProfile(industry: IndustryDetail): IndustryProfile {

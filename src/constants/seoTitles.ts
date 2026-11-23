@@ -54,6 +54,7 @@ export const INDUSTRY_SEO_TITLES: Record<string, string> = {
   hospitality: "Hospitality Technology Solutions | YESBE Technologies",
   finance: "Finance Business Technology Solutions | YESBE Technologies",
   "real-estate": "Real Estate Technology Solutions | YESBE Technologies",
+  "professional-services": "Professional Services Technology Solutions | YESBE Technologies",
 };
 
 export const CASE_STUDY_SEO_TITLES: Record<string, string> = {
@@ -136,6 +137,7 @@ export const INDUSTRY_SEO_DESCRIPTIONS: Record<string, string> = {
   hospitality: "Hospitality technology solutions from YESBE Technologies improve restaurant, hotel, QR ordering, booking, guest and operations management for growth.",
   finance: "Finance business technology solutions from YESBE Technologies support dashboards, compliance workflows, reporting, automation and secure systems at scale.",
   "real-estate": "Real estate technology solutions from YESBE Technologies manage listings, CRMs, property portals, virtual tours, analytics and lead workflows for growth.",
+  "professional-services": "Professional services technology solutions from YESBE Technologies support client management, project workflows, billing, document approvals, and business automation.",
 };
 
 export const CASE_STUDY_SEO_DESCRIPTIONS: Record<string, string> = {
