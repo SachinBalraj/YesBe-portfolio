@@ -181,7 +181,7 @@ export function IndustriesPage() {
         <div className="container-page relative flex min-h-[calc(75vh-76px)] max-h-[52rem] items-center justify-center py-16 sm:py-20 lg:min-h-[calc(82vh-76px)]">
           <div className="w-full max-w-5xl text-center">
             <div className="inline-block text-left">
-              <EditorialHeading line1="OUR" line2="Solutions" className="text-white" />
+              <EditorialHeading line1="OUR" line2="Industries" className="text-white" />
             </div>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-center sm:gap-5">
               <a
