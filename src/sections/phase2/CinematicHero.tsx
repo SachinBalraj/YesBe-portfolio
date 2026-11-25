@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { trackConsultationClick } from "@/utils/analytics";
 
+const HERO_POSTER = "/images/hero/hero-poster.webp";
+
 export function CinematicHero() {
   return (
     <section
@@ -16,13 +18,13 @@ export function CinematicHero() {
           loop
           playsInline
           preload="metadata"
-          poster="/videoabout-poster.png"
+          poster={HERO_POSTER}
           aria-hidden="true"
         >
           <source src="/videoabout.mp4" type="video/mp4" />
         </video>
         <img
-          src="/videoabout-poster.png"
+          src={HERO_POSTER}
           alt=""
           aria-hidden="true"
           width={1280}

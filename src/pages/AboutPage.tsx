@@ -48,6 +48,7 @@ import {
   SiVite,
 } from "react-icons/si";
 import { TbBrandAws, TbBrandOpenai } from "react-icons/tb";
+import { useHeroImagePreload } from "@/hooks/useHeroImagePreload";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -199,26 +200,40 @@ const stages = [
 ];
 
 
+const ABOUT_HERO_SRC = "/images/hero/ybbackground.webp";
+const ABOUT_HERO_SRCSET = [
+  "/images/hero/ybbackground-640.webp 640w",
+  "/images/hero/ybbackground-960.webp 960w",
+  "/images/hero/ybbackground-1280.webp 1280w",
+  "/images/hero/ybbackground.webp 1744w",
+].join(", ");
+const ABOUT_HERO_SIZES = "100vw";
+
 function AboutHero() {
+  useHeroImagePreload({
+    href: ABOUT_HERO_SRC,
+    srcSet: ABOUT_HERO_SRCSET,
+    sizes: ABOUT_HERO_SIZES,
+    type: "image/webp",
+  });
   return (
     <section
       className="relative isolate flex min-h-[calc(100svh-76px)] overflow-hidden bg-[#050c23] pt-[76px] text-white sm:min-h-[88vh] lg:min-h-[calc(100vh-76px)]"
       aria-label="About YESBE Technologies"
     >
-      <picture className="absolute inset-0 -z-20 motion-reduce:block">
-        <source srcSet="/ybbackground.webp" type="image/webp" />
-        <img
-          src="/ybbackground.png"
-          alt=""
-          aria-hidden="true"
-          width={1744}
-          height={902}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover object-[66%_50%] max-md:object-[18%_50%]"
-        />
-      </picture>
+      <img
+        src={ABOUT_HERO_SRC}
+        srcSet={ABOUT_HERO_SRCSET}
+        sizes={ABOUT_HERO_SIZES}
+        alt=""
+        aria-hidden="true"
+        width={1744}
+        height={902}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-[66%_50%] max-md:object-[18%_50%]"
+      />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,12,35,0.88)_0%,rgba(5,12,35,0.60)_55%,rgba(5,12,35,0.25)_100%)]"

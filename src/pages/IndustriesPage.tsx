@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BadgeCheck, FileKey2, Landmark, Link2, ShieldCheck } from "lucide-react";
+import { useHeroImagePreload } from "@/hooks/useHeroImagePreload";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -22,6 +23,15 @@ const priorityIndustries = prioritySlugs
   .filter((industry): industry is IndustryDetail => Boolean(industry));
 
 const otherIndustries = industries.filter((industry) => !prioritySlugs.includes(industry.slug));
+
+const INDUSTRIES_HERO_SRC = "/images/hero/industryherosection.webp";
+const INDUSTRIES_HERO_SRCSET = [
+  "/images/hero/industryherosection-640.webp 640w",
+  "/images/hero/industryherosection-960.webp 960w",
+  "/images/hero/industryherosection-1280.webp 1280w",
+  "/images/hero/industryherosection.webp 1589w",
+].join(", ");
+const INDUSTRIES_HERO_SIZES = "100vw";
 
 const BLOCKCHAIN_CARDS = [
   {
@@ -150,6 +160,12 @@ function IndustryCard({ industry, feature = false }: { industry: IndustryDetail;
 }
 
 export function IndustriesPage() {
+  useHeroImagePreload({
+    href: INDUSTRIES_HERO_SRC,
+    srcSet: INDUSTRIES_HERO_SRCSET,
+    sizes: INDUSTRIES_HERO_SIZES,
+    type: "image/webp",
+  });
   useSEO({
     title: SEO_TITLES.industries,
     description: SEO_DESCRIPTIONS.industries,
@@ -169,14 +185,22 @@ export function IndustriesPage() {
       <Breadcrumbs items={[{ label: "Industries" }]} schemaOnly />
 
       <section className="relative isolate overflow-hidden bg-[#05132e] pt-[76px] text-white">
-        <div
+        <img
+          src={INDUSTRIES_HERO_SRC}
+          srcSet={INDUSTRIES_HERO_SRCSET}
+          sizes={INDUSTRIES_HERO_SIZES}
+          alt=""
           aria-hidden="true"
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/industryherosection.png')" }}
+          width={1589}
+          height={990}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-center"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,46,0.18)_0%,rgba(5,19,46,0.28)_45%,rgba(5,19,46,0.5)_100%)]"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(5,19,46,0.18)_0%,rgba(5,19,46,0.28)_45%,rgba(5,19,46,0.5)_100%)]"
         />
         <div className="container-page relative flex min-h-[calc(75vh-76px)] max-h-[52rem] items-center justify-center py-16 sm:py-20 lg:min-h-[calc(82vh-76px)]">
           <div className="w-full max-w-5xl text-center">

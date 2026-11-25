@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useHeroImagePreload } from "@/hooks/useHeroImagePreload";
 import { useSEO } from "@/hooks/useSEO";
 import { SEO_DESCRIPTIONS, SEO_TITLES } from "@/constants/seoTitles";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -40,7 +41,38 @@ const directoryServices = DIRECTORY_SERVICE_SLUGS.map((slug) =>
   getSolutionBySlug(slug),
 ).filter((service): service is NonNullable<typeof service> => Boolean(service));
 
+const SOLUTIONS_HERO_SRC = "/images/hero/newsolutionherosection.webp";
+const SOLUTIONS_HERO_MOBILE_SRC = "/images/hero/newsolutionherosection-960.webp";
+const SOLUTIONS_HERO_MOBILE_SRCSET = [
+  "/images/hero/newsolutionherosection-640.webp 640w",
+  "/images/hero/newsolutionherosection-960.webp 960w",
+].join(", ");
+const SOLUTIONS_HERO_SRCSET = [
+  "/images/hero/newsolutionherosection-640.webp 640w",
+  "/images/hero/newsolutionherosection-960.webp 960w",
+  "/images/hero/newsolutionherosection-1280.webp 1280w",
+  SOLUTIONS_HERO_SRC + " 1774w",
+].join(", ");
+const SOLUTIONS_HERO_MOBILE_SIZES = "100vw";
+const SOLUTIONS_HERO_SIZES = "(min-width: 1024px) 92vw, 100vw";
+const SOLUTIONS_HERO_MOBILE_MEDIA = "(max-width: 767px)";
+const SOLUTIONS_HERO_DESKTOP_MEDIA = "(min-width: 768px)";
+
 export function ServicesPage() {
+  useHeroImagePreload({
+    href: SOLUTIONS_HERO_MOBILE_SRC,
+    srcSet: SOLUTIONS_HERO_MOBILE_SRCSET,
+    sizes: SOLUTIONS_HERO_MOBILE_SIZES,
+    type: "image/webp",
+    media: SOLUTIONS_HERO_MOBILE_MEDIA,
+  });
+  useHeroImagePreload({
+    href: SOLUTIONS_HERO_SRC,
+    srcSet: SOLUTIONS_HERO_SRCSET,
+    sizes: SOLUTIONS_HERO_SIZES,
+    type: "image/webp",
+    media: SOLUTIONS_HERO_DESKTOP_MEDIA,
+  });
   useSEO({
     title: SEO_TITLES.services,
     description: SEO_DESCRIPTIONS.services,
@@ -79,17 +111,27 @@ export function ServicesPage() {
 
       <section className="relative isolate flex min-h-[640px] overflow-hidden bg-white pt-[76px] text-[#11124D] sm:min-h-[680px] lg:min-h-[720px]">
         <div className="absolute inset-0 -z-20 bg-white" aria-hidden="true" />
-        <img
-          src="/newsolutionherosection.png"
-          alt=""
-          aria-hidden="true"
-          width={1774}
-          height={887}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="pointer-events-none absolute inset-y-0 right-0 -z-10 h-full w-full object-cover object-[78%_center] sm:object-[74%_center] lg:w-[92%] lg:object-right"
-        />
+        <picture className="contents">
+          <source
+            media={SOLUTIONS_HERO_MOBILE_MEDIA}
+            type="image/webp"
+            srcSet={SOLUTIONS_HERO_MOBILE_SRCSET}
+            sizes={SOLUTIONS_HERO_MOBILE_SIZES}
+          />
+          <img
+            src={SOLUTIONS_HERO_SRC}
+            srcSet={SOLUTIONS_HERO_SRCSET}
+            sizes={SOLUTIONS_HERO_SIZES}
+            alt=""
+            aria-hidden="true"
+            width={1774}
+            height={887}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="pointer-events-none absolute inset-y-0 right-0 -z-10 h-full w-full object-cover object-[78%_center] sm:object-[74%_center] lg:w-[92%] lg:object-right"
+          />
+        </picture>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-y-0 left-0 -z-10 w-full bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_34%,rgba(255,255,255,0.96)_44%,rgba(255,255,255,0.72)_56%,rgba(255,255,255,0.18)_72%,rgba(255,255,255,0)_88%)] max-sm:bg-[linear-gradient(180deg,#ffffff_0%,rgba(255,255,255,0.96)_28%,rgba(255,255,255,0.72)_46%,rgba(255,255,255,0.16)_66%,rgba(255,255,255,0)_100%)]"

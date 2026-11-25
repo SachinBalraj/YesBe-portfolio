@@ -182,6 +182,18 @@ function addCriticalImagePreload(html: string, routePath: string): string {
   const src = /\bsrc="([^"]+)"/i.exec(tag)?.[1] ?? "";
   const srcset = /\bsrcset="([^"]+)"/i.exec(tag)?.[1] ?? "";
   const sizes = /\bsizes="([^"]+)"/i.exec(tag)?.[1] ?? "";
+  const existingPreloads = [...html.matchAll(/<link\b[^>]*>/gi)]
+    .map((match) => match[0])
+    .filter((linkTag) => /rel="preload"/i.test(linkTag) && /as="image"/i.test(linkTag));
+  if (
+    existingPreloads.some(
+      (linkTag) =>
+        linkTag.includes(`href="${src}"`) &&
+        (!srcset || linkTag.includes(`imagesrcset="${srcset}"`)),
+    )
+  ) {
+    return html;
+  }
   const link = `<link rel="preload" as="image" href="${src}"${srcset ? ` imagesrcset="${srcset}"` : ""}${sizes ? ` imagesizes="${sizes}"` : ""} fetchpriority="high" data-lcp-preload>`;
 
   return html.replace(/<head([^>]*)>/i, (head) => `${head}\n    ${link}`);
