@@ -34,7 +34,7 @@ try {
   const hash = await createPasswordHash(password);
   const lines = existsSync(ENV_PATH) ? readFileSync(ENV_PATH, "utf8").split(/\r?\n/) : [];
   const updates = new Map([
-    ["ADMIN_EMAIL", "hello@yesbe.tech"],
+    ["ADMIN_EMAIL", "yesbe.tech@gmail.com"],
     ["ADMIN_PASSWORD_HASH", hash],
   ]);
   const remove = new Set(["ADMIN_PASSWORD", "ADMIN_LOGIN_ID", "ADMIN_USERNAME"]);
@@ -67,11 +67,11 @@ try {
   process.stdout.write(
     [
       "",
-      "Local .env updated; ADMIN_EMAIL is hello@yesbe.tech and the plaintext password was discarded.",
+      "Local .env updated; ADMIN_EMAIL is yesbe.tech@gmail.com and the plaintext password was discarded.",
       "",
       "Set these in Vercel Production (keep MONGODB_URI, MONGODB_DB_NAME and SESSION_SECRET unchanged):",
       "  Name:  ADMIN_EMAIL",
-      "  Value: hello@yesbe.tech",
+      "  Value: yesbe.tech@gmail.com",
       "",
       "  Name:  ADMIN_PASSWORD_HASH",
       "  Value: copy only the hash below, without the variable name:",

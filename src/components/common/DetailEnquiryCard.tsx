@@ -4,6 +4,8 @@ import { ApiError, submitEnquiry } from "@/services/enquiries";
 
 interface DetailEnquiryCardProps {
   kind?: "industry" | "service";
+  formType?: "service" | "industry" | "project" | "ai-automation" | "blockchain";
+  industry?: string;
   name?: string;
   subject?: string;
   slug?: string;
@@ -24,10 +26,12 @@ interface FormState {
 const initial: FormState = { name: "", email: "", phone: "", company: "", projectDescription: "" };
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-export function DetailEnquiryCard({ kind = "service", name, subject, slug, route, heading: headingProp, support: supportProp, buttonLabel = "Send Enquiry" }: DetailEnquiryCardProps) {
+export function DetailEnquiryCard({ kind = "service", formType, industry, name, subject, slug, route, heading: headingProp, support: supportProp, buttonLabel = "Send Enquiry" }: DetailEnquiryCardProps) {
   const resolvedName = name ?? subject ?? "Project";
   const resolvedSlug = slug ?? resolvedName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   const resolvedRoute = route ?? (typeof window !== "undefined" ? window.location.pathname : "/contact");
+  const resolvedFormType = formType ?? (kind === "industry" ? "industry" : "service");
+  const resolvedIndustry = industry ?? (kind === "industry" ? resolvedName : undefined);
   const [form, setForm] = useState<FormState>(initial);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -86,7 +90,8 @@ export function DetailEnquiryCard({ kind = "service", name, subject, slug, route
         company: form.company,
         service: resolvedName,
         projectDescription: form.projectDescription,
-        formType: "contact",
+        formType: resolvedFormType,
+        industry: resolvedIndustry,
         pageSource: resolvedRoute,
         company_website: honeypot,
       }, controller.signal);
@@ -145,7 +150,7 @@ export function DetailEnquiryCard({ kind = "service", name, subject, slug, route
             ) : (
               <form onSubmit={onSubmit} noValidate className="space-y-4">
                 <div className="absolute -left-[9999px]" aria-hidden="true">
-                  <label htmlFor={`company-website-${slug}`}>Website</label>
+                  <label htmlFor={`company-website-${resolvedSlug}`}>Website</label>
                   <input id={`company-website-${resolvedSlug}`} tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
                 </div>
                 <input type="hidden" name="sourcePage" value={resolvedRoute} />

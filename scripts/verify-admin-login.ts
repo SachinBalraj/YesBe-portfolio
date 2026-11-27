@@ -3,7 +3,7 @@ import { stdin } from "node:process";
 import { readHidden } from "./terminalPrompt.ts";
 
 const BASE = (process.env.ADMIN_VERIFY_URL ?? "https://www.yesbe.tech").replace(/\/+$/, "");
-const ADMIN_ID = (process.env.ADMIN_EMAIL ?? process.env.ADMIN_USERNAME ?? "hello@yesbe.tech").trim();
+const ADMIN_ID = (process.env.ADMIN_EMAIL ?? process.env.ADMIN_USERNAME ?? "yesbe.tech@gmail.com").trim();
 const ORIGIN = new URL(BASE).origin;
 
 if (!stdin.isTTY) {

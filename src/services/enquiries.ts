@@ -17,7 +17,8 @@ export interface EnquiryPayload {
   projectDescription: string;
   businessChallenges?: string;
   goals?: string;
-  formType?: "contact" | "consultation" | "proposal" | "newsletter";
+  formType?: "contact" | "consultation" | "proposal" | "newsletter" | "service" | "industry" | "project" | "ai-automation" | "blockchain";
+  industry?: string;
   pageSource?: string;
   /** Honeypot. Must stay empty. */
   company_website?: string;

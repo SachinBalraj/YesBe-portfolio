@@ -73,8 +73,20 @@ const AdminLayout = lazy(() =>
 const AdminDashboardPage = lazy(() =>
   import("@/pages/admin/AdminDashboardPage").then((m) => ({ default: m.AdminDashboardPage }))
 );
+const AdminEnquiriesPage = lazy(() =>
+  import("@/pages/admin/AdminEnquiriesPage").then((m) => ({ default: m.AdminEnquiriesPage }))
+);
 const AdminEnquiryPage = lazy(() =>
   import("@/pages/admin/AdminEnquiryPage").then((m) => ({ default: m.AdminEnquiryPage }))
+);
+const AdminClientsPage = lazy(() =>
+  import("@/pages/admin/AdminClientsPage").then((m) => ({ default: m.AdminClientsPage }))
+);
+const AdminNewsletterPage = lazy(() =>
+  import("@/pages/admin/AdminNewsletterPage").then((m) => ({ default: m.AdminNewsletterPage }))
+);
+const AdminSettingsPage = lazy(() =>
+  import("@/pages/admin/AdminSettingsPage").then((m) => ({ default: m.AdminSettingsPage }))
 );
 
 function RouteAnalytics() {
@@ -247,7 +259,15 @@ function App() {
               </Route>
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminDashboardPage />} />
+                <Route path="enquiries" element={<AdminEnquiriesPage />} />
+                <Route path="consultations" element={<AdminEnquiriesPage category="consultation" />} />
+                <Route path="service-enquiries" element={<AdminEnquiriesPage category="service" />} />
+                <Route path="industry-enquiries" element={<AdminEnquiriesPage category="industry" />} />
+                <Route path="project-enquiries" element={<AdminEnquiriesPage category="project" />} />
                 <Route path="enquiries/:id" element={<AdminEnquiryPage />} />
+                <Route path="clients" element={<AdminClientsPage />} />
+                <Route path="newsletter" element={<AdminNewsletterPage />} />
+                <Route path="settings" element={<AdminSettingsPage />} />
               </Route>
             </Routes>
           </AppRoutes>

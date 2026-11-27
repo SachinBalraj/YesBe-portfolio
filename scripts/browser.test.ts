@@ -25,7 +25,7 @@ const ADMIN = {
     process.env.ADMIN_EMAIL ??
     process.env.TEST_ADMIN_USERNAME ??
     process.env.ADMIN_USERNAME ??
-    "hello@yesbe.tech",
+    "yesbe.tech@gmail.com",
   password: process.env.TEST_ADMIN_PASSWORD ?? "",
 };
 if (!ADMIN.password) {
@@ -39,6 +39,13 @@ let page: Page;
 before(async () => {
   browser = await chromium.launch();
   context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.addInitScript(() => {
+    localStorage.setItem("yesbe-cookie-consent", "essential");
+    localStorage.setItem(
+      "yesbe-cookie-preferences",
+      JSON.stringify({ essential: true, analytics: false, marketing: false }),
+    );
+  });
   page = await context.newPage();
 });
 
@@ -181,6 +188,29 @@ test("admin detail shows every submitted field and can change status", async () 
   );
 });
 
+test("admin sidebar exposes every management section", async () => {
+  const sidebar = page.getByRole("complementary", { name: "Admin navigation" });
+  const expected: [string, string][] = [
+    ["Dashboard", "/admin"],
+    ["All Enquiries", "/admin/enquiries"],
+    ["Consultation Requests", "/admin/consultations"],
+    ["Service Enquiries", "/admin/service-enquiries"],
+    ["Industry Enquiries", "/admin/industry-enquiries"],
+    ["Project Enquiries", "/admin/project-enquiries"],
+    ["Clients", "/admin/clients"],
+    ["Newsletter Subscribers", "/admin/newsletter"],
+    ["Settings", "/admin/settings"],
+  ];
+  for (const [name, href] of expected) {
+    assert.equal(
+      await sidebar.getByRole("link", { name, exact: true }).getAttribute("href"),
+      href,
+      `${name} must be reachable from the sidebar`,
+    );
+  }
+  await sidebar.getByRole("button", { name: "Logout", exact: true }).waitFor();
+});
+
 test("admin is noindex and its data is hidden from anonymous visitors", async () => {
   const robots = await page.locator('meta[name="robots"]').getAttribute("content");
   assert.match(robots ?? "", /noindex/, "admin must be noindex");
@@ -198,7 +228,7 @@ test("admin is noindex and its data is hidden from anonymous visitors", async ()
 });
 
 test("signing out clears access", async () => {
-  await page.getByRole("button", { name: /sign out/i }).click();
+  await page.getByRole("button", { name: /logout/i }).click();
   await page.getByText("Admin sign in").waitFor({ timeout: 20000 });
   await page.reload({ waitUntil: "networkidle" });
   assert.equal(await page.getByText("Browser Test User").count(), 0, "data must be gone after sign out");
@@ -208,10 +238,12 @@ test("expired session sends the operator back to sign in", async () => {
   await page.getByLabel("Admin ID").fill(ADMIN.username);
   await page.getByLabel("Password").fill(ADMIN.password);
   await page.getByRole("button", { name: /^sign in$/i }).click();
+  await page.getByRole("heading", { name: "All Enquiries" }).waitFor({ timeout: 20000 });
+  await page.goto(`${BASE}/admin/enquiries`, { waitUntil: "networkidle" });
   await page.getByRole("link", { name: "Browser Test User" }).first().waitFor({ timeout: 20000 });
 
   await context.clearCookies();
-  await page.getByRole("button", { name: "Newsletter", exact: true }).click();
+  await page.getByRole("link", { name: "Newsletter Subscribers" }).click();
 
   await page.getByText("Admin sign in").waitFor({ timeout: 20000 });
   await page.getByText(/session expired/i).waitFor({ timeout: 10000 });

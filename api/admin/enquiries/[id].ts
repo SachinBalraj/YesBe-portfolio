@@ -7,6 +7,7 @@ import {
   ENQUIRY_STATUSES,
   ensureIndexes,
   enquiries,
+  serializeEnquiry,
   type EnquiryDoc,
   type EnquiryStatus,
 } from "../../_lib/db.js";
@@ -23,7 +24,7 @@ import { cleanMultiline } from "../../_lib/validate.js";
 /**
  * /api/admin/enquiries/:id — admin only.
  *   GET     read one enquiry
- *   PATCH   update status only (the only mutable field)
+ *   PATCH   update status, append a note or change the archive flag
  *   DELETE  remove permanently
  */
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
@@ -47,7 +48,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
         sendError(res, 404, "Enquiry not found");
         return;
       }
-      sendJson(res, 200, { ok: true, item });
+      sendJson(res, 200, { ok: true, item: serializeEnquiry(item) });
       return;
     }
 
@@ -60,8 +61,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
 
       const hasStatus = Object.hasOwn(body.data, "status");
       const hasNote = Object.hasOwn(body.data, "note");
-      if (!hasStatus && !hasNote) {
-        sendError(res, 422, "Provide a status or a follow-up note");
+      const hasArchived = Object.hasOwn(body.data, "archived");
+      if (!hasStatus && !hasNote && !hasArchived) {
+        sendError(res, 422, "Provide a status, a follow-up note, or an archive flag");
         return;
       }
 
@@ -77,29 +79,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
         update.$set = { ...update.$set, status: status as EnquiryStatus };
       }
 
+      if (hasArchived) {
+        const archived = body.data.archived;
+        if (typeof archived !== "boolean") {
+          sendError(res, 422, "archived must be a boolean");
+          return;
+        }
+        update.$set = { ...update.$set, archived };
+      }
+
       if (hasNote) {
         const note = cleanMultiline(body.data.note, 2000);
         if (note.length === 0) {
           sendError(res, 422, "note must not be empty");
           return;
         }
-        // Append-only: notes are never overwritten, so the follow-up history
-        // is preserved. `id` lets the UI key/delete individual entries later.
         update.$push = { notes: { id: randomUUID(), text: note, createdAt: now } };
       }
 
-      // Only `status`, appended notes and `updatedAt` are ever written; no
-      // other field is reachable, so a client cannot modify the lead itself.
       const item = await col.findOneAndUpdate({ _id }, update, { returnDocument: "after" });
       if (!item) {
         sendError(res, 404, "Enquiry not found");
         return;
       }
-      sendJson(res, 200, { ok: true, item: item as EnquiryDoc });
+      sendJson(res, 200, { ok: true, item: serializeEnquiry(item as EnquiryDoc) });
       return;
     }
 
-    // DELETE
     const result = await col.deleteOne({ _id });
     if (result.deletedCount === 0) {
       sendError(res, 404, "Enquiry not found");

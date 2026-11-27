@@ -438,6 +438,8 @@ function DetailPageLayout({ content, route }: { content: DetailContent; route: s
 
       <DetailEnquiryCard
         kind="industry"
+        formType="industry"
+        industry={content.name}
         name={content.name}
         slug={route.split("/").pop() || content.name.toLowerCase()}
         route={route}

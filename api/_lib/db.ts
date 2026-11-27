@@ -75,45 +75,39 @@ export function getDb(): Db {
 ──────────────────────────────────────────────────────────── */
 
 /**
- * Canonical enquiry pipeline. Only these four values can be written by an
+ * Canonical enquiry pipeline. Only these values can be written by an
  * administrator; legacy values stored by earlier versions remain readable and
  * are mapped through LEGACY_STATUS_LABELS below.
  */
 export const ENQUIRY_STATUSES = [
   "New",
   "Contacted",
+  "In Discussion",
+  "Proposal Sent",
   "In Progress",
+  "Converted",
+  "Rejected",
   "Closed",
 ] as const;
 export type EnquiryStatus = (typeof ENQUIRY_STATUSES)[number];
 
 /** Any status value that may physically exist in an old document. */
-export type StoredEnquiryStatus =
-  | EnquiryStatus
-  | "In Discussion"
-  | "Proposal Sent"
-  | "Won"
-  | "Converted";
+export type StoredEnquiryStatus = EnquiryStatus | "Won";
 
 /**
- * Values written by earlier versions of the dashboard. They are never removed
- * from existing documents — reads normalise them to the current pipeline so no
- * client data is rewritten or lost.
+ * Status value written by earlier versions of the dashboard. It is never
+ * removed from existing documents — reads normalise it to the current pipeline
+ * so no client data is rewritten or lost.
  */
 export const LEGACY_STATUS_LABELS: Record<string, EnquiryStatus> = {
-  "In Discussion": "In Progress",
-  "Proposal Sent": "In Progress",
-  Won: "Closed",
-  Converted: "Closed",
+  Won: "Converted",
 };
 
 /** Every stored value that should be treated as the given canonical status. */
 export function statusFilterValues(status: EnquiryStatus): StoredEnquiryStatus[] {
   switch (status) {
-    case "In Progress":
-      return ["In Progress", "In Discussion", "Proposal Sent"];
-    case "Closed":
-      return ["Closed", "Won", "Converted"];
+    case "Converted":
+      return ["Converted", "Won"];
     default:
       return [status];
   }
@@ -127,8 +121,27 @@ export function resolveStoredStatus(value: string): EnquiryStatus {
   return LEGACY_STATUS_LABELS[value] ?? "New";
 }
 
-export const ENQUIRY_FORM_TYPES = ["contact", "consultation", "proposal", "newsletter"] as const;
+export const ENQUIRY_FORM_TYPES = [
+  "contact",
+  "consultation",
+  "proposal",
+  "newsletter",
+  "service",
+  "industry",
+  "project",
+  "ai-automation",
+  "blockchain",
+] as const;
 export type EnquiryFormType = (typeof ENQUIRY_FORM_TYPES)[number];
+
+export const ENQUIRY_CATEGORIES = [
+  "consultation",
+  "service",
+  "industry",
+  "project",
+  "other",
+] as const;
+export type EnquiryCategory = (typeof ENQUIRY_CATEGORIES)[number];
 
 /** A private, admin-only follow-up note. Append-only for audit history. */
 export interface FollowUpNote {
@@ -144,6 +157,7 @@ export interface EnquiryDoc {
   company: string;
   designation: string;
   service: string;
+  industry?: string;
   budget: string;
   timeline: string;
   projectDescription: string;
@@ -156,14 +170,62 @@ export interface EnquiryDoc {
   status: StoredEnquiryStatus;
   /** Private follow-up notes; absent on records created before notes existed. */
   notes?: FollowUpNote[];
+  archived?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
 
+export type SubscriberStatus = "active" | "unsubscribed";
+
 export interface SubscriberDoc {
   email: string;
   source: string;
+  status?: SubscriberStatus;
+  unsubscribedAt?: Date;
   createdAt: Date;
+}
+
+export type SerializedEnquiry = Omit<EnquiryDoc, "status"> & {
+  status: EnquiryStatus;
+  sourceCategory: EnquiryCategory;
+};
+
+export function resolveEnquiryCategory(
+  doc: Partial<Pick<EnquiryDoc, "formType" | "pageSource">>,
+): EnquiryCategory {
+  const formType = typeof doc.formType === "string" ? doc.formType : "";
+  const source = typeof doc.pageSource === "string" ? doc.pageSource : "";
+
+  switch (formType) {
+    case "consultation":
+      return "consultation";
+    case "industry":
+      return "industry";
+    case "project":
+      return "project";
+    case "service":
+    case "ai-automation":
+    case "blockchain":
+    case "proposal":
+      return "service";
+    case "contact":
+      if (source.startsWith("/services/")) return "service";
+      if (source.startsWith("/industries/")) return "industry";
+      if (source.startsWith("/case-studies/")) return "project";
+      return "consultation";
+    case "newsletter":
+      return "other";
+    default:
+      return "other";
+  }
+}
+
+export function serializeEnquiry(doc: EnquiryDoc): SerializedEnquiry {
+  return {
+    ...doc,
+    status: resolveStoredStatus(doc.status),
+    sourceCategory: resolveEnquiryCategory(doc),
+  };
 }
 
 export function enquiries(): Collection<EnquiryDoc> {
@@ -197,6 +259,10 @@ export function ensureIndexes(): Promise<void> {
           { key: { service: 1 }, name: "service" },
           { key: { email: 1 }, name: "email" },
           { key: { phone: 1 }, name: "phone" },
+          { key: { formType: 1, createdAt: -1 }, name: "formType_createdAt" },
+          { key: { pageSource: 1 }, name: "pageSource" },
+          { key: { industry: 1 }, name: "industry" },
+          { key: { archived: 1, createdAt: -1 }, name: "archived_createdAt" },
         ]),
         subscribers().createIndexes([
           { key: { createdAt: -1 }, name: "createdAt_desc" },
@@ -206,6 +272,7 @@ export function ensureIndexes(): Promise<void> {
             name: "email_unique",
             unique: true,
           },
+          { key: { status: 1, createdAt: -1 }, name: "status_createdAt" },
         ]),
       ]);
     })().catch((err) => {

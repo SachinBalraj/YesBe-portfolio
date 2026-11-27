@@ -59,6 +59,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
           source: validated.source,
           createdAt: new Date(),
         },
+        $set: { status: "active" },
+        $unset: { unsubscribedAt: "" },
       },
       { upsert: true },
     );

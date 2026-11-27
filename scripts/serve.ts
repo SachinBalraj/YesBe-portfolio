@@ -60,15 +60,20 @@ function preferredEncoding(acceptEncoding: string | undefined): "br" | "gzip" | 
 
 type Handler = (req: unknown, res: unknown) => unknown | Promise<unknown>;
 
-const API_ROUTES: Array<[RegExp, () => Promise<Handler>]> = [
+const API_ROUTES: Array<[RegExp, () => Promise<Handler>, boolean?]> = [
   [/^\/api\/enquiries$/, () => import("../api/enquiries.ts").then((m) => m.default)],
   [/^\/api\/newsletter\/subscribe$/, () => import("../api/newsletter/subscribe.ts").then((m) => m.default)],
+  [/^\/api\/newsletter\/unsubscribe$/, () => import("../api/newsletter/unsubscribe.ts").then((m) => m.default)],
+  [/^\/api\/newsletter\/export$/, () => import("../api/newsletter/export.ts").then((m) => m.default)],
   [/^\/api\/newsletter$/, () => import("../api/newsletter/index.ts").then((m) => m.default)],
   [/^\/api\/admin\/login$/, () => import("../api/admin/login.ts").then((m) => m.default)],
   [/^\/api\/admin\/logout$/, () => import("../api/admin/logout.ts").then((m) => m.default)],
   [/^\/api\/admin\/session$/, () => import("../api/admin/session.ts").then((m) => m.default)],
+  [/^\/api\/admin\/enquiries\/export$/, () => import("../api/admin/enquiries/export.ts").then((m) => m.default)],
   [/^\/api\/admin\/enquiries$/, () => import("../api/admin/enquiries/index.ts").then((m) => m.default)],
-  [/^\/api\/admin\/enquiries\/([^/]+)$/, () => import("../api/admin/enquiries/[id].ts").then((m) => m.default)],
+  [/^\/api\/admin\/enquiries\/([^/]+)$/, () => import("../api/admin/enquiries/[id].ts").then((m) => m.default), true],
+  [/^\/api\/admin\/clients$/, () => import("../api/admin/clients.ts").then((m) => m.default)],
+  [/^\/api\/admin\/settings$/, () => import("../api/admin/settings.ts").then((m) => m.default)],
 ];
 
 function collectBody(req: IncomingMessage): Promise<Buffer> {
@@ -81,7 +86,11 @@ function collectBody(req: IncomingMessage): Promise<Buffer> {
 }
 
 function makeRes(res: ServerResponse) {
-  const v = res as ServerResponse & { status: (c: number) => ServerResponse; json: (b: unknown) => void };
+  const v = res as ServerResponse & {
+    status: (c: number) => ServerResponse;
+    json: (b: unknown) => void;
+    send: (b: unknown) => void;
+  };
   v.status = (code: number) => {
     res.statusCode = code;
     return v;
@@ -90,6 +99,9 @@ function makeRes(res: ServerResponse) {
     const text = JSON.stringify(body);
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(text);
+  };
+  v.send = (body: unknown) => {
+    res.end(typeof body === "string" ? body : JSON.stringify(body));
   };
   return v;
 }
@@ -109,7 +121,7 @@ async function serveApi(url: URL, req: IncomingMessage, res: ServerResponse): Pr
   const match = url.pathname.match(entry[0])!;
   const query: Record<string, string> = {};
   for (const [key, value] of url.searchParams) query[key] = value;
-  if (match.length > 1) query.id = decodeURIComponent(match[1]!);
+  if (entry[2] && match.length > 1) query.id = decodeURIComponent(match[1]!);
 
   await handler(
     {

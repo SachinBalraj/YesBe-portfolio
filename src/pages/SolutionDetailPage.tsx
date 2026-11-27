@@ -1368,6 +1368,12 @@ const CONTENT: Record<string, ServiceContent> = {
   }
 };
 
+function enquiryFormTypeForSlug(slug: string): "blockchain" | "ai-automation" | "service" {
+  if (slug === "blockchain") return "blockchain";
+  if (slug.includes("ai")) return "ai-automation";
+  return "service";
+}
+
 function ServiceDetailLayout({ content, route, slug }: { content: ServiceContent; route: string; slug: string }) {
   return (
     <>
@@ -1437,7 +1443,7 @@ function ServiceDetailLayout({ content, route, slug }: { content: ServiceContent
       </section>
 
       <DetailFAQ items={content.faqs} />
-      <DetailEnquiryCard kind="service" name={content.name} slug={slug} route={route} heading={content.enquiryHeading} />
+      <DetailEnquiryCard kind="service" formType={enquiryFormTypeForSlug(slug)} name={content.name} slug={slug} route={route} heading={content.enquiryHeading} />
     </>
   );
 }

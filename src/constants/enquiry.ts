@@ -34,6 +34,30 @@ export const TIMELINE_LABELS: Record<string, string> = {
   flexible: "Flexible",
 };
 
+export const FORM_TYPE_LABELS: Record<string, string> = {
+  contact: "Contact",
+  consultation: "Consultation",
+  proposal: "Proposal",
+  newsletter: "Newsletter",
+  service: "Service",
+  industry: "Industry",
+  project: "Project",
+  "ai-automation": "AI Automation",
+  blockchain: "Blockchain",
+};
+
+export const ENQUIRY_CATEGORY_LABELS: Record<string, string> = {
+  contact: "General",
+  consultation: "General",
+  proposal: "General",
+  newsletter: "General",
+  service: "Service",
+  industry: "Industry",
+  project: "Project",
+  "ai-automation": "AI Automation",
+  blockchain: "Blockchain",
+};
+
 /** Returns the readable label for a stored code, or the code itself. */
 export function optionLabel(value: string, options: Record<string, string>): string {
   if (!value) return "—";

@@ -57,7 +57,6 @@ function BusinessChallengesSection() {
 
   const active = ((trackIndex - 1) % count + count) % count;
   const challenge = BUSINESS_CHALLENGES[active] ?? BUSINESS_CHALLENGES[0];
-  if (!challenge) return null;
 
   const prefersReducedMotion = () =>
     typeof window !== "undefined" &&
@@ -155,6 +154,8 @@ function BusinessChallengesSection() {
       document.removeEventListener("keydown", onEsc);
     };
   }, [hoveredDot]);
+
+  if (!challenge) return null;
 
   const handleWaveKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     const focusedDot = (event.target as HTMLElement).closest<HTMLButtonElement>(

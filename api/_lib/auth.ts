@@ -148,7 +148,7 @@ export function adminSubject(): string {
     process.env.ADMIN_EMAIL ||
     process.env.ADMIN_USERNAME ||
     process.env.ADMIN_LOGIN_ID ||
-    "hello@yesbe.tech"
+    "yesbe.tech@gmail.com"
   ).trim();
 }
 
@@ -191,7 +191,7 @@ function loginIdentifiers(): string[] {
   if (username) ids.add(username.trim().toLowerCase());
   const legacyId = process.env.ADMIN_LOGIN_ID;
   if (legacyId) ids.add(legacyId.trim().toLowerCase());
-  if (ids.size === 0) ids.add("hello@yesbe.tech");
+  if (ids.size === 0) ids.add("yesbe.tech@gmail.com");
   return [...ids];
 }
 

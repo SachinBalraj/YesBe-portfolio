@@ -204,7 +204,11 @@ export function CaseStudyDetailPage() {
       <section className="bg-[#F7F7FA] py-10 sm:py-12">
         <div className="container-page">
           <DetailEnquiryCard
-            subject={study.title}
+            kind="service"
+            formType="project"
+            name={study.title}
+            slug={study.slug}
+            route={`/case-studies/${study.slug}`}
             heading="Have a Similar Project in Mind?"
             support="Tell us about your business requirements, and we’ll help you plan the right digital solution."
             buttonLabel="Discuss Your Project"

@@ -74,7 +74,7 @@ expose them to the browser.
 | --- | --- | --- |
 | `MONGODB_URI` | yes | Atlas connection string. |
 | `MONGODB_DB_NAME` | no | Defaults to `yesbe`. |
-| `ADMIN_EMAIL` | yes | Canonical administrator ID, e.g. `hello@yesbe.tech`. |
+| `ADMIN_EMAIL` | yes | Canonical administrator ID, e.g. `yesbe.tech@gmail.com`. |
 | `ADMIN_PASSWORD_HASH` | yes | `scrypt$<saltHex>$<hashHex>`. |
 | `ADMIN_USERNAME` | no | Legacy login alias; accepted only while configured. |
 | `ADMIN_LOGIN_ID` | no | Legacy short login alias; accepted only while configured. |
@@ -88,7 +88,7 @@ npm run admin:password
 ```
 
 This prompts without echoing the password, updates the local ignored `.env`
-with `ADMIN_EMAIL=hello@yesbe.tech` and a scrypt `ADMIN_PASSWORD_HASH`, removes
+with `ADMIN_EMAIL=yesbe.tech@gmail.com` and a scrypt `ADMIN_PASSWORD_HASH`, removes
 legacy plaintext/username/login-ID values, and prints only the hash to copy
 into Vercel Production.
 
@@ -174,7 +174,7 @@ docker run -p 27017:27017 mongo:7
 # terminal 2
 MONGODB_URI=mongodb://127.0.0.1:27017 \
 MONGODB_DB_NAME=yesbe_dev \
-ADMIN_EMAIL=hello@yesbe.tech \
+ADMIN_EMAIL=yesbe.tech@gmail.com \
 ADMIN_PASSWORD_HASH=scrypt$saltHex$hashHex \
 SESSION_SECRET=dev-secret-at-least-32-characters-long \
 ENQUIRY_RATE_LIMIT=1000 \

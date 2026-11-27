@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "base": "http://localhost:3112",
+  "screenshots": [
+    "docs/admin/dashboard-desktop.png",
+    "docs/admin/enquiries-desktop.png",
+    "docs/admin/dashboard-mobile.png",
+    "docs/admin/enquiries-mobile.png"
+  ]
+}

@@ -19,7 +19,7 @@ import { ENQUIRY_STATUSES } from "../api/_lib/db.ts";
 import { createPasswordHash } from "../api/_lib/auth.ts";
 
 process.env.NODE_ENV = "test";
-process.env.ADMIN_EMAIL = "hello@yesbe.tech";
+process.env.ADMIN_EMAIL = "yesbe.tech@gmail.com";
 process.env.ADMIN_USERNAME = "yesbe.tech";
 delete process.env.ADMIN_LOGIN_ID;
 delete process.env.ADMIN_PASSWORD;
@@ -103,7 +103,7 @@ async function call(
   return { status: res.statusCode, body: res.body, res };
 }
 
-const ADMIN = { username: "hello@yesbe.tech", password: "s3cret-admin-pw" };
+const ADMIN = { username: "yesbe.tech@gmail.com", password: "s3cret-admin-pw" };
 
 /** Logs in and returns the session cookie header pair. */
 async function authedCookie(): Promise<string> {
@@ -348,7 +348,7 @@ test("login accepts the ADMIN_EMAIL identifier", async () => {
     body: { email: process.env.ADMIN_EMAIL, password: ADMIN.password },
   });
   assert.equal(status, 200);
-  assert.equal(body.username, "hello@yesbe.tech");
+  assert.equal(body.username, "yesbe.tech@gmail.com");
 });
 
 test("email-only configuration accepts only ADMIN_EMAIL", async () => {
@@ -358,10 +358,10 @@ test("email-only configuration accepts only ADMIN_EMAIL", async () => {
   try {
     const login = await call("login", {
       method: "POST",
-      body: { username: "hello@yesbe.tech", password: ADMIN.password },
+      body: { username: "yesbe.tech@gmail.com", password: ADMIN.password },
     });
     assert.equal(login.status, 200);
-    assert.equal(login.body.username, "hello@yesbe.tech");
+    assert.equal(login.body.username, "yesbe.tech@gmail.com");
 
     assert.equal(
       (await call("login", {
@@ -523,36 +523,29 @@ test("admin updates status, and status only", async () => {
   assert.ok(new Date(after.body.item.updatedAt) >= new Date(list.body.items[0].updatedAt), "updatedAt must advance");
 });
 
-test("retired status values are rejected by the closed enum", async () => {
+test("all canonical status values are writable and legacy Won is rejected", async () => {
   const cookie = await authedCookie();
   const list = await call("list", { method: "GET", headers: { cookie } });
   const id = list.body.items[0]._id;
 
-  for (const retired of ["In Discussion", "Proposal Sent", "Won", "Converted"]) {
+  for (const status of ENQUIRY_STATUSES) {
     const res = await call("detail", {
       method: "PATCH",
       headers: { cookie },
       query: { id },
-      body: { status: retired },
+      body: { status },
     });
-    assert.equal(res.status, 422, `${retired} must be rejected`);
+    assert.equal(res.status, 200, `${status} must be writable`);
+    assert.equal(res.body.item.status, status);
   }
 
-  // The canonical in-progress value is writable.
-  const inProgress = await call("detail", {
+  const legacy = await call("detail", {
     method: "PATCH",
     headers: { cookie },
     query: { id },
-    body: { status: "In Progress" },
+    body: { status: "Won" },
   });
-  assert.equal(inProgress.status, 200);
-  assert.equal(inProgress.body.item.status, "In Progress");
-
-  const after = await call("detail", { method: "GET", headers: { cookie }, query: { id } });
-  assert.ok(
-    ENQUIRY_STATUSES.includes(after.body.item.status),
-    "status must remain a current value",
-  );
+  assert.equal(legacy.status, 422, "legacy Won must be rejected");
 });
 
 test("invalid status value is rejected", async () => {
@@ -633,7 +626,7 @@ test("empty database returns a valid empty dashboard payload", async () => {
     assert.equal(body.pages, 1);
     assert.equal(body.summary.total, 0);
     assert.equal(body.summary.subscribers, 0);
-    assert.deepEqual(Object.values(body.summary.counts), [0, 0, 0, 0]);
+    assert.deepEqual(Object.values(body.summary.counts), [0, 0, 0, 0, 0, 0, 0, 0]);
     const newsletter = await call("newsletter", { method: "GET", headers: { cookie } });
     assert.equal(newsletter.status, 200);
     assert.deepEqual(newsletter.body.items, []);

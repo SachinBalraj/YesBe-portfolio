@@ -77,6 +77,7 @@ const LIMITS = {
   company: 160,
   designation: 120,
   service: 120,
+  industry: 160,
   budget: 80,
   timeline: 80,
   projectDescription: 4000,
@@ -107,6 +108,7 @@ export interface ValidatedEnquiry {
     company: string;
     designation: string;
     service: string;
+    industry: string;
     budget: string;
     timeline: string;
     projectDescription: string;
@@ -175,6 +177,7 @@ export function validateEnquiry(body: Record<string, unknown>): ValidatedEnquiry
       company: cleanText(body.company, LIMITS.company),
       designation: cleanText(body.designation, LIMITS.designation),
       service,
+      industry: cleanText(body.industry, LIMITS.industry),
       budget: cleanText(body.budget, LIMITS.budget),
       timeline: cleanText(body.timeline, LIMITS.timeline),
       projectDescription,
