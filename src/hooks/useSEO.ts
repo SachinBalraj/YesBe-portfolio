@@ -5,6 +5,9 @@ interface SEOData {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogImageSecureUrl?: string;
+  ogImageType?: string;
+  ogImageAlt?: string;
   ogImageWidth?: string;
   ogImageHeight?: string;
   ogType?: string;
@@ -59,6 +62,9 @@ export function useSEO({
   description,
   canonical,
   ogImage,
+  ogImageSecureUrl,
+  ogImageType,
+  ogImageAlt,
   ogImageWidth,
   ogImageHeight,
   ogType,
@@ -80,8 +86,10 @@ export function useSEO({
     setOrUpdateMeta("property", "og:description", socialDescription);
     setOrUpdateMeta("property", "og:url", url);
     setOrUpdateMeta("property", "og:image", image);
-    setOrUpdateMeta("property", "og:image:type", "image/png");
-    setOrUpdateMeta("property", "og:image:alt", title);
+    if (ogImageSecureUrl) setOrUpdateMeta("property", "og:image:secure_url", ogImageSecureUrl);
+    else removeMeta("property", "og:image:secure_url");
+    setOrUpdateMeta("property", "og:image:type", ogImageType ?? "image/png");
+    setOrUpdateMeta("property", "og:image:alt", ogImageAlt ?? title);
     // Only declare dimensions we actually know. The default social card is
     // 1200x630; page-specific images (founder portrait, article covers) have
     // their own ratios, so callers may pass exact dimensions or omit them.
@@ -100,8 +108,8 @@ export function useSEO({
     setOrUpdateMeta("name", "twitter:title", title);
     setOrUpdateMeta("name", "twitter:description", socialDescription);
     setOrUpdateMeta("name", "twitter:image", image);
-    setOrUpdateMeta("name", "twitter:image:alt", title);
+    setOrUpdateMeta("name", "twitter:image:alt", ogImageAlt ?? title);
 
     setOrUpdateLink("canonical", url);
-  }, [title, description, canonical, ogImage, ogImageWidth, ogImageHeight, ogType, ogDescription, noindex]);
+  }, [title, description, canonical, ogImage, ogImageSecureUrl, ogImageType, ogImageAlt, ogImageWidth, ogImageHeight, ogType, ogDescription, noindex]);
 }
