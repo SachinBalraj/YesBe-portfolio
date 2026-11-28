@@ -251,6 +251,7 @@ export function ensureIndexes(): Promise<void> {
   const g = globalThis as unknown as GlobalWithIndexes;
   if (!g[INDEXES_READY]) {
     g[INDEXES_READY] = (async () => {
+      await getMongoClient().connect();
       await Promise.all([
         // Admin list is always newest-first and filterable by status/service.
         enquiries().createIndexes([
