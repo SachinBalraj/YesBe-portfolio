@@ -69,9 +69,7 @@ const API_ROUTES: Array<[RegExp, () => Promise<Handler>, boolean?]> = [
   [/^\/api\/admin\/login$/, () => import("../api/admin/login.ts").then((m) => m.default)],
   [/^\/api\/admin\/logout$/, () => import("../api/admin/logout.ts").then((m) => m.default)],
   [/^\/api\/admin\/session$/, () => import("../api/admin/session.ts").then((m) => m.default)],
-  [/^\/api\/admin\/enquiries\/export$/, () => import("../api/admin/enquiries/export.ts").then((m) => m.default)],
-  [/^\/api\/admin\/enquiries$/, () => import("../api/admin/enquiries/index.ts").then((m) => m.default)],
-  [/^\/api\/admin\/enquiries\/([^/]+)$/, () => import("../api/admin/enquiries/[id].ts").then((m) => m.default), true],
+  [/^\/api\/admin\/enquiries(?:\/([^/]+))?$/, () => import("../api/admin/enquiries/[[...segments]].ts").then((m) => m.default), true],
   [/^\/api\/admin\/clients$/, () => import("../api/admin/clients.ts").then((m) => m.default)],
   [/^\/api\/admin\/settings$/, () => import("../api/admin/settings.ts").then((m) => m.default)],
 ];
@@ -119,9 +117,13 @@ async function serveApi(url: URL, req: IncomingMessage, res: ServerResponse): Pr
   const handler = await entry[1]();
   // Mirror how Vercel populates req.query for a dynamic segment.
   const match = url.pathname.match(entry[0])!;
-  const query: Record<string, string> = {};
+  const query: Record<string, string | string[]> = {};
   for (const [key, value] of url.searchParams) query[key] = value;
-  if (entry[2] && match.length > 1) query.id = decodeURIComponent(match[1]!);
+  if (entry[2] && match.length > 1) {
+    const segment = decodeURIComponent(match[1] ?? "");
+    query.id = segment;
+    query.segments = segment.split("/").filter(Boolean);
+  }
 
   await handler(
     {

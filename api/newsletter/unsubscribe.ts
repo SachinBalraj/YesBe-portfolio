@@ -23,13 +23,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   if (!requireAdmin(req, res)) return;
 
   const body = readJsonBody(req);
-  if (!body.ok) {
+  if (body.ok === false) {
     sendError(res, body.status, body.error);
     return;
   }
 
   let filter: Filter<SubscriberDoc>;
-  if (Object.hasOwn(body.data, "id")) {
+  if (Object.prototype.hasOwnProperty.call(body.data, "id")) {
     const _id = toObjectId(body.data.id);
     if (!_id) {
       sendError(res, 400, "Invalid subscriber id");

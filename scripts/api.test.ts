@@ -44,6 +44,7 @@ before(async () => {
   client = new MongoClient(process.env.MONGODB_URI);
   await client.connect();
   db = client.db("yesbe_test");
+  const adminEnquiries = (await import("../api/admin/enquiries/[[...segments]].ts")).default;
 
   H = {
     submit: (await import("../api/enquiries.ts")).default,
@@ -51,8 +52,8 @@ before(async () => {
     login: (await import("../api/admin/login.ts")).default,
     logout: (await import("../api/admin/logout.ts")).default,
     session: (await import("../api/admin/session.ts")).default,
-    list: (await import("../api/admin/enquiries/index.ts")).default,
-    detail: (await import("../api/admin/enquiries/[id].ts")).default,
+    list: adminEnquiries,
+    detail: adminEnquiries,
     newsletter: (await import("../api/newsletter/index.ts")).default,
   };
 });

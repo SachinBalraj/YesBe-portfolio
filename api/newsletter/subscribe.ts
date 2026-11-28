@@ -28,7 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   }
 
   const body = readJsonBody(req);
-  if (!body.ok) {
+  if (body.ok === false) {
     sendError(res, body.status, body.error);
     return;
   }

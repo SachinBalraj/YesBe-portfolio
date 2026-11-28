@@ -29,16 +29,18 @@ before(async () => {
   client = new MongoClient(process.env.MONGODB_URI);
   await client.connect();
   db = client.db(process.env.MONGODB_DB_NAME);
+  const adminEnquiries = (await import("../api/admin/enquiries/[[...segments]].ts")).default;
+  const { exportEnquiries } = await import("../api/admin/enquiries/[[...segments]].ts");
 
   H = {
     submit: (await import("../api/enquiries.ts")).default,
     subscribe: (await import("../api/newsletter/subscribe.ts")).default,
     login: (await import("../api/admin/login.ts")).default,
-    list: (await import("../api/admin/enquiries/index.ts")).default,
-    detail: (await import("../api/admin/enquiries/[id].ts")).default,
+    list: adminEnquiries,
+    detail: adminEnquiries,
     clients: (await import("../api/admin/clients.ts")).default,
     settings: (await import("../api/admin/settings.ts")).default,
-    exportEnquiries: (await import("../api/admin/enquiries/export.ts")).default,
+    exportEnquiries,
     newsletter: (await import("../api/newsletter/index.ts")).default,
     unsubscribe: (await import("../api/newsletter/unsubscribe.ts")).default,
     exportSubscribers: (await import("../api/newsletter/export.ts")).default,
